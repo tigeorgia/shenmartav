@@ -1,0 +1,306 @@
+[
+  {
+    "pk": 138,
+    "model": "popit.organisationname",
+    "fields": {
+      "updated": "2012-06-27T08:58:02.989Z",
+      "main": true,
+      "name": "Christian Democractic Movement",
+      "end_date": null,
+      "created": "2012-06-27T08:58:02.910Z",
+      "organisation": 138,
+      "name_en": "Christian Democractic Movement",
+      "name_ka": "\u10d2\u10d8\u10dd\u10e0\u10d2\u10d8 \u10d7\u10d0\u10e0\u10d2\u10d0\u10db\u10d0\u10eb\u10d4 \u2013 \u10e5\u10e0\u10d8\u10e1\u10e2\u10d8\u10d0\u10dc \u2013 \u10d3\u10d4\u10db\u10dd\u10d9\u10e0\u10d0\u10e2\u10d4\u10d1\u10d8",
+      "start_date": null
+    }
+  },
+  {
+    "pk": 139,
+    "model": "popit.organisationname",
+    "fields": {
+      "updated": "2012-06-27T08:58:24.791Z",
+      "main": true,
+      "name": "Labour",
+      "end_date": null,
+      "created": "2012-06-27T08:58:24.779Z",
+      "organisation": 139,
+      "name_en": "Labour",
+      "name_ka": "\u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd\u10e1 \u10da\u10d4\u10d8\u10d1\u10dd\u10e0\u10d8\u10e1\u10e2\u10e3\u10da\u10d8 \u10de\u10d0\u10e0\u10e2\u10d8\u10d0",
+      "start_date": null
+    }
+  },
+  {
+    "pk": 140,
+    "model": "popit.organisationname",
+    "fields": {
+      "updated": "2012-06-27T08:58:50.245Z",
+      "main": true,
+      "name": "National Democratic Party",
+      "end_date": null,
+      "created": "2012-06-27T08:58:50.233Z",
+      "organisation": 140,
+      "name_en": "National Democratic Party",
+      "name_ka": "\u10d4\u10e0\u10dd\u10d5\u10dc\u10e3\u10da \u2013 \u10d3\u10d4\u10db\u10dd\u10d9\u10e0\u10d0\u10e2\u10d8\u10e3\u10da\u10d8 \u10de\u10d0\u10e0\u10e2\u10d8\u10d0",
+      "start_date": null
+    }
+  },
+  {
+    "pk": 141,
+    "model": "popit.organisationname",
+    "fields": {
+      "updated": "2012-06-27T08:59:11.659Z",
+      "main": true,
+      "name": "Republicans",
+      "end_date": null,
+      "created": "2012-06-27T08:59:11.647Z",
+      "organisation": 141,
+      "name_en": "Republicans",
+      "name_ka": "\u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd\u10e1 \u10e0\u10d4\u10e1\u10de\u10e3\u10d1\u10da\u10d8\u10d9\u10e3\u10e0\u10d8 \u10de\u10d0\u10e0\u10e2\u10d8\u10d0",
+      "start_date": null
+    }
+  },
+  {
+    "pk": 142,
+    "model": "popit.organisationname",
+    "fields": {
+      "updated": "2012-06-27T08:59:32.913Z",
+      "main": true,
+      "name": "United National Council",
+      "end_date": null,
+      "created": "2012-06-27T08:59:32.894Z",
+      "organisation": 142,
+      "name_en": "United National Council",
+      "name_ka": "\u10d2\u10d0\u10d4\u10e0\u10d7\u10d8\u10d0\u10dc\u10d4\u10d1\u10e3\u10da\u10d8 \u10dd\u10de\u10dd\u10d6\u10d8\u10ea\u10d8\u10d0 (\u10d4\u10e0\u10dd\u10d5\u10dc\u10e3\u10da\u10d8 \u10e1\u10d0\u10d1\u10ed\u10dd, \u10db\u10d4\u10db\u10d0\u10e0\u10ef\u10d5\u10d4\u10dc\u10d4\u10d4\u10d1\u10d8)",
+      "start_date": null
+    }
+  },
+  {
+    "pk": 143,
+    "model": "popit.organisationname",
+    "fields": {
+      "updated": "2012-06-27T08:59:53.122Z",
+      "main": true,
+      "name": "United National Movement",
+      "end_date": null,
+      "created": "2012-06-27T08:59:53.105Z",
+      "organisation": 143,
+      "name_en": "United National Movement",
+      "name_ka": "\u10d4\u10e0\u10d7\u10d8\u10d0\u10dc\u10d8 \u10dc\u10d0\u10ea\u10d8\u10dd\u10dc\u10d0\u10da\u10e3\u10e0\u10d8 \u10db\u10dd\u10eb\u10e0\u10d0\u10dd\u10d1\u10d0 \u2013 \u10d2\u10d0\u10db\u10d0\u10e0\u10ef\u10d5\u10d4\u10d1\u10e3\u10da\u10d8 \u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd\u10e1\u10d7\u10d5\u10d8\u10e1",
+      "start_date": null
+    }
+  },
+  {
+    "pk": 144,
+    "model": "popit.organisationname",
+    "fields": {
+      "updated": "2012-06-27T09:20:03.841Z",
+      "main": true,
+      "name": "Unknown",
+      "end_date": null,
+      "created": "2012-06-27T09:20:03.830Z",
+      "organisation": 144,
+      "name_en": "Unknown",
+      "name_ka": null,
+      "start_date": null
+    }
+  },
+  {
+    "pk": 138,
+    "model": "popit.organisation",
+    "fields": {
+      "updated": "2012-06-27T09:09:48.084Z",
+      "created": "2012-06-27T08:58:02.887Z",
+      "started": null,
+      "ended": null,
+      "summary": "",
+      "summary_ka": null,
+      "summary_en": null,
+      "slug": "christian-democractic-movement"
+    }
+  },
+  {
+    "pk": 139,
+    "model": "popit.organisation",
+    "fields": {
+      "updated": "2012-06-27T09:09:48.639Z",
+      "created": "2012-06-27T08:58:24.767Z",
+      "started": null,
+      "ended": null,
+      "summary": "",
+      "summary_ka": null,
+      "summary_en": null,
+      "slug": "labour"
+    }
+  },
+  {
+    "pk": 140,
+    "model": "popit.organisation",
+    "fields": {
+      "updated": "2012-06-27T09:00:34.181Z",
+      "created": "2012-06-27T08:58:50.221Z",
+      "started": null,
+      "ended": null,
+      "summary": "",
+      "summary_ka": null,
+      "summary_en": null,
+      "slug": "national-democratic-party"
+    }
+  },
+  {
+    "pk": 141,
+    "model": "popit.organisation",
+    "fields": {
+      "updated": "2012-06-27T09:00:44.029Z",
+      "created": "2012-06-27T08:59:11.635Z",
+      "started": null,
+      "ended": null,
+      "summary": "",
+      "summary_ka": null,
+      "summary_en": null,
+      "slug": "republicans"
+    }
+  },
+  {
+    "pk": 142,
+    "model": "popit.organisation",
+    "fields": {
+      "updated": "2012-06-27T09:09:48.021Z",
+      "created": "2012-06-27T08:59:32.879Z",
+      "started": null,
+      "ended": null,
+      "summary": "",
+      "summary_ka": null,
+      "summary_en": null,
+      "slug": "united-national-council"
+    }
+  },
+  {
+    "pk": 143,
+    "model": "popit.organisation",
+    "fields": {
+      "updated": "2012-06-27T09:09:49.057Z",
+      "created": "2012-06-27T08:59:53.093Z",
+      "started": null,
+      "ended": null,
+      "summary": "",
+      "summary_ka": null,
+      "summary_en": null,
+      "slug": "united-national-movement"
+    }
+  },
+  {
+    "pk": 144,
+    "model": "popit.organisation",
+    "fields": {
+      "updated": "2012-06-27T09:20:03.860Z",
+      "created": "2012-06-27T09:20:03.819Z",
+      "started": null,
+      "ended": null,
+      "summary": "",
+      "summary_ka": null,
+      "summary_en": null,
+      "slug": "unknown"
+    }
+  },
+  {
+    "pk": 138,
+    "model": "representative.party",
+    "fields": {
+      "acronym": "cdm",
+      "url": "http://cdm.ge"
+    }
+  },
+  {
+    "pk": 139,
+    "model": "representative.party",
+    "fields": {
+      "acronym": "labour",
+      "url": "http://labour.ge"
+    }
+  },
+  {
+    "pk": 140,
+    "model": "representative.party",
+    "fields": {
+      "acronym": "ndp",
+      "url": "http://ndp.ge"
+    }
+  },
+  {
+    "pk": 141,
+    "model": "representative.party",
+    "fields": {
+      "acronym": "republicans",
+      "url": "http://republicans.ge"
+    }
+  },
+  {
+    "pk": 142,
+    "model": "representative.party",
+    "fields": {
+      "acronym": "unc",
+      "url": ""
+    }
+  },
+  {
+    "pk": 143,
+    "model": "representative.party",
+    "fields": {
+      "acronym": "unm",
+      "url": "http://unm.ge"
+    }
+  },
+  {
+    "pk": 144,
+    "model": "representative.party",
+    "fields": {
+      "acronym": "unknown",
+      "url": ""
+    }
+  },
+  {
+    "pk": 1,
+    "model": "representative.unit",
+    "fields": {
+      "parties": [
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "name_en": "Parliament of Georgia",
+      "name_ka": "\u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd\u10e1 \u10de\u10d0\u10e0\u10da\u10d0\u10db\u10d4\u10dc\u10e2\u10d8",
+      "name": "Parliament of Georgia",
+      "short": "parliament"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "representative.unit",
+    "fields": {
+      "parties": [
+        144
+      ],
+      "name_en": "Tbilisi City Hall",
+      "name_ka": "\u10d7\u10d1\u10d8\u10da\u10d8\u10e1\u10d8\u10e1 \u10db\u10d4\u10e0\u10d8\u10d0",
+      "name": "Tbilisi City Hall",
+      "short": "tbilisi"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "representative.unit",
+    "fields": {
+      "parties": [
+        144
+      ],
+      "name_en": "Ajaran Supreme Council",
+      "name_ka": "\u10d0\u10ed\u10d0\u10e0\u10d8\u10e1 \u10e3\u10db\u10d0\u10e6\u10da\u10d4\u10e1\u10d8 \u10e1\u10d0\u10d1\u10ed\u10dd",
+      "name": "Ajaran Supreme Council",
+      "short": "ajara"
+    }
+  }
+]

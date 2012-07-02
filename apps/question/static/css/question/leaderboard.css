@@ -1,0 +1,48 @@
+/*
+ * CSS file for app Question, leaderboard
+ */
+
+#question #leaderboard {
+    width: 100%;
+}
+
+#question #leaderboard table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+#question #leaderboard th {
+    background-image: url(../img/question/bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-color: #ccc;
+    cursor: pointer;
+    border: 1px solid #000;
+}
+#question #leaderboard th#header-percentage {
+    width: 15%;
+}
+#question #leaderboard th#header-count {
+    width: 25%;
+}
+#question #leaderboard th#header-name {
+    width: 40%;
+}
+#question #leaderboard th#header-photo {
+    width: 20%;
+}
+#question #leaderboard th.headerSortUp {
+    background-image: url(../img/question/asc.gif);
+}
+#question #leaderboard th.headerSortDown {
+    background-image: url(../img/question/desc.gif);
+}
+
+#question #leaderboard td {
+    text-align: center;
+    border: 1px solid #000;
+}
+
+#question #leaderboard tr {
+    height: 75px;
+}

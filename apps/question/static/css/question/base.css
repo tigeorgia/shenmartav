@@ -1,0 +1,68 @@
+/*
+ * CSS file for app Question
+ */
+
+/* folded */
+#folded-who {
+    left: 69px;
+}
+#folded-what {
+    left: 118px;
+}
+#folded-question {
+    left: 167px;
+}
+#folded-question .button {
+    opacity: 1;
+}
+.opened {
+    left: 216px;
+}
+
+
+#question {
+    position: relative;
+    padding: 0 1em;
+}
+
+
+/* ask form */
+#question #ask table {
+    border-spacing: 0;
+}
+#question #ask td {
+    padding: .5em .5em .5em 0;
+    margin: 0;
+    vertical-align: middle;
+}
+#question #ask input,
+#question #ask select,
+#question #ask option,
+#question #ask textarea {
+    width: 230px;
+}
+#question #ask textarea {
+    height: 50px;
+}
+#question #ask input[type="submit"]:hover, input[type="button"]:hover {
+    cursor: pointer;
+}
+
+/* the question */
+#question #the-question #questioner {
+    margin: 1em 0 2em 1em;
+}
+#question #the-question #questionee {
+    margin: 0 0 3em 1em;
+}
+#question #the-question .photo {
+    float: left;
+    width: 65px;
+}
+#question #the-question .data {
+    float: left;
+    width: 870px;
+}
+#question #the-question .data .text {
+    margin-top: .5em;
+}

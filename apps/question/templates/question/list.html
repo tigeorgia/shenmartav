@@ -1,0 +1,38 @@
+{% extends 'question/base.html' %}
+{% load i18n sekizai_tags %}
+
+{% block question %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/list.css" media="all" />
+{% endaddtoblock %}
+<div id="question">
+    <div id="list">
+        <table>
+            <thead>
+            <tr>
+                <th class="heading" id="header-representative">{% trans 'Representative' %}</th>
+                <th class="heading" id="header-question">{% trans 'Question' %}</th>
+                <th class="heading" id="header-date">{% trans 'Asked' %}</th>
+                <th class="heading" id="header-answered">{% trans 'Replied' %}</th>
+            </tr>
+            </thead>
+            <tbody id="items"><tbody>
+        </table>
+    </div>
+
+    <div id="info">
+        <h2 class="heading">{% trans 'Choose a Question' %}</h2>
+    </div>
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/tablesorter.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/question/list.js"></script>
+{% endaddtoblock %}
+<script type="text/javascript">
+var URL_QuestionInfo = '{% url question_info 0 %}';
+var URL_QuestionItems = '{% url question_items 0 %}';
+</script>
+
+{% endblock %}

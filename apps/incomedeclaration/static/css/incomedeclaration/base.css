@@ -1,0 +1,32 @@
+/*
+ * CSS file for app incomedeclaration, base
+ */
+
+/* folded */
+#folded-who {
+    left: 69px;
+}
+#folded-who .button {
+    opacity: 1;
+}
+.opened {
+    left: 118px;
+    width: 960px;
+}
+#folded-what {
+    right: 49px;
+}
+#folded-question {
+    right: 0;
+}
+
+
+#incomedeclaration {
+    position: relative;
+    padding: 0 1em;
+}
+
+#incomedeclaration ul {
+    max-height: 660px;
+    overflow: auto;
+}

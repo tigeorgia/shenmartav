@@ -1,0 +1,30 @@
+{% load menu_tags cms_tags i18n %}
+<div class="folded" id="folded-nav">
+    <div id="header">
+        <div id="logo" class="button"><a href="/"><img src="{{ STATIC_URL }}/img/spacer.png" width="48" height="48" /></a></div>
+
+        <div id="language-chooser">
+            {% language_chooser %}
+            <div id="google_translate_element"></div>
+        </div>
+
+        <ul id="navigation">
+            <li class="button"><a id="home" title="{% trans 'Home sweet Home' %}" href="{% url pages-root %}"><img src="{{ STATIC_URL }}img/nav-home.png" border="0" width="17" height="17" /></a></li>
+            <li class="button"><a id="blog" title="{% trans 'Blog posts for shenmartav' %}" href="{% page_url 'blog' %}"><img src="{{ STATIC_URL }}img/nav-blog.png" border="0" width="17" height="17" /></a></li>
+            <li class="button"><a id="about" title="{% trans 'About this website' %}" href="{% page_url 'about' %}"><img src="{{ STATIC_URL }}img/nav-about.png" border="0" width="17" height="17" /></a></li>
+            <li class="button"><a id="contact" title="{% trans 'Contact us' %}" href="{% url contact_show %}"><img src="{{ STATIC_URL }}img/nav-contact.png" border="0" width="17" height="17" /></a></li>
+        </ul>
+    </div>
+
+    <div id="footer">
+        <ul id="socialbuttons">
+            <li class="button" id="feed"><a title="{% trans 'RSS Blog feed' %}" href="{% url feed_blogposts %}"><img src="{{ STATIC_URL }}img/icon-feed.png" border="0" width="24" height="24" /></a></li>
+            <li class="button" id="facebook"><a title="{% trans 'Visit us on facebook' %}" href="http://facebook.com/shenmartav"><img src="{{ STATIC_URL }}img/icon-facebook.png" border="0" width="24" height="24" /></a></li>
+            <li class="button" id="twitter"><a title="{% trans 'Visit us on twitter' %}" href="http://twitter.com/shenmartav"><img src="{{ STATIC_URL }}img/icon-twitter.png" border="0" width="24" height="24" /></a></li>
+        </ul>
+        <ul id="sponsors">
+            <li class="button"><a title="{% trans 'Caucasus Institute for Peace Democracy and Development' %}" href="http://cipdd.org"><img src="{{ STATIC_URL }}img/logo-cipdd.png" border="0" width="56" height="54" /></a></li>
+            <li class="button"><a title="{% trans 'Transparency International Georgia' %}" href="http://transparency.ge"><img src="{{ STATIC_URL }}img/logo-tig.png" border="0" width="56" height="54" /></a></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+{% load cms_tags sekizai_tags menu_tags i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="A website to monitor the Georgian Parliament" />
+    <meta name="keywords" content="georgia,parliament,monitor,shen martav" />
+    <meta name="author" content="Sebastian Henschel" />
+    <title>ShenMartav - {% page_attribute 'page_title' %}</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url feed_blogposts %}" />
+    <style type="text/css">
+    @font-face {
+        font-family: "alk-sanet";
+        src: url({{STATIC_URL}}font/alk-sanet.ttf) format("truetype");
+    }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery-ui/jquery-ui.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" media="all" />
+    {% render_block "css" %}
+    {% block css %}{% endblock %}
+</head>
+<body>
+
+<div id="content">{% block content %}{% endblock %}</div>
+<div id="commit">COMMIT b436cb0abeb02ae5b703f8b6e66d78a058669ff7, DATE Fri Jun 29 18:05:55 2012 +0200</div>
+<div id="overlay"></div>
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/ui.min.js"></script>
+{% render_block 'js' %}
+{% block js %}{% endblock %}
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'auto',
+        autoDisplay: false,
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
+</body>
+</html>

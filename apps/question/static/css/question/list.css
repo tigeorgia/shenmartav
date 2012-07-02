@@ -1,0 +1,95 @@
+/*
+ * CSS file for app Question, list
+ */
+
+#question #list {
+    width: 60%;
+    height: 750px;
+    overflow: auto;
+    padding-right: .5em;
+}
+
+#question #list table {
+    width: 99%;
+    border-spacing: 0;
+}
+
+#question #list th {
+    background: #e08c8c url(../../img/arrows/default.gif) center right no-repeat;
+    cursor: pointer;
+    text-align: left;
+}
+#question #list th#header-representative {
+    width: 30%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#question #list th#header-question {
+    width: 35%;
+    border-radius: 0;
+}
+#question #list th#header-date {
+    width: 20%;
+    border-radius: 0;
+}
+#question #list th#header-answered {
+    width: 15%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#question #list th.headerSortUp {
+    background-image: url(../../img/arrows/asc.gif);
+}
+#question #list th.headerSortDown {
+    background-image: url(../../img/arrows/desc.gif);
+}
+
+#question #list td {
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid #aaa;
+    padding: .5em 0 .5em 1em;
+}
+
+#question #list .item-selected {
+    background: #ddd;
+}
+
+
+#question #list .status {
+    padding: .5em;
+    width: 80%;
+    border-radius: 2px;
+}
+#question #list .answered {
+    background: #688eb2;
+    color: #688eb2;
+}
+
+#question #list .unanswered {
+    background: #e08c8c;
+    color: #e08c8c;
+}
+
+#question span.unanswered {
+    font-size: larger;
+    color: #fff;
+}
+
+
+
+#question #info {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 38%;
+}
+
+#question #info #the-question {
+    margin-bottom: 1em;
+    max-height: 280px;
+    overflow: auto;
+}
+#question #info #the-question .data {
+    width: 285px;
+}

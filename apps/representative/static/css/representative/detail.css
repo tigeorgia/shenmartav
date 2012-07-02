@@ -1,0 +1,116 @@
+/*
+ * CSS file for app Representative, page detail
+ */
+
+#representative #data-text {
+    float: left;
+    width: 65%;
+}
+
+#representative #data-text #portrait {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: .5em;
+    padding-bottom: .3em;
+}
+#representative #data-text #photo {
+    float: left;
+    width: 110px;
+}
+#representative #data-text #party {
+    margin-top: 1em;
+}
+#representative #data-text #party-logo {
+    float: left;
+    width: 45px;
+}
+
+#representative #data-text #container-table {
+    max-height: 630px;
+    overflow: auto;
+}
+#representative #data-text tr > td:first-child {
+    width: 28%;
+}
+#representative #data-text td {
+    padding-top: 1em;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+#representative #votingrecords {
+    display: none;
+}
+#representative #votingrecords ul {
+    height: 300px;
+    overflow: auto;
+}
+#representative .vote-yes {
+    background: #0a0;
+}
+#representative .vote-no {
+    background: #a00;
+}
+#representative .vote-abstention {
+    background: #aa0;
+}
+#votingrecord .vote-absent {
+    background: #ccc;
+}
+
+
+#representative #data-boxes {
+    float: left;
+    width: 32%;
+    padding-left: 1em;
+}
+#representative #data-boxes .box {
+    margin-bottom: 2em;
+}
+#representative #data-boxes .box#box-income {
+    /* FIXME: pie chart stuff */
+    margin-bottom: 0;
+}
+#representative #data-boxes .box .absolute {
+    color: #000;
+}
+#representative #data-boxes .box-text {
+    margin-left: 1.3em;
+    margin-bottom: .5em;
+    max-height: 120px;
+    overflow: auto;
+}
+
+
+#representative #data-boxes #box-questions .table {
+    width: 90%;
+    margin: .5em auto;
+}
+#representative #data-boxes #box-questions #label-answered {
+    text-align: left;
+}
+#representative #data-boxes #box-questions #label-noresponse {
+    text-align: right;
+}
+#representative #data-boxes #box-questions #bar-questions {
+    width: 100%;
+    text-align: center;
+}
+#representative #data-boxes #box-questions #bar-answered,
+#representative #data-boxes #box-questions #bar-noresponse {
+    color: #fff;
+    padding: .3em;
+}
+#representative #data-boxes #box-questions #bar-answered {
+    background: #688eb2;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    text-align: left;
+}
+#representative #data-boxes #box-questions #bar-noresponse {
+    background: #e08c8c;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    text-align: right;
+}

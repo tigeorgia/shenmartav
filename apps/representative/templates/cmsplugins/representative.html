@@ -1,0 +1,40 @@
+{% load i18n thumbnail sekizai_tags cms_tags %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/cmsplugin.css" media="all" />
+{% endaddtoblock %}
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/representative/cmsplugin.js"></script>
+{% endaddtoblock %}
+
+<div id="representative">
+    <h1><a href="{% url representative_find %}">{% trans 'Who Makes Laws' %}</a></h1>
+    <div class="subh1">{% trans 'Here You can find info on Representatives' %}</div>
+
+    <div id="random">
+        <div id="photo">
+            <a title="{{ obj.name }}" href="{% url representative_find %}#member-{{ obj.pk }}">{% thumbnail obj.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+        </div>
+        <div id="info">
+            <div id="name"><a title="{{ obj.name }}" href="{% url representative_find %}#member-{{ obj.pk }}">{{ obj.name }}</a></div>
+            <div id="party">{{ obj.party }}</div>
+        </div>
+        <div style="clear:both"></div>
+
+        <div class="details">{% include 'representative/attendance.html' %}</div>
+
+        <div class="details">{% include 'representative/income.html' %}</div>
+        <div class="details more"><a title="{% trans 'See more about this representative' %}" href="{% url representative_find %}#member-{{ obj.pk }}">{% trans 'More' %} &raquo;</a></div>
+    </div>
+
+    <div id="find">
+        <form action="{% url representative_find %}" method="get">
+            <input type="text" class="find" id="query" name="query" value="{% trans 'Find Your Representative' %}" />
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+var URL_RepresentativeQuery = '{% url representative_query 0 %}';
+</script>

@@ -1,0 +1,64 @@
+/*
+ * CSS file for app Representative, base
+ */
+
+/* folded */
+.opened {
+    left: 118px;
+}
+#folded-who {
+    left: 69px;
+}
+#folded-who .button {
+    opacity: 1;
+}
+#folded-what {
+    right: 49px;
+}
+#folded-question {
+    right: 0;
+}
+
+
+
+#representative {
+    position: relative;
+    padding: 0 1em;
+}
+
+
+
+#representative #attendance #bars {
+    margin: 0 auto auto auto;
+    display: table;
+}
+#representative #attendance .bars-cell {
+    padding: 0 .2em;
+    display: table-cell;
+    text-align: center;
+    vertical-align: bottom;
+}
+#representative #attendance .bars-val-container {
+    height: 50px;
+    vertical-align: bottom;
+    display: table-cell;
+    margin-bottom: .2em;
+}
+#representative #attendance .bars-val {
+    background-color: #d44847;
+    width: 30px;
+}
+
+
+#representative #income #averaged {
+    margin: .5em 0 0 1.3em;
+}
+#representative #income #pie {
+    text-align: center;
+    display: table;
+    margin: 0 auto;
+}
+#representative #income #pie div {
+    display: table-cell;
+    vertical-align: middle;
+}

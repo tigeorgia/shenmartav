@@ -1,0 +1,57 @@
+{% extends 'draftlaw/base.html' %}
+{% load comments i18n sekizai_tags %}
+
+{% block draftlaw %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/annotations.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/detail.css" media="all" />
+{% endaddtoblock %}
+<div id="draftlaw">
+    <h2 class="heading">{{ obj }}</h2>
+    <div class="body">
+        <ul id="item">
+            <li id="bureau-date">{% trans 'Bureau Date' %}: {{ obj.bureau_date }}</li>
+            <li id="initiator">{% trans 'Initiator' %}: {{ obj.initiator_linked|safe }}</li>
+            <li id="author">{% trans 'Author' %}: {{ obj.author_linked|safe }}</li>
+            <li id="status">{% trans 'Status' %}: {{ obj.status }}</li>
+            <li id="summary">{% trans 'Summary' %}: {{ obj.summary }}</li>
+            {% if obj.sms_ka %}<li id="sms-ka">{% trans 'Georgian SMS Text' %}: {{ obj.sms_ka }}</li>{% endif %}
+            {% if obj.sms_en %}<li id="sms-en">{% trans 'English SMS Text' %}: {{ obj.sms_en }}</li>{% endif %}
+            {% if obj.full_text %}<li id="full-text">{% trans 'Full Text' %}: {{ obj.full_text }}</li>{% endif %}
+            {% if obj.full_text_url %}<li id="full-text-url">{% trans 'Full Text URL' %}: {{ obj.full_text_url }}</li>{% endif %}
+            {% if obj.enacted_text_url %}<li id="enacted-text-url">{% trans 'Enacted Text URL' %}: {{ obj.enacted_text_url }}</li>{% endif %}
+            {% if obj.law_number %}<li id="law-number">{% trans 'Law Number' %}: {{ obj.law_number }}</li>{% endif %}
+            {% if obj.voting_record %}<li id="voting-record"><a href="{{ obj.voting_record.get_absolute_url }}">{% trans 'Voting Record' %}</a></li>{% endif %}
+            {% if obj.related_1 %}<li id="related_1">{% trans 'Related Document 1' %}: {{ obj.related_1 }}</li>{% endif %}
+            {% if obj.related_2 %}<li id="related_2">{% trans 'Related Document 2' %}: {{ obj.related_2 }}</li>{% endif %}
+            {% if obj.related_3 %}<li id="related_3">{% trans 'Related Document 3' %}: {{ obj.related_3 }}</li>{% endif %}
+            {% if obj.related_4 %}<li id="related_4">{% trans 'Related Document 4' %}: {{ obj.related_4 }}</li>{% endif %}
+            {% if obj.related_5 %}<li id="related_5">{% trans 'Related Document 5' %}: {{ obj.related_5 }}</li>{% endif %}
+            {% if obj.discussions %}<li id="disussions">{% trans 'Discussions' %}
+                <ul>{% for discussion in obj.discussions.all %}
+                    <li id="discussion-{{ discussion.date }}">{{ discussion.date }} :: {{ discussion.place }}</li>
+                {% endfor %}</ul>
+            </li>{% endif %}
+            {% if obj.children.all %}<li id="children">{% trans 'Children' %}
+                <ul>{% for child in obj.children.all %}
+                    <li id="child-bill-number-{{ child.pk }}">{{ child }}
+                        <ul>
+                            {% if child.enacted_text_url %}<li id="child-enacted-text-url-{{ child.pk }}"><a href="{{ child.enacted_text_url }}">{% trans 'Enacted Text' %}</a></li>{% endif %}
+                            {% if child.law_number %}<li id="child-law-number-{{ child.pk }}">{% trans 'Law Number' %}: {{ child.law_number }}</a></li>{% endif %}
+                            {% if child.voting_record %}<li id="child-voting-record-{{ child.pk }}"><a href="{{ child.voting_record.get_absolute_url }}">{% trans 'Voting Record' %}</a></li>{% endif %}
+                        </ul>
+                    </li>
+                {% endfor %}</ul>
+            </li>{% endif %}
+        </ul>
+
+        <div id="annotations">
+            <h3>{% trans 'User Annotations' %}</h3>
+            {% render_comment_list for obj %}
+
+            <h4>{% trans 'Your Annotation' %}</h4>
+                {% render_comment_form for obj %}
+        </div>
+    </div>
+</div>
+{% endblock %}

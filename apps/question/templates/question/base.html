@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load sekizai_tags %}
+
+{% block css %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/base.css" media="all" />
+{% endaddtoblock %}
+{% endblock %}
+
+{% block content %}
+    {% include 'folded/menu.html' %}
+    {% include 'folded/who.html' %}
+    {% include 'folded/what.html' %}
+    {% include 'folded/question.html' %}
+<div class="opened">
+    {% include 'question/breadcrumb.html' %}
+    {% block question %}{% endblock %}
+</div>
+{% endblock %}

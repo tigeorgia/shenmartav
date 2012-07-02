@@ -1,0 +1,12 @@
+{% extends 'question/base.html' %}
+{% load i18n sekizai_tags %}
+
+{% block question %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/detail.css" media="all" />
+{% endaddtoblock %}
+<div id="question">
+    {% include 'question/thequestion.html' %}
+    {% include 'question/form.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,4 @@
+{% load menu_tags %}
+<div id="language-chooser-enka">
+    {% ifequal current_language 'ka' %}<a class="button" href="{% page_language_url 'en' %}">ENGLISH</a>{% else %}<a class="button" href="{% page_language_url 'ka' %}">ქართული</a>{% endifequal %}
+</div>

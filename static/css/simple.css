@@ -1,0 +1,25 @@
+/*
+ * CSS file for simple pages
+ */
+
+.opened {
+    left: 255px;
+    width: 775px;
+    overflow: auto;
+    padding: 1em;
+}
+.opened a {
+    color: #000;
+    text-decoration: underline;
+}
+
+
+#folded-who {
+    right: 98px;
+}
+#folded-what {
+    right: 49px;
+}
+#folded-question {
+    right: 0px;
+}

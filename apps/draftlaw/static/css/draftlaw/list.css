@@ -1,0 +1,131 @@
+/*
+ * CSS file for app draftlaw, list
+ */
+
+#draftlaw #search #data {
+    width: 340px;
+    height: 19px;
+    padding: 4px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    outline: 0;
+    border: 1px solid #ccc;
+    border-right: 0;
+    margin-top: 2px;
+}
+#draftlaw #search .formbutton  {
+    background: #e08c8c;
+    width: 100px;
+    height: 29px;
+    border: 0;
+    margin: 0;
+    padding: 4px;
+    color: #fff;
+    cursor: pointer;
+    outline: 0;
+}
+#draftlaw #search input[type=submit] {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+#draftlaw #search input[type=reset] {
+    border-radius: 2px;
+}
+
+
+#draftlaw #list {
+    float: left;
+    width: 60%;
+}
+
+
+#draftlaw #container-list {
+    height: 700px;
+    overflow: auto;
+    margin-top: 1em;
+}
+
+#draftlaw #list table {
+    width: 99%;
+    border-spacing: 0;
+}
+#draftlaw #list th {
+    background: #e08c8c url(../../img/arrows/default.gif) center right no-repeat;
+    cursor: pointer;
+    text-align: left;
+}
+
+#draftlaw #list th#header-draftlaw {
+    width: 58%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+#draftlaw #list th#header-stage {
+    width: 25%;
+    border-radius: 0;
+}
+#draftlaw #list th#header-date {
+    width: 17%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#draftlaw #list th.headerSortUp {
+    background-image: url(../../img/arrows/asc.gif);
+}
+#draftlaw #list th.headerSortDown {
+    background-image: url(../../img/arrows/desc.gif);
+}
+
+
+#draftlaw #list td {
+    padding: 1em 0 1em 1em;
+    border-bottom: 1px solid #aaa;
+    vertical-align: top;
+    text-align: left;
+}
+#draftlaw #list .item-selected {
+    background: #ddd;
+}
+#draftlaw #list .item .stage {
+    float: left;
+    margin-left: .3em;
+    padding: .3em;
+    border: none;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    background: #688eb2;
+}
+#draftlaw #list .item .stage-complete {
+    cursor: pointer;
+}
+#draftlaw #list .item .stage-missing {
+    background: #ddd;
+}
+#draftlaw #list .item .stage-incomplete {
+    opacity: .3;
+}
+
+
+
+#draftlaw #container-info {
+    float: left;
+    margin-left: 1em;
+    width: 38%;
+}
+#draftlaw #container-info > h2 {
+    margin-top: 0;
+}
+
+#draftlaw #info {
+    padding-left: 1.3em;
+    height: 700px;
+    overflow: auto;
+}
+#draftlaw #info #discussions ul {
+    padding-left: 1em;
+}
+
+#draftlaw #info #more {
+    margin-top: 2em;
+}

@@ -1,0 +1,28 @@
+/*
+ * CSS file for app Representative, plugin
+ */
+
+#representative #random #photo {
+    float: left;
+    width: 60px;
+}
+#representative #random #info {
+    float: left;
+    margin-left: 10px;
+    width: 175px;
+}
+#representative #random #info #name {
+    margin-bottom: .2em;
+}
+#representative #random .details {
+    margin-top: 1em;
+}
+#representative #random .more {
+    text-align: center;
+}
+
+
+#representative #find {
+    margin-top: 2em;
+    width: 220px;
+}

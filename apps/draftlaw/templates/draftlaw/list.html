@@ -1,0 +1,44 @@
+{% extends 'draftlaw/base.html' %}
+{% load i18n sekizai_tags %}
+
+{% block draftlaw %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/list.css" media="all" />
+{% endaddtoblock %}
+<div id="draftlaw">
+    <div id="list">
+        <form id="search">
+            <input type="text" id="data" name="data" /><input type="submit" class="formbutton" id="submit" name="submit" value="{% trans 'Search' %}" />
+            <input type="reset" class="formbutton" id="reset" name="reset" value="{% trans 'Reset' %}" />
+        </form>
+
+        <div id="container-list"><table>
+            <thead>
+            <tr>
+                <th class="heading" id="header-draftlaw">{% trans 'Draft Law' %}</th>
+                <th class="heading" id="header-stage">{% trans 'Discussion Stage' %}</th>
+                <th class="heading" id="header-date">{% trans 'Date' %}</th>
+            </tr>
+            </thead>
+            <tbody id="items"></tbody>
+        </table></div>
+    </div>
+
+    <div id="container-info">
+        <h2 class="heading">{% trans 'Info' %}</h2>
+        <div id="info"></div>
+    </div>
+
+    <div style="clear:both"></div>
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/tablesorter.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/draftlaw/list.js"></script>
+{% endaddtoblock %}
+<script type="text/javascript">
+var URL_DraftLawInfo = '{% url draftlaw_info 0 %}';
+var URL_DraftLawItems = '{% url draftlaw_items 0 %}';
+</script>
+{% endblock %}

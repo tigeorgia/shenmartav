@@ -1,0 +1,366 @@
+/*
+ * base stylesheet for shenmartav.ge
+ */
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "alk-sanet", Georgia, Times, serif;
+    font-size: .8em;
+    background: #fff;
+    color: #666;
+}
+
+
+input, select, option, textarea {
+    font-family: "alk-sanet", Georgia, Times, serif;
+}
+input, select, option {
+    height: 1.5em;
+}
+input[type="submit"]::-moz-focus-inner { /* yikes */
+    border: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #d44847;
+    margin: 1.2em 0 0 0;
+}
+h1 a {
+    color: #d44847;
+    text-decoration: none;
+}
+h1 a:hover {
+    color: #e08c8c;
+    text-decoration: none;
+}
+.subh1 {
+    font-size: .8em;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto 2em auto;
+}
+
+h2 {
+    font-size: 1.4em;
+    font-weight: normal;
+    margin-top: 0;
+    text-align: center;
+}
+h3 {
+    font-size: 1.2em;
+}
+h4 {
+    font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: #688eb2;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+li {
+    margin: .5em 0;
+}
+li:first-child {
+    margin-top: 0;
+}
+
+
+/* jquery ui */
+ul.ui-widget-content {
+    font-family: "alk-sanet", Georgia, Times, serif;
+}
+ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
+    background: #d44847;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+
+#content {
+    position: relative;
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+}
+
+#header div#logo {
+    margin-left: .5em;
+}
+#header #logo {
+    margin-top: .7em;
+    background: url('../img/logo-shenmartav.png') 0 0 no-repeat;
+    padding: .6em 0 0 2em;
+    height: 47px;
+    text-shadow: .1em .1em #9b0000;
+}
+#header #logo.rotate {
+    background: #e08c8c url('../img/logo-shenmartav-rotate.gif') 0 0 no-repeat;
+}
+
+#header a {
+    color: #fff;
+    text-decoration: none;
+}
+#header a:hover {
+    text-decoration: underline;
+}
+#header #language-chooser {
+    margin-top: 2em;
+}
+
+#header #google_translate_element {
+    margin-top: .5em;
+    margin-right: 0;
+}
+#header #google_translate_element a {
+    color: #666;
+}
+
+#header #navigation {
+    margin-top: 2.5em;
+}
+#header #navigation li {
+    margin: 1.5em 0;
+}
+#header .button img {
+    vertical-align: middle;
+}
+
+#footer {
+    position: absolute;
+    bottom: 2em;
+    z-index: 2;
+}
+#footer #socialbuttons {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2em;
+}
+#footer #socialbuttons li {
+    margin-top: .3em;
+}
+#footer #sponsors {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#footer #sponsors li {
+    display: inline;
+}
+
+
+.column {
+    position: absolute;
+    top: 0;
+    padding: 0 .5em;
+    background-repeat: repeat;
+    height: 795px;
+    background: #fff url(../img/bg-white.jpg) 0 0 repeat;
+}
+
+#col-nav {
+    width: 218px;
+    background: #d44847 url(../img/bg-red.jpg) 0 0 repeat;
+    padding: 0 1.5em;
+}
+#col-nav a:hover, #folded-nav a:hover {
+    text-decoration: none;
+}
+
+#col-who {
+    width: 302px;
+    left: 256px;
+}
+#col-what {
+    width: 302px;
+    left: 571px;
+}
+#col-question {
+    width: 302px;
+    left: 886px;
+}
+
+img.column-bg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+
+
+.button, #col-nav h1 {
+    opacity: .5;
+}
+.button:hover, #col-nav h1:hover {
+    opacity: 1;
+}
+.button-selected {
+    opacity: 1.;
+}
+
+
+.white {
+    color: #fff;
+}
+
+.wait {
+    cursor: wait;
+}
+
+.smaller {
+    font-size: .7em;
+}
+.bigger {
+    font-size: 1.2em;
+}
+.evenbigger {
+    font-size: 1.5em;
+}
+.fineprint {
+    font-size: .4em;
+}
+
+.required {
+    color: #a00;
+}
+
+.error {
+    color: #f00;
+}
+
+
+.shadow, .folded {
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.5); 
+    z-index: 5;
+}
+
+.heading {
+    color: #fff;
+    background: #e08c8c;
+    padding: 1em;
+    margin-bottom: .5em;
+    border-radius: 2px;
+    border: 1px solid #e08c8c;
+    font-weight: normal;
+    text-align: left;
+}
+
+.breadcrumb {
+    color: #aaa;
+    margin: 1em;
+}
+.breadcrumb a {
+    color: #aaa !important;
+    text-decoration: none;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+
+/* folded items */
+.opened {
+    position: absolute;
+    top: 0;
+    height: 800px;
+    width: 980px;
+    background: #fff url(../img/bg-white.jpg);
+}
+
+.folded {
+    text-align: center;
+    position: absolute;
+    padding: 0 .2em;
+    background-repeat: repeat;
+    height: 800px;
+    background: #fff url(../img/bg-white.jpg);
+}
+.folded img {
+    margin-top: 1.2em;
+    padding-bottom: 750px;
+}
+#folded-nav {
+    width: 65px;
+    left: 0;
+    background: #d44847 url(../img/bg-red.jpg) 0 0 repeat;
+}
+#folded-nav img {
+    margin-top: 0;
+    padding-bottom: 0;
+}
+
+#folded-nav #header {
+    width: 100%;
+}
+#folded-nav #header #logo {
+    text-align: center;
+}
+#folded-nav #google_translate_element a span:first-child {
+    display: none;
+}
+#folded-nav #footer {
+    width: 100%;
+}
+#folded-nav #footer #sponsors li {
+    display: block;
+    margin-top: .5em;
+}
+
+
+#folded-who {
+    width: 45px;
+}
+#folded-what {
+    width: 45px;
+}
+#folded-question {
+    width: 45px;
+}
+
+
+.table { display: table; }
+.row { display: table-row; }
+.cell { display: table-cell; }
+
+.body {
+    margin-left: 1.3em;
+}
+
+.pagination {
+    margin-top: 2em;
+}
+
+.more, .more a {
+    margin: .5em 0;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.find {
+    font-family: "alk-sanet", Georgia, Times, serif;
+    height: 2em;
+    color: #666;
+    width: 100%;
+    background: #fff url('../img/search.png') no-repeat 98% 50%;
+    padding: .3em 35px .3em .3em;
+}
+
+
+.label {
+    color: #333;
+}

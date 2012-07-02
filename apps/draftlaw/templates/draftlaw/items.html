@@ -1,0 +1,9 @@
+{% load i18n %}
+{% for dl in draftlaws.object_list %}
+    <tr class="item" id="item-{{ dl.pk}}">
+        <td><a name="draftlaw-{{ dl.pk}}"></a>{{ dl.title }}{% if dl.place %}:: {{ dl.place }}{% endif %}</td>
+        <td>{% for stage in dl.stages %}<div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>{% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}</div>{% endfor %}<div style="clear: both"></div></td>
+        <td>{{ dl.updated|date:"Y-m-d" }}</td>
+    </td>
+    </tr>
+{% endfor %}

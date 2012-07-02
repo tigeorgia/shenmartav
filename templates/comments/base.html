@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load sekizai_tags %}
+
+{% block css %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/annotations.css" media="all" />
+{% endaddtoblock %}
+{% endblock %}
+
+{% block content %}
+    {% include 'folded/menu.html' %}
+    {% include 'folded/who.html' %}
+    {% include 'folded/what.html' %}
+<div class="opened">
+    {% block annotations %}{% endblock %}
+</div>
+    {% include 'folded/question.html' %}
+{% endblock %}

@@ -1,0 +1,1 @@
+{{ object.bill_number }} {{ object.title }}

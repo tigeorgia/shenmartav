@@ -1,0 +1,6 @@
+A comment has been posted on {{ content_object }}.
+
+Edit: http://dev.shenmartav.ge/en/admin/comments/comment/{{ comment.pk }}
+
+The comment reads as follows:
+{{ comment }}

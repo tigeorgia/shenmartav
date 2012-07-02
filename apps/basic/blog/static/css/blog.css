@@ -1,0 +1,26 @@
+/*
+ * CSS file for app basic.blog, base
+ */
+
+.opened {
+    left: 255px;
+    width: 775px;
+    overflow: auto;
+    padding: 1em;
+}
+.opened .date {
+    border-bottom: 1px solid #aaa;
+}
+.opened .breadcrumb {
+    margin-top: 0;
+}
+
+#folded-who {
+    right: 98px;
+}
+#folded-what {
+    right: 49px;
+}
+#folded-question {
+    right: 0px;
+}

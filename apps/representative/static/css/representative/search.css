@@ -1,0 +1,13 @@
+/*
+ * CSS file for app Representative, page detail
+ */
+
+#representative input {
+    height: 2em;
+}
+#representative #results .cell {
+    vertical-align: middle;
+}
+#representative #results .name {
+    padding-left: 1em;
+}

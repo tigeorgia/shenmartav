@@ -1,0 +1,44 @@
+{% load i18n thumbnail sekizai_tags cms_tags %}
+{% get_current_language as lang %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/cmsplugin.css" media="all" />
+{% endaddtoblock %}
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/draftlaw/cmsplugin.js"></script>
+{% endaddtoblock %}
+
+<div id="draftlaw">
+    <h1><a href="{% url draftlaw_list %}">{% trans 'What Laws Are Made' %}</a></h1>
+    <div class="subh1">{% trans 'You can find pending Draft Laws here' %}</div>
+
+    <div id="find">
+        <form action="{% url draftlaw_list %}" method="get">
+            <input type="text" class="find" id="query" name="query" value="{% trans 'Find Draft Law' %}" />
+        </form>
+    </div>
+
+    <div class="more">
+        <a title="{% trans 'See more Draft Laws' %}" href="{% url draftlaw_list  %}">{% trans 'More' %} &raquo;</a>
+    </div>
+
+    <div id="news">
+        <h2>{% trans 'Weekly News' %}</h2>
+        <div id="item"></div>
+    </div>
+
+    <div id="alert">
+        <h2>{% trans 'Alerts from Parliament' %}</h2>
+        <div id="item"></div>
+        <div id="receive">
+            <a href="http://parliament.transparency.ge/{% ifequal lang 'ka' %}გამოწერა/{% else %}subscribe/?lang=en{% endifequal %}">{% trans 'Receive alerts on your phone.' %}</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+var URL_DraftLawQuery = '{% url draftlaw_query 0 %}';
+var URL_DraftLawNews = '{% url draftlaw_news 1 %}';
+var URL_DraftLawAlert = '{% url draftlaw_alert 1 %}';
+</script>

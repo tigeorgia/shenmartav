@@ -1,0 +1,1133 @@
+[
+  {
+    "pk": 2,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "07-3535-changes-to-law-on-drugs-psychotropic-materials-precursors-and-drug-aid-admin-offences",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#07-3/535",
+      "law_number": null,
+      "sms_ka": "",
+      "author": "MP Gigi Tsereteli, Health and Social Projects Centre ,,Global Fund\"",
+      "shortstatus": "P",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "3rd Plenary 22/05/2012: PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2008-02-01",
+      "sms_en": "Minor, large and especially large amounts of drugs and other materials under control are defined. Passed I hear on plenary, Tues.",
+      "initiator": "Committee on Health and Social Issues",
+      "title": "Changes to Law on drugs, psychotropic materials, precursors and drug aid ; admin offences code; law on public service; criminal code.",
+      "summary": "I - minor, large and especially large amounts of drugs and other materials under control are defined; Limitations for certain public servants specified; Principles for drug aid and rules of medical treatments of persons who abuse drugs defined. II -  Admin. offence added for persons who popularize psychoactive materials or disseminate information on their creation and utilization.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 6,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "07-3549-changes-to-the-tax-code",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#07-3/549",
+      "law_number": null,
+      "sms_ka": "",
+      "author": "Tsurtsumia, Zviad Kukava",
+      "shortstatus": "D",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "1st Committee 03/07/2012: ECONOMY, PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2012-02-07",
+      "sms_en": "",
+      "initiator": "Tsurtsumia, Kukava",
+      "title": "Changes to the Tax Code",
+      "summary": "Executive government and LEPLs to have authority to request necessary confidential tax information. Confidentiality must be maintained.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 5,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "07-2405-changes-to-certain-legislative-acts",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#07-2/405",
+      "law_number": "6061-I\u10e1",
+      "sms_ka": "",
+      "author": "Ministry of Labour, Health and Social Affairs",
+      "shortstatus": "P",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "3rd Plenary 24/04/2012: PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2012-02-07",
+      "sms_en": "",
+      "initiator": "GoG",
+      "title": "Changes to Certain Legislative Acts",
+      "summary": "Increased retirement benefits package as of 1 September 2012: 140 GEL package for pensioners aged 67, including 15 GEL health insurance; 60-67 year-old women and 65-67 year-old men will receive 125 GEL packages which include 15 GEL health insurance. Those whose monetary retirement benefit was less than 110 GEL before 1 September 2012, will receive 110 GEL.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 10,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "07-2398-changes-to-the-law-on-state-property",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#07-2/398",
+      "law_number": null,
+      "sms_ka": "",
+      "author": "Ministry of Economy",
+      "shortstatus": "P",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "3rd Plenary 28/02/2012: PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2012-02-07",
+      "sms_en": "",
+      "initiator": "GoG",
+      "title": "Changes to the Law on State Property",
+      "summary": "Documents issued in the process of privatization of agricultural lands, such as \"confirmation of implementation of committments undertaken at auctions\" to have legal force when downloaded from www.privatization.ge.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 8,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "07-2397-changes-to-the-tax-code-changes-to-the-law-of-georgia-on-free-industrial-zones",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#07-2/397",
+      "law_number": "6015-I\u10e1",
+      "sms_ka": "",
+      "author": "Ministry of Finance",
+      "shortstatus": "P",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "3rd Plenary 10/04/2012: PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2012-02-07",
+      "sms_en": "",
+      "initiator": "GoG",
+      "title": "Changes to the Tax Code; Changes to the Law of Georgia on Free Industrial Zones",
+      "summary": "Removing various limitations from enterprises in the free industrial zone and changing the taxation regime.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 7,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "07-2396-changes-to-the-law-on-international-agreements",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#07-2/396",
+      "law_number": null,
+      "sms_ka": "",
+      "author": "Ministry of Foreign Affairs",
+      "shortstatus": "P",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "3rd Plenary 13/03/2012: PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2012-02-07",
+      "sms_en": "",
+      "initiator": "GoG",
+      "title": "Changes to the Law on International Agreements",
+      "summary": "Translation of international agreements, verification of official transations, correction of mistakes in official translations to be completed by International Agreements Translation Bureau - LEPL under Ministry of Foreign Affairs. Service fees established by Minister of Foreign Affairs.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 4,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "07-2388-law-of-georgia-on-machakhela-national-park",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#07-2/388",
+      "law_number": null,
+      "sms_ka": "\u10d0\u10ed\u10d0\u10e0\u10d0\u10e8\u10d8 \u10e8\u10d4\u10d8\u10e5\u10db\u10dc\u10d4\u10d1\u10d0 8733 \u10f0\u10d0 \u10e4\u10d0\u10e0\u10d7\u10dd\u10d1\u10d8\u10e1 \u10db\u10d0\u10ed\u10d0\u10ee\u10d4\u10da\u10d0\u10e1 \u10d4\u10e0\u10dd\u10d5\u10dc\u10e3\u10da\u10d8 \u10de\u10d0\u10e0\u10d9\u10d8, \u10d7\u10d0\u10d5\u10d3\u10d0\u10de\u10d8\u10e0\u10d5\u10d4\u10da\u10d8 \u10e1\u10e3\u10d1\u10e1\u10d8\u10d3\u10d8\u10d8\u10e1 \u10e1\u10d0\u10ed\u10d8\u10e0\u10dd\u10d4\u10d1\u10d0 \u2013 164 \u10d0\u10d7\u10d0\u10e1\u10d8 \u10da\u10d0\u10e0\u10d8.",
+      "author": "Government of Adjara Autonomous Republic",
+      "shortstatus": "P",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "3rd Plenary 15/05/2012: PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2011-12-05",
+      "sms_en": "Machakhela National Park taking up 8733 ha land to be created in Adjara, requiring initial subsidy of 164,000 GEL.",
+      "initiator": "Adjara Autonomous Republic Supreme Council",
+      "title": "Law of Georgia on Machakhela National Park",
+      "summary": "Machakhela National Park taking up 8733 ha land to be created in Adjara, requiring initial subsidy of 164,000 GEL.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 3,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "07-2337-draft-law-on-free-trade-and-competition",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#07-2/337",
+      "law_number": null,
+      "sms_ka": "Tavisufali vachrobisa da konkurenciis shesaxeb kanonebis paketis mesame mosmena darg. ekonomikis komitetis sxdomaze, dges 12stze.",
+      "author": "GoG",
+      "shortstatus": "D",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "3rd Comittee 06/04/2012: ECONOMY, PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2011-09-12",
+      "sms_en": "III committee hearing of omnibus bill on free trade and competition to prepare for EU DCFTA, in Econ. Com., today 12 PM.",
+      "initiator": "GoG",
+      "title": "Draft Law on Free Trade and Competition",
+      "summary": "Omnibus bill on free trade and competition to prepare for EU DCFTA.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 1,
+    "model": "draftlaw.draftlaw",
+    "fields": {
+      "slug": "changes-to-air-code-and-administrative-offenses-code",
+      "voting_record": null,
+      "full_text": "",
+      "enable_annotations": true,
+      "bill_number": "#",
+      "law_number": null,
+      "sms_ka": "",
+      "author": "Civil Aviation Agency",
+      "shortstatus": "D",
+      "related_5": "",
+      "related_4": "",
+      "related_1": "",
+      "related_3": "",
+      "related_2": "",
+      "status": "2nd Plenary 12/04/2012: PASS",
+      "moderate_annotations": "2012-06-08",
+      "bureau_date": "2001-01-01",
+      "sms_en": "LEPL Civil Aviation Agency authorised to issue permits for internal air transportation.",
+      "initiator": "The GoG",
+      "title": "Changes to Air Code and Administrative Offenses Code",
+      "summary": "I - The bill defines LEPL Civil Aviation Agency as the body issuing permits for internal air transportation. II - Several new admin offences introduced for violation of civil aviation safety norms and standards.",
+      "full_text_url": "",
+      "enacted_text_url": ""
+    }
+  },
+  {
+    "pk": 1,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "1970-01-01",
+      "draftlaw": 1,
+      "place": "Plenary",
+      "stage": 1
+    }
+  },
+  {
+    "pk": 2,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-04-11",
+      "draftlaw": 1,
+      "place": "LEGAL",
+      "stage": 2
+    }
+  },
+  {
+    "pk": 3,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-04-12",
+      "draftlaw": 1,
+      "place": "Plenary",
+      "stage": 3
+    }
+  },
+  {
+    "pk": 4,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-03-27",
+      "draftlaw": 2,
+      "place": "Plenary",
+      "stage": 1
+    }
+  },
+  {
+    "pk": 5,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-05-01",
+      "draftlaw": 2,
+      "place": "HEALTH",
+      "stage": 2
+    }
+  },
+  {
+    "pk": 6,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-05-18",
+      "draftlaw": 2,
+      "place": "HEALTH",
+      "stage": 4
+    }
+  },
+  {
+    "pk": 7,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-05-22",
+      "draftlaw": 2,
+      "place": "Plenary",
+      "stage": 5
+    }
+  },
+  {
+    "pk": 8,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-04-06",
+      "draftlaw": 3,
+      "place": "ECONOMY",
+      "stage": 4
+    }
+  },
+  {
+    "pk": 9,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-04-25",
+      "draftlaw": 4,
+      "place": "AGRARIAN, PASS",
+      "stage": 0
+    }
+  },
+  {
+    "pk": 10,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-04-26",
+      "draftlaw": 4,
+      "place": "BUDGET, PASS",
+      "stage": 0
+    }
+  },
+  {
+    "pk": 11,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-05-04",
+      "draftlaw": 4,
+      "place": "ENVIRONMENT, PASS",
+      "stage": 0
+    }
+  },
+  {
+    "pk": 12,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-05-15",
+      "draftlaw": 4,
+      "place": "Plenary",
+      "stage": 5
+    }
+  },
+  {
+    "pk": 13,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-04-24",
+      "draftlaw": 5,
+      "place": "Plenary",
+      "stage": 5
+    }
+  },
+  {
+    "pk": 14,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-07-03",
+      "draftlaw": 6,
+      "place": "ECONOMY",
+      "stage": 0
+    }
+  },
+  {
+    "pk": 15,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-02-17",
+      "draftlaw": 7,
+      "place": "Plenary",
+      "stage": 1
+    }
+  },
+  {
+    "pk": 16,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-03-02",
+      "draftlaw": 7,
+      "place": "Plenary",
+      "stage": 3
+    }
+  },
+  {
+    "pk": 17,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-03-13",
+      "draftlaw": 7,
+      "place": "Plenary",
+      "stage": 5
+    }
+  },
+  {
+    "pk": 18,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-03-23",
+      "draftlaw": 8,
+      "place": "FINANCE",
+      "stage": 0
+    }
+  },
+  {
+    "pk": 19,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-03-29",
+      "draftlaw": 8,
+      "place": "FINANCE",
+      "stage": 2
+    }
+  },
+  {
+    "pk": 20,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-03-30",
+      "draftlaw": 8,
+      "place": "Plenary",
+      "stage": 3
+    }
+  },
+  {
+    "pk": 21,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-04-06",
+      "draftlaw": 8,
+      "place": "FINANCE",
+      "stage": 4
+    }
+  },
+  {
+    "pk": 22,
+    "model": "draftlaw.draftlawdiscussion",
+    "fields": {
+      "date": "2012-04-10",
+      "draftlaw": 8,
+      "place": "Plenary",
+      "stage": 5
+    }
+  },
+  {
+    "pk": 16,
+    "model": "draftlaw.draftlawchild",
+    "fields": {
+      "voting_record": null,
+      "parent": 4,
+      "title": "Changes to the Administrative Offenses Code of Georgia",
+      "bill_number": "#07-2/418.6",
+      "enacted_text_url": "",
+      "law_number": "5953-I\u10e1"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "draftlaw.draftlawchild",
+    "fields": {
+      "voting_record": null,
+      "parent": 6,
+      "title": "Changes to the Tax Code",
+      "bill_number": "#07-2/430.1",
+      "enacted_text_url": "",
+      "law_number": null
+    }
+  },
+  {
+    "pk": 22,
+    "model": "draftlaw.draftlawchild",
+    "fields": {
+      "voting_record": null,
+      "parent": 6,
+      "title": "Changes to the Law on Licenses and Permits Fees",
+      "bill_number": "#07-2/430.2",
+      "enacted_text_url": "",
+      "law_number": null
+    }
+  },
+  {
+    "pk": 23,
+    "model": "draftlaw.draftlawchild",
+    "fields": {
+      "voting_record": null,
+      "parent": 6,
+      "title": "Changes to the Law on Gambling Business Fees",
+      "bill_number": "#07-2/430.3",
+      "enacted_text_url": "",
+      "law_number": null
+    }
+  },
+  {
+    "pk": 24,
+    "model": "draftlaw.draftlawchild",
+    "fields": {
+      "voting_record": null,
+      "parent": 2,
+      "title": "Changes to Certain Legislative Acts",
+      "bill_number": "#07-3/612.1",
+      "enacted_text_url": "",
+      "law_number": null
+    }
+  },
+  {
+    "pk": 25,
+    "model": "draftlaw.draftlawchild",
+    "fields": {
+      "voting_record": null,
+      "parent": 2,
+      "title": "Law of Georgia on Voluntary Individual Savings",
+      "bill_number": "#07-2/465.1",
+      "enacted_text_url": "",
+      "law_number": null
+    }
+  },
+  {
+    "pk": 26,
+    "model": "draftlaw.draftlawchild",
+    "fields": {
+      "voting_record": null,
+      "parent": 3,
+      "title": "Changes to the Law of Georgia on Compatriots and Diaspora Organizations in Foreign Countries",
+      "bill_number": "#07-2/468.1",
+      "enacted_text_url": "",
+      "law_number": null
+    }
+  },
+  {
+    "pk": 86,
+    "model": "draftlaw.draftlawpluginconf",
+    "fields": {
+      "title": "Draft Laws"
+    }
+  },
+  {
+    "pk": 88,
+    "model": "draftlaw.draftlawpluginconf",
+    "fields": {
+      "title": "Draft Laws"
+    }
+  },
+  {
+    "pk": 2211,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5944-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 3457,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5958-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1134,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5976-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1223,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "6011-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1461,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "6052-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1443,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "6013-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1426,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5975-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1576,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "6014-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 2906,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5917-\u10e0\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 3008,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5919-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1130,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5969-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1427,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5926-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1142,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5940-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1133,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5978-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1135,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5942-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 212,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": 2881,
+      "amended_by": [
+        1036,
+        853,
+        378
+      ],
+      "name": "\u10d4\u10da\u10d4\u10e5\u10e2\u10e0\u10dd\u10dc\u10e3\u10da\u10d8 \u10ee\u10d4\u10da\u10db\u10dd\u10ec\u10d4\u10e0\u10d8\u10e1\u10d0 \u10d3\u10d0 \u10d4\u10da\u10d4\u10e5\u10e2\u10e0\u10dd\u10dc\u10e3\u10da\u10d8 \u10d3\u10dd\u10d9\u10e3\u10db\u10d4\u10dc\u10e2\u10d8\u10e1 \u10e8\u10d4\u10e1\u10d0\u10ee\u10d4\u10d1",
+      "scrape_date": "2012-05-24",
+      "number": "5927-I\u10e1",
+      "url": "http://www.parliament.ge/index.php?lang_id=GEO&sec_id=1530&kan_det=det&kan_id=2881",
+      "date": "2008-03-14"
+    }
+  },
+  {
+    "pk": 1213,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5924-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1329,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5970-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1383,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5957-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 3101,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5955-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 2159,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5954-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 3388,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5952-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1215,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5951-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1777,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5947-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1677,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5945-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1490,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5749-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1894,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5956-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 2377,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5948-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1153,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5946-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 2020,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5950-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1147,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5920-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 2311,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5968-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1219,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5966-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1847,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5965-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 3165,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5963-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 1399,
+    "model": "votingrecord.votingrecord",
+    "fields": {
+      "kan_id": null,
+      "amended_by": [],
+      "name": null,
+      "scrape_date": null,
+      "number": "5921-I\u10e1",
+      "url": null,
+      "date": null
+    }
+  },
+  {
+    "pk": 124,
+    "model": "popit.personname",
+    "fields": {
+      "updated": "2012-06-08T12:37:53.289Z",
+      "name": "\u10d7\u10d4\u10d8\u10db\u10e3\u10e0\u10d0\u10d6 \u10ec\u10e3\u10e0\u10ec\u10e3\u10db\u10d8\u10d0",
+      "end_date": null,
+      "title": "",
+      "created": "2012-06-08T06:01:58.217Z",
+      "person": 124,
+      "main": true,
+      "start_date": null
+    }
+  },
+  {
+    "pk": 124,
+    "model": "representative.representative",
+    "fields": {
+      "salary": 50532.0,
+      "answered": 0.0,
+      "faction": null,
+      "url": "\u10d5\u10d4\u10d1 \u10d2\u10d5\u10d4\u10e0\u10d3\u10d8: http://poti.majoritarian.ge/index.php",
+      "photo": "",
+      "property_assets": "hyundai Tucson-2008, SHG 002; \u10d1\u10d8\u10dc\u10d0",
+      "is_majoritarian": true,
+      "electoral_district": "\u10e1/\u10dd #70 \u10e4\u10dd\u10d7\u10d8",
+      "expenses": "",
+      "family_status": "\u10d3\u10d0\u10dd\u10ef\u10d0\u10ee\u10d4\u10d1\u10e3\u10da\u10d8, \u10db\u10d4\u10e3\u10e6\u10da\u10d4 \u10d3\u10d0 \u10e1\u10d0\u10db\u10d8 \u10e8\u10d5\u10d8\u10da\u10d8",
+      "elected": "2008 \u10ec.\u10d8\u10d5\u10dc\u10d8\u10e1\u10d8",
+      "attendance_record": "764/791 (96.6%)",
+      "committee": null,
+      "contact_address_phone": "\u10db\u10d8\u10e1\u10d0\u10db\u10d0\u10e0\u10d7\u10d8: \u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd, \u10d7\u10d1\u10d8\u10da\u10d8\u10e1\u10d8, 0118, \u10e0\u10e3\u10e1\u10d7\u10d0\u10d5\u10d4\u10da\u10d8\u10e1 \u10d2\u10d0\u10db\u10d6\u10d8\u10e0\u10d8 \u2116 8, \u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd\u10e1 \u10de\u10d0\u10e0\u10da\u10d0\u10db\u10d4\u10dc\u10e2\u10d8, \u10dd\u10d7\u10d0\u10ee\u10d8 N603, \u10e2\u10d4\u10da: (995 32) 2 \u2013  28 \u2013  42 \u2013  10",
+      "party": "\u10d4\u10e0\u10d7\u10d8\u10d0\u10dc\u10d8 \u10dc\u10d0\u10ea\u10d8\u10dd\u10dc\u10d0\u10da\u10e3\u10e0\u10d8 \u10db\u10dd\u10eb\u10e0\u10d0\u10dd\u10d1\u10d0 \u2013 \u10d2\u10d0\u10db\u10d0\u10e0\u10ef\u10d5\u10d4\u10d1\u10e3\u10da\u10d8 \u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd\u10e1\u10d7\u10d5\u10d8\u10e1",
+      "education": "\u10d2\u10d0\u10dc\u10d0\u10d7\u10da\u10d4\u10d1\u10d0: \u10e3\u10db\u10d0\u10e6\u10da\u10d4\u10e1\u10d8;\u10e1\u10d0\u10e1\u10ec\u10d0\u10d5\u10da\u10d4\u10d1\u10d4\u10da\u10d8: \u10e1\u10d0\u10e5\u10d0\u10e0\u10d7\u10d5\u10d4\u10da\u10dd\u10e1 \u10e2\u10d4\u10e5\u10dc\u10d8\u10d9\u10e3\u10e0\u10d8 \u10e3\u10dc\u10d8\u10d5\u10d4\u10e0\u10e1\u10d8\u10e2\u10d4\u10e2\u10d8;\u10e1\u10de\u10d4\u10ea\u10d8\u10d0\u10da\u10dd\u10d1\u10d0: \u10e1\u10d0\u10db\u10e0\u10d4\u10ec\u10d5\u10d4\u10da\u10dd \u10d3\u10d0 \u10e1\u10d0\u10db\u10dd\u10e5\u10d0\u10da\u10d0\u10e5\u10dd \u10db\u10e8\u10d4\u10dc\u10d4\u10d1\u10da\u10dd\u10d1\u10d0;\u10d9\u10d5\u10d0\u10da\u10d8\u10e4\u10d8\u10d9\u10d0\u10ea\u10d8\u10d0: \u10d8\u10dc\u10df\u10d8\u10dc\u10d4\u10e0\u2013\u10db\u10e8\u10d4\u10dc\u10d4\u10d1\u10d4\u10da\u10d8",
+      "pob": "\u10e5. \u10e4\u10dd\u10d7\u10d8",
+      "unit": "p"
+    }
+  },
+{
+    "pk": 124,
+    "model": "popit.person",
+    "fields": {
+      "updated": "2012-06-08T12:37:53.317Z",
+      "description": "\u10e4\u10e0\u10d0\u10e5\u10ea\u10d8\u10d0 \"\u10d4\u10e0\u10d7\u10d8\u10d0\u10dc\u10d8 \u10dc\u10d0\u10ea\u10d8\u10dd\u10dc\u10d0\u10da\u10e3\u10e0\u10d8 \u10db\u10dd\u10eb\u10e0\u10d0\u10dd\u10d1\u10d0\"\u2013\u10e1 \u10ec\u10d4\u10d5\u10e0\u10d8; \u10d8\u10e3\u10e0\u10d8\u10d3\u10d8\u10e3\u10da \u10e1\u10d0\u10d9\u10d8\u10d7\u10ee\u10d7\u10d0 \u10d9\u10dd\u10db\u10d8\u10e2\u10d4\u10e2\u10d8\u10e1 \u10ec\u10d4\u10d5\u10e0\u10d8;\n\u10d3\u10d0\u10e0\u10d2\u10dd\u10d1\u10e0\u10d8\u10d5\u10d8 \u10d4\u10d9\u10dd\u10dc\u10dd\u10db\u10d8\u10d9\u10d8\u10e1 \u10d3\u10d0 \u10d4\u10d9\u10dd\u10dc\u10dd\u10db\u10d8\u10d9\u10e3\u10e0\u10d8 \u10de\u10dd\u10da\u10d8\u10e2\u10d8\u10d9\u10d8\u10e1 \u10d9\u10dd\u10db\u10d8\u10e2\u10d4\u10e2\u10d8\u10e1 \u10d7\u10d0\u10d5\u10db\u10ef\u10d3\u10dd\u10db\u10d0\u10e0\u10d8\u10e1 \u10db\u10dd\u10d0\u10d3\u10d2\u10d8\u10da\u10d4",
+      "created": "2012-06-08T06:01:58.206Z",
+      "date_of_death": null,
+      "date_of_birth": "1962-07-24",
+      "slug": "teimuraz-tsurtsumia"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "draftlaw.news",
+    "fields": {
+      "body": "draft law news!",
+      "body_ka": "\u10d3\u10e0\u10d0\u10e4\u10e2 \u10da\u10d0\u10ec \u10dc\u10d4\u10ec\u10e1!",
+      "pub_date": "2012-06-18",
+      "body_en": "draft law news!"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "draftlaw.news",
+    "fields": {
+      "body": "second news",
+      "body_ka": "\u10e1\u10d4\u10ea\u10dd\u10dc\u10d3 \u10dc\u10d4\u10ec\u10e1",
+      "pub_date": "2012-06-18",
+      "body_en": "second news"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "draftlaw.news",
+    "fields": {
+      "body": "third news",
+      "body_ka": "\u10e2\u10f0\u10d8\u10e0\u10d3 \u10dc\u10d4\u10ec\u10e1",
+      "pub_date": "2012-06-18",
+      "body_en": "third news"
+    }
+  }
+]

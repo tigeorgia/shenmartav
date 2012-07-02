@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load cms_tags sekizai_tags %}
+
+{% block css %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/simple.css" media="all" />
+{% endaddtoblock %}
+{% endblock %}
+
+{% block content %}
+    <div id="col-nav" class="column shadow">{% include 'nav.html' %}</div>
+
+    <div class="opened">{% placeholder simple_content %}</div>
+
+    {% include 'folded/who.html' %}
+    {% include 'folded/what.html' %}
+    {% include 'folded/question.html' %}
+{% endblock %}

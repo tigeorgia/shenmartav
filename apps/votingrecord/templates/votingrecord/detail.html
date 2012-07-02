@@ -1,0 +1,43 @@
+{% extends 'votingrecord/base.html' %}
+{% load i18n thumbnail %}
+
+{% block votingrecord %}
+<div id="votingrecord">
+    <h2 class="heading">{{ obj.name }}</h2>
+    <div class="body">
+        <ul>
+            <li>{% trans 'Number' %}: {{ obj.number }}</li>
+            <li>{% trans 'Date' %}: {{ obj.date }}</li>
+            <li>{% trans 'Content URL' %}: <a href="{{ obj.url }}">{{ obj.url }}</a></li>
+        {% if amended_by %}
+            <li>{% trans 'Amended by' %}:
+                <ul>{% for rec in amended_by %}
+                    <li>{% if rec.name %}<a href="{{ rec.get_absolute_url }}">{{ rec }}</a>{% else %}{{ rec.number }}{% endif %}</li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if amending %}
+            <li>{% trans 'Amending' %}:
+                <ul>{% for rec in amending %}
+                    <li>{% if rec.name %}<a href="{{ rec.get_absolute_url }}">{{ rec }}</a>{% else %}{{ rec.number }}{% endif %}</li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.results %}
+            <li>{% trans 'Results' %}:
+                <p>{% trans 'Yes' %}: {{ counts.yes }}, {% trans 'No' %}: {{ counts.no }}, {% trans 'Abstained' %}: {{ counts.abstained }}, {% trans 'Absent' %}: {{ counts.absent }}, {% trans 'Total' %}: {{ counts.total }}</p>
+                <ul id="results">{% for res in obj.results.all %}
+                    <li class="{{ res.css }}">{% if res.representative %}
+                    <a href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '30x36' as im %}<img src="{{ im }}" width="{{ im.width }}" height="{{ im.height }}" border="0" /> {{ res.name }}</a>: {{ res.vote }}
+                    {% else %}
+                    {{ res.name }}: {{ res.vote }}
+                    {% endif %}</li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        </ul>
+
+        <p class="small">{% trans 'Scraped on' %} {{ object.scrape_date }}</p>
+    </div>
+</div>
+{% endblock %}

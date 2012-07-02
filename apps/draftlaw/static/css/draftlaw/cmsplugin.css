@@ -1,0 +1,41 @@
+/*
+ * CSS file for app draftlaw, cmsplugin
+ */
+
+#draftlaw #find {
+    width: 220px;
+}
+
+#draftlaw .more {
+    text-align: center;
+}
+
+
+#draftlaw #news, #draftlaw #alert {
+    margin-top: 2em;
+}
+#draftlaw #news #navigation {
+    text-align: center;
+}
+
+#draftlaw #alert {
+    position: relative;
+    margin-top: 5em;
+    height: 160px;
+    background: #d44847 url(../../img/bg-mail.png) no-repeat right bottom;
+    border-radius: 2px;
+    padding: .5em;
+    color: #fff;
+}
+#draftlaw #alert a {
+    color: #fff;
+}
+#draftlaw #alert #navigation {
+    position: absolute;
+    margin: 0 40%;
+    bottom: 2.5em;
+}
+#draftlaw #alert #receive {
+    position: absolute;
+    bottom: .5em;
+}

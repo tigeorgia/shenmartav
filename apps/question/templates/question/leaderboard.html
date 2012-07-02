@@ -1,0 +1,38 @@
+{% extends 'question/base.html' %}
+{% load i18n sekizai_tags thumbnail %}
+
+{% block content %}
+<div id="question">
+    <h2>{% trans 'Leaderboard' %}</h2>
+
+    <div id="leaderboard">
+        <table>
+            <thead>
+            <tr>
+                <th id="header-percentage">{% trans 'Percentage' %}</th>
+                <th id="header-count">{% trans 'Number of questions' %}</th>
+                <th id="header-representative">{% trans 'Representative' %}</th>
+            </tr>
+            </thead>
+            <tbody>{% for representative in object_list %}
+            <tr>
+                <td>{{ representative.answered|stringformat:'.1f' }} %</td>
+                <td>{{ representative.questions.count }}</td>
+                <td>
+                    <a href="{{ representative.get_absolute_url }}">
+                        {% thumbnail representative.photo '100x75' as im %}<img src="{{ im }}" width="{{ im.width }}" height="{{ im.height }}" /><br />
+                        {{ representative.name }}
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}<tbody>
+        </table>
+    </div>
+
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/tablesorter.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/question/leaderboard.js"></script>
+{% endaddtoblock %}
+{% endblock %}

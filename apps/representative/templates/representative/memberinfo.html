@@ -1,0 +1,22 @@
+{% load i18n thumbnail %}
+<ul>
+    <li>
+        <div id="photo">{% thumbnail obj.photo '60x72' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></div>
+        <div id="short">
+            <div id="name"><a title="{{ obj.name }}" href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></div>
+            <div id="party" class="smaller">{{ obj.party }}</div>
+            <div id="district-elected" class="smaller">{% if obj.electoral_district %}{{ obj.electoral_district }}, {% endif %}{{ obj.elected }}</div>
+        </div>
+        <div style="clear: both"></div>
+    </li>
+{% if obj.faction %}
+    <li id="faction">{% trans 'Faction' %}: {{ obj.faction }}</li>
+{% endif %}
+{% if obj.committee %}
+    <li id="committee">{% trans 'Committee' %}: {{ obj.committee }}</li>
+{% endif %}
+    <li id="activities"><span class="darker">{% trans 'Activities' %}</span>:<br /><span class="smaller">{{ obj.description }}<span></li>
+    <li>{% include 'representative/attendance.html' %}</li>
+    <li>{% include 'representative/income.html' %}</li>
+    <div class="more"><a href="{{ obj.get_absolute_url }}">{% trans 'More' %} &raquo;</a></div>
+</ul>

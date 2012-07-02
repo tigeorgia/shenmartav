@@ -1,0 +1,22 @@
+{% extends 'incomedeclaration/base.html' %}
+{% load i18n %}
+
+{% block incomedeclaration %}
+<div id="incomedeclaration">
+    <h2 class="heading">{% trans 'Income Declarations' %}</h2>
+    <div class="body">
+        <ul id="list">{% for declaration in object_list %}
+                <li><a href="{{ declaration.get_absolute_url }}">{{ declaration }}</a></li>
+        {% endfor %}</ul>
+        {% if is_paginated %}<div class="pagination">
+            <span class="page-links">
+                {% ifnotequal page_obj.number 1 %}<a href="{% url incomedeclaration_list %}">&lt;&lt;</a>{% endifnotequal %}
+                {% if page_obj.has_previous %}<a href="{% url incomedeclaration_list %}?page={{ page_obj.previous_page_number }}">&lt;</a>{% endif %}
+                <span class="page-current">{% trans 'Page' %} {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}.</span>
+                {% if page_obj.has_next %}<a href="{% url incomedeclaration_list %}?page={{ page_obj.next_page_number }}">&gt;</a>{% endif %}
+                {% ifnotequal page_obj.number paginator.num_pages %}<a href="{% url incomedeclaration_list %}?page={{ paginator.num_pages }}">&gt;&gt;</a>{% endifnotequal %}
+            </span>
+        </div>{% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+/*
+ * CSS file for app draftlaw, list
+ */
+
+#draftlaw #body #annotations {
+    margin-top: 3em;
+    padding: 0;
+}

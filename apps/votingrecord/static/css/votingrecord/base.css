@@ -1,0 +1,52 @@
+/*
+ * CSS file for app votingrecord, base
+ */
+
+/* folded */
+#folded-who {
+    left: 69px;
+}
+#folded-what {
+    left: 118px;
+}
+#folded-what .button {
+    opacity: 1;
+}
+.opened {
+    left: 170px;
+    width: 960px;
+}
+#folded-question {
+    right: 0;
+}
+
+
+/* all pages */
+#votingrecord {
+    position: relative;
+    padding: 0 1em;
+}
+
+
+#votingrecord .vote-yes {
+    background: #0a0;
+}
+#votingrecord .vote-no {
+    background: #a00;
+}
+#votingrecord .vote-abstention {
+    background: #aa0;
+}
+#votingrecord .vote-absent {
+    background: #ccc;
+}
+
+
+#votingrecord #results {
+    height: 480px;
+    overflow: auto;
+}
+#votingrecord #records {
+    max-height: 750px;
+    overflow: auto;
+}

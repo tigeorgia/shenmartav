@@ -1,0 +1,16 @@
+{% extends "comments/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Thanks for Your Annotation" %}.{% endblock %}
+
+{% block annotations %}
+<div id="annotations">
+    <h2 class="heading">{% trans "Thanks for Your Annotation" %}</h2>
+    <p>
+        It is awaiting the moderator's approval now.
+    </p>
+    <p>
+        <a href="{{ comment.get_absolute_url }}">{% trans 'Back' %}</a>
+    </p>
+</div>
+{% endblock %}

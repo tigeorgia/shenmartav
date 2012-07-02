@@ -1,0 +1,64 @@
+{% load i18n thumbnail sekizai_tags cms_tags %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/cmsplugin.css" media="all" />
+{% endaddtoblock %}
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/question/cmsplugin.js"></script>
+{% endaddtoblock %}
+
+<div id="question">
+    <h1><a href="{% url question_list %}">{% trans 'Your Questions' %}</a></h1>
+    <div class="subh1">{% trans 'You can submit questions to Representatives here' %}</div>
+
+    <div id="latest">
+        <h2>{% trans 'Latest question' %}</h2>
+        <div class="photo-small">
+            <a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{% thumbnail latest.representative.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+        </div>
+        <div class="info">
+            <a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{{ latest.representative.name }}</a>
+            <div id="latest-question"><span class="label">{% trans 'Question' %}:</span> {{ latest.question|slice:"100" }} ...</div>
+            <div id="latest-answer"><span class="label">{% trans 'Answer' %}:</span> {{ latest.answer|slice:"100" }} ...</div>
+            <div class="more"><a href="{{ latest.get_absolute_url }}">{% trans 'More' %} &raquo;</a></div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+
+    <div id="most-active">
+        <div class="photo-small">
+            <a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{% thumbnail most_active.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+        </div>
+        <div class="info">
+            <a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{{ most_active.name }}</a>
+            <div>{% trans 'Most Active' %}</div>
+            <div class="activity-bar" title="{% trans 'Answered' %} {{ most_active.answered }}%"><div class="activity-val" style="width: {{ most_active.answered }}%">{{ most_active.answered }}%</div></div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+
+    <div id="least-active">
+        <div class="photo-small">
+            <a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{% thumbnail least_active.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+        </div>
+        <div class="info">
+            <a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{{ least_active.name }}</a>
+            <div>{% trans 'Least Active' %}</div>
+            <div class="activity-bar" title="{% trans 'Answered' %} {{ least_active.answered }}%"><div class="activity-val" style="width: {{ least_active.answered }}%">{{ least_active.answered }}%</div></div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+
+    <div class="more"><a title="{% trans 'Read more Questions' %}" href="{% url question_list  %}">{% trans 'More Questions' %} &raquo;</a></div>
+
+    <div id="ask">
+        <h3>{% trans 'Choose a Representative' %}</h3>
+        <form action="{% url question_ask_representative 0 %}" method="get">
+            <select>{% for r in representatives %}
+                <option value="{{ r.pk }}"{% ifequal r.pk random.pk %}selected="selected"{% endifequal %}>{{ r.name }}</option>
+            {% endfor %}</select>
+            <input type="submit" value="{% trans 'Ask' %}" />
+        </form>
+    </div>
+</div>

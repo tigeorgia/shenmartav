@@ -1,0 +1,16 @@
+{% load i18n %}
+<div id="attendance">
+    <div id="percentage" class="heading bigger">{% trans 'Attendance' %}: {{ obj.attendance.percentage }}%</div>
+    <div id="bars">
+        <div class="bars-cell">{% trans 'Attended' %}</div>
+        <div class="bars-cell">
+            <div class="bars-val-container"><div class="bars-val" id="bar-attended-relative" style="height: {{ obj.attendance.attended.relative }}%">&nbsp;</div></div>
+            <div class="absolute">{{ obj.attendance.attended.absolute }}</div>
+        </div>
+        <div class="bars-cell">
+            <div class="bars-val-container"><div class="bars-val" id="bar-absent-relative" style="height: {{ obj.attendance.absent.relative }}%">&nbsp;</div></div>
+            <div class="absolute">{{ obj.attendance.absent.absolute }}</div>
+        </div>
+        <div class="bars-cell">{% trans 'Absent' %}</div>
+    </div>
+</div>

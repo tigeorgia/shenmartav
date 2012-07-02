@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load cms_tags %}
+{% block content %}
+<div id="col-nav" class="column shadow">{% include 'nav.html' %}</div>
+<div id="col-who" class="column shadow">{% placeholder column_1 %}<img class="column-bg" src="{{ STATIC_URL }}img/bg-person.png" width="117" height="119" /></div>
+<div id="col-what" class="column shadow">{% placeholder column_2 %}<img class="column-bg" src="{{ STATIC_URL }}img/bg-hammer.png" width="155" height="119" /></div>
+<div id="col-question" class="column shadow">{% placeholder column_3 %}<img class="column-bg" src="{{ STATIC_URL }}img/bg-question.png" width="155" height="119" /></div>
+{% endblock %}

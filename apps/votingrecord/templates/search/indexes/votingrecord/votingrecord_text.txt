@@ -1,0 +1,1 @@
+{{ object.kan_id }} {{ object.name }} {{ object.number }} {{ object.date }}

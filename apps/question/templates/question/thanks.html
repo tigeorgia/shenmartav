@@ -1,0 +1,16 @@
+{% extends 'question/base.html' %}
+{% load i18n %}
+
+{% block question %}
+<div id="question">
+    <h2 class="heading">{% trans 'Thanks for asking!' %}</h2>
+    <div class="body">
+        <p>{% trans 'Your question is awaiting approval by one of our moderators.' %}</p>
+
+        <ul>
+            <li><a href="{% url question_list %}">{% trans 'List of questions' %}</a></li>
+            <li><a href="{% url representative_find %}#member-{{ representative }}">{% trans 'Your Representative' %}</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

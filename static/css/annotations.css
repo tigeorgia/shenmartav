@@ -1,0 +1,54 @@
+/*
+ * CSS file for annotations
+ */
+
+/* folded */
+#folded-who {
+    left: 69px;
+}
+#folded-what {
+    left: 118px;
+}
+#folded-what .button {
+    opacity: 1;
+}
+.opened {
+    left: 170px;
+    width: 970px;
+}
+#folded-question {
+    right: 0;
+}
+
+
+.opened > #annotations {
+    padding: 0 1em;
+}
+#annotations {
+    margin-top: 1em;
+}
+#annotations #body {
+    margin-left: 1.3em;
+}
+
+#annotations h3 {
+    border-bottom: 1px solid #000;
+}
+#annotations h4 {
+    margin-top: 2em;
+}
+#annotations .table {
+    border-spacing: 0em;
+}
+#annotations .cell {
+    vertical-align: middle;
+    padding: .5em .5em .5em 0;
+}
+#annotations .cell input,
+#annotations .cell textarea {
+    border-radius: 4px;
+}
+#annotations .cell input[type=text],
+#annotations .cell textarea {
+    width: 300px;
+}

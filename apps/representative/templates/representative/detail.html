@@ -1,0 +1,136 @@
+{% extends 'representative/base.html' %}
+{% load thumbnail sekizai_tags menu_tags i18n %}
+
+{% block representative %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/detail.css" media="all" />
+{% endaddtoblock %}
+<div id="representative">
+    <div id="data-text">
+        <div id="portrait">
+            <div id="photo">{% thumbnail obj.photo '100x120' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="120" /></div>
+            <div id="short">
+                <div id="name" class="evenbigger">{{ obj.name }}</div>
+                <div id="majoritarian-partylist">{% if obj.is_majoritarian %}{% trans 'Majoritarian' %}{% else %}{% trans 'Partylist' %}{% endif %}</div>
+                <div id="party">
+                    <div id="party-logo"><a href="{{ obj.party.url }}" title="{{ obj.party }}"><img src="{{ STATIC_URL }}img/parties/logo-{{ obj.party.acronym }}.png" width="40" height="40" border="0" /></a></div>
+                    <div id="party-name">{{ obj.party }}</div>
+                    <div style="clear: both"></div>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+
+        <div id="container-table"><table>
+    {% if obj.is_majoritarian %}
+        <tr>
+            <td>{% trans 'Electoral District' %}</td>
+            <td>{{ obj.electoral_district }}</td>
+        </tr>
+    {% endif %}
+        <tr>
+            <td>{% trans 'Elected Date' %}</td>
+            <td>{{ obj.elected }}</td>
+        </tr>
+        <tr>
+            <td>{% trans 'Activities' %}</td>
+            <td>{{ obj.description }}</td>
+        </tr>
+        <tr>
+            <td><a id="button-votingrecords" href="{% url representative_votingrecords obj.pk %}">{% trans 'Voting Records' %}</a></td>
+            <td id="votingrecords"></td>
+        </tr>
+        <tr>
+            <td>{% trans 'Salary' %}</td>
+            <td>{{ obj.salary }} {% trans 'GEL' %}</td>
+        </div>
+        <tr>
+            <td>{% trans 'Expenses' %}</td>
+            <td>{{ obj.expenses }}</td>
+        </tr>
+        <tr>
+            <td>{% trans 'Property & Assets' %}</td>
+            <td>{{ obj.property_assets }}</td>
+        </tr>
+        <tr>
+            <td>{% trans 'Income Declaration' %}</td>
+            <td>{% for decl in obj.incomedeclaration.all %}<a href="{{ decl.get_absolute_url }}"> {{ decl.decl_id }}</a> {% endfor %}</td>
+        </tr>
+        <tr>
+            <td>{% trans 'Website' %}</td>
+            <td><a href="{{ obj.url }}">{{ obj.url }}</a></td>
+        </tr>
+        <tr>
+            <td>{% trans 'Work Experience' %}</td>
+            <td id="workexperience"><ul>{% for experience in obj.position_set.all %}
+                        <li>{{ experience.start_date }} {% if experience.end_date %}- {{ experience.end_date }}{% endif %} {{ experience.title }}</li>
+            {% endfor %}</ul></td>
+            </li>
+        </tr>
+        <tr>
+            <td>{% trans 'Birth Date & Place' %}</td>
+            <td>{{ obj.date_of_birth }}, {{ obj.pob }}</td>
+        </tr>
+        <tr>
+            <td>{% trans 'Family Status' %}</td>
+            <td>{{ obj.family_status }}</td>
+        </tr>
+        <tr>
+            <td>{% trans 'Education' %}</td>
+            <td>{{ obj.education }}</td>
+        </tr>
+        <tr>
+            <td>{% trans 'Contact Address / Phone' %}</td>
+            <td>{{ obj.contact_address_phone }}</td>
+        </tr>
+        <tr>
+            <td>{% trans 'Additional Info' %}</td>
+            <td>{% for info in obj.additional_information.all %}
+                    <div>{{ info.value }}</div>
+            {% endfor %}</td>
+        </tr>
+        </table></div>
+    </div>
+
+    <div id="data-boxes">
+        <div class="box" id="box-attendance">
+            {% include 'representative/attendance.html' %}
+        </div>
+        <div class="box" id="box-income">
+            {% include 'representative/income.html' %}
+        </div>
+        <div class="box" id="box-questions">
+            <div class="heading bigger">{% trans 'Questions and Answers' %}</div>
+            <div class="table">
+                <div class="row">
+                    <div class="cell" id="label-answered">{% trans 'Answered' %}</div>
+                    <div class="cell" id="label-noresponse">{% trans 'No Response' %}</div>
+                </div>
+                <div class="row" id="bar-questions">
+                    <div class="cell" id="bar-answered" style="width: {{ questions.answered.relative }}%">{{ questions.answered.absolute }}</div>
+                    <div class="cell" id="bar-noresponse" style="width: {{ questions.noresponse.relative }}%">{{ questions.noresponse.absolute }}</div>
+                </div>
+            </div>
+            <div class="box-text">
+                {% if questions.last %}
+                <div><span class="label">{% trans 'Question' %}:</span> {{ questions.last.question }}</div>
+                {% if questions.last.answer %}<div><span class="label">{% trans 'Answer' %}:</span> {{ questions.last.answer }}</div>{% endif %}
+                {% endif %}
+            </div>
+            <div class="box-text"><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
+        </div>
+        <div class="box" id="box-votecounts">
+            <div class="heading bigger">{% trans 'Vote Counts' %}</div>
+            <div class="box-text">{% trans 'In Favour' %}: {{ votecounts.yes }}</div>
+            <div class="box-text">{% trans 'Against' %}: {{ votecounts.no }}</div>
+            <div class="box-text">{% trans 'Abstained' %}: {{ votecounts.abstained }}</div>
+            <div class="box-text">{% trans 'Absent' %}: {{ votecounts.absent }}</div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/representative/detail.js"></script>
+{% endaddtoblock %}
+{% endblock %}

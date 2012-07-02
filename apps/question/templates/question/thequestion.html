@@ -1,0 +1,24 @@
+{% load i18n thumbnail %}
+<h2 class="heading">{% trans 'Question to' %} {{ obj.representative.name }}</h2>
+<div id="the-question">
+    <div id="questioner">
+        <div class="photo"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="60" height="72" border="0" /></div>
+        <div class="data">
+            <div>{{ obj.name }}</div>
+            <div class="smaller">{{ obj.date}}</div>
+            <div class="text">{{ obj.question }}</div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+
+    <div id="questionee">
+        <div class="photo"><a title="{{ obj.representative.name }}" href="{{ obj.representative.get_absolute_url }}">{% thumbnail obj.representative.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+    </div>
+        <div class="data">
+            <div><a title="{{ obj.representative.name }}" href="{{ obj.representative.get_absolute_url }}">{{ obj.representative.name }}</a></div>
+            <div class="smaller">{% trans 'Answered' %}: {{ obj.representative.answered|stringformat:'.1f' }} %</div>
+            <div class="text">{% if obj.answer %}{{ obj.answer }}{% else %}<span class="unanswered">{% trans 'Not yet answered!' %}</span>{% endif %}</div>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+</div>

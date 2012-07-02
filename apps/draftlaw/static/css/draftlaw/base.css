@@ -1,0 +1,26 @@
+/*
+ * CSS file for app draftlaw, base
+ */
+
+/* folded */
+#folded-who {
+    left: 69px;
+}
+#folded-what {
+    left: 118px;
+}
+#folded-what .button {
+    opacity: 1;
+}
+.opened {
+    left: 170px;
+}
+#folded-question {
+    right: 0;
+}
+
+#draftlaw {
+    position: relative;
+    padding: 0 1em;
+}
+

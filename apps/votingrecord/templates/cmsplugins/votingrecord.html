@@ -1,0 +1,4 @@
+<h3>{{ instance.title }}</h3>
+<ul>{% for record in records %}
+  <li><a href="{{ record.get_absolute_url }}">{{ record }}</a></li>
+{% endfor %}</ul>

@@ -1,0 +1,67 @@
+{% extends 'representative/base.html' %}
+{% load i18n sekizai_tags %}
+
+{% block representative %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/find.css" media="all" />
+{% endaddtoblock %}
+<div id="representative">
+    <div id="info" class="column shadow">
+        <h1>{% trans 'Who Makes Laws' %}</h1>
+        <div id="data">{% include 'representative/memberinfo.html' %}</div>
+        <img class="column-bg" src="{{ STATIC_URL }}img/bg-person.png" width="117" height="119" />
+    </div>
+    <div id="select">
+        <form action="{{ url_search }}" method="post">
+        {% csrf_token %}
+        <ul id="filter">
+            <li>
+                <div>{% trans 'Find Your Representative' %}</div>
+                <input id="filter-text" type="text" name="query" /><input id="filter-submit" type="submit" name="submit" value="{% trans 'Filter' %}" />
+            </li>
+            <li>
+                <div>{% trans 'Election type' %}</div>
+                <select id="filter-electiontype">
+                    <option value="0">{% trans 'All' %}</option>
+                    <option value="1">{% trans 'Party List' %}</option>
+                    <option value="2">{% trans 'Majoritarian' %}</option>
+                </select>
+            </li>
+            <li>
+                <div>{% trans 'Party' %}</div>
+                <select id="filter-party">
+                    <option class="unit-all" value="all">{% trans 'All' %}</option>
+                    {% for u in units %}{% for p in u.parties.all %}<option class="unit-{{ u.short }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>{% endfor %}{% endfor %}
+                </select>
+            </li>
+        </ul>
+        </form>
+
+        <div id="offer-fulltext-search">{% blocktrans %}Try <a href="{{ url_search }}">full-text search</a>.{% endblocktrans %}</div>
+
+
+        <div id="unit"></div>
+
+        <div id="unit-select">
+            <div id="unit-slider"></div>
+            <div id="unit-legend">
+                <div id="unit-parliament">{% trans 'Parliament of Georgia' %}</a></div>
+                <div id="unit-ajara">{% trans 'Ajaran Supreme Council' %}</a></div>
+                <div id="unit-tbilisi">{% trans 'Tbilisi City Hall' %}</a></div>
+            </div>
+        </div>
+    </div>
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/representative/find.js"></script>
+{% endaddtoblock %}
+<script type="text/javascript">
+var URL_Units = {
+    'parliament': '{% url unit_parliament %}',
+    'ajara': '{% url unit_ajara %}',
+    'tbilisi': '{% url unit_tbilisi %}'
+};
+var URL_MemberInfo = '{% url representative_memberinfo 0 %}';
+</script>
+</div>
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends 'incomedeclaration/base.html' %}
+{% load i18n %}
+
+{% block incomedeclaration %}
+<div id="incomedeclaration">
+    <h2 class="heading">{% trans 'Income Declaration' %} {{ obj }}</h2>
+    <div class="body">
+        <ul id="detail">
+            <li>{% trans 'Date' %}: {{ obj.date }}</li>
+        {% if obj.representative %}
+            <li><a href="{{ obj.representative.get_absolute_url }}">{% trans 'Representative' %} {{ obj.representative.name }}</a></li>
+        {% endif %}
+        {% if obj.biographies.all %}
+            <li>{% trans 'Biography' %}:
+                <ul>{% for bio in obj.biographies.all %}
+                    <li>{% trans 'Position' %}: {{ bio.position }}<ul>
+                        <li>{% trans 'Work Contact' %}: {{ bio.work_contact }}</li>
+                        <li>{% trans 'Place; Date of Birth' %}: {{ bio.place_dob }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.cash.all %}
+            <li>{% trans 'Cash' %}:
+                <ul>{% for cash in obj.cash.all %}
+                    <li>{% trans 'Name' %}: {{ cash.name }}<ul>
+                        <li>{% trans 'Amount, Currency' %}: {{ cash.amt_currency }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.contracts.all %}
+            <li>{% trans 'Contracts' %}:
+                <ul>{% for contract in obj.contracts.all %}
+                    <li>{% trans 'Name' %}: {{ contract.name }}<ul>
+                        <li>{% trans 'Description' %}: {{ contract.desc_value }}</li>
+                        <li>{% trans 'Date, Period, Agency' %}: {{ contract.date_period_agency }}</li>
+                        <li>{% trans 'Financial Result' %}: {{ contract.financial_result }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.deposits.all %}
+            <li>{% trans 'Deposits' %}:
+                <ul>{% for deposit in obj.deposits.all %}
+                    <li>{% trans 'Name' %}: {{ deposit.name }}<ul>
+                        <li>{% trans 'Bank' %}: {{ deposit.bank }}</li>
+                        <li>{% trans 'Type' %}: {{ deposit.type }}</li>
+                        <li>{% trans 'Balance' %}: {{ deposit.balance }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.entrepreneurials.all %}
+            <li>{% trans 'Entrepreneurial' %}:
+                <ul>{% for entrepreneurial in obj.entrepreneurials.all %}
+                    <li>{% trans 'Name' %}: {{ entrepreneurial.name }}<ul>
+                        <li>{% trans 'Corporation, Name, Addr' %}: {{ entrepreneurial.corp_name_addr }}</li>
+                        <li>{% trans 'Participation Type' %}: {{ entrepreneurial.particn_type }}</li>
+                        <li>{% trans 'Registered Agency' %}: {{ entrepreneurial.register_agency }}</li>
+                        <li>{% trans 'Participation Date' %}: {{ entrepreneurial.particn_date }}</li>
+                        <li>{% trans 'Income Record' %}: {{ entrepreneurial.income_rec }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.family.all %}
+            <li>{% trans 'Family' %}:
+                <ul>{% for member in obj.family.all %}
+                    <li>{% trans 'Name' %}: {{ member.name }}<ul>
+                        <li>{% trans 'Surname' %}: {{ member.surname }}</li>
+                        <li>{% trans 'Place of Birth' %}: {{ member.pob }}</li>
+                        <li>{% trans 'Date of Birth' %}: {{ member.dob }}</li>
+                        <li>{% trans 'Relation' %}: {{ member.relation }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.gifts.all %}
+            <li>{% trans 'Gifts' %}:
+                <ul>{% for gift in obj.gifts.all %}
+                    <li>{% trans 'Name' %}: {{ gift.name }}<ul>
+                        <li>{% trans 'Description' %}: {{ gift.desc_value }}</li>
+                        <li>{% trans 'Giver Relation' %}: {{ gift.giver_rel }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.otherinclexpenses.all %}
+            <li>{% trans 'Other Incl Expenses' %}:
+                <ul>{% for expense in obj.otherinclexpenses.all %}
+                    <li>{% trans 'Recipient Issuer' %}: {{ expense.recip_issuer }}<ul>
+                        <li>{% trans 'Type' %}: {{ expense.type }}</li>
+                        <li>{% trans 'Amount' %}: {{ expense.amount }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.properties.all %}
+            <li>{% trans 'Properties' %}:
+                <ul>{% for property in obj.properties.all %}
+                    <li>{% trans 'Name, Shares' %}: {{ property.name_shares }}<ul>
+                        <li>{% trans 'Property Type' %}: {{ property.prop_type }}</li>
+                        <li>{% trans 'Description' %}: {{ property.description }}</li>
+                        <li>{% trans 'Co Owners' %}: {{ property.co_owners }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.realestates.all %}
+            <li>{% trans 'Real Estate' %}:
+                <ul>{% for realestate in obj.realestates.all %}
+                    <li>{% trans 'Name, Shares' %}: {{ realestate.name_shares }}<ul>
+                        <li>{% trans 'Property Type' %}: {{ realestate.prop_type }}</li>
+                        <li>{% trans 'Location - Area' %}: {{ realestate.loc_area }}</li>
+                        <li>{% trans 'Co Owners' %}: {{ realestate.co_owners }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.securities.all %}
+            <li>{% trans 'Securities' %}:
+                <ul>{% for security in obj.securities.all %}
+                    <li>{% trans 'Name' %}: {{ security.name }}<ul>
+                        <li>{% trans 'Issuer' %}: {{ security.issuer }}</li>
+                        <li>{% trans 'Type' %}: {{ security.type }}</li>
+                        <li>{% trans 'Price' %}: {{ security.price }}</li>
+                        <li>{% trans 'Quantity' %}: {{ security.quantity }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        {% if obj.wages.all %}
+            <li>{% trans 'Wages' %}:
+                <ul>{% for wage in obj.wages.all %}
+                    <li>{% trans 'Name' %}: {{ wage.name }}<ul>
+                        <li>{% trans 'Description Workplace' %}: {{ wage.desc_workplace }}</li>
+                        <li>{% trans 'Description Job' %}: {{ wage.desc_job }}</li>
+                        <li>{% trans 'Income Record' %}: {{ wage.income_rec }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
+        </ul>
+
+        <p class="small">{% trans 'Scraped on' %} {{ obj.scrape_date }}</p>
+    </div>
+</div>
+{% endblock %}

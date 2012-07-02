@@ -1,0 +1,38 @@
+[
+  {
+    "pk": 3491,
+    "model": "incomedeclaration.incomedeclaration",
+    "fields": {
+      "slug": "000039-paata-lezhava",
+      "scrape_date": "2011-11-07",
+      "date": "2010-04-30",
+      "decl_id": "000039",
+      "name": "\u10de\u10d0\u10d0\u10e2\u10d0 \u10da\u10d4\u10df\u10d0\u10d5\u10d0",
+      "representative": null
+    }
+  },
+  {
+    "pk": 3490,
+    "model": "incomedeclaration.incomedeclaration",
+    "fields": {
+      "slug": "000040-davit-nadashvili",
+      "scrape_date": "2011-11-07",
+      "date": "2010-05-01",
+      "decl_id": "000040",
+      "name": "\u10d3\u10d0\u10d5\u10d8\u10d7 \u10dc\u10d0\u10d3\u10d0\u10e8\u10d5\u10d8\u10da\u10d8",
+      "representative": null
+    }
+  },
+  {
+    "pk": 3489,
+    "model": "incomedeclaration.incomedeclaration",
+    "fields": {
+      "slug": "000041-nugzar-tsiklauri",
+      "scrape_date": "2011-11-07",
+      "date": "2010-05-01",
+      "decl_id": "000041",
+      "name": "\u10dc\u10e3\u10d2\u10d6\u10d0\u10e0 \u10ec\u10d8\u10d9\u10da\u10d0\u10e3\u10e0\u10d8",
+      "representative": null
+    }
+  }
+]

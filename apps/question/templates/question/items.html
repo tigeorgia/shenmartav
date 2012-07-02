@@ -1,0 +1,11 @@
+{% load i18n thumbnail %}
+{% for item in items.object_list %}
+    <tr class="item" id="item-{{ item.pk }}">
+        <td>
+            <div><a name="item-{{ item.pk }}" href="{{ item.representative.get_absolute_url }}">{{ item.representative.name }}</a></div>
+        </td>
+        <td>{{ item.question|slice:":100" }} ...</td>
+        <td>{{ item.date|date:"Y-m-d" }}</td>
+        <td><div class="status {% if item.answer %}answered">0{% else %}unanswered">1{% endif %}</div></td>
+    </tr>
+{% endfor %}

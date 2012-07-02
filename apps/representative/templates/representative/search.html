@@ -1,0 +1,26 @@
+{% extends 'representative/base.html' %}
+{% load thumbnail sekizai_tags i18n %}
+
+{% block representative %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/search.css" media="all" />
+{% endaddtoblock %}
+<div id="representative">
+    <h2 class="heading">{% trans 'Search a Representative' %}</h2>
+    <div class="body">
+        <form action="" method="post">{% csrf_token %}
+            {{ form }}
+            <input type="text" name="query" value="{{ query }}" />
+            <input type="submit" value="{% trans 'Search' %}" />
+        </form>
+
+        <h3>{% trans 'Results' %}</h3>
+        <ul id="results">{% for r in representatives %}
+            <li class="table">
+                <div class="cell photo">{% thumbnail r.photo '60x72' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></div>
+                <div class="cell name"><a href="{{ r.get_absolute_url }}">{{ r.name }}</a></div>
+            </li>
+        {% endfor %}</ul>
+    </div>
+</div>
+{% endblock %}

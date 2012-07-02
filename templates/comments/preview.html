@@ -1,0 +1,11 @@
+{% extends "comments/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Preview your comment" %}{% endblock %}
+
+{% block annotations %}
+<div id="annotations">
+    <h2 class="heading">{% trans 'Annotation Preview' %}</h2>
+    <div id="body">{% include 'comments/form.html' %}</div>
+</div>
+{% endblock %}

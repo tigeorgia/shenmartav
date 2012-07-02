@@ -1,0 +1,224 @@
+/*
+ * CSS file for app Representative, page find
+ */
+
+.opened {
+    width: 1025px;
+    left: 69px;
+}
+#folded-who, .breadcrumb {
+    display: none;
+}
+
+#representative {
+    margin: 0 !important;
+}
+
+
+#representative #info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 800px;
+    padding: 0 2em;
+}
+#representative #info #data {
+    margin-top: 2em;
+}
+#representative #info #data ul, #representative #info #data li {
+    list-style: none;
+    margin: 1em 0;
+    padding: 0;
+}
+
+#representative #info #data #photo {
+    float: left;
+    width: 60px;
+}
+#representative #info #data #short {
+    float: left;
+    margin-left: 1em;
+    width: 171px;
+}
+#representative #info #data #party {
+    margin-top: .5em;
+}
+#representative #info #data #activities {
+}
+#representative #info #data #more {
+    margin-top: 2em;
+}
+
+
+#representative #select {
+    position: absolute;
+    top: 0;
+    left: 296px;
+    width: 725px;
+    height: 800px;
+}
+#representative #select ul, #representative #select #offer-fulltext-search {
+    padding-left: 1em;
+}
+#representative #select #offer-fulltext-search {
+    display: none;
+    text-align: left;
+    margin: .5em 0 1em 0;
+}
+
+#representative #filter {
+    margin-top: 0em;
+    list-style: none;
+}
+#representative #filter li {
+    cursor: pointer;
+    text-align: left;
+    display: inline-block;
+}
+
+#representative #filter input[type=text] {
+    width: 270px;
+    height: 19px;
+    margin: 0;
+    padding: 4px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border: 1px solid #ccc;
+    border-right: 0;
+}
+#representative #filter input[type=submit] {
+    background: #e08c8c;
+    margin: 0;
+    padding: 4px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border: 0;
+    color: #fff;
+    height: 29px;
+    cursor: pointer;
+}
+#representative #filter select {
+    margin: 0;
+    padding: .5em 1em;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    background: #fff;
+    height: 29px;
+}
+#representative #filter #filter-electiontype {
+    width: 145px;
+}
+#representative #filter #filter-party {
+    width: 210px;
+}
+#representative #filter option {
+    padding: .2em;
+}
+
+#representative #unit {
+    max-height: 680px;
+    overflow: auto;
+}
+
+#representative #members {
+    list-style: none;
+}
+#representative #members .member {
+    display: inline-block;
+    padding: 6px 0 6px 6px;
+    margin: 0 1px 1px 0;
+    width: 106px;
+    height: 135px;
+    font-size: x-small;
+}
+
+#representative #members .member-selected {
+    background: #e08c8c url(../../img/bg-red.jpg) 0 0 repeat;
+}
+
+#representative #members .member.majoritarian {
+    opacity: 0.8;
+}
+#representative #members .member.member-selected {
+    opacity: 1;
+}
+
+
+#representative #members .member .name {
+    margin-top: 0.5em;
+}
+#representative #members .member .name a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+#representative .party-parliament, #representative .party-tbilisi, #representative .party-ajara {
+    color: #fff;
+}
+#representative #party-cdm, #representative .party-cdm {
+    background: #a31;
+}
+#representative #party-labour, #representative .party-labour {
+    background: #00e;
+}
+#representative #party-ndp, #representative .party-ndp {
+    background: #aa0;
+}
+#representative #party-republicans, #representative .party-republicans {
+    background: #083;
+}
+#representative #party-unc, #representative .party-unc {
+    background: #2da094;
+}
+#representative #party-unknown, #representative .party-unknown {
+    background: #555;
+}
+#representative #party-unm, #representative .party-unm {
+    background: #95a;
+}
+#representative #party-tbilisi, #representative .party-tbilisi {
+    background: #000;
+}
+#representative #party-ajara, #representative .party-ajara {
+    background: #000;
+}
+
+
+#representative #unit-select {
+    margin: 2em auto;
+    text-align: center;
+}
+#representative #unit-slider {
+    margin: 0 15%;
+    width: 70%;
+    height: .3em;
+}
+.ui-slider-horizontal {
+    border: 1px solid #e08c8c;
+}
+.ui-slider-horizontal .ui-state-default {
+    border-radius: 1em;
+    border: 0;
+    background: #e08c8c;
+    cursor: move;
+    outline: none;
+}
+
+#representative #unit-legend {
+    margin-top: .5em;
+    width: 90%;
+    display: table;
+}
+#representative #unit-legend #unit-parliament {
+    display: table-cell;
+}
+#representative #unit-legend #unit-ajara {
+    display: table-cell;
+    text-align: center;
+}
+#representative #unit-legend #unit-tbilisi {
+    display: table-cell;
+    text-align: right;
+}
