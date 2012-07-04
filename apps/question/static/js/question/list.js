@@ -12,7 +12,7 @@ QuestionList = {
 
 
     setInfoDone: function () {
-        Base.enable('#question');
+        Base.enable('#question #info');
         QuestionList.isLoadingInfo = false;
     },
 
@@ -28,7 +28,7 @@ QuestionList = {
             return;
         }
 
-        Base.disable('#question');
+        Base.disable('#question #info');
         $('.item').removeClass('item-selected');
         $(elem).addClass('item-selected');
 
@@ -68,7 +68,7 @@ QuestionList = {
     loadNextPageDone: function () {
         $('#question #list table').trigger('update');
         QuestionList.selectFromLocation();
-        Base.enable('#question');
+        Base.enable('#question #list');
         QuestionList.isLoadingNextPage = false;
     },
 
@@ -77,7 +77,7 @@ QuestionList = {
         if (QuestionList.isLoadingNextPage) return;
         QuestionList.isLoadingNextPage = true;
 
-        Base.disable('#question');
+        Base.disable('#question #list');
 
         var url = QuestionList.urlItems + QuestionList.nextPage + '/';
         $.ajax(url, {

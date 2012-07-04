@@ -13,7 +13,7 @@ DraftLawList = {
 
 
     setInfoDone: function () {
-        Base.enable('#draftlaw');
+        Base.enable('#draftlaw #info');
         DraftLawList.isLoadingInfo = false;
     },
 
@@ -29,7 +29,7 @@ DraftLawList = {
             return;
         }
 
-        Base.disable('#draftlaw');
+        Base.disable('#draftlaw #info');
         $('.item').removeClass('item-selected');
         $(elem).addClass('item-selected');
 
@@ -88,7 +88,7 @@ DraftLawList = {
 
     loadNextPageDone: function () {
         $('#draftlaw #list table').trigger('update');
-        Base.enable('#draftlaw');
+        Base.enable('#draftlaw #list');
         DraftLawList.isLoadingNextPage = false;
     },
 
@@ -97,7 +97,7 @@ DraftLawList = {
         if (DraftLawList.isLoadingNextPage) return;
         DraftLawList.isLoadingNextPage = true;
 
-        Base.disable('#draftlaw');
+        Base.disable('#draftlaw #list');
 
         var url = DraftLawList.getNextPageURL();
         $.ajax(url, {

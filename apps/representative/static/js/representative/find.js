@@ -121,7 +121,7 @@ RepresentativeFind = {
 
 
     setMemberInfoDone: function () {
-        Base.enable('#representative');
+        Base.enable('#representative #info');
         RepresentativeFind.isLoadingMemberInfo = false;
     },
 
@@ -137,7 +137,7 @@ RepresentativeFind = {
             return;
         }
 
-        Base.disable('#representative');
+        Base.disable('#representative #info');
         $('.member').removeClass('member-selected');
         $(elem).addClass('member-selected');
 
@@ -221,7 +221,7 @@ RepresentativeFind = {
             RepresentativeFind.activeUnit).show();
         $('#representative #filter-party').val('all');
 
-        Base.enable('#representative');
+        Base.enable('#representative #select');
         RepresentativeFind.isLoadingUnit = false;
     },
 
@@ -230,7 +230,7 @@ RepresentativeFind = {
         if (RepresentativeFind.isLoadingUnit) return;
 
         RepresentativeFind.isLoadingUnit = true;
-        Base.disable('#representative');
+        Base.disable('#representative #select');
         $("#representative #filter-form input").attr('disabled', 'disabled');
         $('#representative #unit').toggle('blind');
         $('#representative #unit').html('');
