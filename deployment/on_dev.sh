@@ -19,11 +19,11 @@ rm -rf ${CODE}/.git
 tar cjf ${CODE}.tar.bz2 ${CODE}
 rm -rf ${CODE}
 
-echo 'Preparing database dump...'
-dbdump="db-`date +'%Y%m%d'`.sql"
-pg_dump -U shenmartav -h localhost shenmartav > dumps/${dbdump}
-tar cjf dumps/${dbdump}.bz2 dumps/${dbdump}
-cp dumps/${dbdump}.bz2 ${DB}
+#echo 'Preparing database dump...'
+#dbdump="db-`date +'%Y%m%d'`.sql"
+#pg_dump -U shenmartav -h localhost shenmartav > dumps/${dbdump}
+#tar cjf dumps/${dbdump}.bz2 dumps/${dbdump}
+#cp dumps/${dbdump}.bz2 ${DB}
 
 echo 'Copying to server...'
 scp deploy/* shen:/home/tigeorgia/shenmartav/

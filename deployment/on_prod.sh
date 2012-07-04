@@ -13,12 +13,12 @@ mv shenmartav old
 mv deploy/code shenmartav
 rm -rf deploy/
 
-echo 'Installing database...'
-bunzip2 --force db.sql.bz2
-sudo su --command "${ROOT}/shenmartav/deployment/redo_db.sh ${ROOT}/db.sql" postgres
+#echo 'Installing database...'
+#bunzip2 --force db.sql.bz2
+#sudo su --command "${ROOT}/shenmartav/deployment/redo_db.sh ${ROOT}/db.sql" postgres
 
-echo 'Adjusting site...'
-./shenmartav/deployment/update_site.py
+#echo 'Adjusting site...'
+#./shenmartav/deployment/update_site.py
 
 echo 'Collecting static files...'
 ./shenmartav/manage.py collectstatic
