@@ -100,8 +100,8 @@
             {% include 'representative/income.html' %}
         </div>
         <div class="box" id="box-questions">
-            <div class="heading bigger">{% trans 'Questions and Answers' %}</div>
-            <div class="table">
+            <h2 class="heading">{% trans 'Questions and Answers' %}</h2>
+            <div class="box-text table">
                 <div class="row">
                     <div class="cell" id="label-answered">{% trans 'Answered' %}</div>
                     <div class="cell" id="label-noresponse">{% trans 'No Response' %}</div>
@@ -120,7 +120,7 @@
             <div class="box-text"><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
         </div>
         <div class="box" id="box-votecounts">
-            <div class="heading bigger">{% trans 'Vote Counts' %}</div>
+            <h2 class="heading">{% trans 'Vote Counts' %}</h2>
             <div class="box-text">{% trans 'In Favour' %}: {{ votecounts.yes }}</div>
             <div class="box-text">{% trans 'Against' %}: {{ votecounts.no }}</div>
             <div class="box-text">{% trans 'Abstained' %}: {{ votecounts.abstained }}</div>

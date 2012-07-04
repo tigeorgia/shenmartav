@@ -28,6 +28,12 @@
 
 
 
+#representative #attendance {
+    margin: 3em 0;
+}
+#representative #attendance h2 {
+    text-align: left;
+}
 #representative #attendance #bars {
     margin: 0 auto auto auto;
     display: table;
@@ -50,13 +56,20 @@
 }
 
 
+#representative #income {
+    margin: 3em 0;
+}
+#representative #income h2 {
+    text-align: left;
+}
 #representative #income #averaged {
-    margin: .5em 0 0 1.3em;
+    margin-top: .5em;
 }
 #representative #income #pie {
     text-align: center;
     display: table;
     margin: 0 auto;
+    height: 50px;
 }
 #representative #income #pie div {
     display: table-cell;

@@ -51,8 +51,15 @@ RepresentativeDetail = {
     },
 
 
+    setupAttendanceIncome: function () {
+        $('#representative #data-boxes #attendance h2').addClass('heading');
+        $('#representative #data-boxes #income h2').addClass('heading');
+    },
+
+
     setup: function () {
         RepresentativeDetail.setupVotingRecords();
+        RepresentativeDetail.setupAttendanceIncome();
     }
 };
 
