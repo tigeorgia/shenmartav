@@ -69,6 +69,10 @@
     margin-bottom: 2em;
 }
 
+#representative #data-boxes #attendance, #representative #data-boxes #income {
+    margin: 0;
+}
+
 #representative #data-boxes #income #averaged {
     margin: .5em 0 0 1.5em;
 }
