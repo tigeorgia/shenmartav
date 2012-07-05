@@ -23,23 +23,15 @@
 <body>
 
 <div id="content">{% block content %}{% endblock %}</div>
-<div id="commit">COMMIT bfc58f3295fb341178abea6eae578db6142ad7ba, DATE Wed Jul 4 19:07:15 2012 +0200</div>
+<div id="commit">COMMIT d31ae6676e6c77ac9b50f3f6b974e10d5917f4bb, DATE Wed Jul 4 19:16:24 2012 +0200</div>
 <div id="overlay"></div>
 
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/ui.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
 {% render_block 'js' %}
 {% block js %}{% endblock %}
-<script>
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'auto',
-        autoDisplay: false,
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-}
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
+{% include 'google_translate.html' %}
+{% include 'google_analytics.html' %}
 </body>
 </html>
