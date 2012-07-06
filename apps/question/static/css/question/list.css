@@ -3,6 +3,7 @@
  */
 
 #question #list {
+    float: left;
     width: 60%;
     height: 750px;
     overflow: auto;
@@ -78,11 +79,10 @@
 
 
 
-#question #info {
-    position: absolute;
-    right: 0;
-    top: 0;
+#question #sidebar {
+    float: left;
     width: 38%;
+    margin-left: 1em;
 }
 
 #question #info #the-question {
@@ -91,5 +91,5 @@
     overflow: auto;
 }
 #question #info #the-question .data {
-    width: 280px;
+    width: 270px;
 }

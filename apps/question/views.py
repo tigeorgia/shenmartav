@@ -35,7 +35,7 @@ from .forms import QuestionForm
 PAGINATE_BY = 30
 
 
-def _get_form (view, representative):
+def _get_form (view, representative=None):
     """Get question form for given representative.
 
     @param view: view object
@@ -45,13 +45,14 @@ def _get_form (view, representative):
     @return: question form for given representative
     @type: QuestionForm
     """
-    if 'form_question' in view.request.session:
-        view.request.session['form_question']['representative'] =\
-            representative.pk
-    else:
-        view.request.session['form_question'] = {
-            'representative': representative.pk
-        }
+    if representative:
+        if 'form_question' in view.request.session:
+            view.request.session['form_question']['representative'] =\
+                representative.pk
+        else:
+            view.request.session['form_question'] = {
+                'representative': representative.pk
+            }
 
     return QuestionForm(session=view.request.session)
 
@@ -90,6 +91,7 @@ class List (ListView):
 
     def get_context_data (self, **kwargs):
         context = super(List, self).get_context_data(**kwargs)
+        context['form'] = _get_form(self)
         return context
 
 
@@ -192,7 +194,6 @@ class Info (DetailView):
 
     def get_context_data (self, **kwargs):
         context = super(Info, self).get_context_data(**kwargs)
-        context['form'] = _get_form(self, context['obj'].representative)
         return context
 
 

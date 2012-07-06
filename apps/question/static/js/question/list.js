@@ -11,7 +11,20 @@ QuestionList = {
     scrollOffset: 50,
 
 
+    selectRepresentativeAskForm: function () {
+        var name = $('#question #info #questionee #representative-name').html();
+        var select = $('#question #ask #id_representative');
+        $('#question #ask #id_representative > option').each(function() {
+            if ($(this).text() == name) {
+                select.val($(this).val());
+                return false;
+            }
+        });
+    },
+
+
     setInfoDone: function () {
+        QuestionList.selectRepresentativeAskForm();
         Base.enable('#question #info');
         QuestionList.isLoadingInfo = false;
     },

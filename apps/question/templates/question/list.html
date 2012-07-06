@@ -20,9 +20,11 @@
         </table>
     </div>
 
-    <div id="info">
-        <h2 class="heading">{% trans 'Choose a Question' %}</h2>
+    <div id="sidebar">
+        <div id="info"></div>
+        {% include 'question/form.html' %}
     </div>
+    <div style="clear: both"></div>
 </div>
 
 {% addtoblock "js" %}
