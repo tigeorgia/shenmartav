@@ -14,7 +14,6 @@ def percentage (value, total):
     @param total: absolute total
     @type total: int
     """
-    print 'percentage', value, total
     if total:
         return '%.1f%%' % (value * 100. / total)
     else:
