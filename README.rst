@@ -28,6 +28,15 @@ Copy settings.py.example to settings.py and adapt it to your needs. Most likely,
 
 Web Server
 ----------
+Make sure the web server runs on UTF8, Apache on Ubuntu 10.04 LTS does not by default. Edit
+
+/etc/apache2/envvars
+
+appropriately, e.g.
+
+export LANG=en_US.utf8
+
+
 After extracting the code into a directory you should configure the web server to use WSGI.
 A directive for Apache could be:
 
