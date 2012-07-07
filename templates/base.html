@@ -10,10 +10,8 @@
     <title>ShenMartav - {% page_attribute 'page_title' %}</title>
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url feed_blogposts %}" />
     <style type="text/css">
-    @font-face {
-        font-family: "alk-sanet";
-        src: url({{STATIC_URL}}font/alk-sanet.ttf) format("truetype");
-    }
+        @font-face { font-family: "bgp-rioni-vera"; src: url({{STATIC_URL}}font/bgp_rioni_vera.otf) format("opentype"); }
+        @font-face { font-family: "zwo-geo-light"; src: url({{STATIC_URL}}font/zwo_geo_light.ttf) format("truetype"); }
     </style>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery-ui/jquery-ui.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" media="all" />
@@ -23,7 +21,7 @@
 <body>
 
 <div id="content">{% block content %}{% endblock %}</div>
-<div id="commit">COMMIT 262562ccbcf94e8c945572e9a7648cc927433b82, DATE Sat Jul 7 12:14:50 2012 +0200</div>
+<div id="commit">COMMIT 91004d72e14b0ffd143bf6aecd71393094012700, DATE Sat Jul 7 12:16:25 2012 +0200</div>
 <div id="overlay"></div>
 
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>

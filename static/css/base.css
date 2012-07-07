@@ -5,7 +5,7 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: "alk-sanet", Georgia, Times, serif;
+    font-family: "bgp-rioni-vera", Georgia, Times, serif;
     font-size: .8em;
     background: #fff;
     color: #666;
@@ -13,7 +13,7 @@ body {
 
 
 input, select, option, textarea {
-    font-family: "alk-sanet", Georgia, Times, serif;
+    font-family: "bgp-rioni-vera", Georgia, Times, serif;
 }
 input, select, option {
     height: 1.5em;
@@ -27,6 +27,7 @@ h1 {
     text-align: center;
     font-size: 1.6em;
     font-weight: bold;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
     color: #d44847;
     margin: 1.2em 0 0 0;
 }
@@ -48,14 +49,17 @@ h1 a:hover {
 h2 {
     font-size: 1.4em;
     font-weight: normal;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
     margin-top: 0;
     text-align: center;
 }
 h3 {
     font-size: 1.2em;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 h4 {
     font-size: 1em;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 
 a {
@@ -81,7 +85,7 @@ li:first-child {
 
 /* jquery ui */
 ul.ui-widget-content {
-    font-family: "alk-sanet", Georgia, Times, serif;
+    font-family: "bgp-rioni-vera", Georgia, Times, serif;
 }
 ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
     background: #d44847;
@@ -352,7 +356,7 @@ img.column-bg {
 }
 
 .find {
-    font-family: "alk-sanet", Georgia, Times, serif;
+    font-family: "bgp-rioni-vera", Georgia, Times, serif;
     height: 2em;
     color: #666;
     width: 100%;
