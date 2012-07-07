@@ -26,7 +26,7 @@
     padding: 0 1em;
 }
 
-#incomedeclaration ul {
+#incomedeclaration #detail {
     max-height: 660px;
     overflow: auto;
 }
