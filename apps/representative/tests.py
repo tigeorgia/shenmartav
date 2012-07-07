@@ -152,15 +152,6 @@ class RepresentativeTest (TestCase):
         self.assertEqual(Representative.find(name), None)
 
 
-    def test_Representative_averaged_income (self):
-        r = Representative.objects.all()[0]
-        self.assertEqual(r.averaged_income, '102.4')
-
-        r.salary = 0
-        r.other_income = 0
-        self.assertEqual(r.averaged_income, '0.0')
-
-
     def test_Representative_total_income (self):
         r = Representative.objects.all()[0]
         self.assertEqual(r.total_income, 49272)

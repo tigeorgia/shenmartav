@@ -162,36 +162,6 @@ class Representative (Person):
 
 
     @property
-    def averaged_income (self):
-        """Get averaged income of this representative.
-
-        @return: averaged income
-        @rtype: str
-        """
-        try: # remove the richest representative -> 4 million GEL
-            richest = Representative.objects.all().order_by('-salary')[0]
-            qs = Representative.objects.exclude(pk=richest)
-        except IndexError:
-            qs = Representative.objects.all()
-        avg_salary = qs.aggregate(models.Avg('salary'))['salary__avg']
-
-        try: # remove the richest representative -> 4 million GEL
-            richest = Representative.objects.all().order_by('-other_income')[0]
-            qs = Representative.objects.exclude(pk=richest)
-        except IndexError:
-            qs = Representative.objects.all()
-        avg_other = qs.aggregate(models.Avg('other_income'))['other_income__avg']
-
-        avg = avg_salary + avg_other
-        income = self.salary + self.other_income
-        try:
-            percentage = income * 100. / avg
-            return '%.1f' % percentage
-        except ZeroDivisionError:
-            return ''
-
-
-    @property
     def total_income (self):
         return int(self.salary + self.other_income)
 
