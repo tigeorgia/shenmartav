@@ -57,11 +57,11 @@
 }
 #question #the-question .photo {
     float: left;
-    width: 65px;
+    width: 70px;
 }
 #question #the-question .data {
     float: left;
-    width: 870px;
+    width: 865px;
 }
 #question #the-question .data .text {
     margin-top: .5em;

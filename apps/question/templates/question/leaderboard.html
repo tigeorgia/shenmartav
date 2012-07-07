@@ -20,7 +20,7 @@
                 <td>{{ representative.questions.count }}</td>
                 <td>
                     <a href="{{ representative.get_absolute_url }}">
-                        {% thumbnail representative.photo '100x75' as im %}<img src="{{ im }}" width="{{ im.width }}" height="{{ im.height }}" /><br />
+                        {% thumbnail member.photo '65x60' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /><br />
                         {{ representative.name }}
                     </a>
                 </td>

@@ -14,8 +14,8 @@
 
     <div id="latest">
         <h2>{% trans 'Latest question' %}</h2>
-        <div class="photo-small">
-            <a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{% thumbnail latest.representative.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+        <div class="photo">
+            <a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{% thumbnail latest.representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
         </div>
         <div class="info">
             <a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{{ latest.representative.name }}</a>
@@ -27,8 +27,8 @@
     </div>
 
     <div id="most-active">
-        <div class="photo-small">
-            <a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{% thumbnail most_active.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+        <div class="photo">
+            <a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{% thumbnail most_active.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
         </div>
         <div class="info">
             <a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{{ most_active.name }}</a>
@@ -39,8 +39,8 @@
     </div>
 
     <div id="least-active">
-        <div class="photo-small">
-            <a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{% thumbnail least_active.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+        <div class="photo">
+            <a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{% thumbnail least_active.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
         </div>
         <div class="info">
             <a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{{ least_active.name }}</a>

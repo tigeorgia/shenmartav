@@ -61,7 +61,7 @@ class Representative (Person):
     """A representative derived from popit.Person."""
     #: personal photo
     photo = ImageWithThumbnailsField(upload_to='representatives',
-        thumbnail={'size': (50, 50), 'options': ('crop',)},
+        thumbnail={'size': (100, 84), 'options': ('crop',)},
         blank=True, null=True, help_text=_('Personal Photo'))
     #: party membership
     party = models.ForeignKey(Party, related_name='representatives', null=True,

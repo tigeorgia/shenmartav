@@ -34,12 +34,11 @@
 
 #representative #info #data #photo {
     float: left;
-    width: 60px;
+    width: 70px;
 }
 #representative #info #data #short {
     float: left;
-    margin-left: 1em;
-    width: 171px;
+    width: 175px;
 }
 #representative #info #data #party {
     margin-top: .5em;

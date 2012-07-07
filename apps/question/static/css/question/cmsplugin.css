@@ -2,14 +2,13 @@
  * CSS file for app Question, plugin
  */
 
-#question .photo-small {
+#question .photo {
     float: left;
-    width: 60px;
+    width: 70px;
 }
 #question .info {
     float: left;
-    margin-left: 10px;
-    width: 180px;
+    width: 200px;
 }
 #question .info div {
     margin-top: .5em;

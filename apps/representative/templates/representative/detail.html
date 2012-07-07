@@ -8,7 +8,7 @@
 <div id="representative">
     <div id="data-text">
         <div id="portrait">
-            <div id="photo">{% thumbnail obj.photo '100x120' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="120" /></div>
+            <div id="photo">{% thumbnail obj.photo '100x84' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" /></div>
             <div id="short">
                 <div id="name" class="evenbigger">{{ obj.name }}</div>
                 <div id="majoritarian-partylist">{% if obj.is_majoritarian %}{% trans 'Majoritarian' %}{% else %}{% trans 'Partylist' %}{% endif %}</div>

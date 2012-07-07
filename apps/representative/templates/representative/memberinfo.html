@@ -1,7 +1,7 @@
 {% load i18n thumbnail %}
 <ul>
     <li>
-        <div id="photo">{% thumbnail obj.photo '60x72' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></div>
+        <div id="photo">{% thumbnail obj.photo '65x60' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></div>
         <div id="short">
             <div id="name"><a title="{{ obj.name }}" href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></div>
             <div id="party" class="smaller">{{ obj.party }}</div>

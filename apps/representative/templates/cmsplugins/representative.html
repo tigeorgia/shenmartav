@@ -14,7 +14,7 @@
 
     <div id="random">
         <div id="photo">
-            <a title="{{ obj.name }}" href="{% url representative_find %}#member-{{ obj.pk }}">{% thumbnail obj.photo '60x72' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></a>
+            <a title="{{ obj.name }}" href="{% url representative_find %}#member-{{ obj.pk }}">{% thumbnail obj.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
         </div>
         <div id="info">
             <div id="name"><a title="{{ obj.name }}" href="{% url representative_find %}#member-{{ obj.pk }}">{{ obj.name }}</a></div>
