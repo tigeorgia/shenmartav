@@ -66,29 +66,24 @@
     padding-left: 1em;
 }
 #representative #data-boxes .box {
-    margin-bottom: 2em;
+    margin: 2em 0;
+}
+#representative #data-boxes .box h2,
+#representative #data-boxes .box > div {
+    width: 97%;
+}
+#representative #data-boxes .box > div > div,
+#representative #data-boxes .box > div > ul {
+    margin-left: 1.5em;
 }
 
-#representative #data-boxes #attendance, #representative #data-boxes #income {
-    margin: 0;
+#representative #data-boxes #box-attendance,
+#representative #data-boxes #box-attendance #attendance {
+    margin-top: 0;
 }
-
-#representative #data-boxes #income #averaged {
-    margin: .5em 0 0 1.5em;
-}
-
-#representative #data-boxes .box .absolute {
-    color: #000;
-}
-#representative #data-boxes .box-text {
-    margin: 0 0 .5em 1.5em;
-    max-height: 120px;
-    overflow: auto;
-}
-
 
 #representative #data-boxes #box-questions .table {
-    width: 90%;
+    width: 100%;
 }
 #representative #data-boxes #box-questions #label-answered {
     text-align: left;

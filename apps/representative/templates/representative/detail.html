@@ -100,31 +100,35 @@
             {% include 'representative/income.html' %}
         </div>
         <div class="box" id="box-questions">
-            <h2 class="heading">{% trans 'Questions and Answers' %}</h2>
-            <div class="box-text table">
-                <div class="row">
-                    <div class="cell" id="label-answered">{% trans 'Answered' %}</div>
-                    <div class="cell" id="label-noresponse">{% trans 'No Response' %}</div>
+            <div id="questions">
+                <h2 class="heading">{% trans 'Questions and Answers' %}</h2>
+                <div class="table">
+                    <div class="row">
+                        <div class="cell" id="label-answered">{% trans 'Answered' %}</div>
+                        <div class="cell" id="label-noresponse">{% trans 'No Response' %}</div>
+                    </div>
+                    <div class="row" id="bar-questions">
+                        <div class="cell" id="bar-answered" style="width: {{ questions.answered.relative }}%">{{ questions.answered.absolute }}</div>
+                        <div class="cell" id="bar-noresponse" style="width: {{ questions.noresponse.relative }}%">{{ questions.noresponse.absolute }}</div>
+                    </div>
                 </div>
-                <div class="row" id="bar-questions">
-                    <div class="cell" id="bar-answered" style="width: {{ questions.answered.relative }}%">{{ questions.answered.absolute }}</div>
-                    <div class="cell" id="bar-noresponse" style="width: {{ questions.noresponse.relative }}%">{{ questions.noresponse.absolute }}</div>
+                <div>
+                    {% if questions.last %}
+                    <div><span class="label">{% trans 'Question' %}:</span> {{ questions.last.question }}</div>
+                    {% if questions.last.answer %}<div><span class="label">{% trans 'Answer' %}:</span> {{ questions.last.answer }}</div>{% endif %}
+                    {% endif %}
                 </div>
+                <div><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
             </div>
-            <div class="box-text">
-                {% if questions.last %}
-                <div><span class="label">{% trans 'Question' %}:</span> {{ questions.last.question }}</div>
-                {% if questions.last.answer %}<div><span class="label">{% trans 'Answer' %}:</span> {{ questions.last.answer }}</div>{% endif %}
-                {% endif %}
-            </div>
-            <div class="box-text"><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
         </div>
         <div class="box" id="box-votecounts">
-            <h2 class="heading">{% trans 'Vote Counts' %}</h2>
-            <div class="box-text">{% trans 'In Favour' %}: {{ votecounts.yes }}</div>
-            <div class="box-text">{% trans 'Against' %}: {{ votecounts.no }}</div>
-            <div class="box-text">{% trans 'Abstained' %}: {{ votecounts.abstained }}</div>
-            <div class="box-text">{% trans 'Absent' %}: {{ votecounts.absent }}</div>
+            <div id="votecounts">
+                <h2 class="heading">{% trans 'Vote Counts' %}</h2>
+                <div>{% trans 'In Favour' %}: {{ votecounts.yes }}</div>
+                <div>{% trans 'Against' %}: {{ votecounts.no }}</div>
+                <div>{% trans 'Abstained' %}: {{ votecounts.abstained }}</div>
+                <div>{% trans 'Absent' %}: {{ votecounts.absent }}</div>
+            </div>
         </div>
     </div>
     <div style="clear: both"></div>

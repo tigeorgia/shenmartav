@@ -1,6 +1,6 @@
 {% load i18n representative %}
 <div id="income">
-    <h2>{% trans 'Annual Income in GEL' %}:</h2>
+    <h2>{% trans 'Annual Income in GEL' %}</h2>
     <div id="bar" class="table">
         <div class="row">
             {% with total=obj.total_income additional=obj.salary|add:-24000 %}
