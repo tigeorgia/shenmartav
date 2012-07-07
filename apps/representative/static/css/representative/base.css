@@ -62,6 +62,26 @@
 #representative #income h2 {
     text-align: left;
 }
-#representative #income #averaged {
-    margin-top: .5em;
+#representative #income .income-base {
+    background: #66b2f0;
+}
+#representative #income .income-additional {
+    background: #4491d7;
+}
+#representative #income .income-other {
+    background: #1d7ac8;
+}
+#representative #income #bar {
+    width: 100%;
+}
+#representative #income #bar .cell {
+    text-align: center;
+}
+#representative #income #legend {
+    margin-top: 1em;
+}
+#representative #income #legend span {
+    width: 1em;
+    display: inline-block;
+    margin-right: .5em;
 }

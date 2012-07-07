@@ -1,10 +1,23 @@
-{% load i18n %}
+{% load i18n representative %}
 <div id="income">
-    <h2>{% trans 'Total Income' %}: {{ obj.total_income }} {% trans 'GEL' %}</h2>
-    <div id="averaged">{% trans 'Averaged' %}: {{ obj.averaged_income }}%</div>
-    <div id="bar">
-        <div>{% trans 'Salary' %}</div>
-        <div></div>
-        <div>{% trans 'Other' %}</div>
+    <h2>{% trans 'Annual Income in GEL' %}:</h2>
+    <div id="bar" class="table">
+        <div class="row">
+            {% with total=obj.total_income additional=obj.salary|add:-24000 %}
+            <div class="cell" style="width:{{ 24000|percentage:total }}">24000</div>
+            <div class="cell" style="width:{{ additional|percentage:total }}">{{ additional }}</div>
+            <div class="cell" style="width:{{ obj.other_income|percentage:total }}">{{ obj.other_income|add:0 }}</div>
+            {% endwith %}
+        </div>
+        <div class="row">
+            <div class="cell income-base">&nbsp;</div>
+            <div class="cell income-additional">&nbsp;</div>
+            <div class="cell income-other">&nbsp;</div>
+        </div>
     </div>
+    <ul id="legend">
+        <li><span class="income-base">&nbsp;</span>{% trans 'Base salary' %}</li>
+        <li><span class="income-additional">&nbsp;</span>{% trans 'Additional income' %}</li>
+        <li><span class="income-other">&nbsp;</span>{% trans 'Other income' %}</li>
+    </ul>
 </div>
