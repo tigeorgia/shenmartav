@@ -235,8 +235,6 @@ class Representative (Person):
 
 
     def save (self, *args, **kwargs):
-        from representative.piechart import PieChart
-        PieChart().save(str(self.pk), [self.salary, self.other_income])
         super(Representative, self).save(*args, **kwargs)
 
 

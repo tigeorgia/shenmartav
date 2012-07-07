@@ -210,10 +210,3 @@ if any([command in sys.argv for command in SKIP_COMMANDS]):
 # modeltranslation
 ###########################################################
 MODELTRANSLATION_TRANSLATION_REGISTRY = 'shenmartav.translation'
-
-
-
-###########################################################
-# piecharts
-###########################################################
-PIECHART_DIR = os.path.join(MEDIA_ROOT, 'representatives/piecharts')

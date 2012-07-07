@@ -6,7 +6,6 @@
 PIL >= 1.1.7
 psycopg2
 BeautifulSoup
-matplotlib # ugly piecharts
 
 # Django stuff
 django-mptt==0.4.2

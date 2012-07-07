@@ -65,13 +65,3 @@
 #representative #income #averaged {
     margin-top: .5em;
 }
-#representative #income #pie {
-    text-align: center;
-    display: table;
-    margin: 0 auto;
-    height: 50px;
-}
-#representative #income #pie div {
-    display: table-cell;
-    vertical-align: middle;
-}

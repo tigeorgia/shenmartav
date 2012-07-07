@@ -77,11 +77,6 @@
     margin: .5em 0 0 1.5em;
 }
 
-#representative #data-boxes .box#box-income {
-    /* FIXME: pie chart stuff */
-    margin-bottom: 0;
-}
-
 #representative #data-boxes .box .absolute {
     color: #000;
 }

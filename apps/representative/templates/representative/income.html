@@ -2,9 +2,9 @@
 <div id="income">
     <h2>{% trans 'Total Income' %}: {{ obj.total_income }} {% trans 'GEL' %}</h2>
     <div id="averaged">{% trans 'Averaged' %}: {{ obj.averaged_income }}%</div>
-    <div id="pie">
+    <div id="bar">
         <div>{% trans 'Salary' %}</div>
-        <div><object data="{{ MEDIA_URL}}representatives/piecharts/{{ obj.pk }}.svg" type="image/svg+xml"></object></div>
+        <div></div>
         <div>{% trans 'Other' %}</div>
     </div>
 </div>
