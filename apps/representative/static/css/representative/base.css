@@ -27,53 +27,42 @@
 }
 
 
-
-#representative #attendance {
-    margin: 3em 0;
-}
-#representative #attendance h2 {
-    text-align: left;
-}
-#representative #attendance #bars {
-    margin: 0 auto auto auto;
-    display: table;
-}
-#representative #attendance .bars-cell {
-    padding: 0 .2em;
-    display: table-cell;
-    text-align: center;
-    vertical-align: bottom;
-}
-#representative #attendance .bars-val-container {
-    height: 50px;
-    vertical-align: bottom;
-    display: table-cell;
-    margin-bottom: .2em;
-}
-#representative #attendance .bars-val {
-    background-color: #d44847;
-    width: 30px;
-}
-
-
-#representative #income {
-    margin: 3em 0;
-}
-#representative #income h2 {
-    text-align: left;
-}
-#representative #income .income-base {
+#representative #income .income-base,
+#representative #attendance .attendance-attended {
     background: #66b2f0;
 }
-#representative #income .income-additional {
+#representative #income .income-additional,
+#representative #attendance .attendance-absent {
     background: #4491d7;
 }
 #representative #income .income-other {
     background: #1d7ac8;
 }
-#representative #income #bar {
+#representative #income #bar,
+#representative #attendance #bar {
     width: 100%;
 }
+
+#representative #income,
+#representative #attendance {
+    margin: 3em 0;
+}
+#representative #income h2,
+#representative #attendance h2 {
+    text-align: left;
+}
+#representative #income #bar .cell,
+#representative #attendance #bar .cell {
+    padding: .3em 0;
+}
+
+#representative #attendance #bar .leftalign {
+    text-align: left;
+}
+#representative #attendance #bar .rightalign {
+    text-align: right;
+}
+
 #representative #income #bar .cell {
     text-align: center;
 }

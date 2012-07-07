@@ -1,16 +1,20 @@
-{% load i18n %}
+{% load i18n representative %}
 <div id="attendance">
-    <h2>{% trans 'Attendance' %}: {{ obj.attendance.percentage }}%</h2>
-    <div id="bars">
-        <div class="bars-cell">{% trans 'Attended' %}</div>
-        <div class="bars-cell">
-            <div class="bars-val-container"><div class="bars-val" id="bar-attended-relative" style="height: {{ obj.attendance.attended.relative }}%">&nbsp;</div></div>
-            <div class="absolute">{{ obj.attendance.attended.absolute }}</div>
+    {% with attendance=obj.attendance %}
+    <h2>{% trans 'Attendance' %}: {{ obj.attendance.percentage }}</h2>
+    <div id="bar" class="table">
+        <div class="row">
+            <div class="cell leftalign" style="width:{{ attendance.attended|percentage:attendance.total }}">{{ attendance.attended }}</div>
+            <div class="cell rightalign" style="width:{{ attendance.absent|percentage:attendance.total }}">{{ attendance.absent }}</div>
         </div>
-        <div class="bars-cell">
-            <div class="bars-val-container"><div class="bars-val" id="bar-absent-relative" style="height: {{ obj.attendance.absent.relative }}%">&nbsp;</div></div>
-            <div class="absolute">{{ obj.attendance.absent.absolute }}</div>
+        <div class="row">
+            <div class="cell attendance-attended">&nbsp;</div>
+            <div class="cell attendance-absent">&nbsp;</div>
         </div>
-        <div class="bars-cell">{% trans 'Absent' %}</div>
+        <div class="row">
+            <div class="cell leftalign">{% trans 'Attended' %}</div>
+            <div class="cell rightalign">{% trans 'Absent' %}</div>
+        </div>
     </div>
+    {% endwith %}
 </div>

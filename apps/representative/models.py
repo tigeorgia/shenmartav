@@ -201,37 +201,25 @@ class Representative (Person):
         """Reorganise attendance data structure
 
         @return: reorganised attendance record
-        @rtype: {\
-            'percentage': float,\
-            'attended': { 'relative': float, 'absolute': int },\
-            'absent': { 'relative': float, 'absolute': int }\
+        @rtype: {
+            'attended': int,
+            'absent': int,
+            'total': int,
+            'percentage': int
         }
         """
-        attendance = self.attendance_record.split(' ')
-        attended, total = attendance[0].split('/')
+        attendance, percentage = self.attendance_record.split(' ')
+        attended, total = attendance.split('/')
+        total = int(total)
         attended = int(attended)
-
-        total = float(total)
-        if total == 0:
-            return {
-                'percentage': 0,
-                'attended': { 'relative': 0, 'absolute': 0, },
-                'absent': { 'relative': 0, 'absolute': 0, }
-            }
-
-
-        absent = int(total) - attended
+        absent = total - attended
         return {
-            'percentage': attendance[1][1:].split('%')[0],
-            'attended': {
-                'relative': '%.1f' % (attended / total * 100),
-                'absolute': attended,
-            },
-            'absent': {
-                'relative': '%.1f' % (absent / total * 100),
-                'absolute': absent,
-            }
+            'attended': attended,
+            'absent': absent,
+            'total': total,
+            'percentage': percentage[1:-1],
         }
+
 
 
     def save (self, *args, **kwargs):
