@@ -152,10 +152,13 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #footer #socialbuttons {
     list-style: none;
     padding: 0;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+}
+.column #footer #socialbuttons li {
+    display: inline;
 }
 #footer #socialbuttons li {
-    margin-top: .3em;
+    margin: .2em;
 }
 #footer #sponsors {
     list-style: none;
