@@ -27,6 +27,10 @@
 }
 
 
+#representative #income, #representative #attendance {
+    font-family: "zwo-geo-light", Georgia, Times, serif;
+}
+
 #representative #income .income-base,
 #representative #attendance .attendance-attended {
     background: #66b2f0;

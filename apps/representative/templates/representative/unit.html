@@ -2,5 +2,5 @@
 <ul id="members">{% for member in members %}<li class="member party-{{ member.party.acronym }} {% if member.is_majoritarian %}majoritarian{% else %}partylist{% endif %}" id="member-{{ member.pk}}">
         <a name="member-{{ member.pk }}"></a>
         <div class="photo"><a href="{{ member.get_absolute_url }}">{% thumbnail member.photo '100x84' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" border="0" /></a></div>
-        <div class="smaller name"><a href="{{ member.get_absolute_url }}">{{ member.name }}</a></div>
+        <div class="smaller representative-name"><a href="{{ member.get_absolute_url }}">{{ member.name }}</a></div>
     </li>{% endfor %}</ul>

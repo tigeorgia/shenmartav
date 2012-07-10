@@ -16,7 +16,7 @@
         <div class="photo"><a title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{% thumbnail representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
     </div>
         <div class="data">
-            <div><a id="representative-name" title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a></div>
+            <div class="representative-name"><a id="representative-name" title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a></div>
             <div class="smaller">{% trans 'Answered' %}: {{ representative.answered|stringformat:'.1f' }} %</div>
             <div class="text">{% if obj.answer %}{{ obj.answer }}{% else %}<span class="unanswered">{% trans 'Not yet answered!' %}</span>{% endif %}</div>
         </div>

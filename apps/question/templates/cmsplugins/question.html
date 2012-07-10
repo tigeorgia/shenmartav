@@ -18,7 +18,7 @@
             <a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{% thumbnail latest.representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
         </div>
         <div class="info">
-            <a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{{ latest.representative.name }}</a>
+            <div class="representative-name"><a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{{ latest.representative.name }}</a></div>
             <div id="latest-question"><span class="label">{% trans 'Question' %}:</span> {{ latest.question|slice:"100" }} ...</div>
             <div id="latest-answer"><span class="label">{% trans 'Answer' %}:</span> {{ latest.answer|slice:"100" }} ...</div>
             <div class="more"><a href="{{ latest.get_absolute_url }}">{% trans 'More' %} &raquo;</a></div>
@@ -31,7 +31,7 @@
             <a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{% thumbnail most_active.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
         </div>
         <div class="info">
-            <a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{{ most_active.name }}</a>
+            <div class="representative-name"><a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{{ most_active.name }}</a></div>
             <div>{% trans 'Most Active' %}</div>
             <div class="activity-bar" title="{% trans 'Answered' %} {{ most_active.answered }}%"><div class="activity-val" style="width: {{ most_active.answered }}%">{{ most_active.answered }}%</div></div>
         </div>
@@ -43,7 +43,7 @@
             <a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{% thumbnail least_active.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
         </div>
         <div class="info">
-            <a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{{ least_active.name }}</a>
+            <div class="representative-name"><a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{{ least_active.name }}</a></div>
             <div>{% trans 'Least Active' %}</div>
             <div class="activity-bar" title="{% trans 'Answered' %} {{ least_active.answered }}%"><div class="activity-val" style="width: {{ least_active.answered }}%">{{ least_active.answered }}%</div></div>
         </div>

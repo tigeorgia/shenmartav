@@ -96,6 +96,7 @@
     color: #fff;
     height: 29px;
     cursor: pointer;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 #representative #filter select {
     margin: 0;
@@ -144,10 +145,10 @@
 }
 
 
-#representative #members .member .name {
+#representative #members .member .representative-name {
     margin-top: 0.5em;
 }
-#representative #members .member .name a {
+#representative #members .member .representative-name a {
     text-decoration: none;
     color: #fff;
 }

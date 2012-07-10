@@ -17,6 +17,7 @@
 
 #question #most-active, #question #least-active {
     margin-top: 1em;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 
 #question .activity-bar {
@@ -50,7 +51,9 @@
 }
 #question #ask select {
     width: 180px;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 #question #ask input {
     width: 70px;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }

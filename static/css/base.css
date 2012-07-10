@@ -5,7 +5,7 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: "bgp-rioni-vera", Georgia, Times, serif;
+    font-family: "bpg-arial-2009", Georgia, Times, serif;
     font-size: .8em;
     background: #fff;
     color: #666;
@@ -13,7 +13,7 @@ body {
 
 
 input, select, option, textarea {
-    font-family: "bgp-rioni-vera", Georgia, Times, serif;
+    font-family: "bpg-arial-2009", Georgia, Times, serif;
 }
 input, select, option {
     height: 1.5em;
@@ -25,6 +25,7 @@ input[type="submit"]::-moz-focus-inner { /* yikes */
 
 h1 {
     text-align: center;
+    text-transform: uppercase;
     font-size: 1.6em;
     font-weight: bold;
     font-family: "zwo-geo-light", Georgia, Times, serif;
@@ -41,6 +42,7 @@ h1 a:hover {
 }
 .subh1 {
     font-size: .8em;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
     text-align: center;
     width: 70%;
     margin: 0 auto 2em auto;
@@ -52,14 +54,17 @@ h2 {
     font-family: "zwo-geo-light", Georgia, Times, serif;
     margin-top: 0;
     text-align: center;
+    text-transform: uppercase;
 }
 h3 {
     font-size: 1.2em;
     font-family: "zwo-geo-light", Georgia, Times, serif;
+    text-transform: uppercase;
 }
 h4 {
     font-size: 1em;
     font-family: "zwo-geo-light", Georgia, Times, serif;
+    text-transform: uppercase;
 }
 
 a {
@@ -85,7 +90,7 @@ li:first-child {
 
 /* jquery ui */
 ul.ui-widget-content {
-    font-family: "bgp-rioni-vera", Georgia, Times, serif;
+    font-family: "bpg-arial-2009", Georgia, Times, serif;
 }
 ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
     background: #d44847;
@@ -136,6 +141,7 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #header #navigation {
     margin-top: 2.5em;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 #header #navigation li {
     margin: 1.5em 0;
@@ -264,6 +270,8 @@ img.column-bg {
     border-radius: 2px;
     border: 1px solid #e08c8c;
     font-weight: normal;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
+    text-transform: uppercase;
     text-align: left;
 }
 
@@ -356,10 +364,11 @@ img.column-bg {
     margin: .5em 0;
     font-size: 1em;
     font-weight: bold;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 
 .find {
-    font-family: "bgp-rioni-vera", Georgia, Times, serif;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
     height: 2em;
     color: #666;
     width: 100%;
@@ -371,3 +380,8 @@ img.column-bg {
 .label {
     color: #333;
 }
+
+.representative-name, select[name="representative"] {
+  font-family: "zwo-geo-light", Georgia, Times, serif;
+}
+
