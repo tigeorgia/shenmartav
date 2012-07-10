@@ -10,9 +10,6 @@
     float: left;
     width: 200px;
 }
-#question .info div {
-    margin-top: .5em;
-}
 
 
 #question #most-active, #question #least-active {
