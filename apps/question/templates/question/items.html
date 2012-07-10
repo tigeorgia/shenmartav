@@ -2,7 +2,7 @@
 {% for item in items.object_list %}
     <tr class="item" id="item-{{ item.pk }}">
         <td>
-            <div><a name="item-{{ item.pk }}" href="{{ item.representative.get_absolute_url }}">{{ item.representative.name }}</a></div>
+            {% with representative=item.representative %}<a name="item-{{ item.pk }}" title="{% trans 'Answered' %} {{ representative.answered }}%" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a>{% endwith %}
         </td>
         <td>{{ item.question|slice:":100" }} ...</td>
         <td>{{ item.date|date:"Y-m-d" }}</td>
