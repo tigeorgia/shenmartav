@@ -17,7 +17,7 @@
         <h3>{% trans 'Results' %}</h3>
         <ul id="results">{% for r in representatives %}
             <li class="table">
-                <div class="cell photo">{% thumbnail r.photo '60x72' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="60" height="72" border="0" /></div>
+                <div class="cell photo">{% thumbnail r.photo '65x60' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></div>
                 <div class="cell name"><a href="{{ r.get_absolute_url }}">{{ r.name }}</a></div>
             </li>
         {% endfor %}</ul>
