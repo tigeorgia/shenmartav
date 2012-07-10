@@ -294,7 +294,7 @@ img.column-bg {
     top: 0;
     height: 800px;
     width: 980px;
-    background: #fff url(../img/bg-white.jpg);
+    background: #fff;
 }
 
 .folded {

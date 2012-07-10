@@ -53,7 +53,7 @@
 }
 
 #question #list .item-selected {
-    background: #ddd;
+    background-image: url(../../img/bg-white.jpg);
 }
 
 
