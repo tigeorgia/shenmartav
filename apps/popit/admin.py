@@ -33,8 +33,8 @@ class PersonAdmin (TranslationAdmin):
     list_display  = [ 'slug', 'name', 'date_of_birth' ]
     search_fields = [ 'names__name' ]
 
-admin.site.register( models.Person, PersonAdmin )
-admin.site.register( models.PersonDataKey, PersonDataKeyAdmin )
+#admin.site.register( models.Person, PersonAdmin )
+#admin.site.register( models.PersonDataKey, PersonDataKeyAdmin )
 
 # Orgs
 
@@ -54,8 +54,8 @@ class OrganisationAdmin(TranslationAdmin):
     list_display  = [ 'slug', 'name' ]
     search_fields = [ 'names__name' ]
 
-admin.site.register( models.Organisation, OrganisationAdmin )
-admin.site.register( models.OrganisationDataKey, OrgDataKeyAdmin )
+#admin.site.register( models.Organisation, OrganisationAdmin )
+#admin.site.register( models.OrganisationDataKey, OrgDataKeyAdmin )
 
 # Positions
 
@@ -92,9 +92,9 @@ class PositionAdmin(TranslationAdmin):
         return create_admin_link_for(obj.type, obj.type.name)
     Type.allow_tags = True
 
-admin.site.register( models.Position, PositionAdmin )
-admin.site.register( models.PositionType, PositionTypeAdmin )
-admin.site.register( models.PositionDataKey, PositionDataKeyAdmin )
-admin.site.register( models.PositionCategory, PositionCategoryAdmin )
+#admin.site.register( models.Position, PositionAdmin )
+#admin.site.register( models.PositionType, PositionTypeAdmin )
+#admin.site.register( models.PositionDataKey, PositionDataKeyAdmin )
+#admin.site.register( models.PositionCategory, PositionCategoryAdmin )
 
-admin.site.register( models.CodeType )
+#admin.site.register( models.CodeType )
