@@ -63,7 +63,7 @@
         <tr>
             <td>{% trans 'Work Experience' %}</td>
             <td id="workexperience"><ul>{% for experience in obj.position_set.all %}
-                        <li>{{ experience.start_date }} {% if experience.end_date %}- {{ experience.end_date }}{% endif %} {{ experience.title }}</li>
+                        <li>{{ experience.start_date|date:'j F Y' }} {% if experience.end_date %}- {{ experience.end_date|date:'j F Y' }}{% endif %} {{ experience.title }}</li>
             {% endfor %}</ul></td>
             </li>
         </tr>
