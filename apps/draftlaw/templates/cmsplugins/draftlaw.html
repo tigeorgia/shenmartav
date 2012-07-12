@@ -13,16 +13,6 @@
     <h1><a href="{% url draftlaw_list %}">{% trans 'What Laws Are Made' %}</a></h1>
     <div class="subh1">{% trans 'You can find pending Draft Laws here' %}</div>
 
-    <div id="find">
-        <form action="{% url draftlaw_list %}" method="get">
-            <input type="text" class="find" id="query" name="query" value="{% trans 'Find Draft Law' %}" />
-        </form>
-    </div>
-
-    <div class="more">
-        <a title="{% trans 'See more Draft Laws' %}" href="{% url draftlaw_list  %}">{% trans 'More' %} &raquo;</a>
-    </div>
-
     <div id="news">
         <h2>{% trans 'Weekly News' %}</h2>
         <div id="item"></div>
@@ -34,6 +24,16 @@
         <div id="receive">
             <a href="http://parliament.transparency.ge/{% ifequal lang 'ka' %}გამოწერა/{% else %}subscribe/?lang=en{% endifequal %}">{% trans 'Receive alerts on your phone.' %}</a>
         </div>
+    </div>
+
+    <div id="find">
+        <h3>{% trans 'Look up a Draft Law' %}</h3>
+        <form action="{% url draftlaw_list %}" method="get">
+            <input type="text" class="find" id="query" name="query" placeholder="{% trans 'Enter a keyword' %}"/>
+        </form>
+    </div>
+    <div class="more">
+        <a title="{% trans 'See more Draft Laws' %}" href="{% url draftlaw_list  %}">{% trans 'More' %} &raquo;</a>
     </div>
 </div>
 

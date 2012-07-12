@@ -4,6 +4,7 @@
 
 #draftlaw #find {
     width: 220px;
+    margin-top: 2em;
 }
 
 #draftlaw .more {
@@ -11,16 +12,13 @@
 }
 
 
-#draftlaw #news, #draftlaw #alert {
-    margin-top: 2em;
-}
 #draftlaw #news #navigation {
     text-align: center;
 }
 
 #draftlaw #alert {
     position: relative;
-    margin-top: 5em;
+    margin-top: 2em;
     height: 160px;
     background: #d44847 url(../../img/bg-mail.png) no-repeat right bottom;
     border-radius: 2px;

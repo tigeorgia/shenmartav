@@ -25,12 +25,13 @@
         <div class="details">{% include 'representative/attendance.html' %}</div>
 
         <div class="details">{% include 'representative/income.html' %}</div>
-        <div class="details more"><a title="{% trans 'See more about this representative' %}" href="{% url representative_find %}#member-{{ obj.pk }}">{% trans 'More' %} &raquo;</a></div>
+        <div class="more"><a title="{% trans 'See more about this representative' %}" href="{% url representative_find %}#member-{{ obj.pk }}">{% trans 'More' %} &raquo;</a></div>
     </div>
 
     <div id="find">
+        <h3>{% trans 'Find Your Representative' %}</h3>
         <form action="{% url representative_find %}" method="get">
-            <input type="text" class="find" id="query" name="query" value="{% trans 'Find Your Representative' %}" />
+            <input type="text" class="find" id="query" name="query" placeholder="{% trans 'Search by name or location' %}" />
         </form>
     </div>
 </div>

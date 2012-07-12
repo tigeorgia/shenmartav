@@ -18,6 +18,7 @@
 }
 #representative #random .more {
     text-align: center;
+    margin-top: -2em; /* dunno why */
 }
 
 
