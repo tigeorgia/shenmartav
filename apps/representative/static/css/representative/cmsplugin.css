@@ -17,12 +17,11 @@
     margin-top: 1em;
 }
 #representative #random .more {
-    text-align: center;
+    text-align: right;
     margin-top: -2em; /* dunno why */
 }
 
 
 #representative #find {
     margin-top: 2em;
-    width: 220px;
 }

@@ -14,7 +14,7 @@
     <div class="subh1">{% trans 'You can find pending Draft Laws here' %}</div>
 
     <div id="news">
-        <h2>{% trans 'Weekly News' %}</h2>
+        <h2>{% trans 'Parliament Weekly' %}</h2>
         <div id="item"></div>
     </div>
 
@@ -31,9 +31,6 @@
         <form action="{% url draftlaw_list %}" method="get">
             <input type="text" class="find" id="query" name="query" placeholder="{% trans 'Enter a keyword' %}"/>
         </form>
-    </div>
-    <div class="more">
-        <a title="{% trans 'See more Draft Laws' %}" href="{% url draftlaw_list  %}">{% trans 'More' %} &raquo;</a>
     </div>
 </div>
 

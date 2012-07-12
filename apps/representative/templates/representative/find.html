@@ -14,27 +14,27 @@
     <div id="select">
         <form action="{{ url_search }}" method="post">
         {% csrf_token %}
-        <ul id="filter">
-            <li>
+        <div id="filter" class="table">
+            <div id="cell-text" class="cell">
                 <div>{% trans 'Find Your Representative' %}</div>
-                <input id="filter-text" type="text" name="query" /><input id="filter-submit" type="submit" name="submit" value="{% trans 'Filter' %}" />
-            </li>
-            <li>
+                <input id="filter-text" type="text" name="query" /><input class="formbutton" id="filter-submit" type="submit" name="submit" value="{% trans 'Filter' %}" />
+            </div>
+            <div id="cell-electiontype" class="cell">
                 <div>{% trans 'Election type' %}</div>
                 <select id="filter-electiontype">
                     <option value="0">{% trans 'All' %}</option>
                     <option value="1">{% trans 'Party List' %}</option>
                     <option value="2">{% trans 'Majoritarian' %}</option>
                 </select>
-            </li>
-            <li>
+            </div>
+            <div id="cell-party" class="cell">
                 <div>{% trans 'Party' %}</div>
                 <select id="filter-party">
                     <option class="unit-all" value="all">{% trans 'All' %}</option>
                     {% for u in units %}{% for p in u.parties.all %}<option class="unit-{{ u.short }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>{% endfor %}{% endfor %}
                 </select>
-            </li>
-        </ul>
+            </div>
+        </div>
         </form>
 
         <div id="offer-fulltext-search">{% blocktrans %}Try <a href="{{ url_search }}">full-text search</a>.{% endblocktrans %}</div>

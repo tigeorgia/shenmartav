@@ -13,6 +13,22 @@ class QuestionPlugin (CMSPluginBase):
     name = _('Question Plugin')
     render_template = 'cmsplugins/question.html'
 
+
+    def _add_activity (self, representative):
+        representative.unanswered = {
+            'absolute': Question.public.filter(
+                representative=representative, answer__isnull=True).count(),
+            'relative': 100 - representative.answered
+        }
+        representative.answered = {
+            'absolute': Question.public.filter(
+                representative=representative, answer__isnull=False).count(),
+            'relative': representative.answered
+        }
+
+        return representative
+
+
     def render(self, context, instance, placeholder):
         answered = Question.public.filter(answer__isnull=False)
         try:
@@ -23,11 +39,14 @@ class QuestionPlugin (CMSPluginBase):
 
         representatives = Representative.objects.all()
         try:
-            context['most_active'] = representatives.order_by('-answered')[0]
+            representative = representatives.order_by('-answered')[0]
+            context['most_active'] = self._add_activity(representative)
         except IndexError:
             context['most_active'] = None
+
         try:
-            context['least_active'] = representatives.order_by('answered')[0]
+            representative = representatives.order_by('answered')[0]
+            context['least_active'] = self._add_activity(representative)
         except IndexError:
             context['least_active'] = None
 

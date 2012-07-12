@@ -33,7 +33,10 @@
         <div class="info">
             <div class="representative-name"><a title="{{ most_active.name }}" href="{% url representative_find %}#member-{{ most_active.pk }}">{{ most_active.name }}</a></div>
             <div>{% trans 'Most Active' %}</div>
-            <div class="activity-bar" title="{% trans 'Answered' %} {{ most_active.answered }}%"><div class="activity-val" style="width: {{ most_active.answered }}%">{{ most_active.answered }}%</div></div>
+            <div class="activity table" title="{% trans 'Answered' %} {{ most_active.answered.relative }}%">
+                <div class="answered cell" style="width: {{ most_active.answered.relative }}%">{{ most_active.answered.absolute }}</div>
+                <div class="unanswered cell" style="width: {{ most_active.unanswered.relative }}%">{{ most_active.unanswered.absolute }}</div>
+            </div>
         </div>
         <div style="clear:both"></div>
     </div>
@@ -45,20 +48,20 @@
         <div class="info">
             <div class="representative-name"><a title="{{ least_active.name }}" href="{% url representative_find %}#member-{{ least_active.pk }}">{{ least_active.name }}</a></div>
             <div>{% trans 'Least Active' %}</div>
-            <div class="activity-bar" title="{% trans 'Answered' %} {{ least_active.answered }}%"><div class="activity-val" style="width: {{ least_active.answered }}%">{{ least_active.answered }}%</div></div>
+            <div class="activity table" title="{% trans 'Answered' %} {{ least_active.answered.relative }}%">
+                <div class="answered cell" style="width: {{ least_active.answered.relative }}%">{{ least_active.answered.absolute }}</div>
+                <div class="unanswered cell" style="width: {{ least_active.unanswered.relative }}%">{{ least_active.unanswered.absolute }}</div>
+            </div>
         </div>
         <div style="clear:both"></div>
     </div>
-
-    <div class="more"><a title="{% trans 'Read more Questions' %}" href="{% url question_list  %}">{% trans 'More Questions' %} &raquo;</a></div>
 
     <div id="ask">
         <h3>{% trans 'Choose a Representative' %}</h3>
         <form action="{% url question_ask_representative 0 %}" method="get">
             <select>{% for r in representatives %}
                 <option value="{{ r.pk }}"{% ifequal r.pk random.pk %}selected="selected"{% endifequal %}>{{ r.name }}</option>
-            {% endfor %}</select>
-            <input type="submit" value="{% trans 'Ask' %}" />
+            {% endfor %}</select><input type="submit" value="{% trans 'Ask' %}" />
         </form>
     </div>
 </div>

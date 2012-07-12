@@ -26,7 +26,7 @@
 #representative #info #data {
     margin-top: 2em;
 }
-#representative #info #data ul, #representative #info #data li {
+#representative #info #data > div {
     list-style: none;
     margin: 1em 0;
     padding: 0;
@@ -43,10 +43,9 @@
 #representative #info #data #party {
     margin-top: .5em;
 }
-#representative #info #data #activities {
-}
 #representative #info #data #more {
     margin-top: 2em;
+    text-align: right;
 }
 
 
@@ -68,52 +67,31 @@
 
 #representative #filter {
     font-family: "zwo-geo-light", Georgia, Times, serif;
-    margin-top: 0em;
-    list-style: none;
+    margin: .5em 0 1em 1em;
+    width: 99%;
 }
-#representative #filter li {
-    cursor: pointer;
-    text-align: left;
-    display: inline-block;
+#representative #filter #cell-text {
+    width: 50%;
 }
-
-#representative #filter input[type=text] {
-    width: 270px;
-    height: 19px;
-    margin: 0;
-    padding: 4px;
+#representative #filter #filter-text {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
-    border: 1px solid #ccc;
-    border-right: 0;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
+    width: 79%;
 }
-#representative #filter input[type=submit] {
-    background: #e08c8c;
-    margin: 0;
-    padding: 4px;
+#representative #filter #filter-submit {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
-    border: 0;
-    color: #fff;
-    height: 29px;
-    cursor: pointer;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
+    width: 20%;
 }
 #representative #filter select {
-    margin: 0;
-    padding: .5em 1em;
-    border-radius: 2px;
-    border: 1px solid #ccc;
-    background: #fff;
-    height: 29px;
     font-family: "zwo-geo-light", Georgia, Times, serif;
+    width: 99%;
 }
-#representative #filter #filter-electiontype {
-    width: 145px;
+#representative #filter #cell-electiontype {
+    width: 20%;
 }
-#representative #filter #filter-party {
-    width: 210px;
+#representative #filter #cell-party {
+    width: 30%;
 }
 #representative #filter option {
     padding: .2em;

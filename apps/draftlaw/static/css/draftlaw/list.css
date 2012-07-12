@@ -3,33 +3,19 @@
  */
 
 #draftlaw #search #data {
-    width: 340px;
-    height: 19px;
-    padding: 4px;
+    width: 59%;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
-    outline: 0;
-    border: 1px solid #ccc;
     border-right: 0;
-    margin-top: 2px;
 }
-#draftlaw #search .formbutton  {
-    background: #e08c8c;
-    width: 100px;
-    height: 29px;
-    border: 0;
-    margin: 0;
-    padding: 4px;
-    color: #fff;
-    cursor: pointer;
-    outline: 0;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
+#draftlaw #search #submit, #draftlaw #search #reset {
+    width: 20%;
 }
-#draftlaw #search input[type=submit] {
+#draftlaw #search #submit {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
 }
-#draftlaw #search input[type=reset] {
+#draftlaw #search #reset {
     border-radius: 2px;
 }
 

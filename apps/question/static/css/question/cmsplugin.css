@@ -4,33 +4,35 @@
 
 #question .photo {
     float: left;
-    width: 70px;
+    width: 30%;
 }
 #question .info {
     float: left;
-    width: 200px;
+    width: 70%;
 }
 
+
+#question #latest h2 {
+    text-align: left;
+}
 
 #question #most-active, #question #least-active {
     margin-top: 1em;
     font-family: "zwo-geo-light", Georgia, Times, serif;
+    font-size: .8em;
 }
 
-#question .activity-bar {
-    width: 99%;
-    background: #fff;
-    padding: 0;
-    margin-top: .5em;
+#question .activity > div {
+    padding: .2em;
     border-radius: 2px;
 }
-#question .activity-bar .activity-val {
-    height: .8em;
-    background: #1d7ac8;
+#question .activity .unanswered {
+    background: #fff url(../../img/bg-white.jpg) repeat 0 0;
+    color: #000;
+}
+#question .activity .answered {
+    background: #4491D7;
     color: #fff;
-    border-radius: 2px;
-    font-size: .8em;
-    padding: .8em .5em;
 }
 
 
@@ -47,10 +49,10 @@
     margin-left: 0;
 }
 #question #ask select {
-    width: 180px;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
+    width: 80%;
 }
 #question #ask input {
-    width: 70px;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
+    width: 20%;
+    background: #d44847;
+    border: .2em solid #d44847;
 }

@@ -50,6 +50,7 @@
 #representative #income h2,
 #representative #attendance h2 {
     text-align: left;
+    margin-bottom: 0;
 }
 #representative #income #bar .cell,
 #representative #attendance #bar .cell {
@@ -70,7 +71,8 @@
     margin-top: 1em;
 }
 #representative #income #legend span {
-    width: 1em;
+    width: .7em;
+    height: .7em;
     display: inline-block;
     margin-right: .5em;
 }
