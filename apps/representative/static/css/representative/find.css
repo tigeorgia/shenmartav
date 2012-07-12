@@ -134,7 +134,7 @@
 }
 
 #representative #members .member-selected {
-    background: #e08c8c url(../../img/bg-red.jpg) 0 0 repeat;
+    background: #d44847 url(../../img/bg-red.jpg) 0 0 repeat;
 }
 
 #representative #members .member.majoritarian {
@@ -158,25 +158,25 @@
     color: #fff;
 }
 #representative #party-cdm, #representative .party-cdm {
-    background: #a31;
+    background: #d64c65;
 }
 #representative #party-labour, #representative .party-labour {
-    background: #00e;
+    background: #6a86b8;
 }
 #representative #party-ndp, #representative .party-ndp {
-    background: #ca0;
+    background: #bf5f6d;
 }
 #representative #party-republicans, #representative .party-republicans {
-    background: #083;
+    background: #eb8942;
 }
 #representative #party-unc, #representative .party-unc {
-    background: #2da094;
+    background: #8cc574;
 }
 #representative #party-unknown, #representative .party-unknown {
     background: #555;
 }
 #representative #party-unm, #representative .party-unm {
-    background: #95a;
+    background: #f87c7c;
 }
 #representative #party-tbilisi, #representative .party-tbilisi {
     background: #000;
