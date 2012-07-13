@@ -38,6 +38,7 @@ class RepresentativeAdmin (PersonAdmin):
         PositionInlineAdmin,
         InlineAdditionalInformation,
     ]
+    list_filter = ['party', 'unit']
 admin.site.register(Representative, RepresentativeAdmin)
 
 
