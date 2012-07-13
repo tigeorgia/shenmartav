@@ -178,8 +178,26 @@ class Representative (Person):
             'percentage': int
         }
         """
-        attendance, percentage = self.attendance_record.split(' ')
-        attended, total = attendance.split('/')
+        empty = {
+            'attended': None,
+            'absent': None,
+            'total': None,
+            'percentage': None,
+        }
+
+        if not self.attendance_record:
+            return empty
+
+        try:
+            attendance, percentage = self.attendance_record.split(' ')
+        except ValueError:
+            return empty
+
+        try:
+            attended, total = attendance.split('/')
+        except ValueError:
+            return empty
+
         total = int(total)
         attended = int(attended)
         absent = total - attended
