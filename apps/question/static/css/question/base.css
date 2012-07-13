@@ -4,19 +4,19 @@
 
 /* folded */
 #folded-who {
-    left: 69px;
+    left: 7%;
 }
 #folded-what {
-    left: 118px;
+    left: 11%;
 }
 #folded-question {
-    left: 167px;
+    left: 15%;
 }
 #folded-question .button {
     opacity: 1;
 }
 .opened {
-    left: 216px;
+    left: 19%;
 }
 
 
@@ -39,7 +39,7 @@
 #question #ask select,
 #question #ask option,
 #question #ask textarea {
-    width: 230px;
+    width: 100%;
 }
 #question #ask textarea {
     height: 50px;
@@ -61,7 +61,7 @@
 }
 #question #the-question .data {
     float: left;
-    width: 865px;
+    width: 90%;
 }
 #question #the-question .data .text {
     margin-top: .5em;

@@ -2,7 +2,7 @@ Base = {
     enable: function (elem) {
         elem = $(elem);
         elem.fadeTo('fast', 1);
-        $('#header #logo').removeClass('rotate');
+        $('#header #logo #wheel').removeClass('rotate');
         elem.removeClass('wait');
     },
 
@@ -10,7 +10,7 @@ Base = {
     disable: function (elem) {
         elem = $(elem);
         elem.addClass('wait');
-        $('#header #logo').addClass('rotate');
+        $('#header #logo #wheel').addClass('rotate');
         elem.fadeTo('fast', .3);
     },
 

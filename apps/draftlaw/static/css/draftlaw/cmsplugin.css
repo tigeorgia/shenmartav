@@ -18,10 +18,9 @@
 #draftlaw #alert {
     position: relative;
     margin-top: 2em;
-    height: 160px;
     background: #d44847 url(../../img/bg-mail.png) no-repeat right bottom;
     border-radius: 2px;
-    padding: .5em;
+    padding: .5em .5em 2.5em .5em;
     color: #fff;
 }
 #draftlaw #alert a {

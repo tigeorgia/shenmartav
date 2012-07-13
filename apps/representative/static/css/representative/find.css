@@ -3,8 +3,7 @@
  */
 
 .opened {
-    width: 1025px;
-    left: 69px;
+    left: 7%;
 }
 #folded-who, .breadcrumb {
     display: none;
@@ -12,16 +11,16 @@
 
 #representative {
     margin: 0 !important;
+    padding: 0 !important;
 }
 
 
 #representative #info {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 800px;
-    padding: 0 2em;
+    float: left;
+    width: 25%;
+    height: 100%;
+    padding: 0 1em;
+    position: relative;
 }
 #representative #info #data {
     margin-top: 2em;
@@ -35,26 +34,21 @@
 #representative #info #data #photo {
     float: left;
     width: 70px;
+    margin: 0;
 }
 #representative #info #data #short {
-    float: left;
-    width: 175px;
 }
 #representative #info #data #party {
     margin-top: .5em;
 }
 #representative #info #data #more {
-    margin-top: 2em;
     text-align: right;
 }
 
 
 #representative #select {
-    position: absolute;
-    top: 0;
-    left: 296px;
-    width: 725px;
-    height: 800px;
+    float: left;
+    width: 72%;
 }
 #representative #select ul, #representative #select #offer-fulltext-search {
     padding-left: 1em;
@@ -115,7 +109,7 @@
 }
 
 #representative #members .member-selected {
-    background: #d44847 url(../../img/bg-red.jpg) 0 0 repeat;
+    background: #ccc;
 }
 
 #representative #members .member.majoritarian {

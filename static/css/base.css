@@ -2,13 +2,14 @@
  * base stylesheet for shenmartav.ge
  */
 
-body {
+html, body {
     padding: 0;
     margin: 0;
     font-family: "bpg-arial-2009", Georgia, Times, serif;
-    font-size: .8em;
+    font-size: .9em;
     background: #fff;
     color: #666;
+    height: 100%;
 }
 
 
@@ -89,7 +90,7 @@ h3 {
     margin-bottom: .5em;
 }
 h4 {
-    font-size: 1em;
+    font-size: 1.1em;
     font-family: "zwo-geo-light", Georgia, Times, serif;
     text-transform: uppercase;
 }
@@ -127,23 +128,26 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 
 #content {
-    position: relative;
-    width: 1200px;
-    height: 800px;
-    margin: 0 auto;
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    overflow: hidden !important;
 }
 
-#header div#logo {
-    margin-left: .5em;
+#header {
+    margin-top: .5em;
+    padding: 0 .5em;
 }
 #header #logo {
-    margin-top: .7em;
-    background: url('../img/logo-shenmartav.png') 0 0 no-repeat;
-    padding: .6em 0 0 2em;
-    height: 47px;
     text-shadow: .1em .1em #9b0000;
 }
-#header #logo.rotate {
+#header #logo #wheel {
+    background: url('../img/logo-shenmartav.png') 0 0 no-repeat;
+    padding: .6em 0 0 1em;
+    vertical-align: middle;
+}
+#header #logo #wheel.rotate {
     background: #e08c8c url('../img/logo-shenmartav-rotate.gif') 0 0 no-repeat;
 }
 
@@ -175,12 +179,16 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 }
 #header .button img {
     vertical-align: middle;
+    margin-right: .3em;
 }
 
 #footer {
     position: absolute;
     bottom: 2em;
     z-index: 2;
+    padding: 0 .5em;
+    left: 50%;
+    margin-left: -35px;
 }
 #footer #socialbuttons {
     list-style: none;
@@ -204,34 +212,34 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 
 .column {
+    background-repeat: repeat;
+    background: #fff url(../img/bg-white.jpg) 0 0 repeat;
+    height: 100%;
+    width: 25%;
     position: absolute;
     top: 0;
-    padding: 0 .5em;
-    background-repeat: repeat;
-    height: 795px;
-    background: #fff url(../img/bg-white.jpg) 0 0 repeat;
 }
 
 #col-nav {
-    width: 218px;
     background: #d44847 url(../img/bg-red.jpg) 0 0 repeat;
-    padding: 0 1.5em;
+    color: #fff;
+    left: 0;
+}
+#col-nav h1 {
+    text-align: left;
 }
 #col-nav a:hover, #folded-nav a:hover {
     text-decoration: none;
 }
 
 #col-who {
-    width: 302px;
-    left: 256px;
+    left: 25%;
 }
 #col-what {
-    width: 302px;
-    left: 571px;
+    left: 50%;
 }
 #col-question {
-    width: 302px;
-    left: 886px;
+    left: 75%;
 }
 
 img.column-bg {
@@ -240,7 +248,6 @@ img.column-bg {
     right: 0;
     z-index: 1;
 }
-
 
 
 .button, #col-nav h1 {
@@ -286,7 +293,9 @@ img.column-bg {
 
 .shadow, .folded {
     box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.3); 
-    z-index: 5;
+}
+.folded {
+    height: 100%;
 }
 
 .heading {
@@ -319,9 +328,10 @@ img.column-bg {
 .opened {
     position: absolute;
     top: 0;
-    height: 800px;
-    width: 980px;
     background: #fff;
+    padding: 0 .5em;
+    width: 79%;
+    height: 100%;
 }
 
 .folded {
@@ -329,7 +339,6 @@ img.column-bg {
     position: absolute;
     padding: 0 .2em;
     background-repeat: repeat;
-    height: 800px;
     background: #fff url(../img/bg-white.jpg);
 }
 .folded img {
@@ -337,26 +346,21 @@ img.column-bg {
     padding-bottom: 750px;
 }
 #folded-nav {
-    width: 65px;
+    width: 7%;
     left: 0;
     background: #d44847 url(../img/bg-red.jpg) 0 0 repeat;
+    z-index: 7;
 }
 #folded-nav img {
     margin-top: 0;
     padding-bottom: 0;
 }
 
-#folded-nav #header {
-    width: 100%;
-}
 #folded-nav #header #logo {
     text-align: center;
 }
 #folded-nav #google_translate_element a span:first-child {
     display: none;
-}
-#folded-nav #footer {
-    width: 100%;
 }
 #folded-nav #footer #sponsors li {
     display: block;
@@ -365,13 +369,15 @@ img.column-bg {
 
 
 #folded-who {
-    width: 45px;
+    width: 4%;
+    z-index: 6;
 }
 #folded-what {
-    width: 45px;
+    width: 4%;
+    z-index: 5;
 }
 #folded-question {
-    width: 45px;
+    width: 4%;
 }
 
 
@@ -399,5 +405,5 @@ img.column-bg {
 }
 
 .representative-name, select[name="representative"] {
-  font-family: "zwo-geo-light", Georgia, Times, serif;
+    font-family: "zwo-geo-light", Georgia, Times, serif;
 }

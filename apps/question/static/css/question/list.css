@@ -81,15 +81,13 @@
 
 #question #sidebar {
     float: left;
-    width: 38%;
+    width: 37%;
     margin-left: 1em;
 }
 
 #question #info #the-question {
     margin-bottom: 1em;
-    max-height: 280px;
-    overflow: auto;
 }
 #question #info #the-question .data {
-    width: 265px;
+    width: 75%;
 }

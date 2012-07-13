@@ -4,17 +4,16 @@
 
 /* folded */
 #folded-who {
-    left: 69px;
+    left: 7%;
 }
 #folded-what {
-    left: 118px;
+    left: 11%;
 }
 #folded-what .button {
     opacity: 1;
 }
 .opened {
-    left: 170px;
-    width: 970px;
+    left: 15%;
 }
 #folded-question {
     right: 0;
@@ -46,9 +45,9 @@
 }
 #annotations .cell input,
 #annotations .cell textarea {
-    border-radius: 4px;
+    border-radius: 2px;
 }
 #annotations .cell input[type=text],
 #annotations .cell textarea {
-    width: 300px;
+    width: 100%;
 }

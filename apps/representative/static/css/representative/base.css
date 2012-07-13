@@ -4,16 +4,17 @@
 
 /* folded */
 .opened {
-    left: 118px;
+    left: 11%;
 }
 #folded-who {
-    left: 69px;
+    left: 7%;
 }
 #folded-who .button {
     opacity: 1;
 }
 #folded-what {
-    right: 49px;
+    right: 4%;
+    z-index: 6; /* overlap question */
 }
 #folded-question {
     right: 0;
@@ -24,6 +25,7 @@
 #representative {
     position: relative;
     padding: 0 1em;
+    height: 100%;
 }
 
 

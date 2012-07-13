@@ -7,7 +7,7 @@
 ###########################################################
 
 ROOT='/home/tig/shenmartav/shenmartav'
-TEMPLATE='templates/base.html'
+TEMPLATE='templates/nav.html'
 
 cd ${ROOT}
 commit=`git log --max-count=1 | head -1 | cut -d ' ' -f 2`

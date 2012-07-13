@@ -24,10 +24,6 @@
     width: 45px;
 }
 
-#representative #data-text #container-table {
-    max-height: 630px;
-    overflow: auto;
-}
 #representative #data-text tr > td:first-child {
     width: 28%;
 }
