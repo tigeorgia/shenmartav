@@ -21,6 +21,10 @@ input, select, option, textarea {
     background: #fff;
     color: #000;
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -khtml-box-sizing: border-box;
     outline: 0;
 }
 input[type='password'], input[type='text'] {
@@ -31,6 +35,11 @@ input[type='submit'], input[type='button'], input[type='reset'] {
     color: #fff;
     border: .1em solid #e08c8c;
     cursor: pointer;
+}
+input.find {
+    width: 100%;
+    background: #fff url('../img/search.png') no-repeat 98% 50%;
+    padding: .6em 35px .6em .6em;
 }
 select {
     margin: 0;
@@ -263,7 +272,7 @@ img.column-bg {
     font-size: 1.5em;
 }
 .fineprint {
-    font-size: .4em;
+    font-size: .5em;
 }
 
 .required {
@@ -384,16 +393,6 @@ img.column-bg {
     font-weight: bold;
     font-family: "zwo-geo-light", Georgia, Times, serif;
 }
-
-.find {
-    font-family: "zwo-geo-light", Georgia, Times, serif;
-    height: 2em;
-    color: #666;
-    width: 100%;
-    background: #fff url('../img/search.png') no-repeat 98% 50%;
-    padding: 1.2em 35px 1em 1em;
-}
-
 
 .label {
     color: #333;

@@ -27,7 +27,7 @@
     border-radius: 2px;
 }
 #question .activity .unanswered {
-    background: #fff url(../../img/bg-white.jpg) repeat 0 0;
+    background: #fff;
     color: #000;
 }
 #question .activity .answered {
