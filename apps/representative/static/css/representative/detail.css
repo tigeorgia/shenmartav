@@ -66,11 +66,11 @@
 }
 #representative #data-boxes .box h2,
 #representative #data-boxes .box > div {
-    width: 97%;
+    width: 100%;
 }
 #representative #data-boxes .box > div > div,
 #representative #data-boxes .box > div > ul {
-    margin-left: 1.5em;
+    margin-left: .6em;
 }
 
 #representative #data-boxes #box-attendance,

@@ -301,12 +301,13 @@ img.column-bg {
 .heading {
     color: #fff;
     background: #e08c8c;
-    padding: 1em;
+    padding: .5em;
     margin-bottom: .5em;
-    border-radius: 2px;
-    border: 1px solid #e08c8c;
+    border-radius: .2em;
+    border: .1em solid #e08c8c;
     font-weight: normal;
     font-family: "zwo-geo-light", Georgia, Times, serif;
+    font-size: 1em;
     text-transform: uppercase;
     text-align: left;
 }
