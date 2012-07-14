@@ -8,6 +8,6 @@
             {{ item.date|date:"Y.m.d" }}
             {{ item.question|slice:":200" }} ...
         </td>
-        <td><div class="status {% if item.answer %}answered">0{% else %}unanswered">1{% endif %}</div></td>
+        <td><div class="status {{ item.state.text }}">{{ item.state.value }}</div></td>
     </tr>
 {% endfor %}

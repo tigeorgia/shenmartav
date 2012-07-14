@@ -62,10 +62,13 @@
     background: #1d7ac8;
     color: #1d7ac8;
 }
-
-#question #list .unanswered {
+#question #list .unanswered-new {
     background: #e08c8c;
     color: #e08c8c;
+}
+#question #list .unanswered-old {
+    background: #d44847;
+    color: #d44847;
 }
 
 #question span.unanswered {

@@ -6,6 +6,7 @@ Depends on representative.
 """
 __docformat__ = 'epytext en'
 
+import datetime
 from django.contrib.sites.models import Site
 from django.core.mail import mail_managers
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -203,6 +204,34 @@ class Items (TemplateView):
     template_name = 'question/items.html'
 
 
+    def _add_item_states (self, page):
+        """Set item states in given page.
+
+        @param page: page number to retrieve
+        @type page: int
+        @return: a page with questions
+        @rtype: Paginator.page
+        """
+        if not page:
+            return None
+
+        two_weeks_ago = datetime.date.today() - datetime.timedelta(14)
+        answered = { 'text': 'answered', 'value': 2 }
+        unanswered_new = { 'text': 'unanswered-new', 'value': 1 }
+        unanswered_old = { 'text': 'unanswered-old', 'value': 0 }
+
+        for item in page.object_list:
+            if item.answer:
+                item.state = answered
+            else:
+                if item.date >= two_weeks_ago:
+                    item.state = unanswered_new
+                else:
+                    item.state = unanswered_old
+
+        return page
+
+
     def _get_items (self, page):
         """Get given queryset as page.
 
@@ -221,7 +250,7 @@ class Items (TemplateView):
             result = None
         #    result = paginator.page(paginator.num_pages)
 
-        return result
+        return self._add_item_states(result)
 
 
     def get_context_data (self, **kwargs):
