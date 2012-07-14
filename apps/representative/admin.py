@@ -19,6 +19,7 @@ class PartyAdmin (OrganisationAdmin):
     inlines = [
         OrgNameInlineAdmin,
     ]
+    list_filter = ['unit']
 admin.site.register(Party, PartyAdmin)
 
 
