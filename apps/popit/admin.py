@@ -32,6 +32,7 @@ class PersonAdmin (TranslationAdmin):
     inlines       = [ PersonNameInlineAdmin, PersonCodeInlineAdmin, PersonDataInlineAdmin, PositionInlineAdmin ]
     list_display  = [ 'slug', 'name', 'date_of_birth' ]
     search_fields = [ 'names__name' ]
+    exclude = ('description',)
 
 #admin.site.register( models.Person, PersonAdmin )
 #admin.site.register( models.PersonDataKey, PersonDataKeyAdmin )
