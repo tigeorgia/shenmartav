@@ -3,20 +3,19 @@
  */
 
 .opened {
-    left: 255px;
-    width: 775px;
-    overflow: auto;
+    left: 25%;
+    width: 61%;
     padding: 1em;
 }
 
 #folded-who {
-    right: 98px;
+    right: 8%;
 }
 #folded-what {
-    right: 49px;
+    right: 4%;
 }
 #folded-question {
-    right: 0px;
+    right: 0;
 }
 
 #contact {
@@ -26,6 +25,6 @@
     margin-left: 1.3em;
 }
 #contact input, textarea {
-    width: 300px;
+    width: 100%;
     border-radius: 2px;
 }

@@ -4,19 +4,19 @@
 
 /* folded */
 #folded-who {
-    left: 7%;
+    left: 6%;
 }
 #folded-what {
-    left: 11%;
+    left: 10%;
 }
 #folded-question {
-    left: 15%;
+    left: 14%;
 }
 #folded-question .button {
     opacity: 1;
 }
 .opened {
-    left: 19%;
+    left: 18%;
 }
 
 

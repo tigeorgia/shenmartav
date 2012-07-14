@@ -3,7 +3,7 @@
  */
 
 .opened {
-    left: 7%;
+    left: 6%;
 }
 #folded-who, .breadcrumb {
     display: none;
@@ -48,6 +48,7 @@
 
 #representative #select {
     float: left;
+    margin-left: .5em;
     width: 72%;
 }
 #representative #select ul, #representative #select #offer-fulltext-search {
@@ -92,7 +93,7 @@
 }
 
 #representative #unit {
-    max-height: 680px;
+    max-height: 550px;
     overflow: auto;
 }
 

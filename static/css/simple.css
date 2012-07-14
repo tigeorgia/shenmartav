@@ -3,10 +3,9 @@
  */
 
 .opened {
-    left: 255px;
-    width: 775px;
-    overflow: auto;
+    left: 25%;
     padding: 1em;
+    width: 61%
 }
 .opened a {
     color: #000;
@@ -15,11 +14,11 @@
 
 
 #folded-who {
-    right: 98px;
+    right: 8%;
 }
 #folded-what {
-    right: 49px;
+    right: 4%;
 }
 #folded-question {
-    right: 0px;
+    right: 0;
 }

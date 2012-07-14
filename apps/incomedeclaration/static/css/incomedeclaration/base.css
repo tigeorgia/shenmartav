@@ -4,17 +4,16 @@
 
 /* folded */
 #folded-who {
-    left: 69px;
+    left: 6%;
 }
 #folded-who .button {
     opacity: 1;
 }
 .opened {
-    left: 118px;
-    width: 960px;
+    left: 10%;
 }
 #folded-what {
-    right: 49px;
+    right: 4%;
 }
 #folded-question {
     right: 0;

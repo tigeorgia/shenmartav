@@ -3,11 +3,11 @@
  */
 
 /* folded */
-.opened {
-    left: 11%;
-}
 #folded-who {
-    left: 7%;
+    left: 6%;
+}
+.opened {
+    left: 10%;
 }
 #folded-who .button {
     opacity: 1;
