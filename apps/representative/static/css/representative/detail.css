@@ -42,17 +42,17 @@
     height: 300px;
     overflow: auto;
 }
-#representative .vote-yes {
-    background: #0a0;
+#representative .vote-yes, #representative .vote-yes a {
+    color: #0a0;
 }
-#representative .vote-no {
-    background: #a00;
+#representative .vote-no, #representative .vote-no a {
+    color: #a00;
 }
-#representative .vote-abstention {
-    background: #aa0;
+#representative .vote-abstention, #representative .vote-abstention a {
+    color: #aa0;
 }
-#votingrecord .vote-absent {
-    background: #ccc;
+#votingrecord .vote-absent, #representative .vote-absent a {
+    color: #222;
 }
 
 

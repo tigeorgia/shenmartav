@@ -27,25 +27,25 @@
 }
 
 
-#votingrecord .vote-yes {
-    background: #0a0;
+#votingrecord .vote-yes, #votingrecord .vote-yes a {
+    color: #0a0;
 }
-#votingrecord .vote-no {
-    background: #a00;
+#votingrecord .vote-no, #votingrecord .vote-no a {
+    color: #a00;
 }
-#votingrecord .vote-abstention {
-    background: #aa0;
+#votingrecord .vote-abstention, #votingrecord .vote-abstention a {
+    color: #aa0;
 }
-#votingrecord .vote-absent {
-    background: #ccc;
+#votingrecord .vote-absent, #votingrecord .vote-absent a {
+    color: #222;
 }
 
 
 #votingrecord #results {
-    height: 480px;
+    height: 400px;
     overflow: auto;
 }
 #votingrecord #records {
-    max-height: 750px;
+    max-height: 550px;
     overflow: auto;
 }
