@@ -390,7 +390,7 @@ img.column-bg {
 .cell { display: table-cell; }
 
 .body {
-    margin-left: 1.3em;
+    margin-left: .5em;
 }
 
 .pagination {

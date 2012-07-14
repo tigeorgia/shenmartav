@@ -45,7 +45,7 @@
     text-align: left;
     vertical-align: top;
     border-bottom: 1px solid #aaa;
-    padding: .5em 0 .5em 1em;
+    padding: .5em 0 .5em .5em;
 }
 
 #question #list .item-selected {

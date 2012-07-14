@@ -50,10 +50,10 @@
 
 /* the question */
 #question #the-question #questioner {
-    margin: 1em 0 2em 1em;
+    margin: 1em 0 2em .5em;
 }
 #question #the-question #questionee {
-    margin: 0 0 3em 1em;
+    margin: 0 0 3em .5em;
 }
 #question #the-question .photo {
     float: left;
