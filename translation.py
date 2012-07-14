@@ -51,7 +51,7 @@ translator.register(Position, PositionTranslationOptions)
 
 
 
-from draftlaw.models import DraftLaw, DraftLawDiscussion, DraftLawChild, News
+from draftlaw.models import DraftLaw, DraftLawDiscussion, DraftLawChild
 
 class DraftLawTranslationOptions (TranslationOptions):
     fields = ('title', 'initiator', 'author', 'status', 'summary', 'full_text',)
@@ -65,9 +65,6 @@ class DraftLawChildTranslationOptions (TranslationOptions):
     fields = ('title',)
 translator.register(DraftLawChild, DraftLawChildTranslationOptions)
 
-class NewsTranslationOptions (TranslationOptions):
-    fields = ('body',)
-translator.register(News, NewsTranslationOptions)
 
 
 from votingrecord.models import VotingRecord

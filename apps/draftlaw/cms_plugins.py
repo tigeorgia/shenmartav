@@ -9,7 +9,8 @@ from cms.models.pluginmodel import CMSPlugin
 from django.db.models import Q
 from django.utils.translation import get_language, ugettext_lazy as _
 
-from .models import DraftLaw, DraftLawPluginConf, News, Alert
+from .models import DraftLaw, DraftLawPluginConf, Alert
+from basic.blog.models import Post
 
 
 
@@ -21,5 +22,6 @@ class DraftLawPlugin (CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance
+        context['post'] = Post.objects.published().order_by('-publish')[0]
         return context
 plugin_pool.register_plugin(DraftLawPlugin)

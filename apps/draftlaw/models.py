@@ -186,26 +186,6 @@ class DraftLawChild (models.Model):
 
 
 
-class News (models.Model):
-    """Simple news item for draftlaw."""
-    #: date of publication
-    pub_date = models.DateField(null=False, default=datetime.datetime.today,
-        help_text=_('Publication Date of the News'))
-    #: news body
-    body = models.TextField(null=False, default='',
-        help_text=_('Body of the News'))
-
-
-    def __unicode__ (self):
-        return u'%s %s' % (self.pk, self.body[:42])
-
-
-    @models.permalink
-    def get_absolute_url (self, language=None):
-        return ('draftlaw_news', [self.pk])
-
-
-
 class Alert (object):
     """Helper class to deal with parliament SMS alerts."""
     def __init__ (self, draftlaw):

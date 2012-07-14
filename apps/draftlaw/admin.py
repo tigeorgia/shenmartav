@@ -6,7 +6,7 @@ __docformat__ = 'epytext en'
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-from .models import DraftLaw, DraftLawDiscussion, DraftLawChild, News
+from .models import DraftLaw, DraftLawDiscussion, DraftLawChild
 
 
 
@@ -23,8 +23,3 @@ class DraftLawAdmin (TranslationAdmin):
         InlineChild
     ]
 admin.site.register(DraftLaw, DraftLawAdmin)
-
-
-class NewsAdmin (TranslationAdmin):
-    pass
-admin.site.register(News, NewsAdmin)

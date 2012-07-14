@@ -15,7 +15,10 @@
 
     <div id="news">
         <h2>{% trans 'Parliament Weekly' %}</h2>
-        <div id="item"></div>
+        <div id="post">
+            <div>{{ post.tease }}</div>
+            <div class="more"><a href="{{ post.get_absolute_url }}" title="{% trans 'More' %}">{% trans 'More' %} &raquo;</a></div>
+        </div>
     </div>
 
     <div id="alert">
@@ -36,6 +39,5 @@
 
 <script type="text/javascript">
 var URL_DraftLawQuery = '{% url draftlaw_query 0 %}';
-var URL_DraftLawNews = '{% url draftlaw_news 1 %}';
 var URL_DraftLawAlert = '{% url draftlaw_alert 1 %}';
 </script>

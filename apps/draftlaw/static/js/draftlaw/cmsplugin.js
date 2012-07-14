@@ -6,7 +6,6 @@ DraftLawCMSPlugin = {
     urlQuery: null,
     form: null,
     query: null,
-    news: null,
     alert: null,
 
 
@@ -50,27 +49,6 @@ DraftLawCMSPlugin = {
     },
 
 
-    loadNewsDone: function (responseText, textStatus, XMLHttpRequest) {
-        $('#draftlaw #news #prev').click(function () {
-            var url = $(this).attr('href');
-            DraftLawCMSPlugin.news.load(url, DraftLawCMSPlugin.loadNewsDone);
-            return false;
-        });
-        $('#draftlaw #news #next').click(function () {
-            var url = $(this).attr('href');
-            DraftLawCMSPlugin.news.load(url, DraftLawCMSPlugin.loadNewsDone);
-            return false;
-        });
-    },
-
-
-    setupNews: function () {
-        DraftLawCMSPlugin.news = $('#draftlaw #news #item');
-        url = URL_DraftLawNews;
-        DraftLawCMSPlugin.news.load(url, DraftLawCMSPlugin.loadNewsDone);
-    },
-
-
     loadAlertDone: function (responseText, textStatus, XMLHttpRequest) {
         $('#draftlaw #alert #prev').click(function () {
             var url = $(this).attr('href');
@@ -100,7 +78,6 @@ DraftLawCMSPlugin = {
 
         DraftLawCMSPlugin.setupForm();
         DraftLawCMSPlugin.setupFind();
-        DraftLawCMSPlugin.setupNews();
         DraftLawCMSPlugin.setupAlert();
     }
 };

@@ -15,7 +15,7 @@ except ImportError:
     from cms.utils import set_language_changer
 
 from .models import DraftLaw, DraftLawDiscussion,\
-    News as NewsModel, Alert as AlertModel
+    Alert as AlertModel
 
 
 
@@ -179,15 +179,6 @@ class Info (DetailView):
     context_object_name = 'obj'
     model = DraftLaw
     template_name = 'draftlaw/info.html'
-
-
-
-class News (ListView):
-    """Implements a view with one paged news item."""
-    template_name = 'draftlaw/news.html'
-    context_object_name = 'news'
-    queryset = NewsModel.objects.all().order_by('-pub_date')
-    paginate_by = 1
 
 
 

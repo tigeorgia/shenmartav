@@ -66,13 +66,6 @@ class DraftLawTest (TestCase):
         self.assertContains(response, 'id="item-8"')
 
 
-    def test_News (self):
-        url = reverse('draftlaw_news', args=[1])
-        response = self.client.get(url)
-        self.assertContains(response, 'draft law news!')
-        self.assertTemplateUsed(response, 'draftlaw/news.html')
-
-
     def test_Alert (self):
         url = reverse('draftlaw_alert', args=[1])
         response = self.client.get(url)
