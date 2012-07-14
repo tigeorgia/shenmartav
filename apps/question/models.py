@@ -6,8 +6,7 @@ Depends on representative.
 """
 __docformat__ = 'epytext en'
 
-from datetime import datetime
-import urllib2, copy
+import urllib2, copy, datetime
 
 from cms.models.pluginmodel import CMSPlugin
 from django.core.mail import EmailMessage
@@ -28,12 +27,21 @@ class PublicManager (models.Manager):
         return qs.filter(is_public=True)
 
 
+
+class AnsweredManager (models.Manager):
+    """Manager to return answered public questions."""
+    def get_query_set(self):
+        qs = super(AnsweredManager, self).get_query_set()
+        return qs.filter(answer__isnull=False).exclude(answer__exact='')
+
+
+
 class Question (models.Model):
     """A question."""
     #: if question is public
     is_public = models.BooleanField(default=False, help_text=_('Is this question public?'))
     #: when the question was asked
-    date = models.DateField(default=datetime.now, help_text=_('When Question was asked'))
+    date = models.DateField(default=datetime.datetime.now, help_text=_('When Question was asked'))
     #: first name of the questioner
     first_name = models.CharField(max_length=255, verbose_name=_('First Name'), help_text=_('First Name of the Questioner'))
     #: last name of the questioner
@@ -56,6 +64,7 @@ class Question (models.Model):
     #: managers
     objects = models.Manager()
     public = PublicManager()
+    answered = AnsweredManager()
 
 
     class Meta:
@@ -106,11 +115,11 @@ class Question (models.Model):
 
     def _set_percentage_answered (self):
         """Sets the percentage of questions answered by self's representative."""
-        qs = Question.public.filter(representative=self.representative)
-        total = qs.count()
-
-        qs = qs.filter(answer__isnull=False).exclude(answer__exact='')
-        answered = qs.count()
+        pk = self.representative.pk
+        total = Question.public.filter(representative=pk).count()
+        two_weeks_ago = datetime.date.today() - datetime.timedelta(14)
+        answered = Question.answered.filter(
+            representative=pk, date__lt=two_weeks_ago).count()
 
         try:
             self.representative.answered = (answered * 100.) / total

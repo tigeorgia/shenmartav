@@ -15,14 +15,14 @@ class QuestionPlugin (CMSPluginBase):
 
 
     def _add_activity (self, representative):
+        questions = Question.public.filter(representative=representative).count()
+        answered = Question.answered.filter(representative=representative).count()
         representative.unanswered = {
-            'absolute': Question.public.filter(
-                representative=representative, answer__isnull=True).count(),
+            'absolute': questions - answered,
             'relative': 100 - representative.answered
         }
         representative.answered = {
-            'absolute': Question.public.filter(
-                representative=representative, answer__isnull=False).count(),
+            'absolute': answered,
             'relative': representative.answered
         }
 
