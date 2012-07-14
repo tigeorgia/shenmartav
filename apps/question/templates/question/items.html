@@ -4,8 +4,10 @@
         <td class="representative-name">
             {% with representative=item.representative %}<a name="item-{{ item.pk }}" title="{% trans 'Answered' %} {{ representative.answered }}%" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a>{% endwith %}
         </td>
-        <td>{{ item.question|slice:":100" }} ...</td>
-        <td>{{ item.date|date:"Y-m-d" }}</td>
+        <td>
+            {{ item.date|date:"Y.m.d" }}
+            {{ item.question|slice:":200" }} ...
+        </td>
         <td><div class="status {% if item.answer %}answered">0{% else %}unanswered">1{% endif %}</div></td>
     </tr>
 {% endfor %}
