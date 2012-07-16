@@ -221,13 +221,13 @@ class VotingRecords (DetailView):
 
 
 
-class MemberInfo (DetailView):
+class Info (DetailView):
     context_object_name = 'obj'
     model = Representative
-    template_name = 'representative/memberinfo.html'
+    template_name = 'representative/info.html'
 
     def get_context_data(self, **kwargs):
-        context = super(MemberInfo, self).get_context_data(**kwargs)
+        context = super(Info, self).get_context_data(**kwargs)
         return context
 
 

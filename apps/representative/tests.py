@@ -106,11 +106,11 @@ class RepresentativeTest (TestCase):
         self.assertTemplateUsed(response, 'representative/unit.html')
 
 
-    def test_MemberInfo (self):
-        url = reverse('representative_memberinfo', args=[1])
+    def test_info (self):
+        url = reverse('representative_info', args=[1])
         response = self.client.get(url)
         self.assertContains(response, u'აბულაშვილი ნუგზარი')
-        self.assertTemplateUsed(response, 'representative/memberinfo.html')
+        self.assertTemplateUsed(response, 'representative/info.html')
 
 
     def test_Votingrecords (self):

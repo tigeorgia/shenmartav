@@ -8,7 +8,7 @@
 <div id="representative">
     <div id="info" class="column shadow">
         <h1>{% trans 'Who Makes Laws' %}</h1>
-        <div id="data">{% include 'representative/memberinfo.html' %}</div>
+        <div id="data">{% include 'representative/info.html' %}</div>
         <img class="column-bg" src="{{ STATIC_URL }}img/bg-person.png" width="117" height="119" />
     </div>
     <div id="select">
@@ -62,7 +62,7 @@ var URL_Units = {
     'ajara': '{% url unit_ajara %}',
     'tbilisi': '{% url unit_tbilisi %}'
 };
-var URL_MemberInfo = '{% url representative_memberinfo 0 %}';
+var URL_Info = '{% url representative_info 0 %}';
 </script>
 </div>
 {% endblock %}

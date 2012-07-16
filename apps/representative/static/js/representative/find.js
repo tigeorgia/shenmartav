@@ -3,10 +3,9 @@
  */
 
 RepresentativeFind = {
-    isLoadingMemberInfo: false,
+    isLoadingInfo: false,
     isLoadingUnit: false,
     empty: '/static/img/empty.png',
-    memberInfoTop: 0,
     unit: {
         'parliament': null,
         'ajara': null,
@@ -14,7 +13,7 @@ RepresentativeFind = {
     },
     activeUnit: null,
     noneSelected: '',
-    urlMemberInfo: null,
+    urlInfo: null,
     showOfferFulltextSearch: false,
     inputDelay: 2000,
     inputTime: 0,
@@ -120,20 +119,20 @@ RepresentativeFind = {
     },
 
 
-    setMemberInfoDone: function () {
+    setInfoDone: function () {
         Base.enable('#representative #info');
-        RepresentativeFind.isLoadingMemberInfo = false;
+        RepresentativeFind.isLoadingInfo = false;
     },
 
 
-    setMemberInfo: function (elem) {
-        if (RepresentativeFind.isLoadingMemberInfo) return;
-        RepresentativeFind.isLoadingMemberInfo = true;
+    setInfo: function (elem) {
+        if (RepresentativeFind.isLoadingInfo) return;
+        RepresentativeFind.isLoadingInfo = true;
 
         pk = $(elem).attr('id');
         pk = parseInt(pk.slice(7, pk.length)); // 7 == 'member-'
         if (!pk) {
-            RepresentativeFind.isLoadingMemberInfo = false;
+            RepresentativeFind.isLoadingInfo = false;
             return;
         }
 
@@ -141,22 +140,22 @@ RepresentativeFind = {
         $('.member').removeClass('member-selected');
         $(elem).addClass('member-selected');
 
-        $.ajax(RepresentativeFind.urlMemberInfo + pk + '/', {
+        $.ajax(RepresentativeFind.urlInfo + pk + '/', {
             success: function (data, textStatus, jqXHR) {
                 $('#representative #info #data').html(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 var msg = '<h3>' + jqXHR.status + ' ' + errorThrown + '</h3>';
                 $('#representative #info #data').html(msg);
-                RepresentativeFind.setMemberInfoDone();
+                RepresentativeFind.setInfoDone();
             }
-        }).done(RepresentativeFind.setMemberInfoDone);
+        }).done(RepresentativeFind.setInfoDone);
     },
 
 
-    setupMemberInfo: function () {
-        RepresentativeFind.urlMemberInfo = URL_MemberInfo.slice(0,
-            URL_MemberInfo.length - 2); // slice off '0/'
+    setupInfo: function () {
+        RepresentativeFind.urlInfo = URL_Info.slice(0,
+            URL_Info.length - 2); // slice off '0/'
         RepresentativeFind.noneSelected = $('#representative #info #data').html();
     },
 
@@ -176,7 +175,7 @@ RepresentativeFind = {
             scrollTop: $(member).offset().top - 100
         }, 'slow');
 
-        RepresentativeFind.setMemberInfo($(member));
+        RepresentativeFind.setInfo($(member));
     },
 
 
@@ -199,7 +198,7 @@ RepresentativeFind = {
 
     hoverIntentMembers: function () {
         var config = {
-             over: function () { RepresentativeFind.setMemberInfo($(this)); },
+             over: function () { RepresentativeFind.setInfo($(this)); },
              out: function () {},
              interval: RepresentativeFind.hoverInterval,
         };
@@ -259,7 +258,7 @@ RepresentativeFind = {
 
     setup: function () {
         RepresentativeFind.setupFilters();
-        RepresentativeFind.setupMemberInfo();
+        RepresentativeFind.setupInfo();
         RepresentativeFind.setupUnit();
         RepresentativeFind.loadUnit('parliament');
     },

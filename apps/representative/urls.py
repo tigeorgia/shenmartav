@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^unit/parliament/$', UnitParliament.as_view(), name='unit_parliament'),
     url(r'^unit/ajara/$', UnitAjara.as_view(), name='unit_ajara'),
     url(r'^unit/tbilisi/$', UnitTbilisi.as_view(), name='unit_tbilisi'),
-    url(r'^memberinfo/(?P<pk>\d+)/$', MemberInfo.as_view(), name='representative_memberinfo'),
+    url(r'^info/(?P<pk>\d+)/$', Info.as_view(), name='representative_info'),
     url(r'^votingrecords/(?P<pk>\d+)/$', VotingRecords.as_view(), name='representative_votingrecords'),
 
     # AJAX calls answered by JSON
