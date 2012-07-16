@@ -69,7 +69,7 @@
         </tr>
         <tr>
             <td>{% trans 'Birth Date & Place' %}</td>
-            <td>{{ obj.date_of_birth }}, {{ obj.pob }}</td>
+            <td>{{ obj.date_of_birth|date:'j F Y' }}, {{ obj.pob }}</td>
         </tr>
         <tr>
             <td>{% trans 'Family Status' %}</td>
