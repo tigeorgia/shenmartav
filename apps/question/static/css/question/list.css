@@ -5,7 +5,7 @@
 #question #list {
     float: left;
     width: 60%;
-    height: 750px;
+    height: 650px;
     overflow: auto;
     padding-right: .5em;
 }
