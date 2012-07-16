@@ -1,5 +1,5 @@
 {% extends 'representative/base.html' %}
-{% load thumbnail sekizai_tags menu_tags i18n %}
+{% load thumbnail sekizai_tags i18n representative %}
 
 {% block representative %}
 {% addtoblock "css" %}
@@ -63,13 +63,13 @@
         <tr>
             <td>{% trans 'Work Experience' %}</td>
             <td id="workexperience"><ul>{% for experience in obj.position_set.all %}
-                        <li>{{ experience.start_date|date:'j F Y' }} {% if experience.end_date %}- {{ experience.end_date|date:'j F Y' }}{% endif %} {{ experience.title }}</li>
+                        <li>{{ experience.start_date|repdate }} {% if experience.end_date %}- {{ experience.end_date|repdate }}{% endif %} {{ experience.title }}</li>
             {% endfor %}</ul></td>
             </li>
         </tr>
         <tr>
             <td>{% trans 'Birth Date & Place' %}</td>
-            <td>{{ obj.date_of_birth|date:'j F Y' }}, {{ obj.pob }}</td>
+            <td>{{ obj.date_of_birth|repdate }}, {{ obj.pob }}</td>
         </tr>
         <tr>
             <td>{% trans 'Family Status' %}</td>
