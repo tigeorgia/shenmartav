@@ -32,7 +32,10 @@ def repdate (approx):
     @return: nicely formatted date
     @rtype: str
     """
-    if approx.future:
+    if not approx:
+        return ''
+
+    if hasattr(approx, 'future') and approx.future:
         return _(u'future')
     elif approx.year and approx.month and approx.day:
         return dateformat.format(approx, 'j F Y').encode('utf-8')
