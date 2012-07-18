@@ -3,15 +3,15 @@
  */
 
 .opened {
-    left: 255px;
-    width: 775px;
-    overflow: auto;
+    left: 25%;
+    width: 61%;
     padding: 1em;
 }
 .opened .date {
     border-bottom: 1px solid #aaa;
 }
 .opened .breadcrumb {
+    margin-left: 0;
     margin-top: 0;
 }
 

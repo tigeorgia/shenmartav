@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-16 20:47+0200\n"
+"POT-Creation-Date: 2012-07-18 08:00+0200\n"
 "PO-Revision-Date: 2012-06-29 11:11+0400\n"
 "Last-Translator: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language-Team: tornike <LL@li.org>\n"
@@ -1483,6 +1483,14 @@ msgstr "მოძებნე წარმოიმადგენელი"
 #: templates/search/search.html:19
 msgid "Results"
 msgstr "შედეგი"
+
+#: apps/representative/templatetags/representative.py:39
+msgid "future"
+msgstr ""
+
+#: apps/representative/templatetags/representative.py:47
+msgid "invalid"
+msgstr ""
 
 #: apps/votingrecord/cms_app.py:6
 msgid "Voting Record App"

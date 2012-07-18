@@ -22,7 +22,7 @@
     position: relative;
 }
 #contact form, #contact p {
-    margin-left: 1.3em;
+    margin-left: .5em;
 }
 #contact input, textarea {
     width: 100%;
