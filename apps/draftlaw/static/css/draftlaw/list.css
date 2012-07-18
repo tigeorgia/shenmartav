@@ -105,9 +105,10 @@
 }
 
 #draftlaw #info {
-    padding-left: 1.3em;
+    padding-left: .5em;
     height: 700px;
     overflow: auto;
+    background: #fff url('../../img/bg-white.jpg') repeat 0 0;
 }
 #draftlaw #info #discussions ul {
     padding-left: 1em;
