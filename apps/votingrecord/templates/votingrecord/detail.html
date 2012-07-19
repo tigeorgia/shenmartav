@@ -26,7 +26,7 @@
         {% if obj.results %}
             <li>{% trans 'Results' %}:
                 <p>{% trans 'Yes' %}: {{ counts.yes }}, {% trans 'No' %}: {{ counts.no }}, {% trans 'Abstained' %}: {{ counts.abstained }}, {% trans 'Absent' %}: {{ counts.absent }}, {% trans 'Total' %}: {{ counts.total }}</p>
-                <ul id="results">{% for res in obj.results.all %}
+                <ul id="results" class="scroll-pane">{% for res in obj.results.all %}
                     <li class="{{ res.css }}">{% if res.representative %}
                     <a href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '32x30' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="32" height="30" border="0" /> {{ res.name }}</a>: {{ res.vote }}
                     {% else %}

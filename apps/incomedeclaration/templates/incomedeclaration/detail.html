@@ -5,7 +5,7 @@
 <div id="incomedeclaration">
     <h2 class="heading">{% trans 'Income Declaration' %} {{ obj }}</h2>
     <div class="body">
-        <ul id="detail">
+        <ul id="detail" class="scroll-pane">
             <li>{% trans 'Date' %}: {{ obj.date }}</li>
         {% if obj.representative %}
             <li><a href="{{ obj.representative.get_absolute_url }}">{% trans 'Representative' %} {{ obj.representative.name }}</a></li>

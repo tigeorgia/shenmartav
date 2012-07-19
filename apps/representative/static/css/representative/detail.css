@@ -35,23 +35,22 @@
 
 
 
-#representative #votingrecords {
+#representative #container-votingrecords {
     display: none;
-}
-#representative #votingrecords ul {
     height: 300px;
     overflow: auto;
 }
-#representative .vote-yes, #representative .vote-yes a {
+#representative #votingrecords.vote-yes,
+#representative #votingrecords .vote-yes a {
     color: #0a0;
 }
-#representative .vote-no, #representative .vote-no a {
+#representative #votingrecords .vote-no, #representative #votingrecords .vote-no a {
     color: #a00;
 }
-#representative .vote-abstention, #representative .vote-abstention a {
+#representative #votingrecords .vote-abstention, #representative #votingrecords .vote-abstention a {
     color: #aa0;
 }
-#votingrecord .vote-absent, #representative .vote-absent a {
+#representative #votingrecords .vote-absent, #representative #votingrecords .vote-absent a {
     color: #222;
 }
 

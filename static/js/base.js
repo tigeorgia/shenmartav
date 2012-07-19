@@ -1,4 +1,18 @@
 Base = {
+    scrollOffset: 650,
+    scrollAPI: null,
+
+    watchScroll: function (elem, loadNextPage) {
+        Base.scrollAPI = $(elem).data('jsp');
+        $(elem).scroll(function () {
+            var pos = Base.scrollAPI.getContentPositionY() + Base.scrollOffset;
+            var height = Base.scrollAPI.getContentHeight();
+            if (pos >= height) {
+                loadNextPage();
+            }
+        });
+    },
+
     enable: function (elem) {
         elem = $(elem);
         elem.fadeTo('fast', 1);
@@ -16,6 +30,10 @@ Base = {
 
 
     setup: function () {
+        $('.scroll-pane').jScrollPane({
+            verticalDragMinHeight: 40,
+            verticalDragMaxHeight: 40,
+        });
     },
 }
 

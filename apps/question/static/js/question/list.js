@@ -8,7 +8,6 @@ QuestionList = {
     urlInfo: null,
     urlItems: null,
     nextPage: 1,
-    scrollOffset: 50,
 
 
     selectRepresentativeAskForm: function () {
@@ -81,6 +80,7 @@ QuestionList = {
     loadNextPageDone: function () {
         $('#question #list table').trigger('update');
         QuestionList.selectFromLocation();
+        Base.scrollAPI.reinitialise();
         Base.enable('#question #list');
         QuestionList.isLoadingNextPage = false;
     },
@@ -115,17 +115,6 @@ QuestionList = {
     },
 
 
-    watchScroll: function () {
-        $('#question #list').scroll(function () {
-            var pos = $(this).scrollTop() + $(this).height() + QuestionList.scrollOffset;
-            var height = $('#question #list #items').height();
-            if (pos >= height) {
-                QuestionList.loadNextPage();
-            }
-        });
-    },
-
-
     setup: function () {
         // slice off '0/'
         QuestionList.urlInfo = URL_QuestionInfo.slice(0,
@@ -134,8 +123,7 @@ QuestionList = {
             URL_QuestionItems.length - 2);
 
         QuestionList.hoverIntentQuestions();
-        QuestionList.watchScroll();
-
+        Base.watchScroll('#question #list', QuestionList.loadNextPage);
         $('#question #list table').tablesorter();
         QuestionList.loadNextPage();
     }

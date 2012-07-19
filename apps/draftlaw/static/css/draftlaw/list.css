@@ -27,7 +27,7 @@
 
 
 #draftlaw #container-list {
-    height: 700px;
+    height: 600px;
     overflow: auto;
     margin-top: 1em;
 }
@@ -65,7 +65,7 @@
 
 
 #draftlaw #list td {
-    padding: 1em 0 1em 1em;
+    padding: 1em 0 1em .5em;
     border-bottom: 1px solid #aaa;
     vertical-align: top;
     text-align: left;
@@ -106,7 +106,7 @@
 
 #draftlaw #info {
     padding-left: .5em;
-    height: 700px;
+    height: 600px;
     overflow: auto;
     background: #fff url('../../img/bg-white.jpg') repeat 0 0;
 }

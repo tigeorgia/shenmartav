@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <td><a id="button-votingrecords" href="{% url representative_votingrecords obj.pk %}">{% trans 'Voting Records' %}</a></td>
-            <td id="votingrecords"></td>
+            <td><div id="container-votingrecords" class="scroll-pane"><ul id="votingrecords"></ul></div></td>
         </tr>
         <tr>
             <td>{% trans 'Salary' %}</td>

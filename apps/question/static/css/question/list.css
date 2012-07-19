@@ -7,7 +7,6 @@
     width: 60%;
     height: 650px;
     overflow: auto;
-    padding-right: .5em;
 }
 
 #question #list table {

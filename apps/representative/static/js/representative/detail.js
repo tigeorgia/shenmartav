@@ -8,7 +8,8 @@ RepresentativeDetail = {
 
 
     loadVotingRecordsDone: function () {
-        $('#representative #data-text #votingrecords').show();
+        $('#representative #container-votingrecords').show();
+        $('#representative #container-votingrecords').data('jsp').reinitialise();
         Base.enable('#representative');
         RepresentativeDetail.isLoadingVotingRecord = false;
     },
@@ -22,12 +23,12 @@ RepresentativeDetail = {
         var url = $('#representative #data-text #button-votingrecords').attr('href');
         $.ajax(url, {
             success: function(data, textStatus, jqXHR) {
-                $('#representative #data-text #votingrecords').html(data);
+                $('#representative #votingrecords').html(data);
                 RepresentativeDetail.hasLoadedVotingRecord = true;
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 var msg = '<h3>' + jqXHR.status + ' ' + errorThrown + '</h3>';
-                $('#representative #data-text #votingrecords').html(msg);
+                $('#representative #votingrecords').html(msg);
                 RepresentativeDetail.loadVotingRecordsDone();
             }
         }).done(RepresentativeDetail.loadVotingRecordsDone);
@@ -36,7 +37,7 @@ RepresentativeDetail = {
 
     setupVotingRecords: function () {
         $('#representative #data-text #button-votingrecords').click(function() {
-            var elem = $('#representative #data-text #votingrecords');
+            var elem = $('#representative #container-votingrecords');
             if ($(elem).is(":visible")) {
                 $(elem).hide();
             } else {

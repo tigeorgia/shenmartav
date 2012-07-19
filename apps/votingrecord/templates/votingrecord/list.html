@@ -6,7 +6,7 @@
     <h2 class="heading">{% trans 'Voting Records' %}</h2>
 
     <div class="body">
-        <ul id="records">{% for record in object_list %}
+        <ul id="records" class="scroll-pane">{% for record in object_list %}
                 <li>{% if record.kan_id %}<a href="{{ record.get_absolute_url }}">{{ record }}</a>{% else %}{{ record }}{% endif %}</li>
         {% endfor %}</ul>
 

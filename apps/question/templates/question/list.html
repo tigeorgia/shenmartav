@@ -6,18 +6,16 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/list.css" media="all" />
 {% endaddtoblock %}
 <div id="question">
-    <div id="list">
-        <table>
-            <thead>
-            <tr>
-                <th class="heading" id="header-representative">{% trans 'Representative' %}</th>
-                <th class="heading" id="header-question">{% trans 'Question' %}</th>
-                <th class="heading" id="header-answered">{% trans 'Replied' %}</th>
-            </tr>
-            </thead>
-            <tbody id="items"><tbody>
-        </table>
-    </div>
+    <div id="list" class="scroll-pane"><table>
+        <thead>
+        <tr>
+            <th class="heading" id="header-representative">{% trans 'Representative' %}</th>
+            <th class="heading" id="header-question">{% trans 'Question' %}</th>
+            <th class="heading" id="header-answered">{% trans 'Replied' %}</th>
+        </tr>
+        </thead>
+        <tbody id="items"><tbody>
+    </table></div>
 
     <div id="sidebar">
         <div id="info"></div>

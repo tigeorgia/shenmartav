@@ -26,6 +26,6 @@
 }
 
 #incomedeclaration #detail {
-    max-height: 660px;
+    height: 550px;
     overflow: auto;
 }

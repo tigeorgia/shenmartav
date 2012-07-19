@@ -220,6 +220,8 @@ RepresentativeFind = {
             RepresentativeFind.activeUnit).show();
         $('#representative #filter-party').val('all');
 
+        $('#representative #unit').data('jsp').reinitialise();
+        console.log($('#representative #unit').data('jsp').getContentHeight());
         Base.enable('#representative #select');
         RepresentativeFind.isLoadingUnit = false;
     },
@@ -232,11 +234,11 @@ RepresentativeFind = {
         Base.disable('#representative #select');
         $("#representative #filter-form input").attr('disabled', 'disabled');
         $('#representative #unit').toggle('blind');
-        $('#representative #unit').html('');
+        $('#representative #unit #members').html('');
         $('#representative #info #data').html(RepresentativeFind.noneSelected);
 
         if (RepresentativeFind.unit[unit]) {
-            $('#representative #unit').html(RepresentativeFind.unit[unit]);
+            $('#representative #unit #members').html(RepresentativeFind.unit[unit]);
             RepresentativeFind.activeUnit = unit;
             RepresentativeFind.loadUnitDone();
         } else {
@@ -244,11 +246,11 @@ RepresentativeFind = {
                 success: function(data, textStatus, jqXHR) {
                     RepresentativeFind.unit[unit] = data;
                     RepresentativeFind.activeUnit = unit;
-                    $('#representative #unit').html(data);
+                    $('#representative #unit #members').html(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     var msg = '<h3>' + jqXHR.status + ' ' + errorThrown + '</h3>';
-                    $('#representative #unit').html(msg);
+                    $('#representative #unit #members').html(msg);
                     RepresentativeFind.loadUnitDone();
                 }
             }).done(RepresentativeFind.loadUnitDone);

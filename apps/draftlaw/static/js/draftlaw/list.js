@@ -9,7 +9,6 @@ DraftLawList = {
     isLoadingNextPage: false,
     nextPage: 1,
     previousQuery: null,
-    scrollOffset: 50,
 
 
     setInfoDone: function () {
@@ -88,6 +87,7 @@ DraftLawList = {
 
     loadNextPageDone: function () {
         $('#draftlaw #list table').trigger('update');
+        Base.scrollAPI.reinitialise();
         Base.enable('#draftlaw #list');
         DraftLawList.isLoadingNextPage = false;
     },
@@ -122,17 +122,6 @@ DraftLawList = {
     },
 
 
-    watchScroll: function () {
-        $('#draftlaw #container-list').scroll(function () {
-            var pos = $(this).scrollTop() + $(this).height() + DraftLawList.scrollOffset;
-            var height = DraftLawList.items.height();
-            if (pos >= height) {
-                DraftLawList.loadNextPage();
-            }
-        });
-    },
-
-
     setupSearch: function () {
         $('#draftlaw #search').submit(function () {
             DraftLawList.loadNextPage();
@@ -159,7 +148,7 @@ DraftLawList = {
 
         DraftLawList.setupSearch();
 
-        DraftLawList.watchScroll();
+        Base.watchScroll('#draftlaw #container-list', DraftLawList.loadNextPage);
         $('#draftlaw #list table').tablesorter();
 
         DraftLawList.loadNextPage();
