@@ -1,4 +1,4 @@
-from haystack.indexes import *
+from haystack.indexes import SearchIndex, CharField
 from haystack import site
 
 from .models import Representative
