@@ -8,8 +8,8 @@ psycopg2
 BeautifulSoup
 
 # Django stuff
-django-mptt==0.4.2
-django-reversion==1.4
+django-mptt
+django-reversion
 South
 django-cms
 sorl-thumbnail
