@@ -136,8 +136,12 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 }
 
 #header {
-    margin: .5em 0 0 8%;
-    padding: 0 .5em;
+    margin: .5em auto;
+    text-align: center;
+}
+.column #header {
+    text-align: left;
+    margin-left: 1em;
 }
 #header #logo {
     text-shadow: .1em .1em #9b0000;
@@ -184,27 +188,28 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 }
 
 #footer {
-    margin-left: 8%;
     position: absolute;
     bottom: 2em;
     z-index: 2;
-    padding: 0 .5em;
-    left: 0;
+    left: 50%;
+    margin-left: -25%;
+}
+.column #footer {
+    left: 1em;
+    margin-left: 0;
 }
 #footer #socialbuttons {
     list-style: none;
     margin-bottom: 1em;
 }
+#footer #socialbuttons li {
+    text-align: center;
+}
 .column #footer #socialbuttons li {
     display: inline;
 }
-#footer #socialbuttons li {
-    margin: .2em;
-}
 #footer #sponsors {
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 #footer #sponsors li {
     display: inline;
@@ -315,6 +320,7 @@ img.column-bg {
 .breadcrumb {
     color: #aaa;
     margin: 1em;
+    height: 3%;
 }
 .breadcrumb a {
     color: #aaa !important;
@@ -344,7 +350,6 @@ img.column-bg {
 }
 .folded img {
     margin-top: 1.2em;
-    padding-bottom: 750px;
 }
 #folded-nav {
     width: 6%;
@@ -360,10 +365,6 @@ img.column-bg {
 
 #folded-nav #google_translate_element a span:first-child {
     display: none;
-}
-#folded-nav #header #navigation,
-#folded-nav #footer #socialbuttons {
-    margin-left: 15px;
 }
 #folded-nav #footer #sponsors li {
     display: block;

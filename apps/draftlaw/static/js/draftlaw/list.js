@@ -12,6 +12,7 @@ DraftLawList = {
 
 
     setInfoDone: function () {
+        Base.setHeightScrollPane('#draftlaw', '#draftlaw #container-info', 100);
         Base.enable('#draftlaw #info');
         DraftLawList.isLoadingInfo = false;
     },
@@ -87,7 +88,7 @@ DraftLawList = {
 
     loadNextPageDone: function () {
         $('#draftlaw #list table').trigger('update');
-        Base.scrollAPI.reinitialise();
+        Base.setHeightScrollPane('#draftlaw', '#draftlaw #container-list', 90);
         Base.enable('#draftlaw #list');
         DraftLawList.isLoadingNextPage = false;
     },

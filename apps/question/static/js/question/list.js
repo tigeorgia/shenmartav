@@ -80,6 +80,7 @@ QuestionList = {
     loadNextPageDone: function () {
         $('#question #list table').trigger('update');
         QuestionList.selectFromLocation();
+        Base.setHeightScrollPane('#question', '#question #list', 100);
         Base.scrollAPI.reinitialise();
         Base.enable('#question #list');
         QuestionList.isLoadingNextPage = false;

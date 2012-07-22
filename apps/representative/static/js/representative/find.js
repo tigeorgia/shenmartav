@@ -1,5 +1,5 @@
 /*
- * Javascript file for app Representative
+ * Javascript file for app representative find
  */
 
 RepresentativeFind = {
@@ -19,6 +19,7 @@ RepresentativeFind = {
     inputTime: 0,
     reallySubmitSearch: false,
     hoverInterval: 300,
+    heightUnit: 70, // in %
 
 
     filterElectionType: function (type) {
@@ -218,7 +219,10 @@ RepresentativeFind = {
             RepresentativeFind.activeUnit).show();
         $('#representative #filter-party').val('all');
 
-        $('#representative #unit').data('jsp').reinitialise();
+        Base.setHeightScrollPane(
+            '#representative #select',
+            '#representative #unit',
+            RepresentativeFind.heightUnit);
         Base.enable('#representative #select');
         RepresentativeFind.isLoadingUnit = false;
     },

@@ -4,9 +4,14 @@
 
 .opened {
     left: 6%;
+    width: 86%;
 }
 #folded-who, .breadcrumb {
     display: none;
+}
+
+.opened #representative {
+    height: 100% !important;
 }
 
 #representative {
@@ -50,6 +55,11 @@
     float: left;
     margin-left: .5em;
     width: 71%;
+    height: 100%;
+}
+#representative #select > form {
+    height: 10%;
+    margin-bottom: .5em;
 }
 #representative #select ul, #representative #select #offer-fulltext-search {
     padding-left: 1em;
@@ -63,7 +73,7 @@
 #representative #filter {
     font-family: "zwo-geo-light", Georgia, Times, serif;
     margin: .5em 0 1em 1em;
-    width: 99%;
+    width: 98%;
 }
 #representative #filter #cell-text {
     width: 50%;
@@ -93,7 +103,7 @@
 }
 
 #representative #unit {
-    height: 550px;
+    height: 300px;
     overflow: auto;
 }
 
@@ -163,9 +173,10 @@
 
 
 #representative #unit-select {
-    margin: 2em auto;
+    margin: 1em auto;
     text-align: center;
     font-family: "zwo-geo-light", Georgia, Times, serif;
+    height: 5%;
 }
 #representative #unit-slider {
     margin: 0 15%;

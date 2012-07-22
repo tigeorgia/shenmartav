@@ -27,7 +27,7 @@
 
 
 #draftlaw #container-list {
-    height: 600px;
+    height: 300px;
     overflow: auto;
     margin-top: 1em;
 }
@@ -99,6 +99,8 @@
     float: left;
     margin-left: 1em;
     width: 38%;
+    height: 300px;
+    overflow: auto;
 }
 #draftlaw #container-info > h2 {
     margin-top: 0;
@@ -106,8 +108,6 @@
 
 #draftlaw #info {
     padding-left: .5em;
-    height: 600px;
-    overflow: auto;
     background: #fff url('../../img/bg-white.jpg') repeat 0 0;
 }
 #draftlaw #info #discussions ul {

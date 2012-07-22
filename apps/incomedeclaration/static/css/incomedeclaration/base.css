@@ -22,10 +22,16 @@
 
 #incomedeclaration {
     position: relative;
+    height: 95%;
     padding: 0 1em;
 }
 
+
+#incomedeclaration .body {
+    height: 90%;
+}
+
 #incomedeclaration #detail {
-    height: 550px;
+    height: 300px;
     overflow: auto;
 }

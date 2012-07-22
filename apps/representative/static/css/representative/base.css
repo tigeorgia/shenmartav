@@ -22,10 +22,14 @@
 
 
 
+.opened > #representative {
+    height: 95%; /* should be 98% */
+    overflow: auto;
+}
+
 #representative {
     position: relative;
     padding: 0 1em;
-    height: 100%;
 }
 
 
@@ -47,7 +51,7 @@
 
 #representative #income,
 #representative #attendance {
-    margin: 3em 0;
+    margin: 1em 0;
 }
 #representative #income h2,
 #representative #attendance h2 {

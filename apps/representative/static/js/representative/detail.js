@@ -10,6 +10,7 @@ RepresentativeDetail = {
     loadVotingRecordsDone: function () {
         $('#representative #container-votingrecords').show();
         $('#representative #container-votingrecords').data('jsp').reinitialise();
+        $('#representative').data('jsp').reinitialise();
         Base.enable('#representative');
         RepresentativeDetail.isLoadingVotingRecord = false;
     },
