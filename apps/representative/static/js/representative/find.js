@@ -25,9 +25,7 @@ RepresentativeFind = {
             $('#representative #filter-text').val('');
             $('#representative #filter-party').val('all');
 
-            console.log(type);
             if (type == 2) {
-                console.log('majori');
                 $('#representative .member.majoritarian').show();
                 $('#representative .member.partylist').hide();
             } else if (type == 1) {
@@ -221,7 +219,6 @@ RepresentativeFind = {
         $('#representative #filter-party').val('all');
 
         $('#representative #unit').data('jsp').reinitialise();
-        console.log($('#representative #unit').data('jsp').getContentHeight());
         Base.enable('#representative #select');
         RepresentativeFind.isLoadingUnit = false;
     },
