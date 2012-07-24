@@ -165,15 +165,7 @@ class RepresentativeTest (TestCase):
         self.assertEqual(r.attendance_record, '641/791 (81.0%)')
 
         result = {
-            'percentage': '81.0',
-            'attended': {
-                'relative': '81.0',
-                'absolute': 641,
-            },
-            'absent': {
-                'relative': '19.0',
-                'absolute': 150,
-            }
+            'absent': 150, 'attended': 641, 'percentage': u'81.0%', 'total': 791
         }
         self.assertEqual(r.attendance, result)
 
@@ -190,6 +182,6 @@ class RandomRepresentativeTest (TestCase):
         rr = RandomRepresentative.get()
 
         if  days_passed >= 1:
-            self.assertNotEqual(current.representative, rr)
+            self.assertNotEqual(current.representative.pk, rr.pk)
         else:
-            self.assertEqual(current.representative, rr)
+            self.assertEqual(current.representative.pk, rr.pk)

@@ -41,14 +41,14 @@ class VotingRecordTest (TestCase):
 
     def test_get_votecounts (self):
         vr = VotingRecord.objects.get(pk=1110)
-        counts = {'abstention': 0, 'yes': 0, 'total': 0, 'absent': 0, 'no': 0}
+        counts = {'abstained': 0, 'yes': 0, 'total': 0, 'absent': 0, 'no': 0}
         self.assertEqual(VotingRecordResult.get_counts(record=vr), counts)
 
         r = Representative.objects.get(pk=2)
         self.assertEqual(VotingRecordResult.get_counts(representative=r), counts)
 
         vr = VotingRecord.objects.get(pk=136)
-        counts = {'abstention': 0, 'yes': 1, 'total': 4, 'absent': 0, 'no': 3}
+        counts = {'abstained': 0, 'yes': 1, 'total': 4, 'absent': 0, 'no': 3}
         self.assertEqual(VotingRecordResult.get_counts(record=vr), counts)
 
         r = Representative.objects.get(pk=1)
