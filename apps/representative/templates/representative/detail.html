@@ -32,6 +32,18 @@
             <td>{% trans 'Elected Date' %}</td>
             <td>{{ obj.elected }}</td>
         </tr>
+{% if obj.faction %}
+        <tr>
+            <td>{% trans 'Faction' %}</td>
+            <td>{{ obj.faction }}</td>
+        </tr>
+{% endif %}
+{% if obj.committee %}
+        <tr>
+            <td>{% ifequal obj.unit.id 1 %}{% trans 'Committee' %}{% else %}{% trans 'Commission' %}{% endifequal %}</td>
+            <td>{{ obj.committee }}</td>
+        </tr>
+{% endif %}
         <tr>
             <td>{% trans 'Activities' %}</td>
             <td>{{ obj.description }}</td>

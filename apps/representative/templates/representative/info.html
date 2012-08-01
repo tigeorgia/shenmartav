@@ -11,7 +11,7 @@
 <div id="faction">{% trans 'Faction' %}: {{ obj.faction }}</div>
 {% endif %}
 {% if obj.committee %}
-<div id="committee">{% trans 'Committee' %}: {{ obj.committee }}</div>
+<div id="committee">{% ifequal obj.unit.id 1 %}{% trans 'Committee' %}{% else %}{% trans 'Commission' %}{% endifequal %}: {{ obj.committee }}</div>
 {% endif %}
 <div id="activities"><span class="darker">{% trans 'Activities' %}</span>:<br /><span class="smaller">{{ obj.description }}<span></div>
 <div>{% include 'representative/attendance.html' %}</div>
