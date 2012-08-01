@@ -18,6 +18,7 @@
         </div>
         <div id="info">
             <div id="name" class="representative-name"><a title="{{ obj.name }}" href="{% url representative_find %}#member-{{ obj.pk }}">{{ obj.name }}</a></div>
+            <div id="unit">{{ obj.unit.name }}</div>
             <div id="party">{{ obj.party }}</div>
         </div>
         <div style="clear:both"></div>

@@ -11,7 +11,7 @@
             <div id="photo">{% thumbnail obj.photo '100x84' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" /></div>
             <div id="short">
                 <div id="name" class="evenbigger representative-name">{{ obj.name }}</div>
-                <div id="majoritarian-partylist">{% if obj.is_majoritarian %}{% trans 'Majoritarian' %}{% else %}{% trans 'Partylist' %}{% endif %}</div>
+                <div id="majoritarian-partylist-unit">{% if obj.is_majoritarian %}{% trans 'Majoritarian' %}{% else %}{% trans 'Partylist' %}{% endif %}, {{ obj.unit.name }}</div>
                 <div id="party">
                     <div id="party-logo"><a href="{{ obj.party.url }}" title="{{ obj.party }}"><img src="{{ STATIC_URL }}img/parties/logo-{{ obj.party.acronym }}.png" width="40" height="40" border="0" /></a></div>
                     <div id="party-name">{{ obj.party }}</div>

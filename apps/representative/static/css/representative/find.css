@@ -102,7 +102,7 @@
     padding: .2em;
 }
 
-#representative #unit {
+#representative #select #unit {
     height: 300px;
     overflow: auto;
 }

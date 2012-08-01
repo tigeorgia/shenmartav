@@ -207,7 +207,7 @@ RepresentativeFind = {
 
     loadUnitDone: function () {
         RepresentativeFind.hoverIntentMembers();
-        $('#representative #unit').toggle('blind');
+        $('#representative #select #unit').toggle('blind');
         RepresentativeFind.selectMemberFromLocation();
         RepresentativeFind.setupFiltersParty();
 
@@ -221,7 +221,7 @@ RepresentativeFind = {
 
         Base.setHeightScrollPane(
             '#representative #select',
-            '#representative #unit',
+            '#representative #select #unit',
             RepresentativeFind.heightUnit);
         Base.enable('#representative #select');
         RepresentativeFind.isLoadingUnit = false;
@@ -234,12 +234,12 @@ RepresentativeFind = {
         RepresentativeFind.isLoadingUnit = true;
         Base.disable('#representative #select');
         $("#representative #filter-form input").attr('disabled', 'disabled');
-        $('#representative #unit').toggle('blind');
-        $('#representative #unit #members').html('');
+        $('#representative #select #unit').toggle('blind');
+        $('#representative #select #unit #members').html('');
         $('#representative #info #data').html(RepresentativeFind.noneSelected);
 
         if (RepresentativeFind.unit[unit]) {
-            $('#representative #unit #members').html(RepresentativeFind.unit[unit]);
+            $('#representative #select #unit #members').html(RepresentativeFind.unit[unit]);
             RepresentativeFind.activeUnit = unit;
             RepresentativeFind.loadUnitDone();
         } else {
@@ -247,11 +247,11 @@ RepresentativeFind = {
                 success: function(data, textStatus, jqXHR) {
                     RepresentativeFind.unit[unit] = data;
                     RepresentativeFind.activeUnit = unit;
-                    $('#representative #unit #members').html(data);
+                    $('#representative #select #unit #members').html(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     var msg = '<h3>' + jqXHR.status + ' ' + errorThrown + '</h3>';
-                    $('#representative #unit #members').html(msg);
+                    $('#representative #select #unit #members').html(msg);
                     RepresentativeFind.loadUnitDone();
                 }
             }).done(RepresentativeFind.loadUnitDone);
