@@ -115,8 +115,8 @@
     padding: 6px 0 6px 6px;
     margin: 0 1px 1px 0;
     width: 106px;
-    height: 100px;
-    font-size: x-small;
+    height: 110px;
+    font-size: .9em;
 }
 
 #representative #members .member-selected {

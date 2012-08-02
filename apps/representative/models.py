@@ -210,6 +210,19 @@ class Representative (Person):
 
 
 
+    @property
+    def name_unit (self):
+        """
+        Avoid a browser bug with names longer than available width making
+        member boxes in the unit of the find page jump up a few pixels.
+        You probably need to apply the template tag filter 'linebreaksbr' when
+        using this.
+        """
+        # Note the replacement only done once - the box starts jumping again
+        # if there are three parts seperated by the linebreak *sigh*
+        return self.name.name.replace(' ', '\n', 1)
+
+
     def save (self, *args, **kwargs):
         super(Representative, self).save(*args, **kwargs)
 
