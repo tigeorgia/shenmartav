@@ -22,6 +22,9 @@ class DraftLawPlugin (CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context['instance'] = instance
-        context['post'] = Post.objects.published().order_by('-publish')[0]
+        try:
+            context['post'] = Post.objects.published().order_by('-publish')[0]
+        except IndexError:
+            context['post'] = None
         return context
 plugin_pool.register_plugin(DraftLawPlugin)
