@@ -37,6 +37,11 @@ class QuestionPlugin (CMSPluginBase):
             latest = None
         context['latest'] = latest
 
+        if not latest:
+            context['most_active'] = None
+            context['least_active'] = None
+            return context
+
         representatives = Representative.objects.all()
         try:
             representative = representatives.order_by('-answered')[0]

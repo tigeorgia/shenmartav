@@ -11,7 +11,7 @@
 <div id="question">
     <h1><a href="{% url question_list %}">{% trans 'Your Questions' %}</a></h1>
     <div class="subh1">{% trans 'You can submit questions to Representatives here' %}</div>
-
+{% if latest %}
     <div id="latest">
         <h2>{% trans 'Latest question' %}</h2>
         <div class="photo">
@@ -55,7 +55,7 @@
         </div>
         <div style="clear:both"></div>
     </div>
-
+{% endif %}
     <div id="ask">
         <h3>{% trans 'Choose a Representative' %}</h3>
         <form action="{% url question_ask_representative 0 %}" method="get">
