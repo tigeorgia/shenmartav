@@ -30,9 +30,12 @@ class QuestionPlugin (CMSPluginBase):
 
 
     def render(self, context, instance, placeholder):
-        answered = Question.public.filter(answer__isnull=False)
+        representatives = Representative.objects.all()
+        context['representatives'] = representatives
+        context['random'] = RandomRepresentative.get()
+
         try:
-            latest = answered.order_by('-date')[0]
+            latest = Question.answered.order_by('-date')[0]
         except IndexError:
             latest = None
         context['latest'] = latest
@@ -42,7 +45,6 @@ class QuestionPlugin (CMSPluginBase):
             context['least_active'] = None
             return context
 
-        representatives = Representative.objects.all()
         try:
             representative = representatives.order_by('-answered')[0]
             context['most_active'] = self._add_activity(representative)
@@ -54,9 +56,6 @@ class QuestionPlugin (CMSPluginBase):
             context['least_active'] = self._add_activity(representative)
         except IndexError:
             context['least_active'] = None
-
-        context['representatives'] = representatives
-        context['random'] = RandomRepresentative.get()
 
         return context
 
