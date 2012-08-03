@@ -100,22 +100,19 @@ class Unit (TemplateView):
         except UnitModel.DoesNotExist:
             return []
 
-        # 5x faster without extra sorting by last name
-#        members = [r for p in Party.objects.all() for r in p.representatives.filter(unit=unit)]
+        members = Representative.by_lastname_firstname_first(
+            Representative.objects.filter(unit=unit))
 
-        members = []
-        for party in unit.parties.all():
-            pmembers = party.representatives.filter(unit=unit)
-
-            # sort by last name
-            lastnames_members = {}
-            # FIXME: expensive loop, probably because of db hit for each str(m.name)
-            for m in pmembers:
-                lastname = str(m.name).split()[-1]
-                lastnames_members[lastname] = m
-            for key in sorted(lastnames_members.keys()):
-                members.append(lastnames_members[key])
-
+        for member in members:
+            """
+            Avoid a browser bug with names longer than available width making
+            member boxes in the unit of the find page jump up a few pixels.
+            You probably need to apply the template tag filter 'linebreaksbr' when
+            using this.
+            Note the replacement only done once - the box starts jumping again
+            if there are three parts seperated by the linebreak *sigh*
+            """
+            member['name'] = member['firstname_first'].replace(' ', '\n', 1)
         return members
 
 

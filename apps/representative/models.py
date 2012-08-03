@@ -16,7 +16,7 @@ try:
     from django.utils.timezone import utc
 except ImportError:
     utc = None
-from django.utils.translation import ugettext as _
+from django.utils.translation import get_language, ugettext as _
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 
 import glt
@@ -161,6 +161,82 @@ class Representative (Person):
         return None
 
 
+    @classmethod
+    def by_lastname_firstname_first (cls, representatives=None):
+        """Sort given representatives by lastname and show firstname first.
+
+        @param representatives: queryset of representatives to sort, using all() if None
+        @type representatives: QuerySet
+        @return: sorted list by lastname, including 'firstname_first'
+        @rtype: [{
+            'pk': int, 'slug': str, 'party__acronym': str,
+            'is_majoritarian': bool, 'photo': str,
+            'names__name': str, 'names__name_$lang': str,
+            'firstname_first': str
+        }]
+        """
+        if not representatives:
+            representatives = cls.objects.all()
+
+        by_lastname = {}
+        # losing language abstraction, gaining massive reduction in db queries
+        name_lang = 'names__name_' + get_language()[:2]
+        reps = representatives.values('pk', 'slug',
+            'party__acronym', 'is_majoritarian', 'photo',
+            'names__name', name_lang)
+        for r in reps:
+            try:
+                lastname = r[name_lang].split()[-1]
+                r['firstname_first'] = r[name_lang]
+            except AttributeError:
+                lastname = r['names__name'].split()[-1]
+                r['firstname_first'] = r['names__name']
+            by_lastname[lastname] = r
+
+        return [by_lastname[key] for key in sorted(by_lastname.keys())]
+
+
+    @classmethod
+    def by_lastname_lastname_first (cls, representatives=None, choices=False):
+        """Sort given representatives by lastname and show lastname first.
+
+        @param representatives: queryset of representatives to sort, using all() if None
+        @type representatives: QuerySet
+        @param choices: if list suitable for form choices should be returned
+        @type choices: bool
+        @return: sorted list by lastname, including 'lastname_first'
+        @rtype: [{
+            'pk': int, 'slug': str,
+            'names_name': str, 'names__name_$lang': str,
+            'lastname_first': str
+        }]
+
+        """
+        if not representatives:
+            representatives = cls.objects.all()
+
+        by_lastname = {}
+        # losing language abstraction, gaining massive reduction in db queries
+        name_lang = 'names__name_' + get_language()[:2]
+        reps = representatives.values('pk', 'slug', 'names__name', name_lang)
+        for r in reps:
+            try:
+                splitname = r[name_lang].split()
+            except AttributeError:
+                splitname = r['names__name'].split()
+            lastname = splitname.pop()
+            r['lastname_first'] = lastname + ' ' + ' '.join(splitname)
+            by_lastname[lastname] = r
+
+        if choices:
+            return [
+                (by_lastname[key]['pk'], by_lastname[key]['lastname_first'])
+                for key in sorted(by_lastname.keys())
+            ]
+        else:
+            return [by_lastname[key] for key in sorted(by_lastname.keys())]
+
+
     @property
     def total_income (self):
         return int(self.salary + self.other_income)
@@ -207,20 +283,6 @@ class Representative (Person):
             'total': total,
             'percentage': percentage[1:-1],
         }
-
-
-
-    @property
-    def name_unit (self):
-        """
-        Avoid a browser bug with names longer than available width making
-        member boxes in the unit of the find page jump up a few pixels.
-        You probably need to apply the template tag filter 'linebreaksbr' when
-        using this.
-        """
-        # Note the replacement only done once - the box starts jumping again
-        # if there are three parts seperated by the linebreak *sigh*
-        return self.name.name.replace(' ', '\n', 1)
 
 
     def save (self, *args, **kwargs):

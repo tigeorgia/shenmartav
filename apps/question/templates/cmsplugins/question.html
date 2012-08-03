@@ -60,7 +60,7 @@
         <h3>{% trans 'Choose a Representative' %}</h3>
         <form action="{% url question_ask_representative 0 %}" method="get">
             <select>{% for r in representatives %}
-                <option value="{{ r.pk }}"{% ifequal r.pk random.pk %}selected="selected"{% endifequal %}>{{ r.name }}</option>
+                <option value="{{ r.pk }}"{% ifequal r.pk random.pk %}selected="selected"{% endifequal %}>{{ r.lastname_first }}</option>
             {% endfor %}</select><input type="submit" value="{% trans 'Ask' %}" />
         </form>
     </div>

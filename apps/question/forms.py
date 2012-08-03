@@ -44,6 +44,5 @@ class QuestionForm (forms.ModelForm):
                     kwargs['initial'] = initial
 
         super(QuestionForm, self).__init__(**kwargs)
-
-        self.fields['representative'].queryset =\
-            Representative.objects.order_by('names__name')
+        self.fields['representative'].choices =\
+            Representative.by_lastname_lastname_first(choices=True)
