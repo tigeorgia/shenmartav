@@ -10,13 +10,10 @@ from .feeds import FeedList
 urlpatterns = patterns('',
     url(r'^$', List.as_view(), name='question_list'),
     url(r'^ask/$', Ask.as_view(), name='question_ask'),
-    url(r'^frage/$', Ask.as_view(), name='question_ask_ka'),
     url(r'^ask/(?P<pk>\d+)/$', Ask.as_view(), name='question_ask_representative'),
-    url(r'^frage/(?P<pk>\d+)/$', Ask.as_view(), name='question_ask_representative_ka'),
     url(r'^thanks/$', Thanks.as_view(), name='question_thanks'),
     url(r'^question/(?P<pk>\d+)/$', Detail.as_view(), name='question_detail'),
     url(r'^leaderboard/$', Leaderboard.as_view(), name='question_leaderboard'),
-    url(r'^rangliste/$', Leaderboard.as_view(), name='question_leaderboard_ka'),
 
     # RSS feed
     url(r'^feed/$', FeedList(), name='question_feed_list'),
