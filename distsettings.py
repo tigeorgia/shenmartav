@@ -85,6 +85,7 @@ INSTALLED_APPS = (
     'haystack',
     'sorl.thumbnail',
     'modeltranslation',
+    'rosetta',
 
     # cms
     'cms',
@@ -138,6 +139,7 @@ if 'test' in sys.argv:
 # dashboard rather than 'accounts/profile' (the default).
 ###########################################################
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/admin/login'
 
 
 
@@ -210,3 +212,19 @@ if any([command in sys.argv for command in SKIP_COMMANDS]):
 # modeltranslation
 ###########################################################
 MODELTRANSLATION_TRANSLATION_REGISTRY = 'shenmartav.translation'
+
+
+###########################################################
+# rosetta
+###########################################################
+ROSETTA_MESSAGES_PER_PAGE = 20
+ROSETTA_WSGI_AUTO_RELOAD = True
+ROSETTA_UWSGI_AUTO_RELOAD = ROSETTA_WSGI_AUTO_RELOAD
+#ROSETTA_ENABLE_TRANSLATION_SUGGESTIONS = False
+#BING_APP_ID = ''
+#ROSETTA_MESSAGES_SOURCE_LANGUAGE_CODE = 'en'
+#ROSETTA_MESSAGES_SOURCE_LANGUAGE_NAME = 'English'
+#ROSETTA_EXCLUDED_APPLICATIONS = ()
+#ROSETTA_REQUIRES_AUTH = True
+#ROSETTA_POFILE_WRAP_WIDTH = 78
+#ROSETTA_STORAGE_CLASS = 'rosetta.storage.CacheRosettaStorage'

@@ -15,6 +15,7 @@ django-cms
 sorl-thumbnail
 django-tagging
 django-modeltranslation
+django-rosetta
 
 # Search
 django-haystack

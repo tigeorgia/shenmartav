@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     #url(r'^mapit/', include('mapit.urls')),
 
     # Uncomment the next line to enable the admin:
+    url(r'^admin/rosetta/', include('rosetta.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     # django comments
