@@ -79,10 +79,10 @@ class RepresentativeTest (TestCase):
 
     def test_Unit_get_members (self):
         up = UnitParliament()
-        members = [13, 8, 1, 6, 2, 9, 3, 4, 5, 7]
+        members = [13, 2, 8, 5, 4, 7, 3, 1, 9]
         members_up = up._get_members()
         for i in xrange(len(members_up)):
-            self.assertEqual(members_up[i].pk, members[i])
+            self.assertEqual(members_up[i]['pk'], members[i])
 
 
     def test_UnitParliament (self):
