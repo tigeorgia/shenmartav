@@ -6,6 +6,7 @@ __docformat__ = 'epytext en'
 
 import json
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.urlresolvers import reverse
 from django.db.models import Q, Max
 from django.http import HttpResponse
 from django.views.generic import DetailView, TemplateView, ListView
@@ -160,6 +161,12 @@ class List (TemplateView):
     template_name = 'draftlaw/list.html'
 
 
+    def get_context_data (self, **kwargs):
+        context = super(List, self).get_context_data(**kwargs)
+        context['url_feed'] = reverse('draftlaw_feed_list')
+        return context
+
+
 
 class Detail (DetailView):
     """Implements the draftlaw detail view."""
@@ -170,7 +177,10 @@ class Detail (DetailView):
 
     def get_context_data (self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
-        set_language_changer(self.request, context['obj'].get_absolute_url)
+        obj = context['obj']
+        context['url_feed'] = reverse('draftlaw_feed_detail', args=[obj.pk])
+
+        set_language_changer(self.request, obj.get_absolute_url)
         return context
 
 

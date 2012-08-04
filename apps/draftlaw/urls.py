@@ -8,12 +8,16 @@ from django.views.generic import ListView
 
 from .views import List, Detail, Info, Items, Alert, query
 from .models import DraftLaw
-
+from .feeds import FeedList, FeedDetail
 
 
 urlpatterns = patterns('',
     url(r'^$', List.as_view(), name='draftlaw_list'),
     url(r'^draftlaw/(?P<slug>[-\w]+)/$', Detail.as_view(), name='draftlaw_detail'),
+
+    # RSS feed
+    url(r'^feed/$', FeedList(), name='draftlaw_feed_list'),
+    url(r'^feed/(?P<pk>\d+)/$', FeedDetail(), name='draftlaw_feed_detail'),
 
     # AJAX calls answered by HTML
     url(r'^info/(?P<pk>\d+)/$', Info.as_view(), name='draftlaw_info'),

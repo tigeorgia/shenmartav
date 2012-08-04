@@ -4,6 +4,7 @@ URLs for app question
 from django.conf.urls.defaults import patterns, url
 
 from .views import List, Ask, Thanks, Detail, Leaderboard, Info, Items, receive
+from .feeds import FeedList
 
 
 urlpatterns = patterns('',
@@ -16,6 +17,10 @@ urlpatterns = patterns('',
     url(r'^question/(?P<pk>\d+)/$', Detail.as_view(), name='question_detail'),
     url(r'^leaderboard/$', Leaderboard.as_view(), name='question_leaderboard'),
     url(r'^rangliste/$', Leaderboard.as_view(), name='question_leaderboard_ka'),
+
+    # RSS feed
+    url(r'^feed/$', FeedList(), name='question_feed_list'),
+
 
     # AJAX calls answered by HTML
     url(r'^info/(?P<pk>\d+)/$', Info.as_view(), name='question_info'),

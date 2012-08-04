@@ -3,6 +3,7 @@ Views incomedeclaration
 """
 __docformat__ = 'epytext en'
 
+from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView
 try:
     from menus.utils import set_language_changer
@@ -19,7 +20,10 @@ class List (ListView):
     queryset = IncomeDeclaration.objects.all()
     paginate_by = 30
 
-
+    def get_context_data(self, **kwargs):
+        context = super(List, self).get_context_data(**kwargs)
+        context['url_feed'] = reverse('representative_feed_list')
+        return context
 
 class Detail (DetailView):
     context_object_name = 'obj'
@@ -30,5 +34,8 @@ class Detail (DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
-        set_language_changer(self.request, context['obj'].get_absolute_url)
+        obj = context['obj']
+        context['url_feed'] = reverse('representative_feed_detail', args=[obj.representative.pk])
+
+        set_language_changer(self.request, obj.get_absolute_url)
         return context

@@ -228,3 +228,8 @@ ROSETTA_UWSGI_AUTO_RELOAD = ROSETTA_WSGI_AUTO_RELOAD
 #ROSETTA_REQUIRES_AUTH = True
 #ROSETTA_POFILE_WRAP_WIDTH = 78
 #ROSETTA_STORAGE_CLASS = 'rosetta.storage.CacheRosettaStorage'
+
+###########################################################
+# Feeds
+###########################################################
+NUM_FEEDITEMS = 10 # number of items in feed

@@ -34,6 +34,7 @@ class Find (TemplateView):
         context['url_search'] = reverse('representative_search')
         context['obj'] = RandomRepresentative.get()
         context['units'] = UnitModel.objects.all()
+        context['url_feed'] = reverse('representative_feed_list')
         return context
 
 
@@ -73,6 +74,7 @@ class Search (TemplateView):
             context['representatives'] = self.get_queryset(kwargs['query'])
             context['query'] = kwargs['query']
 
+        context['url_feed'] = reverse('representative_feed_list')
         return context
 
 
@@ -205,6 +207,7 @@ class Detail (DetailView):
         context['form'] = self._get_form(obj)
         context['questions'] = self._get_questions(obj)
         context['votecounts'] = VotingRecordResult.get_counts(representative=obj)
+        context['url_feed'] = reverse('representative_feed_detail', args=[obj.pk])
 
         set_language_changer(self.request, obj.get_absolute_url)
         return context

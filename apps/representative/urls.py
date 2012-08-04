@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import patterns, url
 from .views import *
+from .feeds import FeedList, FeedDetail
+
 
 urlpatterns = patterns('',
     url(r'^$', Find.as_view(), name='representative_find'),
@@ -8,6 +10,10 @@ urlpatterns = patterns('',
     url(r'^representative/(?P<pk>\d+)/$', Detail.as_view(), name='representative_pk'),
     url(r'^representative/(?P<slug>[-\w]+)/$', Detail.as_view(), name='representative_slug'),
     url(r'^search/', Search.as_view(), name='representative_search'),
+
+    # RSS feed
+    url(r'^feed/$', FeedList(), name='representative_feed_list'),
+    url(r'^feed/(?P<pk>\d+)/$', FeedDetail(), name='representative_feed_detail'),
 
     # AJAX calls answered by HTML
     url(r'^unit/parliament/$', UnitParliament.as_view(), name='unit_parliament'),

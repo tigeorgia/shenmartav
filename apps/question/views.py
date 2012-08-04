@@ -93,6 +93,7 @@ class List (ListView):
     def get_context_data (self, **kwargs):
         context = super(List, self).get_context_data(**kwargs)
         context['form'] = _get_form(self)
+        context['url_feed'] = reverse('question_feed_list')
         return context
 
 
@@ -138,6 +139,7 @@ class Ask (FormView):
         question = context['form'].instance
         context['form'] = QuestionForm(instance=question,
             session=self.request.session)
+        context['url_feed'] = reverse('question_feed_list')
 
         return context
 
@@ -153,6 +155,7 @@ class Thanks (TemplateView):
         if 'form_question' in self.request.session:
             context['representative'] =\
                 self.request.session['form_question']['representative']
+        context['url_feed'] = reverse('question_feed_list')
 
         return context
 
@@ -170,6 +173,7 @@ class Detail (DetailView):
         context = super(Detail, self).get_context_data(**kwargs)
 
         context['form'] = _get_form(self, context['obj'].representative)
+        context['url_feed'] = reverse('question_feed_list')
         set_language_changer(self.request, context['obj'].get_absolute_url)
 
         return context
@@ -183,6 +187,11 @@ class Leaderboard (ListView):
         questions__isnull=False).distinct().order_by('-answered')
     template_name = 'question/leaderboard.html'
 
+
+    def get_context_data (self, **kwargs):
+        context = super(Leaderboard, self).get_context_data(**kwargs)
+        context['url_feed'] = reverse('question_feed_list')
+        return context
 
 
 
