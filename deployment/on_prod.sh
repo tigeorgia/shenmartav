@@ -8,7 +8,7 @@ cd ${ROOT}
 
 # FIXME: come up with something other than copying to /tmp
 echo 'Saving translations to /tmp'
-cp -a locale /tmp/
+cp -a shenmartav/locale /tmp/
 
 echo 'Installing code...'
 tar xjf code.tar.bz2
