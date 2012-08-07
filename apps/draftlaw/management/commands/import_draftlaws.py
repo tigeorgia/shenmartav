@@ -166,6 +166,20 @@ class Command (BaseCommand):
         return number
 
 
+    def _get_bill_number (self, row):
+        """Get bill number from given row.
+
+        @param row: data row
+        @type row: [ str ]
+        @return: bill number
+        @rtype: str
+        """
+        number = row[1].strip().replace('–', '-').replace(' ', '')
+        if not number.startswith('#'):
+            number = '#' + number
+        return number
+
+
     @transaction.commit_on_success
     def _create_draftlaw (self, row):
         """Create a complete DraftLaw record.
@@ -175,9 +189,7 @@ class Command (BaseCommand):
         @return: a draftlaw
         @rtype: draftlaw.DraftLaw
         """
-        bill_number = row[1].strip().replace('–', '-').replace(' ', '')
-        if not bill_number.startswith('#'):
-            bill_number = '#' + bill_number
+        bill_number = self._get_bill_number(row)
 
         title = row[3].strip()
         self.stdout.write('%s | %s ... ' % (bill_number, title))
@@ -232,10 +244,7 @@ class Command (BaseCommand):
         if not parent:
             return False
 
-        bill_number = row[1].strip().replace('–', '-').replace(' ', '')
-        if not bill_number.startswith('#'):
-            bill_number = '#' + bill_number
-
+        bill_number = self._get_bill_number(row)
         title = row[3].strip()
         self.stdout.write(' %s | %s ... ' % (bill_number, title))
 
@@ -264,6 +273,38 @@ class Command (BaseCommand):
         return True
 
 
+    def _add_georgian (self, row):
+        """Add georgian data to english record.
+
+        This will overwrite previous data.
+
+        @param row: data row
+        @type row: [ str ]
+        @return: if data could be added
+        @rtype: bool
+        """
+        bill_number = self._get_bill_number(row)
+        self.stdout.write('Adding georgian to english, bill number %s: ' % bill_number)
+        try:
+            obj = DraftLaw.objects.get(bill_number=bill_number)
+        except DraftLaw.DoesNotExist:
+            try:
+                obj = DraftLawChild.objects.get(bill_number=bill_number)
+            except DraftLawChild.DoesNotExist:
+                self.stdout.write('Bill number does not exist yet!')
+                return False
+
+        obj.title_ka = row[3].strip()
+        obj.summary_ka = row[6].strip()
+        if hasattr(obj, 'initiator'):
+            obj.initiator_ka = row[4].strip()
+        if hasattr(obj, 'author'):
+            obj.author_ka = row[5].strip()
+        obj.save()
+        self.stdout.write('OK')
+
+        return True
+
 
     def handle (self, *args, **options):
         """Command handler."""
@@ -284,15 +325,17 @@ class Command (BaseCommand):
                 first = False
                 continue
 
-            if len(row) < 18:
-                self.stdout.write('Invalid draftlaw record.\n')
-                continue
-            if not row[0]: # empty
+            len_row = len(row)
+            if len_row not in [7, 18]: # georgian, english version
+                self.stdout.write('Invalid draftlaw record, only %d columns.\n' % len_row)
                 continue
 
-            if row[2] == '*': # parent
-                parent = self._create_draftlaw(row)
-            else: # child
-                self._create_draftlawchild(row, parent)
+            if len_row == 7: # this is the georgian version, add to english original
+                self._add_georgian(row)
+            else:
+                if row[2] == '*': # parent
+                    parent = self._create_draftlaw(row)
+                else: # child
+                    self._create_draftlawchild(row, parent)
 
             self.stdout.write('\n')

@@ -29,13 +29,11 @@ class DraftLaw (models.Model):
     #: bill number
     bill_number = models.CharField(max_length=255, help_text=_('Bill Number of the Draft Law'))
     #: title of the law
-    title = models.CharField(max_length=255, help_text=_('Title of the Draft Law'))
+    title = models.TextField(help_text=_('Title of the Draft Law'))
     #: entity initiating the draft
-    initiator = models.CharField(max_length=255, blank=True,
-        help_text=_('Initiator'))
+    initiator = models.TextField(blank=True, help_text=_('Initiator'))
     #: person authoring the draft
-    author = models.CharField(max_length=255, blank=True,
-        help_text=_('Author'))
+    author = models.TextField(blank=True, help_text=_('Author'))
     #: status of the law, e.g. '1st Hearing Economy Pass'
     status = models.CharField(max_length=255, help_text=_('Status of the Draft Law'))
     #: short status of the law; in one word
@@ -170,7 +168,7 @@ class DraftLawChild (models.Model):
     #: bill number
     bill_number = models.CharField(max_length=255, help_text=_('Bill Number of the Draft Law'))
     #: title of the law
-    title = models.CharField(max_length=255, help_text=_('Title of the Draft Law'))
+    title = models.TextField(help_text=_('Title of the Draft Law'))
     #: URL of the text of the enacted law
     enacted_text_url = models.CharField(max_length=255, blank=True,
         help_text=_('Enacted Text URL'))
