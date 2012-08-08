@@ -1,6 +1,6 @@
 {% load i18n menu_tags cms_tags %}
 <div id="header">
-    <h1 id="logo" class="button"><a href="/"><img id="wheel" src="{{STATIC_URL}}img/spacer.png" width="47" height="47" alt="{% trans 'You Command' %}" /> {% trans 'You Command!' %}</a></h1>
+    <h1 id="logo" class="button"><a href="{% url pages-root %}" title="{% trans 'You Rule!' %}"><img id="wheel" src="{{STATIC_URL}}img/spacer.png" width="47" height="47" alt="{% trans 'You Rule!' %}" /> {% trans 'You Rule!' %}</a></h1>
     <div id="language-chooser">
         {% language_chooser %}
         <div id="google_translate_element"></div>
