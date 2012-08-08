@@ -144,6 +144,7 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
     margin-left: 1em;
 }
 #header #logo {
+    opacity: 1;
     text-shadow: .1em .1em #9b0000;
 }
 #header #logo #wheel {
