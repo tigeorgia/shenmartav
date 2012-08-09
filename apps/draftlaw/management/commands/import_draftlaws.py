@@ -16,6 +16,8 @@ from draftlaw.models import DraftLaw, DraftLawDiscussion, DraftLawChild
 
 #: CSV delimiter
 DELIMITER = ','
+COL_EN = 18
+COL_KA = 9
 
 
 
@@ -48,7 +50,7 @@ class Command (BaseCommand):
         @rtype: str
         """
         default = '1970-01-01'
-        fmt = 'Wrong date format: %s\n'
+        fmt = '\nWrong date format: %s\n'
         parts = date.strip().split('/')
 
         if len(parts) != 3:
@@ -191,8 +193,12 @@ class Command (BaseCommand):
         """
         bill_number = self._get_bill_number(row)
 
-        title = row[3].strip()
-        self.stdout.write('%s | %s ... ' % (bill_number, title))
+        title = row[3].strip().decode('utf-8')
+        try:
+           self.stdout.write('%s | %s ... ' % (bill_number, title))
+        except UnicodeEncodeError: # need this for Python 2.6 *sigh*
+           self.stdout.write('%s | %s ... ' % (bill_number, title.encode('utf-8')))
+	
 
         (shortstatus, status) = self._get_status(row)
 
@@ -217,13 +223,13 @@ class Command (BaseCommand):
         if len(draftlaws) > 1:
             if self.force:
                 draftlaws.exclude(pk=draftlaw.pk).delete()
-                self.stdout.write('replace existing!\n')
+                self.stdout.write('replace existing!')
             else:
-                self.stdout.write('keep already existing!\n')
+                self.stdout.write('keep already existing!')
                 draftlaw.delete()
                 return None
         else:
-            self.stdout.write('add new!\n')
+            self.stdout.write('add new!')
 
         self._add_discussions(row, draftlaw)
         return draftlaw
@@ -262,13 +268,13 @@ class Command (BaseCommand):
         if len(children) > 1:
             if self.force:
                 children.exclude(pk=child.pk).delete()
-                self.stdout.write('replace existing!\n')
+                self.stdout.write('replace existing!')
             else:
-                self.stdout.write('keep already existing!\n')
+                self.stdout.write('keep already existing!')
                 child.delete()
                 return False
         else:
-            self.stdout.write('add new!\n')
+            self.stdout.write('add new!')
 
         return True
 
@@ -284,7 +290,7 @@ class Command (BaseCommand):
         @rtype: bool
         """
         bill_number = self._get_bill_number(row)
-        self.stdout.write('Adding georgian to english, bill number %s: ' % bill_number)
+        self.stdout.write('%s | Adding georgian to english ... ' % bill_number)
         try:
             obj = DraftLaw.objects.get(bill_number=bill_number)
         except DraftLaw.DoesNotExist:
@@ -326,11 +332,11 @@ class Command (BaseCommand):
                 continue
 
             len_row = len(row)
-            if len_row not in [7, 18]: # georgian, english version
+            if len_row not in [COL_KA, COL_EN]:
                 self.stdout.write('Invalid draftlaw record, only %d columns.\n' % len_row)
                 continue
 
-            if len_row == 7: # this is the georgian version, add to english original
+            if len_row == COL_KA: # this is the georgian version, add to english original
                 self._add_georgian(row)
             else:
                 if row[2] == '*': # parent
