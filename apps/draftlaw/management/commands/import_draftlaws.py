@@ -96,7 +96,7 @@ class Command (BaseCommand):
                     if len(parts) != 2: continue
                     discussion = DraftLawDiscussion(draftlaw=draftlaw,
                         date=self._get_isodate(parts[0]),
-                        place=parts[1].strip(),
+                        place_en=parts[1].strip(),
                         stage=stage)
                     discussion.save()
             else: # plenary or single committee
@@ -111,7 +111,7 @@ class Command (BaseCommand):
                 else: # plenary
                     place = _('Plenary')
                 discussion = DraftLawDiscussion(
-                    draftlaw=draftlaw, date=date, place=place, stage=stage)
+                    draftlaw=draftlaw, date=date, place_en=place, stage=stage)
                 discussion.save()
 
 
@@ -198,7 +198,6 @@ class Command (BaseCommand):
            self.stdout.write('%s | %s ... ' % (bill_number, title))
         except UnicodeEncodeError: # need this for Python 2.6 *sigh*
            self.stdout.write('%s | %s ... ' % (bill_number, title.encode('utf-8')))
-	
 
         (shortstatus, status) = self._get_status(row)
 
@@ -207,12 +206,12 @@ class Command (BaseCommand):
         draftlaw = DraftLaw(
             bureau_date=self._get_isodate(row[0]),
             bill_number=bill_number,
-            title=title,
-            initiator=row[4].strip(),
-            author=row[5].strip(),
-            status=status,
+            title_en=title,
+            initiator_en=row[4].strip(),
+            author_en=row[5].strip(),
+            status_en=status,
             shortstatus=shortstatus,
-            summary=row[6].strip(),
+            summary_en=row[6].strip(),
             sms_en=row[7].strip(),
             sms_ka=row[9].strip(),
             law_number=law_number,
@@ -259,7 +258,7 @@ class Command (BaseCommand):
         child = DraftLawChild(
             parent=parent,
             bill_number=bill_number,
-            title=title,
+            title_en=title,
             law_number=law_number,
         )
         child.save()
@@ -301,7 +300,8 @@ class Command (BaseCommand):
                 return False
 
         obj.title_ka = row[3].strip()
-        obj.summary_ka = row[6].strip()
+        if hasattr(obj, 'summary'):
+            obj.summary_ka = row[6].strip()
         if hasattr(obj, 'initiator'):
             obj.initiator_ka = row[4].strip()
         if hasattr(obj, 'author'):

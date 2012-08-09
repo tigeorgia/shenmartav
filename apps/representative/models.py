@@ -131,29 +131,29 @@ class Representative (Person):
         if len(name) < NAME_MINLEN: return None
         name = glt.to_georgian(name)
 
-        representative = cls.objects.filter(names__name__icontains=name)
+        representative = cls.objects.filter(names__name_ka__icontains=name)
         if representative: return representative[0]
 
         firstname_first = glt.firstname_first(name)
         representative = cls.objects.filter(
-            names__name__icontains=firstname_first)
+            names__name_ka__icontains=firstname_first)
         if representative: return representative[0]
 
         lastname_first = glt.lastname_first(name)
         representative = cls.objects.filter(
-            names__name__icontains=lastname_first)
+            names__name_ka__icontains=lastname_first)
         if representative: return representative[0]
 
         splitname = name.split()
         if len(splitname[0]) > NAME_MINLEN:
             representative = cls.objects.filter(
-                names__name__icontains=splitname[0][:NAME_MINLEN])
+                names__name_ka__icontains=splitname[0][:NAME_MINLEN])
             if representative: return representative[0]
 
         try:
             if len(splitname[-1]) > NAME_MINLEN:
                 representative = cls.objects.filter(
-                    names__name__icontains=splitname[-1][:NAME_MINLEN])
+                    names__name_ka__icontains=splitname[-1][:NAME_MINLEN])
                 if representative: return representative[0]
         except IndexError:
             pass
