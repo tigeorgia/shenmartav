@@ -3,34 +3,42 @@
 # shenmartav deployment script on REMOTE server
 # CAREFUL NOW!
 
-ROOT=/home/tigeorgia/shenmartav
+ROOT="/home/tigeorgia/shenmartav"
+# FIXME: come up with something other than copying to /tmp
+TMP="/tmp"
+
 cd ${ROOT}
 
-# FIXME: come up with something other than copying to /tmp
-echo 'Saving translations to /tmp'
-cp -a shenmartav/locale /tmp/
+echo "Saving translations to ${TMP} ..."
+cp -a shenmartav/locale ${TMP}/
 
-echo 'Installing code...'
+echo "Saving settings.py to ${TMP} ..."
+cp shenmartav/settings.py ${TMP}/settings.py
+
+echo 'Installing code ...'
 tar xjf code.tar.bz2
 rm -rf old
 mv shenmartav old
 mv deploy/code shenmartav
 rm -rf deploy/
 
-#echo 'Installing database...'
+#echo 'Installing database ...'
 #bunzip2 --force db.sql.bz2
 #sudo su --command "${ROOT}/shenmartav/deployment/redo_db.sh ${ROOT}/db.sql" postgres
 
-#echo 'Adjusting site...'
+#echo 'Adjusting site ...'
 #./shenmartav/deployment/update_site.py
 
-echo 'Collecting static files...'
+echo 'Collecting static files ...'
 ./shenmartav/manage.py collectstatic
 
-#echo 'Updating search indices...'
+#echo 'Updating search indices ...'
 #./shenmartav/manage.py update_index
 
-echo 'Restarting webserver...'
+echo "Restoring settings.py from ${TMP} ..."
+cp ${TMP}/settings.py shenmartav/settings.py
+
+echo 'Restarting webserver ...'
 sudo /etc/init.d/apache2 restart
 
 echo 'DONE. You still might have to update search indices: manage.py update_index'
