@@ -16,7 +16,7 @@ settings.HAYSTACK_ENABLE_REGISTRATIONS = False
 
 from django.contrib.sites.models import Site
 site = Site.objects.get_current()
-site.domain = 'dev.shenmartav.ge'
+site.domain = 'shenmartav.ge'
 site.save()
 
 

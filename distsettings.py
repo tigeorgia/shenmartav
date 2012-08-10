@@ -1,6 +1,6 @@
 # Django settings for shenmartav project - should be the same for every instance
 
-DEBUG = True
+from settings import DEBUG
 TEMPLATE_DEBUG = DEBUG
 
 ROOT_URLCONF = 'shenmartav.urls'

@@ -10,8 +10,8 @@ CODE=deploy/code
 cd ${ROOT}
 rm -f ${CODE}.tar.bz2 ${DB}
 
-echo 'Updating version...'
-./shenmartav/deployment/update_version.sh
+#echo 'Updating version...'
+#./shenmartav/deployment/update_version.sh
 
 echo 'Preparing code tarball...'
 cp -a shenmartav ${CODE}
