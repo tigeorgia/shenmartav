@@ -1,7 +1,7 @@
 {% load i18n representative %}
 <div id="attendance">
     {% with attendance=obj.attendance %}
-    <h2>{% trans 'Attendance' %}: {{ obj.attendance.percentage }}</h2>
+    <h2>{% trans 'Voting attendance' %}: {{ obj.attendance.percentage }}</h2>
     <div id="bar" class="table">
         <div class="row">
             <div class="cell leftalign" style="width:{{ attendance.attended|percentage:attendance.total }}">{{ attendance.attended }}</div>

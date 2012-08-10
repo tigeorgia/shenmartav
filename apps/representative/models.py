@@ -102,7 +102,7 @@ class Representative (Person):
         help_text=_('URL of this Representative'))
     #: attendance record
     attendance_record = models.TextField(blank=True, null=True,
-        help_text=_('Attendance Record'))
+        help_text=_('Voting attendance Record'))
     #: salary
     salary = models.FloatField(default=0, null=True,
         help_text=_('== Wages'))

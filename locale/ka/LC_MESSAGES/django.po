@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 08:26+0200\n"
+"POT-Creation-Date: 2012-08-10 19:51+0200\n"
 "PO-Revision-Date: 2012-08-08 12:12\n"
-"Last-Translator:   <sebastian@transparency.ge>\n"
-"Language-Team: tornike <LL@li.org>\n"
+"Last-Translator: Tornike Natroshvili <tornike@transparency.ge>\n"
+"Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +32,11 @@ msgstr "მარტივი ნიმუში"
 msgid "3 Column Template"
 msgstr "სამსვეტიანი ნიმუში"
 
-#: settings.py:43
+#: settings.py:45
 msgid "English"
 msgstr "ინგლისური"
 
-#: settings.py:44
+#: settings.py:46
 msgid "Georgian"
 msgstr "ქართული"
 
@@ -1242,7 +1242,7 @@ msgid ""
 "%(faction)s|Is_Majoritarian: %(is_majoritarian)s|Electoral District: "
 "%(electoral_district)s|Elected: %(elected)s|Place of Birth: %(pob)s|Family "
 "Status: %(family_status)s|Education: %(education)s|Contact Address / Phone: "
-"%(contact_address_phone)s|URL: %(url)s|Attendance record: "
+"%(contact_address_phone)s|URL: %(url)s|Voting attendance record: "
 "%(attendance_record)s|Salary: %(salary)s|Other Income: %(other_income)s|"
 "Expenses: %(expenses)s|Property & Assets: %(property_assets)s|Income "
 "declaration URL: %(income_declaration)s|Questions answered: %(answered)s%%"
@@ -1330,7 +1330,7 @@ msgid "URL of this Representative"
 msgstr "ამ წარმომადგენლის URL"
 
 #: apps/representative/models.py:105
-msgid "Attendance Record"
+msgid "Voting attendance Record"
 msgstr "დასწრების ჩანაწერი"
 
 #: apps/representative/models.py:108
@@ -1394,7 +1394,7 @@ msgid "Section Who"
 msgstr "სექცია ვინ"
 
 #: apps/representative/templates/representative/attendance.html:4
-msgid "Attendance"
+msgid "Voting attendance"
 msgstr "კენჭისყრაზე დასწრება"
 
 #: apps/representative/templates/representative/attendance.html:15

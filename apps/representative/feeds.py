@@ -53,7 +53,7 @@ class FeedDetail (Feed):
         except KeyError:
             income_declaration = None
 
-        return _('Party: %(party)s|Unit: %(unit)s|Committee: %(committee)s|Faction: %(faction)s|Is_Majoritarian: %(is_majoritarian)s|Electoral District: %(electoral_district)s|Elected: %(elected)s|Place of Birth: %(pob)s|Family Status: %(family_status)s|Education: %(education)s|Contact Address / Phone: %(contact_address_phone)s|URL: %(url)s|Attendance record: %(attendance_record)s|Salary: %(salary)s|Other Income: %(other_income)s|Expenses: %(expenses)s|Property & Assets: %(property_assets)s|Income declaration URL: %(income_declaration)s|Questions answered: %(answered)s%%') % {
+        return _('Party: %(party)s|Unit: %(unit)s|Committee: %(committee)s|Faction: %(faction)s|Is_Majoritarian: %(is_majoritarian)s|Electoral District: %(electoral_district)s|Elected: %(elected)s|Place of Birth: %(pob)s|Family Status: %(family_status)s|Education: %(education)s|Contact Address / Phone: %(contact_address_phone)s|URL: %(url)s|Voting attendance record: %(attendance_record)s|Salary: %(salary)s|Other Income: %(other_income)s|Expenses: %(expenses)s|Property & Assets: %(property_assets)s|Income declaration URL: %(income_declaration)s|Questions answered: %(answered)s%%') % {
             'party': obj.party.name,
             'unit': obj.unit.name,
             'committee': obj.committee,
