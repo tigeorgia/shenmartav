@@ -229,7 +229,18 @@ ROSETTA_UWSGI_AUTO_RELOAD = ROSETTA_WSGI_AUTO_RELOAD
 #ROSETTA_POFILE_WRAP_WIDTH = 78
 #ROSETTA_STORAGE_CLASS = 'rosetta.storage.CacheRosettaStorage'
 
+
 ###########################################################
 # Feeds
 ###########################################################
 NUM_FEEDITEMS = 10 # number of items in feed
+
+
+##########################################################
+# base income of representatives, August 2012
+##########################################################
+BASE_INCOME = {
+    'parliament': 24000,
+    'tbilisi': 16800,
+    'ajara': '23400',
+}

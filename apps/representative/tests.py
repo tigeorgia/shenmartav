@@ -7,6 +7,7 @@ __docformat__ = 'epytext en'
 import datetime
 from django.utils.timezone import utc
 
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
@@ -130,6 +131,9 @@ class RepresentativeTest (TestCase):
         name = u'idontexistinthisdatabase'
         self.assertEqual(Representative.find(name), None)
 
+        name = u'Foo Bar'
+        self.assertNotEqual(Representative.find(name), None)
+
         name = u'აბულაშვილი ნუგზარი'
         self.assertNotEqual(Representative.find(name), None)
 
@@ -152,12 +156,21 @@ class RepresentativeTest (TestCase):
         self.assertEqual(Representative.find(name), None)
 
 
-    def test_Representative_total_income (self):
-        r = Representative.objects.all()[0]
-        self.assertEqual(r.total_income, 49272)
+    def test_Representative_income (self):
+        r = Representative.objects.get(pk=1)
+        self.assertEqual(r.income['total'], 49272)
+        self.assertEqual(r.income['base'], settings.BASE_INCOME['parliament'])
+        self.assertEqual(r.income['additional'], r.salary - settings.BASE_INCOME['parliament'])
+        self.assertEqual(r.income['other'], int(r.other_income))
 
-        r = Representative.objects.all()[1]
-        self.assertEqual(r.total_income, 69572)
+        r = Representative.objects.get(pk=2)
+        self.assertEqual(r.income['total'], 74931)
+        self.assertEqual(r.income['base'], settings.BASE_INCOME['tbilisi'])
+        self.assertEqual(r.income['additional'], r.salary - settings.BASE_INCOME['tbilisi'])
+        self.assertEqual(r.income['other'], int(r.other_income))
+
+        r = Representative.objects.get(pk=3)
+        self.assertEqual(r.income['additional'], 0)
 
 
     def test_Representative_attendance (self):

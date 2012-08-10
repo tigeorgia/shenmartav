@@ -8,6 +8,7 @@ __docformat__ = 'epytext en'
 
 import datetime
 from cms.models.pluginmodel import CMSPlugin
+from django.conf import settings
 from django.db import models
 try:
     # SIGH! this is Django 1.4 which spits out warnings otherwise
@@ -238,8 +239,22 @@ class Representative (Person):
 
 
     @property
-    def total_income (self):
-        return int(self.salary + self.other_income)
+    def income (self):
+        try:
+            base = int(settings.BASE_INCOME[self.unit.short])
+        except (AttributeError, KeyError, ValueError):
+            base = 0
+
+        additional = int(self.salary - base)
+        if additional < 0:
+            additional = 0
+
+        return {
+            'total': int(self.salary + self.other_income),
+            'base': base,
+            'additional': additional,
+            'other': int(self.other_income),
+        }
 
 
     @property
