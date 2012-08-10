@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 19:51+0200\n"
+"POT-Creation-Date: 2012-08-10 20:46+0200\n"
 "PO-Revision-Date: 2012-08-08 12:12\n"
 "Last-Translator: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -619,6 +619,13 @@ msgstr "განახლება"
 #: apps/draftlaw/templates/draftlaw/list.html:19
 msgid "Discussion Stage"
 msgstr "დისკუსიის ეტაპი"
+
+#: apps/draftlaw/templates/draftlaw/list.html:19
+msgid ""
+"In order to become enacted, each draft law must pass 6 hearings: three "
+"committee hearings and three plenary hearings. Each box represents one stage "
+"in this process"
+msgstr "იმისთვის, რომ იქცეს კანონად, კანონპროექტი გადის ექვს მოსმენას: სამ საკომიტეტო და სამ პლენარულ მოსმენას. ამ პროცესის თითოეული ეტაპი გამოსახულია უჯრებით"
 
 #: apps/draftlaw/templates/draftlaw/list.html:20
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:9
@@ -1397,6 +1404,16 @@ msgstr "სექცია ვინ"
 msgid "Voting attendance"
 msgstr "კენჭისყრაზე დასწრება"
 
+#: apps/representative/templates/representative/attendance.html:4
+msgid ""
+"Determined based on the official voting records retrieved from the "
+"Parliament web site. We calculate the attendance rate as (Number of Yes "
+"votes + Number of No votes + Number of Abstain votes) divided by the total "
+"number of votes for which an MP’s name is given. This doesn’t necessarily "
+"reflect which MPs were physically present at the time a vote was held, but "
+"is what was recorded by the Parliament’s voting systems."
+msgstr "განისაზღვრება ოფიციალური კენჭისყრის მონაცემებით. ჩვენ ვაჯამებთ კანონპროექტებს, რომელთაც დეპუტატებმა მხარი დაუჭირეს, წინააღმდეგ მისცეს ხმა ან თავი შეიკავეს და შემდეგ ვადგენთ მათ თანაფარდობას იმ კანონპროექტებთან, რომელთა შემთხვევაშიც დეპუტატი დაფიქსირდა, როგორც არდამსწრე. ეს აუცილებლად არ ნიშნავს იმას, რომ არდამსწრე დეპუტატი ფიზიკურად არ იმყოფებოდა კენჭისყრის მომენტში, არამედ ამგვარად არის დაფიქსირებული პარლამენტის კენჭისყრის შედეგების სისტემის მიერ"
+
 #: apps/representative/templates/representative/attendance.html:15
 msgid "Attended"
 msgstr "მონაწილეობდა"
@@ -1555,13 +1572,30 @@ msgstr "წლიური შემოსავალი"
 msgid "Base salary"
 msgstr "ძირითადი ხელფასი"
 
+#: apps/representative/templates/representative/income.html:19
+msgid "Legally defined salary for representatives"
+msgstr "კანონმდებლისთვის სამართლებრივად განსაზღვრული ხელფასი"
+
 #: apps/representative/templates/representative/income.html:20
 msgid "Additional income"
 msgstr "დამატებითი თანამდებობრივი სარგო"
 
+#: apps/representative/templates/representative/income.html:20
+msgid ""
+"Additional legally defined salary that a representative receives for "
+"activities such as being the head of a committee"
+msgstr "სამართლებრივად განსაზღვრული დამატებითი ხელფასი, რომელსაც წარმომადგენელი ისეთი საქმიანობებისათვის იღებს, როგორიცაა კომიტეტის თავმჯდომარეობა"
+
 #: apps/representative/templates/representative/income.html:21
 msgid "Other income"
 msgstr "სხვა შემოსავალი"
+
+#: apps/representative/templates/representative/income.html:21
+msgid ""
+"Any other income that a representative receives from sources other than his "
+"or her salary, for example, income from businesses owned by the "
+"representative"
+msgstr "სხვა შემოსავალი, რომელიც არ უკავშირდება წარმომადგენლის საკანონმდებლო საქმიანობას, მაგალითად, ბიზნეს აქტივობებიდან მიღებული შემოსავალი"
 
 #: apps/representative/templates/representative/search.html:9
 msgid "Search a Representative"
@@ -2025,9 +2059,6 @@ msgstr "შემდეგი"
 
 #~ msgid "URL"
 #~ msgstr "URL"
-
-#~ msgid "Find your Representative"
-#~ msgstr "მოძებნე შენი წარმომადგენელი"
 
 #~ msgid "GEL earned"
 #~ msgstr "მიღებული ლარი"

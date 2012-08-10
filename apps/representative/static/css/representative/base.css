@@ -76,7 +76,7 @@
 #representative #income #legend {
     margin-top: 1em;
 }
-#representative #income #legend span {
+#representative #income #legend .legend-color {
     width: .7em;
     height: .7em;
     display: inline-block;
