@@ -203,7 +203,10 @@ class Alert (ListView):
 
     def get_context_data (self, **kwargs):
         context = super(Alert, self).get_context_data(**kwargs)
-        context['alert'] = AlertModel(context['object_list'][0])
+        try:
+            context['alert'] = AlertModel(context['object_list'][0])
+        except IndexError:
+            context['alert'] = None
         return context
 
 
