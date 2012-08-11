@@ -213,10 +213,9 @@ RepresentativeFind = {
 
         $('#representative #filter-form input').removeAttr('disabled');
 
-        $('#representative #filter-party option').hide();
-        $('#representative #filter-party .unit-all').show();
-        $('#representative #filter-party .unit-' +
-            RepresentativeFind.activeUnit).show();
+        var all = $('#representative #cell-party #hidden-all').html();
+        var parties = $('#representative #cell-party #hidden-' + RepresentativeFind.activeUnit).html();
+        $('#representative #filter-party').html(all + parties);
         $('#representative #filter-party').val('all');
 
         Base.setHeightScrollPane(

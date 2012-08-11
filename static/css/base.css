@@ -420,6 +420,10 @@ img.column-bg {
     background: #f0acac;
 }
 
+.hidden {
+    display: none;
+}
+
 .representative-name, select[name="representative"] {
     font-family: "zwo-geo-light", Georgia, Times, serif;
 }

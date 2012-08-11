@@ -29,10 +29,11 @@
             </div>
             <div id="cell-party" class="cell">
                 <div>{% trans 'Party' %}</div>
-                <select id="filter-party">
-                    <option class="unit-all" value="all">{% trans 'All' %}</option>
-                    {% for u in units %}{% for p in u.parties.all %}<option class="unit-{{ u.short }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>{% endfor %}{% endfor %}
-                </select>
+                <select id="filter-party"></select>
+                <div class="hidden" id="hidden-all"><option class="unit-all" value="all">{% trans 'All' %}</option></div>
+                {% for u in units %}
+                <div class="hidden" id="hidden-{{ u.short }}">{% for p in u.parties.all %}<option class="unit-{{ u.short }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>{% endfor %}</div>
+                {% endfor %}
             </div>
         </div>
         <div id="offer-fulltext-search">{% blocktrans %}Try <a href="{{ url_search }}">full-text search</a>.{% endblocktrans %}</div>
