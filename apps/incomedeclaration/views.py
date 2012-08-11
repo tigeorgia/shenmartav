@@ -35,7 +35,10 @@ class Detail (DetailView):
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
         obj = context['obj']
-        context['url_feed'] = reverse('representative_feed_detail', args=[obj.representative.pk])
+        if obj.representative:
+            context['url_feed'] = reverse('representative_feed_detail', args=[obj.representative.pk])
+        else:
+            context['url_feed'] = reverse('representative_feed_list')
 
         set_language_changer(self.request, obj.get_absolute_url)
         return context
