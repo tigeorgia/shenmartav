@@ -4,23 +4,29 @@
 # CAREFUL NOW!
 
 ROOT="/home/tigeorgia/shenmartav"
-# FIXME: come up with something other than copying to /tmp
-TMP="/tmp"
+DEPLOY="${ROOT}/deploy"
 
 cd ${ROOT}
 
-echo "Saving translations to ${TMP} ..."
-cp -a shenmartav/locale ${TMP}/
-
-echo "Saving settings.py to ${TMP} ..."
-cp shenmartav/settings.py ${TMP}/settings.py
+echo "Saving settings and translations ..."
+if [ ! -d ${DEPLOY} ]; then
+	mkdir ${DEPLOY}
+	if [ "$?" -ne "0" ]; then
+		exit 1
+	fi
+fi
+cp -a shenmartav/locale shenmartav/settings.py* ${DEPLOY}/
 
 echo 'Installing code ...'
 tar xjf code.tar.bz2
 rm -rf old
 mv shenmartav old
-mv deploy/code shenmartav
-rm -rf deploy/
+mv ${DEPLOY}/code shenmartav
+
+echo "Restoring settings and translations ..."
+cp -a ${DEPLOY}/settings.* ${DEPLOY}/locale shenmartav/
+
+rm -rf ${DEPLOY}/
 
 #echo 'Installing database ...'
 #bunzip2 --force db.sql.bz2
@@ -35,12 +41,9 @@ echo 'Collecting static files ...'
 #echo 'Updating search indices ...'
 #./shenmartav/manage.py update_index
 
-echo "Restoring settings.py from ${TMP} ..."
-cp ${TMP}/settings.py shenmartav/settings.py
-
 echo 'Restarting webserver ...'
 sudo /etc/init.d/apache2 restart
 
-echo 'DONE. You still might have to update search indices: manage.py update_index'
+echo 'DONE.' # You still might have to update search indices: manage.py update_index'
 
 # rm db.sql code.tar.bz2

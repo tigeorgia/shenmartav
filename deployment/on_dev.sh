@@ -3,9 +3,11 @@
 # shenmartav deployment script on LOCAL development machine
 # CAREFUL NOW!
 
-ROOT=/home/tig/shenmartav/
-DB=deploy/db.sql.bz2
-CODE=deploy/code
+ROOT="/home/tig/shenmartav/"
+DB="deploy/db.sql.bz2"
+CODE="deploy/code"
+EXCLUDES="--exclude=settings.py --exclude=settings.pyc --exclude=locale*"
+TARBALL="deploy/code.tar.bz2"
 
 cd ${ROOT}
 rm -f ${CODE}.tar.bz2 ${DB}
@@ -16,7 +18,7 @@ rm -f ${CODE}.tar.bz2 ${DB}
 echo 'Preparing code tarball...'
 cp -a shenmartav ${CODE}
 rm -rf ${CODE}/.git
-tar cjf ${CODE}.tar.bz2 ${CODE}
+tar -cjf ${TARBALL} ${EXCLUDES} ${CODE}
 rm -rf ${CODE}
 
 #echo 'Preparing database dump...'
@@ -26,4 +28,4 @@ rm -rf ${CODE}
 #cp dumps/${dbdump}.bz2 ${DB}
 
 echo 'Copying to server...'
-scp deploy/* shen:/home/tigeorgia/shenmartav/
+scp ${TARBALL} shen:/home/tigeorgia/shenmartav/
