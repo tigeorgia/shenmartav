@@ -30,9 +30,9 @@
             <div id="cell-party" class="cell">
                 <div>{% trans 'Party' %}</div>
                 <select id="filter-party"></select>
-                <div class="hidden" id="hidden-all"><option class="unit-all" value="all">{% trans 'All' %}</option></div>
+                <select class="hidden" id="hidden-all"><option class="unit-all" value="all">{% trans 'All' %}</option></select>
                 {% for u in units %}
-                <div class="hidden" id="hidden-{{ u.short }}">{% for p in u.parties.all %}<option class="unit-{{ u.short }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>{% endfor %}</div>
+                <select class="hidden" id="hidden-{{ u.short }}">{% for p in u.parties.all %}<option class="unit-{{ u.short }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>{% endfor %}</select>
                 {% endfor %}
             </div>
         </div>
