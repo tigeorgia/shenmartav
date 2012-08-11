@@ -181,21 +181,29 @@ class Detail (DetailView):
         if total == 0:
             return {
                 'last': [],
-                'answered': { 'absolute': 0, 'relative': 0 },
-                'noresponse': { 'absolute': 0, 'relative': 0 },
+                'answered': { 'absolute': 0, 'relative': 50 },
+                'noresponse': { 'absolute': 0, 'relative': 50 },
             }
 
-        answered = len([p for p in public if p.answer])
-        noresponse = total - answered
+        answered_absolute = len([p for p in public if p.answer])
+        noresponse_absolute = total - answered_absolute
+
+        if answered_absolute == noresponse_absolute: # might be all 0, too
+            answered_relative = 50
+            noresponse_relative = 50
+        else:
+            answered_relative = answered_absolute * 100. / total
+            noresponse_relative = noresponse_absolute * 100. / total
+
         return {
             'last': public[0],
             'answered': {
-                'absolute': answered,
-                'relative': answered * 100. / total
+                'absolute': answered_absolute,
+                'relative': answered_relative
             },
             'noresponse': {
-                'absolute': noresponse,
-                'relative': noresponse * 100. / total
+                'absolute': noresponse_absolute,
+                'relative': noresponse_relative
             }
         }
 
