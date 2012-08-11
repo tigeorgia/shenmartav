@@ -34,8 +34,8 @@ class RepresentativeTest (TestCase):
 
         r = Representative.objects.get(pk=3)
         questions = {
-            'answered': {'absolute': 0, 'relative': 0},
-            'noresponse': {'absolute': 0, 'relative': 0},
+            'answered': {'absolute': 0, 'relative': 50},
+            'noresponse': {'absolute': 0, 'relative': 50},
             'last': []
         }
         self.assertEqual(d._get_questions(r), questions)
@@ -80,7 +80,7 @@ class RepresentativeTest (TestCase):
 
     def test_Unit_get_members (self):
         up = UnitParliament()
-        members = [13, 2, 8, 5, 4, 7, 3, 1, 9]
+        members = [13, 8, 5, 4, 7, 3, 1, 9]
         members_up = up._get_members()
         for i in xrange(len(members_up)):
             self.assertEqual(members_up[i]['pk'], members[i])
