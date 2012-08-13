@@ -123,13 +123,6 @@
     background: #ccc;
 }
 
-#representative #members .member.majoritarian {
-    opacity: 0.8;
-}
-#representative #members .member.member-selected {
-    opacity: 1;
-}
-
 
 #representative #members .member .representative-name {
     margin-top: 0.5em;
