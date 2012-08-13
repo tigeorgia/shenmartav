@@ -216,6 +216,10 @@ class Detail (DetailView):
         context['questions'] = self._get_questions(obj)
         context['votecounts'] = VotingRecordResult.get_counts(representative=obj)
         context['url_feed'] = reverse('representative_feed_detail', args=[obj.pk])
+        try:
+            context['decl'] = obj.incomedeclaration.all()[0]
+        except IndexError:
+            context['decl'] = None
 
         set_language_changer(self.request, obj.get_absolute_url)
         return context

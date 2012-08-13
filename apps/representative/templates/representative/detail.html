@@ -54,19 +54,15 @@
         </tr>
         <tr>
             <td>{% trans 'Salary' %}</td>
-            <td>{{ obj.salary }} {% trans 'GEL' %}</td>
+            <td><a href="{{ decl.get_absolute_url }}#wages">{{ obj.salary }}</a></td>
         </div>
         <tr>
             <td>{% trans 'Expenses' %}</td>
-            <td>{{ obj.expenses }}</td>
+            <td><a href="{{ decl.get_absolute_url }}#otherinclexpenses">{{ obj.expenses }}</a></td>
         </tr>
         <tr>
             <td>{% trans 'Property & Assets' %}</td>
-            <td>{{ obj.property_assets }}</td>
-        </tr>
-        <tr>
-            <td>{% trans 'Income Declaration' %}</td>
-            <td>{% for decl in obj.incomedeclaration.all %}<a href="{{ decl.get_absolute_url }}"> {{ decl.decl_id }}</a> {% endfor %}</td>
+            <td><a href="{{ decl.get_absolute_url }}#property">{{ obj.property_assets }}</a></td>
         </tr>
         <tr>
             <td>{% trans 'Website' %}</td>

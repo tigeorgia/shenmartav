@@ -11,7 +11,7 @@
             <li><a href="{{ obj.representative.get_absolute_url }}">{% trans 'Representative' %} {{ obj.representative.name }}</a></li>
         {% endif %}
         {% if obj.biographies.all %}
-            <li>{% trans 'Biography' %}:
+            <li><h4>{% trans 'Biography' %}</h4>
                 <ul>{% for bio in obj.biographies.all %}
                     <li>{% trans 'Position' %}: {{ bio.position }}<ul>
                         <li>{% trans 'Work Contact' %}: {{ bio.work_contact }}</li>
@@ -21,7 +21,7 @@
             </li>
         {% endif %}
         {% if obj.cash.all %}
-            <li>{% trans 'Cash' %}:
+            <li><h4>{% trans 'Cash' %}</h4>
                 <ul>{% for cash in obj.cash.all %}
                     <li>{% trans 'Name' %}: {{ cash.name }}<ul>
                         <li>{% trans 'Amount, Currency' %}: {{ cash.amt_currency }}</li>
@@ -30,7 +30,7 @@
             </li>
         {% endif %}
         {% if obj.contracts.all %}
-            <li>{% trans 'Contracts' %}:
+            <li><h4>{% trans 'Contracts' %}</h4>
                 <ul>{% for contract in obj.contracts.all %}
                     <li>{% trans 'Name' %}: {{ contract.name }}<ul>
                         <li>{% trans 'Description' %}: {{ contract.desc_value }}</li>
@@ -41,7 +41,7 @@
             </li>
         {% endif %}
         {% if obj.deposits.all %}
-            <li>{% trans 'Deposits' %}:
+            <li><h4>{% trans 'Deposits' %}</h4>
                 <ul>{% for deposit in obj.deposits.all %}
                     <li>{% trans 'Name' %}: {{ deposit.name }}<ul>
                         <li>{% trans 'Bank' %}: {{ deposit.bank }}</li>
@@ -51,8 +51,19 @@
                 {% endfor %}</ul>
             </li>
         {% endif %}
+        {% if obj.wages.all %}
+            <li><a name="wages"></a><h4>{% trans 'Wages' %}</h4>
+                <ul>{% for wage in obj.wages.all %}
+                    <li>{% trans 'Name' %}: {{ wage.name }}<ul>
+                        <li>{% trans 'Description Workplace' %}: {{ wage.desc_workplace }}</li>
+                        <li>{% trans 'Description Job' %}: {{ wage.desc_job }}</li>
+                        <li>{% trans 'Income Record' %}: {{ wage.income_rec }}</li>
+                    </ul></li>
+                {% endfor %}</ul>
+            </li>
+        {% endif %}
         {% if obj.entrepreneurials.all %}
-            <li>{% trans 'Entrepreneurial' %}:
+            <li><h4>{% trans 'Entrepreneurial' %}</h4>
                 <ul>{% for entrepreneurial in obj.entrepreneurials.all %}
                     <li>{% trans 'Name' %}: {{ entrepreneurial.name }}<ul>
                         <li>{% trans 'Corporation, Name, Addr' %}: {{ entrepreneurial.corp_name_addr }}</li>
@@ -65,7 +76,7 @@
             </li>
         {% endif %}
         {% if obj.family.all %}
-            <li>{% trans 'Family' %}:
+            <li><h4>{% trans 'Family' %}</h4>
                 <ul>{% for member in obj.family.all %}
                     <li>{% trans 'Name' %}: {{ member.name }}<ul>
                         <li>{% trans 'Surname' %}: {{ member.surname }}</li>
@@ -77,7 +88,7 @@
             </li>
         {% endif %}
         {% if obj.gifts.all %}
-            <li>{% trans 'Gifts' %}:
+            <li><h4>{% trans 'Gifts' %}</h4>
                 <ul>{% for gift in obj.gifts.all %}
                     <li>{% trans 'Name' %}: {{ gift.name }}<ul>
                         <li>{% trans 'Description' %}: {{ gift.desc_value }}</li>
@@ -87,7 +98,7 @@
             </li>
         {% endif %}
         {% if obj.otherinclexpenses.all %}
-            <li>{% trans 'Other Incl Expenses' %}:
+            <li><a name="otherinclexpenses"></a><h4>{% trans 'Other Incl Expenses' %}</h4>
                 <ul>{% for expense in obj.otherinclexpenses.all %}
                     <li>{% trans 'Recipient Issuer' %}: {{ expense.recip_issuer }}<ul>
                         <li>{% trans 'Type' %}: {{ expense.type }}</li>
@@ -97,7 +108,7 @@
             </li>
         {% endif %}
         {% if obj.properties.all %}
-            <li>{% trans 'Properties' %}:
+            <li><a name="property"></a><h4>{% trans 'Properties' %}</h4>
                 <ul>{% for property in obj.properties.all %}
                     <li>{% trans 'Name, Shares' %}: {{ property.name_shares }}<ul>
                         <li>{% trans 'Property Type' %}: {{ property.prop_type }}</li>
@@ -108,7 +119,7 @@
             </li>
         {% endif %}
         {% if obj.realestates.all %}
-            <li>{% trans 'Real Estate' %}:
+            <li><h4>{% trans 'Real Estate' %}</h4>
                 <ul>{% for realestate in obj.realestates.all %}
                     <li>{% trans 'Name, Shares' %}: {{ realestate.name_shares }}<ul>
                         <li>{% trans 'Property Type' %}: {{ realestate.prop_type }}</li>
@@ -119,24 +130,13 @@
             </li>
         {% endif %}
         {% if obj.securities.all %}
-            <li>{% trans 'Securities' %}:
+            <li><h4>{% trans 'Securities' %}</h4>
                 <ul>{% for security in obj.securities.all %}
                     <li>{% trans 'Name' %}: {{ security.name }}<ul>
                         <li>{% trans 'Issuer' %}: {{ security.issuer }}</li>
                         <li>{% trans 'Type' %}: {{ security.type }}</li>
                         <li>{% trans 'Price' %}: {{ security.price }}</li>
                         <li>{% trans 'Quantity' %}: {{ security.quantity }}</li>
-                    </ul></li>
-                {% endfor %}</ul>
-            </li>
-        {% endif %}
-        {% if obj.wages.all %}
-            <li>{% trans 'Wages' %}:
-                <ul>{% for wage in obj.wages.all %}
-                    <li>{% trans 'Name' %}: {{ wage.name }}<ul>
-                        <li>{% trans 'Description Workplace' %}: {{ wage.desc_workplace }}</li>
-                        <li>{% trans 'Description Job' %}: {{ wage.desc_job }}</li>
-                        <li>{% trans 'Income Record' %}: {{ wage.income_rec }}</li>
                     </ul></li>
                 {% endfor %}</ul>
             </li>
