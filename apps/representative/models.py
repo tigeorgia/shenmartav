@@ -41,7 +41,7 @@ class Party (Organisation):
 
 
 class Unit (models.Model):
-    """A unit/house, like Parliament or Tbilisi City Hall."""
+    """A unit/house, like Parliament or Tbilisi City Assembly."""
     #: name of the unit
     name = models.CharField(max_length=255, blank=False, null=False,
         help_text=_('Name of the Unit.'))
