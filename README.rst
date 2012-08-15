@@ -135,3 +135,11 @@ $ ./deployment/on_prod.sh
 
 which will unpack the code and install the new database.
 It calls ./deployment/redo_db.sh to redo the database, calls ./deployment/update_site.py to update the Django Site, collect static files and then restarts the web server.
+
+
+
+Export Data / API
+=================
+
+The API is based on TastyPie, http://tastypieapi.org/, so go there and read up on how to use it if you don't know it already.
+The data is available at: http://shenmartav.ge/api/v1/?format=json . You can look at the output of the the API url above and discover for yourself, 'list_endpoint' might be the most interesting bit of data to you.
