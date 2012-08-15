@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-14 07:33+0200\n"
+"POT-Creation-Date: 2012-08-15 08:05+0200\n"
 "PO-Revision-Date: 2012-08-12 18:12\n"
 "Last-Translator:   <sebastian@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -291,7 +291,7 @@ msgstr "თემა"
 msgid "Body"
 msgstr "ტექსტი"
 
-#: apps/contact/views.py:24
+#: apps/contact/views.py:24 apps/contact/templates/contact/show.html:33
 msgid "Contact Form"
 msgstr "საკონტაქტო ფორმა"
 
@@ -299,12 +299,72 @@ msgstr "საკონტაქტო ფორმა"
 msgid "Contact"
 msgstr "კონტაქტი"
 
+#: apps/contact/templates/contact/show.html:10
+#: apps/contact/templates/contact/show.html:11 templates/footer.html:10
+msgid "Transparency International Georgia"
+msgstr "„საერთაშორისო გამჭვირვალობა – საქართველო“"
+
+#: apps/contact/templates/contact/show.html:11
+msgid "Logo TIG"
+msgstr "ლოგო ტიგ"
+
+#: apps/contact/templates/contact/show.html:12
+#: apps/contact/templates/contact/show.html:22
+msgid "Address"
+msgstr "მისამართი"
+
+#: apps/contact/templates/contact/show.html:12
+msgid "26, Rustaveli Ave"
+msgstr "რუსთაველის გამზირი, 26"
+
+#: apps/contact/templates/contact/show.html:13
+msgid "0108 Tbilisi, Georgia"
+msgstr "0108 თბილისი, საქართველო"
+
+#: apps/contact/templates/contact/show.html:14
+#: apps/contact/templates/contact/show.html:24
+msgid "Phone"
+msgstr "ტელეფონი"
+
+#: apps/contact/templates/contact/show.html:15
+#: apps/contact/templates/contact/show.html:25
+msgid "Fax"
+msgstr "ფაქსი"
+
 #: apps/contact/templates/contact/show.html:16
+#: apps/contact/templates/contact/show.html:26
+msgid "Email"
+msgstr "ელფოსტა"
+
+#: apps/contact/templates/contact/show.html:17
+#: apps/contact/templates/contact/show.html:27
+#: apps/representative/templates/representative/detail.html:68
+msgid "Website"
+msgstr "ვებგვერდი"
+
+#: apps/contact/templates/contact/show.html:20
+#: apps/contact/templates/contact/show.html:21
+msgid "The Caucasus Institute for Peace, Democracy and Development"
+msgstr "მშვიდობის, დემოკრატიის და განვითარების კავკასიური ინსტიტუტი"
+
+#: apps/contact/templates/contact/show.html:21
+msgid "Logo CIPDD"
+msgstr "ლოგო ციპდდ"
+
+#: apps/contact/templates/contact/show.html:22
+msgid "72, Tsereteli Ave., 2nd floor"
+msgstr "წერეთლის გამზირი, 72, მე-2 სართული"
+
+#: apps/contact/templates/contact/show.html:23
+msgid "0154 Tbilisi, Georgia"
+msgstr "0154 თბილისი, საქართველო"
+
+#: apps/contact/templates/contact/show.html:41
 #: apps/question/templates/question/form.html:14
 msgid "Colored fields are required"
 msgstr "წითლად აღნიშნული ველების შევსება აუცილებელია"
 
-#: apps/contact/templates/contact/show.html:17
+#: apps/contact/templates/contact/show.html:42
 msgid "Contact Us"
 msgstr "გამოგზავნა"
 
@@ -1481,10 +1541,6 @@ msgstr "კენჭისყრის შედეგები"
 msgid "Salary"
 msgstr "ხელფასი"
 
-#: apps/representative/templates/representative/detail.html:68
-msgid "Website"
-msgstr "ვებგვერდი"
-
 #: apps/representative/templates/representative/detail.html:72
 msgid "Work Experience"
 msgstr "სამუშაო გამოცდილება"
@@ -1711,10 +1767,6 @@ msgstr "გვეწვიეთ Twitter-ზე"
 #: templates/footer.html:9
 msgid "Caucasus Institute for Peace Democracy and Development"
 msgstr "მშვიდობის, დემოკრატიის და განვითარების კავკასიური ინსტიტუტი"
-
-#: templates/footer.html:10
-msgid "Transparency International Georgia"
-msgstr "„საერთაშორისო გამჭვირვალობა – საქართველო“"
 
 #: templates/nav.html:3 templates/folded/nav.html:4
 msgid "You Rule!"
