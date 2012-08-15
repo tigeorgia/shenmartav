@@ -43,7 +43,7 @@
     width: 100%;
 }
 #question #ask textarea {
-    height: 50px;
+    height: 5em;
 }
 #question #ask input[type="submit"]:hover, input[type="button"]:hover {
     cursor: pointer;

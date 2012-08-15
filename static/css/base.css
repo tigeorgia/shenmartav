@@ -18,7 +18,6 @@ input, select, option, textarea {
     font-family: "zwo-geo-light", Georgia, Times, serif;
     font-size: 1em;
     padding: .6em;
-    height: 2.6em;
     background: #fff;
     color: #000;
     box-sizing: border-box;
@@ -28,6 +27,10 @@ input, select, option, textarea {
     -khtml-box-sizing: border-box;
     outline: 0;
 }
+input, select, option {
+    height: 2.6em;
+}
+
 input[type='password'], input[type='text'] {
     border: .1em inset #ccc;
 }
