@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-15 08:05+0200\n"
-"PO-Revision-Date: 2012-08-12 18:12\n"
+"POT-Creation-Date: 2012-08-16 08:31+0200\n"
+"PO-Revision-Date: 2012-08-15 16:55\n"
 "Last-Translator:   <sebastian@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language: ka\n"
@@ -1305,14 +1305,14 @@ msgid "Representative %s"
 msgstr "წარმომადგენელი %s"
 
 #: apps/representative/feeds.py:56
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Party: %(party)s|Unit: %(unit)s|Committee: %(committee)s|Faction: "
 "%(faction)s|Is_Majoritarian: %(is_majoritarian)s|Electoral District: "
 "%(electoral_district)s|Elected: %(elected)s|Place of Birth: %(pob)s|Family "
 "Status: %(family_status)s|Education: %(education)s|Contact Address / Phone: "
 "%(contact_address_phone)s|URL: %(url)s|Voting attendance record: "
-"%(attendance_record)s|Salary: %(salary)s|Other Income: %(other_income)s|"
+"%(attendance_record)s|Salary: %(salary)s|Business Income: %(other_income)s|"
 "Expenses: %(expenses)s|Property & Assets: %(property_assets)s|Income "
 "declaration URL: %(income_declaration)s|Questions answered: %(answered)s%%"
 msgstr ""
@@ -1650,17 +1650,12 @@ msgstr ""
 "ისეთი საქმიანობებისათვის იღებს, როგორიცაა კომიტეტის თავმჯდომარეობა"
 
 #: apps/representative/templates/representative/income.html:21
-msgid "Other income"
-msgstr "სხვა შემოსავალი"
+msgid "Business income"
+msgstr ""
 
 #: apps/representative/templates/representative/income.html:21
-msgid ""
-"Any other income that a representative receives from sources other than his "
-"or her salary, for example, income from businesses owned by the "
-"representative"
+msgid "Income that a representative receives from businesses owned by him/her"
 msgstr ""
-"სხვა შემოსავალი, რომელიც არ უკავშირდება წარმომადგენლის საკანონმდებლო "
-"საქმიანობას, მაგალითად, ბიზნეს აქტივობებიდან მიღებული შემოსავალი"
 
 #: apps/representative/templates/representative/search.html:9
 msgid "Search a Representative"
@@ -2002,6 +1997,15 @@ msgstr "წინა"
 #: templates/search/search.html:33
 msgid "Next"
 msgstr "შემდეგი"
+
+#~ msgid "Other income"
+#~ msgstr "სამეწარმეო შემოსავალი"
+
+#~ msgid ""
+#~ "Any other income that a representative receives from sources other than "
+#~ "his or her salary, for example, income from businesses owned by the "
+#~ "representative"
+#~ msgstr "წარმომადგენლის ბიზნეს აქტივობებიდან მიღებული შემოსავალი."
 
 #~ msgid "GEL"
 #~ msgstr "ლარი"
