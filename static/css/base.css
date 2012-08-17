@@ -344,7 +344,9 @@ img.column-bg {
     width: 80%;
     height: 100%;
 }
-
+.opened > #scroll-container {
+    height: 98%;
+}
 .folded {
     text-align: center;
     position: absolute;

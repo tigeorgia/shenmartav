@@ -12,7 +12,7 @@
 {% block content %}
     <div id="col-nav" class="column shadow">{% include 'nav.html' %}</div>
 
-    <div class="opened">{% block blog %}{% endblock %}</div>
+    <div class="opened"><div id="scroll-container" class="scroll-pane">{% block blog %}{% endblock %}</div></div>
 
     {% include 'folded/who.html' %}
     {% include 'folded/what.html' %}

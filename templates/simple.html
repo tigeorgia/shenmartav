@@ -10,7 +10,7 @@
 {% block content %}
     <div id="col-nav" class="column shadow">{% include 'nav.html' %}</div>
 
-    <div class="opened">{% placeholder simple_content %}</div>
+    <div class="opened"><div id="scroll-container" class="scroll-pane">{% placeholder simple_content %}</div></div>
 
     {% include 'folded/who.html' %}
     {% include 'folded/what.html' %}
