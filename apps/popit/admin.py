@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.forms import TextInput, ModelForm
 #from sorl.thumbnail.admin import AdminImageMixin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
@@ -7,11 +8,21 @@ from popit import models
 def create_admin_link_for(obj, link_text):
     return u'<a href="%s">%s</a>' % ( obj.get_admin_url(), link_text )
 
+class PositionInlineAdminForm (ModelForm):
+  class Meta:
+    model = models.Position
+    widgets = {
+      'title_en': TextInput(attrs={'size': '100'}),
+      'title_ka': TextInput(attrs={'size': '100'}),
+    }
+    fields = [ 'person', 'title_en', 'title_ka', 'start_date', 'end_date' ]
+
+
 class PositionInlineAdmin(TranslationTabularInline):
     model      = models.Position
     extra      = 3    # do not set to zero as the autocomplete does not work in inlines
     can_delete = True
-    fields     = [ 'person', 'organisation', 'type', 'title_en', 'title_ka', 'place_en', 'place_ka', 'start_date', 'end_date' ]
+    form = PositionInlineAdminForm
 
 # People
 
