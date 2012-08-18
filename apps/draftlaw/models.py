@@ -92,14 +92,22 @@ class DraftLaw (models.Model):
         return ('draftlaw_detail', [self.slug])
 
 
-    def _linked_name (self, name):
-        """Looks for representative's names in given string and adds links to them.
+    def _linked_name (self, attr_base):
+        """Looks for representative's names in given attribute and adds links to them.
 
-        @param item: item to look for representative
-        @type item: str
+        @param attr_base: basename of the attribute to get the name from
+        @type attr_base: str
         @return: item with properly linked representative(s)
         @rtype: str
         """
+        try:
+            name = getattr(self, attr_base + '_' + get_language()[:2])
+        except AttributeError:
+            try:
+                name = getattr(self, attr_base)
+            except AttributeError:
+                return None
+
         linked = name.split('(')[0]
         if linked.lower().startswith('mp '):
             linked = linked[3:]
@@ -127,10 +135,11 @@ class DraftLaw (models.Model):
 
     @property
     def initiator_linked (self):
-        return self._linked_name(self.initiator)
+        return self._linked_name('initiator')
+
     @property
     def author_linked (self):
-        return self._linked_name(self.author)
+        return self._linked_name('author')
 
 
 
@@ -195,7 +204,7 @@ class Alert (object):
         self.date = draftlaw.bureau_date
 
         #: text of the alert
-        lang = get_language()
+        lang = get_language()[:2]
         if lang == 'en':
             if draftlaw.sms_en:
                 self.text = draftlaw.sms_en

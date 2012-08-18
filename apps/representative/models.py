@@ -10,6 +10,7 @@ import datetime
 from cms.models.pluginmodel import CMSPlugin
 from django.conf import settings
 from django.db import models
+from django.db.models import Q
 try:
     # SIGH! this is Django 1.4 which spits out warnings otherwise
     # Django 1.4. was necessary to fix an issue with PostGIS
@@ -121,6 +122,87 @@ class Representative (Person):
 
 
     @classmethod
+    def _find_firstname_first (cls, name, lang):
+        """Find a representative with given name firstname first.
+
+        @param name: name of the representative
+        @type name: str
+        @param lang: user language
+        @type lang: str
+        @return: representative matching the name
+        @rtype: representative.Representative
+        """
+        if lang == 'ka':
+            firstname_first = glt.firstname_first(name)
+        else:
+            firstname_first = name.split()[0]
+
+        representative = cls.objects.filter(
+            Q(names__name_ka__icontains=firstname_first) |\
+            Q(names__name_en__icontains=firstname_first) |\
+            Q(names__name__icontains=firstname_first)
+        )
+
+        try:
+            return representative[0]
+        except IndexError:
+            return None
+
+
+    @classmethod
+    def _find_lastname_first (cls, name, lang):
+        """Find a representative with given name lastname first.
+
+        @param name: name of the representative
+        @type name: str
+        @param lang: user language
+        @type lang: str
+        @return: representative matching the name
+        @rtype: representative.Representative
+        """
+        if lang == 'ka':
+            lastname_first = glt.lastname_first(name)
+        else:
+            lastname_first = name.split()[-1]
+
+        representative = cls.objects.filter(
+            Q(names__name_ka__icontains=lastname_first) |\
+            Q(names__name_en__icontains=lastname_first) |\
+            Q(names__name__icontains=lastname_first)
+        )
+
+        try:
+            return representative[0]
+        except IndexError:
+            return None
+
+
+    @classmethod
+    def _find_startswith (cls, start):
+        """Find a representative whose name starts with given start.
+
+        @param start: first charactes of representative's name
+        @type start: str
+        @return: representative whose name starts with given start
+        @rtype: representative.Representative
+        """
+        if len(start) < NAME_MINLEN:
+            return None
+
+        startswith = start[:NAME_MINLEN]
+        representative = cls.objects.filter(
+            Q(names__name_ka__istartswith=startswith) |\
+            Q(names__name_en__istartswith=startswith) |\
+            Q(names__name__istartswith=startswith)
+        )
+
+        try:
+            return representative[0]
+        except IndexError:
+            return None
+
+
+    @classmethod
     def find (cls, name):
         """Find a representative with given name.
 
@@ -130,34 +212,28 @@ class Representative (Person):
         @rtype: representative.Representative
         """
         if len(name) < NAME_MINLEN: return None
-        name = glt.to_georgian(name)
+        lang = get_language()[:2]
 
-        representative = cls.objects.filter(names__name_ka__icontains=name)
-        if representative: return representative[0]
-
-        firstname_first = glt.firstname_first(name)
         representative = cls.objects.filter(
-            names__name_ka__icontains=firstname_first)
+            Q(names__name_ka__icontains=name) |\
+            Q(names__name_en__icontains=name) |\
+            Q(names__name__icontains=name)
+        )
         if representative: return representative[0]
 
-        lastname_first = glt.lastname_first(name)
-        representative = cls.objects.filter(
-            names__name_ka__icontains=lastname_first)
-        if representative: return representative[0]
+        representative = cls._find_firstname_first(name, lang)
+        if representative: return representative
+
+        representative = cls._find_lastname_first(name, lang)
+        if representative: return representative
 
         splitname = name.split()
-        if len(splitname[0]) > NAME_MINLEN:
-            representative = cls.objects.filter(
-                names__name_ka__icontains=splitname[0][:NAME_MINLEN])
-            if representative: return representative[0]
+        representative = cls._find_startswith(splitname[0])
+        if representative: return representative
 
-        try:
-            if len(splitname[-1]) > NAME_MINLEN:
-                representative = cls.objects.filter(
-                    names__name_ka__icontains=splitname[-1][:NAME_MINLEN])
-                if representative: return representative[0]
-        except IndexError:
-            pass
+        if len(splitname) > 1:
+            representative = cls._find_startswith(splitname[-1])
+            if representative: return representative
 
         return None
 
