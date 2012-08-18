@@ -44,5 +44,13 @@ class QuestionForm (forms.ModelForm):
                     kwargs['initial'] = initial
 
         super(QuestionForm, self).__init__(**kwargs)
+
+        # bug in Django? shows georgian in english site otherwise...
+        self.fields['first_name'].label = _('First Name')
+        self.fields['last_name'].label = _('Last Name')
+        self.fields['mobile'].label = _('Mobile Phone Number')
+        self.fields['question'].label = _('Question')
+        self.fields['representative'].label = _('Representative')
+
         self.fields['representative'].choices =\
             Representative.by_lastname_lastname_first(choices=True)
