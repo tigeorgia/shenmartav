@@ -13,7 +13,9 @@
 {% if obj.committee %}
 <div id="committee">{% ifequal obj.unit.id 1 %}{% trans 'Committee' %}{% else %}{% trans 'Commission' %}{% endifequal %}: {{ obj.committee }}</div>
 {% endif %}
+{% if obj.description %}
 <div id="activities"><span class="darker">{% trans 'Activities' %}</span>:<br /><span class="smaller">{{ obj.description }}<span></div>
+{% endif %}
 <div>{% include 'representative/attendance.html' %}</div>
 <div>{% include 'representative/income.html' %}</div>
 <div id="more"><a href="{{ obj.get_absolute_url }}">{% trans 'More' %} &raquo;</a></div>
