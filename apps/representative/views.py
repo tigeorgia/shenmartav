@@ -250,7 +250,12 @@ def query (request, query):
     # search names & electoral districts
     for r in Representative.objects.filter(
         Q(names__name__icontains=query) |\
-        Q(electoral_district__icontains=query)):
+        Q(names__name_en__icontains=query) |\
+        Q(names__name_ka__icontains=query) |\
+        Q(electoral_district__icontains=query) |\
+        Q(electoral_district_en__icontains=query) |\
+        Q(electoral_district_ka__icontains=query)\
+    ):
         data.append({'label': str(r.name), 'pk': r.pk})
 
     return HttpResponse(json.dumps(data), content_type='application/json')

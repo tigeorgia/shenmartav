@@ -26,7 +26,7 @@ RepresentativeCMSPlugin = {
         RepresentativeCMSPlugin.query.autocomplete({
             minLength: 2,
             source: function (req, add) {
-                var url = RepresentativeCMSPlugin.urlQuery + req.term;
+                var url = RepresentativeCMSPlugin.urlQuery + encodeURIComponent(req.term) + '/';
                 $.getJSON(url, '', function(data) {
                     var suggestions = [];
                     $.each(data, function(i, val) {
