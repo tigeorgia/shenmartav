@@ -73,6 +73,9 @@
 #draftlaw #list .item-selected {
     background: #ddd;
 }
+#draftlaw #list .item  {
+    cursor: pointer;
+}
 #draftlaw #list .item .stage {
     float: left;
     margin-left: .3em;

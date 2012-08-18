@@ -87,6 +87,10 @@ DraftLawList = {
 
 
     loadNextPageDone: function () {
+        $('#draftlaw #list .item').click(function() {
+            DraftLawList.setInfo($(this));
+        });
+
         $('#draftlaw #list table').trigger('update');
         Base.setHeightScrollPane('#draftlaw', '#draftlaw #container-list', 90);
         Base.enable('#draftlaw #list');
@@ -111,7 +115,6 @@ DraftLawList = {
                     }
 
                     DraftLawList.nextPage += 1;
-                    DraftLawList.hoverIntentDraftLaws();
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
