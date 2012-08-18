@@ -206,7 +206,10 @@ RepresentativeFind = {
 
 
     loadUnitDone: function () {
-        RepresentativeFind.hoverIntentMembers();
+        //RepresentativeFind.hoverIntentMembers();
+        $('#representative #members .member').click(function () {
+            RepresentativeFind.setInfo($(this));
+        });
         $('#representative #select #unit').toggle('blind');
         RepresentativeFind.selectMemberFromLocation();
         RepresentativeFind.setupFiltersParty();
