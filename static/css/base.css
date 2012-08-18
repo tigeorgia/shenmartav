@@ -345,6 +345,7 @@ img.column-bg {
     height: 100%;
 }
 .opened > #scroll-container {
+    margin-top: 1em;
     height: 98%;
 }
 .folded {

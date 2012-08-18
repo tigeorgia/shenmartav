@@ -5,7 +5,7 @@
 .opened {
     left: 25%;
     width: 61%;
-    padding: 1em;
+    padding: 0 1em;
 }
 .opened .date {
     border-bottom: 1px solid #aaa;
@@ -16,11 +16,11 @@
 }
 
 #folded-who {
-    right: 98px;
+    right: 8%;
 }
 #folded-what {
-    right: 49px;
+    right: 4%;
 }
 #folded-question {
-    right: 0px;
+    right: 0;
 }

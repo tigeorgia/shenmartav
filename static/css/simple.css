@@ -4,7 +4,7 @@
 
 .opened {
     left: 25%;
-    padding: 1em;
+    padding: 0 1em;
     width: 61%
 }
 .opened a {
