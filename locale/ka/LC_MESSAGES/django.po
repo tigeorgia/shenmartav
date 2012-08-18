@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-16 08:31+0200\n"
-"PO-Revision-Date: 2012-08-15 16:55\n"
+"PO-Revision-Date: 2012-08-16 15:24\n"
 "Last-Translator:   <sebastian@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
-"Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ka\n"
 "Plural-Forms: nplurals=2; plural=0\n"
 "X-Poedit-Country: GEORGIA\n"
 "X-Poedit-Language: Georgian\n"
@@ -407,15 +407,15 @@ msgstr "კანონპროექტი %s"
 #: apps/draftlaw/feeds.py:48
 #, python-format
 msgid ""
-"Introduced: %(introduced)s|Title: %(title)s|Initiator: %(initiator)s|Author: "
-"%(author)s|Status: %(status)s|Summary: %(summary)s|Full-text URL: "
+"Introduced: %(introduced)s|Title: %(title)s|Initiator: %(initiator)s|Author:"
+" %(author)s|Status: %(status)s|Summary: %(summary)s|Full-text URL: "
 "%(full_text_url)s|Enacted-text URL: %(enacted_text_url)s|Law Number: "
 "%(law_number)s"
 msgstr ""
-"ინიცირებული: %(introduced)s|Title: %(title)s|ინიციატორი: %(initiator)s|"
-"ავტორი: %(author)s|სტატუსი: %(status)s|ცვლილების არსი: %(summary)s|Full-text "
-"URL: %(full_text_url)s|მიღებული კანონის ლინკი: %(enacted_text_url)s|კანონის "
-"ნომერი: %(law_number)s"
+"ინიცირებული: %(introduced)s|Title: %(title)s|ინიციატორი: "
+"%(initiator)s|ავტორი: %(author)s|სტატუსი: %(status)s|ცვლილების არსი: "
+"%(summary)s|Full-text URL: %(full_text_url)s|მიღებული კანონის ლინკი: "
+"%(enacted_text_url)s|კანონის ნომერი: %(law_number)s"
 
 #: apps/draftlaw/models.py:22
 msgid "Passed"
@@ -683,8 +683,8 @@ msgstr "დისკუსიის ეტაპი"
 #: apps/draftlaw/templates/draftlaw/list.html:19
 msgid ""
 "In order to become enacted, each draft law must pass 6 hearings: three "
-"committee hearings and three plenary hearings. Each box represents one stage "
-"in this process"
+"committee hearings and three plenary hearings. Each box represents one stage"
+" in this process"
 msgstr ""
 "იმისთვის, რომ იქცეს კანონად, კანონპროექტი გადის ექვს მოსმენას: სამ "
 "საკომიტეტო და სამ პლენარულ მოსმენას. ამ პროცესის თითოეული ეტაპი გამოსახულია "
@@ -1229,7 +1229,8 @@ msgstr ""
 
 #: apps/question/templates/question/form.html:5
 msgid ""
-"The latter will be used for notification when the question has been answered."
+"The latter will be used for notification when the question has been "
+"answered."
 msgstr "ელფოსტაზე მოგივათ შეტყობინება, როდესაც შეკითხვას გაეცემა პასუხი."
 
 #: apps/question/templates/question/form.html:5
@@ -1312,19 +1313,21 @@ msgid ""
 "%(electoral_district)s|Elected: %(elected)s|Place of Birth: %(pob)s|Family "
 "Status: %(family_status)s|Education: %(education)s|Contact Address / Phone: "
 "%(contact_address_phone)s|URL: %(url)s|Voting attendance record: "
-"%(attendance_record)s|Salary: %(salary)s|Business Income: %(other_income)s|"
-"Expenses: %(expenses)s|Property & Assets: %(property_assets)s|Income "
-"declaration URL: %(income_declaration)s|Questions answered: %(answered)s%%"
+"%(attendance_record)s|Salary: %(salary)s|Business Income: "
+"%(other_income)s|Expenses: %(expenses)s|Property & Assets: "
+"%(property_assets)s|Income declaration URL: %(income_declaration)s|Questions"
+" answered: %(answered)s%%"
 msgstr ""
-"პარტია: %(party)s|საკანონმდებლო ორგანო: %(unit)s|კომიტეტი: %(committee)s|"
-"ფრაქცია: %(faction)s|მაჟორიტარია: %(is_majoritarian)s|საარჩევნო ოლქი: "
-"%(electoral_district)s|არჩეული: %(elected)s|დაბადების ადგილი: %(pob)s|"
-"ოჯახური მდგომარეობა: %(family_status)s|განათლება: %(education)s|საკონტაქტო "
-"ინფორმაცია: %(contact_address_phone)s|ბმული: %(url)s|კენჭისყრაზე დასწრება: "
-"%(attendance_record)s|ხელფასი: %(salary)s|სხვა შემოსავალი: %(other_income)s|"
-"ხარჯები: %(expenses)s|ქონება და აქციები: %(property_assets)s|შემოსავლების "
-"დეკლარაციის ბმული: %(income_declaration)s|პასუხგაცემული შეკითხვები: "
-"%(answered)s%%"
+"პარტია: %(party)s|საკანონმდებლო ორგანო: %(unit)s|კომიტეტი: "
+"%(committee)s|ფრაქცია: %(faction)s|მაჟორიტარია: "
+"%(is_majoritarian)s|საარჩევნო ოლქი: %(electoral_district)s|არჩეული: "
+"%(elected)s|დაბადების ადგილი: %(pob)s|ოჯახური მდგომარეობა: "
+"%(family_status)s|განათლება: %(education)s|საკონტაქტო ინფორმაცია: "
+"%(contact_address_phone)s|ბმული: %(url)s|კენჭისყრაზე დასწრება: "
+"%(attendance_record)s|ხელფასი: %(salary)s|სხვა შემოსავალი: "
+"%(other_income)s|ხარჯები: %(expenses)s|ქონება და აქციები: "
+"%(property_assets)s|შემოსავლების დეკლარაციის ბმული: "
+"%(income_declaration)s|პასუხგაცემული შეკითხვები: %(answered)s%%"
 
 #: apps/representative/models.py:36
 msgid "Acronym of this Party"
@@ -1443,7 +1446,8 @@ msgstr "უცნობი"
 #: apps/representative/templates/cmsplugins/representative.html:13
 msgid "Here You can find info on Representatives"
 msgstr ""
-"აქ იპოვით ინფორმაციას საკანონმდებლო ორგანოში თქვენი წარმომადგენლების შესახებ."
+"აქ იპოვით ინფორმაციას საკანონმდებლო ორგანოში თქვენი წარმომადგენლების "
+"შესახებ."
 
 #: apps/representative/templates/cmsplugins/representative.html:29
 msgid "See more about this representative"
@@ -1478,8 +1482,8 @@ msgstr ""
 "განისაზღვრება ოფიციალური კენჭისყრის მონაცემებით. ჩვენ ვაჯამებთ "
 "კანონპროექტებს, რომელთაც დეპუტატებმა მხარი დაუჭირეს, წინააღმდეგ მისცეს ხმა "
 "ან თავი შეიკავეს და შემდეგ ვადგენთ მათ თანაფარდობას იმ კანონპროექტებთან, "
-"რომელთა შემთხვევაშიც დეპუტატი დაფიქსირდა, როგორც არდამსწრე. ეს აუცილებლად არ "
-"ნიშნავს იმას, რომ არდამსწრე დეპუტატი ფიზიკურად არ იმყოფებოდა კენჭისყრის "
+"რომელთა შემთხვევაშიც დეპუტატი დაფიქსირდა, როგორც არდამსწრე. ეს აუცილებლად არ"
+" ნიშნავს იმას, რომ არდამსწრე დეპუტატი ფიზიკურად არ იმყოფებოდა კენჭისყრის "
 "მომენტში, არამედ ამგვარად არის დაფიქსირებული პარლამენტის კენჭისყრის "
 "შედეგების სისტემის მიერ"
 
@@ -1651,11 +1655,11 @@ msgstr ""
 
 #: apps/representative/templates/representative/income.html:21
 msgid "Business income"
-msgstr ""
+msgstr "სამეწარმეო შემოსავალი"
 
 #: apps/representative/templates/representative/income.html:21
 msgid "Income that a representative receives from businesses owned by him/her"
-msgstr ""
+msgstr "წარმომადგენლის ბიზნეს აქტივობებიდან მიღებული შემოსავალი."
 
 #: apps/representative/templates/representative/search.html:9
 msgid "Search a Representative"
@@ -2002,8 +2006,8 @@ msgstr "შემდეგი"
 #~ msgstr "სამეწარმეო შემოსავალი"
 
 #~ msgid ""
-#~ "Any other income that a representative receives from sources other than "
-#~ "his or her salary, for example, income from businesses owned by the "
+#~ "Any other income that a representative receives from sources other than his "
+#~ "or her salary, for example, income from businesses owned by the "
 #~ "representative"
 #~ msgstr "წარმომადგენლის ბიზნეს აქტივობებიდან მიღებული შემოსავალი."
 
@@ -2059,8 +2063,7 @@ msgstr "შემდეგი"
 #~ msgstr "არცერთი"
 
 #~ msgid "Unit where representative is a member of, e.g. \"Parliament\""
-#~ msgstr ""
-#~ "ერთეული, რომლის წევრიც არის წარმომადგენელი, მაგალითად \"პარლამენტი\""
+#~ msgstr "ერთეული, რომლის წევრიც არის წარმომადგენელი, მაგალითად \"პარლამენტი\""
 
 #~ msgid "More Details"
 #~ msgstr "მეტი დეტალი"
