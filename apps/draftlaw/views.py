@@ -15,8 +15,7 @@ try:
 except ImportError:
     from cms.utils import set_language_changer
 
-from .models import DraftLaw, DraftLawDiscussion,\
-    Alert as AlertModel
+from .models import DraftLaw, DraftLawDiscussion
 
 
 
@@ -189,25 +188,6 @@ class Info (DetailView):
     context_object_name = 'obj'
     model = DraftLaw
     template_name = 'draftlaw/info.html'
-
-
-
-class Alert (ListView):
-    """Implements a view with one paged alert item."""
-    template_name = 'draftlaw/alert.html'
-    context_object_name = 'object_list'
-    queryset = DraftLaw.objects.exclude(sms_ka__exact='',
-        sms_en__exact='').order_by('-bureau_date').distinct()
-    paginate_by = 1
-
-
-    def get_context_data (self, **kwargs):
-        context = super(Alert, self).get_context_data(**kwargs)
-        try:
-            context['alert'] = AlertModel(context['object_list'][0])
-        except IndexError:
-            context['alert'] = None
-        return context
 
 
 

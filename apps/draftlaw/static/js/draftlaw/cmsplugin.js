@@ -65,7 +65,7 @@ DraftLawCMSPlugin = {
 
     setupAlert: function () {
         DraftLawCMSPlugin.alert = $('#draftlaw #alert #item');
-        url = URL_DraftLawAlert;
+        url = URL_SMSAlert;
         DraftLawCMSPlugin.alert.load(url, DraftLawCMSPlugin.loadAlertDone);
     },
 

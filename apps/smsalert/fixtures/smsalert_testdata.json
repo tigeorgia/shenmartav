@@ -1,0 +1,29 @@
+[
+  {
+    "pk": 1,
+    "model": "smsalert.smsalert",
+    "fields": {
+      "text": "alert",
+      "text_en": "alert",
+      "text_ka": "\u10d0\u10da\u10d4\u10e0\u10e2",
+      "draftlaws": [
+        908,
+        1095
+      ],
+      "date_sent": "2012-08-20",
+      "date_created": "2012-08-21"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "smsalert.smsalert",
+    "fields": {
+      "text": "second",
+      "text_en": "second",
+      "text_ka": "\u10e1\u10d4\u10ea\u10dd\u10dc\u10d3",
+      "draftlaws": [],
+      "date_sent": "2012-08-19",
+      "date_created": "2012-08-21"
+    }
+  }
+]

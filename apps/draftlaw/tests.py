@@ -23,12 +23,8 @@ class DraftLawTest (TestCase):
         draftlaw = DraftLaw.objects.get(pk=6)
         linked = u'<a href="/test/representative/representative/124/teimuraz-tsurtsumia/">Tsurtsumia</a>, Kukava'
         self.assertEqual(draftlaw.initiator_linked, linked)
-
-        draftlaw = DraftLaw()
-        self.assertEqual(draftlaw._linked_name('Kukava (MP)'), 'Kukava')
-        self.assertEqual(draftlaw._linked_name('MP Kukava'), 'Kukava')
-        self.assertEqual(draftlaw._linked_name('MPs Kukava, Tsurtsumia'),
-            'Kukava, <a href="/test/representative/representative/124/teimuraz-tsurtsumia/">Tsurtsumia</a>')
+        linked = u'<a href="/test/representative/representative/124/teimuraz-tsurtsumia/">Tsurtsumia</a>, Zviad Kukava'
+        self.assertEqual(draftlaw.author_linked, linked)
 
 
 
@@ -64,13 +60,6 @@ class DraftLawTest (TestCase):
         self.assertContains(response, 'draftlaw')
         self.assertTemplateUsed(response, 'draftlaw/items.html')
         self.assertContains(response, 'id="item-8"')
-
-
-    def test_Alert (self):
-        url = reverse('draftlaw_alert', args=[1])
-        response = self.client.get(url)
-        self.assertContains(response, 'Machakhela National Park')
-        self.assertTemplateUsed(response, 'draftlaw/alert.html')
 
 
     def test_query (self):

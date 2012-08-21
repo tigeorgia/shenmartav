@@ -30,6 +30,9 @@ urlpatterns = patterns('',
     # API
     url(r'^api/', include('api.urls'), name='api'),
 
+    # SMS Alert
+    url(r'^smsalert/', include('smsalert.urls'), name='smsalert'),
+
     # CMS
     url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^', include('cms.urls')),

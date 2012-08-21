@@ -212,8 +212,6 @@ class Command (BaseCommand):
             status_en=status,
             shortstatus=shortstatus,
             summary_en=row[6].strip(),
-            sms_en=row[7].strip(),
-            sms_ka=row[9].strip(),
             law_number=law_number,
         )
         draftlaw.save()

@@ -15,8 +15,9 @@
             <li id="author">{% trans 'Author' %}: {{ obj.author_linked|safe }}</li>
             <li id="status">{% trans 'Status' %}: {{ obj.status }}</li>
             <li id="summary">{% trans 'Summary' %}: {{ obj.summary }}</li>
-            {% if obj.sms_ka %}<li id="sms-ka">{% trans 'Georgian SMS Text' %}: {{ obj.sms_ka }}</li>{% endif %}
-            {% if obj.sms_en %}<li id="sms-en">{% trans 'English SMS Text' %}: {{ obj.sms_en }}</li>{% endif %}
+            {% if obj.sms_alerts.all %}{% for alert in obj.sms_alerts.all %}
+            <li id="smsalert-{{ alert.pk }}">{% trans 'SMS Alert' %}: {{ alert.text }} ({{ alert.date_sent }})</li>
+            {% endfor %}{% endif %}
             {% if obj.full_text %}<li id="full-text">{% trans 'Full Text' %}: {{ obj.full_text }}</li>{% endif %}
             {% if obj.full_text_url %}<li id="full-text-url">{% trans 'Full Text URL' %}: {{ obj.full_text_url }}</li>{% endif %}
             {% if obj.enacted_text_url %}<li id="enacted-text-url">{% trans 'Enacted Text URL' %}: {{ obj.enacted_text_url }}</li>{% endif %}

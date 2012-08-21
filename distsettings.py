@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'draftlaw',
     'question',
     'contact',
+    'smsalert',
 )
 
 

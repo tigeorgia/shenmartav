@@ -10,6 +10,7 @@ import datetime
 from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 from django.utils.translation import get_language, ugettext_lazy as _
+
 from glt import slughifi
 from votingrecord.models import VotingRecord
 from representative.models import Representative
@@ -40,10 +41,6 @@ class DraftLaw (models.Model):
     shortstatus = models.CharField(max_length=1, default='D', choices=SHORTSTATUS_CHOICES, help_text=_('Short Status of the Draft Law'))
     #: summary of the law
     summary = models.TextField(help_text=_('Summary'), blank=True)
-    #: georgian SMS text
-    sms_ka = models.TextField(help_text=_('Georgian SMS text'), blank=True)
-    #: english SMS text
-    sms_en = models.TextField(help_text=_('English SMS text'), blank=True)
     #: full text of the law
     full_text = models.TextField(help_text=_('Full Text'), blank=True)
     #: URL of the full text of the law
@@ -190,33 +187,6 @@ class DraftLawChild (models.Model):
 
     def __unicode__ (self):
         return '%s %s' % (self.bill_number, self.title)
-
-
-
-class Alert (object):
-    """Helper class to deal with parliament SMS alerts."""
-    def __init__ (self, draftlaw):
-        """
-        @param draftlaw: draft law to get alert data from
-        @type draftlaw: draftlaw.DraftLaw
-        """
-        #: date of the alert
-        self.date = draftlaw.bureau_date
-
-        #: text of the alert
-        lang = get_language()[:2]
-        if lang == 'en':
-            if draftlaw.sms_en:
-                self.text = draftlaw.sms_en
-            else:
-                self.text = draftlaw.sms_ka
-        elif lang == 'ka':
-            if draftlaw.sms_ka:
-                self.text = draftlaw.sms_ka
-            else:
-                self.text = draftlaw.sms_en
-        else:
-            self.text = ''
 
 
 

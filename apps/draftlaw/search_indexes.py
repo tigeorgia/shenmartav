@@ -19,8 +19,6 @@ class DraftLawIndex (SearchIndex):
     author = CharField(model_attr='author', null=True)
     status = CharField(model_attr='status', null=True)
     summary = CharField(model_attr='summary', null=True)
-    sms_ka = CharField(model_attr='sms_ka', null=True)
-    sms_en = CharField(model_attr='sms_en', null=True)
     full_text = CharField(model_attr='full_text', null=True)
     full_text_url = CharField(model_attr='full_text_url', null=True)
     enacted_text_url = CharField(model_attr='enacted_text_url', null=True)
