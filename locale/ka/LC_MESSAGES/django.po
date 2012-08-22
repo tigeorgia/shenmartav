@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-22 08:20+0200\n"
+"POT-Creation-Date: 2012-08-22 09:09+0200\n"
 "PO-Revision-Date: 2012-08-16 15:24\n"
 "Last-Translator:   <sebastian@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -525,6 +525,18 @@ msgstr "ძირითადი კანონპროექტი"
 #: apps/draftlaw/models.py:204
 msgid "Draft Laws"
 msgstr "კანონპროექტები"
+
+#: apps/draftlaw/views.py:55
+msgid "I Hearing"
+msgstr ""
+
+#: apps/draftlaw/views.py:58
+msgid "II Hearing"
+msgstr ""
+
+#: apps/draftlaw/views.py:61
+msgid "III Hearing"
+msgstr ""
 
 #: apps/draftlaw/management/commands/import_draftlaws.py:110
 msgid "Unknown Committee"

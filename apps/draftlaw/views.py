@@ -9,6 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
 from django.db.models import Q, Max
 from django.http import HttpResponse
+from django.utils.translation import ugettext as _
 from django.views.generic import DetailView, TemplateView, ListView
 try:
     from menus.utils import set_language_changer
@@ -28,6 +29,44 @@ class DraftLawForList (object):
     """Helper class to combine data from draft law and their discussions
     for List view.
     """
+    def _init_stages (self, item):
+        """Initialise stages
+
+        @param item: item to initialise stages for
+        @type item: DraftLaw
+        """
+        self.stages = [{
+            'css': 'missing',
+            'info': [],
+            } for i in xrange(NUM_STAGES)]
+
+        max_stage = item.discussions.all().aggregate(Max('stage'))['stage__max']
+        if max_stage is not None:
+            for i in xrange(max_stage, NUM_STAGES):
+                self.stages[i]['css'] = 'incomplete'
+
+        has_hearing = [False for i in xrange(NUM_STAGES)]
+        for d in item.discussions.all():
+            stage = self.stages[d.stage]
+            stage['css'] = 'complete'
+
+            # append for several discussions on same stage
+            if d.stage in [0, 1] and not has_hearing[d.stage]:
+                stage['info'].append(_('I Hearing') + ' \n')
+                has_hearing[d.stage] = True
+            elif d.stage in [2, 3] and not has_hearing[d.stage]:
+                stage['info'].append(_('II Hearing') + ' \n')
+                has_hearing[d.stage] = True
+            elif d.stage in [4, 5] and not has_hearing[d.stage]:
+                stage['info'].append(_('III Hearing') + ' \n')
+                has_hearing[d.stage] = True
+
+            stage['info'].append(str(d.date) + ' :: ' + d.place + ' \n')
+
+        for stage in self.stages:
+            stage['info'] = ''.join(stage['info'])[:-1] # cut off last \n
+
+
     def __init__ (self, item, updated, place=None):
         self.pk = item.pk
         self.title = item.title
@@ -36,23 +75,7 @@ class DraftLawForList (object):
 
         self.updated = updated
         self.place = place
-
-        self.stages = [{
-            'css': 'missing',
-            'info': '',
-            } for i in xrange(NUM_STAGES)]
-
-        max_stage = item.discussions.all().aggregate(Max('stage'))['stage__max']
-        if max_stage is not None:
-            for i in xrange(max_stage, NUM_STAGES):
-                self.stages[i]['css'] = 'incomplete'
-
-        for discussion in item.discussions.all():
-            self.stages[discussion.stage]['css'] = 'complete'
-             # append if several discussions on same stage
-            self.stages[discussion.stage]['info'] +=\
-                str(discussion.date) + ' :: ' + discussion.place + ' '
-
+        self._init_stages(item)
 
 
 
