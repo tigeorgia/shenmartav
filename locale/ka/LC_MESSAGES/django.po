@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-21 11:09+0400\n"
+"POT-Creation-Date: 2012-08-22 08:20+0200\n"
 "PO-Revision-Date: 2012-08-16 15:24\n"
 "Last-Translator:   <sebastian@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -581,19 +581,11 @@ msgstr "კვირის შეჯამება"
 msgid "More"
 msgstr "ვრცლად"
 
-#: apps/draftlaw/templates/cmsplugins/draftlaw.html:25
-msgid "Alerts from Parliament"
-msgstr "შეტყობინებები პარლამენტიდან"
-
-#: apps/draftlaw/templates/cmsplugins/draftlaw.html:28
-msgid "Receive alerts on your phone."
-msgstr "მიიღეთ შეტყობინებები პირდაპირ თქვენს მობილურში."
-
-#: apps/draftlaw/templates/cmsplugins/draftlaw.html:33
+#: apps/draftlaw/templates/cmsplugins/draftlaw.html:27
 msgid "Look up a Draft Law"
 msgstr "მოიძიეთ კანონპროექტი"
 
-#: apps/draftlaw/templates/cmsplugins/draftlaw.html:35
+#: apps/draftlaw/templates/cmsplugins/draftlaw.html:29
 msgid "Enter a keyword"
 msgstr "შეიყვანეთ საკვანძო სიტყვა"
 
@@ -1677,18 +1669,26 @@ msgstr "როდის დაისვა შეკითხვა"
 msgid "Draft Laws related to this alert"
 msgstr "კანონპროექტის ბიუროს თარიღი"
 
-#: apps/smsalert/templates/smsalert/page.html:7
-#, fuzzy
-msgid "Draftlaws"
-msgstr "კანონპროექტი %s"
+#: apps/smsalert/templates/smsalert/page.html:2
+msgid "Alerts from Parliament"
+msgstr "შეტყობინებები პარლამენტიდან"
 
-#: apps/smsalert/templates/smsalert/page.html:15
+#: apps/smsalert/templates/smsalert/page.html:8
+#, fuzzy
+msgid "Related draft laws"
+msgstr "დაკავშირებული თეგები"
+
+#: apps/smsalert/templates/smsalert/page.html:16
 msgid "Previous Alert"
 msgstr "წინა შეტყობინება"
 
-#: apps/smsalert/templates/smsalert/page.html:16
+#: apps/smsalert/templates/smsalert/page.html:17
 msgid "Next Alert"
 msgstr "შემდეგი შეტყობინება"
+
+#: apps/smsalert/templates/smsalert/page.html:21
+msgid "Receive alerts on your phone."
+msgstr "მიიღეთ შეტყობინებები პირდაპირ თქვენს მობილურში."
 
 #: apps/votingrecord/cms_app.py:6
 msgid "Voting Record App"
@@ -2012,6 +2012,10 @@ msgstr "წინა"
 #: templates/search/search.html:33
 msgid "Next"
 msgstr "შემდეგი"
+
+#, fuzzy
+#~ msgid "Draftlaws"
+#~ msgstr "კანონპროექტი %s"
 
 #~ msgid "Georgian SMS text"
 #~ msgstr "ქართული SMS-ის ტექსტი"

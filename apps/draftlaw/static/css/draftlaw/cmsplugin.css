@@ -20,17 +20,37 @@
     margin-top: 2em;
     background: #d44847 url(../../img/bg-mail.png) no-repeat right bottom;
     border-radius: 2px;
-    padding: .5em .5em 2.5em .5em;
+    padding: .5em;
     color: #fff;
 }
 #draftlaw #alert a {
     color: #fff;
 }
-#draftlaw #alert #navigation {
-    margin: 0 47%;
+
+
+#draftlaw #alert #date {
+    font-style: italic;
 }
+
+#draftlaw #alert #text {
+    margin-bottom: 1em;
+}
+
+
+#draftlaw #alert #navigation {
+    margin-top: 1em;
+    text-align: center;
+}
+
 #draftlaw #alert #receive {
-    position: absolute;
-    bottom: .5em;
+    margin: .5em 0;
+    text-align: center;
     font-family: "zwo-geo-light", Georgia, Times, serif;
+    font-size: 1.3em;
+}
+#draftlaw #alert #receive > a {
+    text-decoration: underline;
+}
+#draftlaw #alert #receive > a:hover {
+    text-decoration: none;
 }
