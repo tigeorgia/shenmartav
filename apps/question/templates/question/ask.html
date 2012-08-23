@@ -2,6 +2,12 @@
 {% load i18n %}
 
 {% block question %}
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url question_list %}" title="{% trans 'Questions' %}">{% trans 'Questions' %}</a> &gt;
+    {% trans 'Ask' %}
+</div>
+
 <div id="question">
     {% include 'question/form.html' %}
 </div>

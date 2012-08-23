@@ -2,9 +2,10 @@
  * CSS file for app Representative, page detail
  */
 
-#representative input {
-    height: 2em;
+.opened > #representative {
+    height: 94% !important;
 }
+
 #representative #results .cell {
     vertical-align: middle;
 }

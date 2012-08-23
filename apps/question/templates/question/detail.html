@@ -5,6 +5,13 @@
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/detail.css" media="all" />
 {% endaddtoblock %}
+
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url question_list %}" title="{% trans 'Questions' %}">{% trans 'Questions' %}</a> &gt;
+    {{ obj.representative.name }}
+</div>
+
 <div id="question">
     {% include 'question/info.html' %}
     {% include 'question/form.html' %}

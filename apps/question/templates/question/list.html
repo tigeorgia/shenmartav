@@ -5,6 +5,12 @@
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/list.css" media="all" />
 {% endaddtoblock %}
+
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    {% trans 'Questions' %}
+</div>
+
 <div id="question">
     <div id="list" class="scroll-pane"><table>
         <thead>

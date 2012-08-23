@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load sekizai_tags %}
 
-{% block body_class %}blog{% endblock %}
-
 {% block css %}
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/blog.css" media="all" />
@@ -11,9 +9,7 @@
 
 {% block content %}
     <div id="col-nav" class="column shadow">{% include 'nav.html' %}</div>
-
-    <div class="opened"><div id="scroll-container" class="scroll-pane">{% block blog %}{% endblock %}</div></div>
-
+    <div class="opened">{% block blog %}{% endblock %}</div>
     {% include 'folded/who.html' %}
     {% include 'folded/what.html' %}
     {% include 'folded/question.html' %}

@@ -1,9 +1,15 @@
 {% extends 'question/base.html' %}
 {% load i18n sekizai_tags thumbnail %}
 
-{% block content %}
+{% block question %}
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url question_list %}" title="{% trans 'Questions' %}">{% trans 'Questions' %}</a> &gt;
+    {% trans 'Leaderboard' %}
+</div>
+
 <div id="question">
-    <h2>{% trans 'Leaderboard' %}</h2>
+    <h2 class="heading">{% trans 'Leaderboard' %}</h2>
 
     <div id="leaderboard">
         <table>

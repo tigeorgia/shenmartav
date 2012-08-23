@@ -323,7 +323,7 @@ img.column-bg {
 
 .breadcrumb {
     color: #aaa;
-    margin: 1em;
+    margin: .5em 1em;
     height: 3%;
 }
 .breadcrumb a {
@@ -345,8 +345,7 @@ img.column-bg {
     height: 100%;
 }
 .opened > #scroll-container {
-    margin-top: 1em;
-    height: 98%;
+    height: 95%;
 }
 .folded {
     text-align: center;

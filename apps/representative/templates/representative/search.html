@@ -5,7 +5,14 @@
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/search.css" media="all" />
 {% endaddtoblock %}
-<div id="representative">
+
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url representative_find %}" title="{% trans 'Who Makes Laws' %}">{% trans 'Who Makes Laws' %}</a> &gt;
+    {% trans 'Search' %}
+</div>
+
+<div id="representative" class="scroll-pane">
     <h2 class="heading">{% trans 'Search a Representative' %}</h2>
     <div class="body">
         <form action="" method="post">{% csrf_token %}
@@ -18,7 +25,7 @@
         <ul id="results">{% for r in representatives %}
             <li class="table">
                 <div class="cell photo">{% thumbnail r.photo '65x60' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></div>
-                <div class="cell name"><a href="{{ r.get_absolute_url }}">{{ r.name }}</a></div>
+                <div class="cell name"><a href="{{ r.get_absolute_url }}">{{ r.name }}</a>, {{ r.unit.name }} </div>
             </li>
         {% endfor %}</ul>
     </div>

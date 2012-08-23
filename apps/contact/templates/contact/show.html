@@ -2,46 +2,53 @@
 {% load i18n %}
 
 {% block contact %}
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    {% trans 'Contact' %}</a>
+</div>
+
 <div id="contact">
     <h2 class="heading">{% trans 'Contact' %}</h2>
 
-    <div id="authors">
-        <div id="tig">
-            <h3>{% trans 'Transparency International Georgia' %}</h3>
-            <a href="http://transparency.ge" title="{% trans 'Transparency International Georgia' %}"><img src="/static/img/about/tig.jpg" width="327" height="81" alt="{% trans 'Logo TIG' %}" border="0" /></a><br />
-            {% trans 'Address' %}: {% trans '26, Rustaveli Ave' %}<br />
-            {% trans '0108 Tbilisi, Georgia' %}<br />
-            {% trans 'Phone' %}: +995 32 292 14 03<br />
-            {% trans 'Fax' %}: +995 32 292 02 51<br />
-            {% trans 'Email' %}: <a href="mailto:info@transparency.ge">info@transparency.ge</a><br />
-            {% trans 'Website' %}: <a href="http://transparency.ge">http://transparency.ge</a>
+    <div id="scroll-container" class="scroll-pane">
+        <div id="authors">
+            <div id="tig">
+                <h3>{% trans 'Transparency International Georgia' %}</h3>
+                <a href="http://transparency.ge" title="{% trans 'Transparency International Georgia' %}"><img src="/static/img/about/tig.jpg" width="327" height="81" alt="{% trans 'Logo TIG' %}" border="0" /></a><br />
+                {% trans 'Address' %}: {% trans '26, Rustaveli Ave' %}<br />
+                {% trans '0108 Tbilisi, Georgia' %}<br />
+                {% trans 'Phone' %}: +995 32 292 14 03<br />
+                {% trans 'Fax' %}: +995 32 292 02 51<br />
+                {% trans 'Email' %}: <a href="mailto:info@transparency.ge">info@transparency.ge</a><br />
+                {% trans 'Website' %}: <a href="http://transparency.ge">http://transparency.ge</a>
+            </div>
+            <div id="cipdd">
+                <h3>{% trans 'The Caucasus Institute for Peace, Democracy and Development' %}</h3>
+                <a href="http://transparency.ge" title="{% trans 'The Caucasus Institute for Peace, Democracy and Development' %}"><img src="/static/img/about/cipdd.jpg" width="68" height="81" alt="{% trans 'Logo CIPDD' %}" border="0"/></a><br />
+                {% trans 'Address' %}: {% trans '72, Tsereteli Ave., 2nd floor' %}<br />
+                {% trans '0154 Tbilisi, Georgia' %}<br />
+                {% trans 'Phone' %}: +995 32 235 51 54<br />
+                {% trans 'Fax' %}: +995 32 235 57 54 <br />
+                {% trans 'Email' %}: <a href="mailto:info@cipdd.org">info@cipdd.org</a><br />
+                {% trans 'Website' %}: <a href="http://cipdd.org">http://cipdd.org</a>
+            </div>
+            <div style="clear:both"></div>
         </div>
-        <div id="cipdd">
-            <h3>{% trans 'The Caucasus Institute for Peace, Democracy and Development' %}</h3>
-            <a href="http://transparency.ge" title="{% trans 'The Caucasus Institute for Peace, Democracy and Development' %}"><img src="/static/img/about/cipdd.jpg" width="68" height="81" alt="{% trans 'Logo CIPDD' %}" border="0"/></a><br />
-            {% trans 'Address' %}: {% trans '72, Tsereteli Ave., 2nd floor' %}<br />
-            {% trans '0154 Tbilisi, Georgia' %}<br />
-            {% trans 'Phone' %}: +995 32 235 51 54<br />
-            {% trans 'Fax' %}: +995 32 235 57 54 <br />
-            {% trans 'Email' %}: <a href="mailto:info@cipdd.org">info@cipdd.org</a><br />
-            {% trans 'Website' %}: <a href="http://cipdd.org">http://cipdd.org</a>
-        </div>
-        <div style="clear:both"></div>
-    </div>
 
-    <form id="form-contact" action="{% url contact_show %}" method="post">
-        <h3>{% trans 'Contact Form' %}</h3>
-        {% csrf_token %}
-        <table>
-        {% for field in form %}<tr>
-            <td{% if field.field.required %} class="required"{% endif %}>{{ field.label_tag }}</td>
-            <td>{{ field }}{% if field.errors %}{% for err in field.errors %}<div class="error">{{ err }}</div>{% endfor %}{% endif %}</td>
-        </tr>{% endfor %}
-        <tr>
-            <td><div class="fineprint required">{% trans 'Colored fields are required' %}</div></td>
-            <td><input type="submit" value="{% trans 'Contact Us' %}" /></td>
-        </tr>
-        </table>
-    </form>
+        <form id="form-contact" action="{% url contact_show %}" method="post">
+            <h3>{% trans 'Contact Form' %}</h3>
+            {% csrf_token %}
+            <table>
+            {% for field in form %}<tr>
+                <td{% if field.field.required %} class="required"{% endif %}>{{ field.label_tag }}</td>
+                <td>{{ field }}{% if field.errors %}{% for err in field.errors %}<div class="error">{{ err }}</div>{% endfor %}{% endif %}</td>
+            </tr>{% endfor %}
+            <tr>
+                <td><div class="fineprint required">{% trans 'Colored fields are required' %}</div></td>
+                <td><input type="submit" value="{% trans 'Contact Us' %}" /></td>
+            </tr>
+            </table>
+        </form>
+    </div>
 </div>
 {% endblock %}

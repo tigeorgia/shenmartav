@@ -6,6 +6,13 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/annotations.css" media="all" />
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/detail.css" media="all" />
 {% endaddtoblock %}
+
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url draftlaw_list %}" title="{% trans 'What Laws Are Made' %}">{% trans 'What Laws Are Made' %}</a> &gt;
+    {{ obj.title }}
+</div>
+
 <div id="draftlaw">
     <h2 class="heading">{{ obj }}</h2>
     <div class="body">

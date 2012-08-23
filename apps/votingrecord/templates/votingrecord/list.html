@@ -2,6 +2,12 @@
 {% load i18n %}
 
 {% block votingrecord %}
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url draftlaw_list %}" title="{% trans 'What Laws Are Made' %}">{% trans 'What Laws Are Made' %}</a> &gt;
+    {% trans 'Voting Records' %}
+</div>
+
 <div id="votingrecord">
     <h2 class="heading">{% trans 'Voting Records' %}</h2>
 

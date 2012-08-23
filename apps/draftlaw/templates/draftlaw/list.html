@@ -5,6 +5,12 @@
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/list.css" media="all" />
 {% endaddtoblock %}
+
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url draftlaw_list %}" title="{% trans 'What Laws Are Made' %}">{% trans 'What Laws Are Made' %}</a>
+</div>
+
 <div id="draftlaw">
     <div id="list">
         <form id="search">

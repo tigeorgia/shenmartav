@@ -5,6 +5,13 @@
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/detail.css" media="all" />
 {% endaddtoblock %}
+
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url representative_find %}" title="{% trans 'Who Makes Laws' %}">{% trans 'Who Makes Laws' %}</a> &gt;
+    {{ obj.unit.name }}
+</div>
+
 <div id="representative" class="scroll-pane">
     <div id="data-text">
         <div id="portrait">

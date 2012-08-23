@@ -4,12 +4,11 @@
 
 .opened {
     left: 25%;
-    padding: 0 1em;
-    width: 61%
+    width: 61%;
 }
-.opened a {
-    color: #000;
-    text-decoration: underline;
+
+.opened > .breadcrumb {
+    margin-left: .5em;
 }
 
 
