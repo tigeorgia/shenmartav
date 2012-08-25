@@ -1,3 +1,21 @@
-{% for result in obj.votingresults.all %}
-    <li class="{{ result.css }}">{{ result.vote }}: <a href="{{ result.record.get_absolute_url }}">{{ result.record.name }}</a></li>
-{% endfor %}
+{% extends 'representative/base.html' %}
+{% load i18n %}
+
+{% block representative %}
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url representative_find %}" title="{% trans 'Who Makes Laws' %}">{% trans 'Who Makes Laws' %}</a> &gt;
+    <a href="{% url person obj.pk obj.slug %}" title="{{ obj.name }}">{{ obj.name }}</a> &gt;
+    {% trans 'Voting Records' %}
+</div>
+
+<div id="representative">
+    <h2 class="heading">{% trans 'Voting Records for' %} {{ obj.name }}</h2>
+
+    <div id="container-votingrecords" class="scroll-pane">
+        <ul id="votingrecords">{% for result in results %}
+            <li class="{{ result.css }}">{{ result.vote }}: <a href="{{ result.url }}" name="{{ result.css }}">{{ result.record__name }}</a></li>
+        {% endfor %}</ul>
+    </div>
+</div>
+{% endblock %}

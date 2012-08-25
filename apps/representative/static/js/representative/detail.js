@@ -21,8 +21,7 @@ RepresentativeDetail = {
         RepresentativeDetail.isLoadingVotingRecord = true;
 
         Base.disable('#representative');
-        var url = $('#representative #data-text #button-votingrecords').attr('href');
-        $.ajax(url, {
+        $.ajax(URL_Votingrecords, {
             success: function(data, textStatus, jqXHR) {
                 $('#representative #votingrecords').html(data);
                 RepresentativeDetail.hasLoadedVotingRecord = true;

@@ -30,12 +30,12 @@
         </div>
 
         <table>
-    {% if obj.is_majoritarian %}
+{% if obj.is_majoritarian %}
         <tr>
             <td>{% trans 'Electoral District' %}</td>
             <td>{{ obj.electoral_district }}</td>
         </tr>
-    {% endif %}
+{% endif %}
         <tr>
             <td>{% trans 'Elected Date' %}</td>
             <td>{{ obj.elected }}</td>
@@ -60,7 +60,7 @@
 {% endif %}
 {% ifequal unit 1 %}
         <tr>
-            <td><a id="button-votingrecords" href="{% url representative_votingrecords obj.pk %}">{% trans 'Voting Records' %}</a></td>
+            <td><a id="button-votingrecords" href="{% url representative_votingrecords obj.pk obj.slug %}">{% trans 'Voting Records' %}</a></td>
             <td><div id="container-votingrecords" class="scroll-pane"><ul id="votingrecords"></ul></div></td>
         </tr>
 {% endifequal %}
@@ -144,10 +144,10 @@
         <div class="box" id="box-votecounts">{% ifequal unit 1 %}
             <div id="votecounts">
                 <h2 class="heading">{% trans 'Vote Counts' %}</h2>
-                <div>{% trans 'In Favour' %}: {{ votecounts.yes }}</div>
-                <div>{% trans 'Against' %}: {{ votecounts.no }}</div>
-                <div>{% trans 'Abstained' %}: {{ votecounts.abstained }}</div>
-                <div>{% trans 'Absent' %}: {{ votecounts.absent }}</div>
+                <div>{% trans 'In Favour' %}: <a href="{{ url_votingrecords }}#vote-yes" title="{% trans 'See votes in favour' %}">{{ votecounts.yes }}</a></div>
+                <div>{% trans 'Against' %}: <a href="{{ url_votingrecords }}#vote-no" title="{% trans 'See votes against' %}">{{ votecounts.no }}</a></div>
+                <div>{% trans 'Abstained' %}: <a href="{{ url_votingrecords }}#vote-abstention" title="{% trans 'See votes abstained' %}">{{ votecounts.abstained }}</a></div>
+                <div>{% trans 'Absent' %}: <a href="{{ url_votingrecords }}#vote-absent" title="{% trans 'See votes absent' %}">{{ votecounts.absent }}</a></div>
             </div>
         {% endifequal %}</div>
     </div>
@@ -157,5 +157,8 @@
 
 {% addtoblock "js" %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/detail.js"></script>
+<script type="text/javascript">
+var URL_Votingrecords = '{% url representative_votingrecords_simple obj.pk %}'
+</script>
 {% endaddtoblock %}
 {% endblock %}

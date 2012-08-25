@@ -1,0 +1,3 @@
+{% for result in results %}
+    <li class="{{ result.css }}">{{ result.vote }}: <a href="{{ result.url }}">{{ result.record__name }}</a></li>
+{% endfor %}

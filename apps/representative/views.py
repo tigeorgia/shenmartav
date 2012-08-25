@@ -216,6 +216,8 @@ class Detail (DetailView):
         context['questions'] = self._get_questions(obj)
         context['votecounts'] = VotingRecordResult.get_counts(representative=obj)
         context['url_feed'] = reverse('representative_feed_detail', args=[obj.pk])
+        context['url_votingrecords'] = reverse(
+            'representative_votingrecords', args=[obj.pk, obj.slug])
         try:
             context['decl'] = obj.incomedeclaration.all()[0]
         except IndexError:
@@ -225,11 +227,49 @@ class Detail (DetailView):
         return context
 
 
+def _get_votingrecord_results (representative):
+    """Get voting record results for given representative
+
+    @param representative: representative to get voting record results for
+    @type representative: representative.Representative
+    @return: list of dicts with voting record results
+    @rtype: [{'css', 'vote', 'record', 'url', 'record__name'}]
+    """
+    # ordered by vote in model
+    results = representative.votingresults.all().values(
+        'css', 'vote', 'record', 'record__name')
+    for r in results:
+        r['url'] = reverse('votingrecord_detail', args=[r['record']])
+
+    return results
+
+
+class VotingRecordsSimple (DetailView):
+    """Simple view to return voting records HTML for AJAX requests."""
+    context_object_name = 'obj'
+    model = Representative
+    template_name = 'representative/votingrecords_simple.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(VotingRecordsSimple, self).get_context_data(**kwargs)
+        context['results'] = _get_votingrecord_results(context['obj'])
+
+        return context
+
+
 
 class VotingRecords (DetailView):
+    """Full view to return voting records HTML for a page."""
     context_object_name = 'obj'
     model = Representative
     template_name = 'representative/votingrecords.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(VotingRecords, self).get_context_data(**kwargs)
+        set_language_changer(self.request, context['obj'].get_absolute_url)
+        context['results'] = _get_votingrecord_results(context['obj'])
+
+        return context
 
 
 

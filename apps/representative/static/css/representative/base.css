@@ -82,3 +82,28 @@
     display: inline-block;
     margin-right: .5em;
 }
+
+
+/* voting records */
+#representative #container-votingrecords {
+    height: 94%;
+    overflow: auto;
+}
+#representative #votingrecords {
+    margin-left: .5em;
+}
+#representative #votingrecords .vote-yes,
+#representative #votingrecords .vote-yes a {
+    color: #0a0;
+}
+#representative #votingrecords .vote-no, #representative #votingrecords .vote-no a {
+    color: #a00;
+}
+#representative #votingrecords .vote-abstention, #representative #votingrecords .vote-abstention a {
+    color: #aa0;
+}
+#representative #votingrecords .vote-absent, #representative #votingrecords .vote-absent a {
+    color: #222;
+}
+
+

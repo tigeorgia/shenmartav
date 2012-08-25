@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     url(r'^$', Find.as_view(), name='representative_find'),
     # name='person' required by popit
     url(r'^representative/(?P<pk>\d+)/(?P<slug>[-\w]+)/$', Detail.as_view(), name='person'),
+    url(r'^representative/(?P<pk>\d+)/(?P<slug>[-\w]+)/votingrecords/$', VotingRecords.as_view(), name='representative_votingrecords'),
     url(r'^representative/(?P<pk>\d+)/$', Detail.as_view(), name='representative_pk'),
     url(r'^representative/(?P<slug>[-\w]+)/$', Detail.as_view(), name='representative_slug'),
     url(r'^search/', Search.as_view(), name='representative_search'),
@@ -20,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^unit/ajara/$', UnitAjara.as_view(), name='unit_ajara'),
     url(r'^unit/tbilisi/$', UnitTbilisi.as_view(), name='unit_tbilisi'),
     url(r'^info/(?P<pk>\d+)/$', Info.as_view(), name='representative_info'),
-    url(r'^votingrecords/(?P<pk>\d+)/$', VotingRecords.as_view(), name='representative_votingrecords'),
+    url(r'^votingrecords/(?P<pk>\d+)/$', VotingRecordsSimple.as_view(), name='representative_votingrecords_simple'),
 
     # AJAX calls answered by JSON
     url(r'^query/(?P<query>.*)/$', query, name='representative_query'),
