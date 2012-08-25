@@ -58,6 +58,12 @@ class Unit (models.Model):
         return u'%s' % self.name
 
 
+GENDER_CHOICES = (
+    (0, _('male')),
+    (1, _('female')),
+    (2, _('other')),
+)
+
 
 class Representative (Person):
     """A representative derived from popit.Person."""
@@ -119,6 +125,9 @@ class Representative (Person):
     #: percentage of questions answered on shenmartav.ge
     answered = models.FloatField(default=0, null=True,
         help_text=_('Percentage of Answered Questions on shenmartav.ge'))
+    #: gender of the representative
+    gender = models.IntegerField(default=0, choices=GENDER_CHOICES,
+        help_text=_('Gender of the Representative'))
 
 
     @classmethod
