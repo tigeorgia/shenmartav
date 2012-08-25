@@ -52,5 +52,7 @@ class QuestionForm (forms.ModelForm):
         self.fields['question'].label = _('Question')
         self.fields['representative'].label = _('Representative')
 
+        representatives = Representative.parliament.all()
         self.fields['representative'].choices =\
-            Representative.by_lastname_lastname_first(choices=True)
+            Representative.by_lastname_lastname_first(
+                representatives=representatives, choices=True)

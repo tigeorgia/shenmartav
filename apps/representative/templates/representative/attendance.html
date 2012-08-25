@@ -1,5 +1,5 @@
 {% load i18n representative %}
-<div id="attendance">
+<div id="attendance">{% ifequal obj.unit.pk 1 %}
     {% with attendance=obj.attendance %}
     <h2>{% trans 'Voting attendance' %}: {{ obj.attendance.percentage }} <span class="explain" title="{% trans "Determined based on the official voting records retrieved from the Parliament web site. We calculate the attendance rate as (Number of Yes votes + Number of No votes + Number of Abstain votes) divided by the total number of votes for which an MP’s name is given. This doesn’t necessarily reflect which MPs were physically present at the time a vote was held, but is what was recorded by the Parliament’s voting systems." %}">?</span></h2>
     <div id="bar" class="table">
@@ -17,4 +17,4 @@
         </div>
     </div>
     {% endwith %}
-</div>
+{% endifequal %}</div>

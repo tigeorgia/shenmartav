@@ -30,7 +30,9 @@ class QuestionPlugin (CMSPluginBase):
 
 
     def render(self, context, instance, placeholder):
-        context['representatives'] = Representative.by_lastname_lastname_first()
+        representatives = Representative.parliament.all()
+        context['representatives'] = Representative.by_lastname_lastname_first(
+            representatives=representatives)
         context['random'] = RandomRepresentative.get()
 
         try:
@@ -44,7 +46,6 @@ class QuestionPlugin (CMSPluginBase):
             context['least_active'] = None
             return context
 
-        representatives = Representative.objects.all()
         try:
             representative = representatives.order_by('-answered')[0]
             context['most_active'] = self._add_activity(representative)

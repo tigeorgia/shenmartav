@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/detail.css" media="all" />
 {% endaddtoblock %}
 
+{% with unit=obj.unit.pk %}
 <div class="breadcrumb">
     <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
     <a href="{% url representative_find %}" title="{% trans 'Who Makes Laws' %}">{% trans 'Who Makes Laws' %}</a> &gt;
@@ -47,7 +48,7 @@
 {% endif %}
 {% if obj.committee %}
         <tr>
-            <td>{% ifequal obj.unit.id 1 %}{% trans 'Committee' %}{% else %}{% trans 'Commission' %}{% endifequal %}</td>
+            <td>{% ifequal unit 1 %}{% trans 'Committee' %}{% else %}{% trans 'Commission' %}{% endifequal %}</td>
             <td>{{ obj.committee }}</td>
         </tr>
 {% endif %}
@@ -57,10 +58,12 @@
             <td>{{ obj.description }}</td>
         </tr>
 {% endif %}
+{% ifequal unit 1 %}
         <tr>
             <td><a id="button-votingrecords" href="{% url representative_votingrecords obj.pk %}">{% trans 'Voting Records' %}</a></td>
             <td><div id="container-votingrecords" class="scroll-pane"><ul id="votingrecords"></ul></div></td>
         </tr>
+{% endifequal %}
         <tr>
             <td>{% trans 'Salary' %}</td>
             <td><a href="{{ decl.get_absolute_url }}#wages">{{ obj.salary }}</a></td>
@@ -110,13 +113,13 @@
     </div>
 
     <div id="data-boxes">
-        <div class="box" id="box-attendance">
+        <div class="box" id="box-attendance">{% ifequal unit 1 %}
             {% include 'representative/attendance.html' %}
-        </div>
+        {% endifequal %}</div>
         <div class="box" id="box-income">
             {% include 'representative/income.html' %}
         </div>
-        <div class="box" id="box-questions">
+        <div class="box" id="box-questions">{% ifequal unit 1 %}
             <div id="questions">
                 <h2 class="heading">{% trans 'Questions and Answers' %}</h2>
                 <div class="table">
@@ -137,8 +140,8 @@
                 </div>
                 <div><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
             </div>
-        </div>
-        <div class="box" id="box-votecounts">
+        {% endifequal %}</div>
+        <div class="box" id="box-votecounts">{% ifequal unit 1 %}
             <div id="votecounts">
                 <h2 class="heading">{% trans 'Vote Counts' %}</h2>
                 <div>{% trans 'In Favour' %}: {{ votecounts.yes }}</div>
@@ -146,10 +149,11 @@
                 <div>{% trans 'Abstained' %}: {{ votecounts.abstained }}</div>
                 <div>{% trans 'Absent' %}: {{ votecounts.absent }}</div>
             </div>
-        </div>
+        {% endifequal %}</div>
     </div>
     <div style="clear: both"></div>
 </div>
+{% endwith %}
 
 {% addtoblock "js" %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/detail.js"></script>

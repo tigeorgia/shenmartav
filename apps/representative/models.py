@@ -58,6 +58,16 @@ class Unit (models.Model):
         return u'%s' % self.name
 
 
+
+class ParliamentManager (models.Manager):
+    """Manager to return parliament representatives."""
+
+    def get_query_set(self):
+        qs = super(ParliamentManager, self).get_query_set()
+        return qs.filter(unit=1)
+
+
+
 GENDER_CHOICES = (
     (0, _('male')),
     (1, _('female')),
@@ -128,6 +138,10 @@ class Representative (Person):
     #: gender of the representative
     gender = models.IntegerField(default=0, choices=GENDER_CHOICES,
         help_text=_('Gender of the Representative'))
+
+    #: managers
+    objects = models.Manager()
+    parliament = ParliamentManager()
 
 
     @classmethod
@@ -420,11 +434,11 @@ class RandomRepresentative (models.Model):
             rr = RandomRepresentative.objects.all()[0]
             if (now - rr.date_set).days >= 1:
                 rr.date_set = date_set
-                rr.representative = Representative.objects.all().order_by('?')[0]
+                rr.representative = Representative.parliament.order_by('?')[0]
                 rr.save()
         except IndexError:
             try:
-                representative = Representative.objects.all().order_by('?')[0]
+                representative = Representative.parliament.order_by('?')[0]
             except IndexError:
                 representative = None
 
