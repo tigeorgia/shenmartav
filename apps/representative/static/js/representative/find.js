@@ -209,6 +209,7 @@ RepresentativeFind = {
         //RepresentativeFind.hoverIntentMembers();
         $('#representative #members .member').click(function () {
             RepresentativeFind.setInfo($(this));
+            return false;
         });
         $('#representative #select #unit').toggle('blind');
         RepresentativeFind.selectMemberFromLocation();
