@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-23 09:04+0200\n"
+"POT-Creation-Date: 2012-08-23 09:09+0200\n"
 "PO-Revision-Date: 2012-08-16 15:24\n"
 "Last-Translator:   <sebastian@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -1789,7 +1789,8 @@ msgid "RSS Blog feed"
 msgstr "RSS ბლოგ ლენტა"
 
 #: templates/footer.html:5
-msgid "Like this page on facebook"
+#, fuzzy
+msgid "Visit us on Facebook"
 msgstr "გვეწვიეთ Facebook-ზე"
 
 #: templates/footer.html:6
