@@ -30,7 +30,7 @@ class Command (BaseCommand):
         @rtype: incomedeclaration.IncomeDeclaration
         """
 
-        [first, last] = str(name).split(' ', 1)
+        [first, last] = name.split(u' ', 1)
         decls = IncomeDeclaration.objects.filter(name__icontains=last)
         if not decls:
             return None
@@ -38,10 +38,9 @@ class Command (BaseCommand):
         if len(decls) == 1:
             return decls[0]
 
-        first = first.decode('utf-8') # exception otherwise
-        decls_first = decls.filter(name__icontains=first).order_by('-date')
-        if decls_first:
-            return decls_first[0]
+        decls = decls.filter(name__icontains=first).order_by('-date')
+        if decls:
+            return decls[0]
 
         # people might have slightly different first names in declaration /
         # person sets, so we only look for the first CHARS_FIRSTNAME
@@ -67,7 +66,7 @@ class Command (BaseCommand):
             try:
                 if income[1] != 'GEL':
                     fmt = 'Ignoring Non-GEL value for income in wages: %s.\n'
-                    self.stderr.write(fmt % w.income)
+                    self.stderr.write(fmt % w.income_rec)
                 else:
                     wages.append(float(income[0]))
             except IndexError:
@@ -89,7 +88,7 @@ class Command (BaseCommand):
             try:
                 if income[1] != 'GEL':
                     fmt = 'Ignoring Non-GEL value for income in entrepreneurials: %s.\n'
-                    self.stderr.write(fmt % e.income)
+                    self.stderr.write(fmt % e.income_rec)
                 else:
                     other.append(float(income[0]))
             except IndexError:
@@ -133,19 +132,25 @@ class Command (BaseCommand):
         """
         representative.salary = self._get_salary(decl)
         if representative.salary:
-            self.stdout.write('i: %d' % representative.salary)
+            self.stdout.write(u'i: %d' % representative.salary)
 
         representative.other_income = self._get_other_income(decl)
         if representative.other_income:
-            self.stdout.write(' o: %d' % representative.other_income)
+            self.stdout.write(u' o: %d' % representative.other_income)
 
         representative.expenses = self._get_expenses(decl)
         if representative.expenses:
-            self.stdout.write(' e: %s' % representative.expenses)
+            try:
+                self.stdout.write(u' e: %s' % representative.expenses)
+            except UnicodeError: # tired of unicode working even worse on Python 2.6
+                pass
 
         representative.property_assets = self._get_property(decl)
         if representative.property_assets:
-            self.stdout.write(' p: %s' % representative.property_assets)
+            try:
+                self.stdout.write(u' p: %s' % representative.property_assets)
+            except UnicodeError: # tired of unicode working even worse on Python 2.6
+                pass
 
 
     @transaction.commit_on_success
@@ -154,7 +159,12 @@ class Command (BaseCommand):
         decl_ids = {}
         for representative in Representative.objects.all():
             self.stdout.write('%s: ' % representative.name)
-            decl = self._find_declaration(representative.name)
+
+            name = representative.names.all()[0]
+            # look for georgian name first
+            decl = self._find_declaration(name.name_ka)
+            if not decl: # then check english
+                decl = self._find_declaration(representative.name.name_en)
             if not decl:
                 self.stdout.write('\n')
                 continue

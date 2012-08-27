@@ -84,13 +84,20 @@ class Command (BaseCommand):
         @rtype: IncomeDeclaration
         """
         self.stdout.write("%s: Creating income declaration.\n" % row[0])
+
+        name = row[2].strip().decode('utf-8')
+
         if not row[3]:
             date = None
         else:
-            date = datetime.datetime.strptime(row[3], '%d/%m/%Y')
+            date = datetime.datetime.strptime(row[3].strip(), '%d/%m/%Y')
 
         declaration = IncomeDeclaration(
-            decl_id=row[0], scrape_date=row[1], name=row[2], date=date)
+            decl_id=row[0].strip(),
+            scrape_date=row[1].strip(),
+            name_en=name, name_ka=name,
+            date=date
+        )
         declaration.save()
         return declaration
 
@@ -141,8 +148,14 @@ class Command (BaseCommand):
         @return: declaration biography object
         @rtype: DeclarationBiography
         """
+        position = row[5].strip()
+        work_contact = row[6].strip()
+        place_dob = row[7].strip()
         return DeclarationBiography(declaration=declaration,
-            position=row[4], work_contact=row[5], place_dob=row[6])
+            position_en=position, position_ka=position,
+            work_contact_en=work_contact, work_contact_ka=work_contact,
+            place_dob_en=place_dob, place_dob_ka=place_dob
+        )
 
 
     def _get_cash (self, declaration, row):
@@ -156,8 +169,12 @@ class Command (BaseCommand):
         @return: declaration cash object
         @rtype: DeclarationCash
         """
+        name = row[5].strip()
+        amt_currency = row[6].strip()
         return DeclarationCash(declaration=declaration,
-            name=row[4], amt_currency=row[5])
+            name_en=name, name_ka=name,
+            amt_currency_en=amt_currency, amt_currency_ka=amt_currency
+        )
 
 
     def _get_contract (self, declaration, row):
@@ -171,9 +188,16 @@ class Command (BaseCommand):
         @return: declaration contract object
         @rtype: DeclarationContract
         """
+        name = row[5].strip()
+        desc_value = row[6].strip()
+        date_period_agency = row[7].strip()
+        financial_result = row[8].strip()
         return DeclarationContract(declaration=declaration,
-            name=row[4], desc_value=row[5], date_period_agency=row[6],
-            financial_result=row[7])
+            name_en=name, name_ka=name,
+            desc_value_en=desc_value, desc_value_ka=desc_value,
+            date_period_agency_en=date_period_agency, date_period_agency_ka=date_period_agency,
+            financial_result_en=financial_result, financial_result_ka=financial_result
+        )
 
 
     def _get_deposit (self, declaration, row):
@@ -187,8 +211,16 @@ class Command (BaseCommand):
         @return: declaration deposit object
         @rtype: DeclarationDeposit
         """
+        name = row[5].strip()
+        bank = row[6].strip()
+        deposit_type = row[7].strip()
+        balance = row[8].strip()
         return DeclarationDeposit(declaration=declaration,
-            name=row[4], bank=row[5], type=row[6], balance=row[7])
+            name_en=name, name_ka=name,
+            bank_en=bank, bank_ka=bank,
+            type_en=deposit_type, type_ka=deposit_type,
+            balance_en=balance, balance_ka=balance
+        )
 
 
     def _get_entrepreneurial (self, declaration, row):
@@ -202,10 +234,20 @@ class Command (BaseCommand):
         @return: declaration entrepreneurial object
         @rtype: DeclarationEntrepreneurial
         """
+        name = row[5].strip()
+        corp_name_addr = row[6].strip()
+        particn_type = row[7].strip()
+        register_agency = row[8].strip()
+        particn_date = row[9].strip()
+        income_rec = row[10].strip()
         return DeclarationEntrepreneurial(declaration=declaration,
-            name=row[4], corp_name_addr=row[5], particn_type=row[6],
-            register_agency=row[7], particn_date=row[8],
-            income_rec=row[9])
+            name_en=name, name_ka=name,
+            corp_name_addr_en=corp_name_addr, corp_name_addr_ka=corp_name_addr,
+            particn_type_en=particn_type, particn_type_ka=particn_type,
+            register_agency_en=register_agency, register_agency_ka=register_agency,
+            particn_date_en=particn_date, particn_date_ka=particn_date,
+            income_rec_en=income_rec, income_rec_ka=income_rec
+        )
 
 
     def _get_family (self, declaration, row):
@@ -219,9 +261,18 @@ class Command (BaseCommand):
         @return: declaration family object
         @rtype: DeclarationContract
         """
+        name = row[5].strip()
+        surname = row[6].strip()
+        pob = row[7].strip()
+        dob = row[8].strip()
+        relation = row[9].strip()
         return DeclarationFamily(declaration=declaration,
-            name=row[4], surname=row[5], pob=row[6], dob=row[7],
-            relation=row[8])
+            name_en=name, name_ka=name,
+            surname_en=surname, surname_ka=surname,
+            pob_en=pob, pob_ka=pob,
+            dob_en=dob, dob_ka=dob,
+            relation_en=relation, relation_ka=relation
+        )
 
 
     def _get_gift (self, declaration, row):
@@ -235,8 +286,14 @@ class Command (BaseCommand):
         @return: declaration gift object
         @rtype: DeclarationGift
         """
+        name = row[5].strip()
+        desc_value = row[6].strip()
+        giver_rel = row[7].strip()
         return DeclarationGift(declaration=declaration,
-            name=row[4], desc_value=row[5], giver_rel=row[6])
+            name_en=name, name_ka=name,
+            desc_value_en=desc_value, desc_value_ka=desc_value,
+            giver_rel_en=giver_rel, giver_rel_ka=giver_rel
+        )
 
 
     def _get_otherinclexpense (self, declaration, row):
@@ -250,8 +307,14 @@ class Command (BaseCommand):
         @return: declaration other included expense object
         @rtype: DeclarationOtherInclExpense
         """
+        recip_issuer = row[5].strip()
+        other_type = row[6].strip()
+        amount = row[7].strip()
         return DeclarationOtherInclExpense(declaration=declaration,
-            recip_issuer=row[4], type=row[5], amount=row[6])
+            recip_issuer_en=recip_issuer, recip_issuer_ka=recip_issuer,
+            type_en=other_type, type_ka=other_type,
+            amount_en=amount, amount_ka=amount
+        )
 
 
     def _get_property (self, declaration, row):
@@ -265,9 +328,16 @@ class Command (BaseCommand):
         @return: declaration property object
         @rtype: DeclarationProperty
         """
+        name_shares = row[5].strip()
+        prop_type = row[6].strip()
+        description = row[7].strip()
+        co_owners = row[8].strip()
         return DeclarationProperty(declaration=declaration,
-            name_shares=row[4], prop_type=row[5], description=row[6],
-            co_owners=row[7])
+            name_shares_en=name_shares, name_shares_ka=name_shares,
+            prop_type_en=prop_type, prop_type_ka=prop_type,
+            description_en=description, description_ka=description,
+            co_owners_en=co_owners, co_owners_ka=co_owners
+        )
 
 
     def _get_realestate (self, declaration, row):
@@ -281,9 +351,16 @@ class Command (BaseCommand):
         @return: declaration real estate object
         @rtype: DeclarationRealEstate
         """
+        name_shares = row[5].strip()
+        prop_type = row[6].strip()
+        loc_area = row[7].strip()
+        co_owners = row[8].strip()
         return DeclarationRealEstate(declaration=declaration,
-            name_shares=row[4], prop_type=row[5], loc_area=row[6],
-            co_owners=row[7])
+            name_shares_en=name_shares, name_shares_ka=name_shares,
+            prop_type_en=prop_type, prop_type_ka=prop_type,
+            loc_area_en=loc_area, loc_area_ka=loc_area,
+            co_owners_en=co_owners, co_owners_ka=co_owners
+        )
 
 
     def _get_security (self, declaration, row):
@@ -297,9 +374,18 @@ class Command (BaseCommand):
         @return: declaration security object
         @rtype: DeclarationSecurity
         """
+        name = row[5].strip()
+        issuer = row[6].strip()
+        security_type = row[7].strip()
+        price = row[8].strip()
+        quantity = row[9].strip()
         return DeclarationSecurity(declaration=declaration,
-            name=row[4], issuer=row[5], type=row[6], price=row[7],
-            quantity=row[8])
+            name_en=name, name_ka=name,
+            issuer_en=issuer, issuer_ka=issuer,
+            type_en=security_type, type_ka=security_type,
+            price_en=price, price_ka=price,
+            quantity_en=quantity, quantity_ka=quantity
+        )
 
 
     def _get_wage (self, declaration, row):
@@ -313,9 +399,16 @@ class Command (BaseCommand):
         @return: declaration wage object
         @rtype: DeclarationWage
         """
+        name = row[5].strip()
+        desc_workplace = row[6].strip()
+        desc_job = row[7].strip()
+        income_rec = row[8].strip()
         return DeclarationWage(declaration=declaration,
-            name=row[4], desc_workplace=row[5], desc_job=row[6],
-            income_rec=row[7])
+            name_en=name, name_ka=name,
+            desc_workplace_en=desc_workplace, desc_workplace_ka=desc_workplace,
+            desc_job_en=desc_job, desc_job_ka=desc_job,
+            income_rec_en=income_rec, income_rec_ka=income_rec
+        )
 
 
     @transaction.commit_on_success

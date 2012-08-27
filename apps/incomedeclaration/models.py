@@ -57,12 +57,11 @@ class DeclarationBiography (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration, related_name='biographies',
         help_text=_('Related Declaration'))
     #: position
-    position = models.CharField(max_length=255, help_text=_('Position'))
+    position = models.TextField(help_text=_('Position'))
     #: work contact
-    work_contact = models.CharField(max_length=255, help_text=_('Work Contact'))
+    work_contact = models.TextField(help_text=_('Work Contact'))
     #: place, date of birth
-    place_dob = models.CharField(max_length=255,
-        help_text=_('Place and Date of Birth'))
+    place_dob = models.TextField(help_text=_('Place and Date of Birth'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -80,9 +79,9 @@ class DeclarationCash (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration, related_name='cash',
         help_text=_('Related Declaration'))
     #: name (of the cash holder?)
-    name = models.CharField(max_length=255, help_text=_('Name'))
+    name = models.TextField(help_text=_('Name'))
     #: amount
-    amt_currency = models.CharField(max_length=64, help_text=_('Amount & Currency'))
+    amt_currency = models.TextField(help_text=_('Amount & Currency'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -100,16 +99,13 @@ class DeclarationContract (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration, related_name='contracts',
         help_text=_('Related Declaration'))
     #: name (of the contract owner?)
-    name = models.CharField(max_length=255, help_text=_('Name'))
+    name = models.TextField(help_text=_('Name'))
     #: description and value
-    desc_value = models.CharField(max_length=255,
-        help_text=_('Description & Value'))
+    desc_value = models.TextField(help_text=_('Description & Value'))
     #: date, period and agency
-    date_period_agency = models.CharField(max_length=255,
-        help_text=_('Date Period & Agency'))
+    date_period_agency = models.TextField(help_text=_('Date Period & Agency'))
     #: financial result
-    financial_result = models.CharField(max_length=255,
-        help_text=_('Financial Result'))
+    financial_result = models.TextField(help_text=_('Financial Result'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -127,13 +123,13 @@ class DeclarationDeposit (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration, related_name='deposits',
         help_text=_('Related Declaration'))
     #: name (of the deposit owner?)
-    name = models.CharField(max_length=1024, help_text=_('Name'))
+    name = models.TextField(help_text=_('Name'))
     #: name of the bank
-    bank = models.CharField(max_length=1024, help_text=_('Name of the Bank'))
+    bank = models.TextField(help_text=_('Name of the Bank'))
     #: deposit type
-    type = models.CharField(max_length=1024, help_text=_('Type of Deposit'))
+    type = models.TextField(help_text=_('Type of Deposit'))
     #: deposit balance
-    balance = models.CharField(max_length=64, help_text=_('Balance'))
+    balance = models.TextField(help_text=_('Balance'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -151,21 +147,17 @@ class DeclarationEntrepreneurial (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration,
         related_name='entrepreneurials', help_text=_('Related Declaration'))
     #: name (of the entrepreneur?)
-    name = models.CharField(max_length=255, help_text=_('Name'))
+    name = models.TextField(help_text=_('Name'))
     #: corporation name and address
-    corp_name_addr = models.CharField(max_length=512,
-        help_text=_('Corporation Name & Address'))
+    corp_name_addr = models.TextField(help_text=_('Corporation Name & Address'))
     #: type of participation
-    particn_type = models.CharField(max_length=512,
-        help_text=_('Type of Participation'))
+    particn_type = models.TextField(help_text=_('Type of Participation'))
     #: registered with agency
-    register_agency = models.CharField(max_length=512,
-        help_text=_('Registered with Agency'))
+    register_agency = models.TextField(help_text=_('Registered with Agency'))
     #: date of participation
-    particn_date = models.CharField(max_length=512,
-        help_text=_('Date of Participation'))
+    particn_date = models.TextField(help_text=_('Date of Participation'))
     #: income record
-    income_rec = models.CharField(max_length=64, help_text=_('Income Record'))
+    income_rec = models.TextField(help_text=_('Income Record'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -183,15 +175,15 @@ class DeclarationFamily (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration, related_name='family',
         help_text=_('Related Declaration'))
     #: first name
-    name = models.CharField(max_length=255, help_text=_('First Name'))
+    name = models.TextField(help_text=_('First Name'))
     #: last name
-    surname = models.CharField(max_length=255, help_text=_('Last Name'))
+    surname = models.TextField(help_text=_('Last Name'))
     #: place of birth
-    pob = models.CharField(max_length=255, help_text=_('Place of Birth'))
+    pob = models.TextField(help_text=_('Place of Birth'))
     #: date of birth
-    dob = models.CharField(max_length=255, help_text=_('Date of Birth'))
+    dob = models.TextField(help_text=_('Date of Birth'))
     #: relation to the MP
-    relation = models.CharField(max_length=64, help_text=_('Relation to MP'))
+    relation = models.TextField(help_text=_('Relation to MP'))
 
 
     def __unicode__ (self):
@@ -211,12 +203,11 @@ class DeclarationGift (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration, related_name='gifts',
         help_text=_('Related Declaration'))
     #: name (of the giver?)
-    name = models.CharField(max_length=255, help_text=_('Name'))
+    name = models.TextField(help_text=_('Name'))
     #: description and value
-    desc_value = models.CharField(max_length=255,
-        help_text=_('Description & Value'))
+    desc_value = models.TextField(help_text=_('Description & Value'))
     #: relation to giver
-    giver_rel = models.CharField(max_length=64, help_text=_('Relation to Giver'))
+    giver_rel = models.TextField(help_text=_('Relation to Giver'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -234,11 +225,11 @@ class DeclarationOtherInclExpense (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration,
         related_name='otherinclexpenses', help_text=_('Related Declaration'))
     #: recipient issuer
-    recip_issuer = models.CharField(max_length=255, help_text=_('Recipient Issuer'))
+    recip_issuer = models.TextField(help_text=_('Recipient Issuer'))
     #: type
-    type = models.CharField(max_length=255, help_text=_('Type'))
+    type = models.TextField(help_text=_('Type'))
     #: amount
-    amount = models.CharField(max_length=64, help_text=_('Amount'))
+    amount = models.TextField(help_text=_('Amount'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -256,13 +247,13 @@ class DeclarationProperty (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration,
         related_name='properties', help_text=_('Related Declaration'))
     #: name shares
-    name_shares = models.CharField(max_length=255, help_text=_('Name & Shares'))
+    name_shares = models.TextField(help_text=_('Name & Shares'))
     #: property type
-    prop_type = models.CharField(max_length=255, help_text=_('Property Type'))
+    prop_type = models.TextField(help_text=_('Property Type'))
     #: description
-    description = models.CharField(max_length=255, help_text=_('Description'))
+    description = models.TextField(help_text=_('Description'))
     #: other owners
-    co_owners = models.CharField(max_length=255, help_text=_('Co Owners'))
+    co_owners = models.TextField(help_text=_('Co Owners'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -280,13 +271,13 @@ class DeclarationRealEstate (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration,
         related_name='realestates', help_text=_('Related Declaration'))
     #: name shares
-    name_shares = models.CharField(max_length=255, help_text=_('Name & Shares'))
+    name_shares = models.TextField(help_text=_('Name & Shares'))
     #: property type
-    prop_type = models.CharField(max_length=255, help_text=_('Property Type'))
+    prop_type = models.TextField(help_text=_('Property Type'))
     #: location / area
-    loc_area = models.CharField(max_length=255, help_text=_('Location & Area'))
+    loc_area = models.TextField(help_text=_('Location & Area'))
     #: other owners
-    co_owners = models.CharField(max_length=1024, help_text=_('Co Owners'))
+    co_owners = models.TextField(help_text=_('Co Owners'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -304,15 +295,15 @@ class DeclarationSecurity (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration,
         related_name='securities', help_text=_('Related Declaration'))
     #: name (of the security holder?)
-    name = models.CharField(max_length=255, help_text=_('Name'))
+    name = models.TextField(help_text=_('Name'))
     #: issuer
-    issuer = models.CharField(max_length=255, help_text=_('Issuer'))
+    issuer = models.TextField(help_text=_('Issuer'))
     #: type
-    type = models.CharField(max_length=64, help_text=_('Type'))
+    type = models.TextField(help_text=_('Type'))
     #: price
-    price = models.CharField(max_length=64, help_text=_('Price'))
+    price = models.TextField(help_text=_('Price'))
     #: quantitiy
-    quantity = models.IntegerField(help_text=_('Quantity'))
+    quantity = models.TextField(help_text=_('Quantity'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (
@@ -331,15 +322,13 @@ class DeclarationWage (models.Model):
     declaration = models.ForeignKey(IncomeDeclaration, related_name='wages',
         help_text=_('Related Declaration'))
     #: name (of the employee?)
-    name = models.CharField(max_length=255, help_text=_('Name'))
+    name = models.TextField(help_text=_('Name'))
     #: description of workplace
-    desc_workplace = models.CharField(max_length=255,
-        help_text=_('Description of Workplace'))
+    desc_workplace = models.TextField(help_text=_('Description of Workplace'))
     #: description of job
-    desc_job = models.CharField(max_length=255,
-        help_text=_('Description of Job'))
+    desc_job = models.TextField(help_text=_('Description of Job'))
     #: income record
-    income_rec = models.CharField(max_length=64, help_text=_('Income Record'))
+    income_rec = models.TextField(help_text=_('Income Record'))
 
     def __unicode__ (self):
         return '%s %s: %s' % (

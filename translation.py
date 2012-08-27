@@ -133,7 +133,7 @@ class DeclarationRealEstateTranslationOptions (TranslationOptions):
 translator.register(DeclarationRealEstate, DeclarationRealEstateTranslationOptions)
 
 class DeclarationSecurityTranslationOptions (TranslationOptions):
-    fields = ('name', 'issuer', 'type', 'price',)
+    fields = ('name', 'issuer', 'type', 'price', 'quantity',)
 translator.register(DeclarationSecurity, DeclarationSecurityTranslationOptions)
 
 class DeclarationWageTranslationOptions (TranslationOptions):
