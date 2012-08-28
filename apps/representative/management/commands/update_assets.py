@@ -129,28 +129,27 @@ class Command (BaseCommand):
         @type representative: representative.Representative
         @param decl: representative\'s income declaration
         @type decl: incomedeclaration.IncomeDeclaration
+        @return: output message
+        @rtype: [str]
         """
+        msg = []
         representative.salary = self._get_salary(decl)
         if representative.salary:
-            self.stdout.write(u'i: %d' % representative.salary)
+            msg.append(u'i: %d' % representative.salary)
 
         representative.other_income = self._get_other_income(decl)
         if representative.other_income:
-            self.stdout.write(u' o: %d' % representative.other_income)
+            msg.append(u' o: %d' % representative.other_income)
 
         representative.expenses = self._get_expenses(decl)
         if representative.expenses:
-            try:
-                self.stdout.write(u' e: %s' % representative.expenses)
-            except UnicodeError: # tired of unicode working even worse on Python 2.6
-                pass
+            msg.append(u' e: %s' % representative.expenses)
 
         representative.property_assets = self._get_property(decl)
         if representative.property_assets:
-            try:
-                self.stdout.write(u' p: %s' % representative.property_assets)
-            except UnicodeError: # tired of unicode working even worse on Python 2.6
-                pass
+            msg.append(' p: %s' % representative.property_assets)
+
+        return msg;
 
 
     @transaction.commit_on_success
@@ -179,7 +178,9 @@ class Command (BaseCommand):
 
             decl.representative = representative
             decl.save()
-            self._update(representative, decl)
-            self.stdout.write('\n')
+            msg = self._update(representative, decl)
+            # tired of Python's unicode awkwardness, worse in 2.6 than 2.7
+            print ''.join(msg)
+            #self.stdout.write(''.join(msg) + '\n')
 
             representative.save()
