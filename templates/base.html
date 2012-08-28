@@ -16,6 +16,13 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery-ui/jquery-ui.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jscrollpane.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/base.css" media="all" />
+    {% with user_agent=request.META.HTTP_USER_AGENT %}
+    {% if 'Windows NT 5.1' in user_agent or 'Windows NT 6.0' in user_agent %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/fonts_oldwin.css" media="all" />
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/fonts.css" media="all" />
+    {% endif %}
+    {% endwith %}
     {% render_block "css" %}
     {% block css %}{% endblock %}
 </head>

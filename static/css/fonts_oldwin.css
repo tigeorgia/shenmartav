@@ -1,0 +1,34 @@
+/*
+ * font stylesheet for shenmartav.ge
+ * for browsers not on Win XP + Vista
+ * courtesy to old windows versions + georgian characters
+ */
+
+html,
+body,
+.ui-widget,
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button,
+ul.ui-widget-content,
+{
+    font-family: Sylfaen, Georgia, Times, serif;
+}
+
+input, select, option, textarea,
+h1, h2, h3, h4,
+.subh1,
+.heading,
+.more, .more a,
+#folded-nav #header #navigation,
+.representative-name,
+select[name="representative"],
+#representative #filter,
+#representative #filter select,
+#representative #unit-select,
+#question #most-active, #question #least-active,
+#draftlaw #alert #receive
+{
+    font-family: Sylfaen, Georgia, Times, serif;
+}

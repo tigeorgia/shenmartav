@@ -71,7 +71,6 @@
 }
 
 #representative #filter {
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     margin: .5em 0 1em 1em;
     width: 98%;
 }
@@ -89,7 +88,6 @@
     width: 20%;
 }
 #representative #filter select {
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     width: 99%;
 }
 #representative #filter #cell-electiontype {
@@ -169,7 +167,6 @@
 #representative #unit-select {
     margin: 1em auto;
     text-align: center;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     height: 5%;
 }
 #representative #unit-slider {

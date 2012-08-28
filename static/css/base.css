@@ -5,7 +5,6 @@
 html, body {
     padding: 0;
     margin: 0;
-    font-family: "bpg-arial-2009", Georgia, Times, serif;
     font-size: .9em;
     background: #fff;
     color: #666;
@@ -15,7 +14,6 @@ html, body {
 
 input, select, option, textarea {
     margin: 0;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     font-size: 1em;
     padding: .6em;
     background: #fff;
@@ -56,7 +54,6 @@ h1 {
     text-transform: uppercase;
     font-size: 1.6em;
     font-weight: bold;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     color: #d44847;
     margin: 1.2em 0 0 0;
 }
@@ -70,7 +67,6 @@ h1 a:hover {
 }
 .subh1 {
     font-size: .8em;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     text-align: center;
     width: 70%;
     margin: 0 auto 2em auto;
@@ -79,14 +75,12 @@ h1 a:hover {
 h2 {
     font-size: 1.4em;
     font-weight: normal;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     margin-top: 0;
     text-align: center;
     text-transform: uppercase;
 }
 h3 {
     font-size: 1.2em;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     font-weight: bold;
     text-transform: uppercase;
     color: #000;
@@ -94,7 +88,6 @@ h3 {
 }
 h4 {
     font-size: 1.1em;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     text-transform: uppercase;
 }
 
@@ -119,10 +112,6 @@ li:first-child {
 }
 
 
-/* jquery ui */
-ul.ui-widget-content {
-    font-family: "bpg-arial-2009", Georgia, Times, serif;
-}
 ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
     background: #d44847;
     color: #fff;
@@ -181,7 +170,6 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #folded-nav #header #navigation {
     margin-top: 2.5em;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 #header #navigation li {
     margin: 1.5em 0;
@@ -315,7 +303,6 @@ img.column-bg {
     border-radius: .2em;
     border: .1em solid #e08c8c;
     font-weight: normal;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
     font-size: 1em;
     text-transform: uppercase;
     text-align: left;
@@ -408,7 +395,6 @@ img.column-bg {
     margin: .5em 0;
     font-size: 1em;
     font-weight: bold;
-    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
 
 .label {
@@ -427,8 +413,4 @@ img.column-bg {
 
 .hidden {
     display: none;
-}
-
-.representative-name, select[name="representative"] {
-    font-family: "zwo-geo-light", Georgia, Times, serif;
 }
