@@ -6,12 +6,23 @@
     left: 25%;
     width: 61%;
 }
-.opened .date {
-    border-bottom: 1px solid #aaa;
-}
-.opened .breadcrumb {
+.opened .breadcrumb,
+.opened .fb-comments {
     margin-left: .5em;
 }
+
+.opened #title {
+    font-size: 1.2em;
+    color: #1d7ac8;
+}
+.opened #date, .opened #body {
+    font-size: .9em;
+}
+
+.opened .fb-comments {
+    margin-top: 1em;
+}
+
 
 #folded-who {
     right: 8%;

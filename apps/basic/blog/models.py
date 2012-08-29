@@ -42,7 +42,7 @@ class Post(models.Model):
     body = models.TextField(_('body'), )
     tease = models.TextField(_('tease'), blank=True, help_text=_('Concise text suggested. Does not appear in RSS feed.'))
     status = models.IntegerField(_('status'), choices=STATUS_CHOICES, default=2)
-    allow_comments = models.BooleanField(_('allow comments'), default=True)
+    allow_comments = models.BooleanField(_('allow comments'), default=False, editable=False)
     publish = models.DateTimeField(_('publish'), default=datetime.datetime.now)
     created = models.DateTimeField(_('created'), auto_now_add=True)
     modified = models.DateTimeField(_('modified'), auto_now=True)
