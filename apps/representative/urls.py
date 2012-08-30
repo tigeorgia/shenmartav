@@ -25,4 +25,5 @@ urlpatterns = patterns('',
 
     # AJAX calls answered by JSON
     url(r'^query/(?P<query>.*)/$', query, name='representative_query'),
+    url(r'^unit/representative/(?P<pk>\d+)/$', unit_representative, name='unit_representative'),
 )

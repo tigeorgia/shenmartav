@@ -137,6 +137,15 @@ class UnitTbilisi (Unit):
 
 
 
+def unit_representative (request, pk):
+    try:
+        unit = Representative.objects.get(pk=pk).unit.short
+    except Representative.DoesNotExist:
+        unit = ''
+    return HttpResponse(json.dumps(unit), content_type='application/json')
+
+
+
 class Detail (DetailView):
     context_object_name = 'obj'
     model = Representative

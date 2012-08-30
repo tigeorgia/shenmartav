@@ -159,12 +159,19 @@ RepresentativeFind = {
     },
 
 
-    selectMemberFromLocation: function () {
+    getPKFromLocation: function () {
         var hash = window.location.hash;
         // 8 == #member-
         var pk = parseInt(hash.slice(8, hash.length));
-        if (!pk) return;
 
+        if (!pk) return false;
+        else return pk
+    },
+
+
+    selectMemberFromLocation: function () {
+        var pk = RepresentativeFind.getPKFromLocation();
+        if (!pk) return;
         var member = $('#representative #members #member-' + pk);
         if (!member || member.length == 0) return;
 
@@ -262,11 +269,42 @@ RepresentativeFind = {
     },
 
 
+    loadRightUnit: function (unit) {
+        var pk = RepresentativeFind.getPKFromLocation();
+        if (!pk) {
+            RepresentativeFind.loadUnit('parliament');
+            return;
+        }
+
+        var url = URL_UnitRepresentative.slice(
+            0, URL_UnitRepresentative.length - 2); // slice off '0/'
+
+        $.ajax(url + pk + '/', {
+            success: function(data, textStatus, jqXHR) {
+                var elem = $('#representative #unit-select #unit-slider');
+                if (data == 'parliament') {
+                    elem.slider('value', 0);
+                } else if (data == 'ajara') {
+                    elem.slider('value', 1);
+                } else if (data == 'tbilisi') {
+                    elem.slider('value', 2);
+                } else {
+                    RepresentativeFind.loadUnit('parliament');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                var msg = '<h3>' + jqXHR.status + ' ' + errorThrown + '</h3>';
+                $('#representative #select #unit #members').html(msg);
+            }
+        });
+    },
+
+
     setup: function () {
         RepresentativeFind.setupFilters();
         RepresentativeFind.setupInfo();
         RepresentativeFind.setupUnit();
-        RepresentativeFind.loadUnit('parliament');
+        RepresentativeFind.loadRightUnit();
     },
 };
 
