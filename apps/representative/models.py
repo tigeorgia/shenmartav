@@ -38,6 +38,10 @@ class Party (Organisation):
     #: url of this representative
     url = models.TextField(blank=True, null=True,
         help_text=_('URL of this Party'))
+    #: party logo
+    logo = ImageWithThumbnailsField(upload_to='parties',
+        thumbnail={'size': (100, 84), 'options': ('crop',)},
+        blank=True, null=True, help_text=_('Party logo'))
 
 
 
