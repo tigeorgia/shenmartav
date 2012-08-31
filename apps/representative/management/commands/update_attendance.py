@@ -14,9 +14,6 @@ from representative.models import Representative
 from votingrecord.models import VotingRecordResult
 
 
-#: % threshold when an attendance record is considered suspiciously low
-THRESHOLD = 10
-
 
 class Command (BaseCommand):
     """Command to update parliamentarians' attendance record."""
@@ -24,16 +21,53 @@ class Command (BaseCommand):
     help = 'Updates parliamentarians\' attendance records.'
 
 
-    @transaction.commit_on_success
-    def handle (self, *args, **options):
-        """Command handler."""
-        for representative in Representative.objects.all():
-            self.stdout.write('%s: ' % representative.name)
-            results = VotingRecordResult.objects.filter(representative=representative)
+    def _set_attendance_group (self, representatives):
+        """Sets the attendance group for given representatives.
+
+        It assumes that representatives is sorted by attendance.
+
+        @param representatives: sorted representatives
+        @type representatives: [Representative]
+        @return representatives: the modified representatives
+        @rtype representatives: [Representative]
+        """
+        len_reps = len(representatives)
+        if len_reps < 100:
+            self.stdout.write('WARNING: less than 100 representatives (%d), using deciles might be a bad idea!' % len_reps)
+        self.stdout.write('Setting attendance group ')
+
+        decile_size = len_reps / 10 + 1 # round up
+        decile2group = [0, 1, 1, 2, 2, 2, 2, 3, 3, 4]
+        decile = 0
+        count = 0
+        for r in representatives:
+            self.stdout.write('.')
+            r.attendance_group = decile2group[decile]
+            if count > 0 and count % decile_size == 0:
+                decile += 1
+            count += 1
+
+        self.stdout.write(' done\n')
+        return representatives
+
+
+    def _set_attendance_record (self):
+        """Sets the attendance record for parliamentarians.
+
+        @return: (parliamentarian) representatives, sorted ascending by
+                 attendance percentage
+        @rtype: [Representative]
+        """
+        self.stdout.write('Setting attendance record ')
+        representatives = Representative.parliament.all()
+        percentages = []
+        for r in representatives:
+            self.stdout.write('.')
+            results = VotingRecordResult.objects.filter(representative=r).values('vote')
             total = len(results)
             not_present = 0
-            for r in results:
-                if r.vote == u'არ ესწრებოდა':
+            for result in results:
+                if result['vote'] == u'არ ესწრებოდა':
                     not_present += 1
 
             present = total - not_present
@@ -41,11 +75,27 @@ class Command (BaseCommand):
                 percentage = (present / float(total)) * 100
             except ZeroDivisionError:
                 percentage = 0
-            attendance = '%s/%s (%.1f%%)' % (present, total, percentage)
-            representative.attendance_record = attendance
+            attendance = u'%s/%s (%.1f%%)' % (present, total, percentage)
+            r.attendance_record = attendance
+            percentages.append(percentage)
+        self.stdout.write(' done')
 
-            if percentage < THRESHOLD:
-                attendance += ' VERY LOW'
-            self.stdout.write(attendance + '\n')
+        # zip reps and percentages together, sort by percentages and unzip
+        zipped = zip(representatives, percentages)
+        zipped.sort(key=lambda data: data[1])
+        representatives, percentages = zip(*zipped)
 
-            representative.save()
+        self.stdout.write('\n')
+        return representatives
+
+
+    @transaction.commit_on_success
+    def handle (self, *args, **options):
+        """Command handler."""
+        representatives = self._set_attendance_record()
+        representatives = self._set_attendance_group(representatives)
+        for r in representatives:
+            self.stdout.write(u'%s: attendance %s, group %d\n' % (
+                r.name, r.attendance_record, r.attendance_group))
+            r.save()
+

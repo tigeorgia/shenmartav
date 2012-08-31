@@ -44,7 +44,6 @@ class Party (Organisation):
         blank=True, null=True, help_text=_('Party logo'))
 
 
-
 class Unit (models.Model):
     """A unit/house, like Parliament or Tbilisi City Assembly."""
     #: name of the unit
@@ -77,6 +76,15 @@ GENDER_CHOICES = (
     (1, _('female')),
     (2, _('other')),
 )
+
+ATTENDANCE_GROUP_CHOICES = (
+    (0, _('very low')),
+    (1, _('low')),
+    (2, _('ordinary')),
+    (3, _('high')),
+    (4, _('very high')),
+)
+
 
 
 class Representative (Person):
@@ -123,7 +131,10 @@ class Representative (Person):
         help_text=_('URL of this Representative'))
     #: attendance record
     attendance_record = models.TextField(blank=True, null=True,
-        help_text=_('Voting attendance Record'))
+        help_text=_('Voting Attendance Record'))
+    #: attendance group
+    attendance_group = models.IntegerField(default=0, choices=ATTENDANCE_GROUP_CHOICES,
+        help_text=_('Voting Attendance in Relation to other Representatives'))
     #: salary
     salary = models.FloatField(default=0, null=True,
         help_text=_('== Wages'))
