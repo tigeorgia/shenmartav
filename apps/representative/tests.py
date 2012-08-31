@@ -74,7 +74,7 @@ class RepresentativeTest (TestCase):
     def test_Search (self):
         url = reverse('representative_search')
         response = self.client.get(url)
-        self.assertContains(response, u'Search')
+        self.assertContains(response, u'results')
         self.assertTemplateUsed(response, 'representative/search.html')
 
 
@@ -82,8 +82,10 @@ class RepresentativeTest (TestCase):
         up = UnitParliament()
         members = [13, 8, 5, 4, 7, 3, 1, 9]
         members_up = up._get_members()
-        for i in xrange(len(members_up)):
-            self.assertEqual(members_up[i]['pk'], members[i])
+        for member in members_up:
+            self.assertTrue(member['pk'] in members)
+            members.remove(member['pk'])
+        self.assertEqual(members, [])
 
 
     def test_UnitParliament (self):
@@ -114,8 +116,15 @@ class RepresentativeTest (TestCase):
         self.assertTemplateUsed(response, 'representative/info.html')
 
 
+    def test_VotingrecordsSimple (self):
+        url = reverse('representative_votingrecords_simple', args=[1])
+        response = self.client.get(url)
+        self.assertContains(response, '')
+        self.assertTemplateUsed(response, 'representative/votingrecords_simple.html')
+
+
     def test_Votingrecords (self):
-        url = reverse('representative_votingrecords', args=[1])
+        url = reverse('representative_votingrecords', args=[1, 'nugzar-abulashvili'])
         response = self.client.get(url)
         self.assertContains(response, '')
         self.assertTemplateUsed(response, 'representative/votingrecords.html')
@@ -125,6 +134,12 @@ class RepresentativeTest (TestCase):
         url = reverse('representative_query', args=[u'აბულაშვილი ნუგზარი'])
         response = self.client.get(url)
         self.assertContains(response, '"pk": 1')
+
+
+    def test_unit_representative (self):
+        url = reverse('unit_representative', args=[1])
+        response = self.client.get(url)
+        self.assertContains(response, 'parliament')
 
 
     def test_Representative_find (self):
