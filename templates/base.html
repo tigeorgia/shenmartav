@@ -10,8 +10,18 @@
     <title>ShenMartav - {% page_attribute 'page_title' %}</title>
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url feed_blogposts %}" />
     <style type="text/css">
-        @font-face { font-family: "bpg-arial-2009"; src: url({{STATIC_URL}}font/bpg_arial_2009.ttf) format("truetype"); }
-        @font-face { font-family: "zwo-geo-light"; src: url({{STATIC_URL}}font/zwo_geo_light.ttf) format("truetype"); }
+        @font-face {
+            font-family: "bpg-arial-2009";
+            font-style: normal;
+            font-weight: normal;
+            src: url({{STATIC_URL}}font/bpg_arial_2009.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: "zwo-geo-light";
+            font-style: normal;
+            font-weight: normal;
+            src: url({{STATIC_URL}}font/zwo_geo_light.ttf) format("truetype");
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery-ui/jquery-ui.css" media="all" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jscrollpane.css" media="all" />

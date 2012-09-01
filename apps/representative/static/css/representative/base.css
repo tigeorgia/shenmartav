@@ -58,6 +58,13 @@
     text-align: left;
     margin-bottom: 0;
 }
+
+
+#representative #attendance #group {
+    font-size: .8em;
+    font-style: italic;
+}
+
 #representative #income #bar .cell,
 #representative #attendance #bar .cell {
     padding: .3em 0;
