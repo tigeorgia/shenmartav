@@ -3,10 +3,7 @@
     <div id="header">
         <div id="logo" class="button"><a href="{% url pages-root %}" title="{% trans 'You Rule!' %}"><img id="wheel" src="{{ STATIC_URL }}img/spacer.png" alt="{% trans 'You Rule!' %}" /></a></div>
 
-        <div id="language-chooser">
-            {% language_chooser %}
-            <div id="google_translate_element"></div>
-        </div>
+        <div id="language-chooser">{% language_chooser %}</div>
 
         <ul id="navigation">
             <li class="button"><a id="home" title="{% trans 'Home sweet Home' %}" href="{% url pages-root %}"><img src="{{ STATIC_URL }}img/nav-home.png" border="0" width="17" height="17" /></a></li>
@@ -14,6 +11,9 @@
             <li class="button"><a id="about" title="{% trans 'About this website' %}" href="{% page_url 'about' %}"><img src="{{ STATIC_URL }}img/nav-about.png" border="0" width="17" height="17" /></a></li>
             <li class="button"><a id="contact" title="{% trans 'Contact us' %}" href="{% url contact_show %}"><img src="{{ STATIC_URL }}img/nav-contact.png" border="0" width="17" height="17" /></a></li>
         </ul>
+
+        <div class="fb-like" data-href="http://{{ request.META.HTTP_HOST }}{{ request.META.PATH_INFO }}" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false"></div>
+        <div id="google_translate_element"></div>
     </div>
 
     <div id="footer">{% include 'footer.html' %}</div>

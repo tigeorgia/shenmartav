@@ -1,6 +1,5 @@
 {% extends "blog/base_blog.html" %}
-{% load i18n cms_tags %}
-{% get_current_language as lang %}
+{% load i18n %}
 
 {% block blog %}
 {% load blog comments tagging_tags inlines markup %}
@@ -31,6 +30,6 @@
                 js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
                   fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="fb-comments" data-href="http://{{ request.META.HTTP_HOST }}{{ lang }}{{ request.META.PATH_INFO }}" data-num-posts="5" data-width="500"></div>
+    <div class="fb-comments" data-href="http://{{ request.META.HTTP_HOST }}{{ request.META.PATH_INFO }}" data-num-posts="5" data-width="500"></div>
 </div>
 {% endblock %}
