@@ -45,7 +45,8 @@
     background: #1d7ac8;
 }
 #representative #income #bar,
-#representative #attendance #bar {
+#representative #attendance #bar,
+#representative #attendance #bar-labels {
     width: 100%;
 }
 
@@ -66,14 +67,15 @@
 }
 
 #representative #income #bar .cell,
-#representative #attendance #bar .cell {
+#representative #attendance #bar .cell,
+#representative #attendance #bar-labels .cell {
     padding: .3em 0;
 }
 
-#representative #attendance #bar .leftalign {
+.leftalign {
     text-align: left;
 }
-#representative #attendance #bar .rightalign {
+.rightalign {
     text-align: right;
 }
 

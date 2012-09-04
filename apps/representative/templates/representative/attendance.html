@@ -12,13 +12,15 @@
     </div>
     <div id="bar" class="table">
         <div class="row">
-            <div class="cell leftalign" style="width:{{ attendance.attended|percentage:attendance.total }}">{{ attendance.attended }}</div>
-            <div class="cell rightalign" style="width:{{ attendance.absent|percentage:attendance.total }}">{{ attendance.absent }}</div>
+            <div class="cell leftalign">{{ attendance.attended }}</div>
+            <div class="cell rightalign">{{ attendance.absent }}</div>
         </div>
         <div class="row">
-            <div class="cell attendance-attended">&nbsp;</div>
-            <div class="cell attendance-absent">&nbsp;</div>
+            <div class="cell attendance-attended style="width:{{ attendance.attended|percentage:attendance.total }}"">&nbsp;</div>
+            <div class="cell attendance-absent" style="width:{{ attendance.absent|percentage:attendance.total }}">&nbsp;</div>
         </div>
+    </div>
+    <div id="bar-labels" class="table">
         <div class="row">
             <div class="cell leftalign">{% trans 'Attended' %}</div>
             <div class="cell rightalign">{% trans 'Absent' %}</div>
