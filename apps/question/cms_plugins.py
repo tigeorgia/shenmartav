@@ -36,10 +36,14 @@ class QuestionPlugin (CMSPluginBase):
         context['random'] = RandomRepresentative.get()
 
         try:
-            latest = Question.answered.order_by('-date')[0]
+            # temporary:
+            latest = Question.public.order_by('-date')[0]
+            #latest = Question.answered.order_by('-date')[0]
         except IndexError:
             latest = None
         context['latest'] = latest
+        # temporary:
+        return context
 
         if not latest:
             context['most_active'] = None
