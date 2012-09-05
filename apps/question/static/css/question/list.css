@@ -70,12 +70,6 @@
     color: #d44847;
 }
 
-#question span.unanswered {
-    font-size: larger;
-    color: #fff;
-}
-
-
 
 #question #sidebar {
     float: left;
