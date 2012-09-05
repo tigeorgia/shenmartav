@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-31 08:20+0200\n"
-"PO-Revision-Date: 2012-08-16 15:24\n"
+"POT-Creation-Date: 2012-09-05 08:57+0200\n"
+"PO-Revision-Date: 2012-09-04 17:19\n"
 "Last-Translator:   <sebastian@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language: ka\n"
@@ -150,7 +150,7 @@ msgstr "დაპოსტეთ არქივი"
 msgid "View items posted this month"
 msgstr "იხილეთ ამ თვეში განხორციელებული პოსტები"
 
-#: apps/basic/blog/templates/blog/post_detail.html:8
+#: apps/basic/blog/templates/blog/post_detail.html:7
 #: apps/basic/blog/templates/blog/post_list.html:6
 #: apps/contact/templates/contact/show.html:6
 #: apps/contact/templates/contact/thanks.html:6
@@ -166,18 +166,18 @@ msgstr "იხილეთ ამ თვეში განხორციელ
 #: apps/representative/templates/representative/search.html:10
 #: apps/representative/templates/representative/votingrecords.html:6
 #: apps/votingrecord/templates/votingrecord/detail.html:6
-#: apps/votingrecord/templates/votingrecord/list.html:6 templates/nav.html:9
+#: apps/votingrecord/templates/votingrecord/list.html:6 templates/nav.html:6
 #: templates/admin/base.html:56 templates/rosetta/pofile.html:14
 msgid "Home"
 msgstr "მთავარი"
 
-#: apps/basic/blog/templates/blog/post_detail.html:9
-#: apps/basic/blog/templates/blog/post_detail.html:14
-#: apps/basic/blog/templates/blog/post_list.html:7 templates/nav.html:10
+#: apps/basic/blog/templates/blog/post_detail.html:8
+#: apps/basic/blog/templates/blog/post_detail.html:13
+#: apps/basic/blog/templates/blog/post_list.html:7 templates/nav.html:7
 msgid "Blog"
 msgstr "ბლოგი"
 
-#: apps/basic/blog/templates/blog/post_detail.html:23
+#: apps/basic/blog/templates/blog/post_detail.html:22
 msgid "Related tags"
 msgstr "დაკავშირებული თეგები"
 
@@ -259,7 +259,7 @@ msgstr "საკონტაქტო ფორმა"
 
 #: apps/contact/templates/contact/show.html:7
 #: apps/contact/templates/contact/show.html:11
-#: apps/contact/templates/contact/thanks.html:7 templates/nav.html:12
+#: apps/contact/templates/contact/thanks.html:7 templates/nav.html:9
 msgid "Contact"
 msgstr "კონტაქტი"
 
@@ -1145,27 +1145,32 @@ msgstr "ბოლოს დასმული შეკითხვა"
 msgid "Answer"
 msgstr "პასუხი"
 
-#: apps/question/templates/cmsplugins/question.html:35
+#: apps/question/templates/cmsplugins/question.html:23
+#: apps/question/templates/question/info.html:21
+msgid "Not yet answered!"
+msgstr "ჯერჯერობით პასუხგაუცემელია!"
+
+#: apps/question/templates/cmsplugins/question.html:36
 msgid "Most Active"
 msgstr "ყველაზე მეტი პასუხი"
 
-#: apps/question/templates/cmsplugins/question.html:36
-#: apps/question/templates/cmsplugins/question.html:51
+#: apps/question/templates/cmsplugins/question.html:37
+#: apps/question/templates/cmsplugins/question.html:53
 #: apps/question/templates/question/info.html:20
 #: apps/question/templates/question/items.html:5
 #: apps/representative/templates/representative/detail.html:127
 msgid "Answered"
 msgstr "პასუხი გაცემულია"
 
-#: apps/question/templates/cmsplugins/question.html:50
+#: apps/question/templates/cmsplugins/question.html:52
 msgid "Least Active"
 msgstr "ყველაზე ნაკლები პასუხი"
 
-#: apps/question/templates/cmsplugins/question.html:60
+#: apps/question/templates/cmsplugins/question.html:62
 msgid "Choose a Representative"
 msgstr "აირჩიე დეპუტატი"
 
-#: apps/question/templates/cmsplugins/question.html:64
+#: apps/question/templates/cmsplugins/question.html:66
 #: apps/question/templates/question/ask.html:8
 #: apps/question/templates/question/form.html:15
 msgid "Ask"
@@ -1199,10 +1204,6 @@ msgstr "თუ გსურთ ანონიმურობის შენა
 #: apps/question/templates/question/info.html:3
 msgid "Question to"
 msgstr "შეკითხვა დეპუტატს"
-
-#: apps/question/templates/question/info.html:21
-msgid "Not yet answered!"
-msgstr "ჯერჯერობით პასუხგაუცემელია!"
 
 #: apps/question/templates/question/leaderboard.html:8
 #: apps/question/templates/question/leaderboard.html:12
@@ -1500,36 +1501,46 @@ msgid ""
 "This representative has attended a very low number of votes, compared to "
 "other representatives."
 msgstr ""
+"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+"მაჩვენებელი არის ძალიან დაბალი."
 
 #: apps/representative/templates/representative/attendance.html:7
 msgid ""
 "This representative has attended a low number of votes, compared to other "
 "representatives."
 msgstr ""
+"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+"მაჩვენებელი არის დაბალი."
 
 #: apps/representative/templates/representative/attendance.html:8
 msgid ""
 "This representative has attended an ordinary number of votes, compared to "
 "other representatives."
 msgstr ""
+"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+"მაჩვენებელი არის საშუალო."
 
 #: apps/representative/templates/representative/attendance.html:9
 msgid ""
 "This representative has attended a high number of votes, compared to other "
 "representatives."
 msgstr ""
+"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+"მაჩვენებელი არის მაღალი."
 
 #: apps/representative/templates/representative/attendance.html:10
 msgid ""
 "This representative has attended a very high number of votes, compared to "
 "other representatives."
 msgstr ""
+"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+"მაჩვენებელი არის ძალიან მაღალი."
 
-#: apps/representative/templates/representative/attendance.html:23
+#: apps/representative/templates/representative/attendance.html:25
 msgid "Attended"
 msgstr "მონაწილეობდა"
 
-#: apps/representative/templates/representative/attendance.html:24
+#: apps/representative/templates/representative/attendance.html:26
 #: apps/representative/templates/representative/detail.html:150
 #: apps/votingrecord/templates/votingrecord/detail.html:35
 msgid "Absent"
@@ -1852,6 +1863,14 @@ msgstr "არა"
 msgid "Total"
 msgstr "სულ"
 
+#: templates/base.html:7 templates/base.html.py:11
+msgid "A website to monitor Georgian state institutions"
+msgstr ""
+
+#: templates/base.html:10
+msgid "ShenMartav"
+msgstr ""
+
 #: templates/footer.html:3
 msgid "RSS Blog feed"
 msgstr "RSS ბლოგ ლენტა"
@@ -1873,23 +1892,23 @@ msgstr "მშვიდობის, დემოკრატიის და �
 msgid "You Rule!"
 msgstr "შენ მართავ!"
 
-#: templates/nav.html:9 templates/folded/nav.html:12
+#: templates/nav.html:6 templates/folded/nav.html:9
 msgid "Home sweet Home"
 msgstr "მთავარი"
 
-#: templates/nav.html:10 templates/folded/nav.html:13
+#: templates/nav.html:7 templates/folded/nav.html:10
 msgid "Blog posts for shenmartav"
 msgstr "ბლოგ-პოსტები"
 
-#: templates/nav.html:11 templates/folded/nav.html:14
+#: templates/nav.html:8 templates/folded/nav.html:11
 msgid "About this website"
 msgstr "ამ ვებგვერდის შესახებ"
 
-#: templates/nav.html:11
+#: templates/nav.html:8
 msgid "About"
 msgstr "ჩვენ შესახებ"
 
-#: templates/nav.html:12 templates/folded/nav.html:15
+#: templates/nav.html:9 templates/folded/nav.html:12
 msgid "Contact us"
 msgstr "დაგვიკავშირდით"
 
@@ -2140,7 +2159,6 @@ msgstr "შემდეგი"
 #~ msgid "Post archive"
 #~ msgstr "პოსტების არქივი"
 
-#, fuzzy
 #~ msgid "Draftlaws"
 #~ msgstr "კანონპროექტი %s"
 
