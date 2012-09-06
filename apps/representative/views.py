@@ -32,8 +32,15 @@ class Find (TemplateView):
     def get_context_data (self, **kwargs):
         context = super(Find, self).get_context_data(**kwargs)
         context['url_search'] = reverse('representative_search')
-        context['obj'] = RandomRepresentative.get()
+
+        try:
+            pk = self.request.session['representative']['find']['info_pk']
+            context['obj'] = Representative.objects.get(pk=pk)
+        except KeyError:
+            context['obj'] = RandomRepresentative.get()
+
         context['units'] = UnitModel.objects.all()
+        context['active_unit'] = context['obj'].unit.short
         context['url_feed'] = reverse('representative_feed_list')
         return context
 
@@ -287,8 +294,20 @@ class Info (DetailView):
     model = Representative
     template_name = 'representative/info.html'
 
+    def _set_session (self, context):
+        # use previously shown representative
+        session = self.request.session
+        if 'representative' not in session:
+            session['representative'] = {}
+        if 'find' not in session['representative']:
+            session['representative']['find'] = {}
+        session['representative']['find']['info_pk'] = context['obj'].pk
+        session.modified = True
+
+
     def get_context_data(self, **kwargs):
         context = super(Info, self).get_context_data(**kwargs)
+        self._set_session(context)
         return context
 
 

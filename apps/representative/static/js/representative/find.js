@@ -269,10 +269,23 @@ RepresentativeFind = {
     },
 
 
+    loadUnitBySlider: function (unit) {
+        var elem = $('#representative #unit-select #unit-slider');
+        if (unit == 'parliament') {
+            elem.slider('value', 0);
+        } else if (unit == 'ajara') {
+            elem.slider('value', 1);
+        } else if (unit == 'tbilisi') {
+            elem.slider('value', 2);
+        } else {
+            RepresentativeFind.loadUnit('parliament');
+        }
+    },
+
     loadRightUnit: function (unit) {
         var pk = RepresentativeFind.getPKFromLocation();
         if (!pk) {
-            RepresentativeFind.loadUnit('parliament');
+            RepresentativeFind.loadUnitBySlider(Active_Unit);
             return;
         }
 
@@ -281,16 +294,7 @@ RepresentativeFind = {
 
         $.ajax(url + pk + '/', {
             success: function(data, textStatus, jqXHR) {
-                var elem = $('#representative #unit-select #unit-slider');
-                if (data == 'parliament') {
-                    elem.slider('value', 0);
-                } else if (data == 'ajara') {
-                    elem.slider('value', 1);
-                } else if (data == 'tbilisi') {
-                    elem.slider('value', 2);
-                } else {
-                    RepresentativeFind.loadUnit('parliament');
-                }
+                RepresentativeFind.loadUnitBySlider(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 var msg = '<h3>' + jqXHR.status + ' ' + errorThrown + '</h3>';
