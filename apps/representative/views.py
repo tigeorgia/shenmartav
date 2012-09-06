@@ -246,9 +246,9 @@ def _get_votingrecord_results (representative):
     """
     # ordered by vote in model
     results = representative.votingresults.all().values(
-        'css', 'vote', 'record', 'record__name')
+        'css', 'vote', 'record__slug', 'record__name')
     for r in results:
-        r['url'] = reverse('votingrecord_detail', args=[r['record']])
+        r['url'] = reverse('votingrecord_detail', args=[r['record__slug']])
 
     return results
 

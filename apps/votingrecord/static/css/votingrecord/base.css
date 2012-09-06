@@ -13,7 +13,7 @@
     opacity: 1;
 }
 .opened {
-    left: 14%
+    left: 14%;
 }
 #folded-question {
     right: 0;
@@ -24,6 +24,7 @@
 #votingrecord {
     position: relative;
     padding: 0 1em;
+    height: 94%;
 }
 
 
@@ -41,8 +42,17 @@
 }
 
 
+#votingrecord .body {
+    height: 95%;
+}
+#votingrecord .body > ul {
+    height: 96%;
+}
 #votingrecord #results {
-    height: 400px;
+    height: 72%;
+}
+#votingrecord #results > ul {
+    height: 100%;
     overflow: auto;
 }
 #votingrecord #records {
