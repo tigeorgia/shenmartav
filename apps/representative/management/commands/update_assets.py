@@ -30,7 +30,7 @@ class Command (BaseCommand):
         @rtype: incomedeclaration.IncomeDeclaration
         """
 
-        [first, last] = name.split(u' ', 1)
+        first, last = name.split(u' ', 1)
         decls = IncomeDeclaration.objects.filter(name__icontains=last)
         if not decls:
             return None
@@ -52,25 +52,32 @@ class Command (BaseCommand):
         return None
 
 
-    def _get_salary (self, decl):
+    def _get_salary (self, decl, name):
         """Get salary (wages) from given declaration.
 
         @param decl: declaration
         @type decl: incomedeclaration.IncomeDeclaration
+        @param name: name of the representative
+        @type name: popit.PersonName
         @return: salary from income declaration
         @rtype: int
         """
         wages = []
         for w in decl.wages.all():
+            # wages might include other people, e.g. family
+            if not (w.name == name.name_en or w.name == name.name_ka):
+                continue
+
             income = w.income_rec.split()
             try:
                 if income[1] != 'GEL':
-                    fmt = 'Ignoring Non-GEL value for income in wages: %s.\n'
+                    fmt = u'Ignoring Non-GEL value for income in wages: %s.\n'
                     self.stderr.write(fmt % w.income_rec)
                 else:
                     wages.append(float(income[0]))
             except IndexError:
                 pass
+
         return int(sum(wages));
 
 
@@ -87,7 +94,7 @@ class Command (BaseCommand):
             income = e.income_rec.split()
             try:
                 if income[1] != 'GEL':
-                    fmt = 'Ignoring Non-GEL value for income in entrepreneurials: %s.\n'
+                    fmt = u'Ignoring Non-GEL value for income in entrepreneurials: %s.\n'
                     self.stderr.write(fmt % e.income_rec)
                 else:
                     other.append(float(income[0]))
@@ -133,7 +140,8 @@ class Command (BaseCommand):
         @rtype: [str]
         """
         msg = []
-        representative.salary = self._get_salary(decl)
+        name = representative.names.all()[0]
+        representative.salary = self._get_salary(decl, name)
         if representative.salary:
             msg.append(u'i: %d' % representative.salary)
 
@@ -149,7 +157,8 @@ class Command (BaseCommand):
         if representative.property_assets:
             msg.append(' p: %s' % representative.property_assets)
 
-        return msg;
+        representative.save()
+        return msg
 
 
     @transaction.commit_on_success
@@ -157,7 +166,7 @@ class Command (BaseCommand):
         """Command handler."""
         decl_ids = {}
         for representative in Representative.objects.all():
-            self.stdout.write('%s: ' % representative.name)
+            self.stdout.write(u'%s: ' % representative.name)
 
             name = representative.names.all()[0]
             # look for georgian name first
@@ -169,12 +178,12 @@ class Command (BaseCommand):
                 continue
 
             if decl.decl_id in decl_ids.keys():
-                fmt = 'Ignoring same declaration for different people %s <> %s.\n'
+                fmt = u'Ignoring same declaration for different people %s <> %s.\n'
                 self.stderr.write(fmt % (decl_ids[decl.decl_id], representative.name))
                 continue
             else:
                 decl_ids[decl.decl_id] = representative.name
-                self.stdout.write('%s ' % decl.decl_id)
+                self.stdout.write(u'%s ' % decl.decl_id)
 
             decl.representative = representative
             decl.save()
@@ -182,5 +191,3 @@ class Command (BaseCommand):
             # tired of Python's unicode awkwardness, worse in 2.6 than 2.7
             print ''.join(msg)
             #self.stdout.write(''.join(msg) + '\n')
-
-            representative.save()
