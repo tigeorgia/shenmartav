@@ -30,5 +30,9 @@ class SMSAlert (models.Model):
         help_text=_('Draft Laws related to this alert'), blank=True)
 
 
+    class Meta:
+        ordering = ('-date_sent',)
+
+
     def __unicode__ (self):
         return u'%s' % self.text[:50]
