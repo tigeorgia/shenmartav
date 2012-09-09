@@ -23,7 +23,8 @@ class QuestionForm (forms.ModelForm):
             'first_name_en', 'first_name_ka',
             'last_name_en', 'last_name_ka',
             'question_en', 'question_ka',
-            'answer', 'answer_en', 'answer_ka')
+            'answer', 'answer_en', 'answer_ka',
+            'parliament_response')
 
 
     def __init__ (self, **kwargs):
