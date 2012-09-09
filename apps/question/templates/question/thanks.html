@@ -2,6 +2,12 @@
 {% load i18n %}
 
 {% block question %}
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    <a href="{% url question_list %}" title="{% trans 'Questions' %}">{% trans 'Questions' %}</a> &gt;
+    {% trans 'Thanks' %}
+</div>
+
 <div id="question">
     <h2 class="heading">{% trans 'Thanks for asking!' %}</h2>
     <div class="body">
