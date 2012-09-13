@@ -11,6 +11,9 @@ from cms.models.pluginmodel import CMSPlugin
 from django.contrib.sites.models import Site
 from django.core.mail import EmailMessage
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.template import Context, loader
 from django.utils.translation import ugettext as _
 
 from settings import QUESTION_SMS_URL
@@ -18,6 +21,8 @@ from representative.models import Representative
 
 
 
+#: URL where to send question to @ parliament.ge
+URL_SEND_PARLIAMENT = 'http://parliament.ge/index.php?option=com_dmaskinfopopup'
 #: map representative id @ shenmartav.ge to parliament.ge article id
 SHENMARTAV2PARLIAMENT = {
     '15': '16', # Akaki Bobokhidze
@@ -275,44 +280,15 @@ class Question (models.Model):
         self.representative.save()
 
 
-    def _send_parliament (self):
-        """Send a question to parliament(arian)."""
-        try:
-            arid = SHENMARTAV2PARLIAMENT[str(self.representative.pk)]
-        except KeyError:
-            arid = None
-
-        if arid:
-            url = 'http://parliament.ge/index.php?option=com_dmaskinfopopup'
-            site = Site.objects.get_current()
-            sender = 'ask-' + self.representative.slug + '@' + site.domain
-            values = {
-                'mail' : sender,
-                'name' : self.first_name + ' ' + self.last_name,
-                'subj' : self.question[:32] + ' ...',
-                'mess' : self.question,
-                'arid': arid,
-                'adminemail' : '-1',
-                'extrafield' : '',
-                'extrafield2' : '',
-                'extrafield3' : '',
-                'component' : 'com_k2',
-            }
-            data = urllib.urlencode(values)
-
-            req = urllib2.Request(url, data)
-            try:
-                opened = urllib2.urlopen(req)
-                response = 'SENDER: ' + sender + '\n' +\
-                    'RESPONSE CODE: ' + str(opened.getcode()) + '\n' +\
-                    'RESPONSE CONTENT: ' + opened.read()
-            except urllib2.URLError, err:
-                response = str(err) + '\n\n' + url
-        else:
-            name = str(self.representative.name)
-            response = 'No arid @ parliament.ge for representative %s' % name
-
-        self.parliament_response = response
+    def _copy_formdata (self):
+        """
+        Copies data supplied in Ask form to language-specific fields on
+        first save (pk doesn't exist).
+        """
+        if not self.pk:
+            self.first_name_en = self.first_name_ka = self.first_name
+            self.last_name_en = self.last_name_ka = self.last_name
+            self.question_en = self.question_ka = self.question
 
 
     def save (self, *args, **kwargs):
@@ -323,13 +299,90 @@ class Question (models.Model):
         except Question.DoesNotExist:
             pass
 
-        if self.is_public and not self.parliament_response:
-            self._send_parliament()
-
+        self._copy_formdata()
         super(Question, self).save(*args, **kwargs)
 
         if self.is_public:
             self._set_percentage_answered()
+
+
+
+def _get_send_data (question, arid):
+    """Get data to be sent to parliament.ge.
+
+    @param question: question to be asked
+    @type question: question.Question
+    @param arid: article (representative) id
+    @type arid: str
+    @return: urlencoded send data
+    @rtype: str
+    """
+    site = Site.objects.get_current()
+    representative = question.representative
+    sender_id = representative.slug + '-' + str(question.pk)
+    sender = 'ask+' + sender_id + '@' + site.domain
+    user_name = question.first_name + ' ' + question.last_name
+
+    subject = u'თქვენ დაგისვეს შეკითხვა ShenMartav.ge-ზე'
+    template = loader.get_template('question/send_parliament.html')
+    context = Context({
+        'gender': representative.gender,
+        'first_name': str(representative.name).split()[0],
+        'user_name': user_name,
+        'question': question.question,
+    })
+    message = template.render(context)
+
+    # urllib.urlencode needs UTF-8 bytecode to URL-encode
+    values = {
+        'mail' : sender,
+        'name' : user_name.encode('utf-8'),
+        'subj' : subject.encode('utf-8'),
+        'mess' : message.encode('utf-8'),
+        'arid': arid,
+        'adminemail' : '-1',
+        'extrafield' : '',
+        'extrafield2' : '',
+        'extrafield3' : '',
+        'component' : 'com_k2',
+    }
+    data = urllib.urlencode(values)
+
+    return data
+
+@receiver(post_save, sender=Question, dispatch_uid='apps.question.post_save.send_parliament')
+def send_parliament (sender, **kwargs):
+    """Send a question to parliament(arian).
+
+    CAREFUL: it is executed on Question.post_save and calls Question.save if
+    public and no parliament_response is set. Might be a cause for infinite
+    loops.
+    """
+    question = kwargs['instance']
+    if not question.is_public or question.parliament_response:
+        return
+
+    try:
+        arid = SHENMARTAV2PARLIAMENT[str(question.representative.pk)]
+    except KeyError:
+        arid = None
+
+    if arid:
+        data = _get_send_data(question, arid)
+        req = urllib2.Request(URL_SEND_PARLIAMENT, data)
+        try:
+            opened = urllib2.urlopen(req)
+            response = 'SENDER: ' + sender + '\n' +\
+                'RESPONSE CODE: ' + str(opened.getcode()) + '\n' +\
+                'RESPONSE CONTENT: ' + opened.read()
+        except urllib2.URLError, err:
+            response = str(err) + '\n\n' + URL_SEND_PARLIAMENT
+    else:
+        name = str(question.representative.name)
+        response = 'No arid @ parliament.ge for representative %s' % name
+
+    question.parliament_response = response
+    question.save()
 
 
 
