@@ -367,21 +367,28 @@ def send_parliament (sender, **kwargs):
     except KeyError:
         arid = None
 
+    response = []
     if arid:
         data = _get_send_data(question, arid)
         req = urllib2.Request(URL_SEND_PARLIAMENT, data)
         try:
             opened = urllib2.urlopen(req)
-            response = 'SENDER: ' + sender + '\n' +\
-                'RESPONSE CODE: ' + str(opened.getcode()) + '\n' +\
-                'RESPONSE CONTENT: ' + opened.read()
+            response += [
+                'RESPONSE CODE: ' + str(opened.getcode()),
+                'RESPONSE CONTENT: ' + opened.read(),
+            ]
         except urllib2.URLError, err:
-            response = str(err) + '\n\n' + URL_SEND_PARLIAMENT
+            response += [
+                'URL ERROR: ' + str(err),
+                'URL: ' + URL_SEND_PARLIAMENT,
+            ]
+        response.append('SENT DATA LENGTH: ' + str(len(data)))
+        response.append('SENT DATA: ' + data)
     else:
         name = str(question.representative.name)
-        response = 'No arid @ parliament.ge for representative %s' % name
+        response.append('No arid @ parliament.ge for representative %s' % name)
 
-    question.parliament_response = response
+    question.parliament_response = '\n'.join(response)
     question.save()
 
 
