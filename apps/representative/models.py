@@ -30,6 +30,21 @@ NAME_MINLEN = 4
 
 
 
+class Term (models.Model):
+    """A Term during which Representatives are part of a Unit."""
+    #: start of the term
+    start = models.DateField(blank=False, help_text=_('When term started'))
+    #: end of the term
+    end = models.DateField(blank=False, help_text=_('When term started'))
+    #: name of the term
+    name =  models.CharField(max_length=255, blank=False, null=False,
+        help_text=_('Name of this term'))
+
+    def __unicode__ (self):
+        return u'%s (%s - %s)' % (self.name, self.start, self.end)
+
+
+
 class Party (Organisation):
     """A political party in a unit, as used in the template representative/unit.html"""
     #: acronym of this party

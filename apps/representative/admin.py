@@ -8,11 +8,16 @@ __docformat__ = 'epytext en'
 from django.contrib import admin
 from modeltranslation.admin import TranslationTabularInline, TranslationAdmin
 
-from .models import Party, Unit, Representative, AdditionalInformation, RandomRepresentative
+from .models import Term, Party, Unit, Representative, AdditionalInformation,\
+    RandomRepresentative
 from popit.admin import PositionInlineAdmin, PersonNameInlineAdmin, PersonAdmin,\
     OrganisationAdmin, OrgNameInlineAdmin
 from popit.models import Person
 
+
+class TermAdmin (TranslationAdmin):
+    pass
+admin.site.register(Term, TermAdmin)
 
 
 class PartyAdmin (OrganisationAdmin):

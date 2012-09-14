@@ -10,7 +10,7 @@ translator.register(Question, QuestionTranslationOptions)
 
 
 
-from representative.models import Representative, AdditionalInformation, Unit
+from representative.models import Representative, AdditionalInformation, Unit, Term
 
 class RepresentativeTranslationOptions (TranslationOptions):
     fields = ('committee', 'faction', 'electoral_district', 'elected',
@@ -25,6 +25,10 @@ translator.register(AdditionalInformation, AdditionalInformationTranslationOptio
 class UnitTranslationOptions (TranslationOptions):
     fields = ('name',)
 translator.register(Unit, UnitTranslationOptions)
+
+class TermTranslationOptions (TranslationOptions):
+    fields = ('name',)
+translator.register(Term, TermTranslationOptions)
 
 
 from popit.models import Person, PersonName, Organisation, OrganisationName, Position
