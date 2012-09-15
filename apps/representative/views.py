@@ -63,7 +63,6 @@ class Search (TemplateView):
             Q(pob__icontains=query) |
             Q(family_status__icontains=query) |
             Q(education__icontains=query) |
-            Q(attendance_record__icontains=query) |
             Q(salary__icontains=query) |
             Q(expenses__icontains=query) |
             Q(property_assets__icontains=query) |

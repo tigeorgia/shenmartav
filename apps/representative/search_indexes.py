@@ -17,7 +17,6 @@ class RepresentativeIndex (SearchIndex):
     pob = CharField(model_attr='pob', null=True)
     family_status = CharField(model_attr='family_status', null=True)
     education = CharField(model_attr='education', null=True)
-    attendance_record = CharField(model_attr='attendance_record', null=True)
     salary = CharField(model_attr='salary', null=True)
     expenses = CharField(model_attr='expenses', null=True)
     property_assets = CharField(model_attr='property_assets', null=True)

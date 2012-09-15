@@ -10,7 +10,7 @@ __docformat__ = 'epytext en'
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from representative.models import Representative
+from representative.models import Attendance, Representative
 from votingrecord.models import VotingRecordResult
 
 
@@ -21,81 +21,71 @@ class Command (BaseCommand):
     help = 'Updates parliamentarians\' attendance records.'
 
 
-    def _set_attendance_group (self, representatives):
-        """Sets the attendance group for given representatives.
-
-        It assumes that representatives is sorted by attendance.
-
-        @param representatives: sorted representatives
-        @type representatives: [Representative]
-        @return representatives: the modified representatives
-        @rtype representatives: [Representative]
-        """
+    def _set_groups (self):
+        """Sets the attendance groups for parliamentarians."""
+        representatives = Representative.parliament.all()
         len_reps = len(representatives)
         if len_reps < 100:
             self.stdout.write('WARNING: less than 100 representatives (%d), using deciles might be a bad idea!' % len_reps)
-        self.stdout.write('Setting attendance group ')
+        self.stdout.write('Setting attendance groups ')
 
         decile_size = len_reps / 10 + 1 # round up
         decile2group = [0, 1, 1, 2, 2, 2, 2, 3, 3, 4]
         decile = 0
         count = 0
-        for r in representatives:
+        attendances = Attendance.objects.filter(
+            representative__in=representatives).order_by('attended')
+        for a in attendances:
             self.stdout.write('.')
-            r.attendance_group = decile2group[decile]
+            a.group = decile2group[decile]
+            a.save()
             if count > 0 and count % decile_size == 0:
                 decile += 1
             count += 1
 
         self.stdout.write(' done\n')
-        return representatives
+        return attendances
 
 
-    def _set_attendance_record (self):
-        """Sets the attendance record for parliamentarians.
-
-        @return: (parliamentarian) representatives, sorted ascending by
-                 attendance percentage
-        @rtype: [Representative]
-        """
-        self.stdout.write('Setting attendance record ')
+    def _set_attendances (self):
+        """Sets the attendance records for parliamentarians."""
+        self.stdout.write('Setting attendance records ')
         representatives = Representative.parliament.all()
-        percentages = []
         for r in representatives:
             self.stdout.write('.')
+            try:
+                attendance = Attendance.objects.get(representative=r)
+            except Attendance.DoesNotExist:
+                attendance = Attendance()
+                attendance.representative = r
+
+            absent = 0
+            attended = 0
             results = VotingRecordResult.objects.filter(representative=r).values('vote')
-            total = len(results)
-            not_present = 0
             for result in results:
                 if result['vote'] == u'არ ესწრებოდა':
-                    not_present += 1
+                    absent += 1
+                else:
+                    attended += 1
+            attendance.attended = attended
+            attendance.absent = absent
+            attendance.total = attended + absent
 
-            present = total - not_present
             try:
-                percentage = (present / float(total)) * 100
+                percentage = (attended / float(attendance.total)) * 100.
             except ZeroDivisionError:
                 percentage = 0
-            attendance = u'%s/%s (%.1f%%)' % (present, total, percentage)
-            r.attendance_record = attendance
-            percentages.append(percentage)
-        self.stdout.write(' done')
+            attendance.percentage_attended = percentage
+            attendance.percentage_absent = 100. - percentage
 
-        # zip reps and percentages together, sort by percentages and unzip
-        zipped = zip(representatives, percentages)
-        zipped.sort(key=lambda data: data[1])
-        representatives, percentages = zip(*zipped)
-
-        self.stdout.write('\n')
-        return representatives
+            attendance.save()
+        self.stdout.write(' done\n')
 
 
     @transaction.commit_on_success
     def handle (self, *args, **options):
         """Command handler."""
-        representatives = self._set_attendance_record()
-        representatives = self._set_attendance_group(representatives)
-        for r in representatives:
-            self.stdout.write(u'%s: attendance %s, group %d\n' % (
-                r.name, r.attendance_record, r.attendance_group))
-            r.save()
-
+        self._set_attendances()
+        attendances = self._set_groups()
+        for a in attendances:
+            self.stdout.write(u'%s, %d group %d\n' % (a, a.representative.pk, a.group))

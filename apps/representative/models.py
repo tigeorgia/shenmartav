@@ -100,16 +100,6 @@ GENDER_CHOICES = (
     (2, _('other')),
 )
 
-ATTENDANCE_GROUP_CHOICES = (
-    (0, _('very low')),
-    (1, _('low')),
-    (2, _('ordinary')),
-    (3, _('high')),
-    (4, _('very high')),
-)
-
-
-
 class Representative (Person):
     """A representative derived from popit.Person."""
     #: personal photo
@@ -152,12 +142,6 @@ class Representative (Person):
     #: url of this representative
     url = models.TextField(blank=True, null=True,
         help_text=_('URL of this Representative'))
-    #: attendance record
-    attendance_record = models.TextField(blank=True, null=True,
-        help_text=_('Voting Attendance Record'))
-    #: attendance group
-    attendance_group = models.IntegerField(default=0, choices=ATTENDANCE_GROUP_CHOICES,
-        help_text=_('Voting Attendance in Relation to other Representatives'))
     #: salary
     salary = models.FloatField(default=0, null=True,
         help_text=_('== Wages'))
@@ -398,49 +382,6 @@ class Representative (Person):
         }
 
 
-    @property
-    def attendance (self):
-        """Reorganise attendance data structure
-
-        @return: reorganised attendance record
-        @rtype: {
-            'attended': int,
-            'absent': int,
-            'total': int,
-            'percentage': int
-        }
-        """
-        empty = {
-            'attended': None,
-            'absent': None,
-            'total': None,
-            'percentage': None,
-        }
-
-        if not self.attendance_record:
-            return empty
-
-        try:
-            attendance, percentage = self.attendance_record.split(' ')
-        except ValueError:
-            return empty
-
-        try:
-            attended, total = attendance.split('/')
-        except ValueError:
-            return empty
-
-        total = int(total)
-        attended = int(attended)
-        absent = total - attended
-        return {
-            'attended': attended,
-            'absent': absent,
-            'total': total,
-            'percentage': percentage[1:-1],
-        }
-
-
     def save (self, *args, **kwargs):
         super(Representative, self).save(*args, **kwargs)
 
@@ -454,6 +395,45 @@ class AdditionalInformation (models.Model):
     #: value of this info
     value = models.TextField(null=True, help_text=_('Additional Information'))
 
+
+
+ATTENDANCE_GROUP_CHOICES = (
+    (0, _('very low')),
+    (1, _('low')),
+    (2, _('ordinary')),
+    (3, _('high')),
+    (4, _('very high')),
+)
+
+class Attendance (models.Model):
+    """A representative's attendance record."""
+    #: number of attended votes
+    attended = models.IntegerField(default=0,
+        help_text=_('Number of Attended Votes'))
+    #: pre-calculated percentage of attended votes
+    percentage_attended = models.IntegerField(default=0,
+        help_text=_('Pre-calculated Percentage of Attended Votes'))
+    #: number of absent votes
+    absent = models.IntegerField(default=0,
+        help_text=_('Number of Absent Votes'))
+    #: pre-calculated percentage of absent votes
+    percentage_absent = models.IntegerField(default=0,
+        help_text=_('Pre-calculated Percentage of Absent Votes'))
+    #: pre-calculated number of total votes
+    total = models.IntegerField(default=0,
+        help_text=_('Number of Pre-calculated Total Votes'))
+    #: attendance group
+    group = models.IntegerField(default=0,
+        choices=ATTENDANCE_GROUP_CHOICES,
+        help_text=_('Voting Attendance in Relation to other Representatives'))
+    #: representative this attendance record belongs to
+    representative = models.ForeignKey(Representative,
+        null=False, related_name='attendance',
+        help_text=_('Representative'))
+
+    def __unicode__ (self):
+        return u'%s: %s/%s' % (str(self.representative.name),
+            str(self.attended), str(self.total))
 
 
 

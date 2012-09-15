@@ -11,7 +11,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from representative.models import Representative, RandomRepresentative, NAME_MINLEN
+from representative.models import Attendance, Representative, RandomRepresentative, NAME_MINLEN
 from representative.views import UnitParliament, Detail
 from question.models import Question
 
@@ -189,13 +189,12 @@ class RepresentativeTest (TestCase):
 
 
     def test_Representative_attendance (self):
-        r = Representative.objects.all()[0]
-        self.assertEqual(r.attendance_record, '641/791 (81.0%)')
-
-        result = {
-            'absent': 150, 'attended': 641, 'percentage': u'81.0%', 'total': 791
-        }
-        self.assertEqual(r.attendance, result)
+        a = Attendance.objects.filter(representative__pk=1)[0]
+        self.assertEqual(a.absent, 1)
+        self.assertEqual(a.attended, 4)
+        self.assertEqual(a.total, 5)
+        self.assertEqual(a.percentage_absent, 20)
+        self.assertEqual(a.percentage_attended, 80)
 
 
 
