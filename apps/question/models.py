@@ -324,14 +324,16 @@ def _get_send_data (question, arid):
     user_name = question.first_name + ' ' + question.last_name
 
     subject = u'თქვენ დაგისვეს შეკითხვა ShenMartav.ge-ზე'
-    template = loader.get_template('question/send_parliament.html')
-    context = Context({
-        'gender': representative.gender,
-        'first_name': str(representative.name).split()[0],
-        'user_name': user_name,
-        'question': question.question,
-    })
-    message = template.render(context)
+    # temporarily disable template
+    #template = loader.get_template('question/send_parliament.html')
+    #context = Context({
+    #    'gender': representative.gender,
+    #    'first_name': str(representative.name).split()[0],
+    #    'user_name': user_name,
+    #    'question': question.question,
+    #})
+    #message = template.render(context)
+    message = question.question
 
     # urllib.urlencode needs UTF-8 bytecode to URL-encode
     values = {
