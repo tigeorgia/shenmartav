@@ -70,6 +70,14 @@ class Unit (models.Model):
     #: parties of this unit
     parties = models.ManyToManyField(Party, related_name='unit',
         help_text=_('Parties in this unit'))
+    #: unit's active term
+    active_term = models.ForeignKey(Term, blank=False, null=True,
+        related_name='unit_active',
+        help_text=_('The Unit\'s active term.'))
+    #: unit's inactive terms
+    inactive_terms = models.ManyToManyField(Term, blank=True,
+        related_name='unit_inactive',
+        help_text=_('Past or just inactive terms served in this Unit.'))
 
 
     def __unicode__ (self):
@@ -168,6 +176,10 @@ class Representative (Person):
     #: gender of the representative
     gender = models.IntegerField(default=0, choices=GENDER_CHOICES,
         help_text=_('Gender of the Representative'))
+    #: terms of the representative
+    terms = models.ManyToManyField(Term, blank=True,
+        related_name='representative',
+        help_text=_('Terms during which Representative was part of a Unit.'))
 
     #: managers
     objects = models.Manager()

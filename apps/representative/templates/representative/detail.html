@@ -40,6 +40,14 @@
             <td>{% trans 'Elected Date' %}</td>
             <td>{{ obj.elected }}</td>
         </tr>
+{% if obj.terms.all %}
+        <tr>
+            <td>{% trans 'Terms' %}</td>
+            <td><ul>
+                {% for term in obj.terms.all %}<li>{{ term }}</li>{% endfor %}
+            </ul></td>
+        </tr>
+{% endif %}
 {% if obj.faction %}
         <tr>
             <td>{% trans 'Faction' %}</td>
