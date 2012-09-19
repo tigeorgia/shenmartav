@@ -6,6 +6,7 @@ __docformat__ = 'epytext en'
 
 from django.core.urlresolvers import reverse
 from django.test import TestCase
+from django.utils.translation import activate
 
 from draftlaw.models import DraftLaw
 
@@ -20,6 +21,7 @@ class DraftLawTest (TestCase):
         draftlaw = DraftLaw.objects.get(pk=1)
         self.assertEqual(draftlaw.initiator, draftlaw.initiator_linked)
 
+        activate('en') # guarantee english for comparisons
         draftlaw = DraftLaw.objects.get(pk=6)
         linked = u'<a href="/test/representative/representative/124/teimuraz-tsurtsumia/">Tsurtsumia</a>, Kukava'
         self.assertEqual(draftlaw.initiator_linked, linked)

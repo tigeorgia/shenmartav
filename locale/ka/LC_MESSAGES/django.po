@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-15 14:33+0200\n"
+"POT-Creation-Date: 2012-09-19 08:57+0200\n"
 "PO-Revision-Date: 2012-09-04 17:19\n"
 "Last-Translator:   <sebastian@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -391,11 +391,11 @@ msgstr "მიღებულია"
 msgid "Draft Law's Bureau Date"
 msgstr "კანონპროექტის ბიუროს თარიღი"
 
-#: apps/draftlaw/models.py:31 apps/draftlaw/models.py:175
+#: apps/draftlaw/models.py:31 apps/draftlaw/models.py:181
 msgid "Bill Number of the Draft Law"
 msgstr "კანონპროექტის ნომერი"
 
-#: apps/draftlaw/models.py:33 apps/draftlaw/models.py:177
+#: apps/draftlaw/models.py:33 apps/draftlaw/models.py:183
 msgid "Title of the Draft Law"
 msgstr "კანონპროექტის სახელწოდება"
 
@@ -404,43 +404,53 @@ msgstr "კანონპროექტის სახელწოდებ�
 msgid "Initiator"
 msgstr "ინიციატორი"
 
-#: apps/draftlaw/models.py:37 apps/draftlaw/templates/draftlaw/detail.html:22
+#: apps/draftlaw/models.py:39
+#, fuzzy
+msgid "Representatives who initiated this draft law"
+msgstr "ხმის მიმცემი დეპუტატი"
+
+#: apps/draftlaw/models.py:41 apps/draftlaw/templates/draftlaw/detail.html:22
 #: apps/draftlaw/templates/draftlaw/info.html:7
 msgid "Author"
 msgstr "ავტორი"
 
-#: apps/draftlaw/models.py:39
+#: apps/draftlaw/models.py:45
+#, fuzzy
+msgid "Representatives who authored this draft law"
+msgstr "ხმის მიმცემი დეპუტატი"
+
+#: apps/draftlaw/models.py:47
 msgid "Status of the Draft Law"
 msgstr "კანონპროექტის სტატუსი"
 
-#: apps/draftlaw/models.py:41
+#: apps/draftlaw/models.py:51
 msgid "Short Status of the Draft Law"
 msgstr "კანონპროექტის მოკლე სტატუსი"
 
-#: apps/draftlaw/models.py:43 apps/draftlaw/templates/draftlaw/detail.html:24
+#: apps/draftlaw/models.py:53 apps/draftlaw/templates/draftlaw/detail.html:24
 #: apps/draftlaw/templates/draftlaw/info.html:9
 msgid "Summary"
 msgstr "ცვლილების არსი"
 
-#: apps/draftlaw/models.py:45 apps/draftlaw/templates/draftlaw/detail.html:28
+#: apps/draftlaw/models.py:55 apps/draftlaw/templates/draftlaw/detail.html:28
 #: apps/draftlaw/templates/draftlaw/info.html:12
 msgid "Full Text"
 msgstr "სრული ტექსტი"
 
-#: apps/draftlaw/models.py:48 apps/draftlaw/templates/draftlaw/detail.html:29
+#: apps/draftlaw/models.py:58 apps/draftlaw/templates/draftlaw/detail.html:29
 msgid "Full Text URL"
 msgstr "სრული ტექსტის URL"
 
-#: apps/draftlaw/models.py:51 apps/draftlaw/models.py:180
+#: apps/draftlaw/models.py:61 apps/draftlaw/models.py:186
 #: apps/draftlaw/templates/draftlaw/detail.html:30
 msgid "Enacted Text URL"
 msgstr "მიღებული ტექსტის URL"
 
-#: apps/draftlaw/models.py:54 apps/draftlaw/models.py:183
+#: apps/draftlaw/models.py:64 apps/draftlaw/models.py:189
 msgid "Number of the Enacted Law"
 msgstr "მიღებული კანონის ნომერი"
 
-#: apps/draftlaw/models.py:57 apps/draftlaw/models.py:186
+#: apps/draftlaw/models.py:67 apps/draftlaw/models.py:192
 #: apps/draftlaw/templates/draftlaw/detail.html:32
 #: apps/draftlaw/templates/draftlaw/detail.html:49
 #: apps/draftlaw/templates/draftlaw/info.html:11
@@ -448,47 +458,47 @@ msgstr "მიღებული კანონის ნომერი"
 msgid "Voting Record"
 msgstr "კენჭისყრის შედეგები"
 
-#: apps/draftlaw/models.py:59 apps/draftlaw/templates/draftlaw/detail.html:33
+#: apps/draftlaw/models.py:69 apps/draftlaw/templates/draftlaw/detail.html:33
 msgid "Related Document 1"
 msgstr "დაკავშირებული დოკუმენტი 1"
 
-#: apps/draftlaw/models.py:61 apps/draftlaw/templates/draftlaw/detail.html:34
+#: apps/draftlaw/models.py:71 apps/draftlaw/templates/draftlaw/detail.html:34
 msgid "Related Document 2"
 msgstr "დაკავშირებული დოკუმენტი 2"
 
-#: apps/draftlaw/models.py:63 apps/draftlaw/templates/draftlaw/detail.html:35
+#: apps/draftlaw/models.py:73 apps/draftlaw/templates/draftlaw/detail.html:35
 msgid "Related Document 3"
 msgstr "დაკავშირებული დოკუმენტი 3"
 
-#: apps/draftlaw/models.py:65 apps/draftlaw/templates/draftlaw/detail.html:36
+#: apps/draftlaw/models.py:75 apps/draftlaw/templates/draftlaw/detail.html:36
 msgid "Related Document 4"
 msgstr "დაკავშირებული დოკუმენტი 4"
 
-#: apps/draftlaw/models.py:67 apps/draftlaw/templates/draftlaw/detail.html:37
+#: apps/draftlaw/models.py:77 apps/draftlaw/templates/draftlaw/detail.html:37
 msgid "Related Document 5"
 msgstr "დაკავშირებული დოკუმენტი 5"
 
-#: apps/draftlaw/models.py:156 apps/draftlaw/templates/draftlaw/list.html:24
+#: apps/draftlaw/models.py:162 apps/draftlaw/templates/draftlaw/list.html:24
 msgid "Draft Law"
 msgstr "კანონპროექტი"
 
-#: apps/draftlaw/models.py:158
+#: apps/draftlaw/models.py:164
 msgid "Date of Discussion"
 msgstr "განხილვის თარიღი"
 
-#: apps/draftlaw/models.py:160
+#: apps/draftlaw/models.py:166
 msgid "Place of Discussion"
 msgstr "განხილვის ადგილი"
 
-#: apps/draftlaw/models.py:163
+#: apps/draftlaw/models.py:169
 msgid "Stage of the Discussion in Terms of Draft Law Completion"
 msgstr "განხილვის სტადია კანონპროექტის მიღებასთან მიმართებაში"
 
-#: apps/draftlaw/models.py:173
+#: apps/draftlaw/models.py:179
 msgid "Parent Draft Law"
 msgstr "ძირითადი კანონპროექტი"
 
-#: apps/draftlaw/models.py:204
+#: apps/draftlaw/models.py:210
 msgid "Draft Laws"
 msgstr "კანონპროექტები"
 

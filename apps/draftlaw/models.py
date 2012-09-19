@@ -33,12 +33,22 @@ class DraftLaw (models.Model):
     title = models.TextField(help_text=_('Title of the Draft Law'))
     #: entity initiating the draft
     initiator = models.TextField(blank=True, help_text=_('Initiator'))
+    #: representative(s) initiating the draft
+    initiator_representatives = models.ManyToManyField(Representative,
+        blank=True, related_name='draftlaw_initiated',
+        help_text=_('Representatives who initiated this draft law'))
     #: person authoring the draft
     author = models.TextField(blank=True, help_text=_('Author'))
+    #: representative(s) authoring the draft
+    author_representatives = models.ManyToManyField(Representative,
+        blank=True, related_name='draftlaw_authored',
+        help_text=_('Representatives who authored this draft law'))
     #: status of the law, e.g. '1st Hearing Economy Pass'
     status = models.CharField(max_length=255, help_text=_('Status of the Draft Law'))
     #: short status of the law; in one word
-    shortstatus = models.CharField(max_length=1, default='D', choices=SHORTSTATUS_CHOICES, help_text=_('Short Status of the Draft Law'))
+    shortstatus = models.CharField(max_length=1, default='D',
+        choices=SHORTSTATUS_CHOICES,
+        help_text=_('Short Status of the Draft Law'))
     #: summary of the law
     summary = models.TextField(help_text=_('Summary'), blank=True)
     #: full text of the law
@@ -89,54 +99,50 @@ class DraftLaw (models.Model):
         return ('draftlaw_detail', [self.slug])
 
 
-    def _linked_name (self, attr_base):
-        """Looks for representative's names in given attribute and adds links to them.
+    def _linked_names (self, field_base):
+        """Get a list of initiators/authors, possibly with links to
+        representatives' pages.
 
-        @param attr_base: basename of the attribute to get the name from
-        @type attr_base: str
+        @param field_base: basename of the field to get the name from
+        @type field_base: str
         @return: item with properly linked representative(s)
         @rtype: str
         """
-        try:
-            name = getattr(self, attr_base + '_' + get_language()[:2])
-        except AttributeError:
-            try:
-                name = getattr(self, attr_base)
-            except AttributeError:
-                return None
-
-        linked = name.split('(')[0]
-        if linked.lower().startswith('mp '):
-            linked = linked[3:]
-        if linked.lower().startswith('mps '):
-            linked = linked[4:]
-
-        splitnames = linked.split(',')
-        if len(splitnames) == 1:
-            splitnames = linked.split(';')
-        names = [n.strip() for n in splitnames]
-
         linked = []
-        for name in names:
-                representative = Representative.find(name)
-                if representative:
-                    linked.append('<a href="%s">%s</a>' % (
-                        representative.get_absolute_url(), name))
-                else:
-                    linked.append(name)
+        names = []
 
+        representatives = getattr(self, field_base + '_representatives').all()
+        if representatives:
+            for r in representatives:
+                name = str(r.name).decode('utf-8')
+                names.append(name)
+                linked.append('<a href="%s">%s</a>' % (
+                    r.get_absolute_url(), name))
+
+        try:
+            field = getattr(self, field_base + '_' + get_language()[:2])
+            if field:
+                # filter names + characters left over from filtering
+                for n in names:
+                    if n in field:
+                        field = field.replace(n, '') # remove name
+                if field.startswith(','):
+                    field = field[1:].strip()
+                if field and field.strip() != ';':
+                    linked.append(field)
+        except AttributeError:
+            pass
 
         return ', '.join(linked)
 
 
-
     @property
     def initiator_linked (self):
-        return self._linked_name('initiator')
+        return self._linked_names('initiator')
 
     @property
     def author_linked (self):
-        return self._linked_name('author')
+        return self._linked_names('author')
 
 
 

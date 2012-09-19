@@ -204,7 +204,7 @@ SKIP_COMMANDS = ['syncdb', 'migrate', 'schemamigration', 'datamigration', 'reset
     'import_draftlaws', 'import_incomedeclarations', 'import_representatives',
     'import_votingrecords',
     'update_attendance', 'update_assets', 'update_votingrecordresults',
-    'update_votingrecords']
+    'update_votingrecords', 'update_initiators_authors',]
 if any([command in sys.argv for command in SKIP_COMMANDS]):
         HAYSTACK_ENABLE_REGISTRATIONS = False
 
