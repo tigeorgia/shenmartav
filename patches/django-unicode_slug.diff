@@ -1,0 +1,33 @@
+diff -Naur django.orig/core/validators.py django/core/validators.py
+--- django.orig/core/validators.py	2012-09-22 10:05:05.201669165 +0200
++++ django/core/validators.py	2012-09-22 10:05:38.681670279 +0200
+@@ -164,7 +164,7 @@
+     r'|\[(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}\]$', re.IGNORECASE)  # literal form, ipv4 address (SMTP 4.1.3)
+ validate_email = EmailValidator(email_re, _(u'Enter a valid e-mail address.'), 'invalid')
+ 
+-slug_re = re.compile(r'^[-\w]+$')
++slug_re = re.compile(r'^[-\w]+$', flags=re.U)
+ validate_slug = RegexValidator(slug_re, _(u"Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."), 'invalid')
+ 
+ ipv4_re = re.compile(r'^(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d)){3}$')
+diff -Naur django.orig/template/defaultfilters.py django/template/defaultfilters.py
+--- django.orig/template/defaultfilters.py	2012-09-22 10:05:05.241669166 +0200
++++ django/template/defaultfilters.py	2012-09-22 10:06:12.633671412 +0200
+@@ -22,6 +22,7 @@
+ from django.utils.text import normalize_newlines
+ 
+ register = Library()
++slug_re_negated = re.compile(r'^[^-\w]+$', flags=re.U)
+ 
+ #######################
+ # STRING DECORATOR    #
+@@ -232,8 +233,7 @@
+     Normalizes string, converts to lowercase, removes non-alpha characters,
+     and converts spaces to hyphens.
+     """
+-    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
+-    value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
++    value = unicode(re.sub(slug_re_negated, '', value).strip().lower())
+     return mark_safe(re.sub('[-\s]+', '-', value))
+ 
+ @register.filter(is_safe=True)

@@ -20,6 +20,13 @@ $ sudo pip install -r requirements.txt
 
 Now you should be good to go to the next stage.
 
+Patches
+-------
+
+You will find a few patch files in the directory patches/ which you should apply (but don't have to!):
+- django-unicode_slug.diff patches Django to support unicode slugs (partyly from https://code.djangoproject.com/ticket/16501)
+  this patch is against Django 1.4 and will fail party against 1.3. but it's a simle patch and you can easily fix this yourself.
+- django_date_extensions-fields.diff patches django-date-extensions/django_date_extensions/fields.py to improve unicode support
 
 Settings
 --------

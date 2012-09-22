@@ -1,0 +1,29 @@
+--- django-date-extensions/django_date_extensions/fields.py.orig	2012-06-01 16:20:17.755575709 +0200
++++ django-date-extensions/django_date_extensions/fields.py	2012-06-01 16:21:11.407574320 +0200
+@@ -32,7 +32,7 @@
+ 
+     def __repr__(self):
+         if self.future:
+-            return 'future'
++            return u'future'
+         elif self.year and self.month and self.day:
+             return "%04d-%02d-%02d" % (self.year, self.month, self.day)
+         elif self.year and self.month:
+@@ -42,13 +42,13 @@
+ 
+     def __str__(self):
+         if self.future:
+-            return 'future'
++            return u'future'
+         elif self.year and self.month and self.day:
+-            return dateformat.format(self, "jS F Y")
++            return dateformat.format(self, "jS F Y").encode('utf-8')
+         elif self.year and self.month:
+-            return dateformat.format(self, "F Y")
++            return dateformat.format(self, "F Y").encode('utf-8')
+         elif self.year:
+-            return dateformat.format(self, "Y")
++            return dateformat.format(self, "Y").encode('utf-8')
+ 
+     def __eq__(self, other):
+         if other is None:
