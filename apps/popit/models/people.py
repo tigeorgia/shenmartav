@@ -4,12 +4,12 @@
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 
 from django_date_extensions.fields import ApproximateDateField
 
 from popit.models import ModelBase, DataKey, Data, date_help_text, CodeType
-from glt import slughifi
 
 
 class Person(ModelBase):
@@ -74,7 +74,7 @@ class PersonName(ModelBase):
         super(PersonName, self).save(*args, **kwargs)
         try:
             person = self.person
-            person.slug = slughifi(str(person.name))
+            person.slug = slugify(str(person.name))
             person.save()
         except:
             pass
