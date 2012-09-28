@@ -1,3 +1,9 @@
+###########################################################
+# most important
+###########################################################
+from distsettings import *
+
+
 # Site-specific Django settings for shenmartav project.
 
 # Make this unique, and don't share it with anybody.
@@ -43,10 +49,3 @@ LANGUAGES = (
 ###########################################################
 QUESTION_SMS_EMAIL = 'sms@shenmartav.ge'
 QUESTION_SMS_URL = 'http://localhost:8004/?to=&msg='
-
-
-
-###########################################################
-# most important
-###########################################################
-from distsettings import *
