@@ -157,6 +157,6 @@ class QuestionTest (TestCase):
         self.assertEqual(len(mail.outbox), 1)
         msg = mail.outbox[0]
         self.assertEqual(msg.subject, u'[ShenMartav] \u10d0\u10ee\u10d0\u10da\u10d8 \u10e8\u10d4\u10d9\u10d8\u10d7\u10ee\u10d5\u10d0: 2')
-        self.assertEqual(msg.to, [u'sebastian@transparency.ge'])
+        self.assertEqual(msg.to, [u'sebastiantransparency@gmail.com'])
         self.assertEqual(msg.body, u'blabla\n\nPlease manage at http://example.com/admin/question/question/2/')
 

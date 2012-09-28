@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*
-# extended by Sebastian Henschel sebastian@transparency.ge for
+# extended by Sebastian Henschel sebastiantransparency@gmail.com for
 # http://shenmartav.ge
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType

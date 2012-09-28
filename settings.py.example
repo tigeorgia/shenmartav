@@ -11,7 +11,7 @@ SECRET_KEY = '5w9g+gi4qam*l1q^$(056=ylrlawx9pr#d5s2%+mgedgd&t_z@'
 
 
 ADMINS = (
-     ('Sebastian Henschel', 'sebastian@transparency.ge'),
+     ('Sebastian Henschel', 'sebastiantransparency@gmail.com'),
 )
 MANAGERS = ADMINS
 
