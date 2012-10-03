@@ -6,10 +6,10 @@ from .feeds import FeedList, FeedDetail
 urlpatterns = patterns('',
     url(r'^$', Find.as_view(), name='representative_find'),
     # name='person' required by popit
-    url(r'^representative/(?P<pk>\d+)/(?P<slug>[-\w]+)/$', Detail.as_view(), name='person'),
-    url(r'^representative/(?P<pk>\d+)/(?P<slug>[-\w]+)/votingrecords/$', VotingRecords.as_view(), name='representative_votingrecords'),
+    url(r'^representative/(?P<pk>\d+)/(?P<slug>[-\(\)\w]+)/$', Detail.as_view(), name='person'),
+    url(r'^representative/(?P<pk>\d+)/(?P<slug>[-\(\)\w]+)/votingrecords/$', VotingRecords.as_view(), name='representative_votingrecords'),
     url(r'^representative/(?P<pk>\d+)/$', Detail.as_view(), name='representative_pk'),
-    url(r'^representative/(?P<slug>[-\w]+)/$', Detail.as_view(), name='representative_slug'),
+    url(r'^representative/(?P<slug>[-\(\)\w]+)/$', Detail.as_view(), name='representative_slug'),
     url(r'^search/', Search.as_view(), name='representative_search'),
 
     # RSS feed
