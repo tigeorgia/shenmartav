@@ -130,8 +130,11 @@ INSTALLED_APPS = (
 ###########################################################
 SOUTH_TESTS_MIGRATE = False
 if 'test' in sys.argv:
-    from settings import DATABASES
-    DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3'
+        }
+    }
 
 
 

@@ -19,14 +19,15 @@ DEFAULT_FROM_EMAIL = 'webmaster@shenmartav.ge'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 EMAIL_SUBJECT_PREFIX = '[ShenMartav] '
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis', 
-        'NAME': 'shenmartav',
-        'HOST': 'localhost',
-        'USER': 'shenmartav',
-        'PASSWORD': 'shenmartav',
-    }
+if not 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis', 
+            'NAME': 'shenmartav',
+            'HOST': 'localhost',
+            'USER': 'shenmartav',
+            'PASSWORD': 'shenmartav',
+        }
 }
 
 
