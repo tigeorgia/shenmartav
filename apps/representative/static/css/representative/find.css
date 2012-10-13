@@ -156,6 +156,12 @@
 #representative #party-unm, #representative .party-unm {
     background: #f87c7c;
 }
+#representative #party-alliance, #representative .party-alliance {
+    background: #aacccc;
+}
+#representative #party-top, #representative .party-top {
+    background: #ee9911;
+}
 #representative #party-tbilisi, #representative .party-tbilisi {
     background: #000;
 }
