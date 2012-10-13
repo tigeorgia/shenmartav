@@ -21,8 +21,8 @@
                 <div id="name" class="evenbigger representative-name">{{ obj.name }}</div>
                 <div id="majoritarian-partylist-unit">{% if obj.is_majoritarian %}{% trans 'Majoritarian' %}{% else %}{% trans 'Partylist' %}{% endif %}, {{ obj.unit.name }}</div>
                 <div id="party">
-                    <div id="party-logo"><a href="{{ obj.party.url }}" title="{{ obj.party }}">{% thumbnail obj.party.logo '40x40' as logo %}<img src="{% if logo %}{{ logo }}{% else %}{{ STATIC_URL }}img/logo-unknown-party.png{% endif %}" width="40" height="40" border="0" /></a></div>
-                    <div id="party-name">{{ obj.party }}</div>
+                    <div id="party-logo">{% thumbnail obj.party.logo '40x40' as logo %}{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}"><img src="{% if logo %}{{ logo }}{% else %}{{ STATIC_URL }}img/logo-unknown-party.png{% endif %}" width="40" height="40" border="0" /></a>{% else %}<img src="{% if logo %}{{ logo }}{% else %}{{ STATIC_URL }}img/logo-unknown-party.png{% endif %}" width="40" height="40" border="0" />{% endif %}</div>
+                    <div id="party-name">{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}{{ obj.party }}{% endif %}</div>
                     <div style="clear: both"></div>
                 </div>
             </div>
