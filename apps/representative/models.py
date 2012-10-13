@@ -372,10 +372,10 @@ class Representative (Person):
 
         additional = int(self.salary - base)
         if additional < 0:
-            additional = 0
+            additional = int(self.salary) # salary in declaration doesn't include base
 
         return {
-            'total': int(self.salary + self.other_income),
+            'total': int(base + additional + self.other_income),
             'base': base,
             'additional': additional,
             'other': int(self.other_income),
