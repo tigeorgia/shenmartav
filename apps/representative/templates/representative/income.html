@@ -1,6 +1,7 @@
 {% load i18n representative %}
 <div id="income">
     <h2>{% trans 'Annual Income' %}</h2>
+{% if obj.incomedeclaration.all %}
     <div id="bar" class="table">
         <div class="row">
             {% with income=obj.income  %}
@@ -20,4 +21,7 @@
         <li><span class="legend-color income-additional">&nbsp;</span>{% trans 'Additional income' %} <span class="explain" title="{% trans 'Additional legally defined salary that a representative receives for activities such as being the head of a committee' %}">?</span></li>
         <li><span class="legend-color income-other">&nbsp;</span>{% trans 'Business income' %} <span class="explain" title="{% trans 'Income that a representative receives from businesses owned by him/her' %}">?</span></li>
     </ul>
+{% else %}
+    <div id="legend">{% trans 'This representative has not submitted an asset declaration yet.' %}</div>
+{% endif %}
 </div>

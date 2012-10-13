@@ -72,6 +72,7 @@
             <td><div id="container-votingrecords" class="scroll-pane"><ul id="votingrecords"></ul></div></td>
         </tr>
 {% endifequal %}
+{% if decl %}
         <tr>
             <td>{% trans 'Salary' %}</td>
             <td><a href="{{ decl.get_absolute_url }}#wages">{{ obj.salary }}</a></td>
@@ -84,6 +85,7 @@
             <td>{% trans 'Property & Assets' %}</td>
             <td><a href="{{ decl.get_absolute_url }}#property">{{ obj.property_assets }}</a></td>
         </tr>
+{% endif %}
         <tr>
             <td>{% trans 'Website' %}</td>
             <td><a href="{{ obj.url }}">{{ obj.url }}</a></td>
