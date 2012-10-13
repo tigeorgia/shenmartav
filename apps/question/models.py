@@ -337,7 +337,7 @@ def _get_send_data (question, arid):
 
     # urllib.urlencode needs UTF-8 bytecode to URL-encode
     values = {
-        'mail' : sender,
+        'mail' : sender.encode('utf-8'),
         'name' : user_name.encode('utf-8'),
         'subj' : subject.encode('utf-8'),
         'mess' : message.encode('utf-8'),
