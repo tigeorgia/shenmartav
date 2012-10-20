@@ -86,10 +86,12 @@
             <td><a href="{{ decl.get_absolute_url }}#property">{{ obj.property_assets }}</a></td>
         </tr>
 {% endif %}
+{% for link in obj.urls.all %}
         <tr>
-            <td>{% trans 'Website' %}</td>
-            <td><a href="{{ obj.url }}">{{ obj.url }}</a></td>
+            <td>{{ link.label }}</td>
+            <td><a href="{{ link.url }}">{{ link.url }}</a></td>
         </tr>
+{% endfor %}
         <tr>
             <td>{% trans 'Work Experience' %}</td>
             <td id="workexperience"><ul>{% for experience in obj.position_set.all %}

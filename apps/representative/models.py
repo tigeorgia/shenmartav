@@ -159,9 +159,6 @@ class Representative (Person):
     #: contact, address and phone number
     contact_address_phone = models.TextField(blank=True, null=True,
         help_text=_('Contact Address / Phone Number'))
-    #: url of this representative
-    url = models.TextField(blank=True, null=True,
-        help_text=_('URL of this Representative'))
     #: salary
     salary = models.FloatField(default=0, null=True,
         help_text=_('== Wages'))
@@ -416,6 +413,26 @@ class AdditionalInformation (models.Model):
         help_text=_('Representative'))
     #: value of this info
     value = models.TextField(null=True, help_text=_('Additional Information'))
+
+    def __unicode__ (self):
+        return u'%s: %s' % (str(self.representative.name), self.value)
+
+
+
+class Url (models.Model):
+    """Urls belonging to a representative."""
+    #: representative this url belongs to
+    representative = models.ForeignKey(Representative,
+        related_name='urls', null=True,
+        help_text=_('Representative'))
+    #: label of this url
+    label = models.CharField(max_length=255, blank=False, default=_('Homepage'),
+        help_text=_('Label for this Url, e.g. Homepage, Facebook, Twitter, etc.'))
+    #: the actual url; text field because georgian urls can become very long
+    url = models.TextField(blank=False, help_text=_('The URL'))
+
+    def __unicode__ (self):
+        return u'%s: %s - %s' % (str(self.representative.name), self.label, self.url)
 
 
 

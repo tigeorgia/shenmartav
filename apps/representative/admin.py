@@ -9,7 +9,7 @@ from django.contrib import admin
 from modeltranslation.admin import TranslationTabularInline, TranslationAdmin
 
 from .models import Attendance, Term, Party, Unit, Representative,\
-    AdditionalInformation, RandomRepresentative
+    AdditionalInformation, Url, RandomRepresentative
 from popit.admin import PositionInlineAdmin, PersonNameInlineAdmin, PersonAdmin,\
     OrganisationAdmin, OrgNameInlineAdmin
 from popit.models import Person
@@ -41,6 +41,10 @@ class InlineAdditionalInformation (TranslationTabularInline):
     model = AdditionalInformation
     extra = 1
 
+class InlineUrl (TranslationTabularInline):
+    model = Url
+    extra = 1
+
 class InlineAttendanceAdmin (admin.TabularInline):
     model = Attendance
     extra = 1
@@ -50,6 +54,7 @@ class RepresentativeAdmin (PersonAdmin):
         PersonNameInlineAdmin,
         PositionInlineAdmin,
         InlineAdditionalInformation,
+        InlineUrl,
         InlineAttendanceAdmin,
     ]
     list_filter = ['party', 'unit']

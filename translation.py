@@ -10,7 +10,7 @@ translator.register(Question, QuestionTranslationOptions)
 
 
 
-from representative.models import Representative, AdditionalInformation, Unit, Term
+from representative.models import Representative, AdditionalInformation, Unit, Term, Url
 
 class RepresentativeTranslationOptions (TranslationOptions):
     fields = ('committee', 'faction', 'electoral_district', 'elected',
@@ -21,6 +21,10 @@ translator.register(Representative, RepresentativeTranslationOptions)
 class AdditionalInformationTranslationOptions (TranslationOptions):
     fields = ('value',)
 translator.register(AdditionalInformation, AdditionalInformationTranslationOptions)
+
+class UrlTranslationOptions (TranslationOptions):
+    fields = ('label',)
+translator.register(Url, UrlTranslationOptions)
 
 class UnitTranslationOptions (TranslationOptions):
     fields = ('name',)

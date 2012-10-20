@@ -16,7 +16,7 @@ from optparse import make_option
 
 import glt
 from popit.models import *
-from representative.models import Representative, AdditionalInformation, Unit, Party
+from representative.models import Representative, AdditionalInformation, Url, Unit, Party
 
 
 #: CSV delimiter
@@ -117,7 +117,11 @@ class Command (BaseCommand):
             self._get_data(row, 10), self._get_data(row, 11),
             self._get_data(row, 12), self._get_data(row, 13)])
         representative.contact_address_phone = self._get_data(row, 14)
-        representative.url = self._get_data(row, 15)
+
+        data = self._get_data(row, 15)
+        if data:
+            url = Url(representative=representative, label=url, url=url)
+            url.save()
 
         for i in xrange(38, 50):
             data = self._get_data(row, i)
