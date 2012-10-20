@@ -55,20 +55,48 @@ class Search (TemplateView):
         return Representative.objects.filter(
             Q(slug__icontains=query) |
             Q(names__name__icontains=query) |
+            Q(names__name_en__icontains=query) |
+            Q(names__name_ka__icontains=query) |
             Q(names__title__icontains=query) |
+            Q(names__title_en__icontains=query) |
+            Q(names__title_ka__icontains=query) |
             Q(description__icontains=query) |
+            Q(description_en__icontains=query) |
+            Q(description_ka__icontains=query) |
             Q(party__names__name__icontains=query) |
+            Q(party__names__name_en__icontains=query) |
+            Q(party__names__name_ka__icontains=query) |
             Q(electoral_district__icontains=query) |
+            Q(electoral_district_en__icontains=query) |
+            Q(electoral_district_ka__icontains=query) |
             Q(elected__icontains=query) |
+            Q(elected_en__icontains=query) |
+            Q(elected_ka__icontains=query) |
             Q(pob__icontains=query) |
+            Q(pob_en__icontains=query) |
+            Q(pob_ka__icontains=query) |
             Q(family_status__icontains=query) |
+            Q(family_status_en__icontains=query) |
+            Q(family_status_ka__icontains=query) |
             Q(education__icontains=query) |
+            Q(education_en__icontains=query) |
+            Q(education_ka__icontains=query) |
             Q(salary__icontains=query) |
             Q(expenses__icontains=query) |
+            Q(expenses_en__icontains=query) |
+            Q(expenses_ka__icontains=query) |
             Q(property_assets__icontains=query) |
+            Q(property_assets_en__icontains=query) |
+            Q(property_assets_ka__icontains=query) |
             Q(committee__icontains=query) |
+            Q(committee_en__icontains=query) |
+            Q(committee_ka__icontains=query) |
             Q(faction__icontains=query) |
-            Q(additional_information__value__icontains=query)
+            Q(faction_en__icontains=query) |
+            Q(faction_ka__icontains=query) |
+            Q(additional_information__value__icontains=query) |
+            Q(additional_information__value_en__icontains=query) |
+            Q(additional_information__value_ka__icontains=query)
         ).distinct()
 
 
@@ -77,7 +105,11 @@ class Search (TemplateView):
         context['url_find'] = reverse('representative_find')
 
         if 'query' in kwargs:
-            context['representatives'] = self.get_queryset(kwargs['query'])
+            context['representatives'] = []
+            qs = self.get_queryset(kwargs['query'])
+            for representative in qs:
+                if representative.unit.active_term in representative.terms.all():
+                    context['representatives'].append(representative)
             context['query'] = kwargs['query']
 
         context['url_feed'] = reverse('representative_feed_list')
@@ -109,8 +141,7 @@ class Unit (TemplateView):
             return []
 
         members = Representative.by_lastname_firstname_first(
-            Representative.objects.filter(unit=unit))
-
+            unit.active_term.representatives.all())
         for member in members:
             """
             Avoid a browser bug with names longer than available width making
@@ -315,14 +346,18 @@ def query (request, query):
     data = []
 
     # search names & electoral districts
-    for r in Representative.objects.filter(
-        Q(names__name__icontains=query) |\
-        Q(names__name_en__icontains=query) |\
-        Q(names__name_ka__icontains=query) |\
-        Q(electoral_district__icontains=query) |\
-        Q(electoral_district_en__icontains=query) |\
-        Q(electoral_district_ka__icontains=query)\
+    for representative in Representative.objects.filter(
+        Q(names__name__icontains=query) |
+        Q(names__name_en__icontains=query) |
+        Q(names__name_ka__icontains=query) |
+        Q(electoral_district__icontains=query) |
+        Q(electoral_district_en__icontains=query) |
+        Q(electoral_district_ka__icontains=query)
     ):
-        data.append({'label': str(r.name), 'pk': r.pk})
+        if representative.unit.active_term in representative.terms.all():
+            data.append({
+                'label': str(representative.name),
+                'pk': representative.pk,
+            })
 
     return HttpResponse(json.dumps(data), content_type='application/json')

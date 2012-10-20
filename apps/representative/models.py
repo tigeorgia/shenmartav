@@ -86,11 +86,31 @@ class Unit (models.Model):
 
 
 class ParliamentManager (models.Manager):
-    """Manager to return parliament representatives."""
+    """Manager to return Georgian Parliament representatives in active term."""
 
     def get_query_set(self):
-        qs = super(ParliamentManager, self).get_query_set()
-        return qs.filter(unit=1)
+        parliament = Unit.objects.get(pk=1)
+        return parliament.active_term.representatives.all()
+
+
+
+class TbilisiManager (models.Manager):
+    """Manager to return Tbilisi City Hall representatives in active term."""
+
+    def get_query_set(self):
+        cityhall = Unit.objects.get(pk=2)
+        return cityhall.active_term.representatives.all()
+
+
+
+class AjaraManager (models.Manager):
+    """Manager to return Ajaran Supreme Council representatives in active term."""
+
+    def get_query_set(self):
+        supremecouncil = Unit.objects.get(pk=3)
+        return supremecouncil.active_term.representatives.all()
+
+
 
 
 
@@ -162,12 +182,14 @@ class Representative (Person):
         help_text=_('Gender of the Representative'))
     #: terms of the representative
     terms = models.ManyToManyField(Term, blank=True,
-        related_name='representative',
+        related_name='representatives',
         help_text=_('Terms during which Representative was part of a Unit.'))
 
     #: managers
     objects = models.Manager()
     parliament = ParliamentManager()
+    tbilisi = TbilisiManager()
+    ajara = AjaraManager()
 
 
     @classmethod
@@ -301,7 +323,7 @@ class Representative (Person):
             'firstname_first': str
         }]
         """
-        if not representatives:
+        if representatives is None: # != []
             representatives = cls.objects.all()
 
         by_lastname = {}
@@ -338,7 +360,7 @@ class Representative (Person):
         }]
 
         """
-        if not representatives:
+        if representatives is None: # != []
             representatives = cls.objects.all()
 
         by_lastname = {}
@@ -456,11 +478,14 @@ class RandomRepresentative (models.Model):
             rr = RandomRepresentative.objects.all()[0]
             if (now - rr.date_set).days >= 1:
                 rr.date_set = date_set
-                rr.representative = Representative.parliament.order_by('?')[0]
-                rr.save()
+                try:
+                    rr.representative = Representatives.parliament.order_by('?')[0]
+                    rr.save()
+                except IndexError:
+                    pass
         except IndexError:
             try:
-                representative = Representative.parliament.order_by('?')[0]
+                representative = Representatives.parliament().order_by('?')[0]
             except IndexError:
                 representative = None
 
