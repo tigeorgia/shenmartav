@@ -48,7 +48,7 @@ RepresentativeFind = {
         members.hide();
         members.each(function() {
             if ($(this).hasClass('party-' + data) ||
-                $(this).html().indexOf(data) != -1) {
+                $(this).html().toLowerCase().indexOf(data) != -1) {
                 $(this).show();
                 // don't break out: show more results
             }
