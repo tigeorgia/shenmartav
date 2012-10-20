@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-13 11:52+0200\n"
+"POT-Creation-Date: 2012-10-20 11:09+0200\n"
 "PO-Revision-Date: 2012-09-04 17:19\n"
 "Last-Translator:   <sebastiantransparency@gmail.com>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -566,7 +566,7 @@ msgstr "კვირის შეჯამება"
 #: apps/draftlaw/templates/cmsplugins/draftlaw.html:20
 #: apps/draftlaw/templates/draftlaw/info.html:21
 #: apps/question/templates/cmsplugins/question.html:24
-#: apps/representative/templates/cmsplugins/representative.html:29
+#: apps/representative/templates/cmsplugins/representative.html:30
 #: apps/representative/templates/representative/info.html:21
 msgid "More"
 msgstr "ვრცლად"
@@ -1515,16 +1515,20 @@ msgid "Here You can find info on Representatives"
 msgstr ""
 "აქ იპოვით ინფორმაციას საკანონმდებლო ორგანოში თქვენი წარმომადგენლების შესახებ."
 
-#: apps/representative/templates/cmsplugins/representative.html:29
+#: apps/representative/templates/cmsplugins/representative.html:16
+msgid "In focus today"
+msgstr "დღეს ფოკუსში"
+
+#: apps/representative/templates/cmsplugins/representative.html:30
 msgid "See more about this representative"
 msgstr "უფრო ვრცლად ამ წარმომადგენლის შესახებ"
 
-#: apps/representative/templates/cmsplugins/representative.html:33
+#: apps/representative/templates/cmsplugins/representative.html:34
 #: apps/representative/templates/representative/find.html:19
 msgid "Find Your Representative"
 msgstr "მოძებნეთ თქვენი წარმომადგენელი"
 
-#: apps/representative/templates/cmsplugins/representative.html:35
+#: apps/representative/templates/cmsplugins/representative.html:36
 msgid "Search by name or location"
 msgstr "შეიყვანეთ სახელი, გვარი ან ოლქი"
 

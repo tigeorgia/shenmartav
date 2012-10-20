@@ -2,6 +2,13 @@
  * CSS file for app Representative, plugin
  */
 
+#representative #random h2 {
+    text-align: left;
+    font-size: 1.2em;
+}
+#representative #random h2#in-focus {
+    font-size: 1.4em;
+}
 #representative #random #photo {
     float: left;
     width: 70px;
