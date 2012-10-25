@@ -140,8 +140,12 @@ class Unit (TemplateView):
         except UnitModel.DoesNotExist:
             return []
 
-        members = Representative.by_lastname_firstname_first(
-            unit.active_term.representatives.all())
+        try:
+            members = unit.active_term.representatives.all()
+        except AttributeError:
+            return []
+
+        members = Representative.by_lastname_firstname_first(members)
         for member in members:
             """
             Avoid a browser bug with names longer than available width making

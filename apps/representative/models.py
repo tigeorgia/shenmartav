@@ -496,13 +496,13 @@ class RandomRepresentative (models.Model):
             if (now - rr.date_set).days >= 1:
                 rr.date_set = date_set
                 try:
-                    rr.representative = Representatives.parliament.order_by('?')[0]
+                    rr.representative = Representative.parliament.order_by('?')[0]
                     rr.save()
                 except IndexError:
                     pass
         except IndexError:
             try:
-                representative = Representatives.parliament().order_by('?')[0]
+                representative = Representative.parliament.order_by('?')[0]
             except IndexError:
                 representative = None
 
