@@ -17,7 +17,7 @@ from popit.models import Person
 
 
 class TermAdmin (TranslationAdmin):
-    pass
+    search_fields = ['name_en', 'name_ka']
 admin.site.register(Term, TermAdmin)
 
 
@@ -27,12 +27,13 @@ class PartyAdmin (OrganisationAdmin):
         OrgNameInlineAdmin,
     ]
     list_filter = ['unit']
+    search_fields = ['slug', 'names__name_en', 'names__name_ka']
 admin.site.register(Party, PartyAdmin)
 
 
 
 class UnitAdmin (TranslationAdmin):
-    pass
+    search_fields = ['name_en', 'name_ka', 'short']
 admin.site.register(Unit, UnitAdmin)
 
 
@@ -58,6 +59,7 @@ class RepresentativeAdmin (PersonAdmin):
         InlineAttendanceAdmin,
     ]
     list_filter = ['party', 'unit']
+    search_fields = ['slug', 'names__name_en', 'names__name_ka', 'date_of_birth']
 admin.site.register(Representative, RepresentativeAdmin)
 
 
