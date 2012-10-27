@@ -19,6 +19,7 @@ try:
 except ImportError:
     utc = None
 from django.utils.translation import get_language, ugettext as _
+from django.template.defaultfilters import slugify
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 
 import glt
@@ -402,6 +403,8 @@ class Representative (Person):
 
 
     def save (self, *args, **kwargs):
+        # enforce rewriting of slug
+        self.slug = slugify(str(self.name))
         super(Representative, self).save(*args, **kwargs)
 
 
