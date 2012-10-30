@@ -18,7 +18,7 @@ try:
     from django.utils.timezone import utc
 except ImportError:
     utc = None
-from django.utils.translation import get_language, ugettext as _
+from django.utils.translation import activate, get_language, ugettext as _
 from django.template.defaultfilters import slugify
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 
@@ -403,8 +403,12 @@ class Representative (Person):
 
 
     def save (self, *args, **kwargs):
-        # enforce rewriting of slug
+        # enforce rewriting of slug in default language
+        lang = get_language()
+        activate(settings.LANGUAGE_CODE)
         self.slug = slugify(str(self.name))
+        activate(lang)
+
         super(Representative, self).save(*args, **kwargs)
 
 
