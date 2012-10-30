@@ -12,7 +12,7 @@ django-mptt
 django-reversion
 South
 django-cms
-sorl-thumbnail
+sorl-thumbnail==3.2.5
 django-tagging
 django-modeltranslation
 django-rosetta

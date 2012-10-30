@@ -18,6 +18,8 @@ The dependencies should all be listed in requirements.txt . After installing the
 
 $ sudo pip install -r requirements.txt
 
+If you are installing into a virtualenv, you will need to manually compile xapian, as described here: http://nomad.coop/blog/installing-xapian-in-virtualenv-django/
+
 Now you should be good to go to the next stage.
 
 Patches
