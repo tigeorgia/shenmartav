@@ -9,9 +9,9 @@ BeautifulSoup
 
 # Django stuff
 django-mptt
-django-reversion
+django-reversion==1.4
 South
-django-cms
+django-cms==2.2
 sorl-thumbnail==3.2.5
 django-tagging
 django-modeltranslation
