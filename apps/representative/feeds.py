@@ -59,7 +59,7 @@ class FeedDetail (Feed):
         except IndexError:
             attendance = ''
 
-        return _('Party: %(party)s|Unit: %(unit)s|Committee: %(committee)s|Faction: %(faction)s|Is_Majoritarian: %(is_majoritarian)s|Electoral District: %(electoral_district)s|Elected: %(elected)s|Place of Birth: %(pob)s|Family Status: %(family_status)s|Education: %(education)s|Contact Address / Phone: %(contact_address_phone)s|URL: %(url)s|Voting attendance: %(attendance)s|Salary: %(salary)s|Business Income: %(other_income)s|Expenses: %(expenses)s|Property & Assets: %(property_assets)s|Income declaration URL: %(income_declaration)s|Questions answered: %(answered)s%%') % {
+        return _('Party: %(party)s|Unit: %(unit)s|Committee: %(committee)s|Faction: %(faction)s|Is_Majoritarian: %(is_majoritarian)s|Electoral District: %(electoral_district)s|Elected: %(elected)s|Place of Birth: %(pob)s|Family Status: %(family_status)s|Education: %(education)s|Contact Address / Phone: %(contact_address_phone)s|URLs: %(urls)s|Voting attendance: %(attendance)s|Salary: %(salary)s|Business Income: %(other_income)s|Expenses: %(expenses)s|Property & Assets: %(property_assets)s|Income declaration URL: %(income_declaration)s|Questions answered: %(answered)s%%') % {
             'party': obj.party.name,
             'unit': obj.unit.name,
             'committee': obj.committee,
@@ -71,7 +71,7 @@ class FeedDetail (Feed):
             'family_status': obj.family_status,
             'education': obj.education,
             'contact_address_phone': obj.contact_address_phone,
-            'url': obj.url,
+            'urls': ','.join([url.url for url in obj.urls.all()]),
             'attendance': attendance,
             'salary': obj.salary,
             'other_income': obj.other_income,

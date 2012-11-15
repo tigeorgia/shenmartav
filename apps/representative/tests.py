@@ -197,6 +197,12 @@ class RepresentativeTest (TestCase):
         self.assertEqual(a.percentage_attended, 80)
 
 
+    def test_FeedList (self):
+        page = self.client.get('/who/feed')
+
+    def test_FeedDetail (self):
+        page = self.client.get('/who/feed/1')
+
 
 class RandomRepresentativeTest (TestCase):
     fixtures = ['representative_testdata']
