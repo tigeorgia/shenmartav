@@ -65,7 +65,7 @@ class RepresentativeTest (TestCase):
 
 
     def test_DetailSlug (self):
-        url = reverse('representative_slug', args=['abulashvili-nugzari'])
+        url = reverse('representative_slug', args=[u'\u10d0\u10d1\u10e3\u10da\u10d0\u10e8\u10d5\u10d8\u10da\u10d8-\u10dc\u10e3\u10d2\u10d6\u10d0\u10e0\u10d8'])
         response = self.client.get(url)
         self.assertContains(response, 'representative')
         self.assertTemplateUsed(response, 'representative/detail.html')
@@ -91,7 +91,7 @@ class RepresentativeTest (TestCase):
     def test_UnitParliament (self):
         url = reverse('unit_parliament')
         response = self.client.get(url)
-        self.assertContains(response, 'abulashvili-nugzari')
+        self.assertContains(response, 'bairamovi-ramini')
         self.assertTemplateUsed(response, 'representative/unit.html')
 
 
@@ -196,6 +196,12 @@ class RepresentativeTest (TestCase):
         self.assertEqual(a.percentage_absent, 20)
         self.assertEqual(a.percentage_attended, 80)
 
+
+    def test_FeedList (self):
+        page = self.client.get('/who/feed')
+
+    def test_FeedDetail (self):
+        page = self.client.get('/who/feed/1')
 
 
 class RandomRepresentativeTest (TestCase):
