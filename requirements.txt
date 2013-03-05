@@ -1,36 +1,26 @@
-# The following to be installed with apt-get or something:
-# python-pip python-gdal python-xapian python-dev libpq-dev git-core postgresql-9.1-postgis
-
-# These by pip
-# General Python stuff
-PIL >= 1.1.7
-psycopg2
-BeautifulSoup
-
-# Django stuff
-django-mptt
-django-reversion==1.4
-South
+BeautifulSoup==3.2.1
+Django==1.3.1
+Markdown==2.2.0
+PIL==1.1.7
+South==0.7.6
+argparse==1.2.1
+django-classy-tags==0.3.4.1
 django-cms==2.2
+-e git://github.com/piquadrat/django-cms-search.git@1a4055b1c79df4de4353583a232f6ffc406ee32f#egg=django_cms_search-dev
+-e git://github.com/evdb/django-date-extensions.git@6832180f9254bbdea01c81bde8f5726c593ccfcf#egg=django_date_extensions-dev
+django-haystack==1.2.7
+django-markitup==1.0.0
+django-modeltranslation==0.4.0-beta2
+django-mptt==0.5.4
+django-reversion==1.4
+django-rosetta==0.6.8
+django-sekizai==0.6.1
+django-tagging==0.3.1
+django-tastypie==0.9.11
+html5lib==0.95
+mimeparse==0.1.3
+psycopg2==2.4.5
+python-dateutil==1.5
 sorl-thumbnail==3.2.5
-django-tagging
-django-modeltranslation
-django-rosetta
-
-# Search
-django-haystack
-xapian-haystack
--e git+git://github.com/piquadrat/django-cms-search.git#egg=django-cms-search
--e git://github.com/evdb/django-date-extensions.git#egg=django-date-extensions
-django-markitup
-Markdown>=2.0.3
-
-# mysociety.org
-django-tastypie
-# use shipped copy of popit
-#-e git+git://github.com/mysociety/popit.git@popit-v0.1dev#egg=popit
-#django-mapit
-
-
-
-#django-ajax-selects>=1.2.1
+wsgiref==0.1.2
+xapian-haystack==1.1.5beta
