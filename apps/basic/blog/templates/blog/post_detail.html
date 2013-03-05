@@ -16,7 +16,7 @@
         <p id="title">{{ object.title }}</p>
         <p id="date">{{ object.publish|date:"d.m.Y" }}</p>
 
-        <div id="body">{{ object.body|render_inlines|markdown:"safe" }}</div>
+        <div id="body">{{ object.body|render_inlines }}</div>
 
         {% tags_for_object object as tag_list %}
         {% if tag_list %}<p class="inline_tag_list"><strong>{% trans "Related tags" %}:</strong> {{ tag_list|join:", " }}</p>{% endif %}
