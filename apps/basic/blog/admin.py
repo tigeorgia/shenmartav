@@ -1,7 +1,9 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
+from django.db import models
 
 from basic.blog.models import *
+from tinymce.widgets import TinyMCE
 
 
 class CategoryAdmin (TranslationAdmin):
@@ -13,6 +15,9 @@ class PostAdmin (TranslationAdmin):
     list_filter   = ('publish', 'categories', 'status')
     search_fields = ('title', 'body')
     prepopulated_fields = {'slug': ('title',)}
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE},
+    }
 
     def add_view(self, request, form_url="", extra_context=None):
         # request.GET is immutable

@@ -87,6 +87,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'modeltranslation',
     'rosetta',
+    'tinymce',
 
     # cms
     'cms',
@@ -191,6 +192,14 @@ CMS_LANGUAGE_CONF = {
 }
 CMS_FRONTEND_LANGUAGES = ('ka', 'en', 'ka')
 
+
+###########################################################
+# TinyMCE
+###########################################################
+TINYMCE_DEFAULT_CONFIG = {'theme': 'advanced', 
+                          'relative_urls': False,
+                          'width': '640',
+                          'height': '480',}
 
 
 ###########################################################

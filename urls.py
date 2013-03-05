@@ -36,6 +36,9 @@ urlpatterns = patterns('',
     # CMS
     url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^', include('cms.urls')),
+
+    # TinyMCE
+    url(r'^tinymce/', include('tinymce.urls')),
 )
 
 
