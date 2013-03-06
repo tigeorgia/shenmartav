@@ -5,6 +5,7 @@ from django.contrib import admin
 from cms.sitemaps import CMSSitemap
 
 from basic.blog.feeds import BlogPostsFeed
+from filebrowser.sites import site
 
 admin.autodiscover()
 
@@ -13,6 +14,9 @@ urlpatterns = patterns('',
     url(r'^popit/', include('popit.urls')),
     # mapit
     #url(r'^mapit/', include('mapit.urls')),
+
+    # FileBrowser
+    url(r'^admin/filebrowser/', include(site.urls)),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/rosetta/', include('rosetta.urls')),
@@ -33,12 +37,14 @@ urlpatterns = patterns('',
     # SMS Alert
     url(r'^smsalert/', include('smsalert.urls'), name='smsalert'),
 
-    # CMS
+    # TinyMCE
+    url(r'^tinymce/', include('tinymce.urls')),
+
+    # CMS THIS MUST BE LAST -- IT INTERCEPTS EVERYTHING
     url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^', include('cms.urls')),
 
-    # TinyMCE
-    url(r'^tinymce/', include('tinymce.urls')),
+
 )
 
 

@@ -72,6 +72,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # File browser has to go before admin
+    'filebrowser',
+
     'django.contrib.admin',
     'django.contrib.sitemaps',
     'django.contrib.comments',
@@ -200,6 +203,7 @@ TINYMCE_DEFAULT_CONFIG = {'theme': 'advanced',
                           'relative_urls': False,
                           'width': '640',
                           'height': '480',}
+TINYMCE_FILEBROWSER = True
 
 
 ###########################################################
