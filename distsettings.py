@@ -87,10 +87,13 @@ INSTALLED_APPS = (
     'menus',
     'sekizai',
     'haystack',
-    'sorl.thumbnail',
     'modeltranslation',
+    'sorl.thumbnail',
+    'imagekit', # Kind of ugly to have two thumbnail libs, cleanup later
     'rosetta',
     'tinymce',
+    'podcasting',
+    'licenses',
 
     # cms
     'cms',
