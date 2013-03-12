@@ -6,6 +6,8 @@ Depends on popit.
 __docformat__ = 'epytext en'
 
 from django.contrib import admin
+from django.db import models
+
 from modeltranslation.admin import TranslationTabularInline, TranslationAdmin
 
 from .models import Attendance, Term, Party, Unit, Representative,\
@@ -14,6 +16,7 @@ from popit.admin import PositionInlineAdmin, PersonNameInlineAdmin, PersonAdmin,
     OrganisationAdmin, OrgNameInlineAdmin
 from popit.models import Person
 
+from tinymce.widgets import TinyMCE
 
 
 class TermAdmin (TranslationAdmin):
@@ -60,6 +63,9 @@ class RepresentativeAdmin (PersonAdmin):
     ]
     list_filter = ['party', 'unit']
     search_fields = ['slug', 'names__name_en', 'names__name_ka', 'date_of_birth']
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE},
+    }
 admin.site.register(Representative, RepresentativeAdmin)
 
 

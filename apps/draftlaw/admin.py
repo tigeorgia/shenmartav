@@ -4,10 +4,11 @@ Admin draftlaw
 __docformat__ = 'epytext en'
 
 from django.contrib import admin
+from django.db import models
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
 from .models import DraftLaw, DraftLawDiscussion, DraftLawChild
-
+from tinymce.widgets import TinyMCE
 
 
 class InlineDiscussion (TranslationTabularInline):
@@ -22,4 +23,7 @@ class DraftLawAdmin (TranslationAdmin):
         InlineDiscussion,
         InlineChild
     ]
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE},
+    }
 admin.site.register(DraftLaw, DraftLawAdmin)
