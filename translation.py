@@ -164,3 +164,14 @@ class BlogRollTranslationOptions (TranslationOptions):
     fields = ('name',)
 translator.register(BlogRoll, BlogRollTranslationOptions)
 
+from podcasting.models import Episode, Show
+
+class ShowTranslationOptions (TranslationOptions):
+    fields = ('organization', 'author_text', 'title', 'subtitle', 'description',
+              'keywords',)
+translator.register(Show, ShowTranslationOptions)
+
+class EpisodeTranslationOptions (TranslationOptions):
+    fields = ('author_text', 'title', 'subtitle', 'description',)
+translator.register(Episode, EpisodeTranslationOptions)
+

@@ -1,0 +1,25 @@
+{% extends "podcasting/podcasting_base.html" %}
+{% load sekizai_tags %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Archive" %}{% endblock %}
+
+{% block body_class %}page-episode-list{% endblock %}
+
+{% block podcast %}
+    {% include "podcasting/_episode_list.html" %}
+    {% block episode_list_extra %}{% endblock %}
+{% endblock %}
+
+{% block js %}
+{% addtoblock "js" %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/mediaelement-and-player.min.js"></script>
+    <script>
+        $('audio').mediaelementplayer({
+            defaultAudioWidth: 580,
+            features : ['playpause','progress','current','duration','tracks','volume','fullscreen','googleanalytics'],
+        });
+    </script>
+{% endaddtoblock %}
+{% endblock js %}

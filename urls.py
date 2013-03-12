@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL + 'img/favicon.ico'}),
 
     # RSS feed
-    url(r'^feed/$', BlogPostsFeed(), name='feed_blogposts'),
+    url(r'^feeds/blog/$', BlogPostsFeed(), name='feed_blogposts'),
 
     # API
     url(r'^api/', include('api.urls'), name='api'),
@@ -39,6 +39,11 @@ urlpatterns = patterns('',
 
     # TinyMCE
     url(r'^tinymce/', include('tinymce.urls')),
+
+    # Podcasting
+    # Comment out URLs for CMSified apps
+    #url(r"^podcasts/", include("podcasting.urls")),
+    url(r"^feeds/podcasts/", include("podcasting.urls_feeds")),
 
     # CMS THIS MUST BE LAST -- IT INTERCEPTS EVERYTHING
     url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
