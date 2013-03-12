@@ -8,6 +8,7 @@
         <ul id="navigation">
             <li class="button"><a id="home" title="{% trans 'Home sweet Home' %}" href="{% url pages-root %}"><img src="{{ STATIC_URL }}img/nav-home.png" border="0" width="17" height="17" /></a></li>
             <li class="button"><a id="blog" title="{% trans 'Blog posts for shenmartav' %}" href="{% page_url 'blog' %}"><img src="{{ STATIC_URL }}img/nav-blog.png" border="0" width="17" height="17" /></a></li>
+            <li class="button"><a id="podcast" title="{% trans 'Weekly podcasts about Parliament' %}" href="{% page_url 'podcast' %}"><img src="{{ STATIC_URL }}img/nav-podcast.png" border="0", width="17" height="17" /></a></li>
             <li class="button"><a id="about" title="{% trans 'About this website' %}" href="{% page_url 'about' %}"><img src="{{ STATIC_URL }}img/nav-about.png" border="0" width="17" height="17" /></a></li>
             <li class="button"><a id="contact" title="{% trans 'Contact us' %}" href="{% url contact_show %}"><img src="{{ STATIC_URL }}img/nav-contact.png" border="0" width="17" height="17" /></a></li>
         </ul>

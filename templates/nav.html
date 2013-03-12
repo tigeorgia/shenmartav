@@ -5,6 +5,7 @@
     <ul id="navigation">
         <li class="button"><a id="home" title="{% trans 'Home sweet Home' %}" href="{% url pages-root %}"><img src="{{ STATIC_URL }}img/nav-home.png" border="0" width="17" height="17" /> {% trans 'Home' %}</a></li>
         <li class="button"><a id="blog" title="{% trans 'Blog posts for shenmartav' %}" href="{% url blog_index %}"><img src="{{ STATIC_URL }}img/nav-blog.png" border="0" width="17" height="17" /> {% trans 'Blog' %}</a></li>
+        <li class="button"><a id="podcast" title="{% trans 'Weekly podcast about Parliament' %}" href="{% url podcasting_episode_list 'weekly-parliament-podcast' %}"><img src="{{ STATIC_URL }}img/nav-podcast.png" border="0" width="17" height="17" /> {% trans 'Podcast' %}</a></li>
         <li class="button"><a id="about" title="{% trans 'About this website' %}" href="{% page_url 'about' %}"><img src="{{ STATIC_URL }}img/nav-about.png" border="0" width="17" height="17" /> {% trans 'About' %}</a></li>
         <li class="button"><a id="contact" title="{% trans 'Contact us' %}" href="{% url contact_show %}"><img src="{{ STATIC_URL }}img/nav-contact.png" border="0" width="17" height="17" /> {% trans 'Contact' %}</a></li>
     </ul>
