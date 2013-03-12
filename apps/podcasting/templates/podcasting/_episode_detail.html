@@ -9,6 +9,7 @@
             </span>
             {% for enclosure in episode.enclosure_set.all %}
                 {% if enclosure.mime == 'mp3' %}
+                    <audio src="{{ enclosure.url }}"></audio>
                     <span class="sep">
                         <a href="{{ enclosure.url }}" class="tiptip download"
                             title="{% trans "to download right click and select 'save link as'" %}">
@@ -40,6 +41,15 @@
             {% endif %}
         </div>
     </div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                  fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <div class="fb-comments" data-href="http://{{ request.META.HTTP_HOST }}{{ request.META.PATH_INFO }}" data-num-posts="5" data-width="500"></div>
 {% else %}
     <h2 class="coming-soon">{% trans "Coming soon..." %}</h2>
 {% endif %}
