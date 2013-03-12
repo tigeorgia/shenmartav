@@ -41,7 +41,8 @@ urlpatterns = patterns('',
     url(r'^tinymce/', include('tinymce.urls')),
 
     # Podcasting
-    url(r"^podcasts/", include("podcasting.urls")),
+    # Comment out URLs for CMSified apps
+    #url(r"^podcasts/", include("podcasting.urls")),
     url(r"^feeds/podcasts/", include("podcasting.urls_feeds")),
 
     # CMS THIS MUST BE LAST -- IT INTERCEPTS EVERYTHING
