@@ -16,6 +16,10 @@ class EpisodeListView(ListView):
         return Episode.objects.published().filter(show__slug=self.kwargs["show_slug"])
 
 
+class AllEpisodesListView(ListView):
+    def get_queryset(self):
+        return Episode.objects.published()
+
 class EpisodeDetailView(DetailView):
     def get_queryset(self):
         return Episode.objects.published().filter(show__slug=self.kwargs["show_slug"])

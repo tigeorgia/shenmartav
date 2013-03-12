@@ -1,9 +1,11 @@
 from django.conf.urls.defaults import patterns, url
-from podcasting.views import ShowListView, ShowDetailView, EpisodeListView, EpisodeDetailView
+from podcasting.views import ShowListView, ShowDetailView, EpisodeListView, EpisodeDetailView, AllEpisodesListView
 
 
 urlpatterns = patterns("",
-    url(r"^$", ShowListView.as_view(),
+    url(r"^$", AllEpisodesListView.as_view(),
+        name="podcasting_all_episodes_list"),
+    url(r"^show/$", ShowListView.as_view(),
         name="podcasting_show_list"),
     url(r"^(?P<slug>[-\w]+)/$", ShowDetailView.as_view(),
         name="podcasting_show_detail"),
