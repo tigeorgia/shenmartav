@@ -11,6 +11,7 @@
                     </span>
                     {% for enclosure in episode.enclosure_set.all %}
                         {% if enclosure.mime == 'mp3' %}
+                            <audio src="{{ enclosure.url }}"></audio>
                             <span class="sep">
                                 <a href="{{ enclosure.url }}" class="tiptip download"
                                     title="{% trans "to download right click and select 'save link as'" %}">
