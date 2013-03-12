@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from django.contrib import admin
+from django.db import models
 
 from imagekit.admin import AdminThumbnail
 
@@ -9,6 +10,7 @@ from podcasting.models import Show, Episode, Enclosure
 from podcasting.utils.twitter import can_tweet
 
 from modeltranslation.admin import TranslationAdmin
+from tinymce.widgets import TinyMCE
 
 
 class ShowAdmin(TranslationAdmin):
@@ -17,6 +19,10 @@ class ShowAdmin(TranslationAdmin):
     list_display = ("title", "slug", "show_site", "published_flag", "admin_thumbnail")
     list_filter = ("title", "published", "site")
     admin_thumbnail = AdminThumbnail(image_field="admin_thumb_sm")
+
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE},
+    }
 
     if can_tweet():
         fields.append("tweet_text")
@@ -37,6 +43,10 @@ class EpisodeAdmin(TranslationAdmin):
     list_display = ("title", "show", "slug", "episode_site", "published_flag", "admin_thumbnail")
     list_filter = ("show", "published")
     admin_thumbnail = AdminThumbnail(image_field="admin_thumb_sm")
+
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE},
+    }
 
     if can_tweet():
         readonly_fields = ("tweet_text",)
