@@ -1,0 +1,14 @@
+{% extends 'contact/base.html' %}
+{% load i18n %}
+
+{% block contact %}
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    {% trans 'SMS Registration' %}</a>
+</div>
+
+<div id="contact">
+    <h2 class="heading">{% trans 'Thanks for signing up!' %}</h2>
+    <p>{% trans 'You should receive a confirmation message soon on your mobile phone soon.' %}</p>
+</div>
+{% endblock %}

@@ -127,6 +127,7 @@ INSTALLED_APPS = (
     'draftlaw',
     'question',
     'contact',
+    'smsregister',
     'smsalert',
 )
 

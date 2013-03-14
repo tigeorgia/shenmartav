@@ -1,0 +1,30 @@
+{% extends 'contact/base.html' %}
+{% load i18n %}
+
+{% block contact %}
+<div class="breadcrumb">
+    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+    {% trans 'SMS Registration' %}</a>
+</div>
+
+<div id="smsregister">
+    <h2 class="heading">{% trans 'SMS Registration' %}</h2>
+
+    <div id="scroll-container" class="scroll-pane">
+        <form id="form-smsregister" action="{% url smsregister_show %}" method="post">
+            <h3>{% trans 'Registration Form' %}</h3>
+            {% csrf_token %}
+            <table>
+            {% for field in form %}<tr>
+                <td{% if field.field.required %} class="required"{% endif %}>{{ field.label_tag }}</td>
+                <td>{{ field }}{% if field.errors %}{% for err in field.errors %}<div class="error">{{ err }}</div>{% endfor %}{% endif %}</td>
+            </tr>{% endfor %}
+            <tr>
+                <td><div class="fineprint required">{% trans 'Colored fields are required' %}</div></td>
+                <td><input type="submit" value="{% trans 'Register' %}" /></td>
+            </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock %}
