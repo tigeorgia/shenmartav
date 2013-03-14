@@ -16,7 +16,7 @@
     <div id="news">
         <h2>{% trans 'Parliament Weekly' %}</h2>
         <div id="post">
-            <div>{{ post.tease }}</div>
+            <div>{% autoescape off %}{{ post.tease }}{% endautoescape %}</div>
             <div class="more"><a href="{{ post.get_absolute_url }}" title="{% trans 'More' %}">{% trans 'More' %} &raquo;</a></div>
         </div>
     </div>
