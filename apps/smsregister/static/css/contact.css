@@ -1,0 +1,45 @@
+/*
+ * CSS file for app contact
+ */
+
+.opened {
+    left: 25%;
+    width: 61%;
+}
+
+.opened > .breadcrumb {
+    margin-left: .5em;
+}
+
+#folded-who {
+    right: 8%;
+}
+#folded-what {
+    right: 4%;
+}
+#folded-question {
+    right: 0;
+}
+
+#contact {
+    position: relative;
+}
+#contact form, #contact p {
+    margin-left: .5em;
+}
+#contact input, textarea {
+    width: 100%;
+    border-radius: 2px;
+}
+
+#contact #authors {
+    margin-left: .5em;
+}
+#contact #tig, #contact #cipdd {
+    float: left;
+    width: 50%;
+    margin-bottom: 1em;
+}
+#contact #tig img, #contact #cipdd img {
+    margin-bottom: 1em;
+}

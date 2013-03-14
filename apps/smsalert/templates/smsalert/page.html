@@ -18,5 +18,5 @@
 </div>
 
 <div id="receive">
-    <a href="http://parliament.transparency.ge/{% ifequal lang 'ka' %}გამოწერა/{% else %}subscribe/?lang=en{% endifequal %}">{% trans 'Receive alerts on your phone.' %}</a>
+    <a href="{% url smsregister_show %}">{% trans 'Receive alerts on your phone.' %}</a>
 </div>

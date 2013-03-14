@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load sekizai_tags %}
+
+{% block css %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/contact.css" media="all" />
+{% endaddtoblock %}
+{% endblock %}
+
+{% block content %}
+    <div id="col-nav" class="column shadow">{% include 'nav.html' %}</div>
+    <div class="opened">
+        {% block smsregister %}{% endblock %}
+    </div>
+    {% include 'folded/who.html' %}
+    {% include 'folded/what.html' %}
+    {% include 'folded/question.html' %}
+{% endblock %}
