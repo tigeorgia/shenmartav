@@ -24,11 +24,11 @@ class Show (FormView):
         SEP = u"|"
         subject = u""
         body = (u"addmobile " + 
-                form.data['name'].replace(u" ",u"") + SEP +
-                u"+995" + form.data['number'] + SEP +
-                form.data['lang'] + SEP +
+                form.cleaned_data['name'].replace(u" ",u"") + SEP +
+                u"+995" + form.cleaned_data['number'] + SEP +
+                form.cleaned_data['lang'] + SEP +
                 u"False" + SEP +
-                u','.join(form.data['subscribe']))
+                u','.join(form.cleaned_data['subscribe']))
 
         send_mail(subject, body, 'registration@myparliament.ge',['derek@transparency.ge'])
 
