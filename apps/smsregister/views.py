@@ -21,13 +21,14 @@ class Show (FormView):
 
 
     def form_valid (self, form):
+        SEP = u"|"
         subject = u""
-        body = (u"addmobile "+ 
-                form.data['name'].replace(" ","") + u" " +
-                form.data['number'] + u" " +
-                form.data['lang'] + u" " +
-                u"False" + u" " +
-                form.data['subscribe'])
+        body = (u"addmobile " + 
+                form.data['name'].replace(u" ",u"") + SEP +
+                u"+995" + form.data['number'] + SEP +
+                form.data['lang'] + SEP +
+                u"False" + SEP +
+                u','.join(form.data['subscribe'])
 
         send_mail(subject, body, 'registration@myparliament.ge',['derek@transparency.ge'])
 
