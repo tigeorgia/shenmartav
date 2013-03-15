@@ -28,7 +28,7 @@ class Show (FormView):
                 u"+995" + form.data['number'] + SEP +
                 form.data['lang'] + SEP +
                 u"False" + SEP +
-                u','.join(form.data['subscribe'])
+                u','.join(form.data['subscribe']))
 
         send_mail(subject, body, 'registration@myparliament.ge',['derek@transparency.ge'])
 
