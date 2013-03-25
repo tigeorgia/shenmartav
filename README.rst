@@ -14,7 +14,14 @@ INSTALL
 
 Dependencies
 ------------
-The dependencies should all be listed in requirements.txt . After installing the distribution-specific packages mentioned at the top of that file, you can use PIP to install all the rest:
+
+First, issue:
+
+$ sudo apt-get install python-pip python-gdal python-xapian python-dev libpq-dev git-core postgresql-9.1-postgis
+
+(or similar depending on your Linux flavor).
+
+The rest of the dependencies should all be listed in requirements.txt . After installing the distribution-specific packages mentioned above, you can use PIP to install all the rest:
 
 $ sudo pip install -r requirements.txt
 
