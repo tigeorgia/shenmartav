@@ -8,12 +8,9 @@
 {% endblock %}
 
 {% block content %}
-    <div id="col-nav" class="column shadow">{% include 'nav.html' %}</div>
+<!--simple.html-->
     <div class="opened">
         <div class="breadcrumb">{% show_breadcrumb %}</div>
         <div id="scroll-container" class="scroll-pane">{% placeholder simple_content %}</div>
     </div>
-    {% include 'folded/who.html' %}
-    {% include 'folded/what.html' %}
-    {% include 'folded/question.html' %}
 {% endblock %}
