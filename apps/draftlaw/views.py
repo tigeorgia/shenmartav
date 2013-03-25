@@ -84,7 +84,7 @@ class Items (TemplateView):
     template_name = 'draftlaw/items.html'
 
 
-    def _get_page (self, page, queryset):
+    def _get_page (self, page, paginate_by, queryset):
         """Get given queryset as page.
 
         @param page: page number to retrieve
@@ -94,7 +94,7 @@ class Items (TemplateView):
         @return: queryset as page
         @rtype: Paginator.page
         """
-        paginator = Paginator(queryset, PAGINATE_BY)
+        paginator = Paginator(queryset, paginate_by)
         try:
             result = paginator.page(page)
         except (PageNotAnInteger, TypeError):
@@ -164,7 +164,7 @@ class Items (TemplateView):
             qs = qs.filter(Q(draftlaw__title__icontains=q) |\
                 Q(draftlaw__summary__icontains=q) | Q(place__icontains=q))
 
-        page = self._get_page(parameters['page'], qs.order_by('-date'))
+        page = self._get_page(parameters['page'], parameters['pagesize'], qs.order_by('-date'))
         if page: # FIXME: no discussions -> no non-discussed
             page.object_list = self._combine_nondiscussed(
                 parameters, page.object_list)

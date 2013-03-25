@@ -10,6 +10,7 @@ from django.db.models import Q
 from django.utils.translation import get_language, ugettext_lazy as _
 
 from .models import DraftLaw, DraftLawPluginConf
+from .views import Items
 from basic.blog.models import Post
 
 
@@ -30,3 +31,17 @@ class DraftLawPlugin (CMSPluginBase):
 
         return context
 plugin_pool.register_plugin(DraftLawPlugin)
+
+class DraftLawListPlugin (CMSPluginBase):
+    model = CMSPlugin
+    name = _("Draft Law List Plugin")
+    render_template = 'draftlaw/items.html'
+
+    def render(self, context, instance, placeholder):
+        view = Items()
+        #TODO This seems kinda hacky. Maybe convert the whole
+        # view to a plugin instead?
+        context['draftlaws'] = view._get_draftlaws({'page': 1,'pagesize': 4})
+        return context
+
+plugin_pool.register_plugin(DraftLawListPlugin)
