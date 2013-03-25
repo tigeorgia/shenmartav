@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load cms_tags %}
+{% block content %}
+<div id="banner" class="">Banner and related content here.</div>
+<div id="mp-list" class="">
+    {% placeholder mp_list %}
+    <div id="mp-info">populate me by inserting HTML from /who/info/<id>/</div>    
+</div>
+
+<div id="below-fold" class="">
+    <div id="engage-slider" class="">
+        <div>{% placeholder engage1 %}</div>
+        <div>{% placeholder engage2 %}</div>
+    </div>
+    <div id="mp-stats-slider" class="">
+        <div>{% placeholder stats1 %}</div>
+        <div>{% placeholder stats2 %}</div>
+        <div>{% placeholder stats3 %}</div>
+    </div>
+    <div id="drafts-mini" class=""><table><tbody>{% placeholder drafts %}</tbody></table></div>
+</div>
+{% endblock %}

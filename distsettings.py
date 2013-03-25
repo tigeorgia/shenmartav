@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     # File browser has to go before admin
     'filebrowser',
 
@@ -192,7 +193,7 @@ MARKITUP_SET = 'markitup/sets/markdown'
 gettext = lambda s: s
 CMS_TEMPLATES = (
     ('simple.html', gettext('Simple Template')),
-    ('3col.html', gettext('3 Column Template')),
+    ('home.html', gettext('Home Template')),
 )
 CMS_LANGUAGE_CONF = {
     'ka': ['en'],

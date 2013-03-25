@@ -1,0 +1,46 @@
+{% load i18n %}
+<div id="attendance">
+<h1>{% trans 'Attendance ratings' %}</h1>
+<div id="best-attendance">
+{% with attendance=bestattend %}
+    <h2>{{ bestmp.name }}: {{ attendance.percentage_attended }}% <span class="explain" title="{% trans "Determined based on the official voting records retrieved from the Parliament web site. We calculate the attendance rate as (Number of Yes votes + Number of No votes + Number of Abstain votes) divided by the total number of votes for which an MP’s name is given. This doesn’t necessarily reflect which MPs were physically present at the time a vote was held, but is what was recorded by the Parliament’s voting systems." %}">?</span></h2>
+    <div id="bar" class="table">
+        <div class="row">
+            <div class="cell leftalign">{{ attendance.attended }}</div>
+            <div class="cell rightalign">{{ attendance.absent }}</div>
+        </div>
+        <div class="row">
+            <div class="cell attendance-attended" style="width:{{ attendance.percentage_attended }}%">&nbsp;</div>
+            <div class="cell attendance-absent" style="width:{{ attendance.percentage_absent }}%">&nbsp;</div>
+        </div>
+    </div>
+    <div id="bar-labels" class="table">
+        <div class="row">
+            <div class="cell leftalign">{% trans 'Attended' %}</div>
+            <div class="cell rightalign">{% trans 'Absent' %}</div>
+        </div>
+    </div>
+{% endwith %}
+</div>
+<div id="worst-attendance">
+{% with attendance=worstattend %}
+    <h2>{{ worstmp.name }}: {{ attendance.percentage_attended }}% <span class="explain" title="{% trans "Determined based on the official voting records retrieved from the Parliament web site. We calculate the attendance rate as (Number of Yes votes + Number of No votes + Number of Abstain votes) divided by the total number of votes for which an MP’s name is given. This doesn’t necessarily reflect which MPs were physically present at the time a vote was held, but is what was recorded by the Parliament’s voting systems." %}">?</span></h2>
+    <div id="bar" class="table">
+        <div class="row">
+            <div class="cell leftalign">{{ attendance.attended }}</div>
+            <div class="cell rightalign">{{ attendance.absent }}</div>
+        </div>
+        <div class="row">
+            <div class="cell attendance-attended" style="width:{{ attendance.percentage_attended }}%">&nbsp;</div>
+            <div class="cell attendance-absent" style="width:{{ attendance.percentage_absent }}%">&nbsp;</div>
+        </div>
+    </div>
+    <div id="bar-labels" class="table">
+        <div class="row">
+            <div class="cell leftalign">{% trans 'Attended' %}</div>
+            <div class="cell rightalign">{% trans 'Absent' %}</div>
+        </div>
+    </div>
+{% endwith %}
+</div>
+</div>

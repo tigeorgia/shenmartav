@@ -1,4 +1,5 @@
 {% load i18n %}
+<!-- draftlaws list -->
 {% for dl in draftlaws.object_list %}
     <tr class="item" id="item-{{ dl.pk}}">
         <td><a name="draftlaw-{{ dl.pk}}"></a>{{ dl.title }}{% if dl.place %}:: {{ dl.place }}{% endif %}</td>

@@ -27,6 +27,14 @@
                     <option value="2">{% trans 'Majoritarian' %}</option>
                 </select>
             </div>
+            <div id="cell-ordering" class="cell">
+                <div>{% trans 'Order by' %}</div>
+                <select id="orderby-type">
+                    <option value="none">{% trans 'Order by...' %}</option>
+                    <option value="income">{% trans 'Income' %}</option>
+                    <option value="attendance">{% trans 'Attendance' %}</option>
+                </select>
+            </div>
             <div id="cell-party" class="cell">
                 <div>{% trans 'Party' %}</div>
                 <select id="filter-party"></select>
