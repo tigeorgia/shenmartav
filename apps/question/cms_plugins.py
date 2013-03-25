@@ -37,13 +37,13 @@ class QuestionPlugin (CMSPluginBase):
 
         try:
             # temporary:
-            latest = Question.public.order_by('-date')[0]
-            #latest = Question.answered.order_by('-date')[0]
+            #latest = Question.public.order_by('-date')[0]
+            latest = Question.answered.order_by('-date')[0]
         except IndexError:
             latest = None
         context['latest'] = latest
         # temporary:
-        return context
+        #return context
 
         if not latest:
             context['most_active'] = None
