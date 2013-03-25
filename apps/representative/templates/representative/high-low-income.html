@@ -1,0 +1,15 @@
+{% load humanize %}
+{% load i18n %}
+<div id="income">
+<h1>{% trans 'Income ratings' %}</h1>
+<div id="high-income">
+{% with income=highmp.income %}
+    <h2>{{ highmp.name }}: GEL {{ income.total|intcomma }} <span class="explain" title="{% trans "The total income for the MP, as based on their most recent income declaration." %}">?</span></h2>
+{% endwith %}
+</div>
+<div id="low-income">
+{% with income=lowmp.income %}
+    <h2>{{ lowmp.name }}: GEL {{ income.total|intcomma }} <span class="explain" title="{% trans "The total income for the MP, as based on their most recent income declaration." %}">?</span></h2>
+{% endwith %}
+</div>
+</div>
