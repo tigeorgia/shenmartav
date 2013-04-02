@@ -58,14 +58,14 @@
         <div style="clear:both"></div>
     </div>
 {% endif %}
-<!--
     <div id="ask">
-        <h3>{% trans 'Choose a Representative' %}</h3>
+        <h4><a href="{% url question_list %}">{% trans 'Ask a question' %}</a></h4>
+<!--
         <form action="{% url question_ask_representative 0 %}" method="get">
             <select>{% for r in representatives %}
                 <option value="{{ r.pk }}"{% ifequal r.pk random.pk %}selected="selected"{% endifequal %}>{{ r.lastname_first }}</option>
             {% endfor %}</select><input type="submit" value="{% trans 'Ask' %}" />
         </form>
-    </div>
 -->
+    </div>
 </div>
