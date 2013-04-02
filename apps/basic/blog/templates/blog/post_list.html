@@ -12,9 +12,22 @@
 
     <div class="list post_list body">
         {% for post in object_list %}<div class="item">
+            <div class="thumbnail">
+                <a href="{{ post.get_absolute_url }}" title="{% trans 'View this post' %}">
+                {% if post.thumb %}
+                    <img src="{{post.thumb}}">
+                {% else %}
+                    <p class="date-day">{{ post.publish|date:"d" }}</p>
+                    <p class="date-rest">{{ post.publish|date:"Y F" }}</p>
+                {% endif %}
+                </a>
+            </div>
             <h3 class="title"><a href="{{ post.get_absolute_url }}" title="{% trans "View this post" %}">{{ post.title }}</a></h3>
             <p class="date">{{ post.publish|date:"Y F d" }}</p>
             <p class="tease">{{ post.tease|safe }}</p>
+            <div class="viewmore">
+                <a href="{{ post.get_absolute_url }}" title="{% trans 'View this post' %}">{% trans 'Read more' %}</a>
+            </div>
         </div>
         {% endfor %}</div>
 
