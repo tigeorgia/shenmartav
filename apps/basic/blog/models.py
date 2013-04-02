@@ -10,6 +10,7 @@ import datetime
 import tagging
 from tagging.fields import TagField
 
+from sorl.thumbnail.fields import ImageWithThumbnailsField
 
 class Category(models.Model):
     """Category model."""
@@ -36,6 +37,9 @@ class Post(models.Model):
         (1, _('Draft')),
         (2, _('Public')),
     )
+    thumb = ImageWithThumbnailsField(upload_to='blogposts',
+        thumbnail={'size': (200, 200), 'options': ('crop',)},
+        blank=True, null=True, help_text=_('Thumbnail'))
     title = models.CharField(_('title'), max_length=200)
     slug = models.SlugField(_('slug'), unique_for_date='publish')
     author = models.ForeignKey(User, blank=True, null=True)
