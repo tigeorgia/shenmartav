@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load cms_tags %}
+{% load cms_tags i18n %}
 {% block content %}
 <div id="banner" class="">Banner and related content here.</div>
 <div id="mp-list" class="">
@@ -17,6 +17,9 @@
         <div>{% placeholder stats2 %}</div>
         <div>{% placeholder stats3 %}</div>
     </div>
-    <div id="drafts-mini" class=""><table><tbody>{% placeholder drafts %}</tbody></table></div>
+    <div id="drafts-mini" class="">
+        <table><tbody>{% placeholder drafts %}</tbody></table>
+        <div><a href="{% url draftlaw_list %}">{% trans 'View all' %}</a></div>
+    </div>
 </div>
 {% endblock %}
