@@ -164,7 +164,11 @@ class Items (TemplateView):
             qs = qs.filter(Q(draftlaw__title__icontains=q) |\
                 Q(draftlaw__summary__icontains=q) | Q(place__icontains=q))
 
-        page = self._get_page(parameters['page'], parameters['pagesize'], qs.order_by('-date'))
+        try:
+            pagesize = parameters['pagesize']
+        except KeyError:
+            pagesize = PAGINATE_BY
+        page = self._get_page(parameters['page'], pagesize, qs.order_by('-date'))
         if page: # FIXME: no discussions -> no non-discussed
             page.object_list = self._combine_nondiscussed(
                 parameters, page.object_list)
