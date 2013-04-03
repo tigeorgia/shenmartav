@@ -8,13 +8,9 @@
 {% endblock %}
 
 {% block content %}
-    {% include 'folded/nav.html' %}
-    {% include 'folded/who.html' %}
 <div class="opened">
     {% block incomedeclaration %}{% endblock %}
 </div>
-    {% include 'folded/what.html' %}
-    {% include 'folded/question.html' %}
 {% addtoblock "js" %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/incomedeclaration/base.js"></script>
 {% endaddtoblock %}

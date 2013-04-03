@@ -9,9 +9,5 @@
 {% endblock %}
 
 {% block content %}
-    <div id="col-nav" class="column shadow">{% include 'nav.html' %}</div>
     <div class="opened">{% block podcast %}{% endblock %}</div>
-    {% include 'folded/who.html' %}
-    {% include 'folded/what.html' %}
-    {% include 'folded/question.html' %}
 {% endblock %}
