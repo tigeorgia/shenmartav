@@ -6,6 +6,20 @@
             <div class="podcast-episode mod">
                 <h2>{{ episode.title }}</h2>
                 <div class="meta">
+                    <div class="thumbnail">
+                        <a href="{{ post.get_absolute_url }}" title="{% trans 'View this post' %}">
+                        {% if episode.img_episode_sm %}
+                            <img src="{{ episode.img_episode_sm.url }}"
+                                alt="{{ episode.img_episode_sm.name }}"
+                                width="{{ episode.img_episode_sm.width }}"
+                                height="{{ episode.img_episode_sm.height }}"
+                                class="left" />
+                        {% else %}
+                            <p class="date-day">{{ episode.published|date:"d" }}</p>
+                            <p class="date-rest">{{ episode.published|date:"Y F" }}</p>
+                        {% endif %}
+                        </a>
+                    </div>
                     <span class="date">
                         {{ episode.published|date:"F j, Y" }}
                     </span>
@@ -33,13 +47,6 @@
                     {% endif %}
                 </div>
                 <div class="episode-details">
-                    <a href="{{ episode.img_episode_lg.url }}" rel="facebox" class="episode-thumb">
-                        <img src="{{ episode.img_episode_sm.url }}"
-                            alt="{{ episode.img_episode_sm.name }}"
-                            width="{{ episode.img_episode_sm.width }}"
-                            height="{{ episode.img_episode_sm.height }}"
-                            class="left" />
-                    </a>
                     <h6>{{ episode.subtitle }}</h6>
                     {% if episode.description %}
                         <p><a href="#details-{{ episode.id }}" rel="facebox">{% trans "read more" %}</a></p>
