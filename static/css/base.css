@@ -135,15 +135,15 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	overflow: hidden !important;
 }
 
-.clearfix{
-	clear:both;
+.clearfix {
+	clear: both;
 }
 
-.clearfix:after{
+.clearfix:after {
 	content: " ";
 	visibility: hidden;
-	clear:both;
-	display:block;
+	clear: both;
+	display: block;
 	height: 0;
 }
 
@@ -151,10 +151,12 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	width: 960px;
 	margin: 0 auto;
 	clear: both;
+	overflow: hidden;
+	border: 1px solid;
 }
 
-#nav{
-	padding-bottom:2em;
+#nav {
+	padding-bottom: 2em;
 }
 
 #header {
@@ -209,16 +211,15 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	color: #4d92c9;
 }
 
-#header #language-switchers{
-	float:right;
+#header #language-switchers {
+	float: right;
 }
 
-#header #language-switchers #language-chooser,
-#header #language-switchers #google_translate_element{
+#header #language-switchers #language-chooser,#header #language-switchers #google_translate_element
+	{
 	display: inline-block;
 	margin: 5px 5px;
 }
-
 
 #header #google_translate_element {
 	margin-top: .5em;
@@ -239,11 +240,9 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 }
 
 #footer {
-	position: absolute;
-	bottom: 2em;
+	position: relative;
 	z-index: 2;
-	left: 50%;
-	margin-left: -25%;
+	overflow: hidden;
 }
 
 .column #footer {
@@ -251,25 +250,73 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	margin-left: 0;
 }
 
-#footer #socialbuttons {
-	list-style: none;
-	margin-bottom: 1em;
-}
-
-#footer #socialbuttons li {
-	text-align: center;
-}
-
-.column #footer #socialbuttons li {
-	display: inline;
-}
-
 #footer #sponsors {
+	display: inline-block;
 	list-style: none;
+	position: relative;
+	width: 100%;
 }
 
 #footer #sponsors li {
 	display: inline;
+}
+
+#footer #copyright {
+	display: inline-block;
+	margin-top: 1em;
+	text-align: center;
+	width: 100%;
+}
+
+#footer #socialbuttons {
+	display: inline-block;
+	list-style: none;
+	margin-bottom: 1em;
+	list-style: none;
+	float: right;
+}
+
+#footer #socialbuttons li {
+	text-align: center;
+	float: left;
+	margin: 0;
+	margin-left: 3px;
+}
+
+#footer #socialbuttons #joinus {
+	vertical-align: top;
+	position: relative;
+	top: 1em;
+}
+
+#footer #socialbuttons #socialicons {
+	display: inline-block;
+	margin: 6px 0 0 6px;
+	position: relative;
+}
+
+#footer #socialbuttons #socialicons .button {
+	background: url(../img/footer-social-icons.jpg) no-repeat;
+	width: 26px;
+	height: 26px;
+}
+
+#footer #socialbuttons #socialicons #facebook {
+	background-position:0 0;
+}
+
+#footer #socialbuttons #socialicons #twitter {
+	background-position:-30px 0;
+}
+
+#footer #socialbuttons #socialicons #feed {
+	background-position:-60px 0;
+}
+
+#footer .col1,#footer .col2,#footer .col3 {
+	display: inline-block;
+	float: left;
+	width: 33.3%;
 }
 
 .column {
