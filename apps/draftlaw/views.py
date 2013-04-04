@@ -204,6 +204,7 @@ class Detail (DetailView):
     def get_context_data (self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
         obj = context['obj']
+        context['stages'] = DraftLawForList(obj,obj.bureau_date) 
         context['url_feed'] = reverse('draftlaw_feed_detail', args=[obj.pk])
 
         set_language_changer(self.request, obj.get_absolute_url)

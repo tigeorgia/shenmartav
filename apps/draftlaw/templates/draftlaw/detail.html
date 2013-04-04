@@ -17,8 +17,8 @@
     <h2 class="heading">{{ obj }}</h2>
     <div class="body">
         <ul id="item">
-            <li id="discussion-stage">{% trans 'Discussion stage:' %}:
-             {% for stage in obj.stages %}
+            <li id="discussion-stage">{% trans 'Discussion stage' %}:
+             {% for stage in stages.stages %}
               <div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>
                {% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}
               </div>
@@ -60,14 +60,16 @@
                 {% endfor %}</ul>
             </li>{% endif %}
         </ul>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                  fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <div class="fb-comments" data-href="http://{{ request.META.HTTP_HOST }}{{ request.META.PATH_INFO }}" data-num-posts="5" data-width="500"></div>
 
-        <div id="annotations">
-            <h3>{% trans 'User Annotations' %}</h3>
-            {% render_comment_list for obj %}
-
-            <h4>{% trans 'Your Annotation' %}</h4>
-                {% render_comment_form for obj %}
-        </div>
     </div>
 </div>
 {% endblock %}
