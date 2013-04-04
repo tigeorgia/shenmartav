@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'simple.html' %}
 {% load cms_tags menu_tags sekizai_tags %}
 
 {% block css %}
@@ -8,7 +8,8 @@
 {% endblock %}
 
 {% block content %}
-<!--simple.html-->
-    {% block sidebar %}
-    {% endblock %}
+    <div class="opened">
+        <div class="breadcrumb">{% show_breadcrumb %}</div>
+        <div id="scroll-container" class="scroll-pane">{% placeholder simple_content %}</div>
+    </div>
 {% endblock %}

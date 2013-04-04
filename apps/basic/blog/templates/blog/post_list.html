@@ -8,8 +8,6 @@
 </div>
 
 <div id="scroll-container" class="scroll-pane">
-    <h2 class="heading">{% trans 'Blog Posts' %}</h2>
-
     <div class="list post_list body">
         {% for post in object_list %}<div class="item">
             <div class="thumbnail">
@@ -18,7 +16,7 @@
                     <img src="{{post.thumb}}">
                 {% else %}
                     <p class="date-day">{{ post.publish|date:"d" }}</p>
-                    <p class="date-rest">{{ post.publish|date:"Y F" }}</p>
+                    <p class="date-rest">{{ post.publish|date:"m-Y" }}</p>
                 {% endif %}
                 </a>
             </div>

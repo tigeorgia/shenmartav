@@ -192,7 +192,7 @@ MARKITUP_SET = 'markitup/sets/markdown'
 ###########################################################
 gettext = lambda s: s
 CMS_TEMPLATES = (
-    ('simple.html', gettext('Simple Template')),
+    ('cms_simple.html', gettext('Simple Template')),
     ('home.html', gettext('Home Template')),
 )
 CMS_LANGUAGE_CONF = {

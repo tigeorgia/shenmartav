@@ -17,6 +17,14 @@
     <h2 class="heading">{{ obj }}</h2>
     <div class="body">
         <ul id="item">
+            <li id="discussion-stage">{% trans 'Discussion stage:' %}:
+             {% for stage in obj.stages %}
+              <div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>
+               {% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}
+              </div>
+             {% endfor %}
+             <div style="clear: both"></div> 
+            </li>
             <li id="bureau-date">{% trans 'Bureau Date' %}: {{ obj.bureau_date }}</li>
             <li id="initiator">{% trans 'Initiator' %}: {{ obj.initiator_linked|safe }}</li>
             <li id="author">{% trans 'Author' %}: {{ obj.author_linked|safe }}</li>

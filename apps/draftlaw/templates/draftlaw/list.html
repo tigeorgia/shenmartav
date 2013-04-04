@@ -21,18 +21,15 @@
         <div id="container-list" class="scroll-pane"><table>
             <thead>
             <tr>
+                <th class="heading" id="header-date">{% trans 'Date' %}</th>
                 <th class="heading" id="header-draftlaw">{% trans 'Draft Law' %}</th>
                 <th class="heading" id="header-stage">{% trans 'Discussion Stage' %} <span class="explain explain-heading" title="{% trans 'In order to become enacted, each draft law must pass 6 hearings: three committee hearings and three plenary hearings. Each box represents one stage in this process' %}">?</span></th>
-                <th class="heading" id="header-date">{% trans 'Date' %}</th>
             </tr>
             </thead>
             <tbody id="items"></tbody>
-        </table></div>
-    </div>
-
-    <div id="container-info" class="scroll-pane">
-        <h2 class="heading">{% trans 'Info' %}</h2>
-        <div id="info"></div>
+        </table>
+        <div id="list-bottom">{% trans 'List more' %}</div>
+        </div>
     </div>
 
     <div style="clear:both"></div>
