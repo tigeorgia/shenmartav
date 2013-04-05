@@ -2,7 +2,91 @@
  * CSS file for app basic.blog, base
  */
 
+#blog-wrapper {
+    width: 64%;
+}
+
+.item {
+    margin-bottom: 4%;
+}
+
+#blog-wrapper .post-details {
+    width: 64%;
+    margin-left: 1%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#blog-wrapper .post-details .title {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #6c6c6c;
+}
+
+#blog-wrapper .post-details .title a {
+    color: inherit;
+    text-decoration: none
+}
+
+#blog-wrapper .post-details .title a:hover {
+    color: #2888c5;
+}
+
+#blog-wrapper .post-details .date {
+    margin-top: 0;
+}
+
+#blog-wrapper .post-details .tease {
+    margin-bottom: 5%;
+}
+
+#blog-wrapper .thumbnail {
+    width: 32%;
+    max-width: 200px;
+    max-height: 160px;
+    margin-right: 1%;
+    display: inline-block;
+    background-color: #f3f3f3;
+    vertical-align: top;
+}
+
+#blog-wrapper .thumbnail a {
+    text-decoration: none;
+}
+
+#blog-wrapper .thumbnail .date {
+    text-align: center;
+    color: #b2b2b2;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+#blog-wrapper .viewmore {
+    background-color: #d3d3d3;
+    color: #ffffff;
+    display: inline;
+    padding: 10px;
+    margin-top: 5%;
+}
+
+#blog-wrapper .viewmore:hover {
+    background-color: #6ec9f8;
+}
+
+#blog-wrapper .viewmore a {
+    color: inherit;
+    text-decoration: none;
+}
+
+span.date-day {
+    font-size: 300%;
+}
+
+span.date-rest {
+}
+
 .opened {
+
 }
 .opened .breadcrumb,
 .opened .fb-comments {

@@ -7,6 +7,9 @@
 {% endaddtoblock %}
 {% endblock %}
 
+
 {% block content %}
-    <div class="opened">{% block blog %}{% endblock %}</div>
+ {% block sidebar %}
+ {% endblock %}
+    <div id="blog-wrapper">{% block blog %}{% endblock %}</div>
 {% endblock %}
