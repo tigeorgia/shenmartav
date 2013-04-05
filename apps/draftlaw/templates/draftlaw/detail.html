@@ -13,42 +13,56 @@
     {{ obj.title }}
 </div>
 
-<div id="draftlaw">
+<div id="draftlaw" class="with-sidebar">
     <h2 class="heading">{{ obj }}</h2>
     <div class="body">
-        <ul id="item">
-            <li id="discussion-stage">{% trans 'Discussion stage' %}:
-             {% for stage in stages.stages %}
-              <div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>
+        <table id="item">
+            <caption>{% trans 'Draft law details' %}</caption>
+            <thead>
+              <tr><th id="key">{% trans 'Info' %}</th><th id="val">{% trans 'Status' %}</th></tr>
+            </thead>
+            <tbody>
+            <tr id="discussion-stage">
+                <td>{% trans 'Discussion stage' %}:</td>
+             
+                <td>{% for stage in stages.stages %}
+                    <div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>
                {% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}
-              </div>
-             {% endfor %}
-             <div style="clear: both"></div> 
-            </li>
-            <li id="bureau-date">{% trans 'Bureau Date' %}: {{ obj.bureau_date }}</li>
-            <li id="initiator">{% trans 'Initiator' %}: {{ obj.initiator_linked|safe }}</li>
-            <li id="author">{% trans 'Author' %}: {{ obj.author_linked|safe }}</li>
-            <li id="status">{% trans 'Status' %}: {{ obj.status }}</li>
-            <li id="summary">{% trans 'Summary' %}: {{ obj.summary }}</li>
+                    </div>
+                {% endfor %}
+                    <div style="clear: both"></div> 
+                </td>
+            </tr>
+            <tr id="bureau-date">
+                <td>{% trans 'Bureau Date' %}:</td>
+                <td>{{ obj.bureau_date }}</td>
+            </tr>
+            <tr id="initiator">
+                <td>{% trans 'Initiator' %}:</td>
+                <td>{{ obj.initiator_linked|safe }}</td>
+            </tr>
+            <tr id="author"><td>{% trans 'Author' %}:</td> <td>{{ obj.author_linked|safe }}</td></tr>
+            <tr id="status"><td>{% trans 'Status' %}:</td> <td>{{ obj.status }}</td></tr>
+            <tr id="summary"><td>{% trans 'Summary' %}:</td> <td>{{ obj.summary }}</td></tr>
             {% if obj.sms_alerts.all %}{% for alert in obj.sms_alerts.all %}
-            <li id="smsalert-{{ alert.pk }}">{% trans 'SMS Alert' %}: {{ alert.text }} ({{ alert.date_sent }})</li>
+            <tr id="smsalert-{{ alert.pk }}"><td>{% trans 'SMS Alert' %}:</td> <td>{{ alert.text }} ({{ alert.date_sent }})</td></tr>
             {% endfor %}{% endif %}
-            {% if obj.full_text %}<li id="full-text">{% trans 'Full Text' %}: {{ obj.full_text }}</li>{% endif %}
-            {% if obj.full_text_url %}<li id="full-text-url">{% trans 'Full Text URL' %}: {{ obj.full_text_url }}</li>{% endif %}
-            {% if obj.enacted_text_url %}<li id="enacted-text-url">{% trans 'Enacted Text URL' %}: {{ obj.enacted_text_url }}</li>{% endif %}
-            {% if obj.law_number %}<li id="law-number">{% trans 'Law Number' %}: {{ obj.law_number }}</li>{% endif %}
-            {% if obj.voting_record %}<li id="voting-record"><a href="{{ obj.voting_record.get_absolute_url }}">{% trans 'Voting Record' %}</a></li>{% endif %}
-            {% if obj.related_1 %}<li id="related_1">{% trans 'Related Document 1' %}: {{ obj.related_1 }}</li>{% endif %}
-            {% if obj.related_2 %}<li id="related_2">{% trans 'Related Document 2' %}: {{ obj.related_2 }}</li>{% endif %}
-            {% if obj.related_3 %}<li id="related_3">{% trans 'Related Document 3' %}: {{ obj.related_3 }}</li>{% endif %}
-            {% if obj.related_4 %}<li id="related_4">{% trans 'Related Document 4' %}: {{ obj.related_4 }}</li>{% endif %}
-            {% if obj.related_5 %}<li id="related_5">{% trans 'Related Document 5' %}: {{ obj.related_5 }}</li>{% endif %}
-            {% if obj.discussions %}<li id="disussions">{% trans 'Discussions' %}
-                <ul>{% for discussion in obj.discussions.all %}
+            {% if obj.full_text %}<tr id="full-text"><td>{% trans 'Full Text' %}:</td> <td>{{ obj.full_text }}</td></tr>{% endif %}
+            {% if obj.full_text_url %}<tr id="full-text-url"><td>{% trans 'Full Text URL' %}:</td> <td>{{ obj.full_text_url }}</td></tr>{% endif %}
+            {% if obj.enacted_text_url %}<tr id="enacted-text-url"><td>{% trans 'Enacted Text URL' %}: <td>{{ obj.enacted_text_url }}</td></tr>{% endif %}
+            {% if obj.law_number %}<tr id="law-number"><td>{% trans 'Law Number' %}:</td><td>{{ obj.law_number }}</td></tr>{% endif %}
+            {% if obj.voting_record %}<tr id="voting-record"><td>{% trans 'Voting record' %}:</td><td><a href="{{ obj.voting_record.get_absolute_url }}">{% trans 'Voting Record' %}</a></td></tr>{% endif %}
+            {% if obj.related_1 %}<tr id="related_1"><td>{% trans 'Related Document 1' %}:</td><td>{{ obj.related_1 }}</td></tr>{% endif %}
+            {% if obj.related_2 %}<tr id="related_2"><td>{% trans 'Related Document 2' %}:</td><td>{{ obj.related_2 }}</td></tr>{% endif %}
+            {% if obj.related_3 %}<tr id="related_3"><td>{% trans 'Related Document 3' %}:</td><td>{{ obj.related_3 }}</td></tr>{% endif %}
+            {% if obj.related_4 %}<tr id="related_4"><td>{% trans 'Related Document 4' %}:</td><td>{{ obj.related_4 }}</td></tr>{% endif %}
+            {% if obj.related_5 %}<tr id="related_5"><td>{% trans 'Related Document 5' %}:</td><td>{{ obj.related_5 }}</td></tr>{% endif %}
+            {% if obj.discussions %}<tr id="disussions"><td>{% trans 'Discussions' %}:</td>
+                <td><ul>{% for discussion in obj.discussions.all %}
                     <li id="discussion-{{ discussion.date }}">{{ discussion.date }} :: {{ discussion.place }}</li>
                 {% endfor %}</ul>
-            </li>{% endif %}
-            {% if obj.children.all %}<li id="children">{% trans 'Children' %}
+            </td></tr>{% endif %}
+            {% if obj.children.all %}<tr id="children"><td>{% trans 'Children' %}:</td><td>
                 <ul>{% for child in obj.children.all %}
                     <li id="child-bill-number-{{ child.pk }}">{{ child }}
                         <ul>
@@ -58,8 +72,9 @@
                         </ul>
                     </li>
                 {% endfor %}</ul>
-            </li>{% endif %}
-        </ul>
+            </td></tr>{% endif %}
+    </tbody>
+    </table>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];

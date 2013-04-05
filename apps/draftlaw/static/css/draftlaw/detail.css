@@ -6,3 +6,20 @@
     margin-top: 3em;
     padding: 0;
 }
+
+#item td {
+    border-top: 1px solid #ebebeb;
+    padding: 1em;
+}
+
+#item #key {
+    width: 25%;
+}
+
+#item caption {
+    display: none;
+}
+
+#item th {
+    display: none;
+}
