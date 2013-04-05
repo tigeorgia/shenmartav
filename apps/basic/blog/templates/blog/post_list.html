@@ -27,7 +27,7 @@
             </div>
             <div class="post-details">
               <h3 class="title"><a href="{{ post.get_absolute_url }}" title="{% trans "View this post" %}">{{ post.title }}</a></h3>
-              <p class="date smaller">{{ post.publish|date:"Y F d" }}</p>
+              <p class="date smaller">{{ post.publish|date:"d F Y" }}</p>
               <div class="tease">{{ post.tease|safe }}</div>
               <div class="viewmore">
                   <a href="{{ post.get_absolute_url }}" title="{% trans 'View this post' %}">{% trans 'Read more' %}</a>

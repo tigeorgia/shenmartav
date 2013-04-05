@@ -9,11 +9,9 @@
     {{ object.title }}
 </div>
 
-<div id="scroll-container" class="scroll-pane">
-
     <div class="post body">
-        <p id="title">{{ object.title }}</p>
-        <p id="date">{{ object.publish|date:"d.m.Y" }}</p>
+        <h3 id="title" class="title">{{ object.title }}</h3>
+        <p id="date" class="date smaller">{{ object.publish|date:"d F Y" }}</p>
 
         <div id="body">{{ object.body|render_inlines }}</div>
 
@@ -30,5 +28,4 @@
                   fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     <div class="fb-comments" data-href="http://{{ request.META.HTTP_HOST }}{{ request.META.PATH_INFO }}" data-num-posts="5" data-width="500"></div>
-</div>
 {% endblock %}
