@@ -3,6 +3,9 @@
 
 {% block css %}
 {% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/items-with-thumbs.css" media="all" />
+{% endaddtoblock %}
+{% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/blog.css" media="all" />
 {% endaddtoblock %}
 {% endblock %}
@@ -11,5 +14,5 @@
 {% block content %}
  {% block sidebar %}
  {% endblock %}
-    <div id="blog-wrapper">{% block blog %}{% endblock %}</div>
+    <div id="item-wrapper">{% block blog %}{% endblock %}</div>
 {% endblock %}

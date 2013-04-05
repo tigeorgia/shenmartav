@@ -8,6 +8,10 @@
 {% block body_class %}page-episode-list{% endblock %}
 
 {% block podcast %}
+    <div class="breadcrumb">
+        <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+        {% trans 'Podcast' %}
+    </div>
     {% include "podcasting/_episode_list.html" %}
     {% block episode_list_extra %}{% endblock %}
 {% endblock %}
@@ -17,7 +21,7 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/mediaelement-and-player.min.js"></script>
     <script>
         $('audio').mediaelementplayer({
-            defaultAudioWidth: 580,
+            defaultAudioWidth: 405,
             features : ['playpause','progress','current','duration','tracks','volume','fullscreen','googleanalytics'],
         });
     </script>

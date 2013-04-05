@@ -1,26 +1,26 @@
 {% load i18n %}
 
 {% if episode_list %}
-    <div class="episode-list">
+    <div id="item-wrapper" class="episode-list list body">
         {% for episode in episode_list %}
-            <div class="podcast-episode mod">
-                <h2>{{ episode.title }}</h2>
-                <div class="meta">
+            <div class="podcast-episode mod item">
                     <div class="thumbnail">
-                        <a href="{{ post.get_absolute_url }}" title="{% trans 'View this post' %}">
                         {% if episode.img_episode_sm %}
                             <img src="{{ episode.img_episode_sm.url }}"
                                 alt="{{ episode.img_episode_sm.name }}"
                                 width="{{ episode.img_episode_sm.width }}"
                                 height="{{ episode.img_episode_sm.height }}"
-                                class="left" />
+                                class="" />
                         {% else %}
-                            <p class="date-day">{{ episode.published|date:"d" }}</p>
-                            <p class="date-rest">{{ episode.published|date:"Y F" }}</p>
+                            <p class="date">
+                                <span class="date-day">{{ episode.published|date:"d" }}</span>
+                                <span class="date-rest">{{ episode.published|date:"Y m" }}</span>
+                            </p>
                         {% endif %}
-                        </a>
                     </div>
-                    <span class="date">
+                <div class="item-details">
+                    <h3 class="title">{{ episode.title }}</h3>
+                    <span class="smaller date">
                         {{ episode.published|date:"F j, Y" }}
                     </span>
                     {% for enclosure in episode.enclosure_set.all %}
@@ -45,16 +45,8 @@
                             </div>
                         </div>
                     {% endif %}
-                </div>
-                <div class="episode-details">
-                    <h6>{{ episode.subtitle }}</h6>
-                    {% if episode.description %}
-                        <p><a href="#details-{{ episode.id }}" rel="facebox">{% trans "read more" %}</a></p>
-                        <div id="details-{{ episode.id }}" class="hidden">
-                            <div>{{ episode.description }}</div>
-                        </div>
-                    {% endif %}
-                </div>
+                    <div class="tease">{{ episode.description|safe }}</div>
+               </div>
             </div>
         {% endfor %}
     </div>
