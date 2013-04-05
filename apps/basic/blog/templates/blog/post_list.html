@@ -1,30 +1,37 @@
 {% extends "blog/base_blog.html" %}
 {% load i18n %}
-
+{% block sidebar %}
+<div id="sidebar"></div>
+{% endblock %}
 {% block blog %}
 <div class="breadcrumb">
     <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
     {% trans 'Blog' %}
 </div>
 
-<div id="scroll-container" class="scroll-pane">
     <div class="list post_list body">
-        {% for post in object_list %}<div class="item">
+        {% for post in object_list %}
+        <div class="item">
             <div class="thumbnail">
                 <a href="{{ post.get_absolute_url }}" title="{% trans 'View this post' %}">
                 {% if post.thumb %}
                     <img src="{{post.thumb}}">
                 {% else %}
-                    <p class="date-day">{{ post.publish|date:"d" }}</p>
-                    <p class="date-rest">{{ post.publish|date:"m-Y" }}</p>
+                    <p class="date">
+                    <span class="date-day">{{ post.publish|date:"d" }}</span>
+                    <br>
+                    <span class="date-rest">{{ post.publish|date:"m-Y" }}</span>
+                    </p>
                 {% endif %}
                 </a>
             </div>
-            <h3 class="title"><a href="{{ post.get_absolute_url }}" title="{% trans "View this post" %}">{{ post.title }}</a></h3>
-            <p class="date">{{ post.publish|date:"Y F d" }}</p>
-            <p class="tease">{{ post.tease|safe }}</p>
-            <div class="viewmore">
-                <a href="{{ post.get_absolute_url }}" title="{% trans 'View this post' %}">{% trans 'Read more' %}</a>
+            <div class="post-details">
+              <h3 class="title"><a href="{{ post.get_absolute_url }}" title="{% trans "View this post" %}">{{ post.title }}</a></h3>
+              <p class="date smaller">{{ post.publish|date:"d F Y" }}</p>
+              <div class="tease">{{ post.tease|safe }}</div>
+              <div class="viewmore">
+                  <a href="{{ post.get_absolute_url }}" title="{% trans 'View this post' %}">{% trans 'Read more' %}</a>
+              </div>
             </div>
         </div>
         {% endfor %}</div>
@@ -34,5 +41,4 @@
             {% if has_next and has_previous %} | {% endif %}
             {% if has_previous %}<a class="newer" href="?page={{ previous }}" title="{% trans "View newer posts" %}">{% trans "Newer" %}</a>{% endif %}
         </p>{% endif %}
-    </div>
 {% endblock %}
