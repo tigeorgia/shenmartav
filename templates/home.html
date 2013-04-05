@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load cms_tags i18n %}
+{% block banner %}
+<div class="banner-home"></div>
+{% endblock %}
 {% block content %}
-<div id="banner" class="">Banner and related content here.</div>
 <div id="mp-list" class="">
     {% placeholder mp_list %}
     <div id="mp-info">populate me by inserting HTML from /who/info/<id>/</div>    

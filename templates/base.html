@@ -43,6 +43,7 @@
 </head>
 <body>
 <div id="nav">{% include 'nav.html' %}</div>
+<div id="banner">{% block banner %}<div class="banner-default"></div>{% endblock %}</div>
 <div id="content"><div class="wrapper">{% block content %}{% endblock %}</div></div>
 <div id="footer">{% include 'footer.html' %}</div>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
