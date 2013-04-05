@@ -23,7 +23,7 @@
 
 
 #draftlaw #container-list {
-    height: 300px;
+    height: 86em;
     overflow: auto;
     margin-top: 1em;
 }
@@ -33,19 +33,23 @@
     border-spacing: 0;
 }
 #draftlaw #list th {
-    background: #fff url(../../img/arrows/default.gif) center right no-repeat;
+    background: #fff url(../../img/arrows/default.gif) center left no-repeat;
     cursor: pointer;
     text-align: left;
 }
 
 #draftlaw #list th#header-draftlaw {
     width: 58%;
+    background: none;
+    cursor: default;
 }
 #draftlaw #list th#header-stage {
     width: 25%;
+    text-align: center;
 }
 #draftlaw #list th#header-date {
     width: 17%;
+    text-align: center;
 }
 #draftlaw #list th.headerSortUp {
     background-image: url(../../img/arrows/asc.gif);
@@ -57,18 +61,37 @@
 
 #draftlaw #list td {
     padding: 1em 0 1em .5em;
-    border-bottom: 1px solid #aaa;
-    vertical-align: top;
+    /*border: 1px red solid;*/
+    vertical-align: center;
     text-align: left;
 }
+
+#draftlaw #list .d-date, #draftlaw #list .d-stage {
+    text-align: center;
+}
+
 #draftlaw #list .item-selected {
     background: #ddd;
 }
 #draftlaw #list .item  {
     cursor: pointer;
 }
+
+#draftlaw #list .item:hover {
+    background: #eff8ff;
+}
+
+#draftlaw #list .even {
+    background: #ffffff;
+}
+
+#draftlaw #list .odd {
+    background-color: #fafafa;
+}
+
+
 #draftlaw #list .item .stage {
-    float: left;
+    display: inline-block;
     margin-left: .3em;
     padding: .3em;
     border: none;
@@ -81,7 +104,7 @@
     cursor: pointer;
 }
 #draftlaw #list .item .stage-missing {
-    background: #ddd;
+    background: #dedcdf;
 }
 #draftlaw #list .item .stage-incomplete {
     opacity: .3;
@@ -93,7 +116,7 @@
     float: left;
     margin-left: 1em;
     /*width: 38%;*/
-    height: 300px;
+    height: 86em;
     overflow: auto;
 }
 #draftlaw #container-info > h2 {

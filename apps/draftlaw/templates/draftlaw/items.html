@@ -1,11 +1,14 @@
 {% load i18n %}
 <!-- draftlaws list -->
 {% for dl in draftlaws.object_list %}
-    <tr class="item" id="item-{{ dl.pk}}">
-        <td><p class="date-day">{{ dl.updated|date:"d" }}
-        <p class="date-rest">{{ dl.updated|date:"m-Y" }}</td>
-        <td><a name="draftlaw-{{ dl.pk}}"></a>{{ dl.title }}{% if dl.place %}:: {{ dl.place }}{% endif %}</td>
-        <td>{% for stage in dl.stages %}<div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>{% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}</div>{% endfor %}<div style="clear: both"></div></td>
+    <tr class="item {% cycle 'odd' 'even' %}" id="item-{{ dl.pk}}">
+        <td class="d-date">
+            <p class="date">
+                <span class="date-day">{{ dl.updated|date:"d" }}</span><br>
+                <span class="date-rest">{{ dl.updated|date:"m-Y" }}</span>
+            </p>
+        <td class="d-desc"><a name="draftlaw-{{ dl.pk}}"></a>{{ dl.title }}{% if dl.place %}:: {{ dl.place }}{% endif %}</td>
+        <td class="d-stage">{% for stage in dl.stages %}<div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>{% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}</div>{% endfor %}<div style="clear: both"></div></td>
     </td>
     </tr>
 {% endfor %}

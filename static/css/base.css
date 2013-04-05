@@ -495,3 +495,10 @@ img.column-bg {
 .hidden {
 	display: none;
 }
+
+.date-day {
+    font-size: 300%;
+}
+
+.date-rest {
+}
