@@ -33,9 +33,9 @@ input[type='password'],input[type='text'] {
 }
 
 input[type='submit'],input[type='button'],input[type='reset'] {
-	background: #e08c8c;
+	background: #aeaeae;
 	color: #fff;
-	border: .1em solid #e08c8c;
+	border: .1em solid #b6b6b6;
 	cursor: pointer;
 }
 
@@ -423,12 +423,9 @@ img.column-bg {
 }
 
 .heading {
-	color: #fff;
-	background: #e08c8c;
+	color: rgb(108,108,108);
 	padding: .5em;
 	margin-bottom: .5em;
-	border-radius: .2em;
-	border: .1em solid #e08c8c;
 	font-weight: normal;
 	font-size: 1em;
 	text-transform: uppercase;
@@ -497,16 +494,23 @@ img.column-bg {
 }
 
 .explain {
-	background: #ddd;
+	background: #fff;
 	font-size: .9em;
 	padding: .2em;
 	cursor: help;
 }
 
 .heading .explain {
-	background: #f0acac;
+	background: #fff;
 }
 
 .hidden {
 	display: none;
+}
+
+.date-day {
+    font-size: 300%;
+}
+
+.date-rest {
 }
