@@ -3,26 +3,22 @@
  */
 
 #draftlaw #search #data {
-    width: 59%;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
+    width: 35%;
     border-right: 0;
 }
 #draftlaw #search #submit, #draftlaw #search #reset {
     width: 20%;
+    max-width: 4em;
 }
 #draftlaw #search #submit {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
 }
 #draftlaw #search #reset {
-    border-radius: 2px;
 }
 
 
 #draftlaw #list {
     float: left;
-    width: 60%;
+    width: 100%;
 }
 
 
@@ -37,24 +33,19 @@
     border-spacing: 0;
 }
 #draftlaw #list th {
-    background: #e08c8c url(../../img/arrows/default.gif) center right no-repeat;
+    background: #fff url(../../img/arrows/default.gif) center right no-repeat;
     cursor: pointer;
     text-align: left;
 }
 
 #draftlaw #list th#header-draftlaw {
     width: 58%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
 }
 #draftlaw #list th#header-stage {
     width: 25%;
-    border-radius: 0;
 }
 #draftlaw #list th#header-date {
     width: 17%;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 }
 #draftlaw #list th.headerSortUp {
     background-image: url(../../img/arrows/asc.gif);
@@ -101,7 +92,7 @@
 #draftlaw #container-info {
     float: left;
     margin-left: 1em;
-    width: 38%;
+    /*width: 38%;*/
     height: 300px;
     overflow: auto;
 }
