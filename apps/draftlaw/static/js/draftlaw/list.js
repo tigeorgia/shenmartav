@@ -87,9 +87,9 @@ DraftLawList = {
 
 
     loadNextPageDone: function () {
-        $('#draftlaw #list .item').click(function() {
-            DraftLawList.setInfo($(this));
-        });
+        //$('#draftlaw #list .item').click(function() {
+        //    DraftLawList.setInfo($(this));
+        //});
 
         $('#draftlaw #list table').trigger('update');
         Base.setHeightScrollPane('#draftlaw', '#draftlaw #container-list', 90);

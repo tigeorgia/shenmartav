@@ -2,9 +2,15 @@
  * CSS file for app draftlaw, list
  */
 
+#draftlaw #search {
+    margin: 1em;
+}
+
 #draftlaw #search #data {
     width: 35%;
-    border-right: 0;
+    border: none;
+    background-color: #ededed;
+
 }
 #draftlaw #search #submit, #draftlaw #search #reset {
     width: 20%;
@@ -15,9 +21,18 @@
 #draftlaw #search #reset {
 }
 
+/* This is kind of ugly */
+#draftlaw #spacer {
+    width: 150%;
+    height: 1.5em;
+    background-color: #f0f0f0;
+    position: relative;
+    left: -25%;
+    margin-top: 2.5em;
+}
 
 #draftlaw #list {
-    float: left;
+    /*float: left;*/
     width: 100%;
 }
 
@@ -64,6 +79,13 @@
     /*border: 1px red solid;*/
     vertical-align: center;
     text-align: left;
+}
+
+#draftlaw #list td a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
 }
 
 #draftlaw #list .d-date, #draftlaw #list .d-stage {
