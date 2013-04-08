@@ -13,7 +13,7 @@
 }
 
 #item #key {
-    width: 25%;
+    width: 27%;
 }
 
 #item caption {
@@ -21,5 +21,24 @@
 }
 
 #item th {
-    display: none;
+    visibility: hidden;
+}
+
+.stage {
+    display: inline-block;
+    padding: .3em;
+    border: none;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    background: #1d7ac8;
+}
+.stage-complete {
+    cursor: pointer;
+}
+.stage-missing {
+    background: #dedcdf;
+}
+.stage-incomplete {
+    opacity: .3;
 }

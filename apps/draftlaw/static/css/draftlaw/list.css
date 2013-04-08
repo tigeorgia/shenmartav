@@ -2,6 +2,10 @@
  * CSS file for app draftlaw, list
  */
 
+#draftlaw #search {
+    margin: 1em;
+}
+
 #draftlaw #search #data {
     width: 35%;
     border: none;
@@ -17,6 +21,15 @@
 #draftlaw #search #reset {
 }
 
+/* This is kind of ugly */
+#draftlaw #spacer {
+    width: 150%;
+    height: 1.5em;
+    background-color: #f0f0f0;
+    position: relative;
+    left: -25%;
+    margin-top: 2.5em;
+}
 
 #draftlaw #list {
     /*float: left;*/
