@@ -158,10 +158,31 @@ class Unit (TemplateView):
             member['name'] = member['firstname_first'].replace(' ', '\n', 1)
         return members
 
+    def _get_parties(self):
+        """Get parties in this unit.
+
+        @return: parties in this unit
+        @rtype: [ representative.Party ]
+        """
+        # UnitParliament -> parliament
+        short = self.__class__.__name__.lower()[4:]
+        try:
+            unit = UnitModel.objects.get(short=short)
+        except UnitModel.DoesNotExist:
+            return []
+
+        try:
+            reps = unit.active_term.representatives.all()
+            parties = Party.objects.filter(representatives__in=reps).distinct()
+        except AttributeError:
+            return []
+            
+        return parties
 
     def get_context_data (self, **kwargs):
         context = super(Unit, self).get_context_data(**kwargs)
         context['members'] = self._get_members()
+        context['parties'] = self._get_parties()
         return context
 
 

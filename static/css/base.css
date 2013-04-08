@@ -14,8 +14,8 @@ input,select,option,textarea {
 	margin: 0;
 	font-size: 1em;
 	padding: .6em;
-	background: #fff;
-	color: #000;
+	background: #ededed;
+	color: #7c7c7c;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
@@ -29,7 +29,8 @@ input,select,option {
 }
 
 input[type='password'],input[type='text'] {
-	border: .1em inset #ccc;
+    background-color: #ededed;
+    border: none;
 }
 
 input[type='submit'],input[type='button'],input[type='reset'] {
@@ -47,8 +48,8 @@ input.find {
 
 select {
 	margin: 0;
-	border-radius: 2px;
-	border: .1em solid #ccc;
+	border-radius: 1px;
+	border: .1em solid #ededed;
 }
 
 h1 {
@@ -89,7 +90,7 @@ h3 {
 	font-size: 1.2em;
 	font-weight: bold;
 	text-transform: uppercase;
-	color: #000;
+	/*color: #000;*/
 	margin-bottom: .5em;
 }
 

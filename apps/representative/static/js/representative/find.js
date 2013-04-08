@@ -213,11 +213,6 @@ RepresentativeFind = {
 
 
     loadUnitDone: function () {
-        //RepresentativeFind.hoverIntentMembers();
-        $('#representative #members .member').click(function () {
-            RepresentativeFind.setInfo($(this));
-            return false;
-        });
         $('#representative #select #unit').toggle('blind');
         RepresentativeFind.selectMemberFromLocation();
         RepresentativeFind.setupFiltersParty();
@@ -229,10 +224,6 @@ RepresentativeFind = {
         $('#representative #filter-party').html(all + parties);
         $('#representative #filter-party').val('all');
 
-        Base.setHeightScrollPane(
-            '#representative #select',
-            '#representative #select #unit',
-            RepresentativeFind.heightUnit);
         Base.enable('#representative #select');
         RepresentativeFind.isLoadingUnit = false;
     },
@@ -308,7 +299,8 @@ RepresentativeFind = {
         RepresentativeFind.setupFilters();
         RepresentativeFind.setupInfo();
         RepresentativeFind.setupUnit();
-        RepresentativeFind.loadRightUnit();
+        RepresentativeFind.loadUnit('parliament');
+       // RepresentativeFind.loadRightUnit();
     },
 };
 

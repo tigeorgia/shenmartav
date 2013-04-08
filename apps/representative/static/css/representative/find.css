@@ -2,15 +2,11 @@
  * CSS file for app Representative, page find
  */
 
-.opened {
-    left: 6%;
-    width: 86%;
-}
 #folded-who, .breadcrumb {
     display: none;
 }
 
-.opened #representative {
+#representative {
     height: 100% !important;
 }
 
@@ -52,9 +48,7 @@
 
 
 #representative #select {
-    float: left;
     margin-left: .5em;
-    width: 71%;
     height: 100%;
 }
 #representative #select > form {
@@ -78,30 +72,28 @@
     width: 50%;
 }
 #representative #filter #filter-text {
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
     width: 79%;
 }
 #representative #filter #filter-submit {
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
     width: 20%;
 }
-#representative #filter select {
-    width: 99%;
+
+#representative #filter .cell {
+    /*width: 99%;*/
+    display: inline-block;
+    margin-right: 1em;
 }
 #representative #filter #cell-electiontype {
-    width: 20%;
+    /*width: 20%;*/
 }
 #representative #filter #cell-party {
-    width: 30%;
+    /*width: 30%;*/
 }
 #representative #filter option {
     padding: .2em;
 }
 
 #representative #select #unit {
-    height: 300px;
     overflow: auto;
 }
 
@@ -110,10 +102,8 @@
 }
 #representative #members .member {
     display: inline-block;
-    padding: 6px 0 6px 6px;
-    margin: 0 1px 1px 0;
+    margin: 0.3em 0.1em 0.3em;
     width: 106px;
-    height: 110px;
     font-size: .9em;
     cursor: pointer;
 }
@@ -125,50 +115,60 @@
 
 #representative #members .member .representative-name {
     margin-top: 0.5em;
+    display: none;
 }
 #representative #members .member .representative-name a {
     text-decoration: none;
     color: #fff;
 }
 
-
 #representative .party-parliament, #representative .party-tbilisi, #representative .party-ajara {
     color: #fff;
 }
-#representative #party-cdm, #representative .party-cdm {
-    background: #d64c65;
-}
-#representative #party-labour, #representative .party-labour {
-    background: #6a86b8;
-}
-#representative #party-ndp, #representative .party-ndp {
-    background: #bf5f6d;
-}
-#representative #party-republicans, #representative .party-republicans {
-    background: #eb8942;
-}
-#representative #party-uno, #representative .party-uno {
-    background: #8cc574;
-}
-#representative #party-unknown, #representative .party-unknown {
-    background: #555;
-}
-#representative #party-unm, #representative .party-unm {
-    background: #f87c7c;
-}
-#representative #party-alliance, #representative .party-alliance {
-    background: #aacccc;
-}
-#representative #party-top, #representative .party-top {
-    background: #ee9911;
-}
-#representative #party-tbilisi, #representative .party-tbilisi {
-    background: #000;
-}
-#representative #party-ajara, #representative .party-ajara {
-    background: #000;
+
+#representative #party-cdm, #representative h3 {
+    padding-left: 0.5em;
 }
 
+#representative #party-cdm, #representative .party-cdm h3 {
+    /*background: #d64c65;*/
+    border-left: 6px solid #d64c65;
+}
+#representative #party-labour, #representative .party-labour h3 {
+    /*background: #6a86b8;*/
+    border-left: 6px solid #6a86b8;
+}
+
+#representative #party-ndp, #representative .party-ndp h3{
+    border-left: 6px solid #bf5f6d;
+}
+#representative #party-republicans, #representative .party-republicans h3 {
+    border-left: 6px solid #eb8942;
+}
+#representative #party-uno, #representative .party-uno h3 {
+    border-left: 6px solid #8cc574;
+}
+#representative #party-unknown, #representative .party-unknown h3 {
+    border-left: 6px solid #555;
+}
+#representative #party-unm, #representative .party-unm h3 {
+    border-left: 6px solid #ff8280;
+}
+#representative #party-unm, #representative .party-gd h3 {
+    border-left: 6px solid #87c5fe;
+}
+#representative #party-alliance, #representative .party-alliance h3 {
+    border-left: 6px solid #aacccc;
+}
+#representative #party-top, #representative .party-top h3 {
+    border-left: 6px solid #ee9911;
+}
+#representative #party-tbilisi, #representative .party-tbilisi h3 {
+    border-left: 6px solid #000;
+}
+#representative #party-ajara, #representative .party-ajara h3 {
+    border-left: 6px solid #000;
+}
 
 #representative #unit-select {
     margin: 1em auto;

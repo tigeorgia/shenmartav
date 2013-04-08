@@ -6,18 +6,13 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/find.css" media="all" />
 {% endaddtoblock %}
 <div id="representative">
-    <div id="info" class="column shadow">
-        <h1>{% trans 'Who Makes Laws' %}</h1>
-        <div id="data">{% include 'representative/info.html' %}</div>
-        <img class="column-bg" src="{{ STATIC_URL }}img/bg-person.png" width="117" height="119" />
-    </div>
     <div id="select">
         <form action="{{ url_search }}" method="post">
         {% csrf_token %}
         <div id="filter" class="table">
             <div id="cell-text" class="cell">
                 <div>{% trans 'Find Your Representative' %}</div>
-                <input id="filter-text" type="text" name="query" /><input class="formbutton" id="filter-submit" type="submit" name="submit" value="{% trans 'Filter' %}" />
+                <input id="filter-text" type="text" name="query" placeholder="{% trans 'Name' %}" /><input class="formbutton" id="filter-submit" type="submit" name="submit" value="{% trans 'Filter' %}" />
             </div>
             <div id="cell-electiontype" class="cell">
                 <div>{% trans 'Election type' %}</div>
@@ -27,7 +22,7 @@
                     <option value="2">{% trans 'Majoritarian' %}</option>
                 </select>
             </div>
-            <div id="cell-ordering" class="cell">
+<!--            <div id="cell-ordering" class="cell">
                 <div>{% trans 'Order by' %}</div>
                 <select id="orderby-type">
                     <option value="none">{% trans 'Order by...' %}</option>
@@ -35,6 +30,7 @@
                     <option value="attendance">{% trans 'Attendance' %}</option>
                 </select>
             </div>
+-->
             <div id="cell-party" class="cell">
                 <div>{% trans 'Party' %}</div>
                 <select id="filter-party"></select>
@@ -47,16 +43,8 @@
         <div id="offer-fulltext-search">{% blocktrans %}Try <a href="{{ url_search }}">full-text search</a>.{% endblocktrans %}</div>
         </form>
 
-        <div id="unit" class="scroll-pane"><ul id="members"></ul></div>
+        <div id="unit" class=""><div id="members"></div></div>
 
-        <div id="unit-select">
-            <div id="unit-slider"></div>
-            <div id="unit-legend">
-                <div id="unit-parliament">{% trans 'Parliament of Georgia' %}</a></div>
-                <div id="unit-ajara">{% trans 'Ajaran Supreme Council' %}</a></div>
-                <div id="unit-tbilisi">{% trans 'Tbilisi City Assembly' %}</a></div>
-            </div>
-        </div>
     </div>
     <div style="clear: both"></div>
 {% addtoblock "js" %}
