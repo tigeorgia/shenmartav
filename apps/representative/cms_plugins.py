@@ -22,7 +22,7 @@ plugin_pool.register_plugin(RepresentativePlugin)
 class RepresentativeListPlugin (CMSPluginBase):
     model = CMSPlugin
     name = _('Representative List Plugin')
-    render_template = 'representative/unit_as_table.html'
+    render_template = 'representative/unit_as_3rows.html'
 
     #TODO: Again, kinda hacky, convert view to plugin?
     def render(self, context, instance, placeholder):
