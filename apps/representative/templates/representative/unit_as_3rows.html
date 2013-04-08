@@ -1,5 +1,6 @@
 {% load thumbnail i18n sekizai_tags %}
 <div id="unit-list">
+<div id="members">
 <ul id="mps-row1">
 {% render_block "row1" %}
 </ul>
@@ -12,9 +13,10 @@
 {% render_block "row3" %}
 </ul>
 </div>
+</div>
 
 {% for member in members %}
-  <!--{% cycle 'row1' 'row2' 'row3' as rownum %}-->
+  <!-- {% cycle 'row1' 'row2' 'row3' as rownum %}-->
   
   {% if rownum == 'row1' %}
    {% addtoblock "row1" %}<li class="member party-{{ member.party__acronym }} {% if member.is_majoritarian %}majoritarian{% else %}partylist{% endif %}" id="member-{{ member.pk}}">
