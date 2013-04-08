@@ -1,27 +1,131 @@
-{% extends 'base.html' %}
-{% load cms_tags i18n %}
-{% block banner %}
+{% extends 'base.html' %} {% load cms_tags i18n %} {% load i18n sekizai_tags %} {% block banner %}
 <div class="banner-home"></div>
-{% endblock %}
-{% block content %}
-<div id="mp-list" class="">
-    {% placeholder mp_list %}
-    <div id="mp-info">populate me by inserting HTML from /who/info/<id>/</div>    
+{% endblock %} {% block content %}
+<div id="representative" class="">
+	<div id="mp-info">
+		<h1>{% trans 'Who Makes Laws' %}</h1>
+		<div id="data">
+			<div id="photo">
+				<a title="Badri Basishvili" href="/en/who/representative/11/%E1%83%91%E1%83%90%E1%83%93%E1%83%A0%E1%83%98-%E1%83%91%E1%83%90%E1%83%A1%E1%83%98%E1%83%A8%E1%83%95%E1%83%98%E1%83%9A%E1%83%98/"><img src="/static/img/person-placeholder.jpg" width="65" height="60" border="0"></a>
+			</div>
+			<div id="short">
+				<div id="name" class="representative-name">
+					<a title="Badri Basishvili" href="/en/who/representative/11/%E1%83%91%E1%83%90%E1%83%93%E1%83%A0%E1%83%98-%E1%83%91%E1%83%90%E1%83%A1%E1%83%98%E1%83%A8%E1%83%95%E1%83%98%E1%83%9A%E1%83%98/">Badri Basishvili</a>
+				</div>
+				<div id="unit" class="smaller">Parliament of Georgia</div>
+				<div id="party" class="smaller">
+					<a href="http://unm.ge" title="Unified National Movement - for Victorious Georgia">Unified National Movement - for Victorious Georgia</a>
+				</div>
+				<div id="district-elected" class="smaller">Liakhvi (#85), June, 2008</div>
+			</div>
+			<div style="clear: both"></div>
+
+			<div id="faction">Faction: Unified National Movement, Member</div>
+
+
+			<div id="committee">Committee: Sports and Youth Issues Committee, Member</div>
+
+
+			<div id="activities">
+				<span class="darker">Activities</span>:<br>
+				<span class="smaller">Temporary Commission on Territorial Integrity Issues, Member<span></span></span>
+			</div>
+
+			<div>
+				<div id="attendance">
+
+
+					<h2>
+						Voting attendance: 59% <span class="explain" title="Determined based on the official voting records retrieved from the Parliament web site. We calculate the attendance rate as (Number of Yes votes + Number of No votes + Number of Abstain votes) divided by the total number of votes for which an MP’s name is given. This doesn’t necessarily reflect which MPs were physically present at the time a vote was held, but is what was recorded by the Parliament’s voting systems.">?</span>
+					</h2>
+					<div id="group">This representative has attended a low number of votes, compared to other representatives.</div>
+					<div id="bar" class="table">
+						<div class="row">
+							<div class="cell leftalign">472</div>
+							<div class="cell rightalign">319</div>
+						</div>
+						<div class="row">
+							<div class="cell attendance-attended style=" width:59""="">&nbsp;</div>
+							<div class="cell attendance-absent" style="width: 40">&nbsp;</div>
+						</div>
+					</div>
+					<div id="bar-labels" class="table">
+						<div class="row">
+							<div class="cell leftalign">Attended</div>
+							<div class="cell rightalign">Absent</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<div>
+				<div id="income">
+					<h2>Annual Income</h2>
+
+					<div id="bar" class="table">
+						<div class="row">
+
+							<div class="cell" style="width: 48.8%">24000</div>
+							<div class="cell" style="width: 51.2%">25206</div>
+							<div class="cell" style="width: 0%">0</div>
+
+						</div>
+						<div class="row">
+							<div class="cell income-base">&nbsp;</div>
+							<div class="cell income-additional">&nbsp;</div>
+							<div class="cell income-other">&nbsp;</div>
+						</div>
+					</div>
+					<ul id="legend">
+						<li><span class="legend-color income-base">&nbsp;</span>Base salary <span class="explain" title="Legally defined salary for representatives">?</span></li>
+						<li><span class="legend-color income-additional">&nbsp;</span>Additional income <span class="explain" title="Additional legally defined salary that a representative receives for activities such as being the head of a committee">?</span></li>
+						<li><span class="legend-color income-other">&nbsp;</span>Business income <span class="explain" title="Income that a representative receives from businesses owned by him/her">?</span></li>
+					</ul>
+
+				</div>
+			</div>
+			<div id="more">
+				<a href="/en/who/representative/11/%E1%83%91%E1%83%90%E1%83%93%E1%83%A0%E1%83%98-%E1%83%91%E1%83%90%E1%83%A1%E1%83%98%E1%83%A8%E1%83%95%E1%83%98%E1%83%9A%E1%83%98/">More »</a>
+			</div>
+		</div>
+		<img class="column-bg" src="{{ STATIC_URL }}img/bg-person.png" width="117" height="119" />
+	</div>
+	<div id="select">{% placeholder mp_list %}</div>
 </div>
 
-<div id="below-fold" class="">
-    <div id="engage-slider" class="">
-        <div>{% placeholder engage1 %}</div>
-        <div>{% placeholder engage2 %}</div>
-    </div>
-    <div id="mp-stats-slider" class="">
-        <div>{% placeholder stats1 %}</div>
-        <div>{% placeholder stats2 %}</div>
-        <div>{% placeholder stats3 %}</div>
-    </div>
-    <div id="drafts-mini" class="">
-        <table><tbody>{% placeholder drafts %}</tbody></table>
-        <div><a href="{% url draftlaw_list %}">{% trans 'View all' %}</a></div>
-    </div>
+<div id="below-fold" class="threecolumn">
+	<div id="engage-slider" class="span1">
+		<div>{% placeholder engage1 %}</div>
+		<div>{% placeholder engage2 %}</div>
+	</div>
+	<div id="mp-stats-slider" class="span2">
+		<div>{% placeholder stats1 %}</div>
+		<div>{% placeholder stats2 %}</div>
+		<div>{% placeholder stats3 %}</div>
+	</div>
+	<div id="drafts-mini" class="span3">
+		<table>
+			<tbody>{% placeholder drafts %}
+			</tbody>
+		</table>
+		<div>
+			<a href="{% url draftlaw_list %}">{% trans 'View all' %}</a>
+		</div>
+	</div>
 </div>
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/representative/find_home.js"></script>
+{% endaddtoblock %}
+<script type="text/javascript">
+	var URL_Units = {
+		'parliament' : '{% url unit_parliament %}',
+		'ajara' : '{% url unit_ajara %}',
+		'tbilisi' : '{% url unit_tbilisi %}'
+	};
+	var URL_Info = '{% url representative_info 0 %}';
+	var URL_UnitRepresentative = '{% url unit_representative 0 %}';
+	var Active_Unit = '{{ active_unit }}'
+</script>
 {% endblock %}
