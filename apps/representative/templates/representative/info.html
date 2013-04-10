@@ -1,21 +1,11 @@
 {% load i18n thumbnail %}
-<div id="photo"><a title="{{ obj.name }}" href="{{ obj.get_absolute_url }}">{% thumbnail obj.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a></div>
+<div id="photo"><a title="{{ obj.name }}" href="{{ obj.get_absolute_url }}">{% thumbnail obj.photo '100x96' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="96" border="0" /></a></div>
 <div id="short">
     <div id="name" class="representative-name"><a title="{{ obj.name }}" href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></div>
     <div id="unit" class="smaller">{{ obj.unit.name }}</div>
     <div id="party" class="smaller">{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}{{ obj.party }}{% endif %}</div>
-    <div id="district-elected" class="smaller">{% if obj.electoral_district %}{{ obj.electoral_district }}, {% endif %}{{ obj.elected }}</div>
 </div>
 <div style="clear: both"></div>
-{% if obj.faction %}
-<div id="faction">{% trans 'Faction' %}: {{ obj.faction }}</div>
-{% endif %}
-{% if obj.committee %}
-<div id="committee">{% ifequal obj.unit.id 1 %}{% trans 'Committee' %}{% else %}{% trans 'Commission' %}{% endifequal %}: {{ obj.committee }}</div>
-{% endif %}
-{% if obj.description %}
-<div id="activities"><span class="darker">{% trans 'Activities' %}</span>:<br /><span class="smaller">{{ obj.description }}<span></div>
-{% endif %}
 <div>{% include 'representative/attendance.html' %}</div>
 <div>{% include 'representative/income.html' %}</div>
 <div id="more"><a href="{{ obj.get_absolute_url }}">{% trans 'More' %} &raquo;</a></div>
