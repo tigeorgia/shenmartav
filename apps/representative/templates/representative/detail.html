@@ -13,18 +13,13 @@
     {{ obj.unit.name }}
 </div>
 
-<div id="representative" class="scroll-pane">
+<div id="representative" class="">
     <div id="data-text">
-        <div id="portrait">
-            <div id="photo">{% thumbnail obj.photo '100x84' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" /></div>
             <div id="short">
                 <div id="name" class="evenbigger representative-name">{{ obj.name }}</div>
-                <div id="majoritarian-partylist-unit">{% if obj.is_majoritarian %}{% trans 'Majoritarian' %}{% else %}{% trans 'Partylist' %}{% endif %}, {{ obj.unit.name }}</div>
                 <div id="party">
-                    <div id="party-logo">{% thumbnail obj.party.logo '40x40' as logo %}{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}"><img src="{% if logo %}{{ logo }}{% else %}{{ STATIC_URL }}img/logo-unknown-party.png{% endif %}" width="40" height="40" border="0" /></a>{% else %}<img src="{% if logo %}{{ logo }}{% else %}{{ STATIC_URL }}img/logo-unknown-party.png{% endif %}" width="40" height="40" border="0" />{% endif %}</div>
-                    <div id="party-name">{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}{{ obj.party }}{% endif %}</div>
+                    <div id="party-name" class="smaller">{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}{{ obj.party }}{% endif %}</div>
                     <div style="clear: both"></div>
-                </div>
             </div>
             <div style="clear: both"></div>
         </div>
@@ -66,16 +61,10 @@
             <td>{{ obj.description }}</td>
         </tr>
 {% endif %}
-{% ifequal unit 1 %}
-        <tr>
-            <td><a id="button-votingrecords" href="{% url representative_votingrecords obj.pk obj.slug %}">{% trans 'Voting Records' %}</a></td>
-            <td><div id="container-votingrecords" class="scroll-pane"><ul id="votingrecords"></ul></div></td>
-        </tr>
-{% endifequal %}
 {% if decl %}
         <tr>
             <td>{% trans 'Salary' %}</td>
-            <td><a href="{{ decl.get_absolute_url }}#wages">{{ obj.salary }}</a></td>
+            <td><div id="salary-text"><a href="{{ decl.get_absolute_url }}#wages">{{ obj.salary }}</a></div></td>
         </div>
         <tr>
             <td>{% trans 'Expenses' %}</td>
@@ -125,9 +114,10 @@
     </div>
 
     <div id="data-boxes">
-        <div class="box" id="box-attendance">{% ifequal unit 1 %}
-            {% include 'representative/attendance.html' %}
-        {% endifequal %}</div>
+        <div id="portrait">
+            <div id="photo">{% thumbnail obj.photo '100x84' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" /></div>
+        </div>
+        <div id="ask-question"><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
         <div class="box" id="box-income">
             {% include 'representative/income.html' %}
         </div>
@@ -150,8 +140,10 @@
                     {% if questions.last.answer %}<div><span class="label">{% trans 'Answer' %}:</span> {{ questions.last.answer }}</div>{% endif %}
                     {% endif %}
                 </div>
-                <div><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
             </div>
+        {% endifequal %}</div>
+        <div class="box" id="box-attendance">{% ifequal unit 1 %}
+            {% include 'representative/attendance.html' %}
         {% endifequal %}</div>
         <div class="box" id="box-votecounts">{% ifequal unit 1 %}
             <div id="votecounts">

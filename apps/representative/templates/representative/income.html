@@ -4,16 +4,16 @@
 {% if obj.incomedeclaration.all %}
     <div id="bar" class="table">
         <div class="row">
+            <div class="cell income-base">&nbsp;</div>
+            <div class="cell income-additional">&nbsp;</div>
+            <div class="cell income-other">&nbsp;</div>
+        </div>
+        <div class="row">
             {% with income=obj.income  %}
             <div class="cell" style="width:{{ income.base|percentage:income.total }}">{{ income.base }}</div>
             <div class="cell" style="width:{{ income.additional|percentage:income.total }}">{{ income.additional }}</div>
             <div class="cell" style="width:{{ income.other|percentage:income.other }}">{{ income.other }}</div>
             {% endwith %}
-        </div>
-        <div class="row">
-            <div class="cell income-base">&nbsp;</div>
-            <div class="cell income-additional">&nbsp;</div>
-            <div class="cell income-other">&nbsp;</div>
         </div>
     </div>
     <ul id="legend">

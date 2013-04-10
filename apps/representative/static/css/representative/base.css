@@ -35,14 +35,16 @@
 
 #representative #income .income-base,
 #representative #attendance .attendance-attended {
-    background: #66b2f0;
+    background: #0fa4f4;
 }
-#representative #income .income-additional,
+#representative #income .income-additional {
+    background: #34b3f6;
+}
 #representative #attendance .attendance-absent {
-    background: #4491d7;
+    background: #d4d4d4;
 }
 #representative #income .income-other {
-    background: #1d7ac8;
+    background: #6dcdff;
 }
 #representative #income #bar,
 #representative #attendance #bar,

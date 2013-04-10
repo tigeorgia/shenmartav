@@ -3,21 +3,13 @@
  */
 
 #representative #data-text {
-    float: left;
+    float: right;
     width: 65%;
 }
 
-#representative #data-text #portrait {
-    border-bottom: 1px solid #ccc;
-    margin-bottom: .5em;
-    padding-bottom: .3em;
-}
-#representative #data-text #photo {
-    float: left;
-    width: 110px;
-}
+
 #representative #data-text #party {
-    margin-top: 1em;
+    margin-bottom: 1em;
 }
 #representative #data-text #party-logo {
     float: left;
@@ -28,15 +20,28 @@
     width: 28%;
 }
 #representative #data-text td {
-    padding-top: 1em;
+    padding: 1em;
     vertical-align: top;
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+#representative #salary-text {
+    background-color: #6fcaf9;
+    min-width: 70px;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5em;
+    color: #ffffff;
+}
+
+#representative #salary-text a{
+    color: inherit;
 }
 
 
 #representative #data-boxes {
     float: left;
-    width: 32%;
+    width: 28%;
     padding-left: 1em;
 }
 #representative #data-boxes .box {
@@ -48,7 +53,32 @@
 }
 #representative #data-boxes .box > div > div,
 #representative #data-boxes .box > div > ul {
-    margin-left: .6em;
+}
+
+#representative #data-boxes #portrait {
+    margin-bottom: .75em;
+    text-align: center;
+    width: 100%;
+    line-height: 0;
+    background-color: #ededed;
+}
+
+#representative #data-boxes #portrait #photo {
+    width: 110px;
+    display: inline-block;
+}
+
+#representative #data-boxes #ask-question {
+    width: 100%;
+    text-align: center;
+    min-height: 2em;
+    background-color: #aeaeae;
+    padding: 0.5em 0 0.5em;
+}
+
+#representative #data-boxes #ask-question a {
+    color: #ffffff;
+    font-size: 2em;
 }
 
 #representative #data-boxes #box-attendance,
@@ -69,19 +99,21 @@
     width: 100%;
     text-align: center;
 }
-#representative #data-boxes #box-questions #bar-answered,
-#representative #data-boxes #box-questions #bar-noresponse {
+#representative #data-boxes #box-questions #bar-answered {
     color: #fff;
     padding: .3em;
 }
+#representative #data-boxes #box-questions #bar-noresponse {
+    padding: .3em;
+}
 #representative #data-boxes #box-questions #bar-answered {
-    background: #1d7ac8;
+    background: #0fa4f4;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     text-align: left;
 }
 #representative #data-boxes #box-questions #bar-noresponse {
-    background: #d44847;
+    background: #d4d4d4;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
     text-align: right;

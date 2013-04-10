@@ -6,22 +6,22 @@
     <div id="bar">{% trans 'This representative has not attended any sessions yet.' %}</div>
 {% else %}
     <h2>{% trans 'Voting attendance' %}: {{ attendance.percentage_attended }}% <span class="explain" title="{% trans "Determined based on the official voting records retrieved from the Parliament web site. We calculate the attendance rate as (Number of Yes votes + Number of No votes + Number of Abstain votes) divided by the total number of votes for which an MP’s name is given. This doesn’t necessarily reflect which MPs were physically present at the time a vote was held, but is what was recorded by the Parliament’s voting systems." %}">?</span></h2>
-    <div id="group">
+    <!--<div id="group">
 {% ifequal attendance.group 0 %}{% trans 'This representative has attended a very low number of votes, compared to other representatives.' %}{% else %}
 {% ifequal attendance.group 1 %}{% trans 'This representative has attended a low number of votes, compared to other representatives.' %}{% else %}
 {% ifequal attendance.group 2 %}{% trans 'This representative has attended an ordinary number of votes, compared to other representatives.' %}{% else %}
 {% ifequal attendance.group 3 %}{% trans 'This representative has attended a high number of votes, compared to other representatives.' %}{% else %}
 {% ifequal attendance.group 4 %}{% trans 'This representative has attended a very high number of votes, compared to other representatives.' %}{% else %}
 {% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}{% endifequal %}
-    </div>
+    </div>-->
     <div id="bar" class="table">
         <div class="row">
             <div class="cell leftalign">{{ attendance.attended }}</div>
             <div class="cell rightalign">{{ attendance.absent }}</div>
         </div>
         <div class="row">
-            <div class="cell attendance-attended style="width:{{ attendance.percentage_attended }}"">&nbsp;</div>
-            <div class="cell attendance-absent" style="width:{{ attendance.percentage_absent }}">&nbsp;</div>
+            <div class="cell attendance-attended" style="width:{{ attendance.percentage_attended }}%">&nbsp;</div>
+            <div class="cell attendance-absent" style="width:{{ attendance.percentage_absent }}%">&nbsp;</div>
         </div>
     </div>
     <div id="bar-labels" class="table">
