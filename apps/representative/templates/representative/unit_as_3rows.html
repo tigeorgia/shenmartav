@@ -21,20 +21,17 @@
   {% if rownum == 'row1' %}
    {% addtoblock "row1" %}<li class="member party-{{ member.party__acronym }} {% if member.is_majoritarian %}majoritarian{% else %}partylist{% endif %}" id="member-{{ member.pk}}">
     <a name="member-{{ member.pk }}"></a>
-    <div class="photo"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" border="0" /></a></div>
-    <div class="smaller representative-name"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{{ member.name|linebreaksbr }}</a></div>
+    <div class="photo"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="96" border="0" /></a></div>
 </li>{% endaddtoblock %} 
   {% else %}{% if rownum == 'row2' %}
    {% addtoblock "row2" %}<li class="member party-{{ member.party__acronym }} {% if member.is_majoritarian %}majoritarian{% else %}partylist{% endif %}" id="member-{{ member.pk}}">
     <a name="member-{{ member.pk }}"></a>
-    <div class="photo"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" border="0" /></a></div>
-    <div class="smaller representative-name"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{{ member.name|linebreaksbr }}</a></div>
+    <div class="photo"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="96" border="0" /></a></div>
 </li>{% endaddtoblock %} 
   {% else %}
    {% addtoblock "row3" %}<li class="member party-{{ member.party__acronym }} {% if member.is_majoritarian %}majoritarian{% else %}partylist{% endif %}" id="member-{{ member.pk}}">
     <a name="member-{{ member.pk }}"></a>
-    <div class="photo"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" border="0" /></a></div>
-    <div class="smaller representative-name"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{{ member.name|linebreaksbr }}</a></div>
+    <div class="photo"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="96" border="0" /></a></div>
 </li>{% endaddtoblock %} 
   
   {% endif %}{% endif %}
