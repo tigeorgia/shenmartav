@@ -29,8 +29,8 @@ input,select,option {
 }
 
 input[type='password'],input[type='text'] {
-    background-color: #ededed;
-    border: none;
+	background-color: #ededed;
+	border: none;
 }
 
 input[type='submit'],input[type='button'],input[type='reset'] {
@@ -155,7 +155,10 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	width: 1100px;
 	margin: 0 auto;
 	clear: both;
-	background: #ffffff;
+}
+
+#item-wrapper {
+	background-color: #fff;
 }
 
 #nav {
@@ -340,6 +343,66 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	width: 33.3%;
 }
 
+#representative {
+	position: relative;
+}
+
+#mp-info {
+	width: 350px;
+	display: inline-block;
+	position: absolute;
+	background: #fff;
+	z-index: 1;
+}
+
+#mp-info #data {
+	padding: 17px 23px;
+}
+
+#mp-info #data #photo {
+	display: inline-block;
+}
+
+#mp-info #data #short {
+	display: inline-block;
+	width: 190px;
+	margin-left: 10px;
+	vertical-align: top;
+}
+
+#mp-info #data #attendance {
+	margin-top: 10px;
+}
+
+#mp-info #data #attendance h2 {
+	text-align: left;
+	margin-bottom: 3px;
+}
+
+#mp-info #data #attendance #bar {
+	width: 100%;
+}
+
+#mp-info #data #attendance #bar.table .attendance-attended {
+	background-color: #0fa5f5;
+}
+
+#mp-info #data #attendance #bar.table .attendance-absent {
+	background-color: #d4d4d4;
+}
+
+#mp-info #data #attendance #bar.table .leftalign {
+	text-align: left;
+}
+
+#mp-info #data #attendance #bar.table .rightalign {
+	text-align: right;
+}
+
+.table .leftalign,.table .rightalign {
+	padding: 10px 0;
+}
+
 .column {
 	background-repeat: repeat;
 	background: #fff url(../img/bg-white.jpg) 0 0 repeat;
@@ -434,6 +497,10 @@ img.column-bg {
 	height: 100%;
 }
 
+#below-fold {
+	margin-top: 20px;
+}
+
 /* 3 COLUMN. USED FOR HOMEPAGE */
 .threecolumn {
 	display: block;
@@ -463,23 +530,19 @@ img.column-bg {
 	width: 551px;
 }
 
-
 #unit-list {
 	white-space: nowrap;
 	left: -50%;
-	margin-left: -50%;
-	background: #fff;
-	position:relative;
+	margin-left: -100%;
 }
 
 #unit-list ul {
 	position: relative;
-	float: left;
+	white-space: nowrap;
 }
 
-
 #unit-list ul li {
-	float: left;
+	display: inline-block;
 }
 
 #unit-list ul li:first-child {
