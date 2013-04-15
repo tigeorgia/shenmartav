@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% load cms_tags i18n %} {% load i18n sekizai_tags %} {% block banner %}
 <div class="banner-home"></div>
 {% endblock %} {% block content %}
+<div id="scroll-next">&nbsp;</div>
+<div id="scroll-prev">&nbsp;</div>
 <div id="representative" class="">
-
 	<div id="mp-info">
 		<div id="data">
 			<div id="photo">
@@ -114,7 +115,8 @@ This representative has attended an ordinary number of votes, compared to other 
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/find_home.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/jquerycycle.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/qtip.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/jquery.carouFredSel.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/home.js"></script>
 {% endaddtoblock %}
 <script type="text/javascript">
 	var URL_Units = {
