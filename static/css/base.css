@@ -8,6 +8,7 @@ html,body {
 	background: #f0f0f0;
 	color: #666;
 	height: 100%;
+	overflow-x:hidden;
 }
 
 input,select,option,textarea {
@@ -168,8 +169,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #header #logo {
 	text-align: left;
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	width: 195px;
 	margin: 0;
 }
@@ -192,8 +193,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #header #navigation {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	float: right;
 }
 
@@ -224,8 +225,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #header #language-switchers #language-chooser,#header #language-switchers #google_translate_element
 	{
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	margin: 5px 5px;
 }
 
@@ -282,8 +283,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer #sponsors {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	list-style: none;
 	position: relative;
 	width: 100%;
@@ -295,8 +296,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer #copyright {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	margin-top: 1em;
 	text-align: center;
 	width: 100%;
@@ -304,8 +305,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer #socialbuttons {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	list-style: none;
 	margin-bottom: 1em;
 	list-style: none;
@@ -327,8 +328,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer #socialbuttons #socialicons {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	margin: 6px 0 0 6px;
 	position: relative;
 }
@@ -353,8 +354,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer .col1,#footer .col2,#footer .col3 {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	float: left;
 	width: 33.3%;
 }
@@ -380,8 +381,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	width: 350px;
 	height: 333px;
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	position: absolute;
 	background: #fff;
 	z-index: 2;
@@ -393,14 +394,14 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #mp-info #data #photo {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 }
 
 #mp-info #data #short {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	width: 190px;
 	margin-left: 10px;
 	vertical-align: top;
@@ -479,8 +480,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 .stage.smaller.stage-missing {
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 	font-size: 9px;
 	padding: 3px 5px;
 	background: #e0e0e0;
@@ -662,8 +663,49 @@ img.column-bg {
 
 #unit-list {
 	white-space: nowrap;
-	left: -50%;
-	margin-left: -100%;
+	margin-left: -37%;
+	width: 2000px;
+	overflow: hidden;
+}
+
+#scroll-next,#scroll-prev{
+	position:absolute;
+	width:25px;
+	height:50px;
+	cursor: pointer;
+	background:url(../img/arrows/big.png) no-repeat;
+}
+
+#scroll-next {
+	background-position: -25px 0px;
+	position: absolute;
+	right: 13px;
+	top: 145px;
+	z-index: 1;
+}
+
+#scroll-next:hover {
+	background-position: -25px -50px;
+	position: absolute;
+	right: 13px;
+	top: 145px;
+	z-index: 1;
+}
+
+#scroll-prev {
+	background-position: 0px 0px;
+	position: absolute;
+	left: 13px;
+	top: 170px;
+	z-index: 1;
+}
+
+#scroll-prev:hover {
+	background-position: 0px -50px;
+	position: absolute;
+	left: 13px;
+	top: 170px;
+	z-index: 1;
 }
 
 .mps-row-container {
@@ -671,109 +713,15 @@ img.column-bg {
 	margin: 0 !important;
 }
 
-#unit-list
-
-
-
- 
-
-
-
-ul
-
-
-
-
-
-
-#mps-row1
-,
-#unit-list
-
-
-
- 
-
-
-
-ul
-
-
-
-
-
-
-#mps-row2
-,
-#unit-list
-
-
-
- 
-
-
-
-ul
-
-
-
-
-
-
-#mps-row3
-,
-{
-position
-
-
-
-
-
-
-:
-
-
-
- 
-
-
-
-relative
-
-
-
-
-
-
-;
-white-space
-
-
-
-
-
-
-:
-
-
-
- 
-
-
-
-nowrap
-
-
-
-
-
-
-;
+#unit-list #mps-row1,#unit-list mps-row2,#unit-list #mps-row3 {
+	position: relative;
+	white-space: nowrap;
 }
+
 #unit-list ul li {
 	display: inline-block;
-	*display:inline;
-	zoom:1
+	*display: inline;
+	zoom: 1
 }
 
 #unit-list ul li:first-child {
@@ -815,8 +763,8 @@ nowrap
 	position: relative;
 	top: -14px;
 	display: inline-block;
-	*display:inline;
-	*zoom:1;
+	*display: inline;
+	*zoom: 1;
 }
 
 .breadcrumb a {
