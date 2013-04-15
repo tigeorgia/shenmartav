@@ -91,6 +91,8 @@
     width: .7em;
     height: .7em;
     display: inline-block;
+    *display:inline;
+    zoom:1;
     margin-right: .5em;
 }
 

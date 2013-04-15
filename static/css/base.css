@@ -168,6 +168,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #header #logo {
 	text-align: left;
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	width: 195px;
 	margin: 0;
 }
@@ -190,6 +192,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #header #navigation {
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	float: right;
 }
 
@@ -220,6 +224,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #header #language-switchers #language-chooser,#header #language-switchers #google_translate_element
 	{
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	margin: 5px 5px;
 }
 
@@ -276,6 +282,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer #sponsors {
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	list-style: none;
 	position: relative;
 	width: 100%;
@@ -287,6 +295,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer #copyright {
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	margin-top: 1em;
 	text-align: center;
 	width: 100%;
@@ -294,6 +304,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer #socialbuttons {
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	list-style: none;
 	margin-bottom: 1em;
 	list-style: none;
@@ -315,6 +327,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer #socialbuttons #socialicons {
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	margin: 6px 0 0 6px;
 	position: relative;
 }
@@ -339,6 +353,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #footer .col1,#footer .col2,#footer .col3 {
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	float: left;
 	width: 33.3%;
 }
@@ -347,12 +363,28 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	position: relative;
 }
 
+#representative #select {
+	height: 333px;
+}
+
+.smsalert-container {
+	padding: 10px 15px 0px;
+	height: 317px;
+}
+
+#mp-stats-slider #ask {
+	text-align: center;
+}
+
 #mp-info {
 	width: 350px;
+	height: 333px;
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	position: absolute;
 	background: #fff;
-	z-index: 1;
+	z-index: 2;
 }
 
 #mp-info #data {
@@ -361,10 +393,14 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 #mp-info #data #photo {
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 }
 
 #mp-info #data #short {
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 	width: 190px;
 	margin-left: 10px;
 	vertical-align: top;
@@ -374,7 +410,7 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	margin-top: 10px;
 }
 
-#mp-info #data #attendance h2 {
+#mp-info #data h2 {
 	text-align: left;
 	margin-bottom: 3px;
 }
@@ -383,24 +419,95 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	width: 100%;
 }
 
-#mp-info #data #attendance #bar.table .attendance-attended {
+#mp-info #legend {
+	display: none;
+}
+
+#bar.table .attendance-attended,#data #bar.table .income-base {
 	background-color: #0fa5f5;
 }
 
-#mp-info #data #attendance #bar.table .attendance-absent {
+#bar.table .income-additional {
+	background-color: #34b3f7;
+}
+
+#bar.table .income-other {
+	background-color: #6dccff;
+}
+
+.table .bar .cell {
+	cursor: default;
+	padding: .3em 0;
+}
+
+#mp-info #more {
+	position: absolute;
+	right: 20px;
+	bottom: 16px;
+	background: #b3b3b3;
+}
+
+#mp-info #more a {
+	color: #fff;
+	padding: 4px 13px;
+	display: block;
+}
+
+#mp-info #more a:hover {
+	text-decoration: none;
+}
+
+.table .bar .cell:hover {
+	outline: yellow solid thin;
+}
+
+#bar.table .attendance-absent {
 	background-color: #d4d4d4;
 }
 
-#mp-info #data #attendance #bar.table .leftalign {
+.table .leftalign {
 	text-align: left;
 }
 
-#mp-info #data #attendance #bar.table .rightalign {
+.table .rightalign {
 	text-align: right;
 }
 
 .table .leftalign,.table .rightalign {
-	padding: 10px 0;
+	padding: 5px 0;
+}
+
+.stage.smaller.stage-missing {
+	display: inline-block;
+	*display:inline;
+	*zoom:1;
+	font-size: 9px;
+	padding: 3px 5px;
+	background: #e0e0e0;
+	margin: 2px;
+}
+
+#drafts-mini table th#header-date {
+	width: 17%;
+	text-align: center;
+}
+
+#drafts-mini table th#header-draftlaw {
+	width: 58%;
+	background: none;
+}
+
+#drafts-mini table th#header-stage {
+	width: 25%;
+	text-align: center;
+}
+
+#drafts-mini table td.d-date {
+	text-align: center;
+}
+
+#drafts-mini table td.d-date,#drafts-mini table td.d-stage {
+	text-align: center;
 }
 
 .column {
@@ -469,6 +576,10 @@ img.column-bg {
 	font-size: .7em;
 }
 
+.normal {
+	font-size: 0.85em;
+}
+
 .bigger {
 	font-size: 1.2em;
 }
@@ -498,7 +609,26 @@ img.column-bg {
 }
 
 #below-fold {
-	margin-top: 20px;
+	margin-top: 33px;
+}
+
+#below-fold #engage-slider,#below-fold #mp-stats-slider,#below-fold #drafts-mini {
+	height: 327px;
+}
+
+#mp-stats-slides .question {
+	margin-top: 95px;
+}
+
+.mp-stats-slides {
+	height: 327px;
+}
+
+.smsalert-image {
+	background: url(../img/sms.jpg) no-repeat;
+	width: 188px;
+	height: 188px;
+	margin: 0 auto 12px;
 }
 
 /* 3 COLUMN. USED FOR HOMEPAGE */
@@ -536,17 +666,136 @@ img.column-bg {
 	margin-left: -100%;
 }
 
-#unit-list ul {
-	position: relative;
-	white-space: nowrap;
+.mps-row-container {
+	float: left;
+	margin: 0 !important;
 }
 
+#unit-list
+
+
+
+ 
+
+
+
+ul
+
+
+
+
+
+
+#mps-row1
+,
+#unit-list
+
+
+
+ 
+
+
+
+ul
+
+
+
+
+
+
+#mps-row2
+,
+#unit-list
+
+
+
+ 
+
+
+
+ul
+
+
+
+
+
+
+#mps-row3
+,
+{
+position
+
+
+
+
+
+
+:
+
+
+
+ 
+
+
+
+relative
+
+
+
+
+
+
+;
+white-space
+
+
+
+
+
+
+:
+
+
+
+ 
+
+
+
+nowrap
+
+
+
+
+
+
+;
+}
 #unit-list ul li {
 	display: inline-block;
+	*display:inline;
+	zoom:1
 }
 
 #unit-list ul li:first-child {
 	margin-top: .5em;
+}
+
+#unit-list li.member-selected {
+	opacity: 1 !important;
+}
+
+#unit-list li.member:hover {
+	opacity: 1;
+}
+
+#unit-list li.member {
+	opacity: .5;
+	transition: 100ms ease-in;
+	-webkit-transition: 100ms ease-in;
+	-moz-transition: 100ms ease-in;
+	-o-transition: 100ms ease-in;
+	-ms-transition: 100ms ease-in;
+	-webkit-transition: 100ms ease-in;
 }
 
 .heading {
@@ -566,6 +815,8 @@ img.column-bg {
 	position: relative;
 	top: -14px;
 	display: inline-block;
+	*display:inline;
+	*zoom:1;
 }
 
 .breadcrumb a {
@@ -592,6 +843,7 @@ img.column-bg {
 
 .table {
 	display: table;
+	table-layout:fixed;
 }
 
 .row {

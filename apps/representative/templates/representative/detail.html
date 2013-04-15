@@ -129,7 +129,7 @@
                         <div class="cell" id="label-answered">{% trans 'Answered' %}</div>
                         <div class="cell" id="label-noresponse">{% trans 'No Response' %}</div>
                     </div>
-                    <div class="row" id="bar-questions">
+                    <div class="row bar" id="bar-questions">
                         <div class="cell" id="bar-answered" style="width: {{ questions.answered.relative }}%">{{ questions.answered.absolute }}</div>
                         <div class="cell" id="bar-noresponse" style="width: {{ questions.noresponse.relative }}%">{{ questions.noresponse.absolute }}</div>
                     </div>
@@ -161,6 +161,8 @@
 
 {% addtoblock "js" %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/detail.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquerycycle.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquery.simpletip.min.js"></script>
 <script type="text/javascript">
 var URL_Votingrecords = '{% url representative_votingrecords_simple obj.pk %}'
 </script>

@@ -1,22 +1,25 @@
 {% load i18n %}
-<h2>{% trans 'Alerts from Parliament' %}</h2>
-<div id="date">{{ obj.date_sent }}</div>
+<div class="smsalert-container">
+<div class="smsalert-image" title="{% trans 'Alerts from Parliament' %}"></div>
 <div id="text">{{ obj.text }}</div>
 
 {% if obj.draftlaws.all %}
+<!--  
 <div id="related-draftlaws">
     <div>{% trans 'Related draft laws' %}:</div>
     <ul>
         {% for dl in obj.draftlaws.all %}<li><a href="{{ dl.get_absolute_url }}" title="{{ dl }}">{{ dl }}</a></li>{% endfor %}
     </ul>
 </div>
+-->
 {% endif %}
-
+<!--  
 <div id="navigation">
     {% if page_obj.has_previous %}<a id="prev" title="{% trans 'Previous Alert' %}" href="{% url smsalert_page page_obj.previous_page_number %}"><img src="{{ STATIC_URL }}img/prev.png" width="16" height="16" border="0" /></a>{% endif %}
     {% if page_obj.has_next %}<a id="next" title="{% trans 'Next Alert' %}" href="{% url smsalert_page page_obj.next_page_number %}"><img src="{{ STATIC_URL }}img/next.png" width="16" height="16" border="0" /></a>{% endif %}
 </div>
-
+-->
 <div id="receive">
     <a href="{% url smsregister_show %}">{% trans 'Receive alerts on your phone.' %}</a>
+</div>
 </div>
