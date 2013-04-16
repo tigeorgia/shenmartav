@@ -8,7 +8,7 @@ html,body {
 	background: #f0f0f0;
 	color: #666;
 	height: 100%;
-	overflow-x:hidden;
+	overflow-x: hidden;
 }
 
 input,select,option,textarea {
@@ -103,6 +103,7 @@ h4 {
 a {
 	text-decoration: none;
 	color: #1d7ac8;
+	outline: none;
 }
 
 a:hover {
@@ -386,10 +387,12 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	position: absolute;
 	background: #fff;
 	z-index: 2;
+	overflow: hidden;
 }
 
 #mp-info #data {
 	padding: 17px 23px;
+	position: relative;
 }
 
 #mp-info #data #photo {
@@ -444,7 +447,7 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #mp-info #more {
 	position: absolute;
 	right: 20px;
-	bottom: 16px;
+	bottom: -20px;
 	background: #b3b3b3;
 }
 
@@ -668,12 +671,27 @@ img.column-bg {
 	overflow: hidden;
 }
 
-#scroll-next,#scroll-prev{
-	position:absolute;
-	width:25px;
-	height:50px;
+#scroll-next,#scroll-prev {
+	position: absolute;
+	width: 25px;
+	height: 50px;
 	cursor: pointer;
-	background:url(../img/arrows/big.png) no-repeat;
+	background: url(../img/arrows/big.png) no-repeat;
+}
+
+#scroll-next,#scroll-prev {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#scroll-next::selection,#scroll-prev::selection,#scroll-next::-moz-selection,#scroll-prev::-moz-selection
+	{
+	color: transparent;
+	background-color: transparent;
 }
 
 #scroll-next {
