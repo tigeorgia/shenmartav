@@ -614,6 +614,7 @@ img.column-bg {
 
 #below-fold {
 	margin-top: 33px;
+	position: relative;
 }
 
 #below-fold #engage-slider,#below-fold #mp-stats-slider,#below-fold #drafts-mini {
@@ -644,12 +645,15 @@ img.column-bg {
 }
 
 .threecolumn .span1,.threecolumn .span2,.threecolumn .span3 {
-	float: left;
 	background-color: #fff;
+	display:inline-block;
+	*display:inline-block;
+	*zoom:1;
 }
 
 .threecolumn .span2,.threecolumn .span3 {
-	margin-left: 17px;
+	margin-left: 13px;
+	vertical-align: top;
 }
 
 .threecolumn .span1 {
