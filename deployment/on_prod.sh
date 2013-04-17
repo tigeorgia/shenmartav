@@ -3,7 +3,7 @@
 # shenmartav deployment script on REMOTE server
 # CAREFUL NOW!
 
-ROOT="/home/tigeorgia/shenmartav"
+ROOT="/home/tigeorgia/myparliament"
 DEPLOY="${ROOT}/deploy"
 
 cd ${ROOT}

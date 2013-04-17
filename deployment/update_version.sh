@@ -6,7 +6,7 @@
 #
 ###########################################################
 
-ROOT='/home/tig/shenmartav/shenmartav'
+ROOT='/home/ddohler/Development/shenmartav/shenmartav'
 TEMPLATE='templates/nav.html'
 
 cd ${ROOT}
