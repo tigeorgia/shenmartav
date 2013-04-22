@@ -10,7 +10,7 @@
 <div id="contact">
     <h2 class="heading">{% trans 'Contact' %}</h2>
 
-    <div id="scroll-container" class="scroll-pane">
+    <div id="" class="">
         <div id="authors">
             <div id="tig">
                 <h3>{% trans 'Transparency International Georgia' %}</h3>
@@ -44,7 +44,7 @@
                 <td>{{ field }}{% if field.errors %}{% for err in field.errors %}<div class="error">{{ err }}</div>{% endfor %}{% endif %}</td>
             </tr>{% endfor %}
             <tr>
-                <td><div class="fineprint required">{% trans 'Colored fields are required' %}</div></td>
+                <td><div class="fineprint required">{% trans 'Bold fields are required' %}</div></td>
                 <td><input type="submit" value="{% trans 'Contact Us' %}" /></td>
             </tr>
             </table>

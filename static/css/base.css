@@ -26,7 +26,6 @@ input,select,option,textarea {
 }
 
 input,select,option {
-	height: 2.6em;
 }
 
 input[type='password'],input[type='text'] {
@@ -58,18 +57,16 @@ h1 {
 	text-transform: uppercase;
 	font-size: 1.6em;
 	font-weight: bold;
-	color: #d44847;
+	color: #656565;
 	margin: 1.2em 0 0 0;
 }
 
 h1 a {
-	color: #d44847;
+	color: #656565;
 	text-decoration: none;
 }
 
 h1 a:hover {
-	color: #e08c8c;
-	text-decoration: none;
 }
 
 .subh1 {
@@ -155,8 +152,10 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 .wrapper {
 	width: 1100px;
+    padding: 0.5em;
 	margin: 0 auto;
 	clear: both;
+    background-color: #fff;
 }
 
 #item-wrapper {
@@ -481,14 +480,34 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	padding: 5px 0;
 }
 
-.stage.smaller.stage-missing {
-	display: inline-block;
-	*display: inline;
-	*zoom: 1;
-	font-size: 9px;
-	padding: 3px 5px;
-	background: #e0e0e0;
-	margin: 2px;
+#drafts-table a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#drafts-table a:hover {
+    text-decoration: underline;
+}
+
+.item .stage {
+    display: inline-block;
+    margin-left: .3em;
+    padding: .3em;
+    border: none;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    background: #1d7ac8;
+}
+
+.item .stage-complete {
+    cursor: pointer;
+}
+.item .stage-missing {
+    background: #dedcdf;
+}
+.item .stage-incomplete {
+    opacity: .3;
 }
 
 #drafts-mini table th#header-date {
@@ -593,11 +612,11 @@ img.column-bg {
 }
 
 .fineprint {
-	font-size: .5em;
+	font-size: .75em;
 }
 
 .required {
-	color: #d44847;
+    font-weight: bolder;
 }
 
 .error {
@@ -811,7 +830,7 @@ img.column-bg {
 	padding: .5em;
 	margin-bottom: .5em;
 	font-weight: normal;
-	font-size: 1em;
+	font-size: 1.2em;
 	text-transform: uppercase;
 	text-align: left;
 }

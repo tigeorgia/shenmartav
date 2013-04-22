@@ -10,7 +10,7 @@
 <div id="smsregister">
     <h2 class="heading">{% trans 'SMS Registration' %}</h2>
 
-    <div id="scroll-container" class="scroll-pane">
+    <div id="" class="">
         <form id="form-smsregister" action="{% url smsregister_show %}" method="post">
             <h3>{% trans 'Registration Form' %}</h3>
             {% csrf_token %}
@@ -20,7 +20,7 @@
                 <td>{{ field }}{% if field.errors %}{% for err in field.errors %}<div class="error">{{ err }}</div>{% endfor %}{% endif %}</td>
             </tr>{% endfor %}
             <tr>
-                <td><div class="fineprint required">{% trans 'Colored fields are required' %}</div></td>
+                <td><div class="fineprint required">{% trans 'Bold fields are required' %}</div></td>
                 <td><input type="submit" value="{% trans 'Register' %}" /></td>
             </tr>
             </table>
