@@ -3,9 +3,9 @@
  */
 
 #question #list {
-    float: left;
+    display: inline-block;
+    zoom: 1;
     width: 60%;
-    height: 300px;
     overflow: auto;
 }
 
@@ -15,23 +15,18 @@
 }
 
 #question #list th {
-    background: #e08c8c url(../../img/arrows/default.gif) center right no-repeat;
+    background: url(../../img/arrows/default.gif) center right no-repeat;
     cursor: pointer;
     text-align: left;
 }
 #question #list th#header-representative {
     width: 30%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
 }
 #question #list th#header-question {
     width: 55%;
-    border-radius: 0;
 }
 #question #list th#header-answered {
     width: 15%;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 }
 #question #list th.headerSortUp {
     background-image: url(../../img/arrows/asc.gif);
@@ -72,15 +67,33 @@
 
 
 #question #sidebar {
-    float: left;
     width: 37%;
-    margin-left: 1em;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: top;
+}
+
+#question #info {
+    min-height: 15em;
+    height: 15em;
+    overflow-y: auto;
 }
 
 #question #info #the-question {
     margin-bottom: 1em;
-    background: #fff url('../../img/bg-white.jpg') repeat 0 0;
 }
+
+#question #info #the-question #questioner {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top
+}
+#question #info #the-question #questionee {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+}
+
 #question #info #the-question .data {
     width: 75%;
 }

@@ -79,13 +79,6 @@
     text-align: left;
 }
 
-#draftlaw #list td a {
-    text-decoration: none;
-    color: inherit;
-    width: 100%;
-    height: 100%;
-}
-
 #draftlaw #list .d-date, #draftlaw #list .d-stage {
     text-align: center;
 }
@@ -109,33 +102,9 @@
     background-color: #fafafa;
 }
 
-
-#draftlaw #list .item .stage {
-    display: inline-block;
-    margin-left: .3em;
-    padding: .3em;
-    border: none;
-    width: 1em;
-    height: 1em;
-    text-align: center;
-    background: #1d7ac8;
-}
-#draftlaw #list .item .stage-complete {
-    cursor: pointer;
-}
-#draftlaw #list .item .stage-missing {
-    background: #dedcdf;
-}
-#draftlaw #list .item .stage-incomplete {
-    opacity: .3;
-}
-
-
-
 #draftlaw #container-info {
     float: left;
     margin-left: 1em;
-    /*width: 38%;*/
     height: 86em;
     overflow: auto;
 }

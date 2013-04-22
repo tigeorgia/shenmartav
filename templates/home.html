@@ -1,4 +1,10 @@
-{% extends 'base.html' %} {% load cms_tags i18n %} {% load i18n sekizai_tags %} {% block banner %}
+{% extends 'base.html' %} {% load cms_tags i18n %} {% load i18n sekizai_tags %} 
+{% block css %}
+<style type="text/css">
+    .wrapper { background-color: inherit; }
+</style>
+{% endblock %}
+{% block banner %}
 <div class="banner-home"></div>
 {% endblock %} {% block content %}
 <div id="scroll-next">&nbsp;</div>
@@ -94,7 +100,7 @@ This representative has attended an ordinary number of votes, compared to other 
 		<div class="mp-stats-slides">{% placeholder stats3 %}</div>
 	</div>
 	<div id="drafts-mini" class="span3">
-		<table>
+		<table id="drafts-table">
 			<thead>
 				<tr>
 					<th class="heading sortable" id="header-date">{% trans 'Date' %}</th>
