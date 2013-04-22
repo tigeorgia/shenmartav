@@ -619,6 +619,12 @@ img.column-bg {
 
 #below-fold #engage-slider,#below-fold #mp-stats-slider,#below-fold #drafts-mini {
 	height: 327px;
+	overflow:hidden;
+	vertical-align:top;
+}
+
+#below-fold .caroufredsel_wrapper{
+	display:inline-block!important;
 }
 
 #mp-stats-slides .question {
@@ -627,6 +633,7 @@ img.column-bg {
 
 .mp-stats-slides {
 	height: 327px;
+	padding: 5px 15px;
 }
 
 .smsalert-image {
@@ -647,7 +654,7 @@ img.column-bg {
 .threecolumn .span1,.threecolumn .span2,.threecolumn .span3 {
 	background-color: #fff;
 	display:inline-block;
-	*display:inline-block;
+	*display:inline;
 	*zoom:1;
 }
 

@@ -65,5 +65,11 @@ $(document).ready(
 				$imgsrc = $image.data('mpimage');
 				$image.attr('src', $imgsrc);
 			}
+			
+			$("#mp-stats-slider").carouFredSel({
+				direction: "up",
+				items: 1,
+				width: 268,
+			});
 
 		});
