@@ -66,10 +66,20 @@ $(document).ready(
 				$image.attr('src', $imgsrc);
 			}
 			
-			$("#mp-stats-slider").carouFredSel({
-				direction: "up",
+			$("#mp-stats-slider .carousel").carouFredSel({
 				items: 1,
 				width: 268,
+				auto: {
+					pauseOnHover: "immediate",
+				},
+				scroll:{
+					fx: 'crossfade',
+					duration: 200,
+					timeoutDuration: 7000,
+					width: 268,
+				},
+				pagination: "#mp-stats-pager",
+				
 			});
 
 		});
