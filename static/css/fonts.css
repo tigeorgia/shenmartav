@@ -13,7 +13,7 @@ body,
 .ui-widget button,
 ul.ui-widget-content
 {
-    font-family: "BPG DejaVu Sans M", Verdana, Arial, sans-serif;
+    font-family: "BPG Arial", Verdana, Arial, sans-serif;
 }
 
 input, select, option, textarea,
@@ -21,7 +21,7 @@ h1, h2, h3, h4,
 .subh1,
 .heading,
 .more, .more a,
-#folded-nav #header #navigation,
+#nav #header #navigation,
 .representative-name,
 select[name="representative"],
 #representative #filter,
