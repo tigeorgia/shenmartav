@@ -82,4 +82,17 @@ $(document).ready(
 				
 			});
 
+            var wait_for_mpload = function() {
+                if(!RepresentativeFind.isLoadingInfo && RepresentativeFind.activeUnit !== null){
+                    var members = $("li.member");
+                    var random = Math.round(Math.random()*members.length);
+                    members.eq(random).click();
+                }
+                else{
+                    setTimeout(wait_for_mpload,200)
+                }
+            }
+             
+            wait_for_mpload();
+
 		});
