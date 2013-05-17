@@ -517,6 +517,10 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	text-align: center;
 }
 
+#drafts-mini .view-more {
+    margin-left: 0.5em;
+}
+
 #drafts-mini table th#header-draftlaw {
 	width: 58%;
 	background: none;
@@ -639,7 +643,7 @@ img.column-bg {
 }
 
 #below-fold #engage-slider,#below-fold #mp-stats-slider,#below-fold #drafts-mini {
-	height: 327px;
+	height: 365px;
 	overflow: hidden;
 	vertical-align: top;
 }

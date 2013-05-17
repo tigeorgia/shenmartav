@@ -41,7 +41,7 @@ class DraftLawListPlugin (CMSPluginBase):
         view = Items()
         #TODO This seems kinda hacky. Maybe convert the whole
         # view to a plugin instead?
-        context['draftlaws'] = view._get_draftlaws({'page': 1,'pagesize': 4})
+        context['draftlaws'] = view._get_draftlaws({'page': 1,'pagesize': 3})
         return context
 
 plugin_pool.register_plugin(DraftLawListPlugin)
