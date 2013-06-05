@@ -129,6 +129,10 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	border: 1px solid #fff;
 }
 
+.grey {
+    color: #dcdcdc;
+}
+
 #content {
 	width: 100%;
 	height: auto !important;
@@ -492,13 +496,30 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
     opacity: .3;
 }
 
+#drafts-mini {
+    line-height: 0;
+}
+
+#drafts-mini #drafts-table {
+    line-height: normal;
+}
+
 #drafts-mini table th#header-date {
 	width: 17%;
 	text-align: center;
 }
 
+#drafts-mini #drafts-header {
+    margin: 2em 0em 0em 1em;
+    font-size: 120%;
+}
+
+#drafts-mini #drafts-header h2 {
+    text-align: left;
+}
+
 #drafts-mini .view-more {
-    margin-left: 0.5em;
+    margin: 0em 0em 0.5em 1em;
 }
 
 #drafts-mini table th#header-draftlaw {
@@ -623,7 +644,7 @@ img.column-bg {
 }
 
 #below-fold #engage-slider,#below-fold #mp-stats-slider,#below-fold #drafts-mini {
-	height: 365px;
+	height: 410px;
 	overflow: hidden;
 	vertical-align: top;
 }
