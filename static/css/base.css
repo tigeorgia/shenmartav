@@ -67,6 +67,7 @@ h1 a {
 }
 
 h1 a:hover {
+    color: #4d92c9;
 }
 
 .subh1 {
@@ -99,12 +100,13 @@ h4 {
 
 a {
 	text-decoration: none;
-	color: #1d7ac8;
+    color: inherit;
 	outline: none;
 }
 
 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
+    color: #4d92c9;
 }
 
 ul {
@@ -207,15 +209,6 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 .column #header {
 	text-align: left;
 	margin-left: 1em;
-}
-
-#header a {
-	color: #7b7b7b;
-	text-decoration: none;
-}
-
-#header a:hover {
-	color: #4d92c9;
 }
 
 #header #language-switchers {
@@ -458,10 +451,6 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	display: block;
 }
 
-#mp-info #more a:hover {
-	text-decoration: none;
-}
-
 .table .bar .cell:hover {
 	outline: yellow solid thin;
 }
@@ -480,15 +469,6 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 
 .table .leftalign,.table .rightalign {
 	padding: 5px 0;
-}
-
-#drafts-table a {
-    text-decoration: none;
-    color: inherit;
-}
-
-#drafts-table a:hover {
-    text-decoration: underline;
 }
 
 .item .stage {
