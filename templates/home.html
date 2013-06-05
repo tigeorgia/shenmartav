@@ -9,46 +9,44 @@
 {% endblock %} {% block content %}
 <div id="scroll-next">&nbsp;</div>
 <div id="scroll-prev">&nbsp;</div>
+<div id="mp-list-header" class="angled">
+    <!--<div class="angle-border ab-left">&nbsp;</div>-->
+    {% placeholder mp_title %}
+    <!--<div class="angle-border ab-right">&nbsp;</div>-->
+</div>
 <div id="representative" class="">
 	<div id="mp-info">
 		<div id="data">
 			<div id="photo">
-				<a title="Giorgi Khakhnelidze" href="/en/who/representative/129/%E1%83%92%E1%83%98%E1%83%9D%E1%83%A0%E1%83%92%E1%83%98-%E1%83%AE%E1%83%90%E1%83%AE%E1%83%9C%E1%83%94%E1%83%9A%E1%83%98%E1%83%AB%E1%83%94/"><img src="/media/representatives/Khakhnelidze_jpg_100x96_q85.jpg" width="100" height="96" border="0"></a>
+				<a title="" href=""><img src="" width="100" height="96" border="0"></a>
 			</div>
 			<div id="short">
 				<div id="name" class="evenbigger representative-name">
-					<a title="Giorgi Khakhnelidze" href="/en/who/representative/129/%E1%83%92%E1%83%98%E1%83%9D%E1%83%A0%E1%83%92%E1%83%98-%E1%83%AE%E1%83%90%E1%83%AE%E1%83%9C%E1%83%94%E1%83%9A%E1%83%98%E1%83%AB%E1%83%94/">Giorgi Khakhnelidze</a>
+					<a title="" href="">{% trans 'Loading...' %}</a>
 				</div>
-				<div id="unit" class="normal">Parliament of Georgia</div>
+				<div id="unit" class="normal"></div>
 				<div id="party" class="normal">
-					<a href="http://unm.ge" title="Unified National Movement - for Victorious Georgia">Unified National Movement - for Victorious Georgia</a>
+					<a href="" title=""></a>
 				</div>
 			</div>
 			<div style="clear: both"></div>
 			<div>
 				<div id="attendance">
-
-
 					<h2>
-						Voting attendance: 89% <span class="explain" title="Determined based on the official voting records retrieved from the Parliament web site. We calculate the attendance rate as (Number of Yes votes + Number of No votes + Number of Abstain votes) divided by the total number of votes for which an MP’s name is given. This doesn’t necessarily reflect which MPs were physically present at the time a vote was held, but is what was recorded by the Parliament’s voting systems.">?</span>
+						<span class="explain" title="">?</span>
 					</h2>
-					<!--<div id="group">
-
-
-This representative has attended an ordinary number of votes, compared to other representatives.
-    </div>-->
 					<div id="bar" class="table">
 						<div class="row">
-							<div class="cell leftalign">706</div>
-							<div class="cell rightalign">85</div>
+							<div class="cell leftalign"></div>
+							<div class="cell rightalign"></div>
 						</div>
 						<div class="row bar">
 							<div class="cell attendance-attended" style="width: 89%">&nbsp;</div>
 							<div class="cell attendance-absent" style="width: 10%">&nbsp;</div>
 						</div>
 						<div class="row">
-							<div class="cell leftalign">Attended</div>
-							<div class="cell rightalign">Absent</div>
+							<div class="cell leftalign">{% trans 'Attended' %}</div>
+							<div class="cell rightalign">{% trans 'Absent' %}</div>
 						</div>
 					</div>
 
@@ -57,7 +55,7 @@ This representative has attended an ordinary number of votes, compared to other 
 			</div>
 			<div>
 				<div id="income">
-					<h2>Annual Income</h2>
+					<h2>{% trans 'Annual Income' %}</h2>
 
 					<div id="bar" class="table">
 						<div class="row bar">
@@ -67,22 +65,22 @@ This representative has attended an ordinary number of votes, compared to other 
 						</div>
 						<div class="row">
 
-							<div class="cell" style="width: 48.8%">24000</div>
-							<div class="cell" style="width: 51.2%">25206</div>
-							<div class="cell" style="width: 0%">0</div>
+							<div class="cell" style="width: 48.8%"></div>
+							<div class="cell" style="width: 51.2%"></div>
+							<div class="cell" style="width: 0%"></div>
 
 						</div>
 					</div>
 					<ul id="legend">
-						<li><span class="legend-color income-base">&nbsp;</span>Base salary <span class="explain" title="Legally defined salary for representatives">?</span></li>
-						<li><span class="legend-color income-additional">&nbsp;</span>Additional income <span class="explain" title="Additional legally defined salary that a representative receives for activities such as being the head of a committee">?</span></li>
-						<li><span class="legend-color income-other">&nbsp;</span>Business income <span class="explain" title="Income that a representative receives from businesses owned by him/her">?</span></li>
+						<li><span class="legend-color income-base">&nbsp;</span>Base salary <span class="explain" title="">?</span></li>
+						<li><span class="legend-color income-additional">&nbsp;</span>Additional income <span class="explain" title="">?</span></li>
+						<li><span class="legend-color income-other">&nbsp;</span>Business income <span class="explain" title="">?</span></li>
 					</ul>
 
 				</div>
 			</div>
 			<div id="more">
-				<a href="/en/who/representative/129/%E1%83%92%E1%83%98%E1%83%9D%E1%83%A0%E1%83%92%E1%83%98-%E1%83%AE%E1%83%90%E1%83%AE%E1%83%9C%E1%83%94%E1%83%9A%E1%83%98%E1%83%AB%E1%83%94/">More »</a>
+				<a href="">More »</a>
 			</div>
 		</div>
 	</div>
