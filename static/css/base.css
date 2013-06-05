@@ -910,14 +910,14 @@ img.column-bg {
 }
 
 .explain {
-	background: #fff;
+    display: inline-block;
+    text-align: center;
+    height: 1em;
+	background: #aeaeae;
+    color: #fff;
 	font-size: .9em;
 	padding: .2em;
 	cursor: help;
-}
-
-.heading .explain {
-	background: #fff;
 }
 
 .hidden {
