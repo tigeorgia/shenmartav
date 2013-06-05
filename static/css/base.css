@@ -372,6 +372,10 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	height: 317px;
 }
 
+.smsalert-container #receive {
+    margin: 2em 0em 0em 0em;
+}
+
 #mp-stats-slider #ask {
 	text-align: center;
 }
