@@ -910,11 +910,11 @@ img.column-bg {
 	opacity: 1 !important;
 }
 
-#unit-list li.member:hover {
+li.member:hover {
 	opacity: 1;
 }
 
-#unit-list li.member {
+li.member {
 	opacity: .5;
 	transition: 100ms ease-in;
 	-webkit-transition: 100ms ease-in;
