@@ -147,11 +147,13 @@
         {% endifequal %}</div>
         <div class="box" id="box-votecounts">{% ifequal unit 1 %}
             <div id="votecounts">
-                <h2 class="heading">{% trans 'Vote Counts' %}</h2>
+                <div id="chart_div" style="width: 300px; height: 175px;"></div>
+                <!--<h2 class="heading">{% trans 'Vote Counts' %}</h2>
                 <div>{% trans 'In Favour' %}: <a href="{{ url_votingrecords }}#vote-yes" title="{% trans 'See votes in favour' %}">{{ votecounts.yes }}</a></div>
                 <div>{% trans 'Against' %}: <a href="{{ url_votingrecords }}#vote-no" title="{% trans 'See votes against' %}">{{ votecounts.no }}</a></div>
                 <div>{% trans 'Abstained' %}: <a href="{{ url_votingrecords }}#vote-abstention" title="{% trans 'See votes abstained' %}">{{ votecounts.abstained }}</a></div>
                 <div>{% trans 'Absent' %}: <a href="{{ url_votingrecords }}#vote-absent" title="{% trans 'See votes absent' %}">{{ votecounts.absent }}</a></div>
+            -->
             </div>
         {% endifequal %}</div>
     </div>
@@ -160,6 +162,27 @@
 {% endwith %}
 
 {% addtoblock "js" %}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['{% trans 'Vote type' %}','{% trans 'Number of votes' %}'],
+          ['{% trans 'In Favour' %}',{{ votecounts.yes }}],
+          ['{% trans 'Against' %}',    {{ votecounts.no }}],
+          ['{% trans 'Abstained' %}',  {{ votecounts.abstained }}],
+          ['{% trans 'Absent' %}', {{ votecounts.absent }}]
+        ]);
+
+        var options = {
+          title: '{% trans 'Vote Counts' %}'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+</script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/detail.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquerycycle.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquery.simpletip.min.js"></script>
