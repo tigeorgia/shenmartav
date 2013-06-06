@@ -263,6 +263,24 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	height: 368px;
 }
 
+#banner #banner-spacer {
+    height: 150px;
+}
+
+#banner .banner-home .banner-latest {
+    position: relative;
+    display: inline-block;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    margin: 1em;
+    padding: 0.5em;
+}
+
+#banner .banner-home .banner-latest p {
+    margin: 0;
+    font-size: 1.1em;
+}
+
 #footer {
 	position: relative;
 	z-index: 2;
@@ -375,22 +393,34 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	text-transform: uppercase;
 }
 
-.angled:before, .angled:after{
+.under-angled:after {
+    content: " ";
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    width: 0;
+    height: 0;
+    border: 1.2em outset transparent;
+    border-left: 1.2em solid rgba(255,255,255,0.2);
+    border-bottom: 1.2em solid rgba(255,255,255,0.2);
+}
+
+.angled:before, .angled:after {
        content: " ";
        width: 0;
        height: 0;
        position: absolute;
-       border: 20px transparent solid;
+       border: 1.75em outset transparent;
        top: 0%;
 }
 
 .angled:before {
-       border-right-color: #fff;
-       right: 100%;
+   border-right: 20px solid #fff;
+   right: 100%;
 }
 
 .angled:after {
-       border-left-color: #fff;
+       border-left: 20px solid #fff;
        left: 100%;
 }
 

@@ -5,7 +5,18 @@
 </style>
 {% endblock %}
 {% block banner %}
-<div class="banner-home"></div>
+<div class="banner-home">
+  <div class="wrapper">
+    <div id="banner-spacer">&nbsp;</div>
+    <div class="banner-latest under-angled">
+    {% placeholder banner_latest_1 %}
+    </div>
+    <br>
+    <div class="banner-latest under-angled">
+    {% placeholder banner_latest_2 %}
+    </div>
+  </div>
+</div>
 {% endblock %} {% block content %}
 <div id="scroll-next">&nbsp;</div>
 <div id="scroll-prev">&nbsp;</div>
