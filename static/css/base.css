@@ -184,6 +184,7 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #header #logo a {
 	text-decoration: none;
 	display: block;
+    text-align: center;
 }
 
 #header #logo span.title {
@@ -513,6 +514,11 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	width: 100%;
 }
 
+#mp-info .evenbigger {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 #mp-info #legend {
 	display: none;
 }
@@ -617,6 +623,7 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #drafts-mini table th#header-draftlaw {
 	width: 58%;
 	background: none;
+    text-align: center;
 }
 
 #drafts-mini table th#header-stage {

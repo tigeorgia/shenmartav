@@ -2,7 +2,7 @@
 <div id="photo"><a title="{{ obj.name }}" href="{{ obj.get_absolute_url }}">{% thumbnail obj.photo '100x96' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="96" border="0" /></a></div>
 <div id="short">
     <div id="name" class="evenbigger representative-name"><a title="{{ obj.name }}" href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></div>
-    <div id="unit" class="normal">{{ obj.unit.name }}</div>
+    <!--<div id="unit" class="normal">{{ obj.unit.name }}</div>-->
     <div id="party" class="normal">{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}{{ obj.party }}{% endif %}</div>
 </div>
 <div style="clear: both"></div>

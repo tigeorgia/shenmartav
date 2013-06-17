@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-20 13:27+0200\n"
+"POT-Creation-Date: 2013-06-17 15:46+0400\n"
 "PO-Revision-Date: 2012-09-04 17:19\n"
 "Last-Translator:   <sebastiantransparency@gmail.com>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -24,19 +24,20 @@ msgstr ""
 msgid "Search App"
 msgstr "საძიებო აპლიკაცია"
 
-#: distsettings.py:186
+#: distsettings.py:195
 msgid "Simple Template"
 msgstr "მარტივი ნიმუში"
 
-#: distsettings.py:187
-msgid "3 Column Template"
-msgstr "სამსვეტიანი ნიმუში"
+#: distsettings.py:196
+#, fuzzy
+msgid "Home Template"
+msgstr "მარტივი ნიმუში"
 
-#: settings.py:52
+#: settings.py:42
 msgid "English"
 msgstr "ინგლისური"
 
-#: settings.py:53
+#: settings.py:43
 msgid "Georgian"
 msgstr "ქართული"
 
@@ -44,71 +45,78 @@ msgstr "ქართული"
 msgid "Blog App"
 msgstr "ბლოგის აპლიკაცია"
 
-#: apps/basic/blog/models.py:16 apps/basic/blog/models.py:39
+#: apps/basic/blog/models.py:17 apps/basic/blog/models.py:43
+#: apps/podcasting/models.py:96 apps/podcasting/models.py:204
 msgid "title"
 msgstr "სათაური"
 
-#: apps/basic/blog/models.py:17 apps/basic/blog/models.py:40
+#: apps/basic/blog/models.py:18 apps/basic/blog/models.py:44
+#: apps/podcasting/models.py:97 apps/podcasting/models.py:205
 msgid "slug"
 msgstr "სლუგი"
 
-#: apps/basic/blog/models.py:20
+#: apps/basic/blog/models.py:21
 msgid "category"
 msgstr "კატეგორია"
 
-#: apps/basic/blog/models.py:21
+#: apps/basic/blog/models.py:22
 msgid "categories"
 msgstr "კატეგორიები"
 
-#: apps/basic/blog/models.py:36 apps/draftlaw/models.py:24
+#: apps/basic/blog/models.py:37 apps/draftlaw/models.py:24
 msgid "Draft"
 msgstr "ჩანახატი"
 
-#: apps/basic/blog/models.py:37
+#: apps/basic/blog/models.py:38
 msgid "Public"
 msgstr "საჯარო"
 
 #: apps/basic/blog/models.py:42
+msgid "Thumbnail"
+msgstr ""
+
+#: apps/basic/blog/models.py:46
 msgid "body"
 msgstr "ტექსტი"
 
-#: apps/basic/blog/models.py:43
+#: apps/basic/blog/models.py:47
 msgid "tease"
 msgstr "ტიზერი"
 
-#: apps/basic/blog/models.py:43
+#: apps/basic/blog/models.py:47
 msgid "Concise text suggested. Does not appear in RSS feed."
 msgstr "მოკლე ტექსტი შემოთავაზებულია. RSS ლენტაში არ გამოჩნდება."
 
-#: apps/basic/blog/models.py:44
+#: apps/basic/blog/models.py:48
 msgid "status"
 msgstr "ბოლო განახლება"
 
-#: apps/basic/blog/models.py:45
+#: apps/basic/blog/models.py:49
 msgid "allow comments"
 msgstr "კომენტარების დაშვება"
 
-#: apps/basic/blog/models.py:46
+#: apps/basic/blog/models.py:50
 msgid "publish"
 msgstr "გამოქვეყნება"
 
-#: apps/basic/blog/models.py:47
+#: apps/basic/blog/models.py:51 apps/podcasting/models.py:63
+#: apps/podcasting/models.py:191
 msgid "created"
 msgstr "შექმნილი"
 
-#: apps/basic/blog/models.py:48
+#: apps/basic/blog/models.py:52
 msgid "modified"
 msgstr "შესწორებული"
 
-#: apps/basic/blog/models.py:54
+#: apps/basic/blog/models.py:58
 msgid "post"
 msgstr "პოსტი"
 
-#: apps/basic/blog/models.py:55
+#: apps/basic/blog/models.py:59
 msgid "posts"
 msgstr "პოსტები"
 
-#: apps/basic/blog/models.py:87 apps/basic/blog/models.py:88
+#: apps/basic/blog/models.py:91 apps/basic/blog/models.py:92
 msgid "blog roll"
 msgstr "ბლოგების სია"
 
@@ -122,7 +130,9 @@ msgstr "შესაბამისი პოსტები"
 #: apps/basic/blog/templates/blog/category_detail.html:19
 #: apps/basic/blog/templates/blog/post_archive_day.html:18
 #: apps/basic/blog/templates/blog/post_archive_month.html:18
-#: apps/basic/blog/templates/blog/post_list.html:15
+#: apps/basic/blog/templates/blog/post_list.html:16
+#: apps/basic/blog/templates/blog/post_list.html:29
+#: apps/basic/blog/templates/blog/post_list.html:33
 #: apps/basic/blog/templates/blog/post_search.html:30
 #: apps/basic/blog/templates/blog/tag_detail.html:19
 msgid "View this post"
@@ -151,13 +161,14 @@ msgid "View items posted this month"
 msgstr "იხილეთ ამ თვეში განხორციელებული პოსტები"
 
 #: apps/basic/blog/templates/blog/post_detail.html:7
-#: apps/basic/blog/templates/blog/post_list.html:6
+#: apps/basic/blog/templates/blog/post_list.html:8
 #: apps/contact/templates/contact/show.html:6
 #: apps/contact/templates/contact/thanks.html:6
 #: apps/draftlaw/templates/draftlaw/detail.html:11
 #: apps/draftlaw/templates/draftlaw/list.html:10
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:6
 #: apps/incomedeclaration/templates/incomedeclaration/list.html:6
+#: apps/podcasting/templates/podcasting/episode_list.html:12
 #: apps/question/templates/question/ask.html:6
 #: apps/question/templates/question/detail.html:10
 #: apps/question/templates/question/leaderboard.html:6
@@ -166,39 +177,40 @@ msgstr "იხილეთ ამ თვეში განხორციელ
 #: apps/representative/templates/representative/detail.html:11
 #: apps/representative/templates/representative/search.html:10
 #: apps/representative/templates/representative/votingrecords.html:6
+#: apps/smsregister/templates/smsregister/show.html:6
+#: apps/smsregister/templates/smsregister/thanks.html:6
 #: apps/votingrecord/templates/votingrecord/detail.html:6
-#: apps/votingrecord/templates/votingrecord/list.html:6 templates/nav.html:6
+#: apps/votingrecord/templates/votingrecord/list.html:6 templates/nav.html:9
 #: templates/admin/base.html:56 templates/rosetta/pofile.html:14
 msgid "Home"
 msgstr "მთავარი"
 
 #: apps/basic/blog/templates/blog/post_detail.html:8
-#: apps/basic/blog/templates/blog/post_detail.html:13
-#: apps/basic/blog/templates/blog/post_list.html:7 templates/nav.html:7
+#: apps/basic/blog/templates/blog/post_list.html:9
 msgid "Blog"
 msgstr "ბლოგი"
 
-#: apps/basic/blog/templates/blog/post_detail.html:22
+#: apps/basic/blog/templates/blog/post_detail.html:19
 msgid "Related tags"
 msgstr "დაკავშირებული თეგები"
 
-#: apps/basic/blog/templates/blog/post_list.html:11
-msgid "Blog Posts"
-msgstr "ბლოგ-პოსტები"
+#: apps/basic/blog/templates/blog/post_list.html:33
+msgid "Read more"
+msgstr "წაიკითხე მეტი"
 
-#: apps/basic/blog/templates/blog/post_list.html:22
+#: apps/basic/blog/templates/blog/post_list.html:40
 msgid "View older posts"
 msgstr "წინა პოსტების ნახვა"
 
-#: apps/basic/blog/templates/blog/post_list.html:22
+#: apps/basic/blog/templates/blog/post_list.html:40
 msgid "Older"
 msgstr "წინა"
 
-#: apps/basic/blog/templates/blog/post_list.html:24
+#: apps/basic/blog/templates/blog/post_list.html:42
 msgid "View newer posts"
 msgstr "ახალი პოსტების ნახვა"
 
-#: apps/basic/blog/templates/blog/post_list.html:24
+#: apps/basic/blog/templates/blog/post_list.html:42
 msgid "Newer"
 msgstr "შემდეგი"
 
@@ -260,12 +272,12 @@ msgstr "საკონტაქტო ფორმა"
 
 #: apps/contact/templates/contact/show.html:7
 #: apps/contact/templates/contact/show.html:11
-#: apps/contact/templates/contact/thanks.html:7 templates/nav.html:9
+#: apps/contact/templates/contact/thanks.html:7
 msgid "Contact"
 msgstr "კონტაქტი"
 
 #: apps/contact/templates/contact/show.html:16
-#: apps/contact/templates/contact/show.html:17 templates/footer.html:9
+#: apps/contact/templates/contact/show.html:17 templates/footer.html:5
 msgid "Transparency International Georgia"
 msgstr "„საერთაშორისო გამჭვირვალობა – საქართველო“"
 
@@ -303,7 +315,6 @@ msgstr "ელფოსტა"
 
 #: apps/contact/templates/contact/show.html:23
 #: apps/contact/templates/contact/show.html:33
-#: apps/representative/templates/representative/detail.html:90
 msgid "Website"
 msgstr "ვებგვერდი"
 
@@ -326,7 +337,9 @@ msgstr "0154 თბილისი, საქართველო"
 
 #: apps/contact/templates/contact/show.html:47
 #: apps/question/templates/question/form.html:14
-msgid "Colored fields are required"
+#: apps/smsregister/templates/smsregister/show.html:23
+#, fuzzy
+msgid "Bold fields are required"
 msgstr "წითლად აღნიშნული ველების შევსება აუცილებელია"
 
 #: apps/contact/templates/contact/show.html:48
@@ -346,8 +359,13 @@ msgstr "თქვენ მალე დაგიკავშირდები�
 msgid "DraftLaw App"
 msgstr "კანონპროექტის აპლიკაცია"
 
-#: apps/draftlaw/cms_plugins.py:19
+#: apps/draftlaw/cms_plugins.py:20
 msgid "Draft Law Plugin"
+msgstr "კანონპროექტის პლაგინი"
+
+#: apps/draftlaw/cms_plugins.py:37
+#, fuzzy
+msgid "Draft Law List Plugin"
 msgstr "კანონპროექტის პლაგინი"
 
 #: apps/draftlaw/feeds.py:20
@@ -399,7 +417,7 @@ msgstr "კანონპროექტის ნომერი"
 msgid "Title of the Draft Law"
 msgstr "კანონპროექტის სახელწოდება"
 
-#: apps/draftlaw/models.py:35 apps/draftlaw/templates/draftlaw/detail.html:21
+#: apps/draftlaw/models.py:35 apps/draftlaw/templates/draftlaw/detail.html:41
 #: apps/draftlaw/templates/draftlaw/info.html:6
 msgid "Initiator"
 msgstr "ინიციატორი"
@@ -409,7 +427,7 @@ msgstr "ინიციატორი"
 msgid "Representatives who initiated this draft law"
 msgstr "ხმის მიმცემი დეპუტატი"
 
-#: apps/draftlaw/models.py:41 apps/draftlaw/templates/draftlaw/detail.html:22
+#: apps/draftlaw/models.py:41 apps/draftlaw/templates/draftlaw/detail.html:44
 #: apps/draftlaw/templates/draftlaw/info.html:7
 msgid "Author"
 msgstr "ავტორი"
@@ -427,22 +445,22 @@ msgstr "კანონპროექტის სტატუსი"
 msgid "Short Status of the Draft Law"
 msgstr "კანონპროექტის მოკლე სტატუსი"
 
-#: apps/draftlaw/models.py:53 apps/draftlaw/templates/draftlaw/detail.html:24
+#: apps/draftlaw/models.py:53 apps/draftlaw/templates/draftlaw/detail.html:46
 #: apps/draftlaw/templates/draftlaw/info.html:9
 msgid "Summary"
 msgstr "ცვლილების არსი"
 
-#: apps/draftlaw/models.py:55 apps/draftlaw/templates/draftlaw/detail.html:28
+#: apps/draftlaw/models.py:55 apps/draftlaw/templates/draftlaw/detail.html:50
 #: apps/draftlaw/templates/draftlaw/info.html:12
 msgid "Full Text"
 msgstr "სრული ტექსტი"
 
-#: apps/draftlaw/models.py:58 apps/draftlaw/templates/draftlaw/detail.html:29
+#: apps/draftlaw/models.py:58 apps/draftlaw/templates/draftlaw/detail.html:51
 msgid "Full Text URL"
 msgstr "სრული ტექსტის URL"
 
 #: apps/draftlaw/models.py:61 apps/draftlaw/models.py:186
-#: apps/draftlaw/templates/draftlaw/detail.html:30
+#: apps/draftlaw/templates/draftlaw/detail.html:52
 msgid "Enacted Text URL"
 msgstr "მიღებული ტექსტის URL"
 
@@ -451,34 +469,35 @@ msgid "Number of the Enacted Law"
 msgstr "მიღებული კანონის ნომერი"
 
 #: apps/draftlaw/models.py:67 apps/draftlaw/models.py:192
-#: apps/draftlaw/templates/draftlaw/detail.html:32
-#: apps/draftlaw/templates/draftlaw/detail.html:49
+#: apps/draftlaw/templates/draftlaw/detail.html:54
+#: apps/draftlaw/templates/draftlaw/detail.html:71
 #: apps/draftlaw/templates/draftlaw/info.html:11
 #: apps/votingrecord/models.py:62 apps/votingrecord/models.py:122
 msgid "Voting Record"
 msgstr "კენჭისყრის შედეგები"
 
-#: apps/draftlaw/models.py:69 apps/draftlaw/templates/draftlaw/detail.html:33
+#: apps/draftlaw/models.py:69 apps/draftlaw/templates/draftlaw/detail.html:55
 msgid "Related Document 1"
 msgstr "დაკავშირებული დოკუმენტი 1"
 
-#: apps/draftlaw/models.py:71 apps/draftlaw/templates/draftlaw/detail.html:34
+#: apps/draftlaw/models.py:71 apps/draftlaw/templates/draftlaw/detail.html:56
 msgid "Related Document 2"
 msgstr "დაკავშირებული დოკუმენტი 2"
 
-#: apps/draftlaw/models.py:73 apps/draftlaw/templates/draftlaw/detail.html:35
+#: apps/draftlaw/models.py:73 apps/draftlaw/templates/draftlaw/detail.html:57
 msgid "Related Document 3"
 msgstr "დაკავშირებული დოკუმენტი 3"
 
-#: apps/draftlaw/models.py:75 apps/draftlaw/templates/draftlaw/detail.html:36
+#: apps/draftlaw/models.py:75 apps/draftlaw/templates/draftlaw/detail.html:58
 msgid "Related Document 4"
 msgstr "დაკავშირებული დოკუმენტი 4"
 
-#: apps/draftlaw/models.py:77 apps/draftlaw/templates/draftlaw/detail.html:37
+#: apps/draftlaw/models.py:77 apps/draftlaw/templates/draftlaw/detail.html:59
 msgid "Related Document 5"
 msgstr "დაკავშირებული დოკუმენტი 5"
 
-#: apps/draftlaw/models.py:162 apps/draftlaw/templates/draftlaw/list.html:24
+#: apps/draftlaw/models.py:162 apps/draftlaw/templates/draftlaw/list.html:26
+#: templates/home.html:122
 msgid "Draft Law"
 msgstr "კანონპროექტი"
 
@@ -567,7 +586,8 @@ msgstr "კვირის შეჯამება"
 #: apps/draftlaw/templates/draftlaw/info.html:21
 #: apps/question/templates/cmsplugins/question.html:24
 #: apps/representative/templates/cmsplugins/representative.html:30
-#: apps/representative/templates/representative/info.html:21
+#: apps/representative/templates/representative/info.html:11
+#: templates/home.html:130
 msgid "More"
 msgstr "ვრცლად"
 
@@ -580,47 +600,59 @@ msgid "Enter a keyword"
 msgstr "შეიყვანეთ საკვანძო სიტყვა"
 
 #: apps/draftlaw/templates/draftlaw/detail.html:20
-#: apps/draftlaw/templates/draftlaw/info.html:4
-msgid "Bureau Date"
-msgstr "ბიუროს თარიღი"
+#, fuzzy
+msgid "Draft law details"
+msgstr "კანონპროექტი %s"
 
-#: apps/draftlaw/templates/draftlaw/detail.html:23
+#: apps/draftlaw/templates/draftlaw/detail.html:22
+msgid "Info"
+msgstr "ინფორმაცია"
+
+#: apps/draftlaw/templates/draftlaw/detail.html:22
+#: apps/draftlaw/templates/draftlaw/detail.html:45
 #: apps/draftlaw/templates/draftlaw/info.html:8
 msgid "Status"
 msgstr "სტატუსი"
 
 #: apps/draftlaw/templates/draftlaw/detail.html:26
 #, fuzzy
+msgid "Discussion stage"
+msgstr "დისკუსიის ეტაპი"
+
+#: apps/draftlaw/templates/draftlaw/detail.html:37
+#: apps/draftlaw/templates/draftlaw/info.html:4
+msgid "Bureau Date"
+msgstr "ბიუროს თარიღი"
+
+#: apps/draftlaw/templates/draftlaw/detail.html:48
+#, fuzzy
 msgid "SMS Alert"
 msgstr "შემდეგი შეტყობინება"
 
-#: apps/draftlaw/templates/draftlaw/detail.html:31
-#: apps/draftlaw/templates/draftlaw/detail.html:48
+#: apps/draftlaw/templates/draftlaw/detail.html:53
+#: apps/draftlaw/templates/draftlaw/detail.html:70
 #: apps/draftlaw/templates/draftlaw/info.html:10
 msgid "Law Number"
 msgstr "კანონის ნომერი"
 
-#: apps/draftlaw/templates/draftlaw/detail.html:38
+#: apps/draftlaw/templates/draftlaw/detail.html:54
+#, fuzzy
+msgid "Voting record"
+msgstr "კენჭისყრის შედეგები"
+
+#: apps/draftlaw/templates/draftlaw/detail.html:60
 #: apps/draftlaw/templates/draftlaw/info.html:14
 msgid "Discussions"
 msgstr "განხილვები"
 
-#: apps/draftlaw/templates/draftlaw/detail.html:43
+#: apps/draftlaw/templates/draftlaw/detail.html:65
 msgid "Children"
 msgstr "პაკეტში შემავალი კანონპროექტები"
 
-#: apps/draftlaw/templates/draftlaw/detail.html:47
+#: apps/draftlaw/templates/draftlaw/detail.html:69
 #: apps/draftlaw/templates/draftlaw/info.html:13
 msgid "Enacted Text"
 msgstr "მიღებული"
-
-#: apps/draftlaw/templates/draftlaw/detail.html:57
-msgid "User Annotations"
-msgstr "მომხმარებლის შენიშვნები"
-
-#: apps/draftlaw/templates/draftlaw/detail.html:60
-msgid "Your Annotation"
-msgstr "თქვენი შენიშვნა"
 
 #: apps/draftlaw/templates/draftlaw/info.html:3
 msgid "Title"
@@ -640,10 +672,17 @@ msgid "Reset"
 msgstr "განახლება"
 
 #: apps/draftlaw/templates/draftlaw/list.html:25
+#: apps/incomedeclaration/templates/incomedeclaration/detail.html:16
+#: apps/votingrecord/templates/votingrecord/detail.html:17
+#: templates/home.html:121
+msgid "Date"
+msgstr "თარიღი"
+
+#: apps/draftlaw/templates/draftlaw/list.html:27 templates/home.html:123
 msgid "Discussion Stage"
 msgstr "დისკუსიის ეტაპი"
 
-#: apps/draftlaw/templates/draftlaw/list.html:25
+#: apps/draftlaw/templates/draftlaw/list.html:27 templates/home.html:123
 msgid ""
 "In order to become enacted, each draft law must pass 6 hearings: three "
 "committee hearings and three plenary hearings. Each box represents one stage "
@@ -653,15 +692,9 @@ msgstr ""
 "საკომიტეტო და სამ პლენარულ მოსმენას. ამ პროცესის თითოეული ეტაპი გამოსახულია "
 "უჯრებით"
 
-#: apps/draftlaw/templates/draftlaw/list.html:26
-#: apps/incomedeclaration/templates/incomedeclaration/detail.html:16
-#: apps/votingrecord/templates/votingrecord/detail.html:17
-msgid "Date"
-msgstr "თარიღი"
-
-#: apps/draftlaw/templates/draftlaw/list.html:34
-msgid "Info"
-msgstr "ინფორმაცია"
+#: apps/draftlaw/templates/draftlaw/list.html:32
+msgid "List more"
+msgstr ""
 
 #: apps/draftlaw/templates/folded/what.html:3
 msgid "Section What"
@@ -730,6 +763,7 @@ msgstr "დაბადების ადგილი და თარიღი
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:88
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:100
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:142
+#: apps/representative/templates/representative/find.html:15
 msgid "Name"
 msgstr "სახელი"
 
@@ -797,7 +831,7 @@ msgstr "გვარი"
 
 #: apps/incomedeclaration/models.py:182
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:90
-#: apps/representative/models.py:152
+#: apps/representative/models.py:153
 msgid "Place of Birth"
 msgstr "დაბადების ადგილი"
 
@@ -892,7 +926,6 @@ msgstr "შემოსავლების დეკლარაციებ�
 #: apps/incomedeclaration/templates/incomedeclaration/list.html:7
 #: apps/representative/templates/cmsplugins/representative.html:12
 #: apps/representative/templates/representative/detail.html:12
-#: apps/representative/templates/representative/find.html:10
 #: apps/representative/templates/representative/search.html:11
 #: apps/representative/templates/representative/votingrecords.html:7
 msgid "Who Makes Laws"
@@ -905,9 +938,9 @@ msgstr "შემოსავლების დეკლარაციებ�
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:18
 #: apps/question/forms.py:54 apps/question/models.py:208
 #: apps/question/templates/question/leaderboard.html:20
-#: apps/question/templates/question/list.html:18
-#: apps/representative/models.py:413 apps/representative/models.py:424
-#: apps/representative/models.py:465 apps/representative/models.py:529
+#: apps/question/templates/question/list.html:42
+#: apps/representative/models.py:420 apps/representative/models.py:434
+#: apps/representative/models.py:478 apps/representative/models.py:542
 msgid "Representative"
 msgstr "წარმომადგენელი"
 
@@ -1035,6 +1068,485 @@ msgstr "გვერდი"
 msgid "of"
 msgstr "*************************"
 
+#: apps/podcasting/admin.py:32 apps/podcasting/admin.py:56
+#, fuzzy
+msgid "Published"
+msgstr "გამოქვეყნება"
+
+#: apps/podcasting/cms_app.py:6
+#, fuzzy
+msgid "Podcasting App"
+msgstr "შეკითხვის აპლიკაცია"
+
+#: apps/podcasting/forms.py:27 apps/podcasting/forms.py:173
+msgid "Checking this will publish this show on the site, no turning back."
+msgstr ""
+
+#: apps/podcasting/forms.py:81 apps/podcasting/forms.py:198
+msgid "Checking this will publish this episode on the site, no turning back."
+msgstr ""
+
+#: apps/podcasting/forms.py:87 apps/podcasting/forms.py:204
+msgid "Checking this will send out a tweet announcing the episode."
+msgstr ""
+
+#: apps/podcasting/forms.py:115 apps/podcasting/forms.py:216
+msgid ""
+"An episode must have at least one enclosure before publishing.\n"
+"                                           Uncheck, save this episode, and "
+"add an encoslure before publishing."
+msgstr ""
+
+#: apps/podcasting/forms.py:118 apps/podcasting/forms.py:219
+msgid "The show for this episode is not yet published"
+msgstr ""
+
+#: apps/podcasting/models.py:57
+#, fuzzy
+msgid "yes"
+msgstr "დიახ"
+
+#: apps/podcasting/models.py:58
+#, fuzzy
+msgid "no"
+msgstr "ინფორმაცია"
+
+#: apps/podcasting/models.py:59
+msgid "clean"
+msgstr ""
+
+#: apps/podcasting/models.py:61
+#, fuzzy
+msgid "id"
+msgstr "ძიება"
+
+#: apps/podcasting/models.py:69
+#, fuzzy
+msgid "ttl"
+msgstr "სათაური"
+
+#: apps/podcasting/models.py:70
+msgid ""
+"``Time to Live,`` the number of minutes a channel can be\n"
+"        cached before refreshing."
+msgstr ""
+
+#: apps/podcasting/models.py:74
+msgid "Make certain the user account has a name and e-mail address."
+msgstr ""
+
+#: apps/podcasting/models.py:76
+msgid "editor email"
+msgstr ""
+
+#: apps/podcasting/models.py:78
+msgid "webmaster email"
+msgstr ""
+
+#: apps/podcasting/models.py:83
+#, fuzzy
+msgid "organization"
+msgstr "პოზიცია"
+
+#: apps/podcasting/models.py:84
+msgid "Name of the organization, company or Web site producing the podcast."
+msgstr ""
+
+#: apps/podcasting/models.py:85
+msgid "link"
+msgstr ""
+
+#: apps/podcasting/models.py:85
+msgid ""
+"URL of either the main website or the\n"
+"        podcast section of the main website."
+msgstr ""
+
+#: apps/podcasting/models.py:90
+msgid ""
+"\n"
+"        This tag contains the name of the person or company that is most "
+"widely attributed to\n"
+"        publishing the Podcast and will be displayed immediately underneath "
+"the title of the Podcast.\n"
+"        The suggested format is: 'email@example.com (Full Name)' but 'Full "
+"Name' only, is acceptable.\n"
+"        Multiple authors should be comma separated."
+msgstr ""
+
+#: apps/podcasting/models.py:99 apps/podcasting/models.py:207
+#, fuzzy
+msgid "subtitle"
+msgstr "სათაური"
+
+#: apps/podcasting/models.py:100
+msgid "Looks best if only a few words, like a tagline."
+msgstr ""
+
+#: apps/podcasting/models.py:102 apps/podcasting/models.py:210
+#, fuzzy
+msgid "description"
+msgstr "აღწერა"
+
+#: apps/podcasting/models.py:102
+msgid ""
+"\n"
+"        This is your chance to tell potential subscribers all about your "
+"podcast.\n"
+"        Describe your subject matter, media format, episode schedule, and "
+"other\n"
+"        relevant info so that they know what they'll be getting when they\n"
+"        subscribe. In addition, make a list of the most relevant search "
+"terms\n"
+"        that you want yourp podcast to match, then build them into your\n"
+"        description. Note that iTunes removes podcasts that include lists "
+"of\n"
+"        irrelevant words in the itunes:summary, description, or\n"
+"        itunes:keywords tags. This field can be up to 4000 characters."
+msgstr ""
+
+#: apps/podcasting/models.py:112 apps/podcasting/models.py:225
+#, fuzzy
+msgid "original image"
+msgstr "საწყისი"
+
+#: apps/podcasting/models.py:113
+msgid ""
+"For best results, choose an attractive, original, and square\n"
+"        JPEG (.jpg) or PNG (.png) image at a size of 1400x1400 pixels. The "
+"image will be\n"
+"        scaled down to 50x50 pixels at smallest in iTunes. For reference see "
+"the\n"
+"        <a href=\"http://www.apple.com/itunes/podcasts/specs.html#metadata"
+"\">iTunes\n"
+"        Podcast specs</a>.<br /><br />\n"
+"        For episode artwork to display in iTunes, image must be\n"
+"        <a href=\"http://answers.yahoo.com/question/index?"
+"qid=20080501164348AAjvBvQ\">\n"
+"        saved to file's <strong>metadata</strong></a> before enclosure "
+"uploading!"
+msgstr ""
+
+#: apps/podcasting/models.py:136
+msgid "feedburner url"
+msgstr ""
+
+#: apps/podcasting/models.py:137
+msgid ""
+"Fill this out after saving this show and at least one\n"
+"        episode. URL should look like \"http://feeds.feedburner.com/"
+"TitleOfShow\".\n"
+"        See <a href=\"http://code.google.com/p/django-podcast/"
+"\">documentation</a>\n"
+"        for more. <a href=\"http://www.feedburner.com/fb/a/ping\">Manually "
+"ping</a>"
+msgstr ""
+
+#: apps/podcasting/models.py:143 apps/podcasting/models.py:255
+msgid "explicit"
+msgstr ""
+
+#: apps/podcasting/models.py:144 apps/podcasting/models.py:256
+msgid "``Clean`` will put the clean iTunes graphic by it."
+msgstr ""
+
+#: apps/podcasting/models.py:145
+msgid "redirect"
+msgstr ""
+
+#: apps/podcasting/models.py:146
+msgid ""
+"The show's new URL feed if changing\n"
+"        the URL of the current show feed. Must continue old feed for at "
+"least\n"
+"        two weeks and write a 301 redirect for old feed."
+msgstr ""
+
+#: apps/podcasting/models.py:149 apps/podcasting/models.py:252
+#, fuzzy
+msgid "keywords"
+msgstr "შეიყვანეთ საკვანძო სიტყვა"
+
+#: apps/podcasting/models.py:150
+msgid ""
+"A comma-demlimitedlist of up to 12 words for iTunes\n"
+"        searches. Perhaps include misspellings of the title."
+msgstr ""
+
+#: apps/podcasting/models.py:152
+msgid "itunes store url"
+msgstr ""
+
+#: apps/podcasting/models.py:153
+msgid ""
+"Fill this out after saving this show and at least one\n"
+"        episode. URL should look like:\n"
+"        \"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?"
+"id=000000000\".\n"
+"        See <a href=\"http://code.google.com/p/django-podcast/"
+"\">documentation</a> for more."
+msgstr ""
+
+#: apps/podcasting/models.py:158
+msgid "Twitter tweet prefix"
+msgstr ""
+
+#: apps/podcasting/models.py:158
+msgid ""
+"\n"
+"        Enter a short ``tweet_text`` prefix for new episodes on this show."
+msgstr ""
+
+#: apps/podcasting/models.py:165
+msgid "Show"
+msgstr ""
+
+#: apps/podcasting/models.py:166
+msgid "Shows"
+msgstr ""
+
+#: apps/podcasting/models.py:199
+msgid ""
+"\n"
+"        The person or musician name(s) featured on this specific episode.\n"
+"        The suggested format is: 'email@example.com (Full Name)' but 'Full "
+"Name' only, is acceptable.\n"
+"        Multiple authors should be comma separated."
+msgstr ""
+
+#: apps/podcasting/models.py:208
+msgid "Looks best if only a few words like a tagline."
+msgstr ""
+
+#: apps/podcasting/models.py:210
+msgid ""
+"\n"
+"        This is your chance to tell potential subscribers all about your "
+"podcast.\n"
+"        Describe your subject matter, media format, episode schedule, and "
+"other\n"
+"        relevant info so that they know what they'll be getting when they\n"
+"        subscribe. In addition, make a list of the most relevant search "
+"terms\n"
+"        that you want your podcast to match, then build them into your\n"
+"        description. Note that iTunes removes podcasts that include lists "
+"of\n"
+"        irrelevant words in the itunes:summary, description, or\n"
+"        itunes:keywords tags. This field can be up to 4000 characters."
+msgstr ""
+
+#: apps/podcasting/models.py:219
+msgid "tracklist"
+msgstr ""
+
+#: apps/podcasting/models.py:220
+msgid "One track per line, machine will automatically add the numbers."
+msgstr ""
+
+#: apps/podcasting/models.py:222
+msgid "tweet text"
+msgstr ""
+
+#: apps/podcasting/models.py:226
+msgid ""
+"For best results choose an attractive, original, and square\n"
+"        JPEG (.jpg) or PNG (.png) image at a size of 1400x1400 pixels. Image "
+"will be\n"
+"        scaled down to 50x50 pixels at smallest in iTunes. For reference see "
+"the\n"
+"        <a href=\"http://www.apple.com/itunes/podcasts/specs.html#metadata"
+"\">iTunes\n"
+"        Podcast specs</a>.<br /><br />\n"
+"        For episode artwork to display in iTunes, image must be\n"
+"        <a href=\"http://answers.yahoo.com/question/index?"
+"qid=20080501164348AAjvBvQ\">\n"
+"        saved to file's <strong>metadata</strong></a> before enclosure "
+"uploading!"
+msgstr ""
+
+#: apps/podcasting/models.py:249
+msgid "hours"
+msgstr ""
+
+#: apps/podcasting/models.py:250
+msgid "minutes"
+msgstr ""
+
+#: apps/podcasting/models.py:251
+msgid "seconds"
+msgstr ""
+
+#: apps/podcasting/models.py:253
+msgid ""
+"A comma-delimited list of words for searches, up to 12;\n"
+"        perhaps include misspellings."
+msgstr ""
+
+#: apps/podcasting/models.py:257
+msgid "block"
+msgstr ""
+
+#: apps/podcasting/models.py:258
+msgid ""
+"Check to block this episode from iTunes because <br />its\n"
+"        content might cause the entire show to be <br />removed from iTunes."
+msgstr ""
+
+#: apps/podcasting/models.py:265
+msgid "Episode"
+msgstr ""
+
+#: apps/podcasting/models.py:266
+msgid "Episodes"
+msgstr ""
+
+#: apps/podcasting/models.py:337
+msgid "url"
+msgstr ""
+
+#: apps/podcasting/models.py:338
+msgid ""
+"URL of the media file. <br /> It is <strong>very</strong>\n"
+"        important to remember that for episode artwork to display in iTunes, "
+"image must be\n"
+"        <a href=\"http://answers.yahoo.com/question/index?"
+"qid=20080501164348AAjvBvQ\">\n"
+"        saved to file's <strong>metadata</strong></a> before enclosure "
+"uploading!<br /><br />\n"
+"        For best results, choose an attractive, original, and square JPEG (."
+"jpg) or PNG (.png)\n"
+"        image at a size of 1400x1400 pixels. The image will be\n"
+"        scaled down to 50x50 pixels at smallest in iTunes."
+msgstr ""
+
+#: apps/podcasting/models.py:346
+msgid "size"
+msgstr ""
+
+#: apps/podcasting/models.py:346
+msgid ""
+"The length attribute is the\n"
+"        file size in bytes. Find this information in the files properties\n"
+"        (on a Mac, ``Get Info`` and refer to the size row)"
+msgstr ""
+
+#: apps/podcasting/models.py:349
+msgid "mime format"
+msgstr ""
+
+#: apps/podcasting/models.py:350
+msgid "Please contact support for a non mp3 filetype!"
+msgstr ""
+
+#: apps/podcasting/models.py:351
+msgid "bit rate"
+msgstr ""
+
+#: apps/podcasting/models.py:352
+msgid "Measured in kilobits per second (kbps), often 128 or 192."
+msgstr ""
+
+#: apps/podcasting/models.py:353
+#, fuzzy
+msgid "sample rate"
+msgstr "მარტივი ნიმუში"
+
+#: apps/podcasting/models.py:354
+msgid "Measured in kilohertz (kHz), often 44.1."
+msgstr ""
+
+#: apps/podcasting/models.py:355
+msgid "channel"
+msgstr ""
+
+#: apps/podcasting/models.py:356
+msgid "Number of channels; 2 for stereo, 1 for mono."
+msgstr ""
+
+#: apps/podcasting/models.py:361
+msgid "Enclosure"
+msgstr ""
+
+#: apps/podcasting/models.py:362
+msgid "Enclosures"
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_current_episode.html:18
+#: apps/podcasting/templates/podcasting/_episode_detail.html:15
+#: apps/podcasting/templates/podcasting/_episode_list.html:31
+msgid "to download right click and select 'save link as'"
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_current_episode.html:19
+#: apps/podcasting/templates/podcasting/_episode_detail.html:16
+#: apps/podcasting/templates/podcasting/_episode_list.html:32
+#, fuzzy
+msgid "Download / Stream"
+msgstr "კატალოგის ჩამოტვირთვა"
+
+#: apps/podcasting/templates/podcasting/_current_episode.html:26
+#: apps/podcasting/templates/podcasting/_current_episode.html:29
+#: apps/podcasting/templates/podcasting/_episode_detail.html:38
+#: apps/podcasting/templates/podcasting/_episode_list.html:39
+#: apps/podcasting/templates/podcasting/_episode_list.html:42
+msgid "Tracklist"
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_current_episode.html:46
+#, fuzzy
+msgid "read more"
+msgstr "წაიკითხე მეტი"
+
+#: apps/podcasting/templates/podcasting/_current_episode.html:54
+#: apps/podcasting/templates/podcasting/_episode_detail.html:54
+#: apps/podcasting/templates/podcasting/_episode_list.html:54
+msgid "Coming soon..."
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_feeds.html:7
+msgid "Feedburner"
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_feeds.html:10
+msgid "iTunes"
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_feeds.html:12
+msgid "Atom"
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_feeds.html:13
+#, fuzzy
+msgid "RSS"
+msgstr "SMS"
+
+#: apps/podcasting/templates/podcasting/_show_detail.html:17
+msgid "There is no such show."
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_show_list.html:4
+#: apps/podcasting/templates/podcasting/show_list.html:5
+msgid "Podcast Shows"
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/_show_list.html:17
+msgid "There are no shows."
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/current_episode.html:5
+msgid "Current Edition"
+msgstr ""
+
+#: apps/podcasting/templates/podcasting/episode_list.html:6
+#, fuzzy
+msgid "Archive"
+msgstr "პოსტების არქივი"
+
+#: apps/podcasting/templates/podcasting/episode_list.html:13
+#: templates/nav.html:12
+msgid "Podcast"
+msgstr ""
+
 #: apps/question/admin.py:18
 msgid "Mark selected questions as public"
 msgstr "მონიშნეთ შერჩეული შეკითხვები როგორც საჯარო"
@@ -1067,8 +1579,8 @@ msgstr "მობილური ტელეფონის ნომერი"
 
 #: apps/question/forms.py:53 apps/question/models.py:205
 #: apps/question/templates/cmsplugins/question.html:22
-#: apps/question/templates/question/list.html:19
-#: apps/representative/templates/representative/detail.html:147
+#: apps/question/templates/question/list.html:43
+#: apps/representative/templates/representative/detail.html:139
 msgid "Question"
 msgstr "შეკითხვა"
 
@@ -1159,7 +1671,7 @@ msgid "Latest question"
 msgstr "ბოლოს დასმული შეკითხვა"
 
 #: apps/question/templates/cmsplugins/question.html:23
-#: apps/representative/templates/representative/detail.html:148
+#: apps/representative/templates/representative/detail.html:140
 msgid "Answer"
 msgstr "პასუხი"
 
@@ -1176,7 +1688,8 @@ msgstr "ყველაზე მეტი პასუხი"
 #: apps/question/templates/cmsplugins/question.html:53
 #: apps/question/templates/question/info.html:20
 #: apps/question/templates/question/items.html:5
-#: apps/representative/templates/representative/detail.html:137
+#: apps/question/templates/question/list.html:32
+#: apps/representative/templates/representative/detail.html:129
 msgid "Answered"
 msgstr "პასუხი გაცემულია"
 
@@ -1185,10 +1698,11 @@ msgid "Least Active"
 msgstr "ყველაზე ნაკლები პასუხი"
 
 #: apps/question/templates/cmsplugins/question.html:62
-msgid "Choose a Representative"
-msgstr "აირჩიე დეპუტატი"
+#: apps/question/templates/question/form.html:3
+msgid "Ask a question"
+msgstr "შეეკითხე"
 
-#: apps/question/templates/cmsplugins/question.html:66
+#: apps/question/templates/cmsplugins/question.html:67
 #: apps/question/templates/question/ask.html:8
 #: apps/question/templates/question/form.html:15
 msgid "Ask"
@@ -1197,10 +1711,6 @@ msgstr "შეეკითხე"
 #: apps/question/templates/folded/question.html:3
 msgid "Section Question"
 msgstr "სექცია შეკითხვა"
-
-#: apps/question/templates/question/form.html:3
-msgid "Ask a question"
-msgstr "შეეკითხე"
 
 #: apps/question/templates/question/form.html:5
 msgid ""
@@ -1236,7 +1746,36 @@ msgstr "თანაფარდობა"
 msgid "Number of questions"
 msgstr "შეკითხვების რაოდენობა"
 
-#: apps/question/templates/question/list.html:20
+#: apps/question/templates/question/list.html:16
+#, fuzzy
+msgid "Question to your representative"
+msgstr "მოძებნეთ თქვენი წარმომადგენელი"
+
+#: apps/question/templates/question/list.html:21
+msgid "You, or anyone else!"
+msgstr ""
+
+#: apps/question/templates/question/list.html:22
+msgid "Jan. 01, 2001"
+msgstr ""
+
+#: apps/question/templates/question/list.html:23
+msgid ""
+"Move your mouse over the questions below to see what other people have asked "
+"their representatives, or ask your own question by using the form. Your "
+"question will be sent directly to the MP you ask."
+msgstr ""
+
+#: apps/question/templates/question/list.html:31
+#, fuzzy
+msgid "Your representative."
+msgstr "თქვენი წარმომადგენელი"
+
+#: apps/question/templates/question/list.html:33
+msgid "Your representative's answer will be available publicly on this site."
+msgstr ""
+
+#: apps/question/templates/question/list.html:44
 msgid "Replied"
 msgstr "პასუხი გაეცა"
 
@@ -1264,6 +1803,19 @@ msgstr "წარმომადგენლის აპლიკაცია"
 msgid "Representative Plugin"
 msgstr "წარმომადგენლის პლაგინი"
 
+#: apps/representative/cms_plugins.py:24
+#, fuzzy
+msgid "Representative List Plugin"
+msgstr "წარმომადგენლის პლაგინი"
+
+#: apps/representative/cms_plugins.py:36
+msgid "Best / Worst attendance plugin"
+msgstr ""
+
+#: apps/representative/cms_plugins.py:53
+msgid "Highest / Lowest income plugin"
+msgstr ""
+
 #: apps/representative/feeds.py:20
 #, python-format
 msgid "%s representative feed"
@@ -1285,13 +1837,13 @@ msgid "Representative %s"
 msgstr "წარმომადგენელი %s"
 
 #: apps/representative/feeds.py:62
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Party: %(party)s|Unit: %(unit)s|Committee: %(committee)s|Faction: "
 "%(faction)s|Is_Majoritarian: %(is_majoritarian)s|Electoral District: "
 "%(electoral_district)s|Elected: %(elected)s|Place of Birth: %(pob)s|Family "
 "Status: %(family_status)s|Education: %(education)s|Contact Address / Phone: "
-"%(contact_address_phone)s|URL: %(url)s|Voting attendance: %(attendance)s|"
+"%(contact_address_phone)s|URLs: %(urls)s|Voting attendance: %(attendance)s|"
 "Salary: %(salary)s|Business Income: %(other_income)s|Expenses: %(expenses)s|"
 "Property & Assets: %(property_assets)s|Income declaration URL: "
 "%(income_declaration)s|Questions answered: %(answered)s%%"
@@ -1306,217 +1858,217 @@ msgstr ""
 "დეკლარაციის ბმული: %(income_declaration)s|პასუხგაცემული შეკითხვები: "
 "%(answered)s%%"
 
-#: apps/representative/models.py:36 apps/representative/models.py:38
+#: apps/representative/models.py:37 apps/representative/models.py:39
 #, fuzzy
 msgid "When term started"
 msgstr "როდის დაისვა შეკითხვა"
 
-#: apps/representative/models.py:41
+#: apps/representative/models.py:42
 #, fuzzy
 msgid "Name of this term"
 msgstr "საკანონმდებლო ორგანოს დასახელება"
 
-#: apps/representative/models.py:52
+#: apps/representative/models.py:53
 msgid "Acronym of this Party"
 msgstr "ამ პარტიის აკრონიმი"
 
-#: apps/representative/models.py:55
+#: apps/representative/models.py:56
 msgid "URL of this Party"
 msgstr "ამ წარმომადგენლის URL"
 
-#: apps/representative/models.py:59
+#: apps/representative/models.py:60
 #, fuzzy
 msgid "Party logo"
 msgstr "პარტია"
 
-#: apps/representative/models.py:66
+#: apps/representative/models.py:67
 msgid "Name of the Unit."
 msgstr "საკანონმდებლო ორგანოს დასახელება"
 
-#: apps/representative/models.py:69
+#: apps/representative/models.py:70
 msgid "Short Name of the Unit, as used in e.g. CSS"
 msgstr ""
 "საკანონმდებლო ორგანოს მოკლე სახელწოდება, როგორც გამოყენებულია, მაგალითად, "
 "CSS-ში."
 
-#: apps/representative/models.py:72
+#: apps/representative/models.py:73
 msgid "Parties in this unit"
 msgstr "პარტიები ამ საკანონმდებლო ორგანოში"
 
-#: apps/representative/models.py:76
+#: apps/representative/models.py:77
 msgid "The Unit's active term."
 msgstr ""
 
-#: apps/representative/models.py:80
+#: apps/representative/models.py:81
 msgid "Past or just inactive terms served in this Unit."
 msgstr ""
 
-#: apps/representative/models.py:118
+#: apps/representative/models.py:119
 msgid "male"
 msgstr ""
 
-#: apps/representative/models.py:119
+#: apps/representative/models.py:120
 msgid "female"
 msgstr ""
 
-#: apps/representative/models.py:120
+#: apps/representative/models.py:121
 #, fuzzy
 msgid "other"
 msgstr "სხვა"
 
-#: apps/representative/models.py:128
+#: apps/representative/models.py:129
 msgid "Personal Photo"
 msgstr "პირადი ფოტოსურათი"
 
-#: apps/representative/models.py:131
+#: apps/representative/models.py:132
 msgid "Party Membership"
 msgstr "შესაბამისი პარტია"
 
-#: apps/representative/models.py:134
+#: apps/representative/models.py:135
 msgid "Unit Membership"
 msgstr "შესაბამისი საკანონმდებლო ორგანო"
 
-#: apps/representative/models.py:137
+#: apps/representative/models.py:138
 msgid "Committee Membership"
 msgstr "შესაბამისი კომიტეტი"
 
-#: apps/representative/models.py:140
+#: apps/representative/models.py:141
 msgid "Faction Membership"
 msgstr "შესაბამისი ფრაქცია"
 
-#: apps/representative/models.py:143
+#: apps/representative/models.py:144
 msgid "Is Majoritarian?"
 msgstr "მაჟორიტარია?"
 
-#: apps/representative/models.py:146
+#: apps/representative/models.py:147
 msgid "Electoral District (if Majoritarian)"
 msgstr "საარჩევნო ოლქი (მაჟორიტარის შემთხვევაში)"
 
-#: apps/representative/models.py:149
+#: apps/representative/models.py:150
 msgid "Date Elected"
 msgstr "არჩევის თარიღი"
 
-#: apps/representative/models.py:155
-#: apps/representative/templates/representative/detail.html:105
+#: apps/representative/models.py:156
+#: apps/representative/templates/representative/detail.html:96
 msgid "Family Status"
 msgstr "ოჯახური მდგომარეობა"
 
-#: apps/representative/models.py:158
-#: apps/representative/templates/representative/detail.html:109
+#: apps/representative/models.py:159
+#: apps/representative/templates/representative/detail.html:100
 msgid "Education"
 msgstr "განათლება"
 
-#: apps/representative/models.py:161
+#: apps/representative/models.py:162
 msgid "Contact Address / Phone Number"
 msgstr "საკონტაქტო ინფორმაცია"
 
-#: apps/representative/models.py:164
+#: apps/representative/models.py:165
 msgid "== Wages"
 msgstr "== ხელფასი"
 
-#: apps/representative/models.py:167
+#: apps/representative/models.py:168
 msgid "== Entrepreneurial Income"
 msgstr "= = სამეწარმო შემოსავალი"
 
-#: apps/representative/models.py:170
-#: apps/representative/templates/representative/detail.html:81
+#: apps/representative/models.py:171
+#: apps/representative/templates/representative/detail.html:70
 msgid "Expenses"
 msgstr "ხარჯები"
 
-#: apps/representative/models.py:173
-#: apps/representative/templates/representative/detail.html:85
+#: apps/representative/models.py:174
+#: apps/representative/templates/representative/detail.html:74
 msgid "Property & Assets"
 msgstr "ქონება და აქტივები"
 
-#: apps/representative/models.py:176
+#: apps/representative/models.py:177
 msgid "Percentage of Answered Questions on shenmartav.ge"
 msgstr "შეკითხვებზე გაცემული პასუხების თანაფარდობა"
 
-#: apps/representative/models.py:179
+#: apps/representative/models.py:180
 #, fuzzy
 msgid "Gender of the Representative"
 msgstr "ამ წარმომადგენლის URL"
 
-#: apps/representative/models.py:183
+#: apps/representative/models.py:184
 msgid "Terms during which Representative was part of a Unit."
 msgstr ""
 
-#: apps/representative/models.py:415
+#: apps/representative/models.py:422
 msgid "Additional Information"
 msgstr "დამატებითი ინფორმაცია"
 
-#: apps/representative/models.py:426
+#: apps/representative/models.py:436
 #, fuzzy
 msgid "Homepage"
 msgstr "მთავარი"
 
-#: apps/representative/models.py:427
+#: apps/representative/models.py:437
 msgid "Label for this Url, e.g. Homepage, Facebook, Twitter, etc."
 msgstr ""
 
-#: apps/representative/models.py:429
+#: apps/representative/models.py:439
 #, fuzzy
 msgid "The URL"
 msgstr "სრული ტექსტის URL"
 
-#: apps/representative/models.py:434
+#: apps/representative/models.py:447
 msgid "very low"
 msgstr ""
 
-#: apps/representative/models.py:435
+#: apps/representative/models.py:448
 msgid "low"
 msgstr ""
 
-#: apps/representative/models.py:436
+#: apps/representative/models.py:449
 #, fuzzy
 msgid "ordinary"
 msgstr "მესამე პლენარული"
 
-#: apps/representative/models.py:437
+#: apps/representative/models.py:450
 msgid "high"
 msgstr ""
 
-#: apps/representative/models.py:438
+#: apps/representative/models.py:451
 msgid "very high"
 msgstr ""
 
-#: apps/representative/models.py:445
+#: apps/representative/models.py:458
 #, fuzzy
 msgid "Number of Attended Votes"
 msgstr "მიღებული კანონის ნომერი"
 
-#: apps/representative/models.py:448
+#: apps/representative/models.py:461
 msgid "Pre-calculated Percentage of Attended Votes"
 msgstr ""
 
-#: apps/representative/models.py:451
+#: apps/representative/models.py:464
 #, fuzzy
 msgid "Number of Absent Votes"
 msgstr "შეკითხვების რაოდენობა"
 
-#: apps/representative/models.py:454
+#: apps/representative/models.py:467
 msgid "Pre-calculated Percentage of Absent Votes"
 msgstr ""
 
-#: apps/representative/models.py:457
+#: apps/representative/models.py:470
 msgid "Number of Pre-calculated Total Votes"
 msgstr ""
 
-#: apps/representative/models.py:461
+#: apps/representative/models.py:474
 #, fuzzy
 msgid "Voting Attendance in Relation to other Representatives"
 msgstr ""
 "აქ იპოვით ინფორმაციას საკანონმდებლო ორგანოში თქვენი წარმომადგენლების შესახებ."
 
-#: apps/representative/models.py:476
+#: apps/representative/models.py:489
 msgid "When random representative was set"
 msgstr "როდის იქნა შემთხვევითი წარმომადგენელი დადგენილი"
 
-#: apps/representative/models.py:479
+#: apps/representative/models.py:492
 msgid "Random Representative"
 msgstr "შემთხვევითი წარმომადგენელი"
 
-#: apps/representative/models.py:515
+#: apps/representative/models.py:528
 msgid "Unknown"
 msgstr "უცნობი"
 
@@ -1534,7 +2086,7 @@ msgid "See more about this representative"
 msgstr "უფრო ვრცლად ამ წარმომადგენლის შესახებ"
 
 #: apps/representative/templates/cmsplugins/representative.html:34
-#: apps/representative/templates/representative/find.html:19
+#: apps/representative/templates/representative/find.html:14
 msgid "Find Your Representative"
 msgstr "მოძებნეთ თქვენი წარმომადგენელი"
 
@@ -1556,6 +2108,8 @@ msgid "This representative has not attended any sessions yet."
 msgstr ""
 
 #: apps/representative/templates/representative/attendance.html:8
+#: apps/representative/templates/representative/best-worst-attendance.html:6
+#: apps/representative/templates/representative/best-worst-attendance.html:25
 msgid ""
 "Determined based on the official voting records retrieved from the "
 "Parliament web site. We calculate the attendance rate as (Number of Yes "
@@ -1612,171 +2166,201 @@ msgstr ""
 "სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
 "მაჩვენებელი არის ძალიან მაღალი."
 
-#: apps/representative/templates/representative/attendance.html:29
+#: apps/representative/templates/representative/attendance.html:27
+#: apps/representative/templates/representative/best-worst-attendance.html:17
+#: apps/representative/templates/representative/best-worst-attendance.html:36
+#: templates/home.html:59
 msgid "Attended"
 msgstr "მონაწილეობდა"
 
-#: apps/representative/templates/representative/attendance.html:30
-#: apps/representative/templates/representative/detail.html:160
+#: apps/representative/templates/representative/attendance.html:28
+#: apps/representative/templates/representative/best-worst-attendance.html:18
+#: apps/representative/templates/representative/best-worst-attendance.html:37
+#: apps/representative/templates/representative/detail.html:156
+#: apps/representative/templates/representative/detail.html:176
 #: apps/votingrecord/templates/votingrecord/detail.html:35
+#: templates/home.html:60
 msgid "Absent"
 msgstr "არ ესწრებოდა"
 
-#: apps/representative/templates/representative/detail.html:22
-#: apps/representative/templates/representative/find.html:27
-msgid "Majoritarian"
-msgstr "მაჟორიტარი"
+#: apps/representative/templates/representative/best-worst-attendance.html:3
+msgid "Attendance ratings"
+msgstr ""
 
-#: apps/representative/templates/representative/detail.html:22
-msgid "Partylist"
-msgstr "პარტიული სიით"
-
-#: apps/representative/templates/representative/detail.html:35
+#: apps/representative/templates/representative/detail.html:30
 msgid "Electoral District"
 msgstr "საარჩევნო ოლქი"
 
-#: apps/representative/templates/representative/detail.html:40
+#: apps/representative/templates/representative/detail.html:35
 msgid "Elected Date"
 msgstr "არჩევის თარიღი"
 
-#: apps/representative/templates/representative/detail.html:45
+#: apps/representative/templates/representative/detail.html:40
 msgid "Terms"
 msgstr ""
 
-#: apps/representative/templates/representative/detail.html:53
-#: apps/representative/templates/representative/info.html:11
+#: apps/representative/templates/representative/detail.html:48
 msgid "Faction"
 msgstr "ფრაქცია"
 
-#: apps/representative/templates/representative/detail.html:59
-#: apps/representative/templates/representative/info.html:14
+#: apps/representative/templates/representative/detail.html:54
 msgid "Committee"
 msgstr "კომიტეტი"
 
-#: apps/representative/templates/representative/detail.html:59
-#: apps/representative/templates/representative/info.html:14
+#: apps/representative/templates/representative/detail.html:54
 msgid "Commission"
 msgstr "კომისია"
 
-#: apps/representative/templates/representative/detail.html:65
-#: apps/representative/templates/representative/info.html:17
+#: apps/representative/templates/representative/detail.html:60
 msgid "Activities"
 msgstr "საქმიანობა"
 
-#: apps/representative/templates/representative/detail.html:71
-#: apps/representative/templates/representative/votingrecords.html:9
-#: apps/votingrecord/models.py:143
-#: apps/votingrecord/templates/votingrecord/detail.html:8
-#: apps/votingrecord/templates/votingrecord/list.html:8
-#: apps/votingrecord/templates/votingrecord/list.html:12
-msgid "Voting Records"
-msgstr "კენჭისყრის შედეგები"
-
-#: apps/representative/templates/representative/detail.html:77
+#: apps/representative/templates/representative/detail.html:66
 msgid "Salary"
 msgstr "ხელფასი"
 
-#: apps/representative/templates/representative/detail.html:94
+#: apps/representative/templates/representative/detail.html:85
 msgid "Work Experience"
 msgstr "სამუშაო გამოცდილება"
 
-#: apps/representative/templates/representative/detail.html:101
+#: apps/representative/templates/representative/detail.html:92
 msgid "Birth Date & Place"
 msgstr "დაბადების თარიღი და ადგილი"
 
-#: apps/representative/templates/representative/detail.html:113
+#: apps/representative/templates/representative/detail.html:104
 msgid "Contact Address / Phone"
 msgstr "საკონტაქტო ინფორმაცია"
 
-#: apps/representative/templates/representative/detail.html:117
+#: apps/representative/templates/representative/detail.html:108
 msgid "Additional Info"
 msgstr "დამატებითი ინფორმაცია"
 
-#: apps/representative/templates/representative/detail.html:134
+#: apps/representative/templates/representative/detail.html:120
+msgid "Ask a question!"
+msgstr "შეეკითხე!"
+
+#: apps/representative/templates/representative/detail.html:126
 msgid "Questions and Answers"
 msgstr "შეკითხვები და პასუხები"
 
-#: apps/representative/templates/representative/detail.html:138
+#: apps/representative/templates/representative/detail.html:130
 msgid "No Response"
 msgstr "გამოხმაურება არ არის"
 
 #: apps/representative/templates/representative/detail.html:151
-msgid "Ask a question!"
-msgstr "შეეკითხე!"
+msgid "View voting details"
+msgstr ""
 
-#: apps/representative/templates/representative/detail.html:156
+#: apps/representative/templates/representative/detail.html:152
+#: apps/representative/templates/representative/detail.html:180
 msgid "Vote Counts"
 msgstr "კენჭისყრის ჩანაწერები"
 
-#: apps/representative/templates/representative/detail.html:157
+#: apps/representative/templates/representative/detail.html:153
+#: apps/representative/templates/representative/detail.html:173
 msgid "In Favour"
 msgstr "მხარი დაუჭირა"
 
-#: apps/representative/templates/representative/detail.html:157
+#: apps/representative/templates/representative/detail.html:153
 msgid "See votes in favour"
 msgstr ""
 
-#: apps/representative/templates/representative/detail.html:158
+#: apps/representative/templates/representative/detail.html:154
+#: apps/representative/templates/representative/detail.html:174
 msgid "Against"
 msgstr "ხმა წინააღმდეგ მისცა"
 
-#: apps/representative/templates/representative/detail.html:158
+#: apps/representative/templates/representative/detail.html:154
 msgid "See votes against"
 msgstr ""
 
-#: apps/representative/templates/representative/detail.html:159
+#: apps/representative/templates/representative/detail.html:155
+#: apps/representative/templates/representative/detail.html:175
 #: apps/votingrecord/templates/votingrecord/detail.html:35
 msgid "Abstained"
 msgstr "თავი შეიკავა"
 
-#: apps/representative/templates/representative/detail.html:159
+#: apps/representative/templates/representative/detail.html:155
 msgid "See votes abstained"
 msgstr ""
 
-#: apps/representative/templates/representative/detail.html:160
+#: apps/representative/templates/representative/detail.html:156
 msgid "See votes absent"
 msgstr ""
 
-#: apps/representative/templates/representative/find.html:20
+#: apps/representative/templates/representative/detail.html:172
+#, fuzzy
+msgid "Vote type"
+msgstr "ხმის წონა"
+
+#: apps/representative/templates/representative/detail.html:172
+#, fuzzy
+msgid "Number of votes"
+msgstr "შეკითხვების რაოდენობა"
+
+#: apps/representative/templates/representative/find.html:15
 msgid "Filter"
 msgstr "ფილტრი"
 
-#: apps/representative/templates/representative/find.html:23
+#: apps/representative/templates/representative/find.html:18
 msgid "Election type"
 msgstr "არჩევის ტიპი"
 
-#: apps/representative/templates/representative/find.html:25
-#: apps/representative/templates/representative/find.html:33
-#: templates/rosetta/pofile.html:31
+#: apps/representative/templates/representative/find.html:20
+#: apps/representative/templates/representative/find.html:37
+#: apps/smsregister/forms.py:28 templates/rosetta/pofile.html:31
 msgid "All"
 msgstr "ყველა"
 
-#: apps/representative/templates/representative/find.html:26
+#: apps/representative/templates/representative/find.html:21
 msgid "Party List"
 msgstr "პარტიული სიით"
 
-#: apps/representative/templates/representative/find.html:31
+#: apps/representative/templates/representative/find.html:22
+msgid "Majoritarian"
+msgstr "მაჟორიტარი"
+
+#: apps/representative/templates/representative/find.html:26
+msgid "Order by"
+msgstr ""
+
+#: apps/representative/templates/representative/find.html:28
+msgid "Order by..."
+msgstr ""
+
+#: apps/representative/templates/representative/find.html:29
+#, fuzzy
+msgid "Income"
+msgstr "შემოსავლების ჩანაწერი"
+
+#: apps/representative/templates/representative/find.html:30
+#, fuzzy
+msgid "Attendance"
+msgstr "მონაწილეობდა"
+
+#: apps/representative/templates/representative/find.html:35
 msgid "Party"
 msgstr "პარტია"
 
-#: apps/representative/templates/representative/find.html:39
+#: apps/representative/templates/representative/find.html:43
 #, python-format
 msgid "Try <a href=\"%(url_search)s\">full-text search</a>."
 msgstr "სცადეთ <a href=\"%(url_search)s\">full-text search</a>."
 
-#: apps/representative/templates/representative/find.html:47
-msgid "Parliament of Georgia"
-msgstr "საქართველოს პარლამენტი"
+#: apps/representative/templates/representative/high-low-income.html:4
+#, fuzzy
+msgid "Income ratings"
+msgstr "შემოსავლების დეკლარაციები"
 
-#: apps/representative/templates/representative/find.html:48
-msgid "Ajaran Supreme Council"
-msgstr "აჭარის უმაღლესი საბჭო"
-
-#: apps/representative/templates/representative/find.html:49
-msgid "Tbilisi City Assembly"
-msgstr "თბილისის საკრებულო"
+#: apps/representative/templates/representative/high-low-income.html:7
+#: apps/representative/templates/representative/high-low-income.html:12
+msgid ""
+"The total income for the MP, as based on their most recent income "
+"declaration."
+msgstr ""
 
 #: apps/representative/templates/representative/income.html:3
+#: templates/home.html:69
 msgid "Annual Income"
 msgstr "წლიური შემოსავალი"
 
@@ -1822,6 +2406,14 @@ msgstr "მოძებნეთ წარმოიმადგენელი"
 msgid "Results"
 msgstr "შედეგები"
 
+#: apps/representative/templates/representative/votingrecords.html:9
+#: apps/votingrecord/models.py:143
+#: apps/votingrecord/templates/votingrecord/detail.html:8
+#: apps/votingrecord/templates/votingrecord/list.html:8
+#: apps/votingrecord/templates/votingrecord/list.html:12
+msgid "Voting Records"
+msgstr "კენჭისყრის შედეგები"
+
 #: apps/representative/templates/representative/votingrecords.html:13
 #, fuzzy
 msgid "Voting Records for"
@@ -1834,6 +2426,11 @@ msgstr "მომავალი"
 #: apps/representative/templatetags/representative.py:47
 msgid "invalid"
 msgstr "შეცდომა"
+
+#: apps/smsalert/cms_plugins.py:11
+#, fuzzy
+msgid "SMS Alert Plugin"
+msgstr "შემდეგი შეტყობინება"
 
 #: apps/smsalert/models.py:22
 msgid "SMS Alert text"
@@ -1854,26 +2451,140 @@ msgstr "როდის დაისვა შეკითხვა"
 msgid "Draft Laws related to this alert"
 msgstr "კანონპროექტის ბიუროს თარიღი"
 
-#: apps/smsalert/templates/smsalert/page.html:2
+#: apps/smsalert/templates/smsalert/page.html:3
 msgid "Alerts from Parliament"
 msgstr "შეტყობინებები პარლამენტიდან"
 
-#: apps/smsalert/templates/smsalert/page.html:8
+#: apps/smsalert/templates/smsalert/page.html:9
 #, fuzzy
 msgid "Related draft laws"
 msgstr "დაკავშირებული თეგები"
 
-#: apps/smsalert/templates/smsalert/page.html:16
+#: apps/smsalert/templates/smsalert/page.html:18
 msgid "Previous Alert"
 msgstr "წინა შეტყობინება"
 
-#: apps/smsalert/templates/smsalert/page.html:17
+#: apps/smsalert/templates/smsalert/page.html:19
 msgid "Next Alert"
 msgstr "შემდეგი შეტყობინება"
 
-#: apps/smsalert/templates/smsalert/page.html:21
+#: apps/smsalert/templates/smsalert/page.html:23
 msgid "Receive alerts on your phone."
 msgstr "მიიღეთ შეტყობინებები პირდაპირ თქვენს მობილურში."
+
+#: apps/smsregister/cms_app.py:6
+#, fuzzy
+msgid "SMS Registration App"
+msgstr "შეკითხვის აპლიკაცია"
+
+#: apps/smsregister/forms.py:13
+#, fuzzy
+msgid "Your Name: "
+msgstr "თქვენი გვარი"
+
+#: apps/smsregister/forms.py:14
+msgid "Mobile: +995"
+msgstr ""
+
+#: apps/smsregister/forms.py:16
+msgid "Language"
+msgstr ""
+
+#: apps/smsregister/forms.py:24
+msgid "Subscribe to: "
+msgstr ""
+
+#: apps/smsregister/forms.py:29
+msgid "Agrarian Issues Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:30
+msgid "Budget and Finance Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:31
+msgid "Committee on Environmental Protection and Natural Resources"
+msgstr ""
+
+#: apps/smsregister/forms.py:32
+msgid "Diaspora and Caucasus Issues Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:33
+msgid "Defence and Security Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:34
+msgid "Education, Science and Culture Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:35
+msgid "European Integration Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:36
+msgid "Foreign Relations Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:37
+msgid "Healthcare and Social Issues Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:38
+msgid "Human Rights and Civil Integration Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:39
+#, fuzzy
+msgid "Legal Issues Committee"
+msgstr "პირველი საკომიტეტო"
+
+#: apps/smsregister/forms.py:40
+msgid "Procedural Issues and Rules Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:41
+msgid "Regional Policy, Self-government and Mountainous Regions"
+msgstr ""
+
+#: apps/smsregister/forms.py:42
+msgid "Sector Economy and Economic Policy Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:43
+msgid "Sport and Youth Affairs Committee"
+msgstr ""
+
+#: apps/smsregister/forms.py:44
+#, fuzzy
+msgid "Adjaran Supreme Council"
+msgstr "აჭარის უმაღლესი საბჭო"
+
+#: apps/smsregister/templates/smsregister/show.html:7
+#: apps/smsregister/templates/smsregister/show.html:11
+#: apps/smsregister/templates/smsregister/thanks.html:7
+msgid "SMS Registration"
+msgstr ""
+
+#: apps/smsregister/templates/smsregister/show.html:15
+#, fuzzy
+msgid "Registration Form"
+msgstr "კითხვის დამსმელი"
+
+#: apps/smsregister/templates/smsregister/show.html:24
+#, fuzzy
+msgid "Register"
+msgstr "დარეგისტრებული სააგენტო"
+
+#: apps/smsregister/templates/smsregister/thanks.html:11
+#, fuzzy
+msgid "Thanks for signing up!"
+msgstr "მადლობა შეკითხვისთვის!"
+
+#: apps/smsregister/templates/smsregister/thanks.html:12
+msgid ""
+"You should receive a confirmation message soon on your mobile phone soon."
+msgstr ""
 
 #: apps/votingrecord/cms_app.py:6
 msgid "Voting Record App"
@@ -1947,54 +2658,86 @@ msgstr "არა"
 msgid "Total"
 msgstr "სულ"
 
-#: templates/base.html:7 templates/base.html.py:11
-msgid "A website to monitor Georgian state institutions"
+#: templates/base.html:6 templates/base.html.py:10
+msgid "A website to monitor the Georgian Parliament"
 msgstr ""
 
-#: templates/base.html:10
-msgid "ShenMartav"
+#: templates/base.html:9
+#, fuzzy
+msgid "MyParliament"
+msgstr "კვირის შეჯამება"
+
+#: templates/footer.html:13
+msgid "Join us"
 msgstr ""
 
-#: templates/footer.html:3
-msgid "RSS Blog feed"
-msgstr "RSS ბლოგ ლენტა"
-
-#: templates/footer.html:4
+#: templates/footer.html:15
 #, fuzzy
 msgid "Visit us on Facebook"
 msgstr "გვეწვიეთ Facebook-ზე"
 
-#: templates/footer.html:5
+#: templates/footer.html:16
 msgid "Share this URL on twitter"
 msgstr "გვეწვიეთ Twitter-ზე"
 
-#: templates/footer.html:8
-msgid "Caucasus Institute for Peace Democracy and Development"
-msgstr "მშვიდობის, დემოკრატიის და განვითარების კავკასიური ინსტიტუტი"
+#: templates/footer.html:17
+msgid "RSS Blog feed"
+msgstr "RSS ბლოგ ლენტა"
 
-#: templates/nav.html:3 templates/folded/nav.html:4
-msgid "You Rule!"
-msgstr "შენ მართავ!"
+#: templates/home.html:36
+msgid "Loading..."
+msgstr ""
 
-#: templates/nav.html:6 templates/folded/nav.html:9
-msgid "Home sweet Home"
-msgstr "მთავარი"
+#: templates/home.html:116
+#, fuzzy
+msgid "What laws are made"
+msgstr "რა კანონები მიიღება"
 
-#: templates/nav.html:7 templates/folded/nav.html:10
-msgid "Blog posts for shenmartav"
-msgstr "ბლოგ-პოსტები"
+#: templates/home.html:116
+#, fuzzy
+msgid "latest laws"
+msgstr "სახელი"
 
-#: templates/nav.html:8 templates/folded/nav.html:11
+#: templates/nav.html:5
+#, fuzzy
+msgid "My Parliament"
+msgstr "კვირის შეჯამება"
+
+#: templates/nav.html:5
+msgid "Here you can find information about your majoritarian in legal whatever"
+msgstr ""
+
+#: templates/nav.html:10
+#, fuzzy
+msgid "Parliamentarians"
+msgstr "საქართველოს პარლამენტი"
+
+#: templates/nav.html:11
+#, fuzzy
+msgid "Draft laws"
+msgstr "კანონპროექტი %s"
+
+#: templates/nav.html:12
+msgid "Weekly podcast about Parliament"
+msgstr ""
+
+#: templates/nav.html:13
+#, fuzzy
+msgid "Publications for MyParliament"
+msgstr "შეტყობინებები პარლამენტიდან"
+
+#: templates/nav.html:13
+#, fuzzy
+msgid "Publications"
+msgstr "საჯარო"
+
+#: templates/nav.html:14 templates/folded/nav.html:12
 msgid "About this website"
 msgstr "ამ ვებგვერდის შესახებ"
 
-#: templates/nav.html:8
+#: templates/nav.html:14
 msgid "About"
 msgstr "ჩვენ შესახებ"
-
-#: templates/nav.html:9 templates/folded/nav.html:12
-msgid "Contact us"
-msgstr "დაგვიკავშირდით"
 
 #: templates/admin/base.html:28
 msgid "Welcome,"
@@ -2093,6 +2836,26 @@ msgstr "თქვენი კომენტარის დათვალი�
 #: templates/comments/preview.html:8
 msgid "Annotation Preview"
 msgstr "შენიშვნის დათვალიერება"
+
+#: templates/folded/nav.html:4
+msgid "You Rule!"
+msgstr "შენ მართავ!"
+
+#: templates/folded/nav.html:9
+msgid "Home sweet Home"
+msgstr "მთავარი"
+
+#: templates/folded/nav.html:10
+msgid "Blog posts for shenmartav"
+msgstr "ბლოგ-პოსტები"
+
+#: templates/folded/nav.html:11
+msgid "Weekly podcasts about Parliament"
+msgstr ""
+
+#: templates/folded/nav.html:13
+msgid "Contact us"
+msgstr "დაგვიკავშირდით"
 
 #: templates/rosetta/base.html:32
 msgid "Django Admin"
@@ -2207,6 +2970,30 @@ msgstr "წინა"
 msgid "Next"
 msgstr "შემდეგი"
 
+#~ msgid "3 Column Template"
+#~ msgstr "სამსვეტიანი ნიმუში"
+
+#~ msgid "Blog Posts"
+#~ msgstr "ბლოგ-პოსტები"
+
+#~ msgid "User Annotations"
+#~ msgstr "მომხმარებლის შენიშვნები"
+
+#~ msgid "Your Annotation"
+#~ msgstr "თქვენი შენიშვნა"
+
+#~ msgid "Choose a Representative"
+#~ msgstr "აირჩიე დეპუტატი"
+
+#~ msgid "Partylist"
+#~ msgstr "პარტიული სიით"
+
+#~ msgid "Tbilisi City Assembly"
+#~ msgstr "თბილისის საკრებულო"
+
+#~ msgid "Caucasus Institute for Peace Democracy and Development"
+#~ msgstr "მშვიდობის, დემოკრატიის და განვითარების კავკასიური ინსტიტუტი"
+
 #~ msgid "URL of this Representative"
 #~ msgstr "ამ წარმომადგენლის URL"
 
@@ -2246,12 +3033,6 @@ msgstr "შემდეგი"
 
 #~ msgid "View next post"
 #~ msgstr "შემდეგი პოსტის ნახვა"
-
-#~ msgid "Post archive"
-#~ msgstr "პოსტების არქივი"
-
-#~ msgid "Draftlaws"
-#~ msgstr "კანონპროექტი %s"
 
 #~ msgid "Georgian SMS text"
 #~ msgstr "ქართული SMS-ის ტექსტი"
@@ -2294,9 +3075,6 @@ msgstr "შემდეგი"
 
 #~ msgid "See more Draft Laws"
 #~ msgstr "კანონპროექტები"
-
-#~ msgid "Latest News"
-#~ msgstr "სახელი"
 
 #~ msgid "Previous News"
 #~ msgstr "წინა"
@@ -2347,9 +3125,6 @@ msgstr "შემდეგი"
 #~ msgid "What Decisions Do They Make?"
 #~ msgstr "რა გადაწყვეტილებებს იღებენ ისინი?"
 
-#~ msgid "Find"
-#~ msgstr "ძიება"
-
 #~ msgid "Bill number"
 #~ msgstr "კანონპროექტის ნომერი"
 
@@ -2367,12 +3142,6 @@ msgstr "შემდეგი"
 
 #~ msgid "Most recent question"
 #~ msgstr "ყველაზე ბოლო შეკითხვა"
-
-#~ msgid "Read more"
-#~ msgstr "წაიკითხე მეტი"
-
-#~ msgid "Question from"
-#~ msgstr "კითხვის დამსმელი"
 
 #~ msgid "Who Makes Decisions in Georgia?"
 #~ msgstr "ვინ იღებს გადაწყვეტილებებს საქართველოში?"

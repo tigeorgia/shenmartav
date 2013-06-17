@@ -18,7 +18,7 @@
             <div id="short">
                 <div id="name" class="evenbigger representative-name">{{ obj.name }}</div>
                 <div id="party">
-                    <div id="party-name" class="smaller">{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}{{ obj.party }}{% endif %}</div>
+                    <div id="party-name">{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}{{ obj.party }}{% endif %}</div>
                     <div style="clear: both"></div>
             </div>
             <div style="clear: both"></div>
@@ -148,6 +148,7 @@
         <div class="box" id="box-votecounts">{% ifequal unit 1 %}
             <div id="votecounts">
                 <div id="chart_div" style="width: 300px; height: 175px;"></div>
+                <div><a href="{{ url_votingrecords }}">{% trans "View voting details" %}</a></div>
                 <!--<h2 class="heading">{% trans 'Vote Counts' %}</h2>
                 <div>{% trans 'In Favour' %}: <a href="{{ url_votingrecords }}#vote-yes" title="{% trans 'See votes in favour' %}">{{ votecounts.yes }}</a></div>
                 <div>{% trans 'Against' %}: <a href="{{ url_votingrecords }}#vote-no" title="{% trans 'See votes against' %}">{{ votecounts.no }}</a></div>
