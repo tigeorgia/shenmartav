@@ -743,8 +743,7 @@ img.column-bg {
 }
 
 #below-fold #engage-slider,#below-fold #mp-stats-slider,#below-fold #drafts-mini {
-	height: 410px;
-	overflow: hidden;
+	min-height: 410px;
 	vertical-align: top;
 }
 
