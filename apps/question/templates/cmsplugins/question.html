@@ -59,6 +59,7 @@
     </div>
 {% endif %}
     <div id="ask">
+        <a href="{% url question_list %}"><img src="{{ STATIC_URL }}/img/ask-{{ LANGUAGE_CODE }}.png" alt="{% trans 'Make yourself heard!' %}"></a>
         <h4><a href="{% url question_list %}">{% trans 'Ask a question' %}</a></h4>
 <!--
         <form action="{% url question_ask_representative 0 %}" method="get">
