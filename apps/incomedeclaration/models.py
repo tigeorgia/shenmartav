@@ -11,7 +11,6 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from glt import slughifi
-from representative.models import Representative
 
 
 class IncomeDeclaration (models.Model):
@@ -27,7 +26,7 @@ class IncomeDeclaration (models.Model):
     #: declaration date
     date = models.DateField(null=True, help_text=_('Date of Declaration'))
     #: representative to whom this declaration applies (not set on import)
-    representative = models.ForeignKey(Representative, related_name='incomedeclaration',
+    representative = models.ForeignKey('representative.Representative', related_name='incomedeclaration',
         null=True, help_text=_('Representative, Supplier of this declaration'))
 
 

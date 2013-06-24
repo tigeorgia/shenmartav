@@ -7,7 +7,7 @@ Depends on popit
 __docformat__ = 'epytext en'
 
 import datetime
-from cms.models.pluginmodel import CMSPlugin
+#from cms.models.pluginmodel import CMSPlugin
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
@@ -536,7 +536,7 @@ class RandomRepresentative (models.Model):
 #        File "/usr/local/lib/python2.7/dist-packages/cms/models/pluginmodel.py", line 56, in __new__
 #            table_name = 'cmsplugin_%s' % splitted[1]
 #            IndexError: list index out of range
-class RepresentativePluginConf (CMSPlugin):
-    """Configuration for Representative plugin."""
-    #: title of the plugin
-    title = models.CharField(max_length=32, default=_('Representative'))
+#class RepresentativePluginConf (CMSPlugin):
+#    """Configuration for Representative plugin."""
+#    #: title of the plugin
+#    title = models.CharField(max_length=32, default=_('Representative'))
