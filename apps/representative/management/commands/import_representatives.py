@@ -8,6 +8,7 @@ Depends on popit.
 __docformat__ = 'epytext en'
 
 import csv
+import codecs, sys, locale
 #from datetime import datetime
 from django.core.management.base import BaseCommand
 from django.core.exceptions import ValidationError
@@ -97,7 +98,10 @@ class Command (BaseCommand):
         @param index: index of data item in row
         @type index: int
         """
-        return row[index].strip().decode('utf-8')
+        try:
+            return row[index].strip().decode('utf-8')
+        except IndexError:
+            return None
 
 
     def _add_representative_data (self, row, representative):
@@ -111,19 +115,21 @@ class Command (BaseCommand):
         representative.is_majoritarian = (self._get_data(row, 2) == u'მაჟორიტარი')
         representative.electoral_district = self._get_data(row, 4)
         representative.elected = self._get_data(row, 5)
-        representative.pob = self._get_data(row, 8)
-        representative.family_status = self._get_data(row, 9)
+        representative.faction = self._get_data(row, 6)
+        representative.committee = self._get_data(row, 7)
+        representative.pob = self._get_data(row, 10)
+        representative.family_status = self._get_data(row, 11)
         representative.education = ';'.join([
-            self._get_data(row, 10), self._get_data(row, 11),
-            self._get_data(row, 12), self._get_data(row, 13)])
-        representative.contact_address_phone = self._get_data(row, 14)
+            self._get_data(row, 12), self._get_data(row, 13),
+            self._get_data(row, 14), self._get_data(row, 15)])
+        representative.contact_address_phone = self._get_data(row, 16)
 
-        data = self._get_data(row, 15)
-        if data:
+        url = self._get_data(row, 17)
+        if url:
             url = Url(representative=representative, label=url, url=url)
             url.save()
 
-        for i in xrange(38, 50):
+        for i in xrange(40, 50):
             data = self._get_data(row, i)
             if data:
                 info = AdditionalInformation(
@@ -145,10 +151,10 @@ class Command (BaseCommand):
         name = glt.firstname_first(row[1])
         self.stdout.write('%s | Representative: %s ... ' % (row[0], name))
 
-        dob = self._get_isodate(row[7].decode('utf-8'))
+        dob = self._get_isodate(row[9].decode('utf-8'))
         representative = Representative(
             date_of_birth=dob,
-            description=row[6].decode('utf-8').strip(),
+            description=row[8].decode('utf-8').strip(),
             unit=self.unit)
         representative.save()
 
@@ -244,8 +250,11 @@ class Command (BaseCommand):
         max_length = Position._meta.get_field('title').max_length
         sep = '-'
 
-        for i in xrange(16, 38): # work experiences
-            if not row[i]: continue
+        for i in xrange(18, 40): # work experiences
+            try:
+                if not row[i]: continue
+            except IndexError:
+                continue
 
             experience = row[i].strip().replace('–', sep).split(sep)
             if len(experience) < 3:
@@ -285,6 +294,7 @@ class Command (BaseCommand):
 
     def handle (self, *args, **options):
         """Command handler."""
+        self.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
         if options.get('force'):
             self.force = True
         else:
@@ -305,7 +315,7 @@ class Command (BaseCommand):
         for row in rows:
             if not row or not row[0]: continue # headers
 
-            if len(row) < 50:
+            if len(row) < 35:
                 self.stdout.write('Invalid representative record.\n')
                 continue
 
