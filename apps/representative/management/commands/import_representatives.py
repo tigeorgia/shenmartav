@@ -17,7 +17,6 @@ from optparse import make_option
 
 import glt
 from popit.models import *
-from representative.models import Representative, AdditionalInformation, Url, Unit, Party
 
 
 #: CSV delimiter
@@ -112,6 +111,7 @@ class Command (BaseCommand):
         @param representative: a representative
         @type representative: representative.Representative
         """
+        from representative.models import AdditionalInformation, Url
         representative.is_majoritarian = (self._get_data(row, 2) == u'მაჟორიტარი')
         representative.electoral_district = self._get_data(row, 4)
         representative.elected = self._get_data(row, 5)
@@ -141,6 +141,7 @@ class Command (BaseCommand):
 
     @transaction.commit_on_success
     def _create_representative (self, row):
+        from representative.models import Representative
         """Create a complete Representative record.
 
         @param row: data row
@@ -158,7 +159,8 @@ class Command (BaseCommand):
             unit=self.unit)
         representative.save()
 
-        pname = PersonName(person=representative, name=name, main=True)
+        pname = PersonName(person=representative, name_ka=name, 
+                           name_en=glt.to_latin(name), main=True)
         pname.save()
 
         people = Representative.objects.filter(slug=representative.slug)
@@ -190,6 +192,7 @@ class Command (BaseCommand):
         @return: an organisation
         @rtype: popit.Organisation
         """
+        from representative.models import Party
         name = row[3].decode('utf-8').strip()
         self.stdout.write(' Party %s ... ' % (name))
 
@@ -294,6 +297,7 @@ class Command (BaseCommand):
 
     def handle (self, *args, **options):
         """Command handler."""
+        from representative.models import Unit
         self.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
         if options.get('force'):
             self.force = True
