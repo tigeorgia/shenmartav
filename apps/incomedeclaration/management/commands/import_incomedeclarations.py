@@ -10,13 +10,6 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from optparse import make_option
 
-from ...models import IncomeDeclaration, DeclarationSecurity,\
-    DeclarationFamily, DeclarationContract, DeclarationDeposit,\
-    DeclarationCash, DeclarationGift, DeclarationEntrepreneurial,\
-    DeclarationRealEstate, DeclarationWage, DeclarationProperty,\
-    DeclarationProperty, DeclarationOtherInclExpense, DeclarationBiography
-
-
 class Command (BaseCommand):
     """Command to import income declarations from CSV files."""
     #: allowed arguments to the command
@@ -84,6 +77,8 @@ class Command (BaseCommand):
         @return: income declaration
         @rtype: IncomeDeclaration
         """
+        from ...models import IncomeDeclaration
+
         self.stdout.write("%s: Creating income declaration.\n" % row[0])
 
         name = row[2].strip().decode('utf-8')
@@ -112,6 +107,7 @@ class Command (BaseCommand):
         @return: income declaration
         @rtype: IncomeDeclaration or None
         """
+        from ...models import IncomeDeclaration
         existing = IncomeDeclaration.objects.filter(decl_id=row[0])
 
         if len(existing) == 0:
@@ -152,6 +148,7 @@ class Command (BaseCommand):
         position = row[5].strip()
         work_contact = row[6].strip()
         place_dob = row[7].strip()
+        from ...models import DeclarationBiography
         return DeclarationBiography(declaration=declaration,
             position_en=position, position_ka=position,
             work_contact_en=work_contact, work_contact_ka=work_contact,
@@ -172,6 +169,7 @@ class Command (BaseCommand):
         """
         name = row[5].strip()
         amt_currency = row[6].strip()
+        from ...models import DeclarationCash
         return DeclarationCash(declaration=declaration,
             name_en=name, name_ka=name,
             amt_currency_en=amt_currency, amt_currency_ka=amt_currency
@@ -193,6 +191,7 @@ class Command (BaseCommand):
         desc_value = row[6].strip()
         date_period_agency = row[7].strip()
         financial_result = row[8].strip()
+        from ...models import DeclarationContract
         return DeclarationContract(declaration=declaration,
             name_en=name, name_ka=name,
             desc_value_en=desc_value, desc_value_ka=desc_value,
@@ -216,6 +215,7 @@ class Command (BaseCommand):
         bank = row[6].strip()
         deposit_type = row[7].strip()
         balance = row[8].strip()
+        from ...models import DeclarationDeposit 
         return DeclarationDeposit(declaration=declaration,
             name_en=name, name_ka=name,
             bank_en=bank, bank_ka=bank,
@@ -241,6 +241,7 @@ class Command (BaseCommand):
         register_agency = row[8].strip()
         particn_date = row[9].strip()
         income_rec = row[10].strip()
+        from ...models import DeclarationEntrepreneurial
         return DeclarationEntrepreneurial(declaration=declaration,
             name_en=name, name_ka=name,
             corp_name_addr_en=corp_name_addr, corp_name_addr_ka=corp_name_addr,
@@ -267,6 +268,7 @@ class Command (BaseCommand):
         pob = row[7].strip()
         dob = row[8].strip()
         relation = row[9].strip()
+        from ...models import DeclarationFamily
         return DeclarationFamily(declaration=declaration,
             name_en=name, name_ka=name,
             surname_en=surname, surname_ka=surname,
@@ -290,6 +292,7 @@ class Command (BaseCommand):
         name = row[5].strip()
         desc_value = row[6].strip()
         giver_rel = row[7].strip()
+        from ...models import DeclarationGift
         return DeclarationGift(declaration=declaration,
             name_en=name, name_ka=name,
             desc_value_en=desc_value, desc_value_ka=desc_value,
@@ -311,6 +314,7 @@ class Command (BaseCommand):
         recip_issuer = row[5].strip()
         other_type = row[6].strip()
         amount = row[7].strip()
+        from ...models import DeclarationOtherInclExpense
         return DeclarationOtherInclExpense(declaration=declaration,
             recip_issuer_en=recip_issuer, recip_issuer_ka=recip_issuer,
             type_en=other_type, type_ka=other_type,
@@ -333,6 +337,7 @@ class Command (BaseCommand):
         prop_type = row[6].strip()
         description = row[7].strip()
         co_owners = row[8].strip()
+        from ...models import DeclarationProperty
         return DeclarationProperty(declaration=declaration,
             name_shares_en=name_shares, name_shares_ka=name_shares,
             prop_type_en=prop_type, prop_type_ka=prop_type,
@@ -356,6 +361,7 @@ class Command (BaseCommand):
         prop_type = row[6].strip()
         loc_area = row[7].strip()
         co_owners = row[8].strip()
+        from ...models import DeclarationRealEstate
         return DeclarationRealEstate(declaration=declaration,
             name_shares_en=name_shares, name_shares_ka=name_shares,
             prop_type_en=prop_type, prop_type_ka=prop_type,
@@ -380,6 +386,7 @@ class Command (BaseCommand):
         security_type = row[7].strip()
         price = row[8].strip()
         quantity = row[9].strip()
+        from ...models import DeclarationSecurity
         return DeclarationSecurity(declaration=declaration,
             name_en=name, name_ka=name,
             issuer_en=issuer, issuer_ka=issuer,
@@ -404,6 +411,7 @@ class Command (BaseCommand):
         desc_workplace = row[6].strip()
         desc_job = row[7].strip()
         income_rec = row[8].strip()
+        from ...models import DeclarationWage
         return DeclarationWage(declaration=declaration,
             name_en=name, name_ka=name,
             desc_workplace_en=desc_workplace, desc_workplace_ka=desc_workplace,
