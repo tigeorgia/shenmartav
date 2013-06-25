@@ -2,6 +2,6 @@
 {% for member in members %}
 <li class="member party-{{ member.party__acronym }} {% if member.is_majoritarian %}majoritarian{% else %}partylist{% endif %}" id="member-{{ member.pk}}"><a name="member-{{ member.pk }}"></a>
 	<div class="photo">
-		<a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img data-mpimage="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" src="{{ STATIC_URL }}img/loading.gif" width="100" height="96" border="0" /></a>
+		<a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img data-mpimage="{% if im %}{{ im }}{% else %}static/img/person-placeholder.jpg{% endif %}" src="static/img/loading.gif" width="100" height="96" border="0" /></a>
 	</div></li>
 {% endfor %}
