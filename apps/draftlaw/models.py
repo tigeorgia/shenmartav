@@ -86,7 +86,7 @@ class DraftLaw (models.Model):
 
     def save (self, *args, **kwargs):
         max_len = self._meta.get_field('slug').max_length
-        self.slug = slughifi(str(self)[:max_len])
+        self.slug = slughifi(str(self)[:max_len]).strip('#').replace('/','')
         super(DraftLaw, self).save(*args, **kwargs)
 
 
@@ -153,7 +153,6 @@ class DraftLawModerator (CommentModerator):
     auto_moderate_field = 'moderate_annotations'
     moderate_after = 0 # immediately
 moderator.register(DraftLaw, DraftLawModerator)
-
 
 
 class DraftLawDiscussion (models.Model):
