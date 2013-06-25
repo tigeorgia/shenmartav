@@ -5,6 +5,7 @@ Command import_incomedeclaration
 __docformat__ = 'epytext en'
 
 import os, csv, datetime
+import codecs
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from optparse import make_option
@@ -93,7 +94,7 @@ class Command (BaseCommand):
             date = datetime.datetime.strptime(row[3].strip(), '%d/%m/%Y')
 
         declaration = IncomeDeclaration(
-            decl_id=row[0].strip(),
+            decl_id=row[0].strip().decode('utf-8-sig'),
             scrape_date=row[1].strip(),
             name_en=name, name_ka=name,
             date=date
@@ -425,7 +426,6 @@ class Command (BaseCommand):
         filename = self._get_filename(dirname, section)
         rows = csv.reader(open(filename, 'r'), delimiter='|')
         declaration = None
-
         for row in rows:
             if not declaration or row[0] != declaration.decl_id:
                 declaration = self._get_declaration(row)
