@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% load cms_tags i18n %} {% load i18n sekizai_tags %} 
+{% load parliament_3rows %}
 {% block css %}
 <style type="text/css">
     .wrapper { background-color: inherit; }
@@ -95,7 +96,18 @@
 			</div>
 		</div>
 	</div>
-	<div id="select">{% placeholder mp_list %}</div>
+    <div id="select">
+     <div id="unit-list">
+      <div id="members">
+        <ul id="mps-row1">{% get_mprow_of3 0 %}
+        </ul>
+        <ul id="mps-row2">{% get_mprow_of3 1 %}
+        </ul>
+        <ul id="mps-row3">{% get_mprow_of3 2 %}
+        </ul>
+      </div>
+     </div>
+    </div>
 </div>
 
 <div id="below-fold" class="threecolumn">
@@ -106,8 +118,6 @@
 	<div id="mp-stats-slider" class="span2">
 		<!--<div class="carousel">-->
 			<div class="mp-stats-slides">{% placeholder stats1 %}</div>
-			<!--<div class="mp-stats-slides">{% placeholder stats2 %}</div>
-			<div class="mp-stats-slides">{% placeholder stats3 %}</div>-->
 		<!--</div>-->
 		<div id="mp-stats-pager" class="bullet-pager"></div>
 	</div>
