@@ -6,12 +6,11 @@ Command to import draft laws as provided by TIG
 __docformat__ = 'epytext en'
 
 import csv
+import re
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django.utils.translation import ugettext as _
 from optparse import make_option
-
-from draftlaw.models import DraftLaw, DraftLawDiscussion, DraftLawChild
 
 
 #: CSV delimiter
@@ -51,7 +50,7 @@ class Command (BaseCommand):
         """
         default = '1970-01-01'
         fmt = '\nWrong date format: %s\n'
-        parts = date.strip().split('/')
+        parts = date.strip().split('.')
 
         if len(parts) != 3:
             self.stdout.write(fmt % date)
@@ -81,6 +80,7 @@ class Command (BaseCommand):
         @param draftlaw: a draftlaw
         @type draftlaw: draftlaw.DraftLaw
         """
+        from draftlaw.models import DraftLawDiscussion
         col_start = 11
         col_end = 16
         for i in xrange(col_start, col_end + 1):
@@ -96,22 +96,22 @@ class Command (BaseCommand):
                     if len(parts) != 2: continue
                     discussion = DraftLawDiscussion(draftlaw=draftlaw,
                         date=self._get_isodate(parts[0]),
-                        place_en=parts[1].strip(),
+                        place_ka=parts[1].strip(),
                         stage=stage)
                     discussion.save()
             else: # plenary or single committee
-                parts = stripped.split(':')
-                date = self._get_isodate(parts[0])
+                regex = re.compile("\(.+\)")
+                try:
+                    datestr = regex.search(stripped).group()
+                except AttributeError:
+                    datestr = ""
+                date = self._get_isodate(datestr.strip('()'))
                 if i in [11, 13, 15]: # comittee
-                    try:
-                        # split name of committee from 'PASS'
-                        place = parts[1].strip().split(',')[0].strip()
-                    except IndexError:
-                        place = _('Unknown Committee')
+                    place = _('Committee')
                 else: # plenary
                     place = _('Plenary')
                 discussion = DraftLawDiscussion(
-                    draftlaw=draftlaw, date=date, place_en=place, stage=stage)
+                    draftlaw=draftlaw, date=date, place_ka=place, stage=stage)
                 discussion.save()
 
 
@@ -125,23 +125,24 @@ class Command (BaseCommand):
         """
         status = ''
         shortstatus = 'D'
+
         if row[16]:
-            status = _('3rd Plenary ') + row[16].strip()
+            status = _(u'3rd Plenary ') + row[16].strip().decode('utf-8')
             try:
                 if status.lower().index('pass'):
                     shortstatus = 'P'
             except ValueError:
                 pass
         elif row[15]:
-            status = _('3rd Comittee ') + row[15].strip()
+            status = _(u'3rd Comittee ') + row[15].strip().decode('utf-8')
         elif row[14]:
-            status = _('2nd Plenary ') + row[14].strip()
+            status = _(u'2nd Plenary ') + row[14].strip().decode('utf-8')
         elif row[13]:
-            status = _('2nd Committee ') + row[13].strip()
+            status = _(u'2nd Committee ') + row[13].strip().decode('utf-8')
         elif row[12]:
-            status = _('1st Plenary ') + row[12].strip()
+            status = _(u'1st Plenary ') + row[12].strip().decode('utf-8')
         elif row[11]:
-            status = _('1st Committee ') + row[11].strip()
+            status = _(u'1st Committee ') + row[11].strip().decode('utf-8')
 
         return (shortstatus, status)
 
@@ -191,6 +192,7 @@ class Command (BaseCommand):
         @return: a draftlaw
         @rtype: draftlaw.DraftLaw
         """
+        from draftlaw.models import DraftLaw
         bill_number = self._get_bill_number(row)
 
         title = row[3].strip().decode('utf-8')
@@ -206,12 +208,12 @@ class Command (BaseCommand):
         draftlaw = DraftLaw(
             bureau_date=self._get_isodate(row[0]),
             bill_number=bill_number,
-            title_en=title,
-            initiator_en=row[4].strip(),
-            author_en=row[5].strip(),
-            status_en=status,
+            title_ka=title,
+            initiator_ka=row[4].strip(),
+            author_ka=row[5].strip(),
+            status_ka=status,
             shortstatus=shortstatus,
-            summary_en=row[6].strip(),
+            summary_ka=row[6].strip(),
             law_number=law_number,
         )
         draftlaw.save()
@@ -244,6 +246,7 @@ class Command (BaseCommand):
         @return: a draftlaw child
         @rtype: draftlaw.DraftLawChild
         """
+        from draftlaw.models import DraftLawChild
         if not parent:
             return False
 
@@ -256,7 +259,7 @@ class Command (BaseCommand):
         child = DraftLawChild(
             parent=parent,
             bill_number=bill_number,
-            title_en=title,
+            title_ka=title,
             law_number=law_number,
         )
         child.save()
@@ -286,6 +289,7 @@ class Command (BaseCommand):
         @return: if data could be added
         @rtype: bool
         """
+        from draftlaw.models import DraftLaw, DraftLawChild
         bill_number = self._get_bill_number(row)
         self.stdout.write('%s | Adding georgian to english ... ' % bill_number)
         try:
