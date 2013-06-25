@@ -11,9 +11,6 @@ __docformat__ = 'epytext en'
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from representative.models import Representative, NAME_MINLEN
-from incomedeclaration.models import IncomeDeclaration
-
 
 class Command (BaseCommand):
     """Command to update parliamentarians' assets."""
@@ -29,7 +26,8 @@ class Command (BaseCommand):
         @return: name's latest income declaration
         @rtype: incomedeclaration.IncomeDeclaration
         """
-
+        from representative.models import NAME_MINLEN
+        from incomedeclaration.models import IncomeDeclaration
         first, last = name.split(u' ', 1)
         decls = IncomeDeclaration.objects.filter(name__icontains=last)
         if not decls:
@@ -164,6 +162,7 @@ class Command (BaseCommand):
     @transaction.commit_on_success
     def handle (self, *args, **options):
         """Command handler."""
+        from representative.models import Representative
         decl_ids = {}
         for representative in Representative.objects.all():
             self.stdout.write(u'%s: ' % representative.name)
