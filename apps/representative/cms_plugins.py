@@ -4,20 +4,9 @@ from cms.models.pluginmodel import CMSPlugin
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from .models import RepresentativePluginConf, RandomRepresentative, ParliamentManager
+from .models import RandomRepresentative, ParliamentManager
 from .views import UnitParliament
 
-
-class RepresentativePlugin (CMSPluginBase):
-    model = RepresentativePluginConf
-    name = _('Representative Plugin')
-    render_template = 'cmsplugins/representative.html'
-
-
-    def render(self, context, instance, placeholder):
-        context['obj'] = RandomRepresentative.get()
-        return context
-plugin_pool.register_plugin(RepresentativePlugin)
 
 class RepresentativeListPlugin (CMSPluginBase):
     model = CMSPlugin
