@@ -23,7 +23,7 @@
             </div>
             <div style="clear: both"></div>
         </div>
-
+{% autoescape off %}
         <table>
 {% if obj.is_majoritarian %}
         <tr>
@@ -111,6 +111,7 @@
             {% endfor %}</td>
         </tr>
         </table>
+{% endautoescape %}
     </div>
 
     <div id="data-boxes">

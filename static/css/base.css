@@ -177,7 +177,7 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 	display: inline-block;
 	*display: inline;
 	*zoom: 1;
-	width: 195px;
+	width: 240px;
 	margin: 0;
 }
 
@@ -280,6 +280,8 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 #banner .banner-home .banner-latest p {
     margin: 0;
     font-size: 1.1em;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #footer {

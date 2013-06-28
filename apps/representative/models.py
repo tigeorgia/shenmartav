@@ -384,11 +384,13 @@ class Representative (Person):
 
     @property
     def income (self):
-        try:
-            base = int(settings.BASE_INCOME[self.unit.short])
-        except (AttributeError, KeyError, ValueError):
-            base = 0
-
+        #try:
+        #    base = int(settings.BASE_INCOME[self.unit.short])
+        #except (AttributeError, KeyError, ValueError):
+        #    base = 0
+        # New MPs haven't been in Parliament for more than one year,
+        # so can't calculate their base salary accurately.
+        base = 0
         additional = int(self.salary - base)
         if additional < 0:
             additional = int(self.salary) # salary in declaration doesn't include base
