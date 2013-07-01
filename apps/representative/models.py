@@ -173,7 +173,7 @@ class Representative (Person):
         help_text=_('Property & Assets'))
     #: percentage of questions answered on shenmartav.ge
     answered = models.FloatField(default=0, null=True,
-        help_text=_('Percentage of Answered Questions on shenmartav.ge'))
+        help_text=_('Percentage of Answered Questions on chemiparlamenti.ge'))
     #: gender of the representative
     gender = models.IntegerField(default=0, choices=GENDER_CHOICES,
         help_text=_('Gender of the Representative'))
