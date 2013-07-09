@@ -30,7 +30,7 @@ class Show (FormView):
                 u"False" + SEP +
                 u','.join(form.cleaned_data['subscribe']))
 
-        send_mail(subject, body, 'registration@myparliament.ge',['derek@transparency.ge'])
+        send_mail(subject, body, 'registration@myparliament.ge',['ekar@transparency.ge'])
 
         return redirect('smsregister_thanks')
 
