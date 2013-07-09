@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-28 11:07+0400\n"
-"PO-Revision-Date: 2013-06-28 11:12+0400\n"
+"PO-Revision-Date: 2013-07-09 15:05+0400\n"
 "Last-Translator: Derek <derek@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language: ka\n"
@@ -2497,10 +2497,7 @@ msgstr "რეგიონული პოლიტიკა, თვითმმ
 
 #: apps/smsregister/forms.py:42
 msgid "Sector Economy and Economic Policy Committee"
-msgstr ""
-" დარგობრივი ეკონომიკისა და ეკონომიკური პოლიტიკის კომიტეტი - See more at: "
-"http://www.parliament.ge/index.php?"
-"option=com_content&view=article&id=17&Itemid=26&lang=ge#sthash.3yE8LfI2.dpuf"
+msgstr " დარგობრივი ეკონომიკისა და ეკონომიკური პოლიტიკის კომიტეტი"
 
 #: apps/smsregister/forms.py:43
 msgid "Sport and Youth Affairs Committee"
