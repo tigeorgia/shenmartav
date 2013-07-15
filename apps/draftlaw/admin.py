@@ -23,7 +23,4 @@ class DraftLawAdmin (TranslationAdmin):
         InlineDiscussion,
         InlineChild
     ]
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE},
-    }
 admin.site.register(DraftLaw, DraftLawAdmin)
