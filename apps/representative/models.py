@@ -7,6 +7,7 @@ Depends on popit
 __docformat__ = 'epytext en'
 
 import datetime
+from operator import itemgetter
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
@@ -323,7 +324,7 @@ class Representative (Person):
         if representatives is None: # != []
             representatives = cls.objects.all()
 
-        by_lastname = {}
+        by_lastname = []
         # losing language abstraction, gaining massive reduction in db queries
         name_lang = 'names__name_' + get_language()[:2]
         reps = representatives.values('pk', 'slug',
@@ -336,9 +337,10 @@ class Representative (Person):
             except AttributeError:
                 lastname = r['names__name'].split()[-1]
                 r['firstname_first'] = r['names__name']
-            by_lastname[lastname] = r
+            by_lastname.append((lastname,r))
 
-        return [by_lastname[key] for key in sorted(by_lastname.keys())]
+        return [p[1] for p in sorted(by_lastname, key=itemgetter(0))]
+        #return [by_lastname[key] for key in sorted(by_lastname.keys())]
 
 
     @classmethod
@@ -360,7 +362,7 @@ class Representative (Person):
         if representatives is None: # != []
             representatives = cls.objects.all()
 
-        by_lastname = {}
+        by_lastname = []
         # losing language abstraction, gaining massive reduction in db queries
         name_lang = 'names__name_' + get_language()[:2]
         reps = representatives.values('pk', 'slug', 'names__name', name_lang)
@@ -371,15 +373,15 @@ class Representative (Person):
                 splitname = r['names__name'].split()
             lastname = splitname.pop()
             r['lastname_first'] = lastname + ' ' + ' '.join(splitname)
-            by_lastname[lastname] = r
+            by_lastname.append((lastname,r))
 
         if choices:
             return [
-                (by_lastname[key]['pk'], by_lastname[key]['lastname_first'])
-                for key in sorted(by_lastname.keys())
+                (p[1]['pk'], p[1]['lastname_first'])
+                for p in sorted(by_lastname, key=itemgetter(0))
             ]
         else:
-            return [by_lastname[key] for key in sorted(by_lastname.keys())]
+            return [p[1] for p in sorted(by_lastname, key=itemgetter(0))]
 
 
     @property
