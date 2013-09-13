@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'menus',
     'sekizai',
     'haystack',
+    'modeltranslation'
     'sorl.thumbnail',
     'imagekit', # Kind of ugly to have two thumbnail libs, cleanup later
     'rosetta',

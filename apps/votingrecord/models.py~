@@ -150,12 +150,3 @@ class VotingRecordAmendment (models.Model):
 #        File "/usr/local/lib/python2.7/dist-packages/cms/models/pluginmodel.py", line 56, in __new__
 #            table_name = 'cmsplugin_%s' % splitted[1]
 #            IndexError: list index out of range
-
-
--try:
--    class VotingRecordPluginConf (CMSPlugin):
--        """Configuration for voting record plugin."""
--        #: title of the plugin
--        title = models.CharField(max_length=32, default=_('Voting Records'))
--except IndexError:
--    pass
