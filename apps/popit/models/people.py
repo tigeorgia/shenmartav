@@ -18,6 +18,8 @@ class Person(ModelBase):
     date_of_death   = ApproximateDateField(blank=True, help_text=date_help_text)
     #gender          = models.CharField(max_length=1, choices=(('m','Male'),('f','Female')) )
     description     = models.TextField(blank=True, default='')
+    description_ka     = models.TextField(blank=True, default='', null=True)
+    description_en     = models.TextField(blank=True, default='', null=True)
 
     class Meta:
         ordering = [ 'slug' ]
@@ -59,7 +61,11 @@ class PersonData(Data):
 class PersonName(ModelBase):
     person      = models.ForeignKey(Person, related_name='names')
     title       = models.CharField(max_length=100, blank=True)
-    name        = models.CharField(max_length=300)
+    title_en    = models.CharField(max_length=100, blank=True, null=True)
+    title_ka    = models.CharField(max_length=100, blank=True, null=True)
+    name        = models.CharField(max_length=300, blank=True)
+    name_en     = models.CharField(max_length=300, blank=True, null=True)
+    name_ka     = models.CharField(max_length=300, blank=True, null=True)
     main        = models.BooleanField()
     start_date  = ApproximateDateField(blank=True)
     end_date    = ApproximateDateField(blank=True)

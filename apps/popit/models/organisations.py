@@ -17,6 +17,8 @@ from glt import slughifi
 class Organisation(ModelBase):
     slug    = models.SlugField(max_length=300, editable=False)
     summary = models.TextField(blank=True, default='')
+    summary_en = models.TextField(blank=True, default='', null=True)
+    summary_ka = models.TextField(blank=True, default='', null=True)
     started = ApproximateDateField(blank=True, help_text=date_help_text)
     ended   = ApproximateDateField(blank=True, help_text=date_help_text)
 
@@ -52,9 +54,12 @@ class OrganisationData(Data):
 class OrganisationName(ModelBase):
     organisation = models.ForeignKey(Organisation, related_name='names')
     name        = models.CharField(max_length=300)
+    name_en     = models.CharField(max_length=300, blank=True)
+    name_ka     = models.CharField(max_length=300, blank=True)
     main        = models.BooleanField()
     start_date  = ApproximateDateField(blank=True)
     end_date    = ApproximateDateField(blank=True)
+    
 
     class Meta:
         ordering = [ '-main', '-start_date', 'end_date', 'name' ]

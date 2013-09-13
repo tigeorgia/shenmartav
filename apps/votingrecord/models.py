@@ -4,7 +4,7 @@ Model votingrecord
 """
 __docformat__ = 'epytext en'
 
-from cms.models.pluginmodel import CMSPlugin
+#from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -18,12 +18,20 @@ class VotingRecord (models.Model):
     slug = models.SlugField(max_length=100, editable=False, null=False)
     #: Parliament.ge kan (?) ID
     kan_id = models.IntegerField(null=True, help_text=_('kan ID'))
+    #law ids have an integer id and a few trailing georgian characters
+    #this field to is store those characters incase they need to be used at some point
+
+
+    kan_id_chars = models.CharField(max_length=32, null=True, help_text=_('String portion of a law Id'))
+   
     #: scrape date
     scrape_date = models.DateField(null=True, editable=False,
         help_text=('Date of Scrape Process'))
     #: name of the bill
-    name = models.CharField(max_length=512, null=True,
-        help_text=_('Name of the Bill'))
+    name = models.CharField(max_length=512, null=True,help_text=_('Name of the Bill'))
+    name_en = models.CharField(max_length=512, null=True,help_text=_('English Name of the Bill'))
+    name_ka = models.CharField(max_length=512, null=True,help_text=_('Georgian Name of the Bill')) 
+
     #: voting date
     date = models.DateField(null=True, help_text=_('Date of Voting'))
     #: url where to find the voting record
@@ -73,13 +81,15 @@ class VotingRecordResult (models.Model):
     css = models.CharField(max_length=32, null=True,
         help_text=_('CSS class for color display'))
 
+    session = models.IntegerField(null=True, help_text=_('The session number'))
+
 
     class Meta:
         ordering = ['-vote']
 
 
     @classmethod
-    def get_counts (cls, record=None, representative=None):
+    def get_counts (cls, record=None, representative=None, session=None):
         """Get counts of the four voting record result possibilities.
 
         Either for the given voting record or for the given representative.
@@ -92,6 +102,7 @@ class VotingRecordResult (models.Model):
         @return: dict with voting record result counts
         @rtype: { 'yes': int, 'no': int, 'abstention': int, 'absent': int, 'total': int }
         """
+
         if record and representative:
             return None
         if record:
@@ -100,6 +111,9 @@ class VotingRecordResult (models.Model):
             results = cls.objects.filter(representative=representative)
         else:
             return None
+
+        if session:
+          results = results.filter(session=session)
 
         return {
             'yes': results.filter(vote=u'დიახ').count(),
@@ -136,10 +150,3 @@ class VotingRecordAmendment (models.Model):
 #        File "/usr/local/lib/python2.7/dist-packages/cms/models/pluginmodel.py", line 56, in __new__
 #            table_name = 'cmsplugin_%s' % splitted[1]
 #            IndexError: list index out of range
-try:
-    class VotingRecordPluginConf (CMSPlugin):
-        """Configuration for voting record plugin."""
-        #: title of the plugin
-        title = models.CharField(max_length=32, default=_('Voting Records'))
-except IndexError:
-    pass

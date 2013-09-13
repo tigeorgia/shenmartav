@@ -1,4 +1,7 @@
 # vim: set fileencoding=utf-8
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
 """
 Command import_votingrecord
 """
@@ -9,6 +12,7 @@ from datetime import datetime
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from optparse import make_option
+import glt
 
 from votingrecord.models import VotingRecord, VotingRecordAmendment, VotingRecordResult
 
@@ -48,6 +52,18 @@ class Command (BaseCommand):
 
 
 
+    def _getVoteGeo(self, vote):
+      if( vote == "Yes" ):
+        return u'დიახ'
+      elif( vote == "No" ):
+        return u'არა'
+      elif( vote == "Abstain" ):
+        return u'არ მიუცია'
+      elif( vote == "Not Present" ):
+        return u'არ ესწრებოდა'
+      else:
+        return 'None'
+
     @transaction.commit_on_success
     def _save_results (self, record, results):
         """Save results for the given record to database.
@@ -60,8 +76,9 @@ class Command (BaseCommand):
         for result in results:
             vrr = VotingRecordResult(
                 record=record,
-                vote=self._strip(result['vote']),
-                name=self._strip(result['name']))
+                vote=self._getVoteGeo(self._strip(result['vote'])),
+                name=self._strip(result['name']),
+                session=result['session'])
             vrr.save()
 
 
@@ -82,7 +99,7 @@ class Command (BaseCommand):
             vra.save()
 
 
-    def _exists (self, data):
+    def _exists (self, data, kanID):
         """Check if record to import already exists.
 
         @param data: record to import.
@@ -99,10 +116,10 @@ class Command (BaseCommand):
         @return: if record exists already
         @rtype: bool
         """
-        existing = VotingRecord.objects.filter(kan_id=data['kan_id'])
+        existing = VotingRecord.objects.filter(kan_id=kanID)
         scrape_date = datetime.strptime(data['scrape_date'], '%Y-%m-%d')
         if len(existing) > 0:
-            if scrape_date.date() > existing[0].scrape_date or self.force:
+            if scrape_date.date() >= existing[0].scrape_date or self.force:
                 self.stdout.write('replacing ... ')
                 existing[0].delete() # also deletes amendments and results
             else:
@@ -112,7 +129,6 @@ class Command (BaseCommand):
             self.stdout.write('new ... ')
 
         return False
-
 
     @transaction.commit_on_success
     def _handle_record (self, filename):
@@ -124,19 +140,29 @@ class Command (BaseCommand):
         @rtype: VotingRecord
         """
         fh = open(filename, 'r')
-        data = json.loads(fh.read())
+        data = json.loads( fh.read() )
         fh.close()
 
+        
+        unicodeKanId = self._strip( data['kan_id'].encode('utf-8') )
+
         self.stdout.write('Importing from %s record %s ... ' % (
-            filename, data['kan_id']))
-        if self._exists(data):
+            filename, unicodeKanId ))
+
+        idPair = unicodeKanId.split("-")
+        print unicodeKanId
+        kanId=idPair[0]
+        kanIdChar=idPair[1]
+        print kanId
+        if self._exists(data,kanId):
             return None
 
         record = VotingRecord(
-            kan_id=self._strip(data['kan_id']),
+            kan_id=kanId,
+            kan_id_chars=kanIdChar,
             scrape_date=self._strip(data['scrape_date']),
             name=self._strip(data['name']),
-            date=self._strip(data['date']),
+            date=self._strip(data['date'][0:10]),
             url=self._strip(data['url']),
             number=self._strip(data['number']))
         record.save()

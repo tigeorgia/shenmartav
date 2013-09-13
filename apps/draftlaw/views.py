@@ -133,16 +133,17 @@ class Items (TemplateView):
                 try:
                     while 1:
                         nd = nondiscussed[nondiscussed_idx]
-                        if nd.bureau_date > d.date:
-                            combined.append(
-                                DraftLawForList(nd, nd.bureau_date))
-                            nondiscussed_idx += 1
+                        if nd.bureau_date > d.date and nd.law_number:
+                            
+                              combined.append(DraftLawForList(nd, nd.bureau_date))
+                              nondiscussed_idx += 1
                         else:
                             break
                 except IndexError:
                     pass
 
-                combined.append(DraftLawForList(d.draftlaw, d.date, d.place))
+                if d.draftlaw.law_number:
+                  combined.append(DraftLawForList(d.draftlaw, d.date, d.place))
         else:
             for nd in nondiscussed.order_by('-bureau_date'):
                 combined.append(DraftLawForList(nd, nd.bureau_date))

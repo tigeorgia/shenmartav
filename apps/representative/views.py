@@ -307,7 +307,10 @@ def _get_votingrecord_results (representative):
     @rtype: [{'css', 'vote', 'record', 'url', 'record__name'}]
     """
     # ordered by vote in model
-    results = representative.votingresults.all().values(
+    
+    #read this in from user later
+    session_number = 3
+    results = representative.votingresults.all().filter(session=session_number).values(
         'css', 'vote', 'record__slug', 'record__name')
     for r in results:
         r['url'] = reverse('votingrecord_detail', args=[r['record__slug']])

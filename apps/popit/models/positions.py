@@ -76,10 +76,16 @@ class Position(ModelBase):
 
     type            = models.ForeignKey(PositionType, null=True, blank=True)
     title           = models.CharField(max_length=200, blank=True, default='')
+    title_en        = models.CharField(max_length=200, blank=True, default='', null=True)
+    title_ka        = models.CharField(max_length=200, blank=True, default='', null=True)
 
     place           = models.CharField(max_length=100, blank=True, help_text="use if needed to identify the position - eg add constituency for an 'MP'")
+    place_en           = models.CharField(max_length=100, blank=True, null=True)
+    place_ka           = models.CharField(max_length=100, blank=True, null=True)
     
     note            = models.CharField(max_length=300, blank=True, default='')
+    note_en         = models.CharField(max_length=300, blank=True, null=True, default='')
+    note_ka         = models.CharField(max_length=300, blank=True, null=True, default='')
 
     start_date      = ApproximateDateField(blank=True, help_text=date_help_text)
     end_date        = ApproximateDateField(blank=True, help_text=date_help_text, default="future")
