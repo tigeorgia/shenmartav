@@ -4,7 +4,7 @@ Model votingrecord
 """
 __docformat__ = 'epytext en'
 
-#from cms.models.pluginmodel import CMSPlugin
+from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -152,10 +152,10 @@ class VotingRecordAmendment (models.Model):
 #            IndexError: list index out of range
 
 
--try:
--    class VotingRecordPluginConf (CMSPlugin):
--        """Configuration for voting record plugin."""
--        #: title of the plugin
--        title = models.CharField(max_length=32, default=_('Voting Records'))
--except IndexError:
--    pass
+try:
+    class VotingRecordPluginConf (CMSPlugin):
+        """Configuration for voting record plugin."""
+        #: title of the plugin
+        title = models.CharField(max_length=32, default=_('Voting Records'))
+except IndexError:
+    pass
