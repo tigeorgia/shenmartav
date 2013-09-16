@@ -10,10 +10,8 @@ __docformat__ = 'epytext en'
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from representative.models import Representative
-from votingrecord.models import VotingRecordResult
-
-
+from apps.representative.models import Representative
+from apps.votingrecord.models import VotingRecordResult
 
 class Command (BaseCommand):
     """Command to update votingrecord results."""

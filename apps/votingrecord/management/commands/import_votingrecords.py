@@ -14,7 +14,7 @@ from django.db import transaction
 from optparse import make_option
 import glt
 
-from votingrecord.models import VotingRecord, VotingRecordAmendment, VotingRecordResult
+from apps.votingrecord.models import VotingRecord, VotingRecordAmendment, VotingRecordResult
 
 
 class Command (BaseCommand):
@@ -165,7 +165,8 @@ class Command (BaseCommand):
             date=self._strip(data['date'][0:10]),
             url=self._strip(data['url']),
             number=self._strip(data['number']))
-        record.save()
+        record.save() 
+
 
         if data['result']:
             self._save_results(record, data['result'])
@@ -175,7 +176,6 @@ class Command (BaseCommand):
 
         self.stdout.write("success!\n")
         return record
-
 
     @transaction.commit_on_success
     def _setup_amendments (self):
