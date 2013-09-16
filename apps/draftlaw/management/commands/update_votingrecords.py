@@ -8,8 +8,8 @@ __docformat__ = 'epytext en'
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from draftlaw.models import DraftLaw, DraftLawChild
-from votingrecord.models import VotingRecord
+from apps.draftlaw.models import DraftLaw, DraftLawChild
+from apps.votingrecord.models import VotingRecord
 
 
 

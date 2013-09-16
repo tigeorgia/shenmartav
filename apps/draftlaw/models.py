@@ -10,7 +10,7 @@ import datetime
 from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 from django.utils.translation import get_language, ugettext_lazy as _
-
+from django.contrib.comments.moderation import CommentModerator, moderator, AlreadyModerated
 from glt import slughifi
 from votingrecord.models import VotingRecord
 from representative.models import Representative
@@ -145,14 +145,16 @@ class DraftLaw (models.Model):
         return self._linked_names('author')
 
 
-
-from django.contrib.comments.moderation import CommentModerator, moderator
 class DraftLawModerator (CommentModerator):
     email_notification = True
     enable_field = 'enable_annotations'
     auto_moderate_field = 'moderate_annotations'
     moderate_after = 0 # immediately
-moderator.register(DraftLaw, DraftLawModerator)
+
+try:
+    moderator.register(DraftLaw, DraftLawModerator)
+except AlreadyModerated:
+    pass
 
 
 class DraftLawDiscussion (models.Model):
