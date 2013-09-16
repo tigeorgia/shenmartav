@@ -14,7 +14,7 @@ class Migration(SchemaMigration):
                       keep_default=False)
         # Adding field 'VotingRecord.kan_id_chars'
         db.add_column('votingrecord_votingrecord', 'kan_id_chars',
-                      self.gf('django.db.models.fields.CharField')(max_length=30),
+                      self.gf('django.db.models.fields.CharField')(max_length=30,null=True),
                       keep_default=False)
 
     def backwards(self, orm):
