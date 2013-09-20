@@ -29,8 +29,6 @@ class VotingRecord (models.Model):
         help_text=('Date of Scrape Process'))
     #: name of the bill
     name = models.CharField(max_length=512, null=True,help_text=_('Name of the Bill'))
-    name_en = models.CharField(max_length=512, null=True,help_text=_('English Name of the Bill'))
-    name_ka = models.CharField(max_length=512, null=True,help_text=_('Georgian Name of the Bill')) 
 
     #: voting date
     date = models.DateField(null=True, help_text=_('Date of Voting'))

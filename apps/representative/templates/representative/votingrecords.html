@@ -1,7 +1,11 @@
 {% extends 'representative/base.html' %}
-{% load i18n %}
+{% load i18n sekizai_tags %}
 
 {% block representative %}
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/votingrecords.css" media="all" />
+{% endaddtoblock %}
+
 <div class="breadcrumb">
     <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
     <a href="{% url representative_find %}" title="{% trans 'Who Makes Laws' %}">{% trans 'Who Makes Laws' %}</a> &gt;
@@ -13,9 +17,25 @@
     <h2 class="heading">{% trans 'Voting Records for' %} {{ obj.name }}</h2>
 
     <div id="container-votingrecords" class="scroll-pane">
-        <ul id="votingrecords">{% for result in results %}
-            <li class="{{ result.css }}">{{ result.vote }}: <a href="{{ result.url }}" name="{{ result.css }}">{{ result.record__name }}</a></li>
-        {% endfor %}</ul>
+    <table>
+        <thead>
+        <tr>
+            <th id="date">{% trans "Voting Date" %}</th>
+            <th id="record">{% trans "Record" %}</th>
+            <th id="vote">{% trans "Vote" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+            <tr class="{{ result.css }}">
+                <td>{{ result.record__date|date:'c' }}</td>
+                <td><a href="{{ result.url }}" name="{{ result.css }}">{{ result.record__name }}</a></td>
+                <td><span class="vote" title="{{ result.vote }}"></span></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
     </div>
 </div>
 {% endblock %}
