@@ -4,12 +4,11 @@ Model votingrecord
 """
 __docformat__ = 'epytext en'
 
-from cms.models.pluginmodel import CMSPlugin
+from cms.models.pluginmodel import *
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from glt import slughifi
-from representative.models import Representative
 
 
 
@@ -18,6 +17,9 @@ class VotingRecord (models.Model):
     slug = models.SlugField(max_length=100, editable=False, null=False)
     #: Parliament.ge kan (?) ID
     kan_id = models.IntegerField(null=True, help_text=_('kan ID'))
+    #character portion of the ID
+    kan_id_chars = models.CharField(max_length=512, null=True)
+
     #: scrape date
     scrape_date = models.DateField(null=True, editable=False,
         help_text=('Date of Scrape Process'))
@@ -60,13 +62,16 @@ class VotingRecordResult (models.Model):
     #: voting record ID
     record = models.ForeignKey(VotingRecord, related_name='results',
         help_text=_('Voting Record'))
+
+    #: voting session number
+    session = models.IntegerField(null=True)
     #: vote value
     vote = models.CharField(max_length=32, help_text=_('Vote Value'))
     #: representative's name
     name = models.CharField(max_length=255,
         help_text=_('Representative\'s Name'))
     #: representative
-    representative = models.ForeignKey(Representative, null=True,
+    representative = models.ForeignKey("representative.Representative", null=True,
         related_name='votingresults',
         help_text=_('Representative voting on this'))
     #: CSS class for color display
@@ -79,7 +84,7 @@ class VotingRecordResult (models.Model):
 
 
     @classmethod
-    def get_counts (cls, record=None, representative=None):
+    def get_counts (cls, record=None, representative=None,session=None):
         """Get counts of the four voting record result possibilities.
 
         Either for the given voting record or for the given representative.
@@ -100,6 +105,9 @@ class VotingRecordResult (models.Model):
             results = cls.objects.filter(representative=representative)
         else:
             return None
+
+        if session:
+            results = results.filter(session=session)
 
         return {
             'yes': results.filter(vote=u'დიახ').count(),

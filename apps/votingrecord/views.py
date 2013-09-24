@@ -18,6 +18,7 @@ from representative.models import Representative
 class List (ListView):
     model = VotingRecord
     template_name = 'votingrecord/list.html'
+
     queryset = VotingRecord.objects.filter(name__isnull=False)
     paginate_by = 30
 
@@ -33,7 +34,11 @@ class Detail (DetailView):
     def get_context_data (self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
 
-        context['counts'] = VotingRecordResult.get_counts(record=context['obj'])
+        #read in from user
+        session = 3
+        context['counts'] = VotingRecordResult.get_counts(record=context['obj'],session=session)
+        context['results'] = VotingRecordResult.objects.filter(record=context['obj'], session=session)
+
 
         order_by = VotingRecord._meta.ordering
         context['amended_by'] =\

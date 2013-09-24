@@ -6,3 +6,4 @@ log
 settings.py
 deployment/on_dev.sh
 fabfile.py
+*.*~
