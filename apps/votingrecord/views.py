@@ -37,7 +37,6 @@ class Detail (DetailView):
         session_number = 3
         context['counts'] = VotingRecordResult.get_counts(record=context['obj'], session=session_number)
         context['results'] = VotingRecordResult.objects.filter(record=context['obj'], session=session_number)
-      
 
         order_by = VotingRecord._meta.ordering
         context['amended_by'] =\

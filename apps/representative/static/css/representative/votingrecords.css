@@ -1,18 +1,28 @@
 #representative table {
-    width:100%;
+    width: 100%;
 }
 
 #representative table th#date {
-width: 8%;
-text-align: left;
+    width: 8%;
+    text-align: left;
 }
 
-#representative span.vote{
-    background: url(/static/img/thumbs.png);
+#representative span.vote {
+    background-image: url(/static/img/thumbs.png);
     width: 32px;
     height: 32px;
+    display: block;
 }
 
-#representative tr.vote-yes .vote{
+.vote-absent span.vote {
+    background-position: 0 32px;
+}
 
+.vote-no span.vote {
+    background-position: 0 64px;
+}
+
+#representative table td {
+    padding: 18px 0;
+    border-bottom: 1px dotted;
 }

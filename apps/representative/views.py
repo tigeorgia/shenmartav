@@ -311,7 +311,7 @@ def _get_votingrecord_results (representative):
     #read this in from user later
     session_number = 3
     results = representative.votingresults.all().filter(session=session_number).values(
-        'css', 'vote', 'record__slug', 'record__name', 'record__date')
+        'css', 'vote', 'record__slug', 'record__name', 'record__date').order_by('-record__date')
     for r in results:
         r['url'] = reverse('votingrecord_detail', args=[r['record__slug']])
 
