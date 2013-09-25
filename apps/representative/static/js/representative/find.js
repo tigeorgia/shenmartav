@@ -9,7 +9,7 @@ RepresentativeFind = {
     unit: {
         'parliament': null,
         'ajara': null,
-        'tbilisi': null,
+        'tbilisi': null
     },
     activeUnit: null,
     noneSelected: '',
@@ -23,28 +23,28 @@ RepresentativeFind = {
 
 
     filterElectionType: function (type) {
-            $('#representative #filter-text').val('');
-            $('#representative #filter-party').val('all');
+            $('#filter-text').val('');
+            $('#filter-party').val('all');
 
             if (type == 2) {
-                $('#representative .member.majoritarian').show();
-                $('#representative .member.partylist').hide();
+                $('.member.majoritarian').show();
+                $('.member.partylist').hide();
             } else if (type == 1) {
-                $('#representative .member.partylist').show();
-                $('#representative .member.majoritarian').hide();
+                $('.member.partylist').show();
+                $('.member.majoritarian').hide();
             } else {
-                $('#representative .member.majoritarian').show();
-                $('#representative .member.partylist').show();
+                $('.member.majoritarian').show();
+                $('.member.partylist').show();
             }
     },
 
 
-    filterInput: function (form) {
-        $('#representative #filter-electiontype').val('0');
-        $('#representative #filter-party').val('all');
+    filterInput: function () {
+        $('#filter-electiontype').val('0');
+        $('#filter-party').val('all');
 
-        var data = $('#representative #filter-text').val().toLowerCase();
-        var members = $('#representative .member');
+        var data = $('#filter-text').val().toLowerCase();
+        var members = $('.member');
         members.hide();
         members.each(function() {
             if ($(this).hasClass('party-' + data) ||
@@ -54,25 +54,25 @@ RepresentativeFind = {
             }
         });
 
-        if ($('#representative #members .member:visible').length == 0 ||
+        if ($('.member:visible').length == 0 ||
             RepresentativeFind.showOfferFulltextSearch) {
-            $('#representative #select #offer-fulltext-search').show();
+            $('#offer-fulltext-search').show();
         } else {
-            $('#representative #select #offer-fulltext-search').hide();
+            $('#offer-fulltext-search').hide();
         }
     },
 
 
     setupFiltersParty: function () {
-        $('#representative #filter-party').change(function() {
-            $('#representative #filter-text').val('');
-            $('#representative #filter-electiontype').val('0');
+        $('#filter-party').change(function() {
+            $('#filter-text').val('');
+            $('#filter-electiontype').val('0');
             var val = $(this).val();
             if (val == 'all') {
-                $('#representative .member').show();
+                $('.member').show();
             } else {
-                $('#representative .member').hide();
-                $('#representative .member.' + val).show();
+                $('member').hide();
+                $('.member.' + val).show();
             }
         });
     },
@@ -81,17 +81,17 @@ RepresentativeFind = {
     checkInput: function () {
         var threshold = new Date().getTime()- RepresentativeFind.inputDelay;
         if (threshold >= RepresentativeFind.inputTime) {
-            $('#representative #offer-fulltext-search').show();
+            $('#offer-fulltext-search').show();
         }
     },
 
 
     setupFilters: function () {
-        $('#representative #select #filter-electiontype').change(function () {
+        $('#filter-electiontype').change(function () {
             RepresentativeFind.filterElectionType($(this).val());
         });
 
-        $('#representative #select form').submit(function() {
+        $('#select form').submit(function() {
             if (RepresentativeFind.reallySubmitSearch) {
                 return true;
             } else {
@@ -101,7 +101,7 @@ RepresentativeFind = {
             }
         });
 
-        $('#representative #select #filter-text').keyup(function(event) {
+        $('#filter-text').keyup(function(event) {
             if (event.which != 13) { // not enter key
                 RepresentativeFind.showOfferFulltextSearch = false;
             }
@@ -110,9 +110,9 @@ RepresentativeFind = {
             setTimeout(RepresentativeFind.checkInput, RepresentativeFind.inputDelay);
         });
 
-        $('#representative #select #offer-fulltext-search').click(function () {
+        $('#offer-fulltext-search').click(function () {
             RepresentativeFind.reallySubmitSearch = true;
-            $('#representative #select #filter-submit').click();
+            $('#filter-submit').click();
             return false;
         });
     },
@@ -141,11 +141,11 @@ RepresentativeFind = {
 
         $.ajax(RepresentativeFind.urlInfo + pk + '/', {
             success: function (data, textStatus, jqXHR) {
-                $('#representative #info #data').html(data);
+                $('#data').html(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 var msg = '<h3>' + jqXHR.status + ' ' + errorThrown + '</h3>';
-                $('#representative #info #data').html(msg);
+                $('#data').html(msg);
                 RepresentativeFind.setInfoDone();
             }
         }).done(RepresentativeFind.setInfoDone);
@@ -155,7 +155,7 @@ RepresentativeFind = {
     setupInfo: function () {
         RepresentativeFind.urlInfo = URL_Info.slice(0,
             URL_Info.length - 2); // slice off '0/'
-        RepresentativeFind.noneSelected = $('#representative #info #data').html();
+        RepresentativeFind.noneSelected = $('#data').html();
     },
 
 
@@ -172,7 +172,7 @@ RepresentativeFind = {
     selectMemberFromLocation: function () {
         var pk = RepresentativeFind.getPKFromLocation();
         if (!pk) return;
-        var member = $('#representative #members #member-' + pk);
+        var member = $('#member-' + pk);
         if (!member || member.length == 0) return;
 
         $(member).addClass('member-selected');
@@ -186,7 +186,7 @@ RepresentativeFind = {
 
 
     setupUnit: function () {
-        $('#representative #unit-select #unit-slider').slider({
+        $('#unit-slider').slider({
             min: 0,
             max: 2,
             change: function (event, ui) {
@@ -206,23 +206,23 @@ RepresentativeFind = {
         var config = {
              over: function () { RepresentativeFind.setInfo($(this)); },
              out: function () {},
-             interval: RepresentativeFind.hoverInterval,
+             interval: RepresentativeFind.hoverInterval
         };
-        $('#representative #members .member').hoverIntent(config);
+        $('#members .member').hoverIntent(config);
     },
 
 
     loadUnitDone: function () {
-        $('#representative #select #unit').toggle('blind');
+        $('#unit').toggle('blind');
         RepresentativeFind.selectMemberFromLocation();
         RepresentativeFind.setupFiltersParty();
 
-        $('#representative #filter-form input').removeAttr('disabled');
+        $('#filter-form input').removeAttr('disabled');
 
-        var all = $('#representative #cell-party #hidden-all').html();
-        var parties = $('#representative #cell-party #hidden-' + RepresentativeFind.activeUnit).html();
-        $('#representative #filter-party').html(all + parties);
-        $('#representative #filter-party').val('all');
+        var all = $('#hidden-all').html();
+        var parties = $('#hidden-' + RepresentativeFind.activeUnit).html();
+        $('#filter-party').html(all + parties);
+        $('#filter-party').val('all');
 
         Base.enable('#representative #select');
         RepresentativeFind.isLoadingUnit = false;
@@ -234,7 +234,7 @@ RepresentativeFind = {
 
         RepresentativeFind.isLoadingUnit = true;
         Base.disable('#representative #select');
-        $("#representative #filter-form input").attr('disabled', 'disabled');
+        $("#filter-form input").attr('disabled', 'disabled');
         $('#representative #select #unit').toggle('blind');
         $('#representative #select #unit #members').html('');
         $('#representative #info #data').html(RepresentativeFind.noneSelected);
@@ -261,7 +261,7 @@ RepresentativeFind = {
 
 
     loadUnitBySlider: function (unit) {
-        var elem = $('#representative #unit-select #unit-slider');
+        var elem = $('#unit-slider');
         if (unit == 'parliament') {
             elem.slider('value', 0);
         } else if (unit == 'ajara') {
@@ -301,7 +301,7 @@ RepresentativeFind = {
         RepresentativeFind.setupUnit();
         RepresentativeFind.loadUnit('parliament');
        // RepresentativeFind.loadRightUnit();
-    },
+    }
 };
 
 
