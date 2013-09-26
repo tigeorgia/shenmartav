@@ -17,7 +17,7 @@ try:
 except ImportError:
     from cms.utils import set_language_changer
 
-from votingrecord.models import VotingRecordResult
+from apps.votingrecord.models import VotingRecordResult
 from question.forms import QuestionForm
 from question.models import Question
 
@@ -311,7 +311,7 @@ def _get_votingrecord_results (representative):
     session = 3
     # ordered by vote in model
     results = representative.votingresults.all().filter(session=session).values(
-        'css', 'vote', 'record__slug', 'record__name')
+        'css', 'vote', 'record__slug', 'record__name','record__date').order_by('-record__date')
     for r in results:
         r['url'] = reverse('votingrecord_detail', args=[r['record__slug']])
 

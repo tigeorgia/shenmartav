@@ -1,50 +1,112 @@
 {% extends 'votingrecord/base.html' %}
-{% load i18n thumbnail %}
+{% load i18n thumbnail sekizai_tags %}
 
 {% block votingrecord %}
-<div class="breadcrumb">
-    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
-    <a href="{% url draftlaw_list %}" title="{% trans 'What Laws Are Made' %}">{% trans 'What Laws Are Made' %}</a> &gt;
-    <a href="{% url votingrecord_list %}" title="{% trans 'Voting Records' %}">{% trans 'Voting Records' %}</a> &gt;
-    {{ obj.name }}
-</div>
-
-<div id="votingrecord">
-    <h2 class="heading">{{ obj.name }}</h2>
-    <div class="body">
-        <ul>
-            <li>{% trans 'Number' %}: {{ obj.number }}</li>
-            <li>{% trans 'Date' %}: {{ obj.date }}</li>
-            <li>{% trans 'Content URL' %}: <a href="{{ obj.url }}">{{ obj.url }}</a></li>
-        {% if amended_by %}
-            <li>{% trans 'Amended by' %}:
-                <ul>{% for rec in amended_by %}
-                    <li>{% if rec.name %}<a href="{{ rec.get_absolute_url }}">{{ rec }}</a>{% else %}{{ rec.number }}{% endif %}</li>
-                {% endfor %}</ul>
-            </li>
-        {% endif %}
-        {% if amending %}
-            <li>{% trans 'Amending' %}:
-                <ul>{% for rec in amending %}
-                    <li>{% if rec.name %}<a href="{{ rec.get_absolute_url }}">{{ rec }}</a>{% else %}{{ rec.number }}{% endif %}</li>
-                {% endfor %}</ul>
-            </li>
-        {% endif %}
-        {% if results %}
-            <li id="results">{% trans 'Results' %}:
-                <p>{% trans 'Yes' %}: {{ counts.yes }}, {% trans 'No' %}: {{ counts.no }}, {% trans 'Abstained' %}: {{ counts.abstained }}, {% trans 'Absent' %}: {{ counts.absent }}, {% trans 'Total' %}: {{ counts.total }}</p>
-                <ul class="scroll-pane">{% for res in results %}
-                    <li class="{{ res.css }}">{% if res.representative %}
-                    <a href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '32x30' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="32" height="30" border="0" /> {{ res.name }}</a>: {{ res.vote }}
-                    {% else %}
-                    {{ res.name }}: {{ res.vote }}
-                    {% endif %}</li>
-                {% endfor %}</ul>
-            </li>
-        {% endif %}
-        </ul>
-
-        <p class="small">{% trans 'Scraped on' %} {{ object.scrape_date }}</p>
+{% addtoblock "css" %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/votingrecord/detail.css" media="all" />
+{% endaddtoblock %}
+    <div class="breadcrumb">
+        <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+        <a href="{% url draftlaw_list %}" title="{% trans 'What Laws Are Made' %}">{% trans 'What Laws Are Made' %}</a>
+        &gt;
+        <a href="{% url votingrecord_list %}" title="{% trans 'Voting Records' %}">{% trans 'Voting Records' %}</a> &gt;
+        {{ obj.name }}
     </div>
-</div>
+
+    <div id="votingrecord">
+        <h2 class="heading">{{ obj.name }}</h2>
+
+        <div class="body">
+            <ul>
+                <li>{% trans 'Number' %}: {{ obj.number }}</li>
+                <li>{% trans 'Date' %}: {{ obj.date }}</li>
+                <li>{% trans 'Content URL' %}: <a href="{{ obj.url }}">{{ obj.url }}</a></li>
+                {% if amended_by %}
+                    <li>{% trans 'Amended by' %}:
+                        <ul>{% for rec in amended_by %}
+                            <li>{% if rec.name %}<a href="{{ rec.get_absolute_url }}">{{ rec }}</a>{% else %}
+                                {{ rec.number }}{% endif %}</li>
+                        {% endfor %}</ul>
+                    </li>
+                {% endif %}
+                {% if amending %}
+                    <li>{% trans 'Amending' %}:
+                        <ul>{% for rec in amending %}
+                            <li>{% if rec.name %}<a href="{{ rec.get_absolute_url }}">{{ rec }}</a>{% else %}
+                                {{ rec.number }}{% endif %}</li>
+                        {% endfor %}</ul>
+                    </li>
+                {% endif %}
+                {% if results %}
+                    <li id="results">{% trans 'Results' %}:
+                        <p>{% trans 'Yes' %}: {{ counts.yes }}, {% trans 'No' %}: {{ counts.no }}, {% trans 'Abstained' %}: {{ counts.abstained }}, {% trans 'Absent' %}: {{ counts.absent }}, {% trans 'Total' %}: {{ counts.total }}</p>
+                        <h2 class="heading"><b>{% trans "Voted Yes:" %}</b></h2>
+                        <ul>
+                            {% for res in results %}
+                                {% if res.css == "vote-yes" %}
+                                    <li class="{{ res.css }} vote">
+                                    {% if res.representative %}
+                                        <a title="{{ res.name }}" href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '100x84' as im %}
+                                            <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}"
+                                                 width="100" height="84" border="0"/></a>
+                                    {% else %}
+                                        <a title="{{ res.name }}"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="100" height="84"/></a>
+                                    {% endif %}
+                                {% endif %}</li>
+                            {% endfor %}</ul>
+                        </ul>
+                        <h2 class="heading"><b>{% trans "Voted No:" %}</b></h2>
+                        <ul>
+                            {% for res in results %}
+                                {% if res.css == "vote-no" %}
+                                    <li class="{{ res.css }} vote">
+                                    {% if res.representative %}
+                                        <a title="{{ res.name }}" href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '100x84' as im %}
+                                            <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}"
+                                                 width="100" height="84" border="0"/></a>
+                                    {% else %}
+                                        <a title="{{ res.name }}"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="100" height="84"/></a>
+                                    {% endif %}
+                                {% endif %}</li>
+                            {% endfor %}</ul>
+                        </ul>
+                        <h2 class="heading"><b>{% trans "Abstained:" %}</b></h2>
+                            <ul>
+                                {% for res in results %}
+                                    {% if res.css == "vote-abstention" %}
+                                        <li class="{{ res.css }} vote">
+                                        {% if res.representative %}
+                                            <a title="{{ res.name }}" href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '100x84' as im %}
+                                            <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}"
+                                                 width="100" height="84" border="0"/></a>
+                                        {% else %}
+                                            <a title="{{ res.name }}"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="100" height="84"/></a>
+
+                                        {% endif %}
+                                    {% endif %}
+                                </li>
+                                {% endfor %}</ul>
+                            </ul>
+                        <h2 class="heading"><b>{% trans "Absent:" %}</b></h2>
+                            <ul>
+                                {% for res in results %}
+                                    {% if res.css == "vote-absent" %}
+                                        <li class="{{ res.css }} vote">
+                                        {% if res.representative %}
+                                            <a title="{{ res.name }}" href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '100x84' as im %}
+                                            <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}"
+                                                 width="100" height="84" border="0"/></a>
+                                        {% else %}
+                                            <a title="{{ res.name }}"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="100" height="84"/></a>
+                                        {% endif %}
+                                    {% endif %}</li>
+                                {% endfor %}</ul>
+                            </ul>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <p class="small">{% trans 'Scraped on' %} {{ object.scrape_date }}</p>
+        </div>
+    </div>
 {% endblock %}

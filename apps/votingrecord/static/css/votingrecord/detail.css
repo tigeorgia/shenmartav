@@ -1,0 +1,27 @@
+#votingrecord .rep-name {
+    clear: both;
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+}
+
+#votingrecord ul li {
+    display: inline-block;
+}
+
+#votingrecord li.vote {
+    position: relative;
+
+}
+
+#votingrecord .rep-name {
+    clear: both;
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    bottom: -12px;
+}
+
+.opened {
+    width: 100% !important;
+}
