@@ -285,7 +285,7 @@ class Detail (DetailView):
 
         context['form'] = self._get_form(obj)
         context['questions'] = self._get_questions(obj)
-        context['votecounts'] = VotingRecordResult.get_counts(representative=obj)
+        context['votecounts'] = VotingRecordResult.get_counts(representative=obj,session=3)
         context['url_feed'] = reverse('representative_feed_detail', args=[obj.pk])
         context['url_votingrecords'] = reverse(
             'representative_votingrecords', args=[obj.pk, obj.slug])
