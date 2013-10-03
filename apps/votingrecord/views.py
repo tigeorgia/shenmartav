@@ -34,11 +34,13 @@ class Detail (DetailView):
     def get_context_data (self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
 
-        #read in from user
-        session = 3
-        context['counts'] = VotingRecordResult.get_counts(record=context['obj'],session=session)
-        context['results'] = VotingRecordResult.objects.filter(record=context['obj'], session=session)
 
+        context['counts1'] = VotingRecordResult.get_counts(record=context['obj'],session=1)
+        context['votes1'] = VotingRecordResult.objects.filter(record=context['obj'], session=1)
+	context['counts2'] = VotingRecordResult.get_counts(record=context['obj'],session=2)
+        context['votes2'] = VotingRecordResult.objects.filter(record=context['obj'], session=2)
+        context['counts3'] = VotingRecordResult.get_counts(record=context['obj'],session=3)
+        context['votes3'] = VotingRecordResult.objects.filter(record=context['obj'], session=3)
 
         order_by = VotingRecord._meta.ordering
         context['amended_by'] =\

@@ -285,6 +285,18 @@ class Detail (DetailView):
 
         context['form'] = self._get_form(obj)
         context['questions'] = self._get_questions(obj)
+        totalCount = VotingRecordResult.get_counts(representative=obj)
+        context['attended'] = totalCount['total'] - totalCount['absent']
+        context['absent'] = totalCount['absent']
+        if totalCount['total'] == 0:
+            context['percentage_attended'] = 0
+            context['percentage_absent'] = 0
+            context['percentage_attended_string'] = "N/A"
+        else:
+            context['percentage_attended'] = context['attended'] / float(totalCount['total']) * 100
+            context['percentage_absent'] = 100 - context['percentage_attended']
+            context['percentage_attended_string'] = "{0:.2f}".format(context['percentage_attended'])
+
         context['votecounts'] = VotingRecordResult.get_counts(representative=obj,session=3)
         context['url_feed'] = reverse('representative_feed_detail', args=[obj.pk])
         context['url_votingrecords'] = reverse(

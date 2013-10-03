@@ -1,11 +1,10 @@
 {% load i18n %}
-<div id="attendance">{% ifequal obj.unit.pk 1 %}{% if obj.attendance.all %}
-{% with attendance=obj.attendance.all.0 %}
-{% ifequal attendance.attended 0 %}
+<div id="attendance">{% ifequal obj.unit.pk 1 %}
+{% ifequal attended 0 %}
     <h2>{% trans 'Voting attendance' %}</h2>
     <div id="bar">{% trans 'This representative has not attended any sessions yet.' %}</div>
 {% else %}
-    <h2>{% trans 'Voting attendance' %}: {{ attendance.percentage_attended }}% <span class="explain" title="{% trans "Determined based on the official voting records retrieved from the Parliament web site. We calculate the attendance rate as (Number of Yes votes + Number of No votes + Number of Abstain votes) divided by the total number of votes for which an MP’s name is given. This doesn’t necessarily reflect which MPs were physically present at the time a vote was held, but is what was recorded by the Parliament’s voting systems." %}">?</span></h2>
+    <h2>{% trans 'Voting attendance' %}: {{ percentage_attended_string }}% <span class="explain" title="{% trans "Determined based on the official voting records retrieved from the Parliament web site. We calculate the attendance rate as (Number of Yes votes + Number of No votes + Number of Abstain votes) divided by the total number of votes for which an MP’s name is given. This doesn’t necessarily reflect which MPs were physically present at the time a vote was held, but is what was recorded by the Parliament’s voting systems." %}">?</span></h2>
     <!--<div id="group">
 {% ifequal attendance.group 0 %}{% trans 'This representative has attended a very low number of votes, compared to other representatives.' %}{% else %}
 {% ifequal attendance.group 1 %}{% trans 'This representative has attended a low number of votes, compared to other representatives.' %}{% else %}
@@ -16,12 +15,12 @@
     </div>-->
     <div id="bar" class="table">
         <div class="row">
-            <div class="cell leftalign">{{ attendance.attended }}</div>
-            <div class="cell rightalign">{{ attendance.absent }}</div>
+            <div class="cell leftalign">{{ attended }}</div>
+            <div class="cell rightalign">{{ absent }}</div>
         </div>
         <div class="row bar">
-            <div class="cell attendance-attended" style="width:{{ attendance.percentage_attended }}%">&nbsp;</div>
-            <div class="cell attendance-absent" style="width:{{ attendance.percentage_absent }}%">&nbsp;</div>
+            <div class="cell attendance-attended" style="width:{{ percentage_attended }}%">&nbsp;</div>
+            <div class="cell attendance-absent" style="width:{{ percentage_absent }}%">&nbsp;</div>
         </div>
         <div class="row">
             <div class="cell leftalign">{% trans 'Attended' %}</div>
@@ -29,5 +28,4 @@
         </div>
     </div>
 {% endifequal %}
-{% endwith %}
-{% endif %}{% endifequal %}</div>
+{% endifequal %}</div>

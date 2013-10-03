@@ -178,12 +178,19 @@
         ]);
 
         var options = {
-          title: '{% trans 'Vote Counts' %}'
+          title: '{% trans 'Vote Counts' %}',
+          colors: ['green','red','black','grey']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        google.visualization.events.addListener(chart, 'select', selectHandler);
         chart.draw(data, options);
       }
+
+	
+	function selectHandler() {
+	  window.location.href = '{{ url_votingrecords }}';
+	}
 </script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/detail.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquerycycle.min.js"></script>
