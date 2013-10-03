@@ -1,3 +1,3 @@
   $(function() {
-    $( "#tabs" ).tabs();
+    $( "#tabs" ).tabs({selected: 2});
   });
