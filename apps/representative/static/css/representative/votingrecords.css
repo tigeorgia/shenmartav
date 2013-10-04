@@ -8,17 +8,21 @@
 }
 
 #representative span.vote {
-    background-image: url(/static/img/thumbs.png);
     width: 32px;
     height: 32px;
     display: block;
 }
 
 .vote-absent span.vote {
-    background-position: 0 32px;
+    background-image: url(/static/img/absent.png);
+}
+
+.vote-yes span.vote{
+    background-image: url(/static/img/thumbs.png);
 }
 
 .vote-no span.vote {
+    background-image: url(/static/img/thumbs.png);
     background-position: 0 64px;
 }
 

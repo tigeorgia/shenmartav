@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*
+#*- coding: utf-8 -*
 """
 Views for Representative app
 
@@ -359,7 +359,7 @@ class VotingRecords (DetailView):
 
 
 
-class Info (DetailView):
+class Info (Detail):
     context_object_name = 'obj'
     model = Representative
     template_name = 'representative/info.html'
