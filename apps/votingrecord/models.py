@@ -54,7 +54,7 @@ class VotingRecord (models.Model):
 
     @models.permalink
     def get_absolute_url (self, language=None):
-        return ('votingrecord_detail', [self.slug])
+        return ('votingrecord_detail', [self.id])
 
 
 class VotingRecordResult (models.Model):
