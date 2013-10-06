@@ -46,7 +46,7 @@ class Command (BaseCommand):
         @rtype: str (hopefully)
         """
         if tostrip:
-            return tostrip.strip()
+            return tostrip.strip().strip(u'“„"')
         else:
             return tostrip
 
@@ -144,7 +144,7 @@ class Command (BaseCommand):
         fh.close()
 
         
-        unicodeKanId = self._strip( data['kan_id'].encode('utf-8') )
+        unicodeKanId = self._strip( data['kan_id'] ).encode('utf-8')
 
         self.stdout.write('Importing from %s record %s ... ' % (
             filename, unicodeKanId ))
