@@ -154,7 +154,7 @@ It calls ./deployment/redo_db.sh to redo the database, calls ./deployment/update
 
 
 
-Export Data / API
+Export Data / API (2013-12-04: broken)
 =================
 
 The API is based on TastyPie, http://tastypieapi.org/, so go there and read up on how to use it if you don't know it already.
