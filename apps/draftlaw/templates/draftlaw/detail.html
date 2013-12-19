@@ -1,5 +1,5 @@
 {% extends 'draftlaw/base.html' %}
-{% load comments i18n sekizai_tags %}
+{% load comments i18n sekizai_tags draftlaw %}
 
 {% block draftlaw %}
 {% addtoblock "css" %}
@@ -59,7 +59,10 @@
             {% if obj.related_5 %}<tr id="related_5"><td>{% trans 'Related Document 5' %}:</td><td>{{ obj.related_5 }}</td></tr>{% endif %}
             {% if obj.discussions %}<tr id="disussions"><td>{% trans 'Discussions' %}:</td>
                 <td><ul>{% for discussion in obj.discussions.all %}
-                    <li id="discussion-{{ discussion.date }}">{{ discussion.date }} :: {{ discussion.place }}</li>
+                	<!-- If date is 'January 1st 1970', we don't display it -->
+                	{% if discussion.date|date:"U" != "-14400" %} 
+                    	<li id="discussion-{{ discussion.date }}">{{ discussion.date }} :: {{ discussion.place }}</li>
+                    {% endif %}
                 {% endfor %}</ul>
             </td></tr>{% endif %}
             {% if obj.children.all %}<tr id="children"><td>{% trans 'Children' %}:</td><td>
