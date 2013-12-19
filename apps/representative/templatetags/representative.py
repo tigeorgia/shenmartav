@@ -35,12 +35,16 @@ def repdate (approx):
     if not approx:
         return ''
 
-    if hasattr(approx, 'future') and approx.future:
+    if approx.month == 1 and approx.day == 1:
+        return dateformat.format(approx, 'Y').encode('utf-8')
+    elif hasattr(approx, 'future') and approx.future:
         return _(u'future')
     elif approx.year and approx.month and approx.day:
-        return dateformat.format(approx, 'j F Y').encode('utf-8')
+        # return dateformat.format(approx, 'j F Y').encode('utf-8')
+        return dateformat.format(approx, 'Y').encode('utf-8')
     elif approx.year and approx.month:
-        return dateformat.format(approx, 'F Y').encode('utf-8')
+        #return dateformat.format(approx, 'F Y').encode('utf-8')
+        return dateformat.format(approx, 'Y').encode('utf-8')
     elif approx.year:
         return dateformat.format(approx, 'Y').encode('utf-8')
     else:
