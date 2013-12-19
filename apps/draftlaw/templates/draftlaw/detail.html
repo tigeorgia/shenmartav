@@ -1,5 +1,5 @@
 {% extends 'draftlaw/base.html' %}
-{% load comments i18n sekizai_tags draftlaw %}
+{% load comments i18n sekizai_tags %}
 
 {% block draftlaw %}
 {% addtoblock "css" %}
@@ -76,6 +76,12 @@
                     </li>
                 {% endfor %}</ul>
             </td></tr>{% endif %}
+            {% if obj.law_number %}
+	            <tr id="draftlawurl">
+	                <td>{% trans 'Link to Draft law' %}:</td>
+	                <td><a id="draftlawlinkid" href="{{ draftlaw_url }}{{ obj.law_number }}" target="_blank">{{ obj.law_number }}</a></td>
+	            </tr>
+            {% endif %}
     </tbody>
     </table>
     <div id="fb-root"></div>

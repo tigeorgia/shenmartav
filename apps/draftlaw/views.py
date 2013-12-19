@@ -203,9 +203,11 @@ class Detail (DetailView):
 
     def get_context_data (self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
+        draftlaw_url = 'https://matsne.gov.ge/index.php?geo=on&searchTarget=title&searchDocumentsFilter=all&courtDecisionsARGUMENT=&sortCombo=signingDate_asc&queryString=&option=com_ldmssearch&view=docSearchResults&searchType=advanced&limitstart=0&lang=ge&documentNumber='
         obj = context['obj']
         context['stages'] = DraftLawForList(obj,obj.bureau_date) 
         context['url_feed'] = reverse('draftlaw_feed_detail', args=[obj.pk])
+        context['draftlaw_url'] = draftlaw_url
 
         set_language_changer(self.request, obj.get_absolute_url)
         return context
