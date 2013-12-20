@@ -23,7 +23,7 @@ from django.template.defaultfilters import slugify
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 
 import glt
-from popit.models import Person, Organisation
+from apps.popit.models import Person, Organisation
 
 
 #: minimum length of (representative's) name
