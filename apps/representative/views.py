@@ -23,6 +23,7 @@ from question.models import Question
 
 from .models import Representative, RandomRepresentative, Party, Unit as UnitModel
 
+from django.db import connection
 
 
 class Find (TemplateView):
@@ -39,11 +40,17 @@ class Find (TemplateView):
         except KeyError:
             context['obj'] = RandomRepresentative.get()
 
-        context['units'] = UnitModel.objects.all()
+        unit = UnitModel.objects.get(short='parliament')
+        reps = unit.active_term.representatives.all()
+        parties = Party.objects.filter(representatives__in=reps).distinct()
+        
+        context['parties'] = parties
+        context['ushort'] = 'parliament'
+        
+        
         context['active_unit'] = context['obj'].unit.short
         context['url_feed'] = reverse('representative_feed_list')
         return context
-
 
 
 class Search (TemplateView):
@@ -156,6 +163,7 @@ class Unit (TemplateView):
             if there are three parts seperated by the linebreak *sigh*
             """
             member['name'] = member['firstname_first'].replace(' ', '\n', 1)
+
         return members
 
     def _get_parties(self):
@@ -174,6 +182,7 @@ class Unit (TemplateView):
         try:
             reps = unit.active_term.representatives.all()
             parties = Party.objects.filter(representatives__in=reps).distinct()
+
         except AttributeError:
             return []
             

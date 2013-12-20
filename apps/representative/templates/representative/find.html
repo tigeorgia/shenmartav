@@ -35,9 +35,11 @@
                 <div>{% trans 'Electoral Subject' %}</div>
                 <select id="filter-party"></select>
                 <select class="hidden" id="hidden-all"><option class="unit-all" value="all">{% trans 'All' %}</option></select>
-                {% for u in units %}
-                <select class="hidden" id="hidden-{{ u.short }}">{% for p in u.parties.all %}<option class="unit-{{ u.short }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>{% endfor %}</select>
-                {% endfor %}
+              	<select class="hidden" id="hidden-{{ ushort }}">
+              		{% for p in parties %}
+              			<option class="unit-{{ ushort }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>
+              		{% endfor %}
+              	</select>
             </div>
         </div>
         <div id="offer-fulltext-search">{% blocktrans %}Try <a href="{{ url_search }}">full-text search</a>.{% endblocktrans %}</div>
