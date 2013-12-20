@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="smsalert-container">
-<div class="smsalert-image" title="{% trans 'Alerts from Parliament' %}"></div>
+<div class="smsalert-image" title="{% trans 'Alerts from Parliament' %}"><a href="{% url smsregister_show %}"></a></div>
 <div id="text">{{ obj.text }}</div>
 
 {% if obj.draftlaws.all %}
