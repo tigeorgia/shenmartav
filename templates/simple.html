@@ -7,6 +7,12 @@
 {% endaddtoblock %}
 {% endblock %}
 
+{% block js %}
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/smsregister/smsregister.js"></script>
+{% endaddtoblock %}
+{% endblock %}
+
 {% block content %}
 <!--simple.html-->
     {% block sidebar %}
