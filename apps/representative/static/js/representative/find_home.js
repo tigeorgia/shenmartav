@@ -47,8 +47,17 @@ RepresentativeFind = {
         var members = $('#representative .member');
         members.hide();
         members.each(function() {
+            var namesplit = $(this).html().toLowerCase().split("a title=\"");
+    		var namesplit2 = namesplit[1].split("\" href");
+    		var namssplit3 = namesplit2[0].split("\n");
+    		
+    		var firstname = namssplit3[0];
+    		var lastname = namssplit3[1];
+
+        	
             if ($(this).hasClass('party-' + data) ||
-                $(this).html().toLowerCase().indexOf(data) != -1) {
+                firstname.indexOf(data) == 0 ||
+                lastname.indexOf(data) == 0) {
                 $(this).show();
                 // don't break out: show more results
             }
