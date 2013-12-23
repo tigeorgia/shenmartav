@@ -2357,6 +2357,10 @@ msgstr "წარმომადგენლის ბიზნეს აქტ�
 msgid "This representative has not submitted an asset declaration yet."
 msgstr "ამ წარმომადგენელს ჯერ არ წარმოუდგენია აქტივების დეკლარაცია."
 
+#: apps/representative/templates/representative/detail.html:129
+msgid "No one has sent their question to this MP yet. Be the first to do so"
+msgstr "აქამდე არავის გაუგზავნია შეკითხვა ამ პარლამენტის წევრისთვის. იყავი პირველი ვინც ამას გააკეთებს"
+
 #: apps/representative/templates/representative/search.html:16
 msgid "Search a Representative"
 msgstr "მოძებნეთ წარმოიმადგენელი"
