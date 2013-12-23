@@ -62,25 +62,34 @@
         </tr>
 {% endif %}
 {% if decl %}
-        <tr>
-            <td>{% trans 'Salary' %}</td>
-            <td><div id="salary-text"><a href="{{ decl.get_absolute_url }}#wages">{{ obj.salary }}</a></div></td>
-        </div>
-        <tr>
-            <td>{% trans 'Expenses' %}</td>
-            <td><a href="{{ decl.get_absolute_url }}#otherinclexpenses">{{ obj.expenses }}</a></td>
-        </tr>
-        <tr>
-            <td>{% trans 'Property & Assets' %}</td>
-            <td><a href="{{ decl.get_absolute_url }}#property">{{ obj.property_assets }}</a></td>
-        </tr>
+		{% if obj.salary %}
+	        <tr>
+	            <td>{% trans 'Salary' %}</td>
+	            <td><div id="salary-text"><a href="{{ decl.get_absolute_url }}#wages">{{ obj.salary }}</a></div></td>
+	        </div>
+        {% endif %}
+        {% if obj.expenses %}
+	        <tr>
+	            <td>{% trans 'Expenses' %}</td>
+	            <td><a href="{{ decl.get_absolute_url }}#otherinclexpenses">{{ obj.expenses }}</a></td>
+	        </tr>
+        {% endif %}
+        {% if obj.property_assets %}
+	        <tr>
+	            <td>{% trans 'Property & Assets' %}</td>
+	            <td><a href="{{ decl.get_absolute_url }}#property">{{ obj.property_assets }}</a></td>
+	        </tr>
+        {% endif %}
 {% endif %}
-{% for link in obj.urls.all %}
-        <tr>
-            <td>{{ link.label }}</td>
-            <td><a href="{{ link.url }}">{{ link.url }}</a></td>
-        </tr>
-{% endfor %}
+		{% if obj.urls.all %}
+			{% for link in obj.urls.all %}
+	        <tr>
+	            <td>{{ link.label }}</td>
+	            <td><a href="{{ link.url }}">{{ link.url }}</a></td>
+	        </tr>
+			{% endfor %}
+		{% endif %}
+		{% if obj.position_set.all %}
         <tr>
             <td>{% trans 'Work Experience' %}</td>
             <td id="workexperience"><ul>{% for experience in obj.position_set.all %}
@@ -88,28 +97,39 @@
             {% endfor %}</ul></td>
             </li>
         </tr>
+        {% endif %}
+        {% if obj.date_of_birth %}
         <tr>
             <td>{% trans 'Birth Date & Place' %}</td>
             <td>{{ obj.date_of_birth|repdate }}, {{ obj.pob }}</td>
         </tr>
+        {% endif %}
+        {% if obj.family_status %}
         <tr>
             <td>{% trans 'Family Status' %}</td>
             <td>{{ obj.family_status }}</td>
         </tr>
+        {% endif %}
+        {% if obj.education %}
         <tr>
             <td>{% trans 'Education' %}</td>
             <td>{{ obj.education }}</td>
         </tr>
+        {% endif %}
+        {% if obj.contact_address_phone %}
         <tr>
             <td>{% trans 'Contact Address / Phone' %}</td>
             <td>{{ obj.contact_address_phone }}</td>
         </tr>
+        {% endif %}
+        {% if obj.additional_information.all %}
         <tr>
             <td>{% trans 'Additional Info' %}</td>
             <td>{% for info in obj.additional_information.all %}
                     <div>{{ info.value }}</div>
             {% endfor %}</td>
         </tr>
+        {% endif %}
         </table>
 {% endautoescape %}
     </div>
