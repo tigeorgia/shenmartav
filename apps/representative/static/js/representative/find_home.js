@@ -53,11 +53,13 @@ RepresentativeFind = {
     		
     		var firstname = namssplit3[0];
     		var lastname = namssplit3[1];
+    		var fullname = firstname+" "+lastname;
 
         	
             if ($(this).hasClass('party-' + data) ||
                 firstname.indexOf(data) == 0 ||
-                lastname.indexOf(data) == 0) {
+                lastname.indexOf(data) == 0 ||
+                fullname.indexOf(data) == 0) {
                 $(this).show();
                 // don't break out: show more results
             }
