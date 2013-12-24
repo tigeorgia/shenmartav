@@ -1,5 +1,6 @@
 {% extends 'representative/base.html' %}
 {% load thumbnail sekizai_tags i18n representative %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block representative %}
 {% addtoblock "css" %}
@@ -61,13 +62,22 @@
             <td>{{ obj.description }}</td>
         </tr>
 {% endif %}
-{% if decl %}
-		{% if obj.salary %}
-	        <tr>
-	            <td>{% trans 'Salary' %}</td>
-	            <td><div id="salary-text"><a href="{{ decl.get_absolute_url }}#wages">{{ obj.salary }}</a></div></td>
-	        </div>
-        {% endif %}
+		{% if obj.income %}
+		    <tr>
+		        <td>{% trans 'Income' %} ({{ obj.income.incomeyear }})</td>
+		        <td><div>
+		        	<ul>
+		        		
+		        		{% if LANGUAGE_CODE == "en" %}
+		        			<a href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.declaration_id }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
+		        		{% else %}
+		        			<a href="https://declaration.gov.ge/declaration.php?id={{ obj.declaration_id }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
+		        		{% endif %}
+		        	</ul>
+		        </div></td>
+		    </div>
+		{% endif %}
+{% if decl %}        
         {% if obj.expenses %}
 	        <tr>
 	            <td>{% trans 'Expenses' %}</td>

@@ -1,45 +1,40 @@
 {% load i18n representative %}
 <div id="income">
-    {% if obj.incomedeclaration.all %}
         {% if obj.income.total > 0 %}
 
-            <h2>{% trans 'Annual Income' %}</h2>
+            <h2>{% trans 'Income' %} ({{ obj.income.incomeyear }})</h2>
 
             <div id="bar" class="table">
                 <div class="row">
-                    <!--Temporarily removing base income-->
-                    <!--            <div class="cell income-base">&nbsp;</div>-->
+                    <!--<div class="cell income-base">&nbsp;</div> --> 
                     <div class="cell income-additional">&nbsp;</div>
                     <div class="cell income-other">&nbsp;</div>
                 </div>
                 <div class="row">
                     {% with income=obj.income %}
-                        <!-- Temporarily removing base income-->
-                        <!--            <div class="cell" style="width:{{ income.base|percentage:income.total }}">{{ income.base }}</div>-->
+                        <!-- <div class="cell" style="width:{{ income.base|percentage:income.total }}">{{ income.base }}</div> -->
                         <div class="cell"
-                             style="width:{{ income.additional|percentage:income.total }}">{{ income.additional }}</div>
+                             style="width:{{ income.main|percentage:income.total }}">{{ income.main }}</div> 
                         <div class="cell"
-                             style="width:{{ income.other|percentage:income.other }}">{{ income.other }}</div>
+                             style="width:{{ income.entrepreneurial|percentage:income.total }}">{{ income.entrepreneurial }}</div>
                     {% endwith %}
                 </div>
             </div>
             <ul id="legend">
-                <li><span class="legend-color income-base">&nbsp;</span>{% trans 'Base salary' %} <span class="explain"
+                <!--<li><span class="legend-color income-base">&nbsp;</span>{% trans 'Base salary' %} <span class="explain"
                                                                                                         title="{% trans 'Legally defined salary for representatives' %}">?</span>
-                </li>
-                <li><span class="legend-color income-additional">&nbsp;</span>{% trans 'Additional income' %} <span
+                </li>-->
+                <li><span class="legend-color income-additional">&nbsp;</span>{% trans 'Salary' %} <span
                         class="explain"
-                        title="{% trans 'Additional legally defined salary that a representative receives for activities such as being the head of a committee' %}">?</span>
+                        title="{% trans 'Total income received from paid jobs undertaken by the MP during the reporting year' %}">?</span>
                 </li>
                 <li><span class="legend-color income-other">&nbsp;</span>{% trans 'Business income' %} <span
                         class="explain"
-                        title="{% trans 'Income that a representative receives from businesses owned by him/her' %}">?</span>
+                        title="{% trans 'Total income received from entrepreneurial activities undertaken by the MP during the reporting year' %}">?</span>
                 </li>
             </ul>
         {% else %}
             <div id="legend">{% trans 'Income data not available.' %}</div>
         {% endif %}
-    {% else %}
-        <div id="legend">{% trans 'This representative has not submitted an asset declaration yet.' %}</div>>
-    {% endif %}
+        
 </div>
