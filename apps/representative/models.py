@@ -128,10 +128,10 @@ class Representative (Person):
         thumbnail={'size': (200, 168), 'options': ('crop',)},
         blank=True, null=True, help_text=_('Personal Photo'))
     #: party membership
-    party = models.ForeignKey(Party, related_name='representatives', null=True,
+    party = models.ForeignKey(Party, related_name='representatives', blank=True, null=True,
         help_text=_('Party Membership'))
     #: unit membership
-    unit = models.ForeignKey(Unit, related_name='representatives', null=True,
+    unit = models.ForeignKey(Unit, related_name='representatives', blank=True, null=True,
         help_text=_('Unit Membership'))
     #: committee membership
     committee = models.TextField(blank=True, null=True,
@@ -161,10 +161,10 @@ class Representative (Person):
     contact_address_phone = models.TextField(blank=True, null=True,
         help_text=_('Contact Address / Phone Number'))
     #: salary
-    salary = models.FloatField(default=0, null=True,
+    salary = models.FloatField(default=0, blank=True, null=True,
         help_text=_('== Wages'))
     #: other income
-    other_income = models.FloatField(default=0, null=True,
+    other_income = models.FloatField(default=0, blank=True, null=True,
         help_text=_('== Entrepreneurial Income'))
     #: expenses
     expenses = models.TextField(blank=True, null=True,
@@ -173,23 +173,23 @@ class Representative (Person):
     property_assets = models.TextField(blank=True, null=True,
         help_text=_('Property & Assets'))
     #: percentage of questions answered on shenmartav.ge
-    answered = models.FloatField(default=0, null=True,
+    answered = models.FloatField(default=0, blank=True, null=True,
         help_text=_('Percentage of Answered Questions on chemiparlamenti.ge'))
     #: gender of the representative
-    gender = models.IntegerField(default=0, choices=GENDER_CHOICES,
+    gender = models.IntegerField(default=0, choices=GENDER_CHOICES, blank=True, null=True,
         help_text=_('Gender of the Representative'))
     #: terms of the representative
-    terms = models.ManyToManyField(Term, blank=True,
+    terms = models.ManyToManyField(Term, blank=True, null=True,
         related_name='representatives',
         help_text=_('Terms during which Representative was part of a Unit.'))
     #: asset declaration id submitted by representative
-    declaration_id = models.IntegerField(default=0, help_text=_('Asset Declaration Id'))
+    declaration_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
     #: submission date - asset declaration 
-    submission_date = models.DateField(blank=False, null=True, help_text=_('Asset Declaration submission date'))
+    submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
     #: Representative's entrepreneurial salary
-    entrepreneurial_salary = models.FloatField(default=0, null=True, help_text=_('Representative entrepreneurial salary'))
+    entrepreneurial_salary = models.FloatField(default=0, blank=True, null=True, help_text=_('Representative entrepreneurial salary'))
     #: Representative's work income
-    main_salary = models.FloatField(default=0, null=True, help_text=_('Representative income'))
+    main_salary = models.FloatField(default=0, blank=True, null=True, help_text=_('Representative income'))
 
     #: managers
     objects = models.Manager()
