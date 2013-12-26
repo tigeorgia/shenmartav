@@ -314,7 +314,12 @@ class Detail (DetailView):
             context['decl'] = obj.incomedeclaration.all()[0]
         except IndexError:
             context['decl'] = None
-
+            
+        try:
+            context['faminc'] = obj.family_income.all().order_by('-submission_date')[0]
+        except IndexError:
+            context['faminc'] = None
+        
         set_language_changer(self.request, obj.get_absolute_url)
         return context
 

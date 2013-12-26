@@ -120,6 +120,12 @@
             <td>{{ obj.family_status }}</td>
         </tr>
         {% endif %}
+        {% if faminc %}
+        <tr>
+            <td>{% trans 'Family Income' %}</td>
+            <td>{{ faminc.html_table }}</td>
+        </tr>
+        {% endif %}
         {% if obj.education %}
         <tr>
             <td>{% trans 'Education' %}</td>

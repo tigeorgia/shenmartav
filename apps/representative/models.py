@@ -44,8 +44,6 @@ class Term (models.Model):
     def __unicode__ (self):
         return u'%s (%s - %s)' % (self.name, self.start, self.end)
 
-
-
 class Party (Organisation):
     """A political party in a unit, as used in the template representative/unit.html"""
     #: acronym of this party
@@ -58,7 +56,6 @@ class Party (Organisation):
     logo = ImageWithThumbnailsField(upload_to='parties',
         thumbnail={'size': (100, 84), 'options': ('crop',)},
         blank=True, null=True, help_text=_('Party logo'))
-
 
 class Unit (models.Model):
     """A unit/house, like Parliament or Tbilisi City Assembly."""
@@ -437,7 +434,18 @@ class AdditionalInformation (models.Model):
     def __unicode__ (self):
         return u'%s: %s' % (str(self.representative.name), self.value)
 
-
+class FamilyIncome (models.Model):
+    """A list of details regarding MP's family income"""
+    #: ID of the representative whose family income is related to. 
+    representative = models.ForeignKey(Representative, related_name='family_income', blank=False, null=True,
+        help_text=_('Family Income'))
+    #: ID of Asset declaration document
+    ad_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
+    #: submission date - asset declaration 
+    submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
+    #: html table containing the data related to family income
+    html_table = models.TextField(blank=True, null=True, help_text=_('Family income details'))
+    
 
 class Url (models.Model):
     """Urls belonging to a representative."""
