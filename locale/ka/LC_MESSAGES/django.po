@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-26 16:14+0400\n"
+"POT-Creation-Date: 2013-12-27 11:12+0400\n"
 "PO-Revision-Date: 2013-10-06 13:42+0400\n"
 "Last-Translator: chris bell <chris@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -1560,7 +1560,7 @@ msgstr "მობილური ტელეფონის ნომერი"
 #: apps/question/forms.py:53 apps/question/models.py:205
 #: apps/question/templates/cmsplugins/question.html:22
 #: apps/question/templates/question/list.html:43
-#: apps/representative/templates/representative/detail.html:180
+#: apps/representative/templates/representative/detail.html:192
 msgid "Question"
 msgstr "შეკითხვა"
 
@@ -1651,7 +1651,7 @@ msgid "Latest question"
 msgstr "ბოლოს დასმული შეკითხვა"
 
 #: apps/question/templates/cmsplugins/question.html:23
-#: apps/representative/templates/representative/detail.html:181
+#: apps/representative/templates/representative/detail.html:193
 msgid "Answer"
 msgstr "პასუხი"
 
@@ -1669,7 +1669,7 @@ msgstr "ყველაზე მეტი პასუხი"
 #: apps/question/templates/question/info.html:20
 #: apps/question/templates/question/items.html:5
 #: apps/question/templates/question/list.html:32
-#: apps/representative/templates/representative/detail.html:169
+#: apps/representative/templates/representative/detail.html:181
 msgid "Answered"
 msgstr "პასუხი გაცემულია"
 
@@ -1683,7 +1683,7 @@ msgstr ""
 
 #: apps/question/templates/cmsplugins/question.html:63
 #: apps/question/templates/question/form.html:3
-#: apps/representative/templates/representative/detail.html:165
+#: apps/representative/templates/representative/detail.html:177
 msgid "Ask a question"
 msgstr "შეეკითხე"
 
@@ -2175,8 +2175,9 @@ msgstr "მონაწილეობდა"
 #: apps/representative/templates/representative/attendance.html:27
 #: apps/representative/templates/representative/best-worst-attendance.html:18
 #: apps/representative/templates/representative/best-worst-attendance.html:37
-#: apps/representative/templates/representative/detail.html:197
-#: apps/representative/templates/representative/detail.html:217
+#: apps/representative/templates/representative/detail.html:209
+#: apps/representative/templates/representative/detail.html:229
+#: apps/representative/templates/representative/votingrecords.html:24
 #: apps/votingrecord/templates/votingrecord/detail.html:53
 #: apps/votingrecord/templates/votingrecord/detail.html:123
 #: apps/votingrecord/templates/votingrecord/detail.html:193
@@ -2239,72 +2240,76 @@ msgstr "საკონტაქტო ინფორმაცია"
 msgid "Additional Info"
 msgstr "დამატებითი ინფორმაცია"
 
-#: apps/representative/templates/representative/detail.html:157
+#: apps/representative/templates/representative/detail.html:151
+msgid "Links"
+msgstr "ბმულები"
+
+#: apps/representative/templates/representative/detail.html:169
 msgid "Ask a question!"
 msgstr "შეეკითხე!"
 
-#: apps/representative/templates/representative/detail.html:163
+#: apps/representative/templates/representative/detail.html:175
 msgid "Questions and Answers"
 msgstr "შეკითხვები და პასუხები"
 
-#: apps/representative/templates/representative/detail.html:165
+#: apps/representative/templates/representative/detail.html:177
 msgid "No one has sent their question to this MP yet. Be the first to do so"
 msgstr ""
 "აქამდე არავის გაუგზავნია შეკითხვა ამ პარლამენტის წევრისთვის. იყავი პირველი "
 "ვინც ამას გააკეთებს"
 
-#: apps/representative/templates/representative/detail.html:170
+#: apps/representative/templates/representative/detail.html:182
 msgid "No Response"
 msgstr "გამოხმაურება არ არის"
 
-#: apps/representative/templates/representative/detail.html:192
+#: apps/representative/templates/representative/detail.html:204
 msgid "View voting details"
 msgstr "იხ. ხმის მიცემის დეტალები"
 
-#: apps/representative/templates/representative/detail.html:193
-#: apps/representative/templates/representative/detail.html:221
+#: apps/representative/templates/representative/detail.html:205
+#: apps/representative/templates/representative/detail.html:233
 msgid "Vote Counts"
 msgstr "კენჭისყრის ჩანაწერები"
 
-#: apps/representative/templates/representative/detail.html:194
-#: apps/representative/templates/representative/detail.html:214
+#: apps/representative/templates/representative/detail.html:206
+#: apps/representative/templates/representative/detail.html:226
 msgid "In Favour"
 msgstr "მხარი დაუჭირა"
 
-#: apps/representative/templates/representative/detail.html:194
+#: apps/representative/templates/representative/detail.html:206
 msgid "See votes in favour"
 msgstr "იხ. მომხრე ხმები"
 
-#: apps/representative/templates/representative/detail.html:195
-#: apps/representative/templates/representative/detail.html:215
+#: apps/representative/templates/representative/detail.html:207
+#: apps/representative/templates/representative/detail.html:227
 msgid "Against"
 msgstr "ხმა წინააღმდეგ მისცა"
 
-#: apps/representative/templates/representative/detail.html:195
+#: apps/representative/templates/representative/detail.html:207
 msgid "See votes against"
 msgstr "იხ. მოწინააღმდეგე ხმები"
 
-#: apps/representative/templates/representative/detail.html:196
-#: apps/representative/templates/representative/detail.html:216
+#: apps/representative/templates/representative/detail.html:208
+#: apps/representative/templates/representative/detail.html:228
 #: apps/votingrecord/templates/votingrecord/detail.html:53
 #: apps/votingrecord/templates/votingrecord/detail.html:123
 #: apps/votingrecord/templates/votingrecord/detail.html:193
 msgid "Abstained"
 msgstr "თავი შეიკავა"
 
-#: apps/representative/templates/representative/detail.html:196
+#: apps/representative/templates/representative/detail.html:208
 msgid "See votes abstained"
 msgstr "იხ. რამდენმა შეიკავა თავი"
 
-#: apps/representative/templates/representative/detail.html:197
+#: apps/representative/templates/representative/detail.html:209
 msgid "See votes absent"
 msgstr "იხილეთ არდამსწრე ხმები"
 
-#: apps/representative/templates/representative/detail.html:213
+#: apps/representative/templates/representative/detail.html:225
 msgid "Vote type"
 msgstr "ხმის მიცემის ტიპი"
 
-#: apps/representative/templates/representative/detail.html:213
+#: apps/representative/templates/representative/detail.html:225
 msgid "Number of votes"
 msgstr "შეკითხვების რაოდენობა"
 
@@ -2420,15 +2425,34 @@ msgstr "კენჭისყრის შედეგები"
 msgid "Voting Records for"
 msgstr "კენჭისყრის შედეგები"
 
+#: apps/representative/templates/representative/votingrecords.html:19
+#, fuzzy
+msgid "Filter by vote"
+msgstr "ფილტრი"
+
+#: apps/representative/templates/representative/votingrecords.html:22
+#: apps/votingrecord/templates/votingrecord/detail.html:53
+#: apps/votingrecord/templates/votingrecord/detail.html:123
+#: apps/votingrecord/templates/votingrecord/detail.html:193
+msgid "Yes"
+msgstr "დიახ"
+
 #: apps/representative/templates/representative/votingrecords.html:23
+#: apps/votingrecord/templates/votingrecord/detail.html:53
+#: apps/votingrecord/templates/votingrecord/detail.html:123
+#: apps/votingrecord/templates/votingrecord/detail.html:193
+msgid "No"
+msgstr "არა"
+
+#: apps/representative/templates/representative/votingrecords.html:32
 msgid "Voting Date"
 msgstr "კენჭისყრაზე დასწრება"
 
-#: apps/representative/templates/representative/votingrecords.html:24
+#: apps/representative/templates/representative/votingrecords.html:33
 msgid "Record"
 msgstr "კენჭისყრის შედეგები"
 
-#: apps/representative/templates/representative/votingrecords.html:25
+#: apps/representative/templates/representative/votingrecords.html:34
 msgid "Vote"
 msgstr "ხმის მიცემის ტიპი"
 
@@ -2649,18 +2673,6 @@ msgstr "მეორე ხმა"
 #: apps/votingrecord/templates/votingrecord/detail.html:49
 msgid "Final Vote"
 msgstr "საბოლოო შემაჯამებელი"
-
-#: apps/votingrecord/templates/votingrecord/detail.html:53
-#: apps/votingrecord/templates/votingrecord/detail.html:123
-#: apps/votingrecord/templates/votingrecord/detail.html:193
-msgid "Yes"
-msgstr "დიახ"
-
-#: apps/votingrecord/templates/votingrecord/detail.html:53
-#: apps/votingrecord/templates/votingrecord/detail.html:123
-#: apps/votingrecord/templates/votingrecord/detail.html:193
-msgid "No"
-msgstr "არა"
 
 #: apps/votingrecord/templates/votingrecord/detail.html:53
 #: apps/votingrecord/templates/votingrecord/detail.html:123
