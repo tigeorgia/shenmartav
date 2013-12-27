@@ -30,3 +30,8 @@
     padding: 18px 0;
     border-bottom: 1px dotted;
 }
+
+#representative td.date{
+    white-space: nowrap;
+    width: 8%;
+}
