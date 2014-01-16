@@ -28,23 +28,23 @@ class DraftLaw (models.Model):
     #: date of introduction
     bureau_date = models.DateField(help_text=_('Draft Law\'s Bureau Date'))
     #: bill number
-    bill_number = models.CharField(max_length=255, help_text=_('Bill Number of the Draft Law'))
+    bill_number = models.CharField(max_length=255, help_text=_('Bill Number of the Draft Law'), blank=True)
     #: title of the law
-    title = models.TextField(help_text=_('Title of the Draft Law'))
+    title = models.CharField(max_length=255, blank=True, help_text=_('Title of the Draft Law'))
     #: entity initiating the draft
-    initiator = models.TextField(blank=True, help_text=_('Initiator'))
+    initiator = models.CharField(max_length=255, blank=True, help_text=_('Initiator'), editable=False)
     #: representative(s) initiating the draft
     initiator_representatives = models.ManyToManyField(Representative,
         blank=True, related_name='draftlaw_initiated',
         help_text=_('Representatives who initiated this draft law'))
     #: person authoring the draft
-    author = models.TextField(blank=True, help_text=_('Author'))
+    author = models.CharField(max_length=255, blank=True, help_text=_('Author'), editable=False)
     #: representative(s) authoring the draft
     author_representatives = models.ManyToManyField(Representative,
         blank=True, related_name='draftlaw_authored',
         help_text=_('Representatives who authored this draft law'))
     #: status of the law, e.g. '1st Hearing Economy Pass'
-    status = models.CharField(max_length=255, help_text=_('Status of the Draft Law'))
+    status = models.CharField("Last update", max_length=255, help_text=_('Status of the Draft Law'), blank=True)
     #: short status of the law; in one word
     shortstatus = models.CharField(max_length=1, default='D',
         choices=SHORTSTATUS_CHOICES,
@@ -52,7 +52,7 @@ class DraftLaw (models.Model):
     #: summary of the law
     summary = models.TextField(help_text=_('Summary'), blank=True)
     #: full text of the law
-    full_text = models.TextField(help_text=_('Full Text'), blank=True)
+    full_text = models.CharField(max_length=255, help_text=_('Full Text'), blank=True)
     #: URL of the full text of the law
     full_text_url = models.CharField(max_length=255,
         help_text=_('Full Text URL'), blank=True)
