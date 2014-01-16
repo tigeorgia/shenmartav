@@ -157,6 +157,11 @@ moderator.register(DraftLaw, DraftLawModerator)
 
 class DraftLawDiscussion (models.Model):
     """Discussion about a law."""
+
+    PASSEDDISC_CHOICES = (
+        ('N', _('Not passed')),
+        ('P', _('Passed')),
+    )
     #: law being discussed
     draftlaw = models.ForeignKey(DraftLaw, related_name='discussions', help_text=_('Draft Law'))
     #: date of discussion
@@ -166,6 +171,9 @@ class DraftLawDiscussion (models.Model):
     #: stage of the discussion: [0..5]
     stage = models.IntegerField(default=0,
         help_text=_('Stage of the Discussion in Terms of Draft Law Completion'))
+    #: passed or not passed
+    passed = models.CharField("Passed?", max_length=1, default='N',
+        choices=PASSEDDISC_CHOICES)
 
     def __unicode__ (self):
         return '%s %s (%s)' % (self.draftlaw.bill_number, self.draftlaw.title, self.place)
