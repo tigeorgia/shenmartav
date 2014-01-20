@@ -9,6 +9,9 @@ from distsettings import *
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '5w9g+gi4qam*l1q^$(056=ylrlawx9pr#d5s2%+mgedgd&t_z@'
 
+# Maintenance mode displays under construction and sets status code to 503
+MAINTENANCE = True
+MAINTENANCE_EXCLUDED_IPS = ['127.0.0.1']
 
 ADMINS = (
      ('Sebastian Henschel', 'sebastiantransparency@gmail.com'),
