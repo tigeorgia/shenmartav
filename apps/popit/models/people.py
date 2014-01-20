@@ -14,10 +14,10 @@ from popit.models import ModelBase, DataKey, Data, date_help_text, CodeType
 
 class Person(ModelBase):
     slug            = models.SlugField(editable=False)
-    date_of_birth   = ApproximateDateField(blank=True, help_text=date_help_text)
-    date_of_death   = ApproximateDateField(blank=True, help_text=date_help_text)
+    date_of_birth   = ApproximateDateField(blank=True, null=True, help_text=date_help_text)
+    date_of_death   = ApproximateDateField(blank=True, null=True, help_text=date_help_text)
     #gender          = models.CharField(max_length=1, choices=(('m','Male'),('f','Female')) )
-    description     = models.TextField(blank=True, default='')
+    description     = models.TextField(blank=True, null=True, default='')
 
     class Meta:
         ordering = [ 'slug' ]
@@ -58,11 +58,11 @@ class PersonData(Data):
 
 class PersonName(ModelBase):
     person      = models.ForeignKey(Person, related_name='names')
-    title       = models.CharField(max_length=100, blank=True)
+    title       = models.CharField(max_length=100, blank=True, null=True)
     name        = models.CharField(max_length=300)
     main        = models.BooleanField()
-    start_date  = ApproximateDateField(blank=True)
-    end_date    = ApproximateDateField(blank=True)
+    start_date  = ApproximateDateField(blank=True, null=True)
+    end_date    = ApproximateDateField(blank=True, null=True)
 
     class Meta:
         ordering = [ '-main', '-start_date', 'end_date', 'name' ]

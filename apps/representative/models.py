@@ -44,8 +44,6 @@ class Term (models.Model):
     def __unicode__ (self):
         return u'%s (%s - %s)' % (self.name, self.start, self.end)
 
-
-
 class Party (Organisation):
     """A political party in a unit, as used in the template representative/unit.html"""
     #: acronym of this party
@@ -58,7 +56,6 @@ class Party (Organisation):
     logo = ImageWithThumbnailsField(upload_to='parties',
         thumbnail={'size': (100, 84), 'options': ('crop',)},
         blank=True, null=True, help_text=_('Party logo'))
-
 
 class Unit (models.Model):
     """A unit/house, like Parliament or Tbilisi City Assembly."""
@@ -128,10 +125,10 @@ class Representative (Person):
         thumbnail={'size': (200, 168), 'options': ('crop',)},
         blank=True, null=True, help_text=_('Personal Photo'))
     #: party membership
-    party = models.ForeignKey(Party, related_name='representatives', null=True,
+    party = models.ForeignKey(Party, related_name='representatives', blank=True, null=True,
         help_text=_('Party Membership'))
     #: unit membership
-    unit = models.ForeignKey(Unit, related_name='representatives', null=True,
+    unit = models.ForeignKey(Unit, related_name='representatives', blank=True, null=True,
         help_text=_('Unit Membership'))
     #: committee membership
     committee = models.TextField(blank=True, null=True,
@@ -161,10 +158,10 @@ class Representative (Person):
     contact_address_phone = models.TextField(blank=True, null=True,
         help_text=_('Contact Address / Phone Number'))
     #: salary
-    salary = models.FloatField(default=0, null=True,
+    salary = models.FloatField(default=0, blank=True, null=True,
         help_text=_('== Wages'))
     #: other income
-    other_income = models.FloatField(default=0, null=True,
+    other_income = models.FloatField(default=0, blank=True, null=True,
         help_text=_('== Entrepreneurial Income'))
     #: expenses
     expenses = models.TextField(blank=True, null=True,
@@ -173,15 +170,23 @@ class Representative (Person):
     property_assets = models.TextField(blank=True, null=True,
         help_text=_('Property & Assets'))
     #: percentage of questions answered on shenmartav.ge
-    answered = models.FloatField(default=0, null=True,
+    answered = models.FloatField(default=0, blank=True, null=True,
         help_text=_('Percentage of Answered Questions on chemiparlamenti.ge'))
     #: gender of the representative
-    gender = models.IntegerField(default=0, choices=GENDER_CHOICES,
+    gender = models.IntegerField(default=0, choices=GENDER_CHOICES, blank=True, null=True,
         help_text=_('Gender of the Representative'))
     #: terms of the representative
-    terms = models.ManyToManyField(Term, blank=True,
+    terms = models.ManyToManyField(Term, blank=True, null=True,
         related_name='representatives',
         help_text=_('Terms during which Representative was part of a Unit.'))
+    #: asset declaration id submitted by representative
+    declaration_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
+    #: submission date - asset declaration 
+    submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
+    #: Representative's entrepreneurial salary
+    entrepreneurial_salary = models.FloatField(default=0, blank=True, null=True, help_text=_('Representative entrepreneurial salary'))
+    #: Representative's work income
+    main_salary = models.FloatField(default=0, blank=True, null=True, help_text=_('Representative income'))
 
     #: managers
     objects = models.Manager()
@@ -393,15 +398,17 @@ class Representative (Person):
         # New MPs haven't been in Parliament for more than one year,
         # so can't calculate their base salary accurately.
         base = 0
-        additional = int(self.salary - base)
-        if additional < 0:
-            additional = int(self.salary) # salary in declaration doesn't include base
+        entrepreneurial = int(self.entrepreneurial_salary)
+        incomeyear = self.submission_date.year - 1
+        #if entrepreneurial < 0:
+            #entrepreneurial = int(self.salary) # salary in declaration doesn't include base
 
         return {
-            'total': int(base + additional + self.other_income),
+            'total': int(base + entrepreneurial + self.main_salary),
             'base': base,
-            'additional': additional,
-            'other': int(self.other_income),
+            'entrepreneurial': entrepreneurial,
+            'main': int(self.main_salary),
+            'incomeyear': incomeyear,
         }
 
 
@@ -427,7 +434,18 @@ class AdditionalInformation (models.Model):
     def __unicode__ (self):
         return u'%s: %s' % (str(self.representative.name), self.value)
 
-
+class FamilyIncome (models.Model):
+    """A list of details regarding MP's family income"""
+    #: ID of the representative whose family income is related to. 
+    representative = models.ForeignKey(Representative, related_name='family_income', blank=False, null=True,
+        help_text=_('Family Income'))
+    #: ID of Asset declaration document
+    ad_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
+    #: submission date - asset declaration 
+    submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
+    #: html table containing the data related to family income
+    html_table = models.TextField(blank=True, null=True, help_text=_('Family income details'))
+    
 
 class Url (models.Model):
     """Urls belonging to a representative."""

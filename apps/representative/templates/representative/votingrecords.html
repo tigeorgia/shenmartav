@@ -16,6 +16,15 @@
 <div id="representative">
     <h2 class="heading">{% trans 'Voting Records for' %} {{ obj.name }}</h2>
 
+    <h5>{% trans "Filter by vote" %}</h3>
+    <div class="filter-records">
+        <select id="filter-by-vote">
+            <option name="vote-yes">{% trans "Yes" %}</option>
+            <option name="vote-no">{% trans "No" %}</option>
+            <option name="vote-absent">{% trans "Absent" %}</option>
+        </select>
+    </div>
+
     <div id="container-votingrecords" class="scroll-pane">
     <table>
         <thead>
@@ -28,7 +37,7 @@
         <tbody>
         {% for result in results %}
             <tr class="{{ result.css }}">
-                <td>{{ result.record__date|date:'c' }}</td>
+                <td class="date">{{ result.record__date|date:'c' }}</td>
                 <td><a href="{{ result.url }}" name="{{ result.css }}">{{ result.record__name }}</a></td>
                 <td><span class="vote" title="{{ result.vote }}"></span></td>
             </tr>
@@ -38,4 +47,7 @@
 
     </div>
 </div>
+{% addtoblock "js" %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/representative/votingrecords.js"></script>
+{% endaddtoblock %}
 {% endblock %}

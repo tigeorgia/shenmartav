@@ -16,9 +16,9 @@ from glt import slughifi
 
 class Organisation(ModelBase):
     slug    = models.SlugField(max_length=300, editable=False)
-    summary = models.TextField(blank=True, default='')
-    started = ApproximateDateField(blank=True, help_text=date_help_text)
-    ended   = ApproximateDateField(blank=True, help_text=date_help_text)
+    summary = models.TextField(null=True, blank=True, default='')
+    started = ApproximateDateField(null=True, blank=True, help_text=date_help_text)
+    ended   = ApproximateDateField(null=True, blank=True, help_text=date_help_text)
 
     class Meta:
         ordering = [ 'slug' ]

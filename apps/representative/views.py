@@ -314,7 +314,23 @@ class Detail (DetailView):
             context['decl'] = obj.incomedeclaration.all()[0]
         except IndexError:
             context['decl'] = None
-
+            
+        try:
+            context['faminc'] = obj.family_income.all().order_by('-submission_date')[0]
+        except IndexError:
+            context['faminc'] = None
+            
+        try:
+            names_to_exclude = ["Facebook","Twitter","LinkedIn","Wikipedia","Asset Link"] 
+            context['mainlinks'] = obj.urls.all().exclude(label__in=names_to_exclude)
+        except IndexError:
+            context['mainlinks'] = None
+            
+        try:
+            context['sociallinks'] = obj.urls.all().exclude(label__icontains="მთავარი")
+        except IndexError:
+            context['sociallinks'] = None
+        
         set_language_changer(self.request, obj.get_absolute_url)
         return context
 
