@@ -217,6 +217,16 @@ class DeclarationGift (models.Model):
         ordering = ('declaration',)
 
 
+class DeclarationTotalIncome(models.Model):
+    """Defines an MP's total income."""
+    representative = models.ForeignKey('representative.Representative', related_name='declarationtotalincome',
+        null=True, help_text=_('Representative, Supplier of this declaration'))
+    ad_id = models.IntegerField(default=0, editable=False, blank=True, null=True, help_text=_('Asset Declaration Id'))
+    ad_submission_date = models.DateField(editable=False, help_text=_('Asset Submission Date'))
+    ad_entrepreneurial_income = models.FloatField(default=0, editable=False, blank=True, null=True, help_text=_('Entrepreunerial Income'))
+    ad_paid_work_income = models.FloatField(default=0, editable=False, blank=True, null=True, help_text=_('Paid work Income'))
+    
+    
 
 class DeclarationOtherInclExpense (models.Model):
     """Defines an MP's other included expenses."""

@@ -69,9 +69,9 @@
 		        	<ul>
 		        		
 		        		{% if LANGUAGE_CODE == "en" %}
-		        			<a href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.declaration_id }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
+		        			<a href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
 		        		{% else %}
-		        			<a href="https://declaration.gov.ge/declaration.php?id={{ obj.declaration_id }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
+		        			<a href="https://declaration.gov.ge/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
 		        		{% endif %}
 		        	</ul>
 		        </div></td>

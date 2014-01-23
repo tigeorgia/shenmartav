@@ -19,6 +19,7 @@ class InlineChild (TranslationTabularInline):
 
 
 class DraftLawAdmin (TranslationAdmin):
+    
     inlines = [
         InlineDiscussion,
         InlineChild

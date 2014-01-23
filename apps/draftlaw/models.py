@@ -44,7 +44,7 @@ class DraftLaw (models.Model):
         blank=True, related_name='draftlaw_authored',
         help_text=_('Representatives who authored this draft law'))
     #: status of the law, e.g. '1st Hearing Economy Pass'
-    status = models.CharField("Last update", max_length=255, help_text=_('Status of the Draft Law'), blank=True)
+    status = models.CharField("Last update", max_length=255, help_text=_('Status of the Draft Law'), blank=True, default=_('Registered at Bureau'))
     #: short status of the law; in one word
     shortstatus = models.CharField(max_length=1, default='D',
         choices=SHORTSTATUS_CHOICES,

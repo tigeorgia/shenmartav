@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-27 11:12+0400\n"
+"POT-Creation-Date: 2014-01-17 11:17+0400\n"
 "PO-Revision-Date: 2013-10-06 13:42+0400\n"
 "Last-Translator: chris bell <chris@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -218,7 +218,6 @@ msgstr "პოსტების ძებნა"
 
 #: apps/basic/blog/templates/blog/post_search.html:10
 #: apps/basic/blog/templates/blog/post_search.html:18
-#: apps/draftlaw/templates/draftlaw/list.html:17
 #: apps/representative/templates/representative/search.html:12
 #: apps/representative/templates/representative/search.html:21
 #: templates/rosetta/pofile.html:38 templates/search/search.html:5
@@ -397,7 +396,7 @@ msgstr ""
 "URL: %(full_text_url)s|მიღებული კანონის ლინკი: %(enacted_text_url)s|კანონის "
 "ნომერი: %(law_number)s"
 
-#: apps/draftlaw/models.py:23
+#: apps/draftlaw/models.py:23 apps/draftlaw/models.py:163
 msgid "Passed"
 msgstr "მიღებულია"
 
@@ -405,11 +404,11 @@ msgstr "მიღებულია"
 msgid "Draft Law's Bureau Date"
 msgstr "კანონპროექტის ბიუროს თარიღი"
 
-#: apps/draftlaw/models.py:31 apps/draftlaw/models.py:180
+#: apps/draftlaw/models.py:31 apps/draftlaw/models.py:188
 msgid "Bill Number of the Draft Law"
 msgstr "კანონპროექტის ნომერი"
 
-#: apps/draftlaw/models.py:33 apps/draftlaw/models.py:182
+#: apps/draftlaw/models.py:33 apps/draftlaw/models.py:190
 msgid "Title of the Draft Law"
 msgstr "კანონპროექტის სახელწოდება"
 
@@ -435,6 +434,10 @@ msgstr "დეპუტატები, რომლებმაც შეად
 msgid "Status of the Draft Law"
 msgstr "კანონპროექტის სტატუსი"
 
+#: apps/draftlaw/models.py:47
+msgid "Registered at Bureau"
+msgstr "შესაბამისი სააგენტო"
+
 #: apps/draftlaw/models.py:51
 msgid "Short Status of the Draft Law"
 msgstr "კანონპროექტის მოკლე სტატუსი"
@@ -453,16 +456,16 @@ msgstr "სრული ტექსტი"
 msgid "Full Text URL"
 msgstr "სრული ტექსტის URL"
 
-#: apps/draftlaw/models.py:61 apps/draftlaw/models.py:185
+#: apps/draftlaw/models.py:61 apps/draftlaw/models.py:193
 #: apps/draftlaw/templates/draftlaw/detail.html:52
 msgid "Enacted Text URL"
 msgstr "მიღებული ტექსტის URL"
 
-#: apps/draftlaw/models.py:64 apps/draftlaw/models.py:188
+#: apps/draftlaw/models.py:64 apps/draftlaw/models.py:196
 msgid "Number of the Enacted Law"
 msgstr "მიღებული კანონის ნომერი"
 
-#: apps/draftlaw/models.py:67 apps/draftlaw/models.py:191
+#: apps/draftlaw/models.py:67 apps/draftlaw/models.py:199
 #: apps/draftlaw/templates/draftlaw/detail.html:54
 #: apps/draftlaw/templates/draftlaw/detail.html:74
 #: apps/draftlaw/templates/draftlaw/info.html:11
@@ -490,28 +493,32 @@ msgstr "დაკავშირებული დოკუმენტი 4"
 msgid "Related Document 5"
 msgstr "დაკავშირებული დოკუმენტი 5"
 
-#: apps/draftlaw/models.py:161 apps/draftlaw/templates/draftlaw/list.html:26
-#: templates/home.html:132
+#: apps/draftlaw/models.py:162
+#, fuzzy
+msgid "Not passed"
+msgstr "მიღებულია"
+
+#: apps/draftlaw/models.py:166 templates/home.html:132
 msgid "Draft Law"
 msgstr "კანონპროექტი"
 
-#: apps/draftlaw/models.py:163
+#: apps/draftlaw/models.py:168
 msgid "Date of Discussion"
 msgstr "განხილვის თარიღი"
 
-#: apps/draftlaw/models.py:165
+#: apps/draftlaw/models.py:170
 msgid "Place of Discussion"
 msgstr "განხილვის ადგილი"
 
-#: apps/draftlaw/models.py:168
+#: apps/draftlaw/models.py:173
 msgid "Stage of the Discussion in Terms of Draft Law Completion"
 msgstr "განხილვის სტადია კანონპროექტის მიღებასთან მიმართებაში"
 
-#: apps/draftlaw/models.py:178
+#: apps/draftlaw/models.py:186
 msgid "Parent Draft Law"
 msgstr "ძირითადი კანონპროექტი"
 
-#: apps/draftlaw/models.py:209
+#: apps/draftlaw/models.py:217
 msgid "Draft Laws"
 msgstr "კანონპროექტები"
 
@@ -658,39 +665,6 @@ msgstr "სათაური"
 #: apps/votingrecord/models.py:133
 msgid "Bill Number"
 msgstr "კანონპროექტის ნომერი"
-
-#: apps/draftlaw/templates/draftlaw/list.html:17
-msgid "Type a Draft Law title"
-msgstr "შეიყვანეთ კანონპროექტის სახელი"
-
-#: apps/draftlaw/templates/draftlaw/list.html:18
-msgid "Reset"
-msgstr "განახლება"
-
-#: apps/draftlaw/templates/draftlaw/list.html:25
-#: apps/incomedeclaration/templates/incomedeclaration/detail.html:16
-#: apps/votingrecord/templates/votingrecord/detail.html:26
-#: templates/home.html:131
-msgid "Date"
-msgstr "თარიღი"
-
-#: apps/draftlaw/templates/draftlaw/list.html:27 templates/home.html:133
-msgid "Discussion Stage"
-msgstr "დისკუსიის ეტაპი"
-
-#: apps/draftlaw/templates/draftlaw/list.html:27 templates/home.html:133
-msgid ""
-"In order to become enacted, each draft law must pass 6 hearings: three "
-"committee hearings and three plenary hearings. Each box represents one stage "
-"in this process"
-msgstr ""
-"იმისთვის, რომ იქცეს კანონად, კანონპროექტი გადის ექვს მოსმენას: სამ "
-"საკომიტეტო და სამ პლენარულ მოსმენას. ამ პროცესის თითოეული ეტაპი გამოსახულია "
-"უჯრებით"
-
-#: apps/draftlaw/templates/draftlaw/list.html:32
-msgid "List more"
-msgstr "გამოაჩინე მეტი"
 
 #: apps/draftlaw/templates/folded/what.html:3
 msgid "Section What"
@@ -930,6 +904,12 @@ msgstr "ვინ ქმნის კანონებს"
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:13
 msgid "Income Declaration"
 msgstr "შემოსავლების დეკლარაციები"
+
+#: apps/incomedeclaration/templates/incomedeclaration/detail.html:16
+#: apps/votingrecord/templates/votingrecord/detail.html:26
+#: templates/home.html:131
+msgid "Date"
+msgstr "თარიღი"
 
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:18
 #: apps/question/forms.py:54 apps/question/models.py:208
@@ -2744,6 +2724,20 @@ msgstr "რა კანონები მიიღება"
 msgid "latest laws"
 msgstr "უკანასკნელი კანონები"
 
+#: templates/home.html:133
+msgid "Discussion Stage"
+msgstr "დისკუსიის ეტაპი"
+
+#: templates/home.html:133
+msgid ""
+"In order to become enacted, each draft law must pass 6 hearings: three "
+"committee hearings and three plenary hearings. Each box represents one stage "
+"in this process"
+msgstr ""
+"იმისთვის, რომ იქცეს კანონად, კანონპროექტი გადის ექვს მოსმენას: სამ "
+"საკომიტეტო და სამ პლენარულ მოსმენას. ამ პროცესის თითოეული ეტაპი გამოსახულია "
+"უჯრებით"
+
 #: templates/nav.html:5
 msgid "My Parliament"
 msgstr "ჩემი პარლამენტი"
@@ -3014,6 +3008,15 @@ msgstr "წინა"
 #: templates/search/search.html:33
 msgid "Next"
 msgstr "შემდეგი"
+
+#~ msgid "Type a Draft Law title"
+#~ msgstr "შეიყვანეთ კანონპროექტის სახელი"
+
+#~ msgid "Reset"
+#~ msgstr "განახლება"
+
+#~ msgid "List more"
+#~ msgstr "გამოაჩინე მეტი"
 
 #~ msgid "Additional income"
 #~ msgstr "დამატებითი თანამდებობრივი სარგო"

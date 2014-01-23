@@ -398,17 +398,20 @@ class Representative (Person):
         # New MPs haven't been in Parliament for more than one year,
         # so can't calculate their base salary accurately.
         base = 0
-        entrepreneurial = int(self.entrepreneurial_salary)
-        incomeyear = self.submission_date.year - 1
+        mpincome= self.declarationtotalincome.all()[0]
+        entrepreneurial = int(mpincome.ad_entrepreneurial_income)
+        
+        incomeyear = mpincome.ad_submission_date.year - 1
         #if entrepreneurial < 0:
             #entrepreneurial = int(self.salary) # salary in declaration doesn't include base
 
         return {
-            'total': int(base + entrepreneurial + self.main_salary),
+            'total': int(base + entrepreneurial + mpincome.ad_paid_work_income),
             'base': base,
             'entrepreneurial': entrepreneurial,
-            'main': int(self.main_salary),
+            'main': int(mpincome.ad_paid_work_income),
             'incomeyear': incomeyear,
+            'declarationid': int(mpincome.ad_id),
         }
 
 
