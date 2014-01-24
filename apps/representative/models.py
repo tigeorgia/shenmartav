@@ -437,6 +437,7 @@ class AdditionalInformation (models.Model):
     def __unicode__ (self):
         return u'%s: %s' % (str(self.representative.name), self.value)
 
+''' original version  with raw HTML 
 class FamilyIncome (models.Model):
     """A list of details regarding MP's family income"""
     #: ID of the representative whose family income is related to. 
@@ -448,8 +449,32 @@ class FamilyIncome (models.Model):
     submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
     #: html table containing the data related to family income
     html_table = models.TextField(blank=True, null=True, help_text=_('Family income details'))
-    
+'''    
 
+''' New model with each line in the HTML table as a row here'''
+class FamilyIncome (models.Model):
+    """A list of details regarding MP's family income"""
+    #: ID of the representative whose family income is related to. 
+    representative = models.ForeignKey(Representative, related_name='family_income', blank=False, null=True,
+        help_text=_('Family Income'))
+    #: ID of Asset declaration document
+    ad_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
+    #: submission date - asset declaration 
+    submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
+    #: Names
+    Fam_name = models.TextField(blank=True, null=True, help_text=_('Name of family member'))
+    #: role
+    Fam_role = models.TextField(blank=True, null=True, help_text=_('Role of family member'))
+    #: Gender
+    Fam_gender = models.TextField(blank=True, null=True, help_text=_('Gender of family member'))
+    #: age
+    Fam_date_of_birth = models.DateField(blank=True, null=True, help_text=_('Date of Birth'))
+    #: Total income  = sum of paid work and entrepeneurial income in GEL and USD with dollars converted using 1.65 exchange rate
+    Fam_income = models.IntegerField(default=0, blank=True, null=True, help_text=_('Total Income of family member'))
+    #: cars
+    Fam_cars = models.TextField(blank=True, null=True, help_text=_('Cars owned by family member'))
+    
+    
 class Url (models.Model):
     """Urls belonging to a representative."""
     #: representative this url belongs to
