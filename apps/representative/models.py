@@ -193,8 +193,7 @@ class Representative (Person):
     parliament = ParliamentManager()
     tbilisi = TbilisiManager()
     ajara = AjaraManager()
-
-
+    
     @classmethod
     def _find_firstname_first (cls, name, lang):
         """Find a representative with given name firstname first.
@@ -387,8 +386,7 @@ class Representative (Person):
             ]
         else:
             return [p[1] for p in sorted(by_lastname, key=itemgetter(0))]
-
-
+        
     @property
     def income (self):
         #try:
@@ -413,6 +411,12 @@ class Representative (Person):
             'incomeyear': incomeyear,
             'declarationid': int(mpincome.ad_id),
         }
+    
+    @property
+    def assets_list (self):
+        if self.property_assets:
+            return self.property_assets.split(';')
+        return None
 
 
     def save (self, *args, **kwargs):
@@ -462,17 +466,17 @@ class FamilyIncome (models.Model):
     #: submission date - asset declaration 
     submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
     #: Names
-    Fam_name = models.TextField(blank=True, null=True, help_text=_('Name of family member'))
+    fam_name = models.TextField(blank=True, null=True, help_text=_('Name of family member'))
     #: role
-    Fam_role = models.TextField(blank=True, null=True, help_text=_('Role of family member'))
+    fam_role = models.TextField(blank=True, null=True, help_text=_('Role of family member'))
     #: Gender
-    Fam_gender = models.TextField(blank=True, null=True, help_text=_('Gender of family member'))
+    fam_gender = models.TextField(blank=True, null=True, help_text=_('Gender of family member'))
     #: age
-    Fam_date_of_birth = models.DateField(blank=True, null=True, help_text=_('Date of Birth'))
+    fam_date_of_birth = models.DateField(blank=True, null=True, help_text=_('Date of Birth'))
     #: Total income  = sum of paid work and entrepeneurial income in GEL and USD with dollars converted using 1.65 exchange rate
-    Fam_income = models.IntegerField(default=0, blank=True, null=True, help_text=_('Total Income of family member'))
+    fam_income = models.IntegerField(default=0, blank=True, null=True, help_text=_('Total Income of family member'))
     #: cars
-    Fam_cars = models.TextField(blank=True, null=True, help_text=_('Cars owned by family member'))
+    fam_cars = models.TextField(blank=True, null=True, help_text=_('Cars owned by family member'))
     
     
 class Url (models.Model):
