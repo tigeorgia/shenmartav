@@ -11,6 +11,7 @@ from operator import itemgetter
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
+
 try:
     # SIGH! this is Django 1.4 which spits out warnings otherwise
     # Django 1.4. was necessary to fix an issue with PostGIS
@@ -30,60 +31,60 @@ from apps.popit.models import Person, Organisation
 NAME_MINLEN = 4
 
 
-
-class Term (models.Model):
+class Term(models.Model):
     """A Term during which Representatives are part of a Unit."""
     #: start of the term
     start = models.DateField(blank=False, help_text=_('When term started'))
     #: end of the term
     end = models.DateField(blank=False, help_text=_('When term started'))
     #: name of the term
-    name =  models.CharField(max_length=255, blank=False, null=False,
-        help_text=_('Name of this term'))
+    name = models.CharField(max_length=255, blank=False, null=False,
+                            help_text=_('Name of this term'))
 
-    def __unicode__ (self):
+    def __unicode__(self):
         return u'%s (%s - %s)' % (self.name, self.start, self.end)
 
-class Party (Organisation):
+
+class Party(Organisation):
     """A political party in a unit, as used in the template representative/unit.html"""
     #: acronym of this party
     acronym = models.CharField(max_length=16, blank=False, null=False,
-        help_text=_('Acronym of this Party'))
+                               help_text=_('Acronym of this Party'))
     #: url of this representative
     url = models.TextField(blank=True, null=True,
-        help_text=_('URL of this Party'))
+                           help_text=_('URL of this Party'))
     #: party logo
     logo = ImageWithThumbnailsField(upload_to='parties',
-        thumbnail={'size': (100, 84), 'options': ('crop',)},
-        blank=True, null=True, help_text=_('Party logo'))
+                                    thumbnail={'size': (100, 84), 'options': ('crop',)},
+                                    blank=True, null=True, help_text=_('Party logo'))
 
-class Unit (models.Model):
+
+class Unit(models.Model):
     """A unit/house, like Parliament or Tbilisi City Assembly."""
     #: name of the unit
     name = models.CharField(max_length=255, blank=False, null=False,
-        help_text=_('Name of the Unit.'))
+                            help_text=_('Name of the Unit.'))
     #: short name of the unit, as used in css, etc.
     short = models.CharField(max_length=32, blank=False, null=False,
-        help_text=_('Short Name of the Unit, as used in e.g. CSS'))
+                             help_text=_('Short Name of the Unit, as used in e.g. CSS'))
     #: parties of this unit
     parties = models.ManyToManyField(Party, related_name='unit',
-        help_text=_('Parties in this unit'))
+                                     help_text=_('Parties in this unit'))
     #: unit's active term
     active_term = models.ForeignKey(Term, blank=False, null=True,
-        related_name='unit_active',
-        help_text=_('The Unit\'s active term.'))
+                                    related_name='unit_active',
+                                    help_text=_('The Unit\'s active term.'))
     #: unit's inactive terms
     inactive_terms = models.ManyToManyField(Term, blank=True,
-        related_name='unit_inactive',
-        help_text=_('Past or just inactive terms served in this Unit.'))
+                                            related_name='unit_inactive',
+                                            help_text=_('Past or just inactive terms served in this Unit.'))
 
 
-    def __unicode__ (self):
+    def __unicode__(self):
         return u'%s' % self.name
 
 
-
-class ParliamentManager (models.Manager):
+class ParliamentManager(models.Manager):
     """Manager to return Georgian Parliament representatives in active term."""
 
     def get_query_set(self):
@@ -91,8 +92,7 @@ class ParliamentManager (models.Manager):
         return parliament.active_term.representatives.all()
 
 
-
-class TbilisiManager (models.Manager):
+class TbilisiManager(models.Manager):
     """Manager to return Tbilisi City Hall representatives in active term."""
 
     def get_query_set(self):
@@ -100,16 +100,12 @@ class TbilisiManager (models.Manager):
         return cityhall.active_term.representatives.all()
 
 
-
-class AjaraManager (models.Manager):
+class AjaraManager(models.Manager):
     """Manager to return Ajaran Supreme Council representatives in active term."""
 
     def get_query_set(self):
         supremecouncil = Unit.objects.get(pk=3)
         return supremecouncil.active_term.representatives.all()
-
-
-
 
 
 GENDER_CHOICES = (
@@ -118,73 +114,75 @@ GENDER_CHOICES = (
     (2, _('other')),
 )
 
-class Representative (Person):
+
+class Representative(Person):
     """A representative derived from popit.Person."""
     #: personal photo
     photo = ImageWithThumbnailsField(upload_to='representatives',
-        thumbnail={'size': (200, 168), 'options': ('crop',)},
-        blank=True, null=True, help_text=_('Personal Photo'))
+                                     thumbnail={'size': (200, 168), 'options': ('crop',)},
+                                     blank=True, null=True, help_text=_('Personal Photo'))
     #: party membership
     party = models.ForeignKey(Party, related_name='representatives', blank=True, null=True,
-        help_text=_('Party Membership'))
+                              help_text=_('Party Membership'))
     #: unit membership
     unit = models.ForeignKey(Unit, related_name='representatives', blank=True, null=True,
-        help_text=_('Unit Membership'))
+                             help_text=_('Unit Membership'))
     #: committee membership
     committee = models.TextField(blank=True, null=True,
-        help_text=_('Committee Membership'))
+                                 help_text=_('Committee Membership'))
     #: faction membership
     faction = models.TextField(blank=True, null=True,
-        help_text=_('Faction Membership'))
+                               help_text=_('Faction Membership'))
     #: is majoritarian?
     is_majoritarian = models.BooleanField(blank=True, default=False,
-        help_text=_('Is Majoritarian?'))
+                                          help_text=_('Is Majoritarian?'))
     #: electoral district
     electoral_district = models.TextField(blank=True, null=True,
-        help_text=_('Electoral District (if Majoritarian)'))
+                                          help_text=_('Electoral District (if Majoritarian)'))
     #: date elected
     elected = models.TextField(blank=True, null=True,
-        help_text=_('Date Elected'))
+                               help_text=_('Date Elected'))
     #: place of birth
     pob = models.TextField(blank=True, null=True,
-        help_text=_('Place of Birth'))
+                           help_text=_('Place of Birth'))
     #: family status
     family_status = models.TextField(blank=True, null=True,
-        help_text=_('Family Status'))
+                                     help_text=_('Family Status'))
     #: education
     education = models.TextField(blank=True, null=True,
-        help_text=_('Education'))
+                                 help_text=_('Education'))
     #: contact, address and phone number
     contact_address_phone = models.TextField(blank=True, null=True,
-        help_text=_('Contact Address / Phone Number'))
+                                             help_text=_('Contact Address / Phone Number'))
     #: salary
     salary = models.FloatField(default=0, blank=True, null=True,
-        help_text=_('== Wages'))
+                               help_text=_('== Wages'))
     #: other income
     other_income = models.FloatField(default=0, blank=True, null=True,
-        help_text=_('== Entrepreneurial Income'))
+                                     help_text=_('== Entrepreneurial Income'))
     #: expenses
     expenses = models.TextField(blank=True, null=True,
-        help_text=_('Expenses'))
+                                help_text=_('Expenses'))
     #: property & assets
     property_assets = models.TextField(blank=True, null=True,
-        help_text=_('Property & Assets'))
+                                       help_text=_('Property & Assets'))
     #: percentage of questions answered on shenmartav.ge
     answered = models.FloatField(default=0, blank=True, null=True,
-        help_text=_('Percentage of Answered Questions on chemiparlamenti.ge'))
+                                 help_text=_('Percentage of Answered Questions on chemiparlamenti.ge'))
     #: gender of the representative
     gender = models.IntegerField(default=0, choices=GENDER_CHOICES, blank=True, null=True,
-        help_text=_('Gender of the Representative'))
+                                 help_text=_('Gender of the Representative'))
     #: terms of the representative
     terms = models.ManyToManyField(Term, blank=True, null=True,
-        related_name='representatives',
-        help_text=_('Terms during which Representative was part of a Unit.'))
+                                   related_name='representatives',
+                                   help_text=_('Terms during which Representative was part of a Unit.'))
     #: asset declaration id submitted by representative
     declaration_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
     #: submission date - asset declaration 
     submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
     #: Representative's entrepreneurial salary
-    entrepreneurial_salary = models.FloatField(default=0, blank=True, null=True, help_text=_('Representative entrepreneurial salary'))
+    entrepreneurial_salary = models.FloatField(default=0, blank=True, null=True,
+                                               help_text=_('Representative entrepreneurial salary'))
     #: Representative's work income
     main_salary = models.FloatField(default=0, blank=True, null=True, help_text=_('Representative income'))
 
@@ -193,9 +191,9 @@ class Representative (Person):
     parliament = ParliamentManager()
     tbilisi = TbilisiManager()
     ajara = AjaraManager()
-    
+
     @classmethod
-    def _find_firstname_first (cls, name, lang):
+    def _find_firstname_first(cls, name, lang):
         """Find a representative with given name firstname first.
 
         @param name: name of the representative
@@ -205,14 +203,17 @@ class Representative (Person):
         @return: representative matching the name
         @rtype: representative.Representative
         """
-        if lang == 'ka':
-            firstname_first = glt.firstname_first(name)
-        else:
-            firstname_first = name.split()[0]
+        firstname_first = glt.firstname_first(name)
 
+        # Find rep whose name starts with Firstname and ends with lastname.
+        # This is good for people whose name contains different letters in the end or missing "i" etc.
         representative = cls.objects.filter(
-            Q(names__name_ka__icontains=firstname_first) |\
-            Q(names__name_en__icontains=firstname_first) |\
+            Q(names__name_ka__startswith=firstname_first.split()[0]) & #firstname
+            Q(names__name_ka__endswith=firstname_first.split()[1]) | #lastname
+
+            Q(names__name_en__startswith=firstname_first.split()[0]) &
+            Q(names__name_en__endswith=firstname_first.split()[1]) |
+
             Q(names__name__icontains=firstname_first)
         )
 
@@ -223,7 +224,7 @@ class Representative (Person):
 
 
     @classmethod
-    def _find_lastname_first (cls, name, lang):
+    def _find_lastname_first(cls, name, lang):
         """Find a representative with given name lastname first.
 
         @param name: name of the representative
@@ -233,14 +234,18 @@ class Representative (Person):
         @return: representative matching the name
         @rtype: representative.Representative
         """
-        if lang == 'ka':
-            lastname_first = glt.lastname_first(name)
-        else:
-            lastname_first = name.split()[-1]
 
+        lastname_first = glt.lastname_first(name)
+
+        # Find rep whose name starts with Firstname and ends with lastname.
+        # This is good for people whose name contains different letters in the end or missing "i" etc.
         representative = cls.objects.filter(
-            Q(names__name_ka__icontains=lastname_first) |\
-            Q(names__name_en__icontains=lastname_first) |\
+            Q(names__name_ka__startswith=lastname_first.split()[0]) & #lastname
+            Q(names__name_ka__endswith=lastname_first.split()[1]) | #firstname
+
+            Q(names__name_en__startswith=lastname_first.split()[0]) &
+            Q(names__name_en__endswith=lastname_first.split()[1]) |
+
             Q(names__name__icontains=lastname_first)
         )
 
@@ -251,7 +256,7 @@ class Representative (Person):
 
 
     @classmethod
-    def _find_startswith (cls, start):
+    def _find_startswith(cls, start):
         """Find a representative whose name starts with given start.
 
         @param start: first charactes of representative's name
@@ -264,8 +269,8 @@ class Representative (Person):
 
         startswith = start[:NAME_MINLEN]
         representative = cls.objects.filter(
-            Q(names__name_ka__istartswith=startswith) |\
-            Q(names__name_en__istartswith=startswith) |\
+            Q(names__name_ka__istartswith=startswith) | \
+            Q(names__name_en__istartswith=startswith) | \
             Q(names__name__istartswith=startswith)
         )
 
@@ -276,29 +281,35 @@ class Representative (Person):
 
 
     @classmethod
-    def find (cls, name):
+    def find(cls, name, lang='ka', first='lastname'):
         """Find a representative with given name.
 
         @param name: name of the representative
         @type name: str
+        @param lang: Language of input name
+        @type lang: str
+        @param first: Set to 'lastname' if first word in input name is lastname and 'firstname' if it's firstname
+        @type first: str
         @return: representative matching the name
         @rtype: representative.Representative
         """
+
         if len(name) < NAME_MINLEN: return None
-        lang = get_language()[:2]
 
         representative = cls.objects.filter(
-            Q(names__name_ka__icontains=name) |\
-            Q(names__name_en__icontains=name) |\
+            Q(names__name_ka__icontains=name) | \
+            Q(names__name_en__icontains=name) | \
             Q(names__name__icontains=name)
         )
+
+        if first == 'lastname':
+            representative = cls._find_firstname_first(name, lang)
+            if representative: return representative
+        elif first == 'firstname':
+            representative = cls._find_lastname_first(name, lang)
+            if representative: return representative
+
         if representative: return representative[0]
-
-        representative = cls._find_firstname_first(name, lang)
-        if representative: return representative
-
-        representative = cls._find_lastname_first(name, lang)
-        if representative: return representative
 
         splitname = name.split()
         representative = cls._find_startswith(splitname[0])
@@ -312,7 +323,7 @@ class Representative (Person):
 
 
     @classmethod
-    def by_lastname_firstname_first (cls, representatives=None):
+    def by_lastname_firstname_first(cls, representatives=None):
         """Sort given representatives by lastname and show firstname first.
 
         @param representatives: queryset of representatives to sort, using all() if None
@@ -332,8 +343,8 @@ class Representative (Person):
         # losing language abstraction, gaining massive reduction in db queries
         name_lang = 'names__name_' + get_language()[:2]
         reps = representatives.values('pk', 'slug',
-            'party__acronym', 'is_majoritarian', 'photo',
-            'names__name', name_lang)
+                                      'party__acronym', 'is_majoritarian', 'photo',
+                                      'names__name', name_lang)
         for r in reps:
             try:
                 lastname = r[name_lang].split()[-1]
@@ -341,14 +352,14 @@ class Representative (Person):
             except AttributeError:
                 lastname = r['names__name'].split()[-1]
                 r['firstname_first'] = r['names__name']
-            by_lastname.append((lastname,r))
+            by_lastname.append((lastname, r))
 
         return [p[1] for p in sorted(by_lastname, key=itemgetter(0))]
         #return [by_lastname[key] for key in sorted(by_lastname.keys())]
 
 
     @classmethod
-    def by_lastname_lastname_first (cls, representatives=None, choices=False):
+    def by_lastname_lastname_first(cls, representatives=None, choices=False):
         """Sort given representatives by lastname and show lastname first.
 
         @param representatives: queryset of representatives to sort, using all() if None
@@ -377,7 +388,7 @@ class Representative (Person):
                 splitname = r['names__name'].split()
             lastname = splitname.pop()
             r['lastname_first'] = lastname + ' ' + ' '.join(splitname)
-            by_lastname.append((lastname,r))
+            by_lastname.append((lastname, r))
 
         if choices:
             return [
@@ -386,9 +397,9 @@ class Representative (Person):
             ]
         else:
             return [p[1] for p in sorted(by_lastname, key=itemgetter(0))]
-        
+
     @property
-    def income (self):
+    def income(self):
         #try:
         #    base = int(settings.BASE_INCOME[self.unit.short])
         #except (AttributeError, KeyError, ValueError):
@@ -396,12 +407,12 @@ class Representative (Person):
         # New MPs haven't been in Parliament for more than one year,
         # so can't calculate their base salary accurately.
         base = 0
-        mpincome= self.declarationtotalincome.all()[0]
+        mpincome = self.declarationtotalincome.all()[0]
         entrepreneurial = int(mpincome.ad_entrepreneurial_income)
-        
+
         incomeyear = mpincome.ad_submission_date.year - 1
         #if entrepreneurial < 0:
-            #entrepreneurial = int(self.salary) # salary in declaration doesn't include base
+        #entrepreneurial = int(self.salary) # salary in declaration doesn't include base
 
         return {
             'total': int(base + entrepreneurial + mpincome.ad_paid_work_income),
@@ -411,15 +422,15 @@ class Representative (Person):
             'incomeyear': incomeyear,
             'declarationid': int(mpincome.ad_id),
         }
-    
+
     @property
-    def assets_list (self):
+    def assets_list(self):
         if self.property_assets:
             return self.property_assets.split(';')
         return None
 
 
-    def save (self, *args, **kwargs):
+    def save(self, *args, **kwargs):
         # enforce rewriting of slug in default language
         lang = get_language()
         activate(settings.LANGUAGE_CODE)
@@ -429,19 +440,19 @@ class Representative (Person):
         super(Representative, self).save(*args, **kwargs)
 
 
-
-class AdditionalInformation (models.Model):
+class AdditionalInformation(models.Model):
     #: representative this info belongs to
     representative = models.ForeignKey(Representative,
-        related_name='additional_information', null=True,
-        help_text=_('Representative'))
+                                       related_name='additional_information', null=True,
+                                       help_text=_('Representative'))
     #: value of this info
     value = models.TextField(null=True, help_text=_('Additional Information'))
 
-    def __unicode__ (self):
+    def __unicode__(self):
         return u'%s: %s' % (str(self.representative.name), self.value)
 
-''' original version  with raw HTML 
+
+''' original version  with raw HTML
 class FamilyIncome (models.Model):
     """A list of details regarding MP's family income"""
     #: ID of the representative whose family income is related to. 
@@ -453,14 +464,16 @@ class FamilyIncome (models.Model):
     submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
     #: html table containing the data related to family income
     html_table = models.TextField(blank=True, null=True, help_text=_('Family income details'))
-'''    
+'''
 
 ''' New model with each line in the HTML table as a row here'''
-class FamilyIncome (models.Model):
+
+
+class FamilyIncome(models.Model):
     """A list of details regarding MP's family income"""
     #: ID of the representative whose family income is related to. 
     representative = models.ForeignKey(Representative, related_name='family_income', blank=False, null=True,
-        help_text=_('Family Income'))
+                                       help_text=_('Family Income'))
     #: ID of Asset declaration document
     ad_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
     #: submission date - asset declaration 
@@ -477,23 +490,22 @@ class FamilyIncome (models.Model):
     fam_income = models.IntegerField(default=0, blank=True, null=True, help_text=_('Total Income of family member'))
     #: cars
     fam_cars = models.TextField(blank=True, null=True, help_text=_('Cars owned by family member'))
-    
-    
-class Url (models.Model):
+
+
+class Url(models.Model):
     """Urls belonging to a representative."""
     #: representative this url belongs to
     representative = models.ForeignKey(Representative,
-        related_name='urls', null=True,
-        help_text=_('Representative'))
+                                       related_name='urls', null=True,
+                                       help_text=_('Representative'))
     #: label of this url
     label = models.CharField(max_length=255, blank=False, default=_('Homepage'),
-        help_text=_('Label for this Url, e.g. Homepage, Facebook, Twitter, etc.'))
+                             help_text=_('Label for this Url, e.g. Homepage, Facebook, Twitter, etc.'))
     #: the actual url; text field because georgian urls can become very long
     url = models.TextField(blank=False, help_text=_('The URL'))
 
-    def __unicode__ (self):
+    def __unicode__(self):
         return u'%s: %s - %s' % (str(self.representative.name), self.label, self.url)
-
 
 
 ATTENDANCE_GROUP_CHOICES = (
@@ -504,45 +516,45 @@ ATTENDANCE_GROUP_CHOICES = (
     (4, _('very high')),
 )
 
-class Attendance (models.Model):
+
+class Attendance(models.Model):
     """A representative's attendance record."""
     #: number of attended votes
     attended = models.IntegerField(default=0,
-        help_text=_('Number of Attended Votes'))
+                                   help_text=_('Number of Attended Votes'))
     #: pre-calculated percentage of attended votes
     percentage_attended = models.IntegerField(default=0,
-        help_text=_('Pre-calculated Percentage of Attended Votes'))
+                                              help_text=_('Pre-calculated Percentage of Attended Votes'))
     #: number of absent votes
     absent = models.IntegerField(default=0,
-        help_text=_('Number of Absent Votes'))
+                                 help_text=_('Number of Absent Votes'))
     #: pre-calculated percentage of absent votes
     percentage_absent = models.IntegerField(default=0,
-        help_text=_('Pre-calculated Percentage of Absent Votes'))
+                                            help_text=_('Pre-calculated Percentage of Absent Votes'))
     #: pre-calculated number of total votes
     total = models.IntegerField(default=0,
-        help_text=_('Number of Pre-calculated Total Votes'))
+                                help_text=_('Number of Pre-calculated Total Votes'))
     #: attendance group
     group = models.IntegerField(default=0,
-        choices=ATTENDANCE_GROUP_CHOICES,
-        help_text=_('Voting Attendance in Relation to other Representatives'))
+                                choices=ATTENDANCE_GROUP_CHOICES,
+                                help_text=_('Voting Attendance in Relation to other Representatives'))
     #: representative this attendance record belongs to
     representative = models.ForeignKey(Representative,
-        null=False, related_name='attendance',
-        help_text=_('Representative'))
+                                       null=False, related_name='attendance',
+                                       help_text=_('Representative'))
 
-    def __unicode__ (self):
+    def __unicode__(self):
         return u'%s: %s/%s' % (str(self.representative.name),
-            str(self.attended), str(self.total))
+                               str(self.attended), str(self.total))
 
 
-
-class RandomRepresentative (models.Model):
+class RandomRepresentative(models.Model):
     """Defines the randomly selected representative of the day."""
     #: date when the current random representative was set
     date_set = models.DateTimeField(help_text=_('When random representative was set'))
     #: random representative
     representative = models.ForeignKey(Representative,
-        null=True, help_text=_('Random Representative'))
+                                       null=True, help_text=_('Random Representative'))
 
 
     @classmethod
@@ -567,14 +579,13 @@ class RandomRepresentative (models.Model):
                 representative = None
 
             rr = RandomRepresentative(date_set=date_set,
-                representative=representative)
+                                      representative=representative)
             rr.save()
-
 
         return rr.representative
 
 
-    def __unicode__ (self):
+    def __unicode__(self):
         if self.representative:
             return u'%s' % self.representative.name
         else:
