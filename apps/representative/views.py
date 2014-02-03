@@ -295,6 +295,7 @@ class Detail (DetailView):
         context['form'] = self._get_form(obj)
         context['questions'] = self._get_questions(obj)
         totalCount = VotingRecordResult.get_counts(representative=obj)
+
         context['attended'] = totalCount['total'] - totalCount['absent']
         context['absent'] = totalCount['absent']
         if totalCount['total'] == 0:
@@ -306,7 +307,9 @@ class Detail (DetailView):
             context['percentage_absent'] = 100 - context['percentage_attended']
             context['percentage_attended_string'] = "{0:.2f}".format(context['percentage_attended'])
 
-        context['votecounts'] = VotingRecordResult.get_counts(representative=obj,session=3)
+        votecountall = VotingRecordResult.get_counts(representative=obj)
+        #context['votecounts'] = VotingRecordResult.get_counts(representative=obj,session=3)
+        context['votecounts'] = votecountall                
         context['url_feed'] = reverse('representative_feed_detail', args=[obj.pk])
         context['url_votingrecords'] = reverse(
             'representative_votingrecords', args=[obj.pk, obj.slug])
@@ -314,6 +317,7 @@ class Detail (DetailView):
             context['decl'] = obj.incomedeclaration.all()[0]
         except IndexError:
             context['decl'] = None
+        
             
         try:
             context['faminc'] = obj.family_income.all().order_by('-submission_date')[0]
@@ -345,9 +349,11 @@ def _get_votingrecord_results (representative):
     """
 
     #read in from user
-    session = 3
+    #session = 3
     # ordered by vote in model
-    results = representative.votingresults.all().filter(session=session).values(
+    #results = representative.votingresults.all().filter(session=session).values(
+        #'css', 'vote', 'record','record__name','record__date').order_by('-record__date')
+    results = representative.votingresults.all().values(
         'css', 'vote', 'record','record__name','record__date').order_by('-record__date')
     for r in results:
         r['url'] = reverse('votingrecord_detail', args=[r['record']])

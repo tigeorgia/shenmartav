@@ -400,6 +400,7 @@ class Representative (Person):
         entrepreneurial = int(mpincome.ad_entrepreneurial_income)
         
         incomeyear = mpincome.ad_submission_date.year - 1
+        submissionyear = mpincome.ad_submission_date.year
         #if entrepreneurial < 0:
             #entrepreneurial = int(self.salary) # salary in declaration doesn't include base
 
@@ -409,6 +410,7 @@ class Representative (Person):
             'entrepreneurial': entrepreneurial,
             'main': int(mpincome.ad_paid_work_income),
             'incomeyear': incomeyear,
+            'latestsubmissionyear': submissionyear,
             'declarationid': int(mpincome.ad_id),
         }
     

@@ -26,7 +26,7 @@
         </div>
 {% autoescape off %}
         <table>
-{% if obj.is_majoritarian %}
+{% if obj.is_majoritarian and obj.electoral_district and obj.electoral_district.strip %}
         <tr>
             <td>{% trans 'Electoral District' %}</td>
             <td>{{ obj.electoral_district }}</td>
@@ -64,21 +64,60 @@
 {% endif %}
 		{% if obj.income %}
 		    <tr>
-		        <td>{% trans 'Income' %} ({{ obj.income.incomeyear }})</td>
+		        <td>{% trans 'Link to the latest declaration' %} (submitted in {{ obj.income.latestsubmissionyear }})</td>
 		        <td><div>
 		        	<ul>
 		        		
 		        		{% if LANGUAGE_CODE == "en" %}
-		        			<a href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
+		        			<u><a href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a></u>
 		        		{% else %}
-		        			<a href="https://declaration.gov.ge/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
+		        			<u><a href="https://declaration.gov.ge/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a></u>
 		        		{% endif %}
 		        	</ul>
 		        </div></td>
-		    </div>
+		    </tr>
 		{% endif %}
+		{% if sociallinks %}
+        	<tr>
+        		<td>
+        			{% trans 'Past declarations' %}
+        		</td>
+        		<td>
+        			<ul>
+						{% for link in sociallinks %}
+							{% if link.label|slice:":5" == 'Asset' %}
+	            				<li>{{ link.label }}: <a href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
+	            			{% endif %}
+						{% endfor %}
+					</ul>
+				</td>
+        	</tr>
+        	{% if mainlinks %}
+				{% for link in mainlinks %}
+					{% if link.label == "Parliament.ge" %}
+				        <tr>
+				            <td>{{ link.label }}</td>
+				            <td><a href="{{ link.url }}">{{ link.url }}</a></td>
+				        </tr>
+			        {% endif %}
+				{% endfor %}
+			{% endif %}
+        	<tr>
+        		<td>{% trans 'Links' %}</td>
+        		<td>
+        			<ul>
+					{% for link in sociallinks %}
+							{% if link.label|slice:":5" != 'Asset' %}
+			            		<li>{{ link.label }}: <a href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
+			            	{% endif %}
+					{% endfor %}
+					</ul>
+				</td>
+			</tr>
+		{% endif %}
+		
 {% if decl %}        
-        {% if obj.expenses %}
+        {% if obj.expenses and expenses.split %}
 	        <tr>
 	            <td>{% trans 'Expenses' %}</td>
 	            <td><a href="{{ decl.get_absolute_url }}#otherinclexpenses">{{ obj.expenses }}</a></td>
@@ -87,23 +126,23 @@
         {% if obj.property_assets %}
 	        <tr>
 	            <td>{% trans 'Property & Assets' %}</td>
-	            <td><a href="{{ decl.get_absolute_url }}#property">{{ obj.property_assets }}</a></td>
+	            <td>
+	            	<ul>
+					{% for asset in obj.assets_list %}
+					 	{% if asset and asset.strip %}
+					    	<li>- {{ asset|safe }}</li>
+					    {% endif %}
+					{% endfor %}
+					</ul>
+	            </td>
 	        </tr>
         {% endif %}
 {% endif %}
-		{% if mainlinks %}
-			{% for link in mainlinks %}
-	        <tr>
-	            <td>{{ link.label }}</td>
-	            <td><a href="{{ link.url }}">{{ link.url }}</a></td>
-	        </tr>
-			{% endfor %}
-		{% endif %}
 		{% if obj.position_set.all %}
         <tr>
             <td>{% trans 'Work Experience' %}</td>
             <td id="workexperience"><ul>{% for experience in obj.position_set.all %}
-                        <li>{{ experience.start_date|repdate }} {% if experience.end_date %}- {{ experience.end_date|repdate }}{% endif %} {{ experience.title }}</li>
+                        <li>- {{ experience.start_date|repdate }} {% if experience.end_date %}- {{ experience.end_date|repdate }}{% endif %} {{ experience.title }}</li>
             {% endfor %}</ul></td>
             </li>
         </tr>
@@ -123,7 +162,10 @@
         {% if faminc %}
         <tr>
             <td>{% trans 'Family Income' %}</td>
-            <td>{{ faminc.html_table }}</td>
+            <td>{{ faminc.fam_name }} ({{ faminc.fam_role }})<br />
+            	{{ faminc.fam_gender }}, born on {{ faminc.fam_date_of_birth }}<br />
+            	Income received: {{ faminc.fam_income }} GEL
+            </td>
         </tr>
         {% endif %}
         {% if obj.education %}
@@ -146,18 +188,6 @@
             {% endfor %}</td>
         </tr>
         {% endif %}
-        {% if sociallinks %}
-        	<tr>
-        		<td>{% trans 'Links' %}</td>
-        		<td>
-        			<ul>
-			{% for link in sociallinks %}
-	            	<li>{{ link.label }}: <a href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
-			{% endfor %}
-					</ul>
-				</td>
-			</tr>
-		{% endif %}
         </table>
 {% endautoescape %}
     </div>
@@ -201,7 +231,7 @@
         <div class="box" id="box-votecounts">{% ifequal unit 1 %}
             <div id="votecounts">
                 <div id="chart_div" style="width: 300px; height: 175px;"></div>
-                <div><a href="{{ url_votingrecords }}">{% trans "View voting details" %}</a></div>
+                <div id="ask-question"><a href="{{ url_votingrecords }}">{% trans "View voting details" %}</a></div>
                 <!--<h2 class="heading">{% trans 'Vote Counts' %}</h2>
                 <div>{% trans 'In Favour' %}: <a href="{{ url_votingrecords }}#vote-yes" title="{% trans 'See votes in favour' %}">{{ votecounts.yes }}</a></div>
                 <div>{% trans 'Against' %}: <a href="{{ url_votingrecords }}#vote-no" title="{% trans 'See votes against' %}">{{ votecounts.no }}</a></div>
@@ -224,13 +254,12 @@
         var data = google.visualization.arrayToDataTable([
           ['{% trans 'Vote type' %}','{% trans 'Number of votes' %}'],
           ['{% trans 'In Favour' %}',{{ votecounts.yes }}],
-          ['{% trans 'Against' %}',    {{ votecounts.no }}],
-          ['{% trans 'Abstained' %}',  {{ votecounts.abstained }}],
-          ['{% trans 'Absent' %}', {{ votecounts.absent }}]
+          ['{% trans 'Against' %}', {{ votecounts.no }}],
+          ['{% trans 'Absent / Abstain' %}', {{ votecounts.absent }}]
         ]);
 
         var options = {
-          title: '{% trans 'Vote Counts' %}',
+          title: '',
           colors: ['green','red','black','grey']
         };
 

@@ -189,7 +189,7 @@ class Command (BaseCommand):
             if not record.number: # skip if record has no bill number
                 continue
 
-            self.stdout.write('Setup amendments %s: ' % (record.number))
+            self.stdout.write('Setup amendments %s: ' % (record.number).encode('utf-8'))
             for amend in record.amendments.all():
                 if not amend.number: # don't add amendments with no number
                     continue
