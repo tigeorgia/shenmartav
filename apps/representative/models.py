@@ -193,6 +193,23 @@ class Representative(Person):
     ajara = AjaraManager()
 
     @classmethod
+    def _filter_name(cls, name):
+        """
+        Filter out multiple names in provided name. For example: "Giorgi (gia) Giorgadze" will be converted to
+        "Giorgi Giorgadze"
+        @param name: Representative name with possible multiple names
+        @return: Filtered out representative name with only one name
+        """
+        name_dict = name.split()
+        full_name = ""
+
+        for name in name_dict:
+            if "(" not in name:
+                full_name += ' ' + name
+
+        return full_name.strip()
+
+    @classmethod
     def _find_firstname_first(cls, name, lang):
         """Find a representative with given name firstname first.
 
@@ -209,10 +226,10 @@ class Representative(Person):
         # This is good for people whose name contains different letters in the end or missing "i" etc.
         representative = cls.objects.filter(
             Q(names__name_ka__startswith=firstname_first.split()[0]) & #firstname
-            Q(names__name_ka__endswith=firstname_first.split()[1]) | #lastname
+            Q(names__name_ka__endswith=firstname_first.split()[-1]) | #lastname
 
             Q(names__name_en__startswith=firstname_first.split()[0]) &
-            Q(names__name_en__endswith=firstname_first.split()[1]) |
+            Q(names__name_en__endswith=firstname_first.split()[-1]) |
 
             Q(names__name__icontains=firstname_first)
         )
@@ -295,6 +312,8 @@ class Representative(Person):
         """
 
         if len(name) < NAME_MINLEN: return None
+
+        name = cls._filter_name(name)
 
         representative = cls.objects.filter(
             Q(names__name_ka__icontains=name) | \
