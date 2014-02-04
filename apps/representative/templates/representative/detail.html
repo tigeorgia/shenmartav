@@ -64,7 +64,7 @@
 {% endif %}
 		{% if obj.income %}
 		    <tr>
-		        <td>{% trans 'Link to the latest declaration' %} (submitted in {{ obj.income.latestsubmissionyear }})</td>
+		        <td>{% trans 'Link to the latest declaration' %} ({% trans 'submitted in' %} {{ obj.income.latestsubmissionyear }})</td>
 		        <td><div>
 		        	<ul>
 		        		
