@@ -8,6 +8,7 @@ argparse==1.2.1
 django-appconf==0.6
 django-classy-tags==0.3.4.1
 django-cms==2.2
+django-debug=toolbar==0.9.4
 -e git://github.com/piquadrat/django-cms-search.git@1a4055b1c79df4de4353583a232f6ffc406ee32f#egg=django_cms_search-dev
 -e git://github.com/evdb/django-date-extensions.git@6832180f9254bbdea01c81bde8f5726c593ccfcf#egg=django_date_extensions-dev
 -e git://github.com/Bouke/django-filebrowser-no-grappelli.git@4ef9aefe5146a074bc0a4d11f195a4bf8672467e#egg=django_filebrowser-dev

@@ -2,6 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+INTERNAL_IPS = ('127.0.0.1',)
 
 ROOT_URLCONF = 'shenmartav.urls'
 
@@ -50,6 +51,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 MIDDLEWARE_CLASSES = (
     'apps.basic.middleware.middleware.MaintenanceMiddleware',
     'forcedefaultlanguage.middleware.ForceDefaultLanguageMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -83,6 +85,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
 
     # third-party
+    'debug_toolbar',
     'south',
     'reversion',
     'mptt',
