@@ -89,6 +89,28 @@ class VotingRecordResult (models.Model):
 
 
     @classmethod
+    def last_votingresult(cls, representative, record=None):
+        """
+        Get latest session's vote for votingrecord. This should work for laws where less than 3 votes are needed.
+        Also, last vote is deciding one, so it should be the one, which matters
+        @return: Returns list of last records if record is not provided. Returns final vote for record if record was
+        provided
+        """
+        if record is None:
+            results = cls.objects.filter(representative=representative).order_by('-record__date', 'record', '-session')
+            found_ids = []
+            votes = []
+            for res in results:
+                if res['record_id'] not in found_ids:
+                    found_ids.append(res['record_id'])
+                    votes.append(res)
+            return votes
+
+        result = cls.objects.filter(record=record, representative=representative).order_by('-session')[:1]
+        return result
+
+
+    @classmethod
     def get_counts (cls, record=None, representative=None,session=None,lawcount=False):
         """Get counts of the four voting record result possibilities.
 
