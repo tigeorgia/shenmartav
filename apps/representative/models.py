@@ -44,15 +44,7 @@ class Term(models.Model):
     def __unicode__(self):
         return u'%s (%s - %s)' % (self.name, self.start, self.end)
 
-class Faction(models.Model):
-    name = models.CharField(max_length=255, blank=False, null=True,
-                            help_text=_('Name of the faction'))
 
-    short = models.CharField(max_length=32, blank=False, null=True,
-                             help_text=_('Short Name of the faction, as used in e.g. CSS'))
-
-    def __unicode__(self):
-        return u'%s' % self.name
 
 class Party(Organisation):
     """A political party in a unit, as used in the template representative/unit.html"""
@@ -74,8 +66,20 @@ class Cabinet(models.Model):
     short = models.CharField(max_length=32, blank=False, null=False,
                              help_text=_('Short Name of the cabinet, as used in e.g. CSS'))
 
-    factions = models.ManyToManyField(Faction, blank=True, related_name='cabinet',
-                                     help_text=_('Factions in this cabinet'))
+    def __unicode__(self):
+        return u'%s' % self.name
+
+
+class Faction(models.Model):
+    name = models.CharField(max_length=255, blank=False, null=True,
+                            help_text=_('Name of the faction'))
+
+    short = models.CharField(max_length=32, blank=False, null=True,
+                             help_text=_('Short Name of the faction, as used in e.g. CSS'))
+
+    cabinet = models.ForeignKey(Cabinet, blank=False, null=True,
+                                related_name='faction', help_text=_('Cabinet this faction belongs to'))
+
 
     def __unicode__(self):
         return u'%s' % self.name
@@ -384,7 +388,7 @@ class Representative(Person):
         # losing language abstraction, gaining massive reduction in db queries
         name_lang = 'names__name_' + get_language()[:2]
         reps = representatives.values('pk', 'slug',
-                                      'party__acronym', 'is_majoritarian', 'photo',
+                                      'party__acronym', 'faction__short', 'is_majoritarian', 'photo',
                                       'names__name', name_lang)
         for r in reps:
             try:
