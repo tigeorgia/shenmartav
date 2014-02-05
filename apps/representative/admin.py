@@ -10,7 +10,7 @@ from django.db import models
 
 from modeltranslation.admin import TranslationTabularInline, TranslationAdmin
 
-from .models import Attendance, Term, Party, Unit, Representative,\
+from .models import Attendance, Term, Party, Cabinet, Faction, Unit, Representative,\
     AdditionalInformation, Url, RandomRepresentative
 from popit.admin import PositionInlineAdmin, PersonNameInlineAdmin, PersonAdmin,\
     OrganisationAdmin, OrgNameInlineAdmin
@@ -33,7 +33,13 @@ class PartyAdmin (OrganisationAdmin):
     search_fields = ['slug', 'names__name_en', 'names__name_ka']
 admin.site.register(Party, PartyAdmin)
 
+class FactionAdmin (TranslationAdmin):
+    search_fields = ['name_en', 'name_ka']
+admin.site.register(Faction, FactionAdmin)
 
+class CabinetAdmin (TranslationAdmin):
+    search_fields = ['name_en', 'name_ka']
+admin.site.register(Cabinet, CabinetAdmin)
 
 class UnitAdmin (TranslationAdmin):
     search_fields = ['name_en', 'name_ka', 'short']

@@ -21,7 +21,7 @@ from apps.votingrecord.models import VotingRecordResult, VotingRecord
 from question.forms import QuestionForm
 from question.models import Question
 
-from .models import Representative, RandomRepresentative, Party, Unit as UnitModel
+from .models import Representative, RandomRepresentative, Party, Faction, Cabinet, Unit as UnitModel
 
 from django.db import connection
 
@@ -42,9 +42,11 @@ class Find (TemplateView):
 
         unit = UnitModel.objects.get(short='parliament')
         reps = unit.active_term.representatives.all()
-        parties = Party.objects.filter(representatives__in=reps).distinct()
+        factions = Faction.objects.filter(representatives__in=reps).distinct()
+        cabinets = Cabinet.objects.filter(factions__in=factions).distinct()
         
-        context['parties'] = parties
+        context['factions'] = factions
+        context['cabinets'] = cabinets
         context['ushort'] = 'parliament'
         
         
@@ -347,13 +349,7 @@ def _get_votingrecord_results (representative):
     @return: list of dicts with voting record results
     @rtype: [{'css', 'vote', 'record', 'url', 'record__name'}]
     """
-
-    #read in from user
-    #session = 3
-    # ordered by vote in model
-    #results = representative.votingresults.all().filter(session=session).values(
-        #'css', 'vote', 'record','record__name','record__date').order_by('-record__date')
-    results = representative.votingresults.all().values(
+    results = representative.votingresults.filter(session=3).values(
         'css', 'vote', 'record','record__name','record__date').order_by('-record__date')
     for r in results:
         r['url'] = reverse('votingrecord_detail', args=[r['record']])

@@ -44,6 +44,15 @@ class Term(models.Model):
     def __unicode__(self):
         return u'%s (%s - %s)' % (self.name, self.start, self.end)
 
+class Faction(models.Model):
+    name = models.CharField(max_length=255, blank=False, null=True,
+                            help_text=_('Name of the faction'))
+
+    short = models.CharField(max_length=32, blank=False, null=True,
+                             help_text=_('Short Name of the faction, as used in e.g. CSS'))
+
+    def __unicode__(self):
+        return u'%s' % self.name
 
 class Party(Organisation):
     """A political party in a unit, as used in the template representative/unit.html"""
@@ -58,6 +67,18 @@ class Party(Organisation):
                                     thumbnail={'size': (100, 84), 'options': ('crop',)},
                                     blank=True, null=True, help_text=_('Party logo'))
 
+class Cabinet(models.Model):
+    name = models.CharField(max_length=255, blank=False, null=False,
+                            help_text=_('Name of the cabinet'))
+
+    short = models.CharField(max_length=32, blank=False, null=False,
+                             help_text=_('Short Name of the cabinet, as used in e.g. CSS'))
+
+    factions = models.ManyToManyField(Faction, blank=True, related_name='cabinet',
+                                     help_text=_('Factions in this cabinet'))
+
+    def __unicode__(self):
+        return u'%s' % self.name
 
 class Unit(models.Model):
     """A unit/house, like Parliament or Tbilisi City Assembly."""
@@ -131,8 +152,9 @@ class Representative(Person):
     committee = models.TextField(blank=True, null=True,
                                  help_text=_('Committee Membership'))
     #: faction membership
-    faction = models.TextField(blank=True, null=True,
-                               help_text=_('Faction Membership'))
+    faction = models.ForeignKey(Faction,  related_name='representatives', blank=True, null=True,
+                                help_text=_('Faction membership'))
+
     #: is majoritarian?
     is_majoritarian = models.BooleanField(blank=True, default=False,
                                           help_text=_('Is Majoritarian?'))
