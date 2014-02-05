@@ -60,8 +60,11 @@ class DraftLawForList (object):
             elif d.stage in [4, 5] and not has_hearing[d.stage]:
                 stage['info'].append(_('III Hearing') + ' \n')
                 has_hearing[d.stage] = True
-
-            stage['info'].append(str(d.date) + ' :: ' + d.place + ' \n')
+            
+            if (str(d.date.year) != "1970"):
+                stage['info'].append(str(d.date) + ' :: ' + d.place + ' \n')
+            else:    
+                stage['info'].append(d.place + ' \n')
 
         for stage in self.stages:
             stage['info'] = ''.join(stage['info'])[:-1] # cut off last \n
@@ -178,6 +181,7 @@ class Items (TemplateView):
     def get_context_data (self, **kwargs):
         context = super(Items, self).get_context_data(**kwargs)
         context['draftlaws'] = self._get_draftlaws(context['params'])
+        print context
         return context
 
 
