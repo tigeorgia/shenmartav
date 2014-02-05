@@ -7,6 +7,7 @@ __docformat__ = 'epytext en'
 from cms.models.pluginmodel import *
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.db.models import Q
 
 from glt import slughifi
 
@@ -65,6 +66,10 @@ class VotingRecordResult (models.Model):
 
     #: voting session number
     session = models.IntegerField(null=True)
+    
+    #: total voting session (3 or 1 session(s) required for a law to be voted)
+    totalsession = models.IntegerField(null=True)
+    
     #: vote value
     vote = models.CharField(max_length=32, help_text=_('Vote Value'))
     #: representative's name
@@ -84,7 +89,7 @@ class VotingRecordResult (models.Model):
 
 
     @classmethod
-    def get_counts (cls, record=None, representative=None,session=None):
+    def get_counts (cls, record=None, representative=None,session=None,lawcount=False):
         """Get counts of the four voting record result possibilities.
 
         Either for the given voting record or for the given representative.
@@ -108,6 +113,9 @@ class VotingRecordResult (models.Model):
 
         if session:
             results = results.filter(session=session)
+            
+        if lawcount:
+            results = results.filter(Q(session=3,totalsession=3) | Q(session=1,totalsession=1))
 
         return {
             'yes': results.filter(vote=u'დიახ').count(),

@@ -309,9 +309,11 @@ class Detail (DetailView):
             context['percentage_absent'] = 100 - context['percentage_attended']
             context['percentage_attended_string'] = "{0:.2f}".format(context['percentage_attended'])
 
-        votecountall = VotingRecordResult.get_counts(representative=obj)
-        #context['votecounts'] = VotingRecordResult.get_counts(representative=obj,session=3)
-        context['votecounts'] = votecountall                
+        #votecountall = VotingRecordResult.get_counts(representative=obj)
+        #context['votecounts'] = votecountall
+        context['votecounts'] = VotingRecordResult.get_counts(representative=obj,session=3)
+        context['lawvotecounts'] = VotingRecordResult.get_counts(representative=obj,lawcount=True)
+                        
         context['url_feed'] = reverse('representative_feed_detail', args=[obj.pk])
         context['url_votingrecords'] = reverse(
             'representative_votingrecords', args=[obj.pk, obj.slug])

@@ -253,13 +253,13 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['{% trans 'Vote type' %}','{% trans 'Number of votes' %}'],
-          ['{% trans 'In Favour' %}',{{ votecounts.yes }}],
-          ['{% trans 'Against' %}', {{ votecounts.no }}],
-          ['{% trans 'Absent / Abstain' %}', {{ votecounts.absent }}]
+          ['{% trans 'In Favour' %}',{{ lawvotecounts.yes }}],
+          ['{% trans 'Against' %}', {{ lawvotecounts.no }}],
+          ['{% trans 'Absent / Abstain' %}', {{ lawvotecounts.absent }}]
         ]);
 
         var options = {
-          title: '',
+          title: 'Vote counts (grouped by voted law)',
           colors: ['green','red','black','grey']
         };
 

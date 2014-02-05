@@ -78,7 +78,8 @@ class Command (BaseCommand):
                 record=record,
                 vote=self._getVoteGeo(self._strip(result['vote'])),
                 name=self._strip(result['name']),
-                session=result['session'])
+                session=result['session'],
+                totalsession=result['totalsession'])
             vrr.save()
 
 
