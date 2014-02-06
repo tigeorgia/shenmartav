@@ -15,63 +15,73 @@ from django.db import transaction
 from apps.representative.models import Representative
 from apps.votingrecord.models import VotingRecordResult
 
+
 class Command (BaseCommand):
-    """Command to update votingrecord results."""
-    #: help string
-    help = 'Updates votingrecord results: representative and css.'
+    """Command to update voting record results."""
+    help = 'Updates voting record results: representative and css.'
+
+    def __init__(self, *args, **kwargs):
+        super(Command, self).__init__(*args, **kwargs)
+        self.votingrecords = VotingRecordResult.objects.all()
+        self.votingrecords_count = self.votingrecords.count()
 
     @transaction.commit_on_success
-    def handle (self, *args, **options):
-        """Command handler."""
+    def handle(self, *args, **options):
+        """
+        Command handler.
+        @param args:
+        @param options:
+        @return:
+        """
 
-        number_of_votingrecordresults = VotingRecordResult.objects.count()
-        memory_qs = (self._votingrecordresults_qs_iterate(VotingRecordResult.objects.all()))
+        memory_qs = (self._voting_record_results_qs_iterate())
 
-        with codecs.open('problematic_results.csv', 'w', 'utf-8-sig') as file:
-                    file.write('name,record_id\n')
+        with codecs.open('problematic_results.csv', 'w', 'utf-8-sig') as f:
+                    f.write('name,record_id\n')
 
-        for item, r in memory_qs:
-            name_encoded = r.name.encode('utf-8')
-            record_number_encoded = r.record.number.encode('utf-8')
+        for item, result in memory_qs:
+            name_encoded = result.name.encode('utf-8')
+            record_number_encoded = result.record.number.encode('utf-8')
 
-            done = item / number_of_votingrecordresults * 100
+            done = item / self.votingrecords_count * 100
             done = int(done * 100) / 100.0
             out = 'Done: {0}%. Result for {1}'.format(done, record_number_encoded)
 
-            r.representative = Representative.find(r.name)
+            result.representative = Representative.find(result.name)
 
-            if r.representative:
+            if result.representative:
                 out += ' got representative {0}'.format(name_encoded)
             else:
-                out += ' got problematic record: name: {0}, record: {1}'.format(name_encoded, r.record_id)
-                with codecs.open('problematic_results.csv', 'a', 'utf-8-sig') as file:
-                    file.write(u''.join(r.name) + ',' + str(r.record_id) + '\n')
+                out += ' got problematic record: name: {0}, record: {1}'.format(name_encoded, result.record_id)
+                with codecs.open('problematic_results.csv', 'a', 'utf-8-sig') as f:
+                    f.write(u''.join(result.name) + ',' + str(result.record_id) + '\n')
 
-            if r.vote == u'დიახ':
-                r.css = 'vote-yes'
-            elif r.vote == u'არა':
-                r.css = 'vote-no'
-            elif r.vote == u'არ მიუცია':
-                r.css = 'vote-abstention'
+            if result.vote == u'დიახ':
+                result.css = 'vote-yes'
+            elif result.vote == u'არა':
+                result.css = 'vote-no'
+            elif result.vote == u'არ მიუცია':
+                result.css = 'vote-abstention'
             else:
-                r.css = 'vote-absent'
-            out += ' css %s' % r.css
+                result.css = 'vote-absent'
+            out += ' css %s' % result.css
 
-            r.save()
+            result.save()
             self.stdout.write(''.join(out) + '\n')
 
-    """
-    This should solve huge memory usage with big votingrecordresults table
-    """
-    def _votingrecordresults_qs_iterate(self, queryset, chunck=800):
+    def _voting_record_results_qs_iterate(self, chunck=800):
+        """ This should solve huge memory usage with big votingrecordresults table
+        @param chunck: number of records to process before garbage collecting
+        @return: generator
+        """
         item = 0.0
-        id = 0
-        last_id = queryset.order_by('-id')[0].id
-        queryset = queryset.order_by('id')
+        cur_id = 0
+        last_id = self.votingrecords.order_by('-id')[0].id
+        queryset = self.votingrecords.order_by('id')
 
-        while id < last_id:
-            for row in queryset.filter(id__gt=id)[:chunck]:
+        while cur_id < last_id:
+            for row in queryset.filter(id__gt=cur_id)[:chunck]:
                 item += 1
-                id = row.id
+                cur_id = row.id
                 yield item, row
             gc.collect()
