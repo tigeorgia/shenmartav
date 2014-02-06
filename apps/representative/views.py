@@ -43,7 +43,7 @@ class Find (TemplateView):
         unit = UnitModel.objects.get(short='parliament')
         reps = unit.active_term.representatives.all()
         factions = Faction.objects.filter(representatives__in=reps).distinct()
-        cabinets = Cabinet.objects.filter(factions__in=factions).distinct()
+        cabinets = Cabinet.objects.filter(faction__in=factions).distinct()
         
         context['factions'] = factions
         context['cabinets'] = cabinets
@@ -183,16 +183,40 @@ class Unit (TemplateView):
 
         try:
             reps = unit.active_term.representatives.all()
-            parties = Party.objects.filter(representatives__in=reps).distinct()
+            #parties = Party.objects.filter(representatives__in=reps).distinct()
+            parties = Cabinet.objects.distinct()
 
         except AttributeError:
             return []
             
         return parties
+    
+    def _get_factions(self):
+        """Get factions in this unit.
+
+        @return: parties in this unit
+        @rtype: [ representative.Party ]
+        """
+        # UnitParliament -> parliament
+        short = self.__class__.__name__.lower()[4:]
+        try:
+            unit = UnitModel.objects.get(short=short)
+        except UnitModel.DoesNotExist:
+            return []
+
+        try:
+            reps = unit.active_term.representatives.all()
+            factions = Faction.objects.distinct().values('pk','name','short','cabinet__name')
+
+        except AttributeError:
+            return []
+            
+        return factions
 
     def get_context_data (self, **kwargs):
         context = super(Unit, self).get_context_data(**kwargs)
         context['members'] = self._get_members()
+        context['factions'] = self._get_factions()
         context['parties'] = self._get_parties()
         return context
 

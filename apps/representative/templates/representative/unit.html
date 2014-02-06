@@ -2,16 +2,24 @@
 {% for party in parties %}
 <div class="party-{{ party.acronym }}">
     <h3>{{ party.name }}</h3>
-    <ul>
-    {% for member in members %}
-    {% if member.party__acronym == party.acronym %}
-        <li class="member party-{{ member.party__acronym }} {% if member.is_majoritarian %}majoritarian{% else %}partylist{% endif %}" id="member-{{ member.pk}}">
-        <a name="member-{{ member.pk }}"></a>
-        <div class="photo"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" border="0" /></a></div>
-        <div class="smaller representative-name"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{{ member.name|linebreaksbr }}</a></div>
-    </li>
-    {% endif %}
+    {% for faction in factions %}
+    	 {% if faction.cabinet__name == party.name %}
+    	 	{% if party.pk == 1 or party.pk == 2 %}
+    	    	<h4>{{ faction.name }}</h4>
+    	    {% endif %}
+	    	<ul>
+	    	{% for member in members %}
+		    	{% if member.faction__short == faction.short %}
+			        <li class="member party-{{ member.party__acronym }} {% if member.is_majoritarian %}majoritarian{% else %}partylist{% endif %}" id="member-{{ member.pk}}">
+		        	<a name="member-{{ member.pk }}"></a>
+		        	<div class="photo"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{% thumbnail member.photo '100x84' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="100" height="84" border="0" /></a></div>
+		        	<div class="smaller representative-name"><a title="{{ member.name }}" href="{% url person member.pk member.slug %}">{{ member.name|linebreaksbr }}</a></div>
+		    	</li>
+		    	{% endif %}
+	    	{% endfor %}
+	    	</ul>
+    	{% endif %}
     {% endfor %}
-    </ul>
+    
 </div>
 {% endfor %}
