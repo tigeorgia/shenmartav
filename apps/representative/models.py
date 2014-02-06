@@ -45,7 +45,6 @@ class Term(models.Model):
         return u'%s (%s - %s)' % (self.name, self.start, self.end)
 
 
-
 class Party(Organisation):
     """A political party in a unit, as used in the template representative/unit.html"""
     #: acronym of this party
@@ -59,7 +58,11 @@ class Party(Organisation):
                                     thumbnail={'size': (100, 84), 'options': ('crop',)},
                                     blank=True, null=True, help_text=_('Party logo'))
 
+
 class Cabinet(models.Model):
+    """
+    Cabinet for factions. I.e Majority, Minority etc.
+    """
     name = models.CharField(max_length=255, blank=False, null=False,
                             help_text=_('Name of the cabinet'))
 
@@ -71,6 +74,9 @@ class Cabinet(models.Model):
 
 
 class Faction(models.Model):
+    """
+    Faction for representatives
+    """
     name = models.CharField(max_length=255, blank=False, null=True,
                             help_text=_('Name of the faction'))
 
@@ -80,9 +86,9 @@ class Faction(models.Model):
     cabinet = models.ForeignKey(Cabinet, blank=False, null=True,
                                 related_name='faction', help_text=_('Cabinet this faction belongs to'))
 
-
     def __unicode__(self):
         return u'%s' % self.name
+
 
 class Unit(models.Model):
     """A unit/house, like Parliament or Tbilisi City Assembly."""
@@ -104,7 +110,6 @@ class Unit(models.Model):
                                             related_name='unit_inactive',
                                             help_text=_('Past or just inactive terms served in this Unit.'))
 
-
     def __unicode__(self):
         return u'%s' % self.name
 
@@ -113,6 +118,10 @@ class ParliamentManager(models.Manager):
     """Manager to return Georgian Parliament representatives in active term."""
 
     def get_query_set(self):
+        """
+        Filters queryset to results only in parliament
+        @return: Queryset of all active representatives in parliament
+        """
         parliament = Unit.objects.get(pk=1)
         return parliament.active_term.representatives.all()
 
@@ -121,6 +130,10 @@ class TbilisiManager(models.Manager):
     """Manager to return Tbilisi City Hall representatives in active term."""
 
     def get_query_set(self):
+        """
+        Filters queryset results only to tbilisi Unit.
+        @return: Queryset of all active representatives in tbilisi unit
+        """
         cityhall = Unit.objects.get(pk=2)
         return cityhall.active_term.representatives.all()
 
@@ -129,6 +142,10 @@ class AjaraManager(models.Manager):
     """Manager to return Ajaran Supreme Council representatives in active term."""
 
     def get_query_set(self):
+        """
+        Filters queryset results only to Ajara unit.
+        @return: Queryset of all active representatives in Ajara unit
+        """
         supremecouncil = Unit.objects.get(pk=3)
         return supremecouncil.active_term.representatives.all()
 
@@ -156,7 +173,7 @@ class Representative(Person):
     committee = models.TextField(blank=True, null=True,
                                  help_text=_('Committee Membership'))
     #: faction membership
-    faction = models.ForeignKey(Faction,  related_name='representatives', blank=True, null=True,
+    faction = models.ForeignKey(Faction, related_name='representatives', blank=True, null=True,
                                 help_text=_('Faction membership'))
 
     #: is majoritarian?
@@ -236,13 +253,11 @@ class Representative(Person):
         return full_name.strip()
 
     @classmethod
-    def _find_firstname_first(cls, name, lang):
+    def _find_firstname_first(cls, name):
         """Find a representative with given name firstname first.
 
         @param name: name of the representative
         @type name: str
-        @param lang: user language
-        @type lang: str
         @return: representative matching the name
         @rtype: representative.Representative
         """
@@ -251,8 +266,8 @@ class Representative(Person):
         # Find rep whose name starts with Firstname and ends with lastname.
         # This is good for people whose name contains different letters in the end or missing "i" etc.
         representative = cls.objects.filter(
-            Q(names__name_ka__startswith=firstname_first.split()[0]) & #firstname
-            Q(names__name_ka__endswith=firstname_first.split()[-1]) | #lastname
+            Q(names__name_ka__startswith=firstname_first.split()[0]) &  # firstname
+            Q(names__name_ka__endswith=firstname_first.split()[-1]) |  # lastname
 
             Q(names__name_en__startswith=firstname_first.split()[0]) &
             Q(names__name_en__endswith=firstname_first.split()[-1]) |
@@ -265,15 +280,12 @@ class Representative(Person):
         except IndexError:
             return None
 
-
     @classmethod
-    def _find_lastname_first(cls, name, lang):
+    def _find_lastname_first(cls, name):
         """Find a representative with given name lastname first.
 
         @param name: name of the representative
         @type name: str
-        @param lang: user language
-        @type lang: str
         @return: representative matching the name
         @rtype: representative.Representative
         """
@@ -283,8 +295,8 @@ class Representative(Person):
         # Find rep whose name starts with Firstname and ends with lastname.
         # This is good for people whose name contains different letters in the end or missing "i" etc.
         representative = cls.objects.filter(
-            Q(names__name_ka__startswith=lastname_first.split()[0]) & #lastname
-            Q(names__name_ka__endswith=lastname_first.split()[1]) | #firstname
+            Q(names__name_ka__startswith=lastname_first.split()[0]) &  # lastname
+            Q(names__name_ka__endswith=lastname_first.split()[1]) |  # firstname
 
             Q(names__name_en__startswith=lastname_first.split()[0]) &
             Q(names__name_en__endswith=lastname_first.split()[1]) |
@@ -296,7 +308,6 @@ class Representative(Person):
             return representative[0]
         except IndexError:
             return None
-
 
     @classmethod
     def _find_startswith(cls, start):
@@ -312,8 +323,8 @@ class Representative(Person):
 
         startswith = start[:NAME_MINLEN]
         representative = cls.objects.filter(
-            Q(names__name_ka__istartswith=startswith) | \
-            Q(names__name_en__istartswith=startswith) | \
+            Q(names__name_ka__istartswith=startswith) |
+            Q(names__name_en__istartswith=startswith) |
             Q(names__name__istartswith=startswith)
         )
 
@@ -322,50 +333,53 @@ class Representative(Person):
         except IndexError:
             return None
 
-
     @classmethod
-    def find(cls, name, lang='ka', first='lastname'):
+    def find(cls, name, first='lastname'):
         """Find a representative with given name.
 
         @param name: name of the representative
-        @type name: str
-        @param lang: Language of input name
-        @type lang: str
+        @type name: unicode
         @param first: Set to 'lastname' if first word in input name is lastname and 'firstname' if it's firstname
         @type first: str
         @return: representative matching the name
         @rtype: representative.Representative
         """
 
-        if len(name) < NAME_MINLEN: return None
+        if len(name) < NAME_MINLEN:
+            return None
 
         name = cls._filter_name(name)
 
         representative = cls.objects.filter(
-            Q(names__name_ka__icontains=name) | \
-            Q(names__name_en__icontains=name) | \
+            Q(names__name_ka__icontains=name) |
+            Q(names__name_en__icontains=name) |
             Q(names__name__icontains=name)
         )
 
         if first == 'lastname':
-            representative = cls._find_firstname_first(name, lang)
-            if representative: return representative
-        elif first == 'firstname':
-            representative = cls._find_lastname_first(name, lang)
-            if representative: return representative
+            representative = cls._find_firstname_first(name)
+            if representative:
+                return representative
 
-        if representative: return representative[0]
+        elif first == 'firstname':
+            representative = cls._find_lastname_first(name)
+            if representative:
+                return representative
+
+        if representative:
+            return representative[0]
 
         splitname = name.split()
         representative = cls._find_startswith(splitname[0])
-        if representative: return representative
+        if representative:
+            return representative
 
         if len(splitname) > 1:
             representative = cls._find_startswith(splitname[-1])
-            if representative: return representative
+            if representative:
+                return representative
 
         return None
-
 
     @classmethod
     def by_lastname_firstname_first(cls, representatives=None):
@@ -381,7 +395,7 @@ class Representative(Person):
             'firstname_first': str
         }]
         """
-        if representatives is None: # != []
+        if representatives is None:
             representatives = cls.objects.all()
 
         by_lastname = []
@@ -402,7 +416,6 @@ class Representative(Person):
         return [p[1] for p in sorted(by_lastname, key=itemgetter(0))]
         #return [by_lastname[key] for key in sorted(by_lastname.keys())]
 
-
     @classmethod
     def by_lastname_lastname_first(cls, representatives=None, choices=False):
         """Sort given representatives by lastname and show lastname first.
@@ -419,7 +432,7 @@ class Representative(Person):
         }]
 
         """
-        if representatives is None: # != []
+        if representatives is None:
             representatives = cls.objects.all()
 
         by_lastname = []
@@ -445,6 +458,19 @@ class Representative(Person):
 
     @property
     def income(self):
+        """
+        Income of representative
+        @return: Dictionary with income values
+        @rtype: {
+        'total' : int,
+        'base' : int
+        'entrepreneurial': int,
+        'main': int,
+        'incomeyear': int,
+        'latestsubmissionyear': int,
+        'declarationid': int
+        }
+        """
         #try:
         #    base = int(settings.BASE_INCOME[self.unit.short])
         #except (AttributeError, KeyError, ValueError):
@@ -472,12 +498,22 @@ class Representative(Person):
 
     @property
     def assets_list(self):
+        """
+        List of assets of representative
+        @return: List with assets
+        @rtype: list
+        """
         if self.property_assets:
             return self.property_assets.split(';')
         return None
 
-
     def save(self, *args, **kwargs):
+        """
+        Update save method in order to enforce slug in default language
+        @param args:
+        @param kwargs:
+        @return:
+        """
         # enforce rewriting of slug in default language
         lang = get_language()
         activate(settings.LANGUAGE_CODE)
@@ -488,6 +524,9 @@ class Representative(Person):
 
 
 class AdditionalInformation(models.Model):
+    """
+    Additional information for representative
+    """
     #: representative this info belongs to
     representative = models.ForeignKey(Representative,
                                        related_name='additional_information', null=True,
@@ -533,7 +572,8 @@ class FamilyIncome(models.Model):
     fam_gender = models.TextField(blank=True, null=True, help_text=_('Gender of family member'))
     #: age
     fam_date_of_birth = models.DateField(blank=True, null=True, help_text=_('Date of Birth'))
-    #: Total income  = sum of paid work and entrepeneurial income in GEL and USD with dollars converted using 1.65 exchange rate
+    #: Total income  = sum of paid work and entrepeneurial income in GEL and USD with dollars converted using 1.65
+    # exchange rate
     fam_income = models.IntegerField(default=0, blank=True, null=True, help_text=_('Total Income of family member'))
     #: cars
     fam_cars = models.TextField(blank=True, null=True, help_text=_('Cars owned by family member'))
@@ -603,9 +643,13 @@ class RandomRepresentative(models.Model):
     representative = models.ForeignKey(Representative,
                                        null=True, help_text=_('Random Representative'))
 
-
     @classmethod
     def get(cls):
+        """
+        Gets current random representative or generates and returns new one if current one is older than 1 day
+        @return: Random representative
+        @rtype: class
+        """
         now = datetime.datetime.utcnow().replace(tzinfo=utc)
         date_set = datetime.datetime(
             now.year, now.month, now.day, 0, 0).replace(tzinfo=utc)
@@ -630,7 +674,6 @@ class RandomRepresentative(models.Model):
             rr.save()
 
         return rr.representative
-
 
     def __unicode__(self):
         if self.representative:
