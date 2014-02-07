@@ -47,7 +47,7 @@ class Command (BaseCommand):
             done = int(done * 100) / 100.0
             out = 'Done: {0}%. Result for {1}'.format(done, record_number_encoded)
 
-            result.representative = Representative.find(result.name)
+            result.representative = Representative.find(result.name, 'lastname')
 
             if result.representative:
                 out += ' got representative {0}'.format(name_encoded)

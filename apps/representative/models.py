@@ -11,7 +11,6 @@ from operator import itemgetter
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
-from django.db.utils import DatabaseError
 
 try:
     # SIGH! this is Django 1.4 which spits out warnings otherwise
@@ -24,7 +23,7 @@ from django.utils.translation import activate, get_language, ugettext as _
 from django.template.defaultfilters import slugify
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 
-import glt
+from shenmartav import glt
 from apps.popit.models import Person, Organisation
 
 
@@ -238,7 +237,7 @@ class Representative(Person):
                                    help_text=_('Terms during which Representative was part of a Unit.'))
     #: asset declaration id submitted by representative
     declaration_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
-    #: submission date - asset declaration 
+    #: submission date - asset declaration
     submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
     #: Representative's entrepreneurial salary
     entrepreneurial_salary = models.FloatField(default=0, blank=True, null=True,
@@ -283,8 +282,8 @@ class Representative(Person):
         # Find rep whose name starts with Firstname and ends with lastname.
         # This is good for people whose name contains different letters in the end or missing "i" etc.
         representative = cls.objects.filter(
-            Q(names__name_ka__startswith=firstname_first.split()[0]) &  # firstname
-            Q(names__name_ka__endswith=firstname_first.split()[-1]) |  # lastname
+            Q(names__name_ka__startswith=firstname_first.split()[0]) & # firstname
+            Q(names__name_ka__endswith=firstname_first.split()[-1]) | # lastname
 
             Q(names__name_en__startswith=firstname_first.split()[0]) &
             Q(names__name_en__endswith=firstname_first.split()[-1]) |
@@ -312,8 +311,8 @@ class Representative(Person):
         # Find rep whose name starts with Firstname and ends with lastname.
         # This is good for people whose name contains different letters in the end or missing "i" etc.
         representative = cls.objects.filter(
-            Q(names__name_ka__startswith=lastname_first.split()[0]) &  # lastname
-            Q(names__name_ka__endswith=lastname_first.split()[1]) |  # firstname
+            Q(names__name_ka__startswith=lastname_first.split()[0]) & # lastname
+            Q(names__name_ka__endswith=lastname_first.split()[1]) | # firstname
 
             Q(names__name_en__startswith=lastname_first.split()[0]) &
             Q(names__name_en__endswith=lastname_first.split()[1]) |
@@ -351,7 +350,7 @@ class Representative(Person):
             return None
 
     @classmethod
-    def find(cls, name, first='lastname'):
+    def find(cls, name, first=None):
         """Find a representative with given name.
 
         @param name: name of the representative
@@ -361,42 +360,34 @@ class Representative(Person):
         @return: representative matching the name
         @rtype: representative.Representative
         """
-
-        if len(name) < NAME_MINLEN:
-            return None
-
         name = cls._filter_name(name)
 
-        representative = cls.objects.filter(
-            Q(names__name_ka__icontains=name) |
-            Q(names__name_en__icontains=name) |
-            Q(names__name__icontains=name)
-        )
+        if len(name) < NAME_MINLEN:
+            representative = None
 
-        if first == 'lastname':
+        elif first == 'lastname':
             representative = cls._find_firstname_first(name)
-            if representative:
-                return representative
 
         elif first == 'firstname':
             representative = cls._find_lastname_first(name)
-            if representative:
-                return representative
 
-        if representative:
-            return representative[0]
+        else:
+            representative = cls._find_lastname_first(name)
+            if representative is None:
+                representative = cls._find_firstname_first(name)
 
-        splitname = name.split()
-        representative = cls._find_startswith(splitname[0])
         if representative:
             return representative
-
-        if len(splitname) > 1:
-            representative = cls._find_startswith(splitname[-1])
+        else:
+            representative = cls.objects.filter(
+                Q(names__name_ka__icontains=name) |
+                Q(names__name_en__icontains=name) |
+                Q(names__name__icontains=name)
+            )
             if representative:
                 return representative
-
-        return None
+            else:
+                return None
 
     @classmethod
     def by_lastname_firstname_first(cls, representatives=None):
@@ -577,12 +568,12 @@ class FamilyIncome (models.Model):
 
 class FamilyIncome(models.Model):
     """A list of details regarding MP's family income"""
-    #: ID of the representative whose family income is related to. 
+    #: ID of the representative whose family income is related to.
     representative = models.ForeignKey(Representative, related_name='family_income', blank=False, null=True,
                                        help_text=_('Family Income'))
     #: ID of Asset declaration document
     ad_id = models.IntegerField(default=0, blank=True, null=True, help_text=_('Asset Declaration Id'))
-    #: submission date - asset declaration 
+    #: submission date - asset declaration
     submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
     #: Names
     fam_name = models.TextField(blank=True, null=True, help_text=_('Name of family member'))
