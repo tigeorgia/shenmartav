@@ -36,9 +36,12 @@
                 <select id="filter-party"></select>
                 <select class="hidden" id="hidden-all"><option class="unit-all" value="all">{% trans 'All' %}</option></select>
               	<select class="hidden" id="hidden-{{ ushort }}">
-              		{% for p in parties %}
-              			<option class="unit-{{ ushort }} party-{{ p.acronym }}" value="party-{{ p.acronym }}">{{ p.name }}</option>
-              		{% endfor %}
+              		{% for c in cabinets %}
+                        <option class="unit-{{ ushort }} cabinet-{{ c.short }}" value="cabinet-{{ c.short }}">{{ c.name }}</option>
+                        {% for f in c.factions.all %}
+                            <option class="unit-{{ ushort }} faction-{{ f.short }}" value="faction-{{ f.short }}">--{{ f.name }}</option>
+                        {% endfor %}
+                    {% endfor %}
               	</select>
             </div>
         </div>

@@ -100,9 +100,9 @@ class Search (TemplateView):
             Q(committee__icontains=query) |
             Q(committee_en__icontains=query) |
             Q(committee_ka__icontains=query) |
-            Q(faction__icontains=query) |
-            Q(faction_en__icontains=query) |
-            Q(faction_ka__icontains=query) |
+            Q(faction__name__icontains=query) |
+            Q(faction__name_en__icontains=query) |
+            Q(faction__name_ka__icontains=query) |
             Q(additional_information__value__icontains=query) |
             Q(additional_information__value_en__icontains=query) |
             Q(additional_information__value_ka__icontains=query)
@@ -168,28 +168,19 @@ class Unit (TemplateView):
 
         return members
 
-    def _get_parties(self):
-        """Get parties in this unit.
+    def _get_cabinets(self):
+        """Get cabinets.
 
-        @return: parties in this unit
-        @rtype: [ representative.Party ]
+        @return: cabinets
+        @rtype: [ representative.Cabinet ]
         """
-        # UnitParliament -> parliament
         short = self.__class__.__name__.lower()[4:]
         try:
-            unit = UnitModel.objects.get(short=short)
-        except UnitModel.DoesNotExist:
-            return []
-
-        try:
-            reps = unit.active_term.representatives.all()
-            #parties = Party.objects.filter(representatives__in=reps).distinct()
-            parties = Cabinet.objects.distinct()
-
+            cabinets = Cabinet.objects.distinct()
         except AttributeError:
             return []
             
-        return parties
+        return cabinets
     
     def _get_factions(self):
         """Get factions in this unit.
@@ -215,9 +206,7 @@ class Unit (TemplateView):
 
     def get_context_data (self, **kwargs):
         context = super(Unit, self).get_context_data(**kwargs)
-        context['members'] = self._get_members()
-        context['factions'] = self._get_factions()
-        context['parties'] = self._get_parties()
+        context['cabinets'] = self._get_cabinets()
         return context
 
 
