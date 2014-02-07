@@ -108,7 +108,7 @@
         			<ul>
 					{% for link in sociallinks %}
 							{% if link.label|slice:":5" != 'Asset' %}
-			            		<li>{{ link.label }}: <a href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
+			            		<li><a href="{{ link.url }}" target="_blank">{{ link.label }}</a></li>
 			            	{% endif %}
 					{% endfor %}
 					</ul>
