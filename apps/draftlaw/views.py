@@ -181,7 +181,6 @@ class Items (TemplateView):
     def get_context_data (self, **kwargs):
         context = super(Items, self).get_context_data(**kwargs)
         context['draftlaws'] = self._get_draftlaws(context['params'])
-        print context
         return context
 
 

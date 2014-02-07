@@ -499,21 +499,30 @@ class Representative(Person):
             mpincome = self.declarationtotalincome.all()[0]
         except IndexError:
             mpincome = 0
-        entrepreneurial = int(mpincome.ad_entrepreneurial_income)
+        
+        #entrepreneurial = int(mpincome.ad_entrepreneurial_income)
+        main = self.main_salary
+        entrepreneurial = self.entrepreneurial_salary
 
-        incomeyear = mpincome.ad_submission_date.year - 1
-        submissionyear = mpincome.ad_submission_date.year
+        #incomeyear = mpincome.ad_submission_date.year - 1
+        incomeyear = self.submission_date.year - 1
+                
+        #submissionyear = mpincome.ad_submission_date.year
+        submissionyear = self.submission_date.year
+        
+        declarationid = self.declaration_id
+        
         #if entrepreneurial < 0:
         #entrepreneurial = int(self.salary) # salary in declaration doesn't include base
 
         return {
-            'total': int(base + entrepreneurial + mpincome.ad_paid_work_income),
+            'total': int(main + entrepreneurial),
             'base': base,
             'entrepreneurial': entrepreneurial,
-            'main': int(mpincome.ad_paid_work_income),
+            'main': main,
             'incomeyear': incomeyear,
             'latestsubmissionyear': submissionyear,
-            'declarationid': int(mpincome.ad_id),
+            'declarationid': declarationid,
         }
 
     @property
