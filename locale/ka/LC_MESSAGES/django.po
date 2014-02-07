@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-04 18:05+0400\n"
+"POT-Creation-Date: 2014-02-07 14:53+0400\n"
 "PO-Revision-Date: 2013-10-06 13:42+0400\n"
 "Last-Translator: chris bell <chris@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -23,19 +23,19 @@ msgstr ""
 msgid "Search App"
 msgstr "საძიებო აპლიკაცია"
 
-#: distsettings.py:196
+#: distsettings.py:199
 msgid "Simple Template"
 msgstr "მარტივი ნიმუში"
 
-#: distsettings.py:197
+#: distsettings.py:200
 msgid "Home Template"
 msgstr "საწყისი ნიმუში"
 
-#: settings.py:45
+#: settings.py:47
 msgid "English"
 msgstr "ინგლისური"
 
-#: settings.py:46
+#: settings.py:48
 msgid "Georgian"
 msgstr "ქართული"
 
@@ -470,7 +470,7 @@ msgstr "მიღებული კანონის ნომერი"
 #: apps/draftlaw/templates/draftlaw/detail.html:54
 #: apps/draftlaw/templates/draftlaw/detail.html:74
 #: apps/draftlaw/templates/draftlaw/info.html:11
-#: apps/votingrecord/models.py:64 apps/votingrecord/models.py:130
+#: apps/votingrecord/models.py:65 apps/votingrecord/models.py:160
 msgid "Voting Record"
 msgstr "კენჭისყრის შედეგები"
 
@@ -662,8 +662,8 @@ msgstr "კანონპროექტის ძიება"
 msgid "Title"
 msgstr "სათაური"
 
-#: apps/draftlaw/templates/draftlaw/info.html:5 apps/votingrecord/models.py:34
-#: apps/votingrecord/models.py:133
+#: apps/draftlaw/templates/draftlaw/info.html:5 apps/votingrecord/models.py:35
+#: apps/votingrecord/models.py:163
 msgid "Bill Number"
 msgstr "კანონპროექტის ნომერი"
 
@@ -835,13 +835,13 @@ msgstr "გვარი"
 
 #: apps/incomedeclaration/models.py:181
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:90
-#: apps/representative/models.py:147
+#: apps/representative/models.py:207
 msgid "Place of Birth"
 msgstr "დაბადების ადგილი"
 
 #: apps/incomedeclaration/models.py:183
 #: apps/incomedeclaration/templates/incomedeclaration/detail.html:91
-#: apps/representative/models.py:509
+#: apps/representative/models.py:603
 msgid "Date of Birth"
 msgstr "დაბადების თარიღი"
 
@@ -853,8 +853,8 @@ msgstr "კავშირი დეპუტატთან"
 msgid "Relation to Giver"
 msgstr "კავშირი გამცემთან"
 
-#: apps/incomedeclaration/models.py:224 apps/representative/models.py:180
-#: apps/representative/models.py:499
+#: apps/incomedeclaration/models.py:224 apps/representative/models.py:240
+#: apps/representative/models.py:593
 #, fuzzy
 msgid "Asset Declaration Id"
 msgstr "შემოსავლების დეკლარაციის ID"
@@ -964,8 +964,8 @@ msgstr "შემოსავლების დეკლარაციებ�
 #: apps/question/forms.py:54 apps/question/models.py:208
 #: apps/question/templates/question/leaderboard.html:20
 #: apps/question/templates/question/list.html:42
-#: apps/representative/models.py:468 apps/representative/models.py:521
-#: apps/representative/models.py:565
+#: apps/representative/models.py:562 apps/representative/models.py:616
+#: apps/representative/models.py:660
 msgid "Representative"
 msgstr "წარმომადგენელი"
 
@@ -1869,245 +1869,274 @@ msgstr ""
 "დეკლარაციის ბმული: %(income_declaration)s|პასუხგაცემული შეკითხვები: "
 "%(answered)s%%"
 
-#: apps/representative/models.py:37 apps/representative/models.py:39
+#: apps/representative/models.py:38 apps/representative/models.py:40
 msgid "When term started"
 msgstr "როდის დაიწყო პერიოდი"
 
-#: apps/representative/models.py:42
+#: apps/representative/models.py:43
 msgid "Name of this term"
 msgstr "ამ პერიოდის დასახელება"
 
-#: apps/representative/models.py:52
+#: apps/representative/models.py:53
 msgid "Acronym of this Party"
 msgstr "ამ პარტიის აკრონიმი"
 
-#: apps/representative/models.py:55
+#: apps/representative/models.py:56
 msgid "URL of this Party"
 msgstr "ამ წარმომადგენლის URL"
 
-#: apps/representative/models.py:59
+#: apps/representative/models.py:60
 msgid "Party logo"
 msgstr "პარტიის ლოგო"
 
-#: apps/representative/models.py:66
+#: apps/representative/models.py:68
+#, fuzzy
+msgid "Name of the cabinet"
+msgstr "ბანკის დასახელება"
+
+#: apps/representative/models.py:71
+#, fuzzy
+msgid "Short Name of the cabinet, as used in e.g. CSS"
+msgstr ""
+"საკანონმდებლო ორგანოს მოკლე სახელწოდება, როგორც გამოყენებულია, მაგალითად, "
+"CSS-ში."
+
+#: apps/representative/models.py:98
+#, fuzzy
+msgid "Name of the faction"
+msgstr "ბანკის დასახელება"
+
+#: apps/representative/models.py:101
+#, fuzzy
+msgid "Short Name of the faction, as used in e.g. CSS"
+msgstr ""
+"საკანონმდებლო ორგანოს მოკლე სახელწოდება, როგორც გამოყენებულია, მაგალითად, "
+"CSS-ში."
+
+#: apps/representative/models.py:104
+msgid "Cabinet this faction belongs to"
+msgstr ""
+
+#: apps/representative/models.py:114
 msgid "Name of the Unit."
 msgstr "საკანონმდებლო ორგანოს დასახელება"
 
-#: apps/representative/models.py:69
+#: apps/representative/models.py:117
 msgid "Short Name of the Unit, as used in e.g. CSS"
 msgstr ""
 "საკანონმდებლო ორგანოს მოკლე სახელწოდება, როგორც გამოყენებულია, მაგალითად, "
 "CSS-ში."
 
-#: apps/representative/models.py:72
+#: apps/representative/models.py:120
 msgid "Parties in this unit"
 msgstr "პარტიები ამ საკანონმდებლო ორგანოში"
 
-#: apps/representative/models.py:76
+#: apps/representative/models.py:124
 msgid "The Unit's active term."
 msgstr "ერთეულის აქტიური პერიოდი."
 
-#: apps/representative/models.py:80
+#: apps/representative/models.py:128
 msgid "Past or just inactive terms served in this Unit."
 msgstr "ერთეულში გატარებული გასული ან არააქტიური პერიოდები."
 
-#: apps/representative/models.py:112
+#: apps/representative/models.py:171
 msgid "male"
 msgstr "მამრობითი"
 
-#: apps/representative/models.py:113
+#: apps/representative/models.py:172
 msgid "female"
 msgstr "მდედრობითი"
 
-#: apps/representative/models.py:114
+#: apps/representative/models.py:173
 msgid "other"
 msgstr "სხვა"
 
-#: apps/representative/models.py:123
+#: apps/representative/models.py:182
 msgid "Personal Photo"
 msgstr "პირადი ფოტოსურათი"
 
-#: apps/representative/models.py:126
+#: apps/representative/models.py:185
 msgid "Party Membership"
 msgstr "შესაბამისი პარტია"
 
-#: apps/representative/models.py:129
+#: apps/representative/models.py:188
 msgid "Unit Membership"
 msgstr "შესაბამისი საკანონმდებლო ორგანო"
 
-#: apps/representative/models.py:132
+#: apps/representative/models.py:191
 msgid "Committee Membership"
 msgstr "შესაბამისი კომიტეტი"
 
-#: apps/representative/models.py:135
-msgid "Faction Membership"
+#: apps/representative/models.py:194
+#, fuzzy
+msgid "Faction membership"
 msgstr "შესაბამისი ფრაქცია"
 
-#: apps/representative/models.py:138
+#: apps/representative/models.py:198
 msgid "Is Majoritarian?"
 msgstr "მაჟორიტარია?"
 
-#: apps/representative/models.py:141
+#: apps/representative/models.py:201
 msgid "Electoral District (if Majoritarian)"
 msgstr "საარჩევნო ოლქი (მაჟორიტარის შემთხვევაში)"
 
-#: apps/representative/models.py:144
+#: apps/representative/models.py:204
 msgid "Date Elected"
 msgstr "არჩევის თარიღი"
 
-#: apps/representative/models.py:150
+#: apps/representative/models.py:210
 #: apps/representative/templates/representative/detail.html:158
 msgid "Family Status"
 msgstr "ოჯახური მდგომარეობა"
 
-#: apps/representative/models.py:153
+#: apps/representative/models.py:213
 #: apps/representative/templates/representative/detail.html:173
 msgid "Education"
 msgstr "განათლება"
 
-#: apps/representative/models.py:156
+#: apps/representative/models.py:216
 msgid "Contact Address / Phone Number"
 msgstr "საკონტაქტო ინფორმაცია"
 
-#: apps/representative/models.py:159
+#: apps/representative/models.py:219
 msgid "== Wages"
 msgstr "== ხელფასი"
 
-#: apps/representative/models.py:162
+#: apps/representative/models.py:222
 msgid "== Entrepreneurial Income"
 msgstr "= = სამეწარმო შემოსავალი"
 
-#: apps/representative/models.py:165
+#: apps/representative/models.py:225
 #: apps/representative/templates/representative/detail.html:122
 msgid "Expenses"
 msgstr "ხარჯები"
 
-#: apps/representative/models.py:168
+#: apps/representative/models.py:228
 #: apps/representative/templates/representative/detail.html:128
 msgid "Property & Assets"
 msgstr "ქონება და აქტივები"
 
-#: apps/representative/models.py:171
+#: apps/representative/models.py:231
 msgid "Percentage of Answered Questions on chemiparlamenti.ge"
 msgstr "შეკითხვებზე გაცემული პასუხების თანაფარდობა"
 
-#: apps/representative/models.py:174
+#: apps/representative/models.py:234
 msgid "Gender of the Representative"
 msgstr "წარმომადგენლის გენდერი"
 
-#: apps/representative/models.py:178
+#: apps/representative/models.py:238
 msgid "Terms during which Representative was part of a Unit."
 msgstr "პერიოდები, რომლის განმავლობაშიც წარმომადგენელი ერთეულის წევრი იყო."
 
-#: apps/representative/models.py:182 apps/representative/models.py:501
+#: apps/representative/models.py:242 apps/representative/models.py:595
 msgid "Asset Declaration submission date"
 msgstr ""
 
-#: apps/representative/models.py:185
+#: apps/representative/models.py:245
 #, fuzzy
 msgid "Representative entrepreneurial salary"
 msgstr "შეკითხვის ადრესატი დეპუტატი"
 
-#: apps/representative/models.py:187
+#: apps/representative/models.py:247
 #, fuzzy
 msgid "Representative income"
 msgstr "წარმომადგენლის პლაგინი"
 
-#: apps/representative/models.py:470
+#: apps/representative/models.py:564
 msgid "Additional Information"
 msgstr "დამატებითი ინფორმაცია"
 
-#: apps/representative/models.py:497
+#: apps/representative/models.py:591
 #: apps/representative/templates/representative/detail.html:164
 msgid "Family Income"
 msgstr "წლიური შემოსავალი"
 
-#: apps/representative/models.py:503
+#: apps/representative/models.py:597
 #, fuzzy
 msgid "Name of family member"
 msgstr "ამ პერიოდის დასახელება"
 
-#: apps/representative/models.py:505
+#: apps/representative/models.py:599
 msgid "Role of family member"
 msgstr ""
 
-#: apps/representative/models.py:507
+#: apps/representative/models.py:601
 msgid "Gender of family member"
 msgstr ""
 
-#: apps/representative/models.py:511
+#: apps/representative/models.py:606
 msgid "Total Income of family member"
 msgstr ""
 
-#: apps/representative/models.py:513
+#: apps/representative/models.py:608
 msgid "Cars owned by family member"
 msgstr ""
 
-#: apps/representative/models.py:523
+#: apps/representative/models.py:618
 msgid "Homepage"
 msgstr "მთავარი"
 
-#: apps/representative/models.py:524
+#: apps/representative/models.py:619
 msgid "Label for this Url, e.g. Homepage, Facebook, Twitter, etc."
 msgstr "სათაური ამ ლინკისთვის, მაგ: მთავარი გვერდი, Facebook, Twitter და სხვ."
 
-#: apps/representative/models.py:526
+#: apps/representative/models.py:621
 msgid "The URL"
 msgstr "სრული ტექსტის URL"
 
-#: apps/representative/models.py:533
+#: apps/representative/models.py:628
 msgid "very low"
 msgstr "ძალიან დაბალი"
 
-#: apps/representative/models.py:534
+#: apps/representative/models.py:629
 msgid "low"
 msgstr "დაბალი"
 
-#: apps/representative/models.py:535
+#: apps/representative/models.py:630
 msgid "ordinary"
 msgstr "ჩვეულებრივი"
 
-#: apps/representative/models.py:536
+#: apps/representative/models.py:631
 msgid "high"
 msgstr "მაღალი"
 
-#: apps/representative/models.py:537
+#: apps/representative/models.py:632
 msgid "very high"
 msgstr "ძალიან მაღალი"
 
-#: apps/representative/models.py:545
+#: apps/representative/models.py:640
 msgid "Number of Attended Votes"
 msgstr "დამსწრე ხმების რაოდენობა"
 
-#: apps/representative/models.py:548
+#: apps/representative/models.py:643
 msgid "Pre-calculated Percentage of Attended Votes"
 msgstr "დამსწრე ხმების წინასწარ გამოთვლილი პროცენტი"
 
-#: apps/representative/models.py:551
+#: apps/representative/models.py:646
 msgid "Number of Absent Votes"
 msgstr "არდამსწრე ხმების რაოდენობა"
 
-#: apps/representative/models.py:554
+#: apps/representative/models.py:649
 msgid "Pre-calculated Percentage of Absent Votes"
 msgstr "არდამსწრე ხმების წინასწარ გამოთვლილი პროცენტი"
 
-#: apps/representative/models.py:557
+#: apps/representative/models.py:652
 msgid "Number of Pre-calculated Total Votes"
 msgstr "საერთო ხმების წინასწარ გამოთვლილი რაოდენობა"
 
-#: apps/representative/models.py:561
+#: apps/representative/models.py:656
 msgid "Voting Attendance in Relation to other Representatives"
 msgstr "დასწრება სხვა წარმომადგენლებთან შედარებით"
 
-#: apps/representative/models.py:575
+#: apps/representative/models.py:670
 msgid "When random representative was set"
 msgstr "როდის იქნა შემთხვევითი წარმომადგენელი დადგენილი"
 
-#: apps/representative/models.py:578
+#: apps/representative/models.py:673
 msgid "Random Representative"
 msgstr "შემთხვევითი წარმომადგენელი"
 
-#: apps/representative/models.py:613
+#: apps/representative/models.py:711
 msgid "Unknown"
 msgstr "უცნობი"
 
@@ -2143,8 +2172,8 @@ msgid "Voting attendance"
 msgstr "კენჭისყრაზე დასწრება"
 
 #: apps/representative/templates/representative/attendance.html:5
-msgid "This representative has not attended any sessions yet."
-msgstr "წარმომადგენელი ამ დრომდე არც ერთ სესიას არ დასწრებია."
+msgid "The voting records of this representative are not available yet."
+msgstr "მოცემული პარლამენტარისთვის ხმის მიცემის ჩანაწერები ჯერჯერობით ხელმიუწვდომელია."
 
 #: apps/representative/templates/representative/attendance.html:7
 #: apps/representative/templates/representative/best-worst-attendance.html:6
@@ -2408,7 +2437,7 @@ msgstr "დასწრება"
 msgid "Electoral Subject"
 msgstr "საარჩევნო სუბიექტი"
 
-#: apps/representative/templates/representative/find.html:45
+#: apps/representative/templates/representative/find.html:48
 #, python-format
 msgid "Try <a href=\"%(url_search)s\">full-text search</a>."
 msgstr "სცადეთ <a href=\"%(url_search)s\">full-text search</a>."
@@ -2471,7 +2500,7 @@ msgid "Results"
 msgstr "შედეგები"
 
 #: apps/representative/templates/representative/votingrecords.html:13
-#: apps/votingrecord/models.py:151
+#: apps/votingrecord/models.py:181
 #: apps/votingrecord/templates/votingrecord/detail.html:16
 #: apps/votingrecord/templates/votingrecord/list.html:8
 #: apps/votingrecord/templates/votingrecord/list.html:12
@@ -2675,39 +2704,39 @@ msgstr "კენჭისყრის შედეგების აპლი�
 msgid "Voting Record Plugin"
 msgstr "კენჭისყრის შედეგების პლაგინი"
 
-#: apps/votingrecord/models.py:19
+#: apps/votingrecord/models.py:20
 msgid "kan ID"
 msgstr "კან ID"
 
-#: apps/votingrecord/models.py:28
+#: apps/votingrecord/models.py:29
 msgid "Name of the Bill"
 msgstr "კანონპროექტის სახელწოდება"
 
-#: apps/votingrecord/models.py:30
+#: apps/votingrecord/models.py:31
 msgid "Date of Voting"
 msgstr "კენჭისყრის თარიღი"
 
-#: apps/votingrecord/models.py:32
+#: apps/votingrecord/models.py:33
 msgid "URL of the Voting Record"
 msgstr "კენჭისყრის შედეგების URL"
 
-#: apps/votingrecord/models.py:38
+#: apps/votingrecord/models.py:39
 msgid "Amended by these Voting Records"
 msgstr "კენჭისყრის შედეგების მიერ შესწორებული"
 
-#: apps/votingrecord/models.py:69
+#: apps/votingrecord/models.py:74
 msgid "Vote Value"
 msgstr "ხმის წონა"
 
-#: apps/votingrecord/models.py:72
+#: apps/votingrecord/models.py:77
 msgid "Representative's Name"
 msgstr "დეპუტატის სახელი"
 
-#: apps/votingrecord/models.py:76
+#: apps/votingrecord/models.py:81
 msgid "Representative voting on this"
 msgstr "ხმის მიმცემი დეპუტატი"
 
-#: apps/votingrecord/models.py:79
+#: apps/votingrecord/models.py:84
 msgid "CSS class for color display"
 msgstr "CSS კლასი ფერადი ჩვენებისთვის"
 
@@ -3075,6 +3104,9 @@ msgstr "წინა"
 #: templates/search/search.html:33
 msgid "Next"
 msgstr "შემდეგი"
+
+#~ msgid "This representative has not attended any sessions yet."
+#~ msgstr "წარმომადგენელი ამ დრომდე არც ერთ სესიას არ დასწრებია."
 
 #, fuzzy
 #~ msgid "Family income details"
