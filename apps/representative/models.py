@@ -495,7 +495,10 @@ class Representative(Person):
         # New MPs haven't been in Parliament for more than one year,
         # so can't calculate their base salary accurately.
         base = 0
-        mpincome = self.declarationtotalincome.all()[0]
+        try:
+            mpincome = self.declarationtotalincome.all()[0]
+        except IndexError:
+            mpincome = 0
         entrepreneurial = int(mpincome.ad_entrepreneurial_income)
 
         incomeyear = mpincome.ad_submission_date.year - 1
