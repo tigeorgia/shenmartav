@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from django_date_extensions.fields import ApproximateDateField
 
-from popit.models import ModelBase, DataKey, Data, date_help_text, CodeType
+from apps.popit.models import ModelBase, DataKey, Data, date_help_text, CodeType
 
 
 class Person(ModelBase):
