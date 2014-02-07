@@ -38,7 +38,10 @@ class FactionAdmin (TranslationAdmin):
 admin.site.register(Faction, FactionAdmin)
 
 class CabinetAdmin (TranslationAdmin):
-    search_fields = ['name_en', 'name_ka']
+    list_display = ['name', 'position']
+    list_editable = ['position']
+    search_fields = ['name_en', 'name_ka', 'position']
+
 admin.site.register(Cabinet, CabinetAdmin)
 
 class UnitAdmin (TranslationAdmin):

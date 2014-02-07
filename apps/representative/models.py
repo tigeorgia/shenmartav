@@ -11,6 +11,7 @@ from operator import itemgetter
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
+from django.db.utils import DatabaseError
 
 try:
     # SIGH! this is Django 1.4 which spits out warnings otherwise
@@ -68,6 +69,22 @@ class Cabinet(models.Model):
 
     short = models.CharField(max_length=32, blank=False, null=False,
                              help_text=_('Short Name of the cabinet, as used in e.g. CSS'))
+    position = models.IntegerField(default=None, blank=True, null=True)
+
+    class Meta(object):
+        ordering = ['position']
+
+    def save(self, *args, **kwargs):
+        model = self.__class__
+
+        if self.position is None:
+            last_position = model.objects.all().order_by('position')[0].position
+            if last_position is None:
+                self.position = 0
+            else:
+                self.position = last_position + 1
+
+        return super(Cabinet, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return u'%s' % self.name
