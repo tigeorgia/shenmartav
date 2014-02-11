@@ -69,9 +69,9 @@
 		        	<ul>
 		        		
 		        		{% if LANGUAGE_CODE == "en" %}
-		        			<u><a href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a></u>
+		        			<a class="mplink" href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
 		        		{% else %}
-		        			<u><a href="https://declaration.gov.ge/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a></u>
+		        			<a class="mplink" href="https://declaration.gov.ge/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
 		        		{% endif %}
 		        	</ul>
 		        </div></td>
@@ -86,7 +86,7 @@
 	        		<td>
 	        			<ul>
 							{% for link in assetlinks %}
-		            			<li>{{ link.label }}: <a href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
+		            			<li>{{ link.label }}: <a class="mplink" href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
 							{% endfor %}
 						</ul>
 					</td>
@@ -97,7 +97,7 @@
 					{% if link.label == "Parliament.ge" %}
 				        <tr>
 				            <td>{{ link.label }}</td>
-				            <td><a href="{{ link.url }}">{% trans 'Parliament.ge' %}</a></td>
+				            <td><a class="mplink" href="{{ link.url }}">{% trans 'Parliament.ge' %}</a></td>
 				        </tr>
 			        {% endif %}
 				{% endfor %}
@@ -108,7 +108,7 @@
 	        		<td>
 	        			<ul>
 						{% for link in sociallinks %}
-			            		<li><a href="{{ link.url }}" target="_blank">{{ link.label }}</a></li>
+			            		<li><a class="mplink" href="{{ link.url }}" target="_blank">{{ link.label }}</a></li>
 						{% endfor %}
 						</ul>
 					</td>
