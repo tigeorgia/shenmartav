@@ -77,47 +77,47 @@
 		        </div></td>
 		    </tr>
 		{% endif %}
-		{% if sociallinks %}
-        	<tr>
-        		<td>
-        			{% trans 'Past declarations' %}
-        		</td>
-        		<td>
-        			<ul>
-						{% for link in sociallinks %}
-							{% if link.label|slice:":5" == 'Asset' %}
-	            				<li>{{ link.label }}: <a href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
-	            			{% endif %}
-						{% endfor %}
-					</ul>
-				</td>
-        	</tr>
-        	{% if mainlinks %}
-				{% for link in mainlinks %}
+		{% if sociallinks or parliamentlink or assetlinks%}
+			{% if assetlinks %}
+	        	<tr>
+	        		<td>
+	        			{% trans 'Past declarations' %}
+	        		</td>
+	        		<td>
+	        			<ul>
+							{% for link in assetlinks %}
+		            			<li>{{ link.label }}: <a href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
+							{% endfor %}
+						</ul>
+					</td>
+	        	</tr>
+        	{% endif %}
+        	{% if parliamentlink %}
+				{% for link in parliamentlink %}
 					{% if link.label == "Parliament.ge" %}
 				        <tr>
 				            <td>{{ link.label }}</td>
-				            <td><a href="{{ link.url }}">{{ link.url }}</a></td>
+				            <td><a href="{{ link.url }}">{% trans 'Parliament.ge' %}</a></td>
 				        </tr>
 			        {% endif %}
 				{% endfor %}
 			{% endif %}
-        	<tr>
-        		<td>{% trans 'Links' %}</td>
-        		<td>
-        			<ul>
-					{% for link in sociallinks %}
-							{% if link.label|slice:":5" != 'Asset' %}
+			{% if sociallinks %}
+	        	<tr>
+	        		<td>{% trans 'Links' %}</td>
+	        		<td>
+	        			<ul>
+						{% for link in sociallinks %}
 			            		<li><a href="{{ link.url }}" target="_blank">{{ link.label }}</a></li>
-			            	{% endif %}
-					{% endfor %}
-					</ul>
-				</td>
-			</tr>
+						{% endfor %}
+						</ul>
+					</td>
+				</tr>
+			{% endif %}
 		{% endif %}
 		
 {% if decl %}        
-        {% if obj.expenses and expenses.split %}
+        {% if obj.expenses and obj.expenses.split %}
 	        <tr>
 	            <td>{% trans 'Expenses' %}</td>
 	            <td><a href="{{ decl.get_absolute_url }}#otherinclexpenses">{{ obj.expenses }}</a></td>

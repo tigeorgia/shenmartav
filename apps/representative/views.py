@@ -342,13 +342,20 @@ class Detail (DetailView):
             context['faminc'] = None
             
         try:
-            names_to_exclude = ["Facebook","Twitter","LinkedIn","Wikipedia","Asset Link"] 
-            context['mainlinks'] = obj.urls.all().exclude(label__in=names_to_exclude)
+            currentincomeyear = obj.income['latestsubmissionyear']
+            context['assetlinks'] = obj.urls.filter(label__contains="Asset").exclude(label__contains=currentincomeyear)
         except IndexError:
-            context['mainlinks'] = None
+            context['assetlinks'] = None
             
         try:
-            context['sociallinks'] = obj.urls.all().exclude(label__icontains="მთავარი")
+            names_to_exclude = ["Facebook","Twitter","LinkedIn","Wikipedia","Asset Link"] 
+            context['parliamentlink'] = obj.urls.all().exclude(label__in=names_to_exclude)
+        except IndexError:
+            context['parliamentlink'] = None
+            
+        try:
+            names_to_exclude = ["მთავარი","Homepage","Parliament.ge"]
+            context['sociallinks'] = obj.urls.all().exclude(label__in=names_to_exclude).exclude(label__contains="Asset")
         except IndexError:
             context['sociallinks'] = None
         
