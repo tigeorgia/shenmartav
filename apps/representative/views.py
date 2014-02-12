@@ -321,6 +321,11 @@ class Detail (DetailView):
             context['percentage_attended'] = context['attended'] / float(totalCount['total']) * 100
             context['percentage_absent'] = 100 - context['percentage_attended']
             context['percentage_attended_string'] = "{0:.2f}".format(context['percentage_attended'])
+            
+        
+        # Reformatting Contact phone and address information
+        contactitems = obj.contact_address_phone.split("; ")
+        context['contactaddress'] = [items.strip().replace("<p>","").replace("</p>","") for items in contactitems]
 
         #votecountall = VotingRecordResult.get_counts(representative=obj)
         #context['votecounts'] = votecountall

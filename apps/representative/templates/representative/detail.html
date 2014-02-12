@@ -163,8 +163,8 @@
         <tr>
             <td>{% trans 'Family Income' %}</td>
             <td>{{ faminc.fam_name }} ({{ faminc.fam_role }})<br />
-            	{{ faminc.fam_gender }}, born on {{ faminc.fam_date_of_birth }}<br />
-            	Income received: {{ faminc.fam_income }} GEL
+            	{{ faminc.fam_gender }}, {% trans 'born on' %} {{ faminc.fam_date_of_birth }}<br />
+            	{% trans 'Income received' %}: {{ faminc.fam_income }} GEL
             </td>
         </tr>
         {% endif %}
@@ -177,7 +177,13 @@
         {% if obj.contact_address_phone %}
         <tr>
             <td>{% trans 'Contact Address / Phone' %}</td>
-            <td>{{ obj.contact_address_phone }}</td>
+            <td>
+            	{% for contactitem in contactaddress %}
+            		{% if contactitem.split %}
+            			- {{ contactitem }}<br />
+            		{% endif %}
+            	{% endfor %}
+            </td>
         </tr>
         {% endif %}
         {% if obj.additional_information.all %}
