@@ -230,7 +230,8 @@
         {% endifequal %}</div>
         <div class="box" id="box-votecounts">{% ifequal unit 1 %}
             <div id="votecounts">
-                <div id="chart_div" style="width: 300px; height: 175px;"></div>
+                <label id="chart-voted-label" style="text-align: center;margin:0 auto;display:block;">{% trans 'Voted Laws' %}</label>
+                <div id="chart_div" style="width: 320px; height: 320px;"></div>
                 <div id="ask-question"><a href="{{ url_votingrecords }}">{% trans "View voting details" %}</a></div>
                 <!--<h2 class="heading">{% trans 'Vote Counts' %}</h2>
                 <div>{% trans 'In Favour' %}: <a href="{{ url_votingrecords }}#vote-yes" title="{% trans 'See votes in favour' %}">{{ votecounts.yes }}</a></div>
@@ -255,12 +256,16 @@
           ['{% trans 'Vote type' %}','{% trans 'Number of votes' %}'],
           ['{% trans 'In Favour' %}',{{ lawvotecounts.yes }}],
           ['{% trans 'Against' %}', {{ lawvotecounts.no }}],
-          ['{% trans 'Absent / Abstain' %}', {{ lawvotecounts.absent }}]
+          ['{% trans 'Abstain/Absent' %}', {{ lawvotecounts.absent }}]
         ]);
 
         var options = {
-          title: 'Voted laws',
-          colors: ['green','red','black','grey']
+          title: '',
+          colors: ['green','red','black','grey'],
+          backgroundColor: 'transparent',
+          legend: {position: 'right'},
+          vAxis: {maxValue: 10},
+          chartArea: {left: 15, top:10, width: '100%'}
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
