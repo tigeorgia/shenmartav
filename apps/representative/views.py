@@ -8,7 +8,7 @@ __docformat__ = 'epytext en'
 
 import json
 from django.core.urlresolvers import reverse
-from django.db.models import Q
+from django.db.models import Q, F
 from django.http import HttpResponse, Http404
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import DetailView, TemplateView, ListView
@@ -44,12 +44,12 @@ class Find (TemplateView):
         reps = unit.active_term.representatives.all()
         factions = Faction.objects.filter(representatives__in=reps).distinct()
         cabinets = Cabinet.objects.filter(faction__in=factions).distinct()
-        
+
         context['factions'] = factions
         context['cabinets'] = cabinets
         context['ushort'] = 'parliament'
-        
-        
+
+
         context['active_unit'] = context['obj'].unit.short
         context['url_feed'] = reverse('representative_feed_list')
         return context
@@ -179,9 +179,9 @@ class Unit (TemplateView):
             cabinets = Cabinet.objects.distinct()
         except AttributeError:
             return []
-            
+
         return cabinets
-    
+
     def _get_factions(self):
         """Get factions in this unit.
 
@@ -201,7 +201,7 @@ class Unit (TemplateView):
 
         except AttributeError:
             return []
-            
+
         return factions
 
     def get_context_data (self, **kwargs):
@@ -326,7 +326,7 @@ class Detail (DetailView):
         #context['votecounts'] = votecountall
         context['votecounts'] = VotingRecordResult.get_counts(representative=obj,session=3)
         context['lawvotecounts'] = VotingRecordResult.get_counts(representative=obj,lawcount=True)
-                        
+
         context['url_feed'] = reverse('representative_feed_detail', args=[obj.pk])
         context['url_votingrecords'] = reverse(
             'representative_votingrecords', args=[obj.pk, obj.slug])
@@ -334,31 +334,31 @@ class Detail (DetailView):
             context['decl'] = obj.incomedeclaration.all()[0]
         except IndexError:
             context['decl'] = None
-        
-            
+
+
         try:
             context['faminc'] = obj.family_income.all().order_by('-submission_date')[0]
         except IndexError:
             context['faminc'] = None
-            
+
         try:
             currentincomeyear = obj.income['latestsubmissionyear']
             context['assetlinks'] = obj.urls.filter(label__contains="Asset").exclude(label__contains=currentincomeyear)
         except IndexError:
             context['assetlinks'] = None
-            
+
         try:
-            names_to_exclude = ["Facebook","Twitter","LinkedIn","Wikipedia","Asset Link"] 
+            names_to_exclude = ["Facebook","Twitter","LinkedIn","Wikipedia","Asset Link"]
             context['parliamentlink'] = obj.urls.all().exclude(label__in=names_to_exclude)
         except IndexError:
             context['parliamentlink'] = None
-            
+
         try:
             names_to_exclude = ["მთავარი","Homepage","Parliament.ge"]
             context['sociallinks'] = obj.urls.all().exclude(label__in=names_to_exclude).exclude(label__contains="Asset")
         except IndexError:
             context['sociallinks'] = None
-        
+
         set_language_changer(self.request, obj.get_absolute_url)
         return context
 
@@ -371,8 +371,8 @@ def _get_votingrecord_results (representative):
     @return: list of dicts with voting record results
     @rtype: [{'css', 'vote', 'record', 'url', 'record__name'}]
     """
-    results = representative.votingresults.filter(session=3).values(
-        'css', 'vote', 'record','record__name','record__date').order_by('-record__date')
+    results = representative.votingresults.filter(session=F('totalsession')).values(
+        'css', 'vote', 'record','record__name','record__date', 'session', 'totalsession').order_by('-record__date', 'record').distinct()
     for r in results:
         r['url'] = reverse('votingrecord_detail', args=[r['record']])
 
