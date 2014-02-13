@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-11 17:34+0400\n"
-"PO-Revision-Date: 2014-02-11 17:42+0400\n"
+"POT-Creation-Date: 2014-02-13 15:37+0400\n"
+"PO-Revision-Date: 2014-02-13 16:02+0400\n"
 "Last-Translator: George <gio@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
 "Language: ka\n"
@@ -2196,13 +2196,13 @@ msgstr "მონაწილეობდა"
 
 #: apps/representative/templates/representative/best-worst-attendance.html:18
 #: apps/representative/templates/representative/best-worst-attendance.html:37
-#: apps/representative/templates/representative/detail.html:239
+#: apps/representative/templates/representative/detail.html:240
 #: apps/votingrecord/templates/votingrecord/detail.html:53
 #: apps/votingrecord/templates/votingrecord/detail.html:123
 #: apps/votingrecord/templates/votingrecord/detail.html:193
 #: templates/home.html:61
 msgid "Absent"
-msgstr "არ ესწრებოდა"
+msgstr "არ მონაწილეობდა"
 
 #: apps/representative/templates/representative/detail.html:31
 msgid "Electoral District"
@@ -2297,58 +2297,62 @@ msgstr "აქამდე არავის გაუგზავნია შ
 msgid "No Response"
 msgstr "გამოხმაურება არ არის"
 
-#: apps/representative/templates/representative/detail.html:234
+#: apps/representative/templates/representative/detail.html:233
+msgid "Voted Laws"
+msgstr "ხმის მიცემის სტატისტიკა"
+
+#: apps/representative/templates/representative/detail.html:235
 msgid "View voting details"
 msgstr "იხ. ხმის მიცემის დეტალები"
 
-#: apps/representative/templates/representative/detail.html:235
+#: apps/representative/templates/representative/detail.html:236
 msgid "Vote Counts"
 msgstr "კენჭისყრის ჩანაწერები"
 
-#: apps/representative/templates/representative/detail.html:236
-#: apps/representative/templates/representative/detail.html:256
+#: apps/representative/templates/representative/detail.html:237
+#: apps/representative/templates/representative/detail.html:257
 msgid "In Favour"
 msgstr "მხარი დაუჭირა"
 
-#: apps/representative/templates/representative/detail.html:236
+#: apps/representative/templates/representative/detail.html:237
 msgid "See votes in favour"
 msgstr "იხ. მომხრე ხმები"
 
-#: apps/representative/templates/representative/detail.html:237
-#: apps/representative/templates/representative/detail.html:257
+#: apps/representative/templates/representative/detail.html:238
+#: apps/representative/templates/representative/detail.html:258
 msgid "Against"
-msgstr "ხმა წინააღმდეგ მისცა"
+msgstr "მხარი არ დაუჭირა"
 
-#: apps/representative/templates/representative/detail.html:237
+#: apps/representative/templates/representative/detail.html:238
 msgid "See votes against"
 msgstr "იხ. მოწინააღმდეგე ხმები"
 
-#: apps/representative/templates/representative/detail.html:238
+#: apps/representative/templates/representative/detail.html:239
 #: apps/votingrecord/templates/votingrecord/detail.html:53
 #: apps/votingrecord/templates/votingrecord/detail.html:123
 #: apps/votingrecord/templates/votingrecord/detail.html:193
 msgid "Abstained"
 msgstr "თავი შეიკავა"
 
-#: apps/representative/templates/representative/detail.html:238
+#: apps/representative/templates/representative/detail.html:239
 msgid "See votes abstained"
 msgstr "იხ. რამდენმა შეიკავა თავი"
 
-#: apps/representative/templates/representative/detail.html:239
+#: apps/representative/templates/representative/detail.html:240
 msgid "See votes absent"
 msgstr "იხილეთ არდამსწრე ხმები"
 
-#: apps/representative/templates/representative/detail.html:255
+#: apps/representative/templates/representative/detail.html:256
 msgid "Vote type"
 msgstr "ხმის მიცემის ტიპი"
 
-#: apps/representative/templates/representative/detail.html:255
+#: apps/representative/templates/representative/detail.html:256
 msgid "Number of votes"
 msgstr "შეკითხვების რაოდენობა"
 
-#: apps/representative/templates/representative/detail.html:258
-msgid "Absent / Abstain"
-msgstr "არ იმყოფებოდა/თავი შეიკავა"
+#: apps/representative/templates/representative/detail.html:259
+msgid "Abstain/Absent"
+msgstr "თავი შეიკავა/არ იმყოფებოდა"
 
 #: apps/representative/templates/representative/find.html:15
 msgid "Filter"
