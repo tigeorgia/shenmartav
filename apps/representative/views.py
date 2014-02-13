@@ -324,8 +324,10 @@ class Detail (DetailView):
             
         
         # Reformatting Contact phone and address information
-        contactitems = obj.contact_address_phone.split("; ")
-        context['contactaddress'] = [items.strip().replace("<p>","").replace("</p>","") for items in contactitems]
+        context['contactaddress'] = ""
+        if obj.contact_address_phone:
+            contactitems = obj.contact_address_phone.split("; ")
+            context['contactaddress'] = [items.strip().replace("<p>","").replace("</p>","") for items in contactitems]
 
         #votecountall = VotingRecordResult.get_counts(representative=obj)
         #context['votecounts'] = votecountall

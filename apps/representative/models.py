@@ -496,11 +496,14 @@ class Representative(Person):
         entrepreneurial = self.entrepreneurial_salary
 
         #incomeyear = mpincome.ad_submission_date.year - 1
-        incomeyear = self.submission_date.year - 1
-                
+        incomeyear = 0
+        submissionyear = 0
+        if self.submission_date:
+            print self.submission_date
+            incomeyear = self.submission_date.year - 1
+            submissionyear = self.submission_date.year
         #submissionyear = mpincome.ad_submission_date.year
-        submissionyear = self.submission_date.year
-        
+         
         declarationid = self.declaration_id
         
         #if entrepreneurial < 0:
