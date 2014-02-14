@@ -301,16 +301,23 @@ def firstname_first (name):
         parts = name.strip().split(' ')
     if len(parts) < 2:
         return name
-
-    last = parts.pop(0).strip()
-    first = parts.pop().strip()
+    
+    last = ""
+    first = ""
+    if len(parts) == 3:
+        last = parts[0].strip()
+        first = parts[1].strip() + " " + parts[2].strip()
+    else:
+        last = parts.pop(0).strip()
+        first = parts.pop().strip()
+        
     if first not in KEEP_AS_IS:
         try:
             if first[-1] == u'ი': first = first[:-1]
         except IndexError:
             pass
 
-    if len(parts) > 0:
+    if len(parts) == 2:
         return '%s %s %s' % (first, ' '.join(parts), last)
     else:
         return '%s %s' % (first, last)
