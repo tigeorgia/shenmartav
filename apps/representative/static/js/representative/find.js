@@ -50,13 +50,12 @@ RepresentativeFind = {
         	
     		var namesplit = $(this).html().toLowerCase().split("a title=\"");
     		var namesplit2 = namesplit[1].split("\" href");
-    		var namssplit3 = namesplit2[0].split("\n");
+    		var namesplit3 = namesplit2[0].split(" ");
     		
-    		var firstname = namssplit3[0];
-    		var lastname = namssplit3[1];
+    		var firstname = namesplit3[0];
+    		var lastname = namesplit3[1];
     		var fullname = firstname+" "+lastname;
-
-        	
+    	
             if ($(this).hasClass('party-' + data) ||
                 firstname.indexOf(data) == 0 ||
                 lastname.indexOf(data) == 0 ||
