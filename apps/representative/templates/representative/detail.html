@@ -92,24 +92,23 @@
 					</td>
 	        	</tr>
         	{% endif %}
-        	{% if parliamentlink %}
-				{% for link in parliamentlink %}
-					{% if link.label == "Parliament.ge" %}
-				        <tr>
-				            <td>{{ link.label }}</td>
-				            <td><a class="mplink" href="{{ link.url }}">{% trans 'Parliament.ge' %}</a></td>
-				        </tr>
-			        {% endif %}
-				{% endfor %}
-			{% endif %}
-			{% if sociallinks %}
+			{% if sociallinks or parliamentlink %}
 	        	<tr>
 	        		<td>{% trans 'Links' %}</td>
 	        		<td>
 	        			<ul>
-						{% for link in sociallinks %}
-			            		<li><a class="mplink" href="{{ link.url }}" target="_blank">{{ link.label }}</a></li>
-						{% endfor %}
+	        			{% if parliamentlink %}
+		        			{% for link in parliamentlink %}
+								{% if link.label == "Parliament.ge" %}
+									<li><a class="mplink" href="{{ link.url }}" target="_blank">{% trans 'Parliament.ge' %}</a></li>
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+						{% if sociallinks %}
+							{% for link in sociallinks %}
+				            		<li><a class="mplink" href="{{ link.url }}" target="_blank">{{ link.label }}</a></li>
+							{% endfor %}
+						{% endif %}
 						</ul>
 					</td>
 				</tr>
