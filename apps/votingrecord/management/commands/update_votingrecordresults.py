@@ -56,9 +56,9 @@ class Command (BaseCommand):
                 with codecs.open('problematic_results.csv', 'a', 'utf-8-sig') as f:
                     f.write(u''.join(result.name) + ',' + str(result.record_id) + '\n')
 
-            if result.vote == u'დიახ':
+            if (result.vote == u'დიახ' or result.vote == "Yes"):
                 result.css = 'vote-yes'
-            elif result.vote == u'არა':
+            elif (result.vote == u'არა' or result.vote == "No"):
                 result.css = 'vote-no'
             elif result.vote == u'არ მიუცია':
                 result.css = 'vote-abstention'

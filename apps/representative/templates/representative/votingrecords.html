@@ -39,7 +39,12 @@
             <tr class="{{ result.css }}">
                 <td class="date">{{ result.record__date|date:'c' }}</td>
                 <td><a href="{{ result.url }}" name="{{ result.css }}">{{ result.record__name }}</a></td>
-                <td><span class="vote" title="{{ result.vote }}"></span></td>
+				{% if LANGUAGE_CODE == "en" %}
+                	<td><span class="vote" title="{{ result.vote_en }}"></span></td>
+				{% else %}
+                	<td><span class="vote" title="{{ result.vote_ka }}"></span></td>                
+				{% endif %}
+
             </tr>
         {% endfor %}
         </tbody>

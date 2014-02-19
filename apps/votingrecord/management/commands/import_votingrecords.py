@@ -63,6 +63,18 @@ class Command (BaseCommand):
         return u'თავიშეიკავა/არიმყოფებოდა'
       else:
         return 'None'
+    
+    def _getVoteEng(self, vote):
+      if( vote == "Yes" ):
+        return u'Yes'
+      elif( vote == "No" ):
+        return u'No'
+      elif( vote == "Abstain" ):
+        return u'Abstain'
+      elif( vote == "Not Present" ):
+        return u'Abstain/Absent'
+      else:
+        return 'None'
 
     @transaction.commit_on_success
     def _save_results (self, record, results):
@@ -77,6 +89,8 @@ class Command (BaseCommand):
             vrr = VotingRecordResult(
                 record=record,
                 vote=self._getVoteGeo(self._strip(result['vote'])),
+                vote_ka=self._getVoteGeo(self._strip(result['vote'])),
+                vote_en=self._getVoteEng(self._strip(result['vote'])),
                 name=self._strip(result['name']),
                 session=result['session'],
                 totalsession=result['totalsession'])

@@ -140,10 +140,10 @@ class VotingRecordResult (models.Model):
             results = results.filter(Q(session=3,totalsession=3) | Q(session=1,totalsession=1))
 
         return {
-            'yes': results.filter(vote=u'დიახ').count(),
-            'no': results.filter(vote=u'არა').count(),
+            'yes': results.filter(Q(vote=u'დიახ') | Q(vote=u'Yes')).count(),
+            'no': results.filter(Q(vote=u'არა') | Q(vote=u'No')).count(),
             'abstained': results.filter(vote=u'არ მიუცია').count(),
-            'absent': results.filter(vote=u'არ ესწრებოდა').count(),
+            'absent': results.filter(Q(vote=u'თავიშეიკავა/არიმყოფებოდა') | Q(vote=u'Abstain/Absent')).count(),
             'total': results.count(),
         }
 
