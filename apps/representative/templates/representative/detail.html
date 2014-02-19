@@ -161,11 +161,13 @@
         {% if faminc %}
         <tr>
             <td>{% trans 'Family Income' %}</td>
-            <td>{{ faminc.fam_name }} ({{ faminc.fam_role }})<br />
-
-            	{{ faminc.fam_gender }}, {% trans 'Born on' %}: {{ faminc.fam_date_of_birth }}<br />
-            	{% trans 'Income received' %}: {{ faminc.fam_income }} {% trans 'GEL' %}
-
+            <td>
+            {% for familymember in faminc %}
+	            {{ familymember.fam_name|title }}<br />
+		
+	            {{ familymember.fam_gender }}, {% trans 'Born on' %}: {{ familymember.fam_date_of_birth }}<br />
+	            {% trans 'Income received' %}: {{ familymember.fam_income }} {% trans 'GEL' %}<br /><br />
+            {% endfor %}
             </td>
         </tr>
         {% endif %}

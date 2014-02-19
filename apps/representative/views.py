@@ -7,6 +7,7 @@ Depends on question and votingrecord.
 __docformat__ = 'epytext en'
 
 import json
+import glt
 from django.core.urlresolvers import reverse
 from django.db.models import Q, F
 from django.http import HttpResponse, Http404
@@ -344,7 +345,16 @@ class Detail (DetailView):
 
 
         try:
-            context['faminc'] = obj.family_income.all().order_by('-submission_date')[0]
+            latestdeclarationid = obj.income['declarationid']
+            familymembers = obj.family_income.filter(ad_id__exact=latestdeclarationid).exclude(fam_income__exact=0)
+            # This loop is temporary. We need to fix the xquery file that write the SQL file for representative_familyincome.
+            for member in familymembers:
+                member.fam_name_en = glt.to_latin(member.fam_name)
+                member.fam_name_ka = member.fam_name
+                member.fam_role_en = glt.to_latin(member.fam_role)
+                member.fam_role_ka = member.fam_role
+            context['faminc'] = familymembers
+  
         except IndexError:
             context['faminc'] = None
 
@@ -379,7 +389,7 @@ def _get_votingrecord_results (representative):
     @rtype: [{'css', 'vote', 'record', 'url', 'record__name'}]
     """
     results = representative.votingresults.filter(session=F('totalsession')).values(
-        'css', 'vote', 'record','record__name','record__date', 'session', 'totalsession').order_by('-record__date', 'record').distinct()
+        'css', 'vote_en', 'vote_ka', 'record','record__name','record__date', 'session', 'totalsession').order_by('-record__date', 'record').distinct()
     for r in results:
         r['url'] = reverse('votingrecord_detail', args=[r['record']])
 

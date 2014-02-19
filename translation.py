@@ -10,7 +10,7 @@ translator.register(Question, QuestionTranslationOptions)
 
 
 
-from apps.representative.models import Representative, AdditionalInformation, Unit, Cabinet, Faction, Term, Url
+from apps.representative.models import Representative, AdditionalInformation, Unit, Cabinet, Faction, Term, Url, FamilyIncome
 
 class RepresentativeTranslationOptions (TranslationOptions):
     fields = ('committee', 'electoral_district', 'elected',
@@ -42,6 +42,9 @@ class TermTranslationOptions (TranslationOptions):
     fields = ('name',)
 translator.register(Term, TermTranslationOptions)
 
+class FamilyIncomeTranslationOptions (TranslationOptions):
+    fields = ('fam_name','fam_role')
+translator.register(FamilyIncome, FamilyIncomeTranslationOptions)
 
 from popit.models import Person, PersonName, Organisation, OrganisationName, Position
 
@@ -182,4 +185,10 @@ translator.register(Show, ShowTranslationOptions)
 class EpisodeTranslationOptions (TranslationOptions):
     fields = ('author_text', 'title', 'subtitle', 'description',)
 translator.register(Episode, EpisodeTranslationOptions)
+
+from apps.votingrecord.models import VotingRecordResult
+
+class VotingRecordResultTranslationOptions (TranslationOptions):
+    fields = ('vote',)
+translator.register(VotingRecordResult, VotingRecordResultTranslationOptions)
 
