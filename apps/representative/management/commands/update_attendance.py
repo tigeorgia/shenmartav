@@ -63,7 +63,7 @@ class Command (BaseCommand):
             attended = 0
             results = VotingRecordResult.objects.filter(representative=r).values('vote')
             for result in results:
-                if result['vote'] == u'არ ესწრებოდა':
+                if result['vote'] == u'თავიშეიკავა/არიმყოფებოდა':
                     absent += 1
                 else:
                     attended += 1
