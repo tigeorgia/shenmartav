@@ -143,7 +143,7 @@ class VotingRecordResult (models.Model):
             'yes': results.filter(Q(vote=u'დიახ') | Q(vote=u'Yes')).count(),
             'no': results.filter(Q(vote=u'არა') | Q(vote=u'No')).count(),
             'abstained': results.filter(vote=u'არ მიუცია').count(),
-            'absent': results.filter(Q(vote=u'თავიშეიკავა/არიმყოფებოდა') | Q(vote=u'Abstain/Absent')).count(),
+            'absent': results.filter(Q(vote=u'თავი შეიკავა/არ იმყოფებოდა') | Q(vote=u'Abstain/Absent')).count(),
             'total': results.count(),
         }
 

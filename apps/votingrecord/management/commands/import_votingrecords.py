@@ -60,7 +60,7 @@ class Command (BaseCommand):
       elif( vote == "Abstain" ):
         return u'არ მიუცია'
       elif( vote == "Not Present" ):
-        return u'თავიშეიკავა/არიმყოფებოდა'
+        return u'თავი შეიკავა/არ იმყოფებოდა'
       else:
         return 'None'
     
