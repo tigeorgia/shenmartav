@@ -64,7 +64,11 @@
 {% endif %}
 		{% if obj.income and obj.income.latestsubmissionyear != 0 %}
 		    <tr>
-		        <td>{% trans 'Link to the latest declaration' %} ({% trans 'submitted in' %} {{ obj.income.latestsubmissionyear }})</td>
+		    	{% if LANGUAGE_CODE == "en" %}
+		        	<td>{% trans 'Link to the latest declaration' %} ({% trans 'submitted in' %} {{ obj.income.latestsubmissionyear }})</td>
+		        {% else %}
+		        	<td>{% trans 'Link to the latest declaration' %} ({% trans 'submitted in' %} {{ obj.income.latestsubmissionyear }} წელს)</td>
+		        {% endif %}
 		        <td><div>
 		        	<ul>
 		        		

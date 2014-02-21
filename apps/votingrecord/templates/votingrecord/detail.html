@@ -50,7 +50,7 @@
 		              </ul>
 		              <div id="tabs-1">
 		                <h2 id="results">{% trans 'Results' %}</h2>
-                        <p>{% trans 'Yes' %}: {{ counts1.yes }}, {% trans 'No' %}: {{ counts1.no }}, {% trans 'Abstained' %}: {{ counts1.abstained }}, {% trans 'Absent' %}: {{ counts1.absent }}, {% trans 'Total' %}: {{ counts1.total }}</p>
+                        <p>{% trans 'Yes' %}: {{ counts1.yes }}, {% trans 'No' %}: {{ counts1.no }}, {% trans 'Abstain/Absent' %}: {{ counts1.absent }}, {% trans 'Total' %}: {{ counts1.total }}</p>
                         <h2 class="heading"><b>{% trans "Voted Yes:" %}</b></h2>
                         <ul>
                             {% for res in votes1 %}
@@ -83,24 +83,7 @@
                                 {% endif %}
                             {% endfor %}
                         </ul>
-                        <h2 class="heading"><b>{% trans "Abstained:" %}</b></h2>
-                            <ul>
-                                {% for res in votes1 %}
-                                    {% if res.css == "vote-abstention" %}
-                                        <li class="{{ res.css }} vote">
-                                        {% if res.representative %}
-                                            <a title="{{ res.name }}" href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '100x84' as im %}
-                                            <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}"
-                                                 width="100" height="84" border="0"/></a>
-                                        {% else %}
-                                            <a title="{{ res.name }}"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="100" height="84"/></a>
-
-                                        {% endif %}
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        <h2 class="heading"><b>{% trans "Absent:" %}</b></h2>
+                        <h2 class="heading"><b>{% trans 'Abstain/Absent:' %}</b></h2>
                             <ul>
                                 {% for res in votes1 %}
                                     {% if res.css == "vote-absent" %}
@@ -120,7 +103,7 @@
 		              </div>
 		              <div id="tabs-2">
 		                <h2 id="results">{% trans 'Results' %}</h2>
-                        <p>{% trans 'Yes' %}: {{ counts2.yes }}, {% trans 'No' %}: {{ counts2.no }}, {% trans 'Abstained' %}: {{ counts2.abstained }}, {% trans 'Absent' %}: {{ counts2.absent }}, {% trans 'Total' %}: {{ counts2.total }}</p>
+                        <p>{% trans 'Yes' %}: {{ counts2.yes }}, {% trans 'No' %}: {{ counts2.no }}, {% trans 'Abstain/Absent' %}: {{ counts2.absent }}, {% trans 'Total' %}: {{ counts2.total }}</p>
                         <h2 class="heading"><b>{% trans "Voted Yes:" %}</b></h2>
                         <ul>
                             {% for res in votes2 %}
@@ -153,24 +136,7 @@
                                 {% endif %}
                             {% endfor %}
                         </ul>
-                        <h2 class="heading"><b>{% trans "Abstained:" %}</b></h2>
-                            <ul>
-                                {% for res in votes2 %}
-                                    {% if res.css == "vote-abstention" %}
-                                        <li class="{{ res.css }} vote">
-                                        {% if res.representative %}
-                                            <a title="{{ res.name }}" href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '100x84' as im %}
-                                            <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}"
-                                                 width="100" height="84" border="0"/></a>
-                                        {% else %}
-                                            <a title="{{ res.name }}"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="100" height="84"/></a>
-
-                                        {% endif %}
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        <h2 class="heading"><b>{% trans "Absent:" %}</b></h2>
+						<h2 class="heading"><b>{% trans 'Abstain/Absent:' %}</b></h2>
                             <ul>
                                 {% for res in votes2 %}
                                     {% if res.css == "vote-absent" %}
@@ -190,7 +156,7 @@
 		              </div>
 		              <div id="tabs-3">
 		                <h2 id="results">{% trans 'Results' %}</h2>
-                        <p>{% trans 'Yes' %}: {{ counts3.yes }}, {% trans 'No' %}: {{ counts3.no }}, {% trans 'Abstained' %}: {{ counts3.abstained }}, {% trans 'Absent' %}: {{ counts3.absent }}, {% trans 'Total' %}: {{ counts3.total }}</p>
+                        <p>{% trans 'Yes' %}: {{ counts3.yes }}, {% trans 'No' %}: {{ counts3.no }}, {% trans 'Abstain/Absent' %}: {{ counts3.absent }}, {% trans 'Total' %}: {{ counts3.total }}</p>
                         <h2 class="heading"><b>{% trans "Voted Yes:" %}</b></h2>
                         <ul>
                             {% for res in votes3 %}
@@ -223,24 +189,7 @@
                                 {% endif %}
                             {% endfor %}
                         </ul>
-                        <h2 class="heading"><b>{% trans "Abstained:" %}</b></h2>
-                            <ul>
-                                {% for res in votes3 %}
-                                    {% if res.css == "vote-abstention" %}
-                                        <li class="{{ res.css }} vote">
-                                        {% if res.representative %}
-                                            <a title="{{ res.name }}" href="{{ res.representative.get_absolute_url }}">{% thumbnail res.representative.photo '100x84' as im %}
-                                            <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}"
-                                                 width="100" height="84" border="0"/></a>
-                                        {% else %}
-                                            <a title="{{ res.name }}"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="100" height="84"/></a>
-
-                                        {% endif %}
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        <h2 class="heading"><b>{% trans "Absent:" %}</b></h2>
+                        <h2 class="heading"><b>{% trans 'Abstain/Absent:' %}</b></h2>
                             <ul>
                                 {% for res in votes3 %}
                                     {% if res.css == "vote-absent" %}
