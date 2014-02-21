@@ -50,12 +50,12 @@ RepresentativeFind = {
         	
     		var namesplit = $(this).html().toLowerCase().split("a title=\"");
     		var namesplit2 = namesplit[1].split("\" href");
-    		var namesplit3 = namesplit2[0].split(" ");
+    		var namesplit3 = trimNames(namesplit2[0]).split(" ");
     		
     		var firstname = namesplit3[0];
     		var lastname = namesplit3[1];
     		var fullname = firstname+" "+lastname;
-    	
+    		    	
             if ($(this).hasClass('party-' + data) ||
                 firstname.indexOf(data) == 0 ||
                 lastname.indexOf(data) == 0 ||
@@ -320,3 +320,15 @@ RepresentativeFind = {
 $(function () {
     RepresentativeFind.setup();
 });
+
+
+function trimNames (str) {
+    str = str.replace(/^\s+/, '');
+    for (var i = str.length - 1; i >= 0; i--) {
+        if (/\S/.test(str.charAt(i))) {
+            str = str.substring(0, i + 1);
+            break;
+        }
+    }
+    return str;
+}
