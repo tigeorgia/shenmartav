@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-21 12:59+0400\n"
+"POT-Creation-Date: 2014-02-21 13:52+0400\n"
 "PO-Revision-Date: 2014-02-13 16:02+0400\n"
 "Last-Translator: George <gio@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -2774,7 +2774,7 @@ msgid "Second Vote"
 msgstr "მეორე მოსმენა"
 
 #: apps/votingrecord/templates/votingrecord/detail.html:49
-msgid "Final Vote"
+msgid "Third Vote"
 msgstr "მესამე მოსმენა"
 
 #: apps/votingrecord/templates/votingrecord/detail.html:53
@@ -3111,6 +3111,9 @@ msgstr "წინა"
 #: templates/search/search.html:33
 msgid "Next"
 msgstr "შემდეგი"
+
+#~ msgid "Final Vote"
+#~ msgstr "მესამე მოსმენა"
 
 #~ msgid "Abstained:"
 #~ msgstr "თავი შეიკავა"
