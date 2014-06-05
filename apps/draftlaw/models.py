@@ -52,7 +52,7 @@ class DraftLaw (models.Model):
     #: summary of the law
     summary = models.TextField(help_text=_('Summary'), blank=True)
     #: full text of the law
-    full_text = models.CharField(max_length=255, help_text=_('Full Text'), blank=True)
+    full_text = models.TextField(help_text=_('Full Text'), blank=True)
     #: URL of the full text of the law
     full_text_url = models.CharField(max_length=255,
         help_text=_('Full Text URL'), blank=True)
