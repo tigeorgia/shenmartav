@@ -13,9 +13,9 @@
                 <div class="row">
                     {% with income=obj.income %}
                         <!-- <div class="cell" style="width:{{ income.base|percentage:income.total }}">{{ income.base }}</div> -->
-                        <div class="cell"
+                        <div class="cell leftalign"
                              style="width:{{ income.main|percentage:income.total }}">{{ income.main }}</div> 
-                        <div class="cell"
+                        <div class="cell rightalign"
                              style="width:{{ income.entrepreneurial|percentage:income.total }}">{{ income.entrepreneurial }}</div>
                     {% endwith %}
                 </div>
