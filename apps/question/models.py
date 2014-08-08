@@ -254,7 +254,7 @@ class Question (models.Model):
 
         if self.mobile:
             url = QUESTION_SMS_URL.replace('to=', 'to=' + self.mobile).replace(
-                'msg=', 'msg=' + urllib2.quote(self.answer))
+                'msg=', 'msg=' + urllib2.quote((self.answer).encode('utf8')))
             try:
                 handle = urllib2.urlopen(url)
                 response = handle.read()
