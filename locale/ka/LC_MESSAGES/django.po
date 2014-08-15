@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-21 13:52+0400\n"
+"POT-Creation-Date: 2014-08-15 10:25+0400\n"
 "PO-Revision-Date: 2014-02-13 16:02+0400\n"
 "Last-Translator: George <gio@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -587,7 +587,7 @@ msgstr "კვირის შეჯამება"
 
 #: apps/draftlaw/templates/cmsplugins/draftlaw.html:20
 #: apps/draftlaw/templates/draftlaw/info.html:21
-#: apps/question/templates/cmsplugins/question.html:24
+#: apps/question/templates/cmsplugins/question.html:28
 #: apps/representative/templates/cmsplugins/representative.html:30
 #: apps/representative/templates/representative/info.html:11
 #: templates/home.html:140
@@ -1584,9 +1584,9 @@ msgid "Mobile Phone Number"
 msgstr "მობილური ტელეფონის ნომერი"
 
 #: apps/question/forms.py:53 apps/question/models.py:205
-#: apps/question/templates/cmsplugins/question.html:22
+#: apps/question/templates/cmsplugins/question.html:26
 #: apps/question/templates/question/list.html:43
-#: apps/representative/templates/representative/detail.html:239
+#: apps/representative/templates/representative/detail.html:236
 msgid "Question"
 msgstr "შეკითხვა"
 
@@ -1660,7 +1660,7 @@ msgstr ""
 "\n"
 " გთხოვთ მართეთ http://%(domain)s%(uri)s-ზე"
 
-#: apps/question/views.py:290
+#: apps/question/views.py:292
 msgid "SMS"
 msgstr "SMS"
 
@@ -1672,56 +1672,37 @@ msgstr "თქვენი შეკითხვები"
 msgid "You can submit questions to Representatives here"
 msgstr "აქ შეგიძლიათ დაუსვათ შეკითხვები თქვენს წარმომადგენლებს პარლამენტში."
 
+#: apps/question/templates/cmsplugins/question.html:15
+msgid "Make yourself heard!"
+msgstr "Make yourself heard!"
+
 #: apps/question/templates/cmsplugins/question.html:16
+#: apps/question/templates/question/form.html:3
+msgid "Ask a question"
+msgstr "შეეკითხე"
+
+#: apps/question/templates/cmsplugins/question.html:20
 msgid "Latest question"
 msgstr "ბოლოს დასმული შეკითხვა"
 
-#: apps/question/templates/cmsplugins/question.html:23
-#: apps/representative/templates/representative/detail.html:240
+#: apps/question/templates/cmsplugins/question.html:27
+#: apps/representative/templates/representative/detail.html:237
 msgid "Answer"
 msgstr "პასუხი"
 
-#: apps/question/templates/cmsplugins/question.html:23
+#: apps/question/templates/cmsplugins/question.html:27
 #: apps/question/templates/question/info.html:21
 msgid "Not yet answered!"
 msgstr "ჯერჯერობით პასუხგაუცემელია!"
 
-#: apps/question/templates/cmsplugins/question.html:36
-msgid "Most Active"
-msgstr "ყველაზე მეტი პასუხი"
+#: apps/question/templates/folded/question.html:3
+msgid "Section Question"
+msgstr "სექცია შეკითხვა"
 
-#: apps/question/templates/cmsplugins/question.html:37
-#: apps/question/templates/cmsplugins/question.html:53
-#: apps/question/templates/question/info.html:20
-#: apps/question/templates/question/items.html:5
-#: apps/question/templates/question/list.html:32
-#: apps/representative/templates/representative/detail.html:228
-msgid "Answered"
-msgstr "პასუხი გაცემულია"
-
-#: apps/question/templates/cmsplugins/question.html:52
-msgid "Least Active"
-msgstr "ყველაზე ნაკლები პასუხი"
-
-#: apps/question/templates/cmsplugins/question.html:62
-msgid "Make yourself heard!"
-msgstr "Make yourself heard!"
-
-#: apps/question/templates/cmsplugins/question.html:63
-#: apps/question/templates/question/form.html:3
-#: apps/representative/templates/representative/detail.html:224
-msgid "Ask a question"
-msgstr "შეეკითხე"
-
-#: apps/question/templates/cmsplugins/question.html:68
 #: apps/question/templates/question/ask.html:8
 #: apps/question/templates/question/form.html:15
 msgid "Ask"
 msgstr "შეეკითხე"
-
-#: apps/question/templates/folded/question.html:3
-msgid "Section Question"
-msgstr "სექცია შეკითხვა"
 
 #: apps/question/templates/question/form.html:5
 msgid ""
@@ -1743,6 +1724,13 @@ msgstr "თუ გსურთ ანონიმურობის შენა
 #: apps/question/templates/question/info.html:3
 msgid "Question to"
 msgstr "შეკითხვა დეპუტატს"
+
+#: apps/question/templates/question/info.html:20
+#: apps/question/templates/question/items.html:5
+#: apps/question/templates/question/list.html:32
+#: apps/representative/templates/representative/detail.html:226
+msgid "Answered"
+msgstr "პასუხი გაცემულია"
 
 #: apps/question/templates/question/leaderboard.html:8
 #: apps/question/templates/question/leaderboard.html:12
@@ -2184,51 +2172,11 @@ msgstr ""
 "მომენტში, არამედ ამგვარად არის დაფიქსირებული პარლამენტის კენჭისყრის "
 "შედეგების სისტემის მიერ"
 
-#: apps/representative/templates/representative/attendance.html:9
-msgid ""
-"This representative has attended a very low number of votes, compared to "
-"other representatives."
-msgstr ""
-"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
-"მაჩვენებელი არის ძალიან დაბალი."
-
-#: apps/representative/templates/representative/attendance.html:10
-msgid ""
-"This representative has attended a low number of votes, compared to other "
-"representatives."
-msgstr ""
-"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
-"მაჩვენებელი არის დაბალი."
-
-#: apps/representative/templates/representative/attendance.html:11
-msgid ""
-"This representative has attended an ordinary number of votes, compared to "
-"other representatives."
-msgstr ""
-"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
-"მაჩვენებელი არის საშუალო."
-
-#: apps/representative/templates/representative/attendance.html:12
-msgid ""
-"This representative has attended a high number of votes, compared to other "
-"representatives."
-msgstr ""
-"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
-"მაჩვენებელი არის მაღალი."
-
-#: apps/representative/templates/representative/attendance.html:13
-msgid ""
-"This representative has attended a very high number of votes, compared to "
-"other representatives."
-msgstr ""
-"სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
-"მაჩვენებელი არის ძალიან მაღალი."
-
-#: apps/representative/templates/representative/attendance.html:26
+#: apps/representative/templates/representative/attendance.html:19
 msgid "Has voted"
 msgstr "მიიღო მონაწილეობა"
 
-#: apps/representative/templates/representative/attendance.html:27
+#: apps/representative/templates/representative/attendance.html:20
 msgid "Has not voted"
 msgstr "არ მიიღო მონაწილეობა"
 
@@ -2244,7 +2192,7 @@ msgstr "მონაწილეობდა"
 
 #: apps/representative/templates/representative/best-worst-attendance.html:18
 #: apps/representative/templates/representative/best-worst-attendance.html:37
-#: apps/representative/templates/representative/detail.html:257
+#: apps/representative/templates/representative/detail.html:254
 #: templates/home.html:61
 msgid "Absent"
 msgstr "არ მონაწილეობდა"
@@ -2330,74 +2278,68 @@ msgid "Additional Info"
 msgstr "დამატებითი ინფორმაცია"
 
 #: apps/representative/templates/representative/detail.html:216
-msgid "Ask a question!"
-msgstr "შეეკითხე!"
+msgid "Question form temporarily unavailable"
+msgstr "კითხვის დასმა დროებითად შეუძლებელია."
 
 #: apps/representative/templates/representative/detail.html:222
 msgid "Questions and Answers"
 msgstr "შეკითხვები და პასუხები"
 
-#: apps/representative/templates/representative/detail.html:224
-msgid "No one has sent their question to this MP yet. Be the first to do so"
-msgstr ""
-"აქამდე არავის გაუგზავნია შეკითხვა ამ პარლამენტის წევრისთვის. იყავი პირველი "
-"ვინც ამას გააკეთებს"
-
-#: apps/representative/templates/representative/detail.html:229
+#: apps/representative/templates/representative/detail.html:227
 msgid "No Response"
 msgstr "გამოხმაურება არ არის"
 
-#: apps/representative/templates/representative/detail.html:250
+#: apps/representative/templates/representative/detail.html:247
 msgid "Voted Laws"
 msgstr "ხმის მიცემის სტატისტიკა"
 
-#: apps/representative/templates/representative/detail.html:252
+#: apps/representative/templates/representative/detail.html:249
 msgid "View voting details"
 msgstr "იხ. ხმის მიცემის დეტალები"
 
-#: apps/representative/templates/representative/detail.html:253
+#: apps/representative/templates/representative/detail.html:250
 msgid "Vote Counts"
 msgstr "კენჭისყრის ჩანაწერები"
 
-#: apps/representative/templates/representative/detail.html:254
-#: apps/representative/templates/representative/detail.html:274
+#: apps/representative/templates/representative/detail.html:251
+#: apps/representative/templates/representative/detail.html:271
 msgid "In Favour"
 msgstr "მხარი დაუჭირა"
 
-#: apps/representative/templates/representative/detail.html:254
+#: apps/representative/templates/representative/detail.html:251
 msgid "See votes in favour"
 msgstr "იხ. მომხრე ხმები"
 
-#: apps/representative/templates/representative/detail.html:255
-#: apps/representative/templates/representative/detail.html:275
+#: apps/representative/templates/representative/detail.html:252
+#: apps/representative/templates/representative/detail.html:272
 msgid "Against"
 msgstr "მხარი არ დაუჭირა"
 
-#: apps/representative/templates/representative/detail.html:255
+#: apps/representative/templates/representative/detail.html:252
 msgid "See votes against"
 msgstr "იხ. მოწინააღმდეგე ხმები"
 
-#: apps/representative/templates/representative/detail.html:256
+#: apps/representative/templates/representative/detail.html:253
 msgid "Abstained"
 msgstr "თავი შეიკავა"
 
-#: apps/representative/templates/representative/detail.html:256
+#: apps/representative/templates/representative/detail.html:253
 msgid "See votes abstained"
 msgstr "იხ. რამდენმა შეიკავა თავი"
 
-#: apps/representative/templates/representative/detail.html:257
+#: apps/representative/templates/representative/detail.html:254
 msgid "See votes absent"
 msgstr "იხილეთ არდამსწრე ხმები"
 
-#: apps/representative/templates/representative/detail.html:273
+#: apps/representative/templates/representative/detail.html:270
 msgid "Vote type"
 msgstr "ხმის მიცემის ტიპი"
 
-#: apps/representative/templates/representative/detail.html:273
+#: apps/representative/templates/representative/detail.html:270
 msgid "Number of votes"
 msgstr "შეკითხვების რაოდენობა"
 
-#: apps/representative/templates/representative/detail.html:276
+#: apps/representative/templates/representative/detail.html:273
 #: apps/votingrecord/templates/votingrecord/detail.html:53
 #: apps/votingrecord/templates/votingrecord/detail.html:106
 #: apps/votingrecord/templates/votingrecord/detail.html:159
@@ -2809,19 +2751,23 @@ msgstr "ვებ-გვერდი საქართველოს პარ
 msgid "MyParliament"
 msgstr "ჩემი პარლამენტი"
 
-#: templates/footer.html:13
+#: templates/footer.html:6
+msgid "Sida"
+msgstr ""
+
+#: templates/footer.html:14
 msgid "Join us"
 msgstr "შემოგვიერთდით"
 
-#: templates/footer.html:15
+#: templates/footer.html:16
 msgid "Visit us on Facebook"
 msgstr "გვეწვიეთ Facebook-ზე"
 
-#: templates/footer.html:16
+#: templates/footer.html:17
 msgid "Share this URL on twitter"
 msgstr "გვეწვიეთ Twitter-ზე"
 
-#: templates/footer.html:17
+#: templates/footer.html:18
 msgid "RSS Blog feed"
 msgstr "RSS ბლოგ ლენტა"
 
@@ -3111,6 +3057,55 @@ msgstr "წინა"
 #: templates/search/search.html:33
 msgid "Next"
 msgstr "შემდეგი"
+
+#~ msgid "Most Active"
+#~ msgstr "ყველაზე მეტი პასუხი"
+
+#~ msgid "Least Active"
+#~ msgstr "ყველაზე ნაკლები პასუხი"
+
+#~ msgid ""
+#~ "This representative has attended a very low number of votes, compared to "
+#~ "other representatives."
+#~ msgstr ""
+#~ "სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+#~ "მაჩვენებელი არის ძალიან დაბალი."
+
+#~ msgid ""
+#~ "This representative has attended a low number of votes, compared to other "
+#~ "representatives."
+#~ msgstr ""
+#~ "სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+#~ "მაჩვენებელი არის დაბალი."
+
+#~ msgid ""
+#~ "This representative has attended an ordinary number of votes, compared to "
+#~ "other representatives."
+#~ msgstr ""
+#~ "სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+#~ "მაჩვენებელი არის საშუალო."
+
+#~ msgid ""
+#~ "This representative has attended a high number of votes, compared to "
+#~ "other representatives."
+#~ msgstr ""
+#~ "სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+#~ "მაჩვენებელი არის მაღალი."
+
+#~ msgid ""
+#~ "This representative has attended a very high number of votes, compared to "
+#~ "other representatives."
+#~ msgstr ""
+#~ "სხვა დეპუტატებთან შედარებით ამ დეპუტატის კენჭისყრაში მონაწილეობის "
+#~ "მაჩვენებელი არის ძალიან მაღალი."
+
+#~ msgid "Ask a question!"
+#~ msgstr "შეეკითხე!"
+
+#~ msgid "No one has sent their question to this MP yet. Be the first to do so"
+#~ msgstr ""
+#~ "აქამდე არავის გაუგზავნია შეკითხვა ამ პარლამენტის წევრისთვის. იყავი "
+#~ "პირველი ვინც ამას გააკეთებს"
 
 #~ msgid "Final Vote"
 #~ msgstr "მესამე მოსმენა"
