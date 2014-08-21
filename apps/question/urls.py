@@ -3,15 +3,14 @@ URLs for app question
 """
 from django.conf.urls.defaults import patterns, url
 
-#from .views import List, Ask, Thanks, Detail, Leaderboard, Info, Items, receive
-from .views import List, Thanks, Detail, Leaderboard, Info, Items, receive
+from .views import List, Ask, Thanks, Detail, Leaderboard, Info, Items, receive
 from .feeds import FeedList
 
 
 urlpatterns = patterns('',
     url(r'^$', List.as_view(), name='question_list'),
-    #url(r'^ask/$', Ask.as_view(), name='question_ask'),
-    #url(r'^ask/(?P<pk>\d+)/$', Ask.as_view(), name='question_ask_representative'),
+    url(r'^ask/$', Ask.as_view(), name='question_ask'),
+    url(r'^ask/(?P<pk>\d+)/$', Ask.as_view(), name='question_ask_representative'),
     url(r'^thanks/$', Thanks.as_view(), name='question_thanks'),
     url(r'^question/(?P<pk>\d+)/$', Detail.as_view(), name='question_detail'),
     url(r'^leaderboard/$', Leaderboard.as_view(), name='question_leaderboard'),

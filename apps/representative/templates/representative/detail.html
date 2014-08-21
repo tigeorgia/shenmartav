@@ -213,14 +213,16 @@
         <div id="portrait">
             <div id="photo">{% thumbnail obj.photo '200x168' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="200" height="168" /></div>
         </div>
-        <div style="text-align: center;"><strong>{% trans 'Question form temporarily unavailable' %}</strong></div>
+        <div id="ask-question"><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
         <div class="box" id="box-income">
             {% include 'representative/income.html' %}
         </div>
         <div class="box" id="box-questions">{% ifequal unit 1 %}
             <div id="questions">
                 <h2 class="heading">{% trans 'Questions and Answers' %}</h2>
-
+		    {% if questions.answered.absolute == 0 and questions.noresponse.absolute == 0 %}
+			<div id="legend">{% trans 'No one has sent their question to this MP yet. Be the first to do so' %}: <a class="mplink" href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question' %}</a>.</div>
+		    {% else %}		
 	                <div class="table">
 	                    <div class="row">
 	                        <div class="cell" id="label-answered">{% trans 'Answered' %}</div>
@@ -231,6 +233,7 @@
 	                        <div class="cell" id="bar-noresponse" style="width: {{ questions.noresponse.relative }}%">{{ questions.noresponse.absolute }}</div>
 	                    </div>
 	                </div>
+		    {% endif %}
                 <div>
                     {% if questions.last %}
                     <div><span class="label">{% trans 'Question' %}:</span> {{ questions.last.question }}</div>

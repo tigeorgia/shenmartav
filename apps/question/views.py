@@ -100,54 +100,52 @@ class List (ListView):
 
 
 
-#===============================================================================
-# class Ask (FormView):
-#     """Implements the Question ask view."""
-#     template_name = 'question/ask.html'
-#     form_class = QuestionForm
-# 
-# 
-#     def form_valid (self, form):
-#         obj = form.save()
-# 
-#         # at some stage it might be wise to have these added to a queueing
-#         # system (celery? rabbitmq?)
-#         notify_question_change(obj.pk, obj.question)
-# 
-#         self.request.session['form_question'] = {
-#             'representative': obj.representative.pk,
-#             'first_name': obj.first_name,
-#             'last_name': obj.last_name,
-#             'email': obj.email,
-#             'mobile': obj.mobile,
-#         }
-# 
-#         return redirect('question_thanks')
-# 
-# 
-#     def form_invalid (self, form):
-#         return self.render_to_response({'form': form})
-# 
-# 
-#     def get_context_data (self, **kwargs):
-#         context = super(Ask, self).get_context_data(**kwargs)
-# 
-#         if 'pk' in self.kwargs: # from query params
-#             if 'form_question' in self.request.session:
-#                 self.request.session['form_question']['representative'] =\
-#                     self.kwargs['pk']
-#             else:
-#                 self.request.session['form_question'] = {
-#                     'representative': self.kwargs['pk']
-#                 }
-# 
-#         question = context['form'].instance
-#         context['form'] = QuestionForm(instance=question,
-#             session=self.request.session)
-#         context['url_feed'] = reverse('question_feed_list')
-# 
-#         return context
-#===============================================================================
+class Ask (FormView):
+    """Implements the Question ask view."""
+    template_name = 'question/ask.html'
+    form_class = QuestionForm
+ 
+ 
+    def form_valid (self, form):
+        obj = form.save()
+ 
+        # at some stage it might be wise to have these added to a queueing
+        # system (celery? rabbitmq?)
+        notify_question_change(obj.pk, obj.question)
+ 
+        self.request.session['form_question'] = {
+            'representative': obj.representative.pk,
+            'first_name': obj.first_name,
+            'last_name': obj.last_name,
+            'email': obj.email,
+            'mobile': obj.mobile,
+        }
+ 
+        return redirect('question_thanks')
+ 
+ 
+    def form_invalid (self, form):
+        return self.render_to_response({'form': form})
+ 
+ 
+    def get_context_data (self, **kwargs):
+        context = super(Ask, self).get_context_data(**kwargs)
+ 
+        if 'pk' in self.kwargs: # from query params
+            if 'form_question' in self.request.session:
+                self.request.session['form_question']['representative'] =\
+                    self.kwargs['pk']
+            else:
+                self.request.session['form_question'] = {
+                    'representative': self.kwargs['pk']
+                }
+ 
+        question = context['form'].instance
+        context['form'] = QuestionForm(instance=question,
+            session=self.request.session)
+        context['url_feed'] = reverse('question_feed_list')
+ 
+        return context
 
 
 
