@@ -90,7 +90,11 @@
 	        		<td>
 	        			<ul>
 							{% for link in assetlinks %}
-		            			<li>{{ link.label }}: <a class="mplink" href="{{ link.url }}" target="_blank">{{ link.url }}</a></li>
+								{% if LANGUAGE_CODE == "en" %}
+									<li>{{ link.label }}: <a class="mplink" href="https://declaration.gov.ge/eng/declaration?id={{ link.url }}" target="_blank">https://declaration.gov.ge/eng/declaration?id={{ link.url }}</a></li>
+								{% else %}
+									<li>{{ link.label }}: <a class="mplink" href="https://declaration.gov.ge/declaration?id={{ link.url }}" target="_blank">https://declaration.gov.ge/declaration?id={{ link.url }}</a></li>								
+								{% endif %}
 							{% endfor %}
 						</ul>
 					</td>
@@ -119,14 +123,15 @@
 			{% endif %}
 		{% endif %}
 		
-{% if decl %}        
+{% if obj.expenses %}        
         {% if obj.expenses and obj.expenses.split %}
 	        <tr>
 	            <td>{% trans 'Expenses' %}</td>
 	            <td><a href="{{ decl.get_absolute_url }}#otherinclexpenses">{{ obj.expenses }}</a></td>
 	        </tr>
         {% endif %}
-        {% if obj.property_assets %}
+{% endif %}
+{% if obj.property_assets %}
 	        <tr>
 	            <td>{% trans 'Property & Assets' %}</td>
 	            <td>
@@ -139,7 +144,6 @@
 					</ul>
 	            </td>
 	        </tr>
-        {% endif %}
 {% endif %}
 		{% if obj.position_set.all %}
         <tr>
@@ -168,12 +172,7 @@
             <td>
             {% for familymember in faminc %}
 	            {{ familymember.fam_name|title }}<br />
-				
-				{% if LANGUAGE_CODE == "en" %}
-					{{ familymember.fam_gender }}, {% trans 'Born on' %}: {{ familymember.fam_date_of_birth }}<br />
-				{% else %}
-					{% trans 'Born on' %}: {{ familymember.fam_date_of_birth }}<br />
-				{% endif %}		
+				{% trans 'Born on' %}: {{ familymember.fam_date_of_birth }}<br />
 	            {% trans 'Income received' %}: {{ familymember.fam_income }} {% trans 'GEL' %}<br /><br />
             {% endfor %}
             </td>
