@@ -1,5 +1,5 @@
 {% extends 'representative/base.html' %}
-{% load thumbnail sekizai_tags i18n representative %}
+{% load thumbnail sekizai_tags i18n representative custom_filters %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block representative %}
@@ -236,7 +236,9 @@
                 <div>
                     {% if questions.last %}
                     <div><span class="label">{% trans 'Question' %}:</span> {{ questions.last.question }}</div>
-                    {% if questions.last.answer %}<div><span class="label">{% trans 'Answer' %}:</span> {{ questions.last.answer }}</div>{% endif %}
+                    {% if questions.last.answer %}<div><span class="label">{% trans 'Answer' %}:</span> {{ questions.last.answer|shorten_text:100 }}</div>
+                    <div id="readmore-button"><a href="{{ questions.last.get_absolute_url }}">{% trans 'Continue to the answer &raquo;' %}</a></div>
+                    {% endif %}
                     {% endif %}
                 </div>
             </div>
