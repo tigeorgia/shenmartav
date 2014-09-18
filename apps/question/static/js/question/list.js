@@ -13,7 +13,7 @@ QuestionList = {
     selectRepresentativeAskForm: function () {
         var name = $('#question #info #questionee #representative-name').html();
         var select = $('#question #ask #id_representative');
-        $('#question #ask #id_representative > option').each(function() {
+        $('#question #ask #id_representative > option').each(function () {
             if ($(this).text() == name) {
                 select.val($(this).val());
                 return false;
@@ -45,7 +45,7 @@ QuestionList = {
         $(elem).addClass('item-selected');
 
         $.ajax(QuestionList.urlInfo + pk + '/', {
-            success: function(data, textStatus, jqXHR) {
+            success: function (data, textStatus, jqXHR) {
                 $('#question #info').html(data);
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -57,11 +57,11 @@ QuestionList = {
     },
 
 
-
-    hoverIntentQuestions: function () {
-        $('#question #list .item').hoverIntent(
-            function () { QuestionList.setInfo($(this)); },
-            function () {}
+    selectQuestion: function () {
+        $('#question #list .item').click(
+            function () {
+                QuestionList.setInfo($(this));
+            }
         );
     },
 
@@ -95,7 +95,7 @@ QuestionList = {
 
         var url = QuestionList.urlItems + QuestionList.nextPage + '/';
         $.ajax(url, {
-            success: function(data, textStatus, jqXHR) {
+            success: function (data, textStatus, jqXHR) {
                 if (data) {
                     if (QuestionList.nextPage == 1) {
                         $('#question #list #items').html(data);
@@ -104,7 +104,7 @@ QuestionList = {
                     }
 
                     QuestionList.nextPage += 1;
-                    QuestionList.hoverIntentQuestions();
+                    QuestionList.selectQuestion();
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -123,7 +123,7 @@ QuestionList = {
         QuestionList.urlItems = URL_QuestionItems.slice(0,
             URL_QuestionItems.length - 2);
 
-        QuestionList.hoverIntentQuestions();
+        QuestionList.selectQuestion();
         Base.watchScroll('#question #list', QuestionList.loadNextPage);
         $('#question #list table').tablesorter();
         QuestionList.loadNextPage();
