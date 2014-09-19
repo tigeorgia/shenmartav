@@ -134,6 +134,9 @@ INSTALLED_APPS = (
     'contact',
     'smsregister',
     'smsalert',
+
+    #custom
+    'util',
 )
 
 

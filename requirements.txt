@@ -34,3 +34,5 @@ six==1.2.0
 sorl-thumbnail==3.2.5
 wsgiref==0.1.2
 xapian-haystack==1.1.5beta
+requests==2.4.1
+urllib3==1.9.1
