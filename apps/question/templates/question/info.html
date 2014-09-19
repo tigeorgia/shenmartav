@@ -7,7 +7,7 @@
         <div class="data">
             <div>{{ obj.name }}</div>
             <div class="smaller">{{ obj.date}}</div>
-            <div class="text">{{ obj.question }}</div>
+            <div class="text">{{ obj.question|linebreaks }}</div>
         </div>
         <div style="clear:both"></div>
     </div>
@@ -18,7 +18,7 @@
         <div class="data">
             <div class="representative-name"><a id="representative-name" title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a></div>
             <div class="smaller">{% trans 'Answered' %}: {{ representative.answered|stringformat:'.1f' }} %</div>
-            <div class="text">{% if obj.answer %}{{ obj.answer }}{% else %}<span class="unanswered">{% trans 'Not yet answered!' %}</span>{% endif %}</div>
+            <div class="text">{% if obj.answer %}{{ obj.answer|safe|linebreaks }}{% else %}<span class="unanswered">{% trans 'Not yet answered!' %}</span>{% endif %}</div>
         </div>
         <div style="clear:both"></div>
     </div>

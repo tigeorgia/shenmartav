@@ -1,4 +1,4 @@
-{% load i18n thumbnail sekizai_tags cms_tags %}
+{% load i18n thumbnail sekizai_tags cms_tags custom_filters %}
 
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/base.css" media="all" />
@@ -24,7 +24,7 @@
         <div class="info">
             <div class="representative-name"><a title="{{ latest.representative.name }}" href="{% url representative_find %}#member-{{ latest.representative.pk }}">{{ latest.representative.name }}</a></div>
             <div id="latest-question"><span class="label">{% trans 'Question' %}:</span> {{ latest.question|slice:"100" }} ...</div>
-            <div id="latest-answer"><span class="label">{% trans 'Answer' %}:</span> {% if latest.answer %}{{ latest.answer|slice:"100" }} ...{% else %}{% trans 'Not yet answered!' %}{% endif %}</div>
+            <div id="latest-answer"><span class="label">{% trans 'Answer' %}:</span> {% if latest.answer %}{{ latest.answer|shorten_text:100 }}{% else %}{% trans 'Not yet answered!' %}{% endif %}</div>
             <div class="more"><a href="{{ latest.get_absolute_url }}">{% trans 'More' %} &raquo;</a></div>
         </div>
         <div style="clear:both"></div>

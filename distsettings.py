@@ -126,6 +126,7 @@ INSTALLED_APPS = (
 
     # in-house
     'api',
+    'basic.tools',
     'representative',
     'votingrecord',
     'incomedeclaration',

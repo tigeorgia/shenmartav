@@ -19,18 +19,23 @@
     cursor: pointer;
     text-align: left;
 }
+
 #question #list th#header-representative {
     width: 30%;
 }
+
 #question #list th#header-question {
     width: 55%;
 }
+
 #question #list th#header-answered {
     width: 15%;
 }
+
 #question #list th.headerSortUp {
     background-image: url(../../img/arrows/asc.gif);
 }
+
 #question #list th.headerSortDown {
     background-image: url(../../img/arrows/desc.gif);
 }
@@ -46,25 +51,26 @@
     background: #ddd;
 }
 
-
 #question #list .status {
     padding: .5em;
     width: 80%;
     border-radius: 2px;
 }
+
 #question #list .answered {
-    background: #1d7ac8;
-    color: #1d7ac8;
-}
-#question #list .unanswered-new {
-    background: #e08c8c;
-    color: #e08c8c;
-}
-#question #list .unanswered-old {
-    background: #d44847;
-    color: #d44847;
+    background: #32CD32;
+    color: #32CD32;
 }
 
+#question #list .unanswered-new {
+    background: #FF0000;
+    color: #FF0000;
+}
+
+#question #list .unanswered-old {
+    background: #FF0000;
+    color: #FF0000;
+}
 
 #question #sidebar {
     width: 37%;
@@ -88,6 +94,7 @@
     display: inline-block;
     vertical-align: top
 }
+
 #question #info #the-question #questionee {
     width: 48%;
     display: inline-block;

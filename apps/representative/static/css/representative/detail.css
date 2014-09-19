@@ -7,10 +7,10 @@
     width: 65%;
 }
 
-
 #representative #data-text #party {
     margin-bottom: 1em;
 }
+
 #representative #data-text #party-logo {
     float: left;
     width: 45px;
@@ -19,6 +19,7 @@
 #representative #data-text tr > td:first-child {
     width: 28%;
 }
+
 #representative #data-text td {
     padding: 1em;
     vertical-align: top;
@@ -34,23 +35,25 @@
     color: #ffffff;
 }
 
-#representative #salary-text a{
+#representative #salary-text a {
     color: inherit;
 }
-
 
 #representative #data-boxes {
     float: left;
     width: 28%;
     padding-left: 1em;
 }
+
 #representative #data-boxes .box {
     margin: 2em 0;
 }
+
 #representative #data-boxes .box h2,
 #representative #data-boxes .box > div {
     width: 100%;
 }
+
 #representative #data-boxes .box > div > div,
 #representative #data-boxes .box > div > ul {
 }
@@ -89,29 +92,36 @@
 #representative #data-boxes #box-questions .table {
     width: 100%;
 }
+
 #representative #data-boxes #box-questions #label-answered {
     text-align: left;
 }
+
 #representative #data-boxes #box-questions #label-noresponse {
     text-align: right;
 }
+
 #representative #data-boxes #box-questions #bar-questions {
     width: 100%;
     text-align: center;
 }
+
 #representative #data-boxes #box-questions #bar-answered {
     color: #fff;
     padding: .3em;
 }
+
 #representative #data-boxes #box-questions #bar-noresponse {
     padding: .3em;
 }
+
 #representative #data-boxes #box-questions #bar-answered {
     background: #0fa4f4;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     text-align: left;
 }
+
 #representative #data-boxes #box-questions #bar-noresponse {
     background: #d4d4d4;
     border-top-right-radius: 2px;
@@ -119,14 +129,30 @@
     text-align: right;
 }
 
-
 /* voting records */
 #representative #container-votingrecords {
     display: none;
     height: 300px !important;
 }
+
 #representative #votingrecords {
     margin-left: 0 !important;
 }
 
+#readmore-button a {
+    background: #0fa4f4;
+    margin-top: 7px;
+    padding: 5px;
+    text-align: center;
+    display: block;
+    color: #fff;
+    -webkit-transition: background 400ms ease-out;
+    -moz-transition: background 400ms ease-out;
+    -ms-transition: background 400ms ease-out;
+    -o-transition: background 400ms ease-out;
+    transition: background 400ms ease-out;
+}
 
+#readmore-button a:hover {
+    background: #3463F4;
+}
