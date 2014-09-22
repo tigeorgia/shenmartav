@@ -42,7 +42,7 @@ class Command(BaseCommand):
                     found = True
 
             if not found:
-                print "There is a new announcement: " + text_value + " - " + link_value
+		print "There is a new announcement: {0} - {1}".format(text_value.encode("utf-8"), link_value)
                 new_announcements_array = new_announcements_array + [[text_value, link_value]]
                 new_announcement = Announcement(text=text_value, url=link_value)
                 new_announcement.save()
@@ -60,7 +60,7 @@ class Command(BaseCommand):
 
             email_body = email_body + "\nTo see all the announcement, visit this page: http://www.parliament.ge/ge/anonsi\n\n"
 
-            email_body = email_body + "(This e-mail has been generated and sent automatically. Don't reply to it. If you have any questions, please go see Etienne)."
+            email_body = email_body + "(This e-mail has been generated and sent automatically. Don't reply to it. If you have any questions, please go see the IT team)."
 
             send_mail('myparliament.ge - new annoucements', email_body, DEFAULT_FROM_EMAIL, PARLIAMENT_TEAM_EMAIL_ADDRESSES, fail_silently=False)
 
