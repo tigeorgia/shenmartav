@@ -54,10 +54,10 @@ class DraftLaw (models.Model):
     #: full text of the law
     full_text = models.TextField(help_text=_('Full Text'), blank=True)
     #: URL of the full text of the law
-    full_text_url = models.CharField(max_length=255,
+    full_text_url = models.CharField(max_length=512,
         help_text=_('Full Text URL'), blank=True)
     #: URL of the text of the enacted law
-    enacted_text_url = models.CharField(max_length=255,
+    enacted_text_url = models.CharField(max_length=512,
         help_text=_('Enacted Text URL'), blank=True)
     #: enacted law number
     law_number = models.CharField(max_length=255, blank=True, null=True,
