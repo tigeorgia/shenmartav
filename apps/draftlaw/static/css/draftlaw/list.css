@@ -39,6 +39,7 @@
     height: 86em;
     overflow: auto;
     margin-top: 1em;
+    width: 100% !important;
 }
 
 #draftlaw #list table {

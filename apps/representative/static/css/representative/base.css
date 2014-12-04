@@ -105,6 +105,7 @@
 #representative #container-votingrecords {
     height: 94%;
     overflow: auto;
+    width: 100% !important;
 }
 #representative #votingrecords {
     margin-left: .5em;

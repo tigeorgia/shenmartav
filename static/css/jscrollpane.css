@@ -9,11 +9,13 @@
 {
 	overflow: hidden;
 	position: relative;
+    width: 100% !important;
 }
 
 .jspPane
 {
 	position: absolute;
+    width: 100% !important;
 }
 
 .jspVerticalBar
