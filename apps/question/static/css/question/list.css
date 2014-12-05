@@ -5,7 +5,7 @@
 #question #list {
     display: inline-block;
     zoom: 1;
-    width: 60%;
+    width: 100%;
     overflow: auto;
 }
 
@@ -17,19 +17,23 @@
 #question #list th {
     background: url(../../img/arrows/default.gif) center right no-repeat;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
 }
 
 #question #list th#header-representative {
-    width: 30%;
+    width: 23%;
 }
 
 #question #list th#header-question {
-    width: 55%;
+    width: 50%;
 }
 
 #question #list th#header-answered {
-    width: 15%;
+    width: 10%;
+}
+
+#question #list th#header-link {
+    width: 17%;
 }
 
 #question #list th.headerSortUp {
@@ -48,7 +52,7 @@
 }
 
 #question #list .item-selected {
-    background: #ddd;
+    background: #ddd !important;
 }
 
 #question #list .status {
@@ -60,6 +64,20 @@
 #question #list .answered {
     background: #32CD32;
     color: #32CD32;
+}
+
+.has_replied {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+}
+
+.has_not_replied {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    display: block;
 }
 
 #question #list .unanswered-new {

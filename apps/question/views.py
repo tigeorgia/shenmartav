@@ -254,21 +254,13 @@ class Items (TemplateView):
         @rtype: Paginator.page
         """
         queryset = Question.public.order_by('-date')
-        paginator = Paginator(queryset, PAGINATE_BY)
-        try:
-            result = paginator.page(page)
-        except (PageNotAnInteger, TypeError):
-            result = paginator.page(1)
-        except EmptyPage:
-            result = None
-        #    result = paginator.page(paginator.num_pages)
-
-        return self._add_item_states(result)
+        return self._add_item_states(queryset)
 
 
     def get_context_data (self, **kwargs):
         context = super(Items, self).get_context_data(**kwargs)
         context['items'] = self._get_items(context['params']['page'])
+
         return context
 
 

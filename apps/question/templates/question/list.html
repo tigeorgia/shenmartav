@@ -4,6 +4,7 @@
 {% block question %}
 {% addtoblock "css" %}
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/list.css" media="all" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery.dataTables.min.css" media="all" />
 {% endaddtoblock %}
 
 <div class="breadcrumb">
@@ -36,31 +37,51 @@
     </div>
 </div></div>
 </div>
-    <div id="list" class="scroll-pane"><table>
-        <thead>
-        <tr>
-            <th class="heading" id="header-representative">{% trans 'Representative' %}</th>
-            <th class="heading" id="header-question">{% trans 'Question' %}</th>
-            <th class="heading" id="header-answered">{% trans 'Replied?' %}</th>
-        </tr>
-        </thead>
-        <tbody id="items"><tbody>
-    </table></div>
-
-    <div id="sidebar">
-        {% include 'question/form.html' %}
+    <div id="list" style="padding-top: 15px;">
+        <table id="question-list-table" class="display">
+            <thead>
+                <tr>
+                    <th class="heading" id="header-representative">{% trans 'Representative' %}</th>
+                    <th class="heading" id="header-question">{% trans 'Question' %}</th>
+                    <th class="heading" id="header-answered">{% trans 'Replied?' %}</th>
+                    <th class="heading" id="header-link">{% trans 'Link' %}</th>
+                </tr>
+            </thead>
+            <tbody id="items">
+                {% for item in object_list %}
+                    <tr class="item" id="{{ item.pk }}">
+                        <td>{{ item.first_name }} {{ item.last_name }}</td>
+                        {% if item.question|length > 600 %}
+                            <td>{{ item.question|slice:":600"}}...</td>
+                        {% else %}
+                            <td>{{ item.question }}</td>
+                        {% endif %}
+                        {% if item.answer %}
+                            <td><span class="has_replied">{% trans "Yes" %}</span></td>
+                            <td><a href="{% url question_detail item.pk %}">{% trans "See full question and answer" %}</a></td>
+                        {% else %}
+                            <td><span class="has_not_replied">{% trans "No" %}</span></td>
+                            <td><a href="{% url question_detail item.pk %}">{% trans "See full question and answer" %}</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            <tbody>
+        </table>
     </div>
+
     <div style="clear: both"></div>
 </div>
 
 {% addtoblock "js" %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/tablesorter.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/question/list.js"></script>
+
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/question/question.js"></script>
 {% endaddtoblock %}
 <script type="text/javascript">
-var URL_QuestionInfo = '{% url question_info 0 %}';
-var URL_QuestionItems = '{% url question_items 0 %}';
+//var URL_QuestionInfo = '{% url question_info 0 %}';
+//var URL_QuestionItems = '{% url question_items 0 %}';
 </script>
 
 {% endblock %}
