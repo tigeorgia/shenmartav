@@ -17,7 +17,7 @@
     </div>
         <div class="data">
             <div class="representative-name"><a id="representative-name" title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a></div>
-            <div class="smaller">{% trans 'Answered' %}: {{ representative.answered|stringformat:'.1f' }} %</div>
+            <div class="smaller">{% trans 'Answered' %}: {{ percentage_answered }} %</div>
             <div class="text">{% if obj.answer %}{{ obj.answer|safe|linebreaks }}{% else %}<span class="unanswered">{% trans 'Not yet answered!' %}</span>{% endif %}</div>
         </div>
         <div style="clear:both"></div>

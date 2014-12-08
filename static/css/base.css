@@ -157,6 +157,7 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 }
 
 .wrapper {
+    max-width: 1100px;
     width: 80%;
     padding: 1.5em 0.5em 0.5em 0.5em;
     margin: 0 auto;

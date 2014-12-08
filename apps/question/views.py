@@ -180,6 +180,11 @@ class Detail (DetailView):
         context['url_feed'] = reverse('question_feed_list')
         set_language_changer(self.request, context['obj'].get_absolute_url)
 
+        question = context['obj']
+        total_questions = Question.objects.filter(representative=question.representative_id, is_public='t')
+        answered_questions = Question.objects.filter(representative=528, is_public='t').exclude(answer__isnull=True).exclude(answer__exact='')
+        context["percentage_answered"] = float((answered_questions.count()) / float(total_questions.count()) * 100)
+
         return context
 
 

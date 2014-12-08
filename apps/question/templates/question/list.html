@@ -50,7 +50,7 @@
             <tbody id="items">
                 {% for item in object_list %}
                     <tr class="item" id="{{ item.pk }}">
-                        <td>{{ item.first_name }} {{ item.last_name }}</td>
+                        <td>{{ item.representative.name }}</td>
                         {% if item.question|length > 600 %}
                             <td>{{ item.question|slice:":600"}}...</td>
                         {% else %}
