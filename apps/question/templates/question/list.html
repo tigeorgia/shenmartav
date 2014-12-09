@@ -61,7 +61,7 @@
                             <td><a href="{% url question_detail item.pk %}">{% trans "See full question and answer" %}</a></td>
                         {% else %}
                             <td><span class="has_not_replied">{% trans "No" %}</span></td>
-                            <td><a href="{% url question_detail item.pk %}">{% trans "See full question and answer" %}</a></td>
+                            <td><a href="{% url question_detail item.pk %}">{% trans "See full question" %}</a></td>
                         {% endif %}
                     </tr>
                 {% endfor %}

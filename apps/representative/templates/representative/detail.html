@@ -221,7 +221,10 @@
                 <h2 class="heading">{% trans 'Questions and Answers' %}</h2>
 		    {% if questions.answered.absolute == 0 and questions.noresponse.absolute == 0 %}
 			<div id="legend">{% trans 'No one has sent their question to this MP yet. Be the first to do so' %}: <a class="mplink" href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question' %}</a>.</div>
-		    {% else %}		
+		    {% else %}
+                    <div id="readmore-button">
+                        <a href="{% url question_rep_list obj.pk %}"><strong>{% trans 'See all the questions asked to this MP' %}</strong></a>
+                    </div>
 	                <div class="table">
 	                    <div class="row">
 	                        <div class="cell" id="label-answered">{% trans 'Answered' %}</div>

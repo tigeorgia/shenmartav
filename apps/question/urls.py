@@ -9,6 +9,7 @@ from .feeds import FeedList
 
 urlpatterns = patterns('',
     url(r'^$', List.as_view(), name='question_list'),
+    url(r'^(?P<rep_pk>\d+)/$', List.as_view(), name='question_rep_list'),
     url(r'^ask/$', Ask.as_view(), name='question_ask'),
     url(r'^ask/(?P<pk>\d+)/$', Ask.as_view(), name='question_ask_representative'),
     url(r'^thanks/$', Thanks.as_view(), name='question_thanks'),

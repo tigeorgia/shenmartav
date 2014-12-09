@@ -89,10 +89,16 @@ class List (ListView):
     """Implements the Question list view."""
     template_name = 'question/list.html'
     model = Question
-    queryset = Question.public.order_by('-date')
 
+    def get_queryset(self):
+        if ('rep_pk' in self.kwargs) and (self.kwargs['rep_pk'] is not None):
+            qs = Question.objects.filter(representative=self.kwargs['rep_pk'], is_public='t').order_by('-date')
+        else:
+            qs = Question.public.order_by('-date')
+        return qs
 
     def get_context_data (self, **kwargs):
+
         context = super(List, self).get_context_data(**kwargs)
         context['form'] = _get_form(self)
         context['url_feed'] = reverse('question_feed_list')
