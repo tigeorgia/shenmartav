@@ -2,10 +2,9 @@ $(document).ready(function() {
 
     $('#question-list-table').DataTable();
 
-    $('#question #list .item').click(function () {
+    $('#question-list-table tbody').on('click', 'tr', function () {
 
         pk = $(this).attr('id');
-        //pk = parseInt(pk.slice(5, pk.length)); // 5 == 'item-'
 
         if (!pk) {
             return;
