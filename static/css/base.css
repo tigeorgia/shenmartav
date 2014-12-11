@@ -812,11 +812,12 @@ img.column-bg {
 .threecolumn {
     display: block;
     width: 1100px;
-    background-color: #f0f0f0;
+    background-color: #fff;
     overflow: hidden;
+    margin-top: 20px;
 }
 
-.threecolumn .span1, .threecolumn .span2, .threecolumn .span3 {
+.threecolumn .span1, .threecolumn .span2, .threecolumn .span3, .threecolumn .third, .threecolumn .third-first {
     background-color: #fff;
     display: inline-block;
     *display: inline;
@@ -825,6 +826,11 @@ img.column-bg {
 
 .threecolumn .span2, .threecolumn .span3 {
     margin-left: 13px;
+    vertical-align: top;
+}
+
+.threecolumn .third {
+    margin-left: 15px;
     vertical-align: top;
 }
 
@@ -838,6 +844,14 @@ img.column-bg {
 
 .threecolumn .span3 {
     width: 551px;
+}
+
+.threecolumn .third, .threecolumn .third-first {
+    width: 32%;
+}
+
+.question-text {
+    padding-left: 8px;
 }
 
 #unit-list {

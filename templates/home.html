@@ -1,5 +1,7 @@
-{% extends 'base.html' %} {% load cms_tags i18n %} {% load i18n sekizai_tags %} 
+{% extends 'base.html' %} {% load cms_tags i18n %} {% load i18n sekizai_tags %}
 {% load parliament_3rows %}
+{% load question_row %}
+
 {% block css %}
 <style type="text/css">
     .wrapper { background-color: inherit; }
@@ -141,6 +143,12 @@
 		</div>
 	</div>
 </div>
+
+<div class="threecolumn">
+    <h1>{% trans 'Latest questions' %}</h1>
+    {% get_three_questions %}
+</div>
+
 {% addtoblock "js" %}
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/representative/find_home.js"></script>
