@@ -10,9 +10,10 @@
 
 <div class="question">
     <h1><a href="{% url question_list %}">{% trans 'Your Questions' %}</a></h1>
-    <div class="subh1">{% trans 'You can submit questions to Representatives here' %}</div>
+    <div class="subh1"><a href="{% url question_list %}">{% trans 'You can view questions asked to Representatives and their answers' %}</a></div>
     <div id="ask">
-        <a href="{% url question_list %}"><img src="{{ STATIC_URL }}/img/ask-{{ LANGUAGE_CODE }}.png" alt="{% trans 'Make yourself heard!' %}"></a>
-        <h4><a href="{% url question_list %}">{% trans 'Ask a question' %}</a></h4>
+        <a href="{% url question_ask %}"><img src="{{ STATIC_URL }}/img/ask-{{ LANGUAGE_CODE }}.png" alt="{% trans 'Make yourself heard!' %}"></a>
+        <h3><a href="{% url question_ask %}">{% trans 'Ask a question' %}</a></h3>
     </div>
+    <div class="subh1"><a href="{% url question_ask %}">{% trans 'You can submit questions to Representatives here' %}</a></div>
 </div>

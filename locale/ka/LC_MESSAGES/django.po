@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-11 15:09+0400\n"
+"POT-Creation-Date: 2014-12-12 12:20+0400\n"
 "PO-Revision-Date: 2014-02-13 16:02+0400\n"
 "Last-Translator: George <gio@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -1669,8 +1669,8 @@ msgid "Your Questions"
 msgstr "თქვენი შეკითხვები"
 
 #: apps/question/templates/cmsplugins/question.html:13
-msgid "You can submit questions to Representatives here"
-msgstr "აქ შეგიძლიათ დაუსვათ შეკითხვები თქვენს წარმომადგენლებს პარლამენტში."
+msgid "You can view questions asked to Representatives and their answers"
+msgstr "იხილეთ დასმული კითხვები და დეპუტატების პასუხები"
 
 #: apps/question/templates/cmsplugins/question.html:15
 msgid "Make yourself heard!"
@@ -1681,6 +1681,10 @@ msgstr "Make yourself heard!"
 #: apps/representative/templates/representative/detail.html:223
 msgid "Ask a question"
 msgstr "დაუსვი შეკითხვა!"
+
+#: apps/question/templates/cmsplugins/question.html:18
+msgid "You can submit questions to Representatives here"
+msgstr "აქ შეგიძლიათ დაუსვათ შეკითხვები თქვენს წარმომადგენლებს პარლამენტში."
 
 #: apps/question/templates/folded/question.html:3
 msgid "Section Question"
