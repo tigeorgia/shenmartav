@@ -2359,7 +2359,6 @@ msgid "No one has sent their question to this MP yet. Be the first to do so"
 msgstr "ამ დეპუტატისთვის  კითხვა ჯერჯერობით არ დასმულა. შეეკითხე!"
 
 #: apps/representative/templates/representative/detail.html:226
-#, fuzzy
 msgid "See all the questions asked to this MP"
 msgstr "იხილეთ ამ დეპუტატისთვის ყველა დასმული შეკითხვა"
 
@@ -2369,7 +2368,7 @@ msgstr "გამოხმაურება არ არის"
 
 #: apps/representative/templates/representative/detail.html:243
 msgid "Continue to the answer &raquo;"
-msgstr ""
+msgstr "იხილეთ სრული შეკითხვა და პასუხი"
 
 #: apps/representative/templates/representative/detail.html:254
 msgid "Voted Laws"
