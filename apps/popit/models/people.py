@@ -17,7 +17,7 @@ class Person(ModelBase):
     date_of_birth   = ApproximateDateField(blank=True, null=True, help_text=date_help_text)
     date_of_death   = ApproximateDateField(blank=True, null=True, help_text=date_help_text)
     #gender          = models.CharField(max_length=1, choices=(('m','Male'),('f','Female')) )
-    description     = models.TextField(blank=True, null=True, default='')
+    description     = models.TextField(blank=True, default='')
 
     class Meta:
         ordering = [ 'slug' ]
