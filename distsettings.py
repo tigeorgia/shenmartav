@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'tinymce',
     'podcasting',
     'licenses',
+    'captcha',
 
     # cms
     'cms',
@@ -275,3 +276,11 @@ BASE_INCOME = {
     'tbilisi': 16800,
     'ajara': '23400',
 }
+
+
+############
+# captcha
+############
+
+CAPTCHA_FONT_SIZE = 28
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.word_challenge'

@@ -744,6 +744,7 @@ img.column-bg {
 #below-fold {
     margin-top: 33px;
     position: relative;
+    height: 490px;
 }
 
 #below-fold #engage-slider, #below-fold #mp-stats-slider, #below-fold #drafts-mini {
@@ -1052,4 +1053,8 @@ li.member {
 
 .with-sidebar {
     width: 64%
+}
+
+.captcha {
+    vertical-align: middle;
 }

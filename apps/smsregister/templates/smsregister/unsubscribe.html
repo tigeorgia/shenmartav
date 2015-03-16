@@ -4,18 +4,20 @@
 {% block contact %}
 <div class="breadcrumb">
     <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
-    {% trans 'SMS Registration' %}
+    {% trans 'SMS Unsubscription' %}</a>
 </div>
 
 <div id="smsregister">
-    <h2 class="heading">{% trans 'SMS Registration' %}</h2>
-
-    {% trans 'If you wish to unsubscribe, ' %}<a href="{% url smsregister_unsubscribe %}">{% trans 'click here' %}</a>.
+    <h2 class="heading">{% trans 'SMS Unsubscription' %}</h2>
 
     <div id="" class="">
-        <form id="form-smsregister" action="{% url smsregister_show %}" method="post">
-            <h3>{% trans 'Registration Form' %}</h3>
+        <form id="form-smsregister" action="{% url smsregister_unsubscribe %}" method="post">
+            <h3>{% trans 'Unsubscription' %}</h3>
+            <p>{% trans 'Please enter the phone number you would like to unsubscribe' %}.</p>
             {% csrf_token %}
+            {% if error_message %}
+                <div class="error">{{ error_message }}</div>
+            {% endif %}
             <table>
             {% for field in form %}<tr>
                 <td{% if field.field.required %} class="required"{% endif %}>{{ field.label_tag }}</td>
@@ -23,7 +25,7 @@
             </tr>{% endfor %}
             <tr>
                 <td><div class="fineprint required">{% trans 'Bold fields are required' %}</div></td>
-                <td><input type="submit" value="{% trans 'Register' %}" /></td>
+                <td><input type="submit" value="{% trans 'Unsubscribe' %}" /></td>
             </tr>
             </table>
         </form>

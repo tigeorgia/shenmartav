@@ -1,13 +1,24 @@
 {% extends 'smsregister/base.html' %}
 {% load i18n %}
 
-{% block contact %}
+{% block smsregister %}
 <div class="breadcrumb">
     <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
     {% trans 'SMS Registration' %}</a>
 </div>
 
 <div id="contact">
-    <h2 class="heading">{% trans 'Thanks for signing up!' %}</h2>
+    {% if "unsubscribe" in request.META.HTTP_REFERER %}
+        <h2 class="heading">{% trans 'Your unsubscription is now complete.' %}</h2>
+    {% else %}
+        <h2 class="heading">{% trans 'Thanks for signing up!' %}</h2>
+    {% endif %}
+
+    <p>
+        <a href="/">> {% trans 'Return to home page' %}</a>
+    </p>
+
 </div>
+
+
 {% endblock %}

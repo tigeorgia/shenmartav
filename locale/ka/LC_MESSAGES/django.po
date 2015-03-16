@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: shenmartav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-12 12:20+0400\n"
+"POT-Creation-Date: 2015-03-16 14:44+0400\n"
 "PO-Revision-Date: 2014-02-13 16:02+0400\n"
 "Last-Translator: George <gio@transparency.ge>\n"
 "Language-Team: Tornike Natroshvili <tornike@transparency.ge>\n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "Search App"
 msgstr "საძიებო აპლიკაცია"
 
-#: distsettings.py:203
+#: distsettings.py:204
 msgid "Simple Template"
 msgstr "მარტივი ნიმუში"
 
-#: distsettings.py:204
+#: distsettings.py:205
 msgid "Home Template"
 msgstr "საწყისი ნიმუში"
 
@@ -177,6 +177,7 @@ msgstr "იხილეთ ამ თვეში განხორციელ
 #: apps/representative/templates/representative/votingrecords.html:10
 #: apps/smsregister/templates/smsregister/show.html:6
 #: apps/smsregister/templates/smsregister/thanks.html:6
+#: apps/smsregister/templates/smsregister/unsubscribe.html:6
 #: apps/votingrecord/templates/votingrecord/detail.html:13
 #: apps/votingrecord/templates/votingrecord/list.html:6 templates/nav.html:9
 #: templates/admin/base.html:56 templates/rosetta/pofile.html:14
@@ -307,7 +308,7 @@ msgid "Fax"
 msgstr "ფაქსი"
 
 #: apps/contact/templates/contact/show.html:22
-#: apps/contact/templates/contact/show.html:32
+#: apps/contact/templates/contact/show.html:32 apps/smsregister/forms.py:16
 msgid "Email"
 msgstr "ელფოსტა"
 
@@ -335,7 +336,8 @@ msgstr "0154 თბილისი, საქართველო"
 
 #: apps/contact/templates/contact/show.html:47
 #: apps/question/templates/question/form.html:14
-#: apps/smsregister/templates/smsregister/show.html:23
+#: apps/smsregister/templates/smsregister/show.html:25
+#: apps/smsregister/templates/smsregister/unsubscribe.html:27
 msgid "Bold fields are required"
 msgstr "გამუქებული ველების შევსება აუცილებელია"
 
@@ -2441,7 +2443,7 @@ msgstr "არჩევის ტიპი"
 
 #: apps/representative/templates/representative/find.html:20
 #: apps/representative/templates/representative/find.html:37
-#: apps/smsregister/forms.py:28 templates/rosetta/pofile.html:31
+#: apps/smsregister/forms.py:30 templates/rosetta/pofile.html:31
 msgid "All"
 msgstr "ყველა"
 
@@ -2621,89 +2623,135 @@ msgstr "შემდეგი შეტყობინება"
 msgid "Receive alerts on your phone."
 msgstr "მიიღეთ შეტყობინებები პირდაპირ თქვენს მობილურში."
 
+#: apps/smsalert/templates/smsalert/page.html:28
+#: apps/smsregister/templates/smsregister/show.html:13
+msgid "If you wish to unsubscribe, "
+msgstr "თუ გსურთ შეტყობინებების გამოწერაზე უარის თქმა, "
+
+#: apps/smsalert/templates/smsalert/page.html:28
+#: apps/smsregister/templates/smsregister/show.html:13
+msgid "click here"
+msgstr "დააჭირეთ აქ"
+
 #: apps/smsregister/cms_app.py:6
 msgid "SMS Registration App"
 msgstr "SMS რეგისტრაციის აპლიკაცია"
 
-#: apps/smsregister/forms.py:13
+#: apps/smsregister/forms.py:14
 msgid "Your Name: "
 msgstr "თქვენი სახელი:"
 
-#: apps/smsregister/forms.py:14
+#: apps/smsregister/forms.py:15 apps/smsregister/forms.py:67
 msgid "Mobile: +995"
 msgstr "მობილური: +995"
 
-#: apps/smsregister/forms.py:16
+#: apps/smsregister/forms.py:18
 msgid "Language"
 msgstr "ენა"
 
-#: apps/smsregister/forms.py:24
+#: apps/smsregister/forms.py:26
 msgid "Subscribe to: "
 msgstr "გამოიწერეთ:"
 
-#: apps/smsregister/forms.py:29
+#: apps/smsregister/forms.py:31
 msgid "Agrarian Issues Committee"
 msgstr " აგრარულ საკითხთა კომიტეტი"
 
-#: apps/smsregister/forms.py:30
+#: apps/smsregister/forms.py:32
 msgid "Budget and Finance Committee"
 msgstr " საფინანსო-საბიუჯეტო კომიტეტი"
 
-#: apps/smsregister/forms.py:31
+#: apps/smsregister/forms.py:33
 msgid "Committee on Environmental Protection and Natural Resources"
 msgstr "გარემოს დაცვისა და ბუნებრივი რესურსების კომიტეტი"
 
-#: apps/smsregister/forms.py:32
+#: apps/smsregister/forms.py:34
 msgid "Diaspora and Caucasus Issues Committee"
 msgstr "დიასპორისა და კავკასიის საკითხთა კომიტეტი"
 
-#: apps/smsregister/forms.py:33
+#: apps/smsregister/forms.py:35
 msgid "Defence and Security Committee"
 msgstr " თავდაცვისა და უშიშროების კომიტეტი"
 
-#: apps/smsregister/forms.py:34
+#: apps/smsregister/forms.py:36
 msgid "Education, Science and Culture Committee"
 msgstr " განათლების, მეცნიერების და კულტურის კომიტეტი"
 
-#: apps/smsregister/forms.py:35
+#: apps/smsregister/forms.py:37
 msgid "European Integration Committee"
 msgstr " ევროპასთან ინტეგრაციის კომიტეტი"
 
-#: apps/smsregister/forms.py:36
+#: apps/smsregister/forms.py:38
 msgid "Foreign Relations Committee"
 msgstr " საგარეო ურთიერთობათა კომიტეტი"
 
-#: apps/smsregister/forms.py:37
+#: apps/smsregister/forms.py:39
 msgid "Healthcare and Social Issues Committee"
 msgstr " ჯანმრთელობის დაცვისა და სოციალურ საკითხთა კომიტეტი "
 
-#: apps/smsregister/forms.py:38
+#: apps/smsregister/forms.py:40
 msgid "Human Rights and Civil Integration Committee"
 msgstr " ადამიანის უფლებათა დაცვისა და სამოქალაქო ინტეგრაციის კომიტეტი"
 
-#: apps/smsregister/forms.py:39
+#: apps/smsregister/forms.py:41
 msgid "Legal Issues Committee"
 msgstr "იურიდიულ საკითხთა კომიტეტი"
 
-#: apps/smsregister/forms.py:40
+#: apps/smsregister/forms.py:42
 msgid "Procedural Issues and Rules Committee"
 msgstr "საპროცედურო საკითხთა და წესების კომიტეტი"
 
-#: apps/smsregister/forms.py:41
+#: apps/smsregister/forms.py:43
 msgid "Regional Policy, Self-government and Mountainous Regions"
 msgstr "რეგიონული პოლიტიკა, თვითმმართველობა და მთიანი რეგიონები"
 
-#: apps/smsregister/forms.py:42
+#: apps/smsregister/forms.py:44
 msgid "Sector Economy and Economic Policy Committee"
 msgstr " დარგობრივი ეკონომიკისა და ეკონომიკური პოლიტიკის კომიტეტი"
 
-#: apps/smsregister/forms.py:43
+#: apps/smsregister/forms.py:45
 msgid "Sport and Youth Affairs Committee"
 msgstr "სპორტისა და ახალგაზრდულ საქმეთა კომიტეტი"
 
-#: apps/smsregister/forms.py:44
+#: apps/smsregister/forms.py:46
 msgid "Adjaran Supreme Council"
 msgstr "აჭარის უმაღლესი საბჭო"
+
+#: apps/smsregister/forms.py:47
+msgid "Debug"
+msgstr ""
+
+#: apps/smsregister/forms.py:61
+msgid "This phone number has already been registered."
+msgstr "აღნიშნული ტელეფონის ნომერი უკვე რეგისტრირებულია."
+
+#: apps/smsregister/models.py:8
+#, fuzzy
+msgid "Your name"
+msgstr "თქვენი სახელი:"
+
+#: apps/smsregister/models.py:10
+#, fuzzy
+msgid "Language to use"
+msgstr "ენა"
+
+#: apps/smsregister/models.py:12
+msgid "Phone number to send the SMS to"
+msgstr ""
+
+#: apps/smsregister/models.py:14
+#, fuzzy
+msgid "User email address"
+msgstr "თქვენი ელ-ფოსტა"
+
+#: apps/smsregister/models.py:16
+msgid "Groups you are subscribing to"
+msgstr ""
+
+#: apps/smsregister/views.py:69 apps/smsregister/views.py:75
+#: apps/smsregister/views.py:79
+msgid "This phone number you entered is not registered"
+msgstr "თქვენ მიერ შეყვანილი ტელეფონის ნომერი რეგისტრირებული არ არის."
 
 #: apps/smsregister/templates/smsregister/show.html:7
 #: apps/smsregister/templates/smsregister/show.html:11
@@ -2711,17 +2759,42 @@ msgstr "აჭარის უმაღლესი საბჭო"
 msgid "SMS Registration"
 msgstr "SMS რეგისტრაცია"
 
-#: apps/smsregister/templates/smsregister/show.html:15
+#: apps/smsregister/templates/smsregister/show.html:17
 msgid "Registration Form"
 msgstr "რეგისტრაციის ფორმა"
 
-#: apps/smsregister/templates/smsregister/show.html:24
+#: apps/smsregister/templates/smsregister/show.html:26
 msgid "Register"
 msgstr "დარეგისტრირება"
 
-#: apps/smsregister/templates/smsregister/thanks.html:11
+#: apps/smsregister/templates/smsregister/thanks.html:12
+msgid "Your unsubscription is now complete."
+msgstr "თქვენი ტელეფონის ნომერი ბაზიდან ამოღებულია."
+
+#: apps/smsregister/templates/smsregister/thanks.html:14
 msgid "Thanks for signing up!"
 msgstr "მადლობა დარეგისტრირებისთვის!"
+
+#: apps/smsregister/templates/smsregister/thanks.html:18
+msgid "Return to home page"
+msgstr "მთავარ გვერდზე დაბრუნება"
+
+#: apps/smsregister/templates/smsregister/unsubscribe.html:7
+#: apps/smsregister/templates/smsregister/unsubscribe.html:11
+msgid "SMS Unsubscription"
+msgstr "აღწერა"
+
+#: apps/smsregister/templates/smsregister/unsubscribe.html:15
+msgid "Unsubscription"
+msgstr "აღწერა"
+
+#: apps/smsregister/templates/smsregister/unsubscribe.html:16
+msgid "Please enter the phone number you would like to unsubscribe"
+msgstr "გთხოვთ შეიყვანოთ ნომერი, რომელზეც აღარ გინდათ მიიღოთ შეტყობინებები"
+
+#: apps/smsregister/templates/smsregister/unsubscribe.html:28
+msgid "Unsubscribe"
+msgstr "გამოიწერეთ:"
 
 #: apps/votingrecord/cms_app.py:6
 msgid "Voting Record App"

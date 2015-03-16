@@ -45,6 +45,9 @@ urlpatterns = patterns('',
     #url(r"^podcasts/", include("podcasting.urls")),
     url(r"^feeds/podcasts/", include("podcasting.urls_feeds")),
 
+    # Captcha for SMS registration
+    url(r'^captcha/', include('captcha.urls')),
+
     # CMS THIS MUST BE LAST -- IT INTERCEPTS EVERYTHING
     url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^', include('cms.urls')),

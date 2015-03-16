@@ -58,3 +58,9 @@ QUESTION_SMS_URL = 'http://localhost:8004/?to=&msg='
 # parliament notifications
 ###########################################################
 PARLIAMENT_TEAM_EMAIL_ADDRESSES = ['example_team@mail.com']
+
+
+###########################################################
+# SMS Registration / API encryption
+###########################################################
+SMS_API_KEY = '123456789012345678901234'

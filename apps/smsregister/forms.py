@@ -6,13 +6,15 @@ __docformat__ = 'epytext en'
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-
+from apps.smsregister.models import SMSRegister
+from captcha.fields import CaptchaField
 
 
 class SMSRegisterForm(forms.Form):
     name = forms.CharField(label=_('Your Name: '), required=True)
-    number = forms.CharField(label=_('Mobile: +995'), required=True, max_length=9, min_length=9)
-    
+    phone_number = forms.CharField(label=_('Mobile: +995'), required=True, max_length=9, min_length=9)
+    email = forms.CharField(label=_('Email'), required=True, max_length=75, min_length=5)
+
     lang = forms.ChoiceField(label=_('Language'), required=True, 
         choices=(
             ('en', u"English"),
@@ -42,5 +44,28 @@ class SMSRegisterForm(forms.Form):
             (u"economy",_(u"Sector Economy and Economic Policy Committee")),
             (u"sports",_(u"Sport and Youth Affairs Committee")),
             (u"adjara",_(u"Adjaran Supreme Council")),
+            (u"debug",_(u"Debug")),
     ))
 
+    captcha = CaptchaField()
+
+    def __init__(self, *args, **kwargs):
+        super(SMSRegisterForm, self).__init__(*args, **kwargs)
+        self.initial['lang'] = 'ka'
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        phone_number = cleaned_data.get('phone_number')
+
+        if SMSRegister.objects.filter(phone_number=phone_number).exists():
+            self._errors['phone_number'] = self.error_class([_('This phone number has already been registered.')])
+
+        return cleaned_data
+
+
+class SMSUnsubscribeForm(forms.Form):
+    phone_number = forms.CharField(label=_('Mobile: +995'), required=True, max_length=9, min_length=9)
+    only_important = False
+
+    def __init__(self, *args, **kwargs):
+        super(SMSUnsubscribeForm, self).__init__(*args, **kwargs)

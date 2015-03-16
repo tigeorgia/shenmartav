@@ -23,4 +23,9 @@
 <div id="receive">
     <a href="{% url smsregister_show %}">{% trans 'Receive alerts on your phone.' %}</a>
 </div>
+
+<div id="unsubscribe">
+    {% trans 'If you wish to unsubscribe, ' %}<a href="{% url smsregister_unsubscribe %}">{% trans 'click here' %}</a>.
+</div>
+
 </div>

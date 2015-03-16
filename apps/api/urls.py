@@ -27,6 +27,9 @@ v1_api.register(QuestionResource())
 from .resources.res_blog import BlogResource
 v1_api.register(BlogResource())
 
+from .resources.res_smsregister import SMSRegisterResource
+v1_api.register(SMSRegisterResource())
+
 urlpatterns = patterns('',
     url(r'', include(v1_api.urls)),
 )
