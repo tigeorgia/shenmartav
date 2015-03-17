@@ -44,7 +44,6 @@ class SMSRegisterForm(forms.Form):
             (u"economy",_(u"Sector Economy and Economic Policy Committee")),
             (u"sports",_(u"Sport and Youth Affairs Committee")),
             (u"adjara",_(u"Adjaran Supreme Council")),
-            (u"debug",_(u"Debug")),
     ))
 
     captcha = CaptchaField()

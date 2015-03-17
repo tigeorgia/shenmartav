@@ -18,13 +18,10 @@ class SMSRegisterResource (CommonModelResource):
 
     def obj_create(self, bundle, **kwargs):
         test = super(SMSRegisterResource, self).obj_create(bundle, user=bundle.request.user)
-        print test
         return test
 
     def dehydrate(self, bundle):
         encrypted = self.encrypt(json.dumps(bundle.data))
-        print encrypted
-
         return encrypted
 
 
