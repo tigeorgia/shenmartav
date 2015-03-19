@@ -60,8 +60,6 @@ class Unsubscribe (FormView):
     def form_valid (self, form):
 
         phone_number = form.cleaned_data['phone_number']
-        print phone_number
-
 
         try:
             user_to_delete = SMSRegister.objects.get(phone_number=phone_number)
