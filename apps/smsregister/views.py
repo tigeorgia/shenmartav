@@ -32,6 +32,8 @@ class Show (FormView):
         groups = form.cleaned_data['subscribe']
         email = form.cleaned_data['email']
 
+        upper_groups = u'|'.join(groups).upper()
+
         body = (u"addmobile " + 
                 user_name.replace(u" ",u"") + SEP +
                 u"+995" + phone_number + SEP +
@@ -42,7 +44,7 @@ class Show (FormView):
         send_mail(subject, body, 'registration@myparliament.ge',['george.topouria@transparency.ge'])
 
         new_user = SMSRegister(name=user_name, selected_language=language,
-                               phone_number=phone_number, email=email, groups=u'|'.join(groups).upper())
+                               phone_number=phone_number, email=email, groups=upper_groups.replace('ALL|', ''))
         new_user.save()
 
         return redirect('smsregister_thanks')
