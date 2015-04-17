@@ -455,10 +455,15 @@ class Representative(Person):
             try:
                 splitname = r[name_lang].split()
             except AttributeError:
-                splitname = ''
+                splitname = []
                 if r['names__name'] is not None:
                     splitname = r['names__name'].split()
-            lastname = splitname.pop()
+
+            if splitname != []:
+                lastname = splitname.pop()
+            else:
+                lastname = ''
+                
             r['lastname_first'] = lastname + ' ' + ' '.join(splitname)
             by_lastname.append((lastname, r))
 
