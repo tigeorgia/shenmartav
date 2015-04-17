@@ -29,7 +29,10 @@ def get_members():
         Note the replacement only done once - the box starts jumping again
         if there are three parts seperated by the linebreak *sigh*
         """
-        member['name'] = member['firstname_first'].replace(' ', '\n', 1)
+        if member['firstname_first'] is None:
+            member['name'] = ''
+        else:
+            member['name'] = member['firstname_first'].replace(' ', '\n', 1)
     return members
 
 
