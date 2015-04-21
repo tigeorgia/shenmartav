@@ -74,7 +74,7 @@ class PersonName(ModelBase):
         super(PersonName, self).save(*args, **kwargs)
         try:
             person = self.person
-            person.slug = slugify(str(person.name))
+            person.slug = slugify(unidecode(person.name.name))
             person.save()
         except:
             pass

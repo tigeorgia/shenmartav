@@ -25,6 +25,7 @@ from sorl.thumbnail.fields import ImageWithThumbnailsField
 
 from shenmartav import glt
 from apps.popit.models import Person, Organisation
+from unidecode import unidecode
 
 
 #: minimum length of (representative's) name
@@ -544,7 +545,7 @@ class Representative(Person):
         # enforce rewriting of slug in default language
         lang = get_language()
         activate(settings.LANGUAGE_CODE)
-        self.slug = slugify(str(self.name))
+        self.slug = slugify(unidecode(self.name.name))
         activate(lang)
 
         super(Representative, self).save(*args, **kwargs)
