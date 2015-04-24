@@ -6,6 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
+from unidecode import unidecode
 
 from django_date_extensions.fields import ApproximateDateField
 
@@ -74,7 +75,7 @@ class PersonName(ModelBase):
         super(PersonName, self).save(*args, **kwargs)
         try:
             person = self.person
-            person.slug = slugify(unidecode(person.name.name))
+            person.slug = slugify(unidecode(person.name))
             person.save()
         except:
             pass
