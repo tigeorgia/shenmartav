@@ -75,7 +75,10 @@ class PersonName(ModelBase):
         super(PersonName, self).save(*args, **kwargs)
         try:
             person = self.person
-            person.slug = slugify(unidecode(person.name))
+            if person.name is not None:
+                person.slug = slugify(unidecode(person.name.name))
+            else:
+                person.slug = ''
             person.save()
         except:
             pass
