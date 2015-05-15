@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from haystack.indexes import SearchIndex, CharField
 from haystack import site
 

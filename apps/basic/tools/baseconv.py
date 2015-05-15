@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Convert numbers from base 10 integers to base X strings and back again.
 

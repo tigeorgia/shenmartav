@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # See http://djangosnippets.org/snippets/1580/
 from django.forms import ClearableFileInput
 from django.utils.safestring import mark_safe

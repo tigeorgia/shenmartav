@@ -1,5 +1,4 @@
-# vim: set fileencoding=utf-8
-# -*- coding: utf-8 -*
+# -*- coding: utf-8 -*-
 """
 Command import_people as provided by CIPPD
 

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.conf.urls.defaults import patterns, url
 from .views import *
 from .feeds import FeedList, FeedDetail

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from types import ClassType
 
 from django.db import models

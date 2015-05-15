@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.views.generic import DetailView, ListView
 
 from podcasting.models import Episode, Show

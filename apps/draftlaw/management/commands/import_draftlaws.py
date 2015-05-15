@@ -1,5 +1,5 @@
-# vim: set fileencoding=utf-8
-# -*- coding: utf-8 -*
+# -*- coding: utf-8 -*-
+
 """
 Command to import draft laws as provided by TIG
 """

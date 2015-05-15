@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib import admin
 from django.forms import TextInput, ModelForm
 #from sorl.thumbnail.admin import AdminImageMixin

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Django settings for shenmartav project - should be the same for every instance
 
 DEBUG = True

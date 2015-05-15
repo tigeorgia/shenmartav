@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sys
 from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url

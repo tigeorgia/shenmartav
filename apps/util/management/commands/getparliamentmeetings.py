@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import requests, BeautifulSoup, urllib3, os
 
 from django.core.management.base import BaseCommand, CommandError

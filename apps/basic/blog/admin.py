@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 from django.db import models

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.template import Library
 from django.template.defaultfilters import lower
 from django.utils.safestring import mark_safe

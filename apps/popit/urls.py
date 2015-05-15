@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # TODO
 # HTML representations - not implemented in tastypie yet, not sure if one of
 #   the many issues or forks on github deals with this.

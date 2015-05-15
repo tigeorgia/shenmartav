@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.db.models import Q
 from django.utils import simplejson as json
 from django.http import HttpResponse

@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class ForceDefaultLanguageMiddleware(object):
     """
     Ignore Accept-Language HTTP headers

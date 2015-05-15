@@ -1,5 +1,4 @@
-# vim: set fileencoding=utf-8
-# -*- coding: utf-8 -*
+# -*- coding: utf-8 -*-
 """
 Command update_assets to update parliamentarians' assets as defined in income
 declarations. It updates the fields for salary, expenses, property & assets.

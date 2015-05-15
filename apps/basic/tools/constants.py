@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import re
 
 # Stop Words courtesy of http://www.dcs.gla.ac.uk/idom/ir_resources/linguistic_utils/stop_words

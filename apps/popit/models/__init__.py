@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from common import *
 from people import *
 from organisations import *

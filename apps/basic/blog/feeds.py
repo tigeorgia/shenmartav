@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib.syndication.views import FeedDoesNotExist
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.sites.models import Site

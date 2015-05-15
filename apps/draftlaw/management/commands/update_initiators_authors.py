@@ -1,5 +1,4 @@
-# vim: set fileencoding=utf-8
-# -*- coding: utf-8 -*
+# -*- coding: utf-8 -*-
 """
 Command to link draft laws to representatives in initiator / author fields.
 """

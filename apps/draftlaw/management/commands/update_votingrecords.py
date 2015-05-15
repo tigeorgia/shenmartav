@@ -1,5 +1,6 @@
-# vim: set fileencoding=utf-8
-# -*- coding: utf-8 -*
+# -*- coding: utf-8 -*-
+
+
 """
 Command to update draft laws with voting records
 """

@@ -1,4 +1,5 @@
-# vim: set fileencoding=utf-8
+# -*- coding: utf-8 -*-
+
 """
 Model question
 

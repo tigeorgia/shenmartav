@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.template.base import Library
 from django.template.defaultfilters import stringfilter
 

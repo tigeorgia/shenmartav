@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 >>> from django.test import Client
 >>> from basic.blog.models import Post, Category

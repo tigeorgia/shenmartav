@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.forms.widgets import Widget, HiddenInput, TextInput
 from django.utils.safestring import mark_safe
 

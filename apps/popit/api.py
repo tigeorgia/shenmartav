@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # TODO
 # Output base32 IDs
 # Override key/value lookups to not need data__key__name=&data__value= somehow
