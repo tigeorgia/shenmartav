@@ -3,10 +3,18 @@
 <div class="third{% if forloop.counter == 1 %}-first{%  endif %}">
     <div>
         <div class="photo">
-            <a title="{{ question.representative.name }}" href="{% url representative_find %}representative/{{ question.representative.pk }}">{% thumbnail question.representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
+            {% if question.representative.faction != None %}
+                <a title="{{ question.representative.name }}" href="{% url representative_find %}representative/{{ question.representative.pk }}">{% thumbnail question.representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
+            {% else %}
+                {% thumbnail question.representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" />
+            {%  endif %}
         </div>
         <div class="info question-text">
-            <div class="representative-name"><a title="{{ question.representative.name }}" href="{% url representative_find %}representative/{{ question.representative.pk }}">{{ question.representative.name }}</a></div>
+            {% if question.representative.faction != None %}
+                <div class="representative-name"><a title="{{ question.representative.name }}" href="{% url representative_find %}representative/{{ question.representative.pk }}">{{ question.representative.name }}</a></div>
+            {% else %}
+                <div class="representative-name">{{ question.representative.name }}</div>
+            {%  endif %}
             <div id="latest-question"><span class="label">{% trans 'Question' %}:</span> {{ question.question|slice:"100" }} ...</div>
             <div id="latest-answer"><span class="label">{% trans 'Answer' %}:</span> {% if question.answer %}{{ question.answer|shorten_text:100 }}{% else %}{% trans 'Not yet answered!' %}{% endif %}</div>
             <div class="more"><a href="{{ question.get_absolute_url }}">{% trans 'More' %} &raquo;</a></div>
