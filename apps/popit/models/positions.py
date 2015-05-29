@@ -77,14 +77,14 @@ class Position(ModelBase):
     organisation    = models.ForeignKey(Organisation, null=True, blank=True)
 
     type            = models.ForeignKey(PositionType, null=True, blank=True)
-    title           = models.CharField(max_length=200, null=True, blank=True, default='')
+    title           = models.CharField(max_length=200, blank=True, default='')
 
-    place           = models.CharField(max_length=100, null=True, blank=True, help_text="use if needed to identify the position - eg add constituency for an 'MP'")
+    place           = models.CharField(max_length=100, blank=True, help_text="use if needed to identify the position - eg add constituency for an 'MP'")
     
-    note            = models.CharField(max_length=300, null=True, blank=True, default='')
+    note            = models.CharField(max_length=300, blank=True, default='')
 
-    start_date      = ApproximateDateField(null=True, blank=True, help_text=date_help_text)
-    end_date        = ApproximateDateField(null=True, blank=True, help_text=date_help_text, default="future")
+    start_date      = ApproximateDateField(blank=True, help_text=date_help_text)
+    end_date        = ApproximateDateField(blank=True, help_text=date_help_text, default="future")
 
     # Two hidden fields that are only used to do sorting. Filled in by code.
     sorting_start_date      = models.CharField(editable=True, default='', max_length=10)
