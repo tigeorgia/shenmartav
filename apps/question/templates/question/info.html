@@ -13,10 +13,18 @@
     </div>
 
     <div id="questionee">
-        <div class="photo"><a title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{% thumbnail representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
+        {% if representative.faction != None %}
+            <div class="photo"><a title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{% thumbnail representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /></a>
+        {% else %}
+            <div class="photo">{% thumbnail representative.photo '65x60' as im %}<img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" />
+        {% endif %}
     </div>
         <div class="data">
-            <div class="representative-name"><a id="representative-name" title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a></div>
+            {% if representative.faction != None %}
+                <div class="representative-name"><a id="representative-name" title="{{ representative.name }}" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a></div>
+            {% else %}
+                <div class="representative-name">{{ representative.name }}</div>
+            {% endif %}
             <div class="smaller">{% trans 'Answered' %}: {{ answered_questions }}/{{ total_questions }} {% trans 'question(s)' %}</div>
             <div class="text">{% if obj.answer %}{{ obj.answer|safe|linebreaks }}{% else %}<span class="unanswered">{% trans 'Not yet answered!' %}</span>{% endif %}</div>
         </div>
