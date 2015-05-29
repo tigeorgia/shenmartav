@@ -209,10 +209,9 @@ class Question (models.Model):
         related_name='questions', verbose_name=_('Representative'),
         help_text=_('Representative being asked'))
     #: the representative's answer
-    answer = models.TextField(help_text=_('The Answer'), blank=True, null=True)
+    answer = models.TextField(help_text=_('The Answer'), blank=True)
     #: parliament.ge response
-    parliament_response = models.TextField(blank=True, null=True,
-        help_text=_('Response from parliament.ge when sending the question'))
+    parliament_response = models.TextField(blank=True, help_text=_('Response from parliament.ge when sending the question'))
 
     #: managers
     objects = models.Manager()

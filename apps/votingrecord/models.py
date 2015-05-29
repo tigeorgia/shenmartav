@@ -21,20 +21,19 @@ class VotingRecord (models.Model):
     #: Parliament.ge kan (?) ID
     kan_id = models.IntegerField(null=True, help_text=_('kan ID'))
     #character portion of the ID
-    kan_id_chars = models.CharField(max_length=512, null=True)
+    kan_id_chars = models.CharField(max_length=512, blank=True)
 
     #: scrape date
     scrape_date = models.DateField(null=True, editable=False,
         help_text=('Date of Scrape Process'))
     #: name of the bill
-    name = models.CharField(max_length=512, null=True,
-        help_text=_('Name of the Bill'))
+    name = models.CharField(max_length=512, help_text=_('Name of the Bill'))
     #: voting date
     date = models.DateField(null=True, help_text=_('Date of Voting'))
     #: url where to find the voting record
-    url = models.CharField(max_length=255, null=True, help_text=_('URL of the Voting Record'))
+    url = models.CharField(max_length=255, blank=True, help_text=_('URL of the Voting Record'))
     #: bill number
-    number = models.CharField(max_length=32, null=True, help_text=_('Bill Number'))
+    number = models.CharField(max_length=32, blank=True, help_text=_('Bill Number'))
     #: amended by these records
     amended_by = models.ManyToManyField('self',
         null=True,  symmetrical=False, related_name='amending',
@@ -82,8 +81,7 @@ class VotingRecordResult (models.Model):
         related_name='votingresults',
         help_text=_('Representative voting on this'))
     #: CSS class for color display
-    css = models.CharField(max_length=32, null=True,
-        help_text=_('CSS class for color display'))
+    css = models.CharField(max_length=32, blank=True, help_text=_('CSS class for color display'))
 
 
     class Meta:
@@ -161,8 +159,7 @@ class VotingRecordAmendment (models.Model):
     record = models.ForeignKey(VotingRecord, related_name='amendments',
         help_text=_('Voting Record'))
     #: bill number
-    number = models.CharField(max_length=32, null=True,
-        help_text=_('Bill Number'))
+    number = models.CharField(max_length=32, blank=True, help_text=_('Bill Number'))
 
     def __unicode__ (self):
         return '%s > %s %s' % (self.number, self.record.number, self.record.name)

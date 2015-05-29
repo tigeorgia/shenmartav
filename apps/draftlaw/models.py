@@ -61,8 +61,7 @@ class DraftLaw (models.Model):
     enacted_text_url = models.CharField(max_length=512,
         help_text=_('Enacted Text URL'), blank=True)
     #: enacted law number
-    law_number = models.CharField(max_length=255, blank=True, null=True,
-        help_text=_('Number of the Enacted Law'))
+    law_number = models.CharField(max_length=255, blank=True, help_text=_('Number of the Enacted Law'))
     #: voting record of the enacted law
     voting_record = models.ForeignKey(VotingRecord, related_name='voting_on',
         help_text=_('Voting Record'), blank=True, null=True)
@@ -193,8 +192,7 @@ class DraftLawChild (models.Model):
     enacted_text_url = models.CharField(max_length=255, blank=True,
         help_text=_('Enacted Text URL'))
     #: enacted law number
-    law_number = models.CharField(max_length=255, blank=True, null=True,
-        help_text=_('Number of the Enacted Law'))
+    law_number = models.CharField(max_length=255, blank=True, help_text=_('Number of the Enacted Law'))
     #: voting record of the enacted law
     voting_record = models.ForeignKey(VotingRecord, related_name='voting_on_child',
         help_text=_('Voting Record'), blank=True, null=True)

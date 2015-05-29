@@ -40,8 +40,7 @@ class Term(models.Model):
     #: end of the term
     end = models.DateField(blank=False, help_text=_('When term started'))
     #: name of the term
-    name = models.CharField(max_length=255, blank=False, null=False,
-                            help_text=_('Name of this term'))
+    name = models.CharField(max_length=255, blank=False, help_text=_('Name of this term'))
 
     def __unicode__(self):
         return u'%s (%s - %s)' % (self.name, self.start, self.end)
@@ -53,8 +52,7 @@ class Party(Organisation):
     acronym = models.CharField(max_length=16, blank=False, null=False,
                                help_text=_('Acronym of this Party'))
     #: url of this representative
-    url = models.TextField(blank=True, null=True,
-                           help_text=_('URL of this Party'))
+    url = models.TextField(blank=True, help_text=_('URL of this Party'))
     #: party logo
     logo = ImageWithThumbnailsField(upload_to='parties',
                                     thumbnail={'size': (100, 84), 'options': ('crop',)},
@@ -65,8 +63,7 @@ class Cabinet(models.Model):
     """
     Cabinet for factions. I.e Majority, Minority etc.
     """
-    name = models.CharField(max_length=255, blank=False, null=False,
-                            help_text=_('Name of the cabinet'))
+    name = models.CharField(max_length=255, blank=False, help_text=_('Name of the cabinet'))
 
     short = models.CharField(max_length=32, blank=False, null=False,
                              help_text=_('Short Name of the cabinet, as used in e.g. CSS'))
@@ -95,11 +92,9 @@ class Faction(models.Model):
     """
     Faction for representatives
     """
-    name = models.CharField(max_length=255, blank=False, null=True,
-                            help_text=_('Name of the faction'))
+    name = models.CharField(max_length=255, blank=False, help_text=_('Name of the faction'))
 
-    short = models.CharField(max_length=32, blank=False, null=True,
-                             help_text=_('Short Name of the faction, as used in e.g. CSS'))
+    short = models.CharField(max_length=32, blank=False, help_text=_('Short Name of the faction, as used in e.g. CSS'))
 
     cabinet = models.ForeignKey(Cabinet, blank=False, null=True,
                                 related_name='faction', help_text=_('Cabinet this faction belongs to'))
@@ -114,8 +109,7 @@ class Unit(models.Model):
     name = models.CharField(max_length=255, blank=False, null=False,
                             help_text=_('Name of the Unit.'))
     #: short name of the unit, as used in css, etc.
-    short = models.CharField(max_length=32, blank=False, null=False,
-                             help_text=_('Short Name of the Unit, as used in e.g. CSS'))
+    short = models.CharField(max_length=32, blank=False, help_text=_('Short Name of the Unit, as used in e.g. CSS'))
     #: parties of this unit
     parties = models.ManyToManyField(Party, related_name='unit',
                                      help_text=_('Parties in this unit'))
@@ -188,8 +182,7 @@ class Representative(Person):
     unit = models.ForeignKey(Unit, related_name='representatives', blank=True, null=True,
                              help_text=_('Unit Membership'))
     #: committee membership
-    committee = models.TextField(blank=True, null=True,
-                                 help_text=_('Committee Membership'))
+    committee = models.TextField(blank=True, help_text=_('Committee Membership'))
     #: faction membership
     faction = models.ForeignKey(Faction, related_name='representatives', blank=True, null=True,
                                 help_text=_('Faction membership'))
@@ -198,23 +191,18 @@ class Representative(Person):
     is_majoritarian = models.BooleanField(blank=True, default=False,
                                           help_text=_('Is Majoritarian?'))
     #: electoral district
-    electoral_district = models.TextField(blank=True, null=True,
-                                          help_text=_('Electoral District (if Majoritarian)'))
+    electoral_district = models.TextField(blank=True, help_text=_('Electoral District (if Majoritarian)'))
     #: date elected
-    elected = models.TextField(blank=True, null=True,
-                               help_text=_('Date Elected'))
+    elected = models.TextField(blank=True, help_text=_('Date Elected'))
     #: place of birth
-    pob = models.TextField(blank=True, null=True,
-                           help_text=_('Place of Birth'))
+    pob = models.TextField(blank=True, help_text=_('Place of Birth'))
     #: family status
     family_status = models.TextField(blank=True, null=True,
                                      help_text=_('Family Status'))
     #: education
-    education = models.TextField(blank=True, null=True,
-                                 help_text=_('Education'))
+    education = models.TextField(blank=True, help_text=_('Education'))
     #: contact, address and phone number
-    contact_address_phone = models.TextField(blank=True, null=True,
-                                             help_text=_('Contact Address / Phone Number'))
+    contact_address_phone = models.TextField(blank=True, help_text=_('Contact Address / Phone Number'))
     #: salary
     salary = models.FloatField(default=0, blank=True, null=True,
                                help_text=_('== Wages'))
@@ -222,11 +210,9 @@ class Representative(Person):
     other_income = models.FloatField(default=0, blank=True, null=True,
                                      help_text=_('== Entrepreneurial Income'))
     #: expenses
-    expenses = models.TextField(blank=True, null=True,
-                                help_text=_('Expenses'))
+    expenses = models.TextField(blank=True, help_text=_('Expenses'))
     #: property & assets
-    property_assets = models.TextField(blank=True, null=True,
-                                       help_text=_('Property & Assets'))
+    property_assets = models.TextField(blank=True, help_text=_('Property & Assets'))
     #: percentage of questions answered on shenmartav.ge
     answered = models.FloatField(default=0, blank=True, null=True,
                                  help_text=_('Percentage of Answered Questions on chemiparlamenti.ge'))
@@ -566,7 +552,7 @@ class AdditionalInformation(models.Model):
                                        related_name='additional_information', null=True,
                                        help_text=_('Representative'))
     #: value of this info
-    value = models.TextField(null=True, help_text=_('Additional Information'))
+    value = models.TextField(blank=True, help_text=_('Additional Information'))
 
     def __unicode__(self):
         return u'%s: %s' % (str(self.representative.name), self.value)
@@ -599,18 +585,18 @@ class FamilyIncome(models.Model):
     #: submission date - asset declaration
     submission_date = models.DateField(blank=True, null=True, help_text=_('Asset Declaration submission date'))
     #: Names
-    fam_name = models.TextField(blank=True, null=True, help_text=_('Name of family member'))
+    fam_name = models.TextField(blank=True, help_text=_('Name of family member'))
     #: role
-    fam_role = models.TextField(blank=True, null=True, help_text=_('Role of family member'))
+    fam_role = models.TextField(blank=True, help_text=_('Role of family member'))
     #: Gender
-    fam_gender = models.TextField(blank=True, null=True, help_text=_('Gender of family member'))
+    fam_gender = models.TextField(blank=True, help_text=_('Gender of family member'))
     #: age
     fam_date_of_birth = models.DateField(blank=True, null=True, help_text=_('Date of Birth'))
     #: Total income  = sum of paid work and entrepeneurial income in GEL and USD with dollars converted using 1.65
     # exchange rate
     fam_income = models.IntegerField(default=0, blank=True, null=True, help_text=_('Total Income of family member'))
     #: cars
-    fam_cars = models.TextField(blank=True, null=True, help_text=_('Cars owned by family member'))
+    fam_cars = models.TextField(blank=True, help_text=_('Cars owned by family member'))
 
 
 class Url(models.Model):
