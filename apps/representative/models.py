@@ -546,7 +546,9 @@ class Representative(Person):
         # enforce rewriting of slug in default language
         lang = get_language()
         activate(settings.LANGUAGE_CODE)
-        if self.name is not None:
+        if isinstance(self.name, basestring):
+            self.slug = slugify(unidecode(self.name))
+        elif self.name.name:
             self.slug = slugify(unidecode(self.name.name))
         else:
             self.slug = ''
