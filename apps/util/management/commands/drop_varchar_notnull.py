@@ -47,7 +47,7 @@ class Command(BaseCommand):
                 field.attname: ''
             }
             self.cursor.execute('UPDATE "{0}" '
-                                'SET "{1}" = '' '
+                                'SET "{1}" = \'\' '
                                 'WHERE {1} IS NULL;'.format(model._meta.db_table, field.attname))
             transaction.commit_unless_managed()
 
