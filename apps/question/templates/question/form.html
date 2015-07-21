@@ -1,19 +1,26 @@
 {% load i18n %}
 <div id="ask">
-    <h2 class="heading" >{% trans 'Ask a question' %}</h2>
+    <h2 class="heading">{% trans 'Ask a question' %}</h2>
+
     <div class="body">
-        <p class="smaller">{% trans 'Your name and question will be publicly available on this website, but not your email address or mobile phone number.' %}<br />{% trans 'The latter will be used for notification when the question has been answered.' %}<br />{% trans 'Using pseudonyms is encouraged.' %}</p>
+        <p class="smaller">{% trans 'Your name and question will be publicly available on this website, but not your email address or mobile phone number.' %}<br/>{% trans 'The latter will be used for notification when the question has been answered.' %}<br/>{% trans 'Using pseudonyms is encouraged.' %}
+        </p>
+
         <form id="form-question" action="{% url question_ask %}" method="post">
             {% csrf_token %}
             <table>
-            {% for field in form %}<tr>
-                <td{% if field.field.required %} class="required"{% endif %}>{{ field.label_tag }}</td>
-                <td>{{ field }}{% if field.errors %}{% for err in field.errors %}<div class="error">{{ err }}</div>{% endfor %}{% endif %}</td>
-            </tr>{% endfor %}
-            <tr>
-                <td><div class="fineprint required">{% trans 'Bold fields are required' %}</div></td>
-                <td><input type="submit" value="{% trans 'Ask' %}" /></td>
-            </tr>
+                {% for field in form %}
+                    <tr>
+                        <td{% if field.field.required %} class="required"{% endif %}>{{ field.label_tag }}</td>
+                        <td>{{ field }}{% if field.errors %}{% for err in field.errors %}
+                            <div class="error">{{ err }}</div>{% endfor %}{% endif %}</td>
+                    </tr>{% endfor %}
+                <tr>
+                    <td>
+                        <div class="fineprint required">{% trans 'Bold fields are required' %}</div>
+                    </td>
+                    <td><input type="submit" value="{% trans 'Ask' %}"/></td>
+                </tr>
             </table>
         </form>
     </div>

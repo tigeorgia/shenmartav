@@ -2,43 +2,45 @@
 {% load i18n sekizai_tags thumbnail %}
 
 {% block question %}
-<div class="breadcrumb">
-    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
-    <a href="{% url question_list %}" title="{% trans 'Questions' %}">{% trans 'Questions' %}</a> &gt;
-    {% trans 'Leaderboard' %}
-</div>
-
-<div id="question">
-    <h2 class="heading">{% trans 'Leaderboard' %}</h2>
-
-    <div id="leaderboard">
-        <table>
-            <thead>
-            <tr>
-                <th id="header-percentage">{% trans 'Percentage' %}</th>
-                <th id="header-count">{% trans 'Number of questions' %}</th>
-                <th id="header-representative">{% trans 'Representative' %}</th>
-            </tr>
-            </thead>
-            <tbody>{% for representative in object_list %}
-            <tr>
-                <td>{{ representative.answered|stringformat:'.1f' }} %</td>
-                <td>{{ representative.questions.count }}</td>
-                <td>
-                    <a href="{{ representative.get_absolute_url }}">
-                        {% thumbnail member.photo '65x60' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0" /><br />
-                        {{ representative.name }}
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}<tbody>
-        </table>
+    <div class="breadcrumb">
+        <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+        <a href="{% url question_list %}" title="{% trans 'Questions' %}">{% trans 'Questions' %}</a> &gt;
+        {% trans 'Leaderboard' %}
     </div>
 
-</div>
+    <div id="question">
+        <h2 class="heading">{% trans 'Leaderboard' %}</h2>
 
-{% addtoblock "js" %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/tablesorter.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/question/leaderboard.js"></script>
-{% endaddtoblock %}
+        <div id="leaderboard">
+            <table>
+                <thead>
+                <tr>
+                    <th id="header-percentage">{% trans 'Percentage' %}</th>
+                    <th id="header-count">{% trans 'Number of questions' %}</th>
+                    <th id="header-representative">{% trans 'Representative' %}</th>
+                </tr>
+                </thead>
+                <tbody>{% for representative in object_list %}
+                    <tr>
+                        <td>{{ representative.answered|stringformat:'.1f' }} %</td>
+                        <td>{{ representative.questions.count }}</td>
+                        <td>
+                            <a href="{{ representative.get_absolute_url }}">
+                                {% thumbnail member.photo '65x60' as im %} <img src="
+                                    {% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="65" height="60" border="0"/><br/>
+                                {{ representative.name }}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tbody>
+            </table>
+        </div>
+
+    </div>
+
+    {% addtoblock "js" %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/tablesorter.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/question/leaderboard.js"></script>
+    {% endaddtoblock %}
 {% endblock %}

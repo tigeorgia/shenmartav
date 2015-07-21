@@ -21,11 +21,15 @@
 }
 
 #question #list th#header-representative {
-    width: 23%;
+    width: 15%;
+}
+
+#question #list th#header-date-asked {
+    width: 13%;
 }
 
 #question #list th#header-question {
-    width: 50%;
+    width: 45%;
 }
 
 #question #list th#header-answered {

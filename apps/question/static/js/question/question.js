@@ -23,6 +23,9 @@ $(document).ready(function() {
                 $('#question #info').html(msg);
             }
         }).done();
+        document.getElementById("content").scrollIntoView();
+        $('#info').css({'opacity':0, 'background-color':'yellow'});
+        $('#info').animate({'opacity':1, 'background-color':'white'}, 500);
     });
 
 });

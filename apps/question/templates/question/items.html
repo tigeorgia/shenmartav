@@ -2,12 +2,15 @@
 {% for item in items.object_list %}
     <tr class="item" id="item-{{ item.pk }}">
         <td class="representative-name">
-            {% with representative=item.representative %}<a name="item-{{ item.pk }}" title="{% trans 'Answered' %} {{ representative.answered }}%" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a>{% endwith %}
+            {% with representative=item.representative %}
+                <a name="item-{{ item.pk }}" title="{% trans 'Answered' %} {{ representative.answered }}%" href="{{ representative.get_absolute_url }}">{{ representative.name }}</a>{% endwith %}
         </td>
         <td>
             {{ item.date|date:"Y.m.d" }}
             {{ item.question|slice:":200" }} ...
         </td>
-        <td><div class="status {{ item.state.text }}">{{ item.state.value }}</div></td>
+        <td>
+            <div class="status {{ item.state.text }}">{{ item.state.value }}</div>
+        </td>
     </tr>
 {% endfor %}
