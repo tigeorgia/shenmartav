@@ -2,20 +2,20 @@
 {% load i18n sekizai_tags %}
 
 {% block question %}
-{% addtoblock "css" %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/detail.css" media="all" />
-{% endaddtoblock %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/detail.css" media="all"/>
+    {% endaddtoblock %}
 
-<div class="breadcrumb">
-    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
-    <a href="{% url question_list %}" title="{% trans 'Questions' %}">{% trans 'Questions' %}</a> &gt;
-    {{ obj.representative.name }}
-</div>
+    <div class="breadcrumb">
+        <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+        <a href="{% url question_list %}" title="{% trans 'Questions' %}">{% trans 'Questions' %}</a> &gt;
+        {{ obj.representative.name }}
+    </div>
 
-<div id="question">
-    {% include 'question/info.html' %}
-    {% if obj.representative.faction != None %}
-        {% include 'question/form.html' %}
-    {% endif %}
-</div>
+    <div id="question">
+        {% include 'question/info.html' %}
+        {% if obj.representative.faction != None %}
+            {% include 'question/form.html' %}
+        {% endif %}
+    </div>
 {% endblock %}

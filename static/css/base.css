@@ -266,16 +266,17 @@ ul.ui-autocomplete .ui-menu-item a.ui-state-hover {
 }
 
 #banner #banner-spacer {
-    height: 150px;
+    height: 90px;
 }
 
 #banner .banner-home .banner-latest {
     position: relative;
-    display: inline-block;
     background-color: rgba(255, 255, 255, 0.2);
     color: white;
     margin: 1em;
     padding: 0.5em;
+    float:left;
+    clear:both;
 }
 
 #banner .banner-home .banner-latest p {

@@ -3,168 +3,180 @@
 {% load question_row %}
 
 {% block css %}
-<style type="text/css">
-    .wrapper { background-color: inherit; }
-</style>
+    <style type="text/css">
+        .wrapper {
+            background-color: inherit;
+        }
+    </style>
 {% endblock %}
 {% block banner %}
-<div class="banner-home">
-  <div class="wrapper">
-    <div id="banner-spacer">&nbsp;</div>
-    <div class="banner-latest under-angled">
-    {% placeholder banner_latest_1 %}
-    </div>
-    <br>
-    <div class="banner-latest under-angled">
-    {% placeholder banner_latest_2 %}
-    </div>
-  </div>
-</div>
-{% endblock %} {% block content %}
-<div id="scroll-next">&nbsp;</div>
-<div id="scroll-prev">&nbsp;</div>
-<div id="mp-list-header" class="angled">
-    <!--<div class="angle-border ab-left">&nbsp;</div>-->
-    {% placeholder mp_title %}
-    <!--<div class="angle-border ab-right">&nbsp;</div>-->
-</div>
-<div id="representative" class="">
-	<div id="mp-info">
-		<div id="data">
-			<div id="photo">
-				<a title="" href=""><img src="" width="100" height="96" border="0"></a>
-			</div>
-			<div id="short">
-				<div id="name" class="evenbigger representative-name">
-					<a title="" href="">{% trans 'Loading...' %}</a>
-				</div>
-				<div id="unit" class="normal"></div>
-				<div id="party" class="normal">
-					<a href="" title=""></a>
-				</div>
-			</div>
-			<div style="clear: both"></div>
-			<div>
-				<div id="attendance">
-					<h2>
-						<span class="explain" title="">?</span>
-					</h2>
-					<div id="bar" class="table">
-						<div class="row">
-							<div class="cell leftalign"></div>
-							<div class="cell rightalign"></div>
-						</div>
-						<div class="row bar">
-							<div class="cell attendance-attended" style="width: 89%">&nbsp;</div>
-							<div class="cell attendance-absent" style="width: 10%">&nbsp;</div>
-						</div>
-						<div class="row">
-							<div class="cell leftalign">{% trans 'Attended' %}</div>
-							<div class="cell rightalign">{% trans 'Absent' %}</div>
-						</div>
-					</div>
+    <div class="banner-home">
+        <div class="wrapper">
+            <div id="banner-spacer">&nbsp;</div>
+            <div class="banner-latest under-angled">
+                {% placeholder banner_latest_1 %}
+            </div>
+            <div class="banner-latest under-angled">
+                {% placeholder banner_latest_2 %}
+            </div>
 
-
-				</div>
-			</div>
-			<div>
-				<div id="income">
-					<h2>{% trans 'Annual Income' %}</h2>
-
-					<div id="bar" class="table">
-						<div class="row bar">
-							<div class="cell income-base" title="Base salary">&nbsp;</div>
-							<div class="cell income-additional" title="Additional income">&nbsp;</div>
-							<div class="cell income-other" title="Business income">&nbsp;</div>
-						</div>
-						<div class="row">
-
-							<div class="cell" style="width: 48.8%"></div>
-							<div class="cell" style="width: 51.2%"></div>
-							<div class="cell" style="width: 0%"></div>
-
-						</div>
-					</div>
-					<ul id="legend">
-						<li><span class="legend-color income-base">&nbsp;</span>Base salary <span class="explain" title="">?</span></li>
-						<li><span class="legend-color income-additional">&nbsp;</span>Additional income <span class="explain" title="">?</span></li>
-						<li><span class="legend-color income-other">&nbsp;</span>Business income <span class="explain" title="">?</span></li>
-					</ul>
-
-				</div>
-			</div>
-			<div id="more">
-				<a href="">More »</a>
-			</div>
-		</div>
-	</div>
-    <div id="select">
-     <div id="unit-list">
-      <div id="members">
-        <ul id="mps-row1">{% get_mprow_of3 0 %}
-        </ul>
-        <ul id="mps-row2">{% get_mprow_of3 1 %}
-        </ul>
-        <ul id="mps-row3">{% get_mprow_of3 2 %}
-        </ul>
-      </div>
-     </div>
-    </div>
-</div>
-
-<div id="below-fold" class="threecolumn">
-	<div id="engage-slider" class="span1">
-		<div class="engage-slides">{% placeholder engage1 %}</div>
-		<div class="engage-slides">{% placeholder engage2 %}</div>
-	</div>
-	<div id="mp-stats-slider" class="span2">
-		<!--<div class="carousel">-->
-			<div class="mp-stats-slides">{% placeholder stats1 %}</div>
-		<!--</div>-->
-		<div id="mp-stats-pager" class="bullet-pager"></div>
-	</div>
-	<div id="drafts-mini" class="span3">
-        <div id="drafts-header">
-            <h2><a href="{% url draftlaw_list %}">{% trans 'What laws are made' %} <span class="grey">({% trans 'latest laws' %})</span></a></h2>
+            <div class="banner-latest under-angled">
+                {% placeholder banner_latest_3 %}
+            </div>
         </div>
-		<table id="drafts-table">
-			<thead>
-				<tr>
-					<th class="heading sortable" id="header-date">{% trans 'Date' %}</th>
-					<th class="heading" id="header-draftlaw">{% trans 'Draft Law' %}</th>
-					<th class="heading sortable" id="header-stage">{% trans 'Discussion Stage' %} <span class="explain explain-heading" title="{% trans 'In order to become enacted, each draft law must pass 6 hearings: three committee hearings and three plenary hearings. Each box represents one stage in this process' %}">?</span></th>
-				</tr>
-			</thead>
-			<tbody>{% placeholder drafts %}
-			</tbody>
-		</table>
-		<div class="view-more">
-			<a href="{% url draftlaw_list %}">{% trans 'More' %} &gt;&gt;</a>
-		</div>
-	</div>
-</div>
+    </div>
+{% endblock %} {% block content %}
+    <div id="scroll-next">&nbsp;</div>
+    <div id="scroll-prev">&nbsp;</div>
+    <div id="mp-list-header" class="angled">
+        <!--<div class="angle-border ab-left">&nbsp;</div>-->
+        {% placeholder mp_title %}
+        <!--<div class="angle-border ab-right">&nbsp;</div>-->
+    </div>
+    <div id="representative" class="">
+        <div id="mp-info">
+            <div id="data">
+                <div id="photo">
+                    <a title="" href=""><img src="" width="100" height="96" border="0"></a>
+                </div>
+                <div id="short">
+                    <div id="name" class="evenbigger representative-name">
+                        <a title="" href="">{% trans 'Loading...' %}</a>
+                    </div>
+                    <div id="unit" class="normal"></div>
+                    <div id="party" class="normal">
+                        <a href="" title=""></a>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+                <div>
+                    <div id="attendance">
+                        <h2>
+                            <span class="explain" title="">?</span>
+                        </h2>
 
-<div class="threecolumn">
-    <h1>{% trans 'Latest answered questions' %}</h1>
-    {% get_three_questions %}
-</div>
+                        <div id="bar" class="table">
+                            <div class="row">
+                                <div class="cell leftalign"></div>
+                                <div class="cell rightalign"></div>
+                            </div>
+                            <div class="row bar">
+                                <div class="cell attendance-attended" style="width: 89%">&nbsp;</div>
+                                <div class="cell attendance-absent" style="width: 10%">&nbsp;</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell leftalign">{% trans 'Attended' %}</div>
+                                <div class="cell rightalign">{% trans 'Absent' %}</div>
+                            </div>
+                        </div>
 
-{% addtoblock "js" %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/representative/find_home.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/jquerycycle.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/qtip.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/jquery.carouFredSel.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/home.js"></script>
-{% endaddtoblock %}
-<script type="text/javascript">
-	var URL_Units = {
-		'parliament' : '{% url unit_parliament %}',
-		'ajara' : '{% url unit_ajara %}',
-		'tbilisi' : '{% url unit_tbilisi %}'
-	};
-	var URL_Info = '{% url representative_info 0 %}';
-	var URL_UnitRepresentative = '{% url unit_representative 0 %}';
-	var Active_Unit = '{{ active_unit }}'
-</script>
+
+                    </div>
+                </div>
+                <div>
+                    <div id="income">
+                        <h2>{% trans 'Annual Income' %}</h2>
+
+                        <div id="bar" class="table">
+                            <div class="row bar">
+                                <div class="cell income-base" title="Base salary">&nbsp;</div>
+                                <div class="cell income-additional" title="Additional income">&nbsp;</div>
+                                <div class="cell income-other" title="Business income">&nbsp;</div>
+                            </div>
+                            <div class="row">
+
+                                <div class="cell" style="width: 48.8%"></div>
+                                <div class="cell" style="width: 51.2%"></div>
+                                <div class="cell" style="width: 0%"></div>
+
+                            </div>
+                        </div>
+                        <ul id="legend">
+                            <li><span class="legend-color income-base">&nbsp;</span>Base salary
+                                <span class="explain" title="">?</span></li>
+                            <li><span class="legend-color income-additional">&nbsp;</span>Additional income
+                                <span class="explain" title="">?</span></li>
+                            <li><span class="legend-color income-other">&nbsp;</span>Business income
+                                <span class="explain" title="">?</span></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div id="more">
+                    <a href="">More »</a>
+                </div>
+            </div>
+        </div>
+        <div id="select">
+            <div id="unit-list">
+                <div id="members">
+                    <ul id="mps-row1">{% get_mprow_of3 0 %}
+                    </ul>
+                    <ul id="mps-row2">{% get_mprow_of3 1 %}
+                    </ul>
+                    <ul id="mps-row3">{% get_mprow_of3 2 %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="below-fold" class="threecolumn">
+        <div id="engage-slider" class="span1">
+            <div class="engage-slides">{% placeholder engage1 %}</div>
+            <div class="engage-slides">{% placeholder engage2 %}</div>
+        </div>
+        <div id="mp-stats-slider" class="span2">
+            <!--<div class="carousel">-->
+            <div class="mp-stats-slides">{% placeholder stats1 %}</div>
+            <!--</div>-->
+            <div id="mp-stats-pager" class="bullet-pager"></div>
+        </div>
+        <div id="drafts-mini" class="span3">
+            <div id="drafts-header">
+                <h2><a href="{% url draftlaw_list %}">{% trans 'What laws are made' %}
+                    <span class="grey">({% trans 'latest laws' %})</span></a></h2>
+            </div>
+            <table id="drafts-table">
+                <thead>
+                <tr>
+                    <th class="heading sortable" id="header-date">{% trans 'Date' %}</th>
+                    <th class="heading" id="header-draftlaw">{% trans 'Draft Law' %}</th>
+                    <th class="heading sortable" id="header-stage">{% trans 'Discussion Stage' %}
+                        <span class="explain explain-heading" title="{% trans 'In order to become enacted, each draft law must pass 6 hearings: three committee hearings and three plenary hearings. Each box represents one stage in this process' %}">?</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>{% placeholder drafts %}
+                </tbody>
+            </table>
+            <div class="view-more">
+                <a href="{% url draftlaw_list %}">{% trans 'More' %} &gt;&gt;</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="threecolumn">
+        <h1>{% trans 'Latest answered questions' %}</h1>
+        {% get_three_questions %}
+    </div>
+
+    {% addtoblock "js" %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/representative/find_home.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/jquerycycle.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/qtip.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/jquery.carouFredSel.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/home.js"></script>
+    {% endaddtoblock %}
+    <script type="text/javascript">
+        var URL_Units = {
+            'parliament': '{% url unit_parliament %}',
+            'ajara': '{% url unit_ajara %}',
+            'tbilisi': '{% url unit_tbilisi %}'
+        };
+        var URL_Info = '{% url representative_info 0 %}';
+        var URL_UnitRepresentative = '{% url unit_representative 0 %}';
+        var Active_Unit = '{{ active_unit }}'
+    </script>
 {% endblock %}

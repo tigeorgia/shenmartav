@@ -1,20 +1,25 @@
 {% load i18n %}
 <!-- draftlaws list -->
 {% for dl in draftlaws.object_list %}
-    <tr class="item {% cycle 'odd' 'even' %}" id="item-{{ dl.pk}}" onclick="document.location = '{{ dl.url }}';">
-        <td class="d-date">
-            <p class="date">
-                <a href="{{ dl.url }}" title="View details">
+<tr class="item {% cycle 'odd' 'even' %}" id="item-{{ dl.pk }}" onclick="document.location = '{{ dl.url }}';">
+    <td class="d-date">
+        <p class="date">
+            <a href="{{ dl.url }}" title="View details">
                 <span class="date-day">{{ dl.updated|date:"d" }}</span><br>
                 <span class="date-rest">{{ dl.updated|date:"m-Y" }}</span>
-                </a>
-            </p>
-        <td class="d-desc"><a name="draftlaw-{{ dl.pk}}"></a>
-            <a href="{{ dl.url }}" title="View details">
-            {{ dl.title }}{% if dl.place %}:: {{ dl.place }}{% endif %}
             </a>
-        </td>
-        <td class="d-stage">{% for stage in dl.stages %}<div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>{% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}</div>{% endfor %}<div style="clear: both"></div></td>
+        </p>
+    <td class="d-desc"><a name="draftlaw-{{ dl.pk }}"></a>
+        <a href="{{ dl.url }}" title="View details">
+            {{ dl.title }}{% if dl.place %}:: {{ dl.place }}{% endif %}
+        </a>
     </td>
-    </tr>
+    <td class="d-stage">{% for stage in dl.stages %}
+        <div class="stage smaller stage-{{ stage.css }}"
+                {% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>{% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}</div>
+        {% endfor %}
+        <div style="clear: both"></div>
+    </td>
+    </td>
+</tr>
 {% endfor %}

@@ -2,22 +2,25 @@
 {% get_current_language as lang %}
 
 {% addtoblock "css" %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/base.css" media="all" />
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/cmsplugin.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/base.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/cmsplugin.css" media="all"/>
 {% endaddtoblock %}
 {% addtoblock "js" %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/draftlaw/cmsplugin.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/draftlaw/cmsplugin.js"></script>
 {% endaddtoblock %}
 
 <div id="draftlaw">
     <h1><a href="{% url draftlaw_list %}">{% trans 'What Laws Are Made' %}</a></h1>
+
     <div class="subh1">{% trans 'You can find pending Draft Laws here' %}</div>
 
     <div id="news">
         <h2>{% trans 'Parliament Weekly' %}</h2>
+
         <div id="post">
             <div>{% autoescape off %}{{ post.tease }}{% endautoescape %}</div>
-            <div class="more"><a href="{{ post.get_absolute_url }}" title="{% trans 'More' %}">{% trans 'More' %} &raquo;</a></div>
+            <div class="more">
+                <a href="{{ post.get_absolute_url }}" title="{% trans 'More' %}">{% trans 'More' %} &raquo;</a></div>
         </div>
     </div>
 
@@ -25,6 +28,7 @@
 
     <div id="find">
         <h3>{% trans 'Look up a Draft Law' %}</h3>
+
         <form action="{% url draftlaw_list %}" method="get">
             <input type="text" class="find" id="query" name="query" placeholder="{% trans 'Enter a keyword' %}"/>
         </form>
@@ -32,6 +36,6 @@
 </div>
 
 <script type="text/javascript">
-var URL_DraftLawQuery = '{% url draftlaw_query 0 %}';
-var URL_SMSAlert = '{% url smsalert_page 1 %}';
+    var URL_DraftLawQuery = '{% url draftlaw_query 0 %}';
+    var URL_SMSAlert = '{% url smsalert_page 1 %}';
 </script>

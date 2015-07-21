@@ -141,6 +141,10 @@ DraftLawList = {
         });
     },
 
+    qTips: function () {
+        $('.explain-heading[title]').qtip({ style: { name: 'cream', tip: true } })
+    },
+
 
     setup: function() {
         DraftLawList.urlInfo = URL_DraftLawInfo.slice(0,
@@ -156,6 +160,7 @@ DraftLawList = {
         $('#draftlaw #list table').tablesorter();
 
         DraftLawList.loadNextPage();
+        DraftLawList.qTips();
     }
 };
 

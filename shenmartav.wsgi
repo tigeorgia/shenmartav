@@ -1,6 +1,4 @@
 import os, sys
-sys.path.append('/home/tigeorgia/shenmartav')
-sys.path.append('/home/tigeorgia/shenmartav/shenmartav')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'shenmartav.settings'
 
 import django.core.handlers.wsgi

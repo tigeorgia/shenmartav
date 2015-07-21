@@ -2,55 +2,63 @@
 {% load i18n sekizai_tags %}
 
 {% block question %}
-{% addtoblock "css" %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/list.css" media="all" />
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery.dataTables.min.css" media="all" />
-{% endaddtoblock %}
-
-<div class="breadcrumb">
-    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
-    {% trans 'Questions' %}
-</div>
-
-<div id="question">
-        <div id="info"><div style="color: black;">
-            <h2 class="heading">{% trans 'Question to your representative' %}</h2>
-<div id="the-question">
-    <div id="questioner">
-        <div class="photo"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="65" height="60" border="0" /></div>
-        <div class="data">
-            <div>{% trans 'You, or anyone else!' %}</div>
-            <div class="smaller">{% trans 'Jan. 01, 2001' %}</div>
-            <div class="text">{% trans 'Move your mouse over the questions below to see what other people have asked their representatives, or ask your own question by using the form. Your question will be sent directly to the MP you ask.' %}</div>
-        </div>
-        <div style="clear:both"></div>
+    {% addtoblock "css" %}
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/question/list.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jquery.dataTables.min.css" media="all"/>
+    {% endaddtoblock %}
+    <div class="breadcrumb">
+        <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+        {% trans 'Questions' %}
     </div>
 
-    <div id="questionee">
-        <div class="photo"><img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="65" height="60" border="0" /></div>
-        <div class="data">
-            <div class="representative-name">{% trans 'Your representative.' %}</div>
-            <div class="smaller">{% trans 'Answered' %}: 100%</div>
-            <div class="text">{% trans "Your representative's answer will be available publicly on this site." %}</div>
+    <div id="question">
+        <div id="info">
+            <div style="color: black;">
+                <h2 class="heading">{% trans 'Question to your representative' %}</h2>
+
+                <div id="the-question">
+                    <div id="questioner">
+                        <div class="photo">
+                            <img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="65" height="60" border="0"/>
+                        </div>
+                        <div class="data">
+                            <div>{% trans 'You, or anyone else!' %}</div>
+                            <div class="smaller">{% trans 'Jan. 01, 2001' %}</div>
+                            <div class="text">{% trans 'Move your mouse over the questions below to see what other people have asked their representatives, or ask your own question by using the form. Your question will be sent directly to the MP you ask.' %}</div>
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <div id="questionee">
+                        <div class="photo">
+                            <img src="{{ STATIC_URL }}img/person-placeholder.jpg" width="65" height="60" border="0"/>
+                        </div>
+                        <div class="data">
+                            <div class="representative-name">{% trans 'Your representative.' %}</div>
+                            <div class="smaller">{% trans 'Answered' %}: 100%</div>
+                            <div class="text">{% trans "When your representative answers the question, it will appear here." %}</div>
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div style="clear:both"></div>
-    </div>
-</div></div>
-</div>
-    <div id="list" style="padding-top: 15px;">
-        <table id="question-list-table" class="display">
-            <thead>
+        <div id="list" style="padding-top: 15px;">
+            <table id="question-list-table" class="display">
+                <thead>
                 <tr>
                     <th class="heading" id="header-representative">{% trans 'Representative' %}</th>
+                    <th class="heading" id="header-date-asked">{% trans 'Date asked' %}</th>
                     <th class="heading" id="header-question">{% trans 'Question' %}</th>
                     <th class="heading" id="header-answered">{% trans 'Replied?' %}</th>
                     <th class="heading" id="header-link">{% trans 'Link' %}</th>
                 </tr>
-            </thead>
-            <tbody id="items">
+                </thead>
+                <tbody id="items">
                 {% for item in object_list %}
                     <tr class="item" id="{{ item.pk }}">
                         <td>{{ item.representative.name }}</td>
+                        <td>{{ item.date }}</td>
                         {% if item.question|length > 600 %}
                             <td>{{ item.question|slice:":600"}}...</td>
                         {% else %}
@@ -58,30 +66,32 @@
                         {% endif %}
                         {% if item.answer %}
                             <td><span class="has_replied">{% trans "Yes" %}</span></td>
-                            <td><a href="{% url question_detail item.pk %}">{% trans "See full question and answer" %}</a></td>
+                            <td>
+                                <a href="{% url question_detail item.pk %}">{% trans "See full question and answer" %}</a>
+                            </td>
                         {% else %}
                             <td><span class="has_not_replied">{% trans "No" %}</span></td>
                             <td><a href="{% url question_detail item.pk %}">{% trans "See full question" %}</a></td>
                         {% endif %}
                     </tr>
                 {% endfor %}
-            <tbody>
-        </table>
+                <tbody>
+            </table>
+        </div>
+
+        <div style="clear: both"></div>
     </div>
 
-    <div style="clear: both"></div>
-</div>
+    {% addtoblock "js" %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
 
-{% addtoblock "js" %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/hoverIntent.min.js"></script>
-
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/question/question.js"></script>
-{% endaddtoblock %}
-<script type="text/javascript">
-//var URL_QuestionInfo = '{% url question_info 0 %}';
-//var URL_QuestionItems = '{% url question_items 0 %}';
-</script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{ STATIC_URL }}js/question/question.js"></script>
+    {% endaddtoblock %}
+    <script type="text/javascript">
+        //var URL_QuestionInfo = '{% url question_info 0 %}';
+        //var URL_QuestionItems = '{% url question_items 0 %}';
+    </script>
 
 {% endblock %}
