@@ -3,8 +3,8 @@
 
 {% block draftlaw %}
 {% addtoblock "css" %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/annotations.css" media="all" />
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/detail.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/annotations.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/detail.css" media="all"/>
 {% endaddtoblock %}
 
 <div class="breadcrumb">
@@ -15,22 +15,27 @@
 
 <div id="draftlaw" class="with-sidebar">
     <h2 class="heading">{{ obj }}</h2>
+
     <div class="body">
         <table id="item">
             <caption>{% trans 'Draft law details' %}</caption>
             <thead>
-              <tr><th id="key">{% trans 'Info' %}</th><th id="val">{% trans 'Status' %}</th></tr>
+            <tr>
+                <th id="key">{% trans 'Info' %}</th>
+                <th id="val">{% trans 'Status' %}</th>
+            </tr>
             </thead>
             <tbody>
             <tr id="discussion-stage">
                 <td>{% trans 'Discussion stage' %}:</td>
-             
+
                 <td>{% for stage in stages.stages %}
-                    <div class="stage smaller stage-{{ stage.css }}"{% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>
-               {% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}
+                    <div class="stage smaller stage-{{ stage.css }}"
+                            {% ifequal stage.css 'complete' %} title="{{ stage.info }}"{% endifequal %}>
+                        {% ifequal stage.css 'missing' %}?{% else %}&nbsp;{% endifequal %}
                     </div>
-                {% endfor %}
-                    <div style="clear: both"></div> 
+                    {% endfor %}
+                    <div style="clear: both"></div>
                 </td>
             </tr>
             <tr id="bureau-date">
@@ -41,58 +46,129 @@
                 <td>{% trans 'Initiator' %}:</td>
                 <td>{{ obj.initiator_linked|safe }}</td>
             </tr>
-            <tr id="author"><td>{% trans 'Author' %}:</td> <td>{{ obj.author_linked|safe }}</td></tr>
-            <tr id="status"><td>{% trans 'Status' %}:</td> <td>{{ obj.status }}</td></tr>
-            <tr id="summary"><td>{% trans 'Summary' %}:</td> <td>{{ obj.summary }}</td></tr>
+            <tr id="author">
+                <td>{% trans 'Author' %}:</td>
+                <td>{{ obj.author_linked|safe }}</td>
+            </tr>
+            <tr id="status">
+                <td>{% trans 'Status' %}:</td>
+                <td>{{ obj.status }}</td>
+            </tr>
+            <tr id="summary">
+                <td>{% trans 'Summary' %}:</td>
+                <td>{{ obj.summary }}</td>
+            </tr>
             {% if obj.sms_alerts.all %}{% for alert in obj.sms_alerts.all %}
-            <tr id="smsalert-{{ alert.pk }}"><td>{% trans 'SMS Alert' %}:</td> <td>{{ alert.text }} ({{ alert.date_sent }})</td></tr>
+                <tr id="smsalert-{{ alert.pk }}">
+                    <td>{% trans 'SMS Alert' %}:</td>
+                    <td>{{ alert.text }} ({{ alert.date_sent }})</td>
+                </tr>
             {% endfor %}{% endif %}
-            {% if obj.full_text %}<tr id="full-text"><td>{% trans 'Full Text' %}:</td> <td>{{ obj.full_text }}</td></tr>{% endif %}
-            {% if obj.full_text_url %}<tr id="full-text-url"><td>{% trans 'Full Text URL' %}:</td> <td>{{ obj.full_text_url }}</td></tr>{% endif %}
-            {% if obj.enacted_text_url %}<tr id="enacted-text-url"><td>{% trans 'Enacted Text URL' %}: <td>{{ obj.enacted_text_url }}</td></tr>{% endif %}
-            {% if obj.law_number %}<tr id="law-number"><td>{% trans 'Law Number' %}:</td><td>{{ obj.law_number }}</td></tr>{% endif %}
-            {% if obj.voting_record %}<tr id="voting-record"><td>{% trans 'Voting record' %}:</td><td><a href="{{ obj.voting_record.get_absolute_url }}">{% trans 'Voting Record' %}</a></td></tr>{% endif %}
-            {% if obj.related_1 %}<tr id="related_1"><td>{% trans 'Related Document 1' %}:</td><td>{{ obj.related_1 }}</td></tr>{% endif %}
-            {% if obj.related_2 %}<tr id="related_2"><td>{% trans 'Related Document 2' %}:</td><td>{{ obj.related_2 }}</td></tr>{% endif %}
-            {% if obj.related_3 %}<tr id="related_3"><td>{% trans 'Related Document 3' %}:</td><td>{{ obj.related_3 }}</td></tr>{% endif %}
-            {% if obj.related_4 %}<tr id="related_4"><td>{% trans 'Related Document 4' %}:</td><td>{{ obj.related_4 }}</td></tr>{% endif %}
-            {% if obj.related_5 %}<tr id="related_5"><td>{% trans 'Related Document 5' %}:</td><td>{{ obj.related_5 }}</td></tr>{% endif %}
-            {% if obj.discussions %}<tr id="disussions"><td>{% trans 'Discussions' %}:</td>
-                <td><ul>{% for discussion in obj.discussions.all %}
-                	<!-- If date is 'January 1st 1970', we don't display it -->
-                	{% if discussion.date|date:"U" != "-14400" %} 
-                    	<li id="discussion-{{ discussion.date }}">{{ discussion.date }} :: {{ discussion.place }}</li>
-                    {% endif %}
-                {% endfor %}</ul>
-            </td></tr>{% endif %}
-            {% if obj.children.all %}<tr id="children"><td>{% trans 'Children' %}:</td><td>
-                <ul>{% for child in obj.children.all %}
-                    <li id="child-bill-number-{{ child.pk }}">{{ child }}
-                        <ul>
-                            {% if child.enacted_text_url %}<li id="child-enacted-text-url-{{ child.pk }}"><a href="{{ child.enacted_text_url }}">{% trans 'Enacted Text' %}</a></li>{% endif %}
-                            {% if child.law_number %}<li id="child-law-number-{{ child.pk }}">{% trans 'Law Number' %}: {{ child.law_number }}</a></li>{% endif %}
-                            {% if child.voting_record %}<li id="child-voting-record-{{ child.pk }}"><a href="{{ child.voting_record.get_absolute_url }}">{% trans 'Voting Record' %}</a></li>{% endif %}
-                        </ul>
-                    </li>
-                {% endfor %}</ul>
-            </td></tr>{% endif %}
+            {% if obj.full_text %}
+                <tr id="full-text">
+                    <td>{% trans 'Full Text' %}:</td>
+                    <td>{{ obj.full_text }}</td>
+                </tr>{% endif %}
+            {% if obj.full_text_url %}
+                <tr id="full-text-url">
+                    <td>{% trans 'Full Text URL' %}:</td>
+                    <td>{{ obj.full_text_url }}</td>
+                </tr>{% endif %}
+            {% if obj.enacted_text_url %}
+                <tr id="enacted-text-url">
+                    <td>{% trans 'Enacted Text URL' %}:
+                    <td>{{ obj.enacted_text_url }}</td>
+                </tr>{% endif %}
             {% if obj.law_number %}
-	            <tr id="draftlawurl">
-	                <td>{% trans 'Link to Draft law' %}:</td>
-	                <td><a id="draftlawlinkid" href="{{ draftlaw_url }}{{ obj.law_number }}" target="_blank">{{ obj.law_number }}</a></td>
-	            </tr>
+                <tr id="law-number">
+                    <td>{% trans 'Law Number' %}:</td>
+                    <td>{{ obj.law_number }}</td>
+                </tr>{% endif %}
+            {% if obj.voting_record %}
+                <tr id="voting-record">
+                    <td>{% trans 'Voting record' %}:</td>
+                    <td><a href="{{ obj.voting_record.get_absolute_url }}">{% trans 'Voting Record' %}</a></td>
+                </tr>{% endif %}
+            {% if obj.related_1 %}
+                <tr id="related_1">
+                    <td>{% trans 'Related Document 1' %}:</td>
+                    <td>{{ obj.related_1 }}</td>
+                </tr>{% endif %}
+            {% if obj.related_2 %}
+                <tr id="related_2">
+                    <td>{% trans 'Related Document 2' %}:</td>
+                    <td>{{ obj.related_2 }}</td>
+                </tr>{% endif %}
+            {% if obj.related_3 %}
+                <tr id="related_3">
+                    <td>{% trans 'Related Document 3' %}:</td>
+                    <td>{{ obj.related_3 }}</td>
+                </tr>{% endif %}
+            {% if obj.related_4 %}
+                <tr id="related_4">
+                    <td>{% trans 'Related Document 4' %}:</td>
+                    <td>{{ obj.related_4 }}</td>
+                </tr>{% endif %}
+            {% if obj.related_5 %}
+                <tr id="related_5">
+                    <td>{% trans 'Related Document 5' %}:</td>
+                    <td>{{ obj.related_5 }}</td>
+                </tr>{% endif %}
+            {% if obj.discussions %}
+                <tr id="disussions">
+                    <td>{% trans 'Discussions' %}:</td>
+                    <td>
+                        <ul>{% for discussion in obj.discussions.all %}
+                            <!-- If date is 'January 1st 1970', we don't display it -->
+                            {% if discussion.date|date:"U" != "-14400" %}
+                                <li id="discussion-{{ discussion.date }}">{{ discussion.date }}
+                                    :: {{ discussion.place }}</li>
+                            {% endif %}
+                        {% endfor %}</ul>
+                    </td>
+                </tr>{% endif %}
+            {% if obj.children.all %}
+                <tr id="children">
+                    <td>{% trans 'Children' %}:</td>
+                    <td>
+                        <ul>{% for child in obj.children.all %}
+                            <li id="child-bill-number-{{ child.pk }}">{{ child }}
+                                <ul>
+                                    {% if child.enacted_text_url %}
+                                        <li id="child-enacted-text-url-{{ child.pk }}">
+                                            <a href="{{ child.enacted_text_url }}">{% trans 'Enacted Text' %}</a>
+                                        </li>{% endif %}
+                                    {% if child.law_number %}
+                                        <li id="child-law-number-{{ child.pk }}">{% trans 'Law Number' %}: {{ child.law_number }}</a></li>{% endif %}
+                                    {% if child.voting_record %}
+                                        <li id="child-voting-record-{{ child.pk }}">
+                                            <a href="{{ child.voting_record.get_absolute_url }}">{% trans 'Voting Record' %}</a>
+                                        </li>{% endif %}
+                                </ul>
+                            </li>
+                        {% endfor %}</ul>
+                    </td>
+                </tr>{% endif %}
+            {% if obj.law_number %}
+                <tr id="draftlawurl">
+                    <td>{% trans 'Link to Draft law' %}:</td>
+                    <td><a id="draftlawlinkid" href="
+                            {{ draftlaw_url }}{{ obj.law_number }}" target="_blank">{{ obj.law_number }}</a></td>
+                </tr>
             {% endif %}
-    </tbody>
-    </table>
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
+            </tbody>
+        </table>
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-                  fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="fb-comments" data-href="http://{{ request.META.HTTP_HOST }}{{ request.META.PATH_INFO }}" data-num-posts="5" data-width="500"></div>
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <div class="fb-comments" data-href="http://
+                {{ request.META.HTTP_HOST }}{{ request.META.PATH_INFO }}" data-num-posts="5" data-width="500"></div>
 
     </div>
 </div>

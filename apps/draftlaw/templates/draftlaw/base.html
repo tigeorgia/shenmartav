@@ -2,9 +2,9 @@
 {% load sekizai_tags %}
 
 {% block css %}
-{% addtoblock "css" %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/base.css" media="all" />
-{% endaddtoblock %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/draftlaw/base.css" media="all"/>
+    {% endaddtoblock %}
 {% endblock %}
 
 {% block content %}
