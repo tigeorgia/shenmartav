@@ -58,7 +58,7 @@
                 {% for item in object_list %}
                     <tr class="item" id="{{ item.pk }}">
                         <td>{{ item.representative.name }}</td>
-                        <td>{{ item.date }}</td>
+                        <td><span style="display: none">{{ item.date|date:"Ymd" }}</span>{{ item.date }}</td>
                         {% if item.question|length > 600 %}
                             <td>{{ item.question|slice:":600"}}...</td>
                         {% else %}
