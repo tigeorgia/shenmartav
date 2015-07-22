@@ -7,6 +7,7 @@ Command import_votingrecord
 __docformat__ = 'epytext en'
 
 import json
+import re
 from datetime import datetime
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
@@ -34,6 +35,16 @@ class Command (BaseCommand):
     )
     #: force overwriting income declarations even though scrape date is not newer
     force = False
+
+    def _get_can_number_and_chars(self, kanstr):
+        """
+        Get numbers and chars from the kan ID
+        @return: Numbers and chars from kan ID
+        @rtype: list
+        """
+        number = re.findall("\d+", kanstr)[0]
+        char = kanstr.replace(number, '').replace('-', '')
+        return (number.strip(), char.strip())
 
 
     def _strip (self, tostrip):
@@ -163,11 +174,11 @@ class Command (BaseCommand):
         self.stdout.write('Importing from %s record %s ... ' % (
             filename, unicodeKanId ))
 
-        idPair = unicodeKanId.split("-")
         print unicodeKanId
-        kanId=idPair[0]
-        kanIdChar=idPair[1]
-        print kanId
+        kan_formatted = self._get_can_number_and_chars(unicodeKanId)
+        kanId = kan_formatted[0]
+        kanIdChar= kan_formatted[1]
+        print kanId, kanIdChar
         if self._exists(data,kanId):
             return None
 
