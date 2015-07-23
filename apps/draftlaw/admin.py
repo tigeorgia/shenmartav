@@ -13,17 +13,23 @@ from .models import DraftLaw, DraftLawDiscussion, DraftLawChild
 from tinymce.widgets import TinyMCE
 
 
-class InlineDiscussion (TranslationTabularInline):
+class InlineDiscussion(TranslationTabularInline):
     model = DraftLawDiscussion
-class InlineChild (TranslationTabularInline):
+
+
+class InlineChild(TranslationTabularInline):
     model = DraftLawChild
 
 
+class DraftLawAdmin(TranslationAdmin):
+    list_display = ['bill_number', 'bureau_date', 'title']
+    search_fields = ['bureau_date']
+    sort_fields = ['bureau_date']
 
-class DraftLawAdmin (TranslationAdmin):
-    
     inlines = [
         InlineDiscussion,
         InlineChild
     ]
+
+
 admin.site.register(DraftLaw, DraftLawAdmin)
