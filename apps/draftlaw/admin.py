@@ -22,14 +22,21 @@ class InlineChild(TranslationTabularInline):
 
 
 class DraftLawAdmin(TranslationAdmin):
-    list_display = ['bill_number', 'bureau_date', 'title']
+
+    def bureau_formatted(self, obj):
+        return obj.bureau_date.strftime("%Y-%m-%d")
+
+    list_display = ['bill_number', 'bureau_formatted', 'title']
     search_fields = ['bureau_date']
-    sort_fields = ['bureau_date']
+    sort_fields = ['bureau_formatted']
 
     inlines = [
         InlineDiscussion,
         InlineChild
     ]
+
+
+
 
 
 admin.site.register(DraftLaw, DraftLawAdmin)
