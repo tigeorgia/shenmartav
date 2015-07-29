@@ -3,8 +3,14 @@
  */
 
 #representative #data-text {
-    float: right;
+    display: inline-block;
+    vertical-align: top;
     width: 65%;
+}
+
+#representative #data-text table {
+    table-layout: fixed;
+    width:100%;
 }
 
 #representative #data-text #party {
@@ -40,9 +46,9 @@
 }
 
 #representative #data-boxes {
-    float: left;
     width: 28%;
-    padding-left: 1em;
+    padding: 0 1em;
+    display: inline-block;
 }
 
 #representative #data-boxes .box {

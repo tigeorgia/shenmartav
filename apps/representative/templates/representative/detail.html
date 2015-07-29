@@ -4,7 +4,7 @@
 
 {% block representative %}
 {% addtoblock "css" %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/detail.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/detail.css" media="all"/>
 {% endaddtoblock %}
 
 {% with unit=obj.unit.pk %}
@@ -15,233 +15,49 @@
 </div>
 
 <div id="representative" class="">
-    <div id="data-text">
-            <div id="short">
-                <div id="name" class="evenbigger representative-name">{{ obj.name }}</div>
-                <div id="party">
-                    <div id="party-name">{% if obj.party.url %}<a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}{{ obj.party }}{% endif %}</div>
-                    <div style="clear: both"></div>
-            </div>
-            <div style="clear: both"></div>
-        </div>
-{% autoescape off %}
-        <table>
-{% if obj.is_majoritarian and obj.electoral_district and obj.electoral_district.strip %}
-        <tr>
-            <td>{% trans 'Electoral District' %}</td>
-            <td>{{ obj.electoral_district }}</td>
-        </tr>
-{% endif %}
-        <tr>
-            <td>{% trans 'Elected Date' %}</td>
-            <td>{{ obj.elected }}</td>
-        </tr>
-{% if obj.terms.all %}
-        <tr>
-            <td>{% trans 'Terms' %}</td>
-            <td><ul>
-                {% for term in obj.terms.all %}<li>{{ term }}</li>{% endfor %}
-            </ul></td>
-        </tr>
-{% endif %}
-{% if obj.faction %}
-        <tr>
-            <td>{% trans 'Faction' %}</td>
-            <td>{{ obj.faction }}</td>
-        </tr>
-{% endif %}
-{% if obj.committee %}
-        <tr>
-            <td>{% ifequal unit 1 %}{% trans 'Committee' %}{% else %}{% trans 'Commission' %}{% endifequal %}</td>
-            <td>{{ obj.committee }}</td>
-        </tr>
-{% endif %}
-{% if obj.description %}
-        <tr>
-            <td>{% trans 'Activities' %}</td>
-            <td>{{ obj.description }}</td>
-        </tr>
-{% endif %}
-		{% if obj.income and obj.income.latestsubmissionyear != 0 %}
-		    <tr>
-		    	{% if LANGUAGE_CODE == "en" %}
-		        	<td>{% trans 'Link to the latest declaration' %} ({% trans 'submitted in' %} {{ obj.income.latestsubmissionyear }})</td>
-		        {% else %}
-		        	<td>{% trans 'Link to the latest declaration' %} ({% trans 'submitted in' %} {{ obj.income.latestsubmissionyear }} წელს)</td>
-		        {% endif %}
-		        <td><div>
-		        	<ul>
-		        		
-		        		{% if LANGUAGE_CODE == "en" %}
-		        			<a class="mplink" href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
-		        		{% else %}
-		        			<a class="mplink" href="https://declaration.gov.ge/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
-		        		{% endif %}
-		        	</ul>
-		        </div></td>
-		    </tr>
-		{% endif %}
-		{% if sociallinks or parliamentlink or assetlinks%}
-			{% if assetlinks %}
-	        	<tr>
-	        		<td>
-	        			{% trans 'Past declarations' %}
-	        		</td>
-	        		<td>
-	        			<ul>
-							{% for link in assetlinks %}
-								{% if LANGUAGE_CODE == "en" %}
-									<li>{{ link.label }}: <a class="mplink" href="https://declaration.gov.ge/eng/declaration?id={{ link.url }}" target="_blank">https://declaration.gov.ge/eng/declaration?id={{ link.url }}</a></li>
-								{% else %}
-									<li>{{ link.label }}: <a class="mplink" href="https://declaration.gov.ge/declaration?id={{ link.url }}" target="_blank">https://declaration.gov.ge/declaration?id={{ link.url }}</a></li>								
-								{% endif %}
-							{% endfor %}
-						</ul>
-					</td>
-	        	</tr>
-        	{% endif %}
-			{% if sociallinks or parliamentlink %}
-	        	<tr>
-	        		<td>{% trans 'Links' %}</td>
-	        		<td>
-	        			<ul>
-	        			{% if parliamentlink %}
-		        			{% for link in parliamentlink %}
-								{% if link.label == "Parliament.ge" %}
-									<li><a class="mplink" href="{{ link.url }}" target="_blank">{% trans 'Parliament.ge' %}</a></li>
-								{% endif %}
-							{% endfor %}
-						{% endif %}
-						{% if sociallinks %}
-							{% for link in sociallinks %}
-				            		<li><a class="mplink" href="{{ link.url }}" target="_blank">{{ link.label }}</a></li>
-							{% endfor %}
-						{% endif %}
-						</ul>
-					</td>
-				</tr>
-			{% endif %}
-		{% endif %}
-		
-{% if obj.expenses %}        
-        {% if obj.expenses and obj.expenses.split %}
-	        <tr>
-	            <td>{% trans 'Expenses' %}</td>
-	            <td><a href="{{ decl.get_absolute_url }}#otherinclexpenses">{{ obj.expenses }}</a></td>
-	        </tr>
-        {% endif %}
-{% endif %}
-{% if obj.property_assets %}
-	        <tr>
-	            <td>{% trans 'Property & Assets' %}</td>
-	            <td>
-	            	<ul>
-					{% for asset in obj.assets_list %}
-					 	{% if asset and asset.strip %}
-					    	<li>- {{ asset|safe }}</li>
-					    {% endif %}
-					{% endfor %}
-					</ul>
-	            </td>
-	        </tr>
-{% endif %}
-		{% if obj.position_set.all %}
-        <tr>
-            <td>{% trans 'Work Experience' %}</td>
-            <td id="workexperience"><ul>{% for experience in obj.position_set.all %}
-                        <li>- {{ experience.start_date|repdate }} {% if experience.end_date %}- {{ experience.end_date|repdate }}{% endif %} {{ experience.title }}</li>
-            {% endfor %}</ul></td>
-            </li>
-        </tr>
-        {% endif %}
-        {% if obj.date_of_birth %}
-        <tr>
-            <td>{% trans 'Birth Date & Place' %}</td>
-            <td>{{ obj.date_of_birth|repdate }}, {{ obj.pob }}</td>
-        </tr>
-        {% endif %}
-        {% if obj.family_status %}
-        <tr>
-            <td>{% trans 'Family Status' %}</td>
-            <td>{{ obj.family_status }}</td>
-        </tr>
-        {% endif %}
-        {% if faminc %}
-        <tr>
-            <td>{% trans 'Family Income' %}</td>
-            <td>
-            {% for familymember in faminc %}
-	            {{ familymember.fam_name|title }}<br />
-				{% trans 'Born on' %}: {{ familymember.fam_date_of_birth }}<br />
-	            {% trans 'Income received' %}: {{ familymember.fam_income }} {% trans 'GEL' %}<br /><br />
-            {% endfor %}
-            </td>
-        </tr>
-        {% endif %}
-        {% if obj.education %}
-        <tr>
-            <td>{% trans 'Education' %}</td>
-            <td>{{ obj.education }}</td>
-        </tr>
-        {% endif %}
-        {% if obj.contact_address_phone %}
-        <tr>
-            <td>{% trans 'Contact Address / Phone' %}</td>
-            <td>
-            	{% for contactitem in contactaddress %}
-            		{% if contactitem.split %}
-            			- {{ contactitem }}<br />
-            		{% endif %}
-            	{% endfor %}
-            </td>
-        </tr>
-        {% endif %}
-        {% if obj.additional_information.all %}
-        <tr>
-            <td>{% trans 'Additional Info' %}</td>
-            <td>{% for info in obj.additional_information.all %}
-                    <div>{{ info.value }}</div>
-            {% endfor %}</td>
-        </tr>
-        {% endif %}
-        </table>
-{% endautoescape %}
-    </div>
-
     <div id="data-boxes">
         <div id="portrait">
-            <div id="photo">{% thumbnail obj.photo '200x168' as im %} <img src="{% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="200" height="168" /></div>
+            <div id="photo">{% thumbnail obj.photo '200x168' as im %} <img src="
+                    {% if im %}{{ im }}{% else %}{{ STATIC_URL }}img/person-placeholder.jpg{% endif %}" width="200" height="168"/>
+            </div>
         </div>
-        <div id="ask-question"><a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
+        <div id="ask-question">
+            <a href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question!' %} &raquo;</a></div>
         <div class="box" id="box-income">
             {% include 'representative/income.html' %}
         </div>
         <div class="box" id="box-questions">{% ifequal unit 1 %}
             <div id="questions">
                 <h2 class="heading">{% trans 'Questions and Answers' %}</h2>
-		    {% if questions.answered.absolute == 0 and questions.noresponse.absolute == 0 %}
-			<div id="legend">{% trans 'No one has sent their question to this MP yet. Be the first to do so' %}: <a class="mplink" href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question' %}</a>.</div>
-		    {% else %}
+                {% if questions.answered.absolute == 0 and questions.noresponse.absolute == 0 %}
+                    <div id="legend">{% trans 'No one has sent their question to this MP yet. Be the first to do so' %}:
+                        <a class="mplink" href="{% url question_ask_representative obj.pk %}">{% trans 'Ask a question' %}</a>.
+                    </div>
+                {% else %}
                     <div id="readmore-button">
                         <a href="{% url question_rep_list obj.pk %}"><strong>{% trans 'See all the questions asked to this MP' %}</strong></a>
                     </div>
-	                <div class="table">
-	                    <div class="row">
-	                        <div class="cell" id="label-answered">{% trans 'Answered' %}</div>
-	                        <div class="cell" id="label-noresponse">{% trans 'No Response' %}</div>
-	                    </div>
-	                    <div class="row bar" id="bar-questions">
-	                        <div class="cell" id="bar-answered" style="width: {{ questions.answered.relative }}%">{{ questions.answered.absolute }}</div>
-	                        <div class="cell" id="bar-noresponse" style="width: {{ questions.noresponse.relative }}%">{{ questions.noresponse.absolute }}</div>
-	                    </div>
-	                </div>
-		    {% endif %}
+                    <div class="table">
+                        <div class="row">
+                            <div class="cell" id="label-answered">{% trans 'Answered' %}</div>
+                            <div class="cell" id="label-noresponse">{% trans 'No Response' %}</div>
+                        </div>
+                        <div class="row bar" id="bar-questions">
+                            <div class="cell" id="bar-answered" style="width: {{ questions.answered.relative }}%">{{ questions.answered.absolute }}</div>
+                            <div class="cell" id="bar-noresponse" style="width: {{ questions.noresponse.relative }}%">{{ questions.noresponse.absolute }}</div>
+                        </div>
+                    </div>
+                {% endif %}
                 <div>
                     {% if questions.last %}
-                    <div><span class="label">{% trans 'Question' %}:</span> {{ questions.last.question }}</div>
-                    {% if questions.last.answer %}<div><span class="label">{% trans 'Answer' %}:</span> {{ questions.last.answer|shorten_text:100 }}</div>
-                    <div id="readmore-button"><a href="{{ questions.last.get_absolute_url }}">{% trans 'Continue to the answer &raquo;' %}</a></div>
-                    {% endif %}
+                        <div><span class="label">{% trans 'Question' %}:</span> {{ questions.last.question }}</div>
+                        {% if questions.last.answer %}
+                            <div><span class="label">{% trans 'Answer' %}:</span>
+                                {{ questions.last.answer|shorten_text:100 }}</div>
+                            <div id="readmore-button">
+                                <a href="{{ questions.last.get_absolute_url }}">{% trans 'Continue to the answer &raquo;' %}</a>
+                            </div>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
@@ -252,6 +68,7 @@
         <div class="box" id="box-votecounts">{% ifequal unit 1 %}
             <div id="votecounts">
                 <label id="chart-voted-label" style="text-align: center;margin:0 auto;display:block;">{% trans 'Voted Laws' %}</label>
+
                 <div id="chart_div" style="width: 320px; height: 320px;"></div>
                 <div id="ask-question"><a href="{{ url_votingrecords }}">{% trans "View voting details" %}</a></div>
                 <!--<h2 class="heading">{% trans 'Vote Counts' %}</h2>
@@ -263,47 +80,260 @@
             </div>
         {% endifequal %}</div>
     </div>
+    <div id="data-text">
+        <div id="short">
+            <div id="name" class="evenbigger representative-name">{{ obj.name }}</div>
+            <div id="party">
+                <div id="party-name">{% if obj.party.url %}
+                    <a href="{{ obj.party.url }}" title="{{ obj.party }}">{{ obj.party }}</a>{% else %}
+                    {{ obj.party }}{% endif %}</div>
+                <div style="clear: both"></div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        {% autoescape off %}
+        <table>
+            {% if obj.is_majoritarian and obj.electoral_district and obj.electoral_district.strip %}
+                <tr>
+                    <td>{% trans 'Electoral District' %}</td>
+                    <td>{{ obj.electoral_district }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td>{% trans 'Elected Date' %}</td>
+                <td>{{ obj.elected }}</td>
+            </tr>
+            {% if obj.terms.all %}
+                <tr>
+                    <td>{% trans 'Terms' %}</td>
+                    <td>
+                        <ul>
+                            {% for term in obj.terms.all %}
+                                <li>{{ term }}</li>{% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endif %}
+            {% if obj.faction %}
+                <tr>
+                    <td>{% trans 'Faction' %}</td>
+                    <td>{{ obj.faction }}</td>
+                </tr>
+            {% endif %}
+            {% if obj.committee %}
+            <tr>
+                <td>{% ifequal unit 1 %}{% trans 'Committee' %}{% else %}{% trans 'Commission' %}{% endifequal %}</td>
+                <td>{{ obj.committee }}</td>
+            </tr>
+            {% endif %}
+            {% if obj.description %}
+                <tr>
+                    <td>{% trans 'Activities' %}</td>
+                    <td>{{ obj.description }}</td>
+                </tr>
+            {% endif %}
+            {% if obj.income and obj.income.latestsubmissionyear != 0 %}
+                <tr>
+                    {% if LANGUAGE_CODE == "en" %}
+                        <td>{% trans 'Link to the latest declaration' %}
+                            ({% trans 'submitted in' %} {{ obj.income.latestsubmissionyear }})
+                        </td>
+                    {% else %}
+                        <td>{% trans 'Link to the latest declaration' %}
+                            ({% trans 'submitted in' %} {{ obj.income.latestsubmissionyear }} წელს)
+                        </td>
+                    {% endif %}
+                    <td>
+                        <div>
+                            <ul>
+
+                                {% if LANGUAGE_CODE == "en" %}
+                                    <a class="mplink" href="https://declaration.gov.ge/eng/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
+                                {% else %}
+                                    <a class="mplink" href="https://declaration.gov.ge/declaration.php?id={{ obj.income.declarationid }}" target="_blank">{% trans 'Show the Asset declaration document' %}</a>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endif %}
+            {% if sociallinks or parliamentlink or assetlinks %}
+                {% if assetlinks %}
+                    <tr>
+                        <td>
+                            {% trans 'Past declarations' %}
+                        </td>
+                        <td>
+                            <ul>
+                                {% for link in assetlinks %}
+                                    {% if LANGUAGE_CODE == "en" %}
+                                        <li>{{ link.label }}:
+                                            <a class="mplink" href="https://declaration.gov.ge/eng/declaration?id={{ link.url }}" target="_blank">https://declaration.gov.ge/eng/declaration?id={{ link.url }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li>{{ link.label }}:
+                                            <a class="mplink" href="https://declaration.gov.ge/declaration?id={{ link.url }}" target="_blank">https://declaration.gov.ge/declaration?id={{ link.url }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endif %}
+                {% if sociallinks or parliamentlink %}
+                    <tr>
+                        <td>{% trans 'Links' %}</td>
+                        <td>
+                            <ul>
+                                {% if parliamentlink %}
+                                    {% for link in parliamentlink %}
+                                        {% if link.label == "Parliament.ge" %}
+                                            <li>
+                                                <a class="mplink" href="{{ link.url }}" target="_blank">{% trans 'Parliament.ge' %}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                {% if sociallinks %}
+                                    {% for link in sociallinks %}
+                                        <li><a class="mplink" href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endif %}
+
+            {% if obj.expenses %}
+                {% if obj.expenses and obj.expenses.split %}
+                    <tr>
+                        <td>{% trans 'Expenses' %}</td>
+                        <td><a href="{{ decl.get_absolute_url }}#otherinclexpenses">{{ obj.expenses }}</a></td>
+                    </tr>
+                {% endif %}
+            {% endif %}
+            {% if obj.property_assets %}
+                <tr>
+                    <td>{% trans 'Property & Assets' %}</td>
+                    <td>
+                        <ul>
+                            {% for asset in obj.assets_list %}
+                                {% if asset and asset.strip %}
+                                    <li>- {{ asset|safe }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endif %}
+            {% if obj.position_set.all %}
+                <tr>
+                    <td>{% trans 'Work Experience' %}</td>
+                    <td id="workexperience">
+                        <ul>{% for experience in obj.position_set.all %}
+                            <li>- {{ experience.start_date|repdate }} {% if experience.end_date %}-
+                                {{ experience.end_date|repdate }}{% endif %} {{ experience.title }}</li>
+                        {% endfor %}</ul>
+                    </td>
+                    </li>
+                </tr>
+            {% endif %}
+            {% if obj.date_of_birth %}
+                <tr>
+                    <td>{% trans 'Birth Date & Place' %}</td>
+                    <td>{{ obj.date_of_birth|repdate }}, {{ obj.pob }}</td>
+                </tr>
+            {% endif %}
+            {% if obj.family_status %}
+                <tr>
+                    <td>{% trans 'Family Status' %}</td>
+                    <td>{{ obj.family_status }}</td>
+                </tr>
+            {% endif %}
+            {% if faminc %}
+                <tr>
+                    <td>{% trans 'Family Income' %}</td>
+                    <td>
+                        {% for familymember in faminc %}
+                            {{ familymember.fam_name|title }}<br/>
+                            {% trans 'Born on' %}: {{ familymember.fam_date_of_birth }}<br/>
+                            {% trans 'Income received' %}: {{ familymember.fam_income }} {% trans 'GEL' %}<br/><br/>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if obj.education %}
+                <tr>
+                    <td>{% trans 'Education' %}</td>
+                    <td>{{ obj.education }}</td>
+                </tr>
+            {% endif %}
+            {% if obj.contact_address_phone %}
+                <tr>
+                    <td>{% trans 'Contact Address / Phone' %}</td>
+                    <td>
+                        {% for contactitem in contactaddress %}
+                            {% if contactitem.split %}
+                                - {{ contactitem }}<br/>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endif %}
+            {% if obj.additional_information.all %}
+                <tr>
+                    <td>{% trans 'Additional Info' %}</td>
+                    <td>{% for info in obj.additional_information.all %}
+                        <div>{{ info.value }}</div>
+                    {% endfor %}</td>
+                </tr>
+            {% endif %}
+        </table>
+        {% endautoescape %}
+    </div>
     <div style="clear: both"></div>
 </div>
 {% endwith %}
 
 {% addtoblock "js" %}
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['{% trans 'Vote type' %}','{% trans 'Number of votes' %}'],
-          ['{% trans 'In Favour' %}',{{ lawvotecounts.yes }}],
-          ['{% trans 'Against' %}', {{ lawvotecounts.no }}],
-          ['{% trans 'Abstain/Absent' %}', {{ lawvotecounts.absent }}]
-        ]);
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages: ["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['{% trans 'Vote type' %}', '{% trans 'Number of votes' %}'],
+                ['{% trans 'In Favour' %}', {{ lawvotecounts.yes }}],
+                ['{% trans 'Against' %}', {{ lawvotecounts.no }}],
+                ['{% trans 'Abstain/Absent' %}', {{ lawvotecounts.absent }}]
+            ]);
 
-        var options = {
-          title: '',
-          colors: ['green','red','black','grey'],
-          backgroundColor: 'transparent',
-          legend: {position: 'right'},
-          vAxis: {maxValue: 10},
-          chartArea: {left: 15, top:10, width: '100%'}
-        };
+            var options = {
+                title: '',
+                colors: ['green', 'red', 'black', 'grey'],
+                backgroundColor: 'transparent',
+                legend: {position: 'right'},
+                vAxis: {maxValue: 10},
+                chartArea: {left: 15, top: 10, width: '100%'}
+            };
 
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        google.visualization.events.addListener(chart, 'select', selectHandler);
-        chart.draw(data, options);
-      }
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            google.visualization.events.addListener(chart, 'select', selectHandler);
+            chart.draw(data, options);
+        }
 
-	
-	function selectHandler() {
-	  window.location.href = '{{ url_votingrecords }}';
-	}
-</script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/representative/detail.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquerycycle.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquery.simpletip.min.js"></script>
-<script type="text/javascript">
-var URL_Votingrecords = '{% url representative_votingrecords_simple obj.pk %}'
-</script>
+
+        function selectHandler() {
+            window.location.href = '{{ url_votingrecords }}';
+        }
+    </script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/representative/detail.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquerycycle.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/representative/jquery.simpletip.min.js"></script>
+    <script type="text/javascript">
+        var URL_Votingrecords = '{% url representative_votingrecords_simple obj.pk %}'
+    </script>
 {% endaddtoblock %}
 {% endblock %}

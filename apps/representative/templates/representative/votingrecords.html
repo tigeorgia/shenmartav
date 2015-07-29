@@ -2,57 +2,84 @@
 {% load i18n sekizai_tags %}
 
 {% block representative %}
-{% addtoblock "css" %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/votingrecords.css" media="all" />
-{% endaddtoblock %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/representative/votingrecords.css" media="all"/>
+    {% endaddtoblock %}
 
-<div class="breadcrumb">
-    <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
-    <a href="{% url representative_find %}" title="{% trans 'Who Makes Laws' %}">{% trans 'Who Makes Laws' %}</a> &gt;
-    <a href="{% url person obj.pk obj.slug %}" title="{{ obj.name }}">{{ obj.name }}</a> &gt;
-    {% trans 'Voting Records' %}
-</div>
-
-<div id="representative">
-    <h2 class="heading">{% trans 'Voting Records for' %} {{ obj.name }}</h2>
-
-    <h5>{% trans "Filter by vote" %}</h3>
-    <div class="filter-records">
-        <select id="filter-by-vote">
-            <option name="vote-yes">{% trans "Yes" %}</option>
-            <option name="vote-no">{% trans "No" %}</option>
-            <option name="vote-absent">{% trans "Absent/Abstain" %}</option>
-        </select>
+    <div class="breadcrumb">
+        <a href="{% url pages-root %}" title="{% trans 'Home' %}">{% trans 'Home' %}</a> &gt;
+        <a href="{% url representative_find %}" title="{% trans 'Who Makes Laws' %}">{% trans 'Who Makes Laws' %}</a>
+        &gt;
+        <a href="{% url person obj.pk obj.slug %}" title="{{ obj.name }}">{{ obj.name }}</a> &gt;
+        {% trans 'Voting Records' %}
     </div>
 
-    <div id="container-votingrecords" class="scroll-pane">
-    <table>
-        <thead>
-        <tr>
-            <th id="date">{% trans "Voting Date" %}</th>
-            <th id="record">{% trans "Record" %}</th>
-            <th id="vote">{% trans "Vote" %}</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for result in results %}
-            <tr class="{{ result.css }}">
-                <td class="date">{{ result.record__date|date:'c' }}</td>
-                <td><a href="{{ result.url }}" name="{{ result.css }}">{{ result.record__name }}</a></td>
-				{% if LANGUAGE_CODE == "en" %}
-                	<td><span class="vote" title="{{ result.vote_en }}"></span></td>
-				{% else %}
-                	<td><span class="vote" title="{{ result.vote_ka }}"></span></td>                
-				{% endif %}
+    <div id="representative">
+        <h2 class="heading">{% trans 'Voting Records for' %} {{ obj.name }}</h2>
 
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <h5>{% trans "Filter by vote" %}</h5>
 
+        <div class="filter-records">
+            <select id="filter-by-vote">
+                <option name="vote-yes">{% trans "Yes" %}</option>
+                <option name="vote-no">{% trans "No" %}</option>
+                <option name="vote-absent">{% trans "Absent/Abstain" %}</option>
+            </select>
+        </div>
+
+        <div id="container-votingrecords">
+            <table>
+                <thead>
+                <tr>
+                    <th id="date">{% trans "Voting Date" %}</th>
+                    <th id="record">{% trans "Record" %}</th>
+                    <th id="vote">{% trans "Vote" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for result in results.object_list %}
+                    <tr class="{{ result.css }}">
+                        <td class="date">{{ result.record__date|date:'c' }}</td>
+                        <td><a href="{{ result.url }}" name="{{ result.css }}">{{ result.record__name }}</a></td>
+                        {% if LANGUAGE_CODE == "en" %}
+                            <td><span class="vote" title="{{ result.vote_en }}"></span></td>
+                        {% else %}
+                            <td><span class="vote" title="{{ result.vote_ka }}"></span></td>
+                        {% endif %}
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {% if is_paginated %}
+                <div class="pagination">
+                    <span class="page-links">
+
+                        {% ifnotequal page_obj.number 1 %}
+                            <a href="{% url votingrecord_list %}">&lt;&lt;</a>
+                        {% endifnotequal %}
+
+                        {% if page_obj.has_previous %}
+                            <a href="{% url votingrecord_list %}?page={{ page_obj.previous_page_number }}">&lt;</a>
+                        {% endif %}
+
+                        <span class="page-current">{% trans 'Page' %} {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}.</span>
+
+                        {% if page_obj.has_next %}
+                            <a href="{% url votingrecord_list %}?page={{ page_obj.next_page_number }}">&gt;</a>
+                        {% endif %}
+
+                        {% ifnotequal page_obj.number paginator.num_pages %}
+                            <a href="{% url votingrecord_list %}?page={{ paginator.num_pages }}">&gt;&gt;</a>
+                        {% endifnotequal %}
+                    </span>
+                </div>
+            {% endif %}
+
+        </div>
     </div>
-</div>
-{% addtoblock "js" %}
-<script type="text/javascript" src="{{ STATIC_URL }}js/representative/votingrecords.js"></script>
-{% endaddtoblock %}
+    {% addtoblock "js" %}
+        <script type="text/javascript" src="{{ STATIC_URL }}js/representative/votingrecords.js"></script>
+    {% endaddtoblock %}
 {% endblock %}
