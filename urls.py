@@ -6,7 +6,7 @@ from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from cms.sitemaps import CMSSitemap
 
-from basic.blog.feeds import BlogPostsFeed
+from apps.basic.blog.feeds import BlogPostsFeed
 from filebrowser.sites import site
 
 admin.autodiscover()

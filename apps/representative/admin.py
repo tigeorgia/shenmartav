@@ -12,59 +12,72 @@ from django.db import models
 
 from modeltranslation.admin import TranslationTabularInline, TranslationAdmin
 
-from .models import Attendance, Term, Party, Cabinet, Faction, Unit, Representative,\
+from .models import Attendance, Term, Party, Cabinet, Faction, Unit, Representative, \
     AdditionalInformation, Url, RandomRepresentative
-from popit.admin import PositionInlineAdmin, PersonNameInlineAdmin, PersonAdmin,\
+from apps.popit.admin import PositionInlineAdmin, PersonNameInlineAdmin, PersonAdmin, \
     OrganisationAdmin, OrgNameInlineAdmin
-from popit.models import Person
+from apps.popit.models import Person
 
 from tinymce.widgets import TinyMCE
 
 
-class TermAdmin (TranslationAdmin):
+class TermAdmin(TranslationAdmin):
     search_fields = ['name_en', 'name_ka']
+
+
 admin.site.register(Term, TermAdmin)
 
 
-
-class PartyAdmin (OrganisationAdmin):
+class PartyAdmin(OrganisationAdmin):
     inlines = [
         OrgNameInlineAdmin,
     ]
     list_filter = ['unit']
     search_fields = ['slug', 'names__name_en', 'names__name_ka']
+
+
 admin.site.register(Party, PartyAdmin)
 
-class FactionAdmin (TranslationAdmin):
+
+class FactionAdmin(TranslationAdmin):
     search_fields = ['name_en', 'name_ka']
+
+
 admin.site.register(Faction, FactionAdmin)
 
-class CabinetAdmin (TranslationAdmin):
+
+class CabinetAdmin(TranslationAdmin):
     list_display = ['name', 'position']
     list_editable = ['position']
     search_fields = ['name_en', 'name_ka', 'position']
 
+
 admin.site.register(Cabinet, CabinetAdmin)
 
-class UnitAdmin (TranslationAdmin):
+
+class UnitAdmin(TranslationAdmin):
     search_fields = ['name_en', 'name_ka', 'short']
+
+
 admin.site.register(Unit, UnitAdmin)
 
 
-
-class InlineAdditionalInformation (TranslationTabularInline):
+class InlineAdditionalInformation(TranslationTabularInline):
     model = AdditionalInformation
     extra = 1
 
-class InlineUrl (TranslationTabularInline):
+
+class InlineUrl(TranslationTabularInline):
     model = Url
     extra = 1
 
-class InlineAttendanceAdmin (admin.TabularInline):
+
+class InlineAttendanceAdmin(admin.TabularInline):
     model = Attendance
     extra = 1
 
-class RepresentativeAdmin (PersonAdmin):
+
+class RepresentativeAdmin(PersonAdmin):
     inlines = [
         PersonNameInlineAdmin,
         PositionInlineAdmin,
@@ -77,10 +90,13 @@ class RepresentativeAdmin (PersonAdmin):
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE},
     }
+
+
 admin.site.register(Representative, RepresentativeAdmin)
 
 
-
-class RandomRepresentativeAdmin (admin.ModelAdmin):
+class RandomRepresentativeAdmin(admin.ModelAdmin):
     pass
+
+
 admin.site.register(RandomRepresentative, RandomRepresentativeAdmin)

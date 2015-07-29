@@ -9,7 +9,7 @@ from django.db import models
 from django_date_extensions.fields import ApproximateDateField
 from markitup.fields import MarkupField
 
-from popit.models import ModelBase, DataKey, Data, date_help_text, CodeType
+from apps.popit.models import ModelBase, DataKey, Data, date_help_text, CodeType
 from glt import slughifi
 
 

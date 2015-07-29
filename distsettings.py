@@ -225,22 +225,12 @@ TINYMCE_FILEBROWSER = True
 ###########################################################
 # haystack
 ###########################################################
-HAYSTACK_SITECONF = 'search_sites'
-HAYSTACK_SEARCH_ENGINE = 'xapian'
-HAYSTACK_XAPIAN_PATH = os.path.join(PROJECT_PATH, '..', 'xapian_index')
-#import xapian
-#HAYSTACK_XAPIAN_FLAGS = xapian.QueryParser.FLAG_DEFAULT | xapian.QueryParser.FLAG_PARTIAL
-# FIXME: This is a complete hack to get around circular imports in 
-# django-haystack and other apps such as django-endless-pagination
-SKIP_COMMANDS = ['syncdb', 'migrate', 'schemamigration', 'datamigration', 'reset',
-    'import_draftlaws', 'import_incomedeclarations', 'import_representatives',
-    'import_votingrecords',
-    'update_attendance', 'update_assets', 'update_votingrecordresults',
-    'update_votingrecords', 'update_initiators_authors',]
-if any([command in sys.argv for command in SKIP_COMMANDS]):
-        HAYSTACK_ENABLE_REGISTRATIONS = False
-
-
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'xapian_backend.XapianEngine',
+        'PATH': os.path.join(PROJECT_PATH, '../xapian_index'),
+    },
+}
 
 ###########################################################
 # modeltranslation

@@ -18,10 +18,10 @@ try:
     from menus.utils import set_language_changer
 except ImportError:
     from cms.utils import set_language_changer
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from apps.votingrecord.models import VotingRecordResult, VotingRecord
-from question.forms import QuestionForm
-from question.models import Question
+from apps.question.forms import QuestionForm
+from apps.question.models import Question
 
 from .models import Representative, RandomRepresentative, Party, Faction, Cabinet, Unit as UnitModel
 
@@ -323,8 +323,8 @@ class Detail (DetailView):
             context['percentage_attended'] = context['attended'] / float(totalCount['total']) * 100
             context['percentage_absent'] = 100 - context['percentage_attended']
             context['percentage_attended_string'] = "{0:.2f}".format(context['percentage_attended'])
-            
-        
+
+
         # Reformatting Contact phone and address information
         context['contactaddress'] = ""
         if obj.contact_address_phone:
@@ -355,7 +355,7 @@ class Detail (DetailView):
                 member.fam_role_en = glt.to_latin(member.fam_role)
                 member.fam_role_ka = member.fam_role
             context['faminc'] = familymembers
-  
+
         except IndexError:
             context['faminc'] = None
 
@@ -389,7 +389,7 @@ def _get_votingrecord_results (representative):
     @return: list of dicts with voting record results
     @rtype: [{'css', 'vote', 'record', 'url', 'record__name'}]
     """
-    results = representative.votingresults.filter(session=F('totalsession')).values(
+    results = representative.votingresults.filter(session=F('totalsession')).select_related('representatives').values(
         'css', 'vote_en', 'vote_ka', 'record','record__name','record__date', 'session', 'totalsession').order_by('-record__date', 'record').distinct()
     for r in results:
         r['url'] = reverse('votingrecord_detail', args=[r['record']])
@@ -416,11 +416,24 @@ class VotingRecords (DetailView):
     context_object_name = 'obj'
     model = Representative
     template_name = 'representative/votingrecords.html'
+    paginate_by = 30
 
     def get_context_data(self, **kwargs):
         context = super(VotingRecords, self).get_context_data(**kwargs)
+        page = self.request.GET.get('page', 1)
+
+        results = _get_votingrecord_results(context['obj'])
+        paginator = Paginator(results, 30)
         set_language_changer(self.request, context['obj'].get_absolute_url)
-        context['results'] = _get_votingrecord_results(context['obj'])
+
+        try:
+            context['results'] = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            context['results'] = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            context['results'] = paginator.page(paginator.num_pages)
 
         return context
 

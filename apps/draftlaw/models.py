@@ -152,7 +152,7 @@ class DraftLawModerator (CommentModerator):
     enable_field = 'enable_annotations'
     auto_moderate_field = 'moderate_annotations'
     moderate_after = 0 # immediately
-moderator.register(DraftLaw, DraftLawModerator)
+#moderator.register(DraftLaw, DraftLawModerator)
 
 
 class DraftLawDiscussion (models.Model):
