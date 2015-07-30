@@ -32,10 +32,10 @@ try:
 except ImportError:
     twitter = None
 
-from podcasting.managers import EpisodeManager, ShowManager
-from podcasting.utils.db import manager_from
-from podcasting.utils.fields import AutoSlugField, UUIDField
-from podcasting.utils.twitter import can_tweet
+from apps.podcasting.managers import EpisodeManager, ShowManager
+from apps.podcasting.utils.db import manager_from
+from apps.podcasting.utils.fields import AutoSlugField, UUIDField
+from apps.podcasting.utils.twitter import can_tweet
 
 
 def get_show_upload_folder(instance, pathname):

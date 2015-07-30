@@ -19,7 +19,7 @@ class AutoCompleteWidget(Widget):
 
     Example form:
 
-        from basic.tools.forms import fields
+        from apps.basic.tools.forms import fields
 
         class BookForm(forms.Form):
             authors = forms.ModelMultipleChoiceField(

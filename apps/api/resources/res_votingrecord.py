@@ -7,7 +7,7 @@ __docformat__ = 'epytext en'
 
 from tastypie import fields
 
-from votingrecord.models import VotingRecord, VotingRecordResult, VotingRecordAmendment
+from apps.votingrecord.models import VotingRecord, VotingRecordResult, VotingRecordAmendment
 from .common import CommonModelResource, CommonResource
 
 

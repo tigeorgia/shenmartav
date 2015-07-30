@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib.sitemaps import Sitemap
-from basic.blog.models import Post
+from apps.basic.blog.models import Post
 
 
 class BlogSitemap(Sitemap):

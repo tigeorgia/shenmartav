@@ -17,8 +17,8 @@ from django.dispatch import receiver
 from django.template import Context, loader
 from django.utils.translation import ugettext as _
 
-from settings import QUESTION_SMS_URL
-from representative.models import Representative
+from django.conf import settings
+from apps.representative.models import Representative
 
 
 
@@ -253,7 +253,7 @@ class Question (models.Model):
             msg.send()
 
         if self.mobile:
-            url = QUESTION_SMS_URL.replace('to=', 'to=' + self.mobile).replace(
+            url = settings.QUESTION_SMS_URL.replace('to=', 'to=' + self.mobile).replace(
                 'msg=', 'msg=' + urllib2.quote((self.answer).encode('utf8')))
             try:
                 handle = urllib2.urlopen(url)

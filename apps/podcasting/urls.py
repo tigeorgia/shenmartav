@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf.urls.defaults import patterns, url
-from podcasting.views import ShowListView, ShowDetailView, EpisodeListView, EpisodeDetailView, AllEpisodesListView
+from apps.podcasting.views import ShowListView, ShowDetailView, EpisodeListView, EpisodeDetailView, AllEpisodesListView
 
 
 urlpatterns = patterns("",

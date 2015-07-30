@@ -1,0 +1,66 @@
+###########################################################
+# most important
+###########################################################
+from distsettings import *
+
+
+# Site-specific Django settings for shenmartav project.
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = '5w9g+gi4qam*l1q^$(056=ylrlawx9pr#d5s2%+mgedgd&t_z@'
+
+# Maintenance mode displays under construction and sets status code to 503
+MAINTENANCE = True
+MAINTENANCE_EXCLUDED_IPS = ['127.0.0.1']
+
+ADMINS = (
+     ('Sebastian Henschel', 'sebastiantransparency@gmail.com'),
+)
+MANAGERS = ADMINS
+
+DEFAULT_FROM_EMAIL = 'webmaster@shenmartav.ge'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+EMAIL_SUBJECT_PREFIX = '[ShenMartav] '
+
+if not 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis', 
+            'NAME': 'shenmartav',
+            'HOST': 'localhost',
+            'USER': 'shenmartav',
+            'PASSWORD': 'shenmartav',
+        }
+}
+
+
+TIME_ZONE = 'Asia/Tbilisi'
+SITE_ID = 1
+
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+gettext = lambda s: s
+LANGUAGE_CODE = 'ka'
+LANGUAGES = (
+    ('en', gettext('English')),
+    ('ka', gettext('Georgian')),
+)
+
+
+
+###########################################################
+# question
+###########################################################
+QUESTION_SMS_EMAIL = 'sms@shenmartav.ge'
+QUESTION_SMS_URL = 'http://localhost:8004/?to=&msg='
+
+###########################################################
+# parliament notifications
+###########################################################
+PARLIAMENT_TEAM_EMAIL_ADDRESSES = ['example_team@mail.com']
+
+
+###########################################################
+# SMS Registration / API encryption
+###########################################################
+SMS_API_KEY = '123456789012345678901234'

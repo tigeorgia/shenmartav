@@ -8,7 +8,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from popit.models import Organisation, OrganisationName
+from apps.popit.models import Organisation, OrganisationName
 
 class OrganisationTest(TestCase):
     def test_naming(self):

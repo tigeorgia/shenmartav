@@ -7,7 +7,7 @@ from django.utils.translation import get_language, ugettext_lazy as _
 
 from .models import Question, QuestionPluginConf
 from .forms import QuestionForm
-from representative.models import Representative, RandomRepresentative
+from apps.representative.models import Representative, RandomRepresentative
 
 
 class QuestionPlugin (CMSPluginBase):

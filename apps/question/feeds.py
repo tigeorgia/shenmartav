@@ -11,7 +11,7 @@ from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from settings import NUM_FEEDITEMS
+from django.conf import settings
 from .models import Question
 
 
@@ -25,7 +25,7 @@ class FeedList (Feed):
         return reverse('question_list')
 
     def items (self):
-        return Question.public.all().order_by('-date')[:NUM_FEEDITEMS]
+        return Question.public.all().order_by('-date')[:settings.NUM_FEEDITEMS]
 
     def item_pubdate (self, obj):
         return datetime.datetime.combine(obj.date, datetime.time())

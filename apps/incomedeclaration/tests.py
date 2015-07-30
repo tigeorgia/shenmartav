@@ -8,7 +8,7 @@ __docformat__ = 'epytext en'
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from incomedeclaration.models import IncomeDeclaration
+from apps.incomedeclaration.models import IncomeDeclaration
 
 
 class IncomeDeclarationTest (TestCase):

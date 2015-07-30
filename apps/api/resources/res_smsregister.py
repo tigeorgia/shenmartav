@@ -8,7 +8,7 @@ __docformat__ = 'epytext en'
 from apps.smsregister.models import SMSRegister
 from .common import CommonModelResource
 from Crypto.Cipher import DES3
-from settings import SMS_API_KEY
+from django.conf import settings
 import binascii
 import json
 
@@ -28,7 +28,7 @@ class SMSRegisterResource (CommonModelResource):
 
 
     def encrypt(self, raw_string):
-        keyText = SMS_API_KEY
+        keyText = settings.SMS_API_KEY
         encryptor = DES3.new( keyText, DES3.MODE_CFB, '00000000')
         encrypted_string = encryptor.encrypt(raw_string)
         return binascii.b2a_base64(encrypted_string)

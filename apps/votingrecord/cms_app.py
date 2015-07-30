@@ -6,5 +6,5 @@ from django.utils.translation import ugettext_lazy as _
 
 class VotingRecordApp (CMSApp):
     name = _('Voting Record App')
-    urls = ['votingrecord.urls']
+    urls = ['apps.votingrecord.urls']
 apphook_pool.register(VotingRecordApp)

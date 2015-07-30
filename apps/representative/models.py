@@ -24,7 +24,7 @@ from django.utils.translation import activate, get_language, ugettext as _
 from django.template.defaultfilters import slugify
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 
-from shenmartav import glt
+import glt
 from apps.popit.models import Person, Organisation
 from unidecode import unidecode
 
@@ -170,7 +170,7 @@ GENDER_CHOICES = (
 
 
 class Representative(Person):
-    """A representative derived from popit.Person."""
+    """A representative derived from apps.popit.Person."""
     #: personal photo
     photo = ImageWithThumbnailsField(upload_to='representatives',
                                      thumbnail={'size': (200, 168), 'options': ('crop',)},

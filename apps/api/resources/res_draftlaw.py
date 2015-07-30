@@ -7,7 +7,7 @@ __docformat__ = 'epytext en'
 
 from tastypie import fields
 
-from draftlaw.models import DraftLaw, DraftLawDiscussion, DraftLawChild
+from apps.draftlaw.models import DraftLaw, DraftLawDiscussion, DraftLawChild
 from .common import CommonModelResource
 
 

@@ -7,7 +7,7 @@ __docformat__ = 'epytext en'
 
 from tastypie import fields
 
-from incomedeclaration.models import IncomeDeclaration, DeclarationSecurity,\
+from apps.incomedeclaration.models import IncomeDeclaration, DeclarationSecurity,\
     DeclarationFamily, DeclarationContract, DeclarationDeposit,\
     DeclarationCash, DeclarationGift, DeclarationEntrepreneurial,\
     DeclarationRealEstate, DeclarationWage, DeclarationProperty,\

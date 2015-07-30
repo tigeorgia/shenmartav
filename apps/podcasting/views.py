@@ -2,7 +2,7 @@
 
 from django.views.generic import DetailView, ListView
 
-from podcasting.models import Episode, Show
+from apps.podcasting.models import Episode, Show
 
 
 class ShowListView(ListView):

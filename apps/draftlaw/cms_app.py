@@ -13,5 +13,5 @@ from django.utils.translation import ugettext_lazy as _
 
 class DraftLawApp (CMSApp):
     name = _('DraftLaw App')
-    urls = ['draftlaw.urls']
+    urls = ['apps.draftlaw.urls']
 apphook_pool.register(DraftLawApp)

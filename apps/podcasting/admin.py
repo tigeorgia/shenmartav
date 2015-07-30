@@ -7,9 +7,9 @@ from django.db import models
 
 from imagekit.admin import AdminThumbnail
 
-from podcasting.forms import AdminShowForm, AdminEpisodeForm
-from podcasting.models import Show, Episode, Enclosure
-from podcasting.utils.twitter import can_tweet
+from apps.podcasting.forms import AdminShowForm, AdminEpisodeForm
+from apps.podcasting.models import Show, Episode, Enclosure
+from apps.podcasting.utils.twitter import can_tweet
 
 from modeltranslation.admin import TranslationAdmin
 from tinymce.widgets import TinyMCE

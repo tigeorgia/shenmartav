@@ -6,5 +6,5 @@ from django.utils.translation import ugettext_lazy as _
 
 class IncomeDeclarationApp (CMSApp):
     name = _('Income Declaration App')
-    urls = ['incomedeclaration.urls']
+    urls = ['apps.incomedeclaration.urls']
 apphook_pool.register(IncomeDeclarationApp)

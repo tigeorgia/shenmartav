@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.conf.urls.defaults import patterns, url
-from podcasting.feeds import RssShowFeed, AtomShowFeed
+from apps.podcasting.feeds import RssShowFeed, AtomShowFeed
 
 
 urlpatterns = patterns("",

@@ -8,8 +8,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.comments.models import Comment
 from django.core.urlresolvers import reverse
 
-from basic.blog.models import Post, Category
-from settings import NUM_FEEDITEMS
+from apps.basic.blog.models import Post, Category
+from django.conf import settings
 
 
 class BlogPostsFeed(Feed):
@@ -57,7 +57,7 @@ class CommentsFeed(Feed):
 
     def items(self):
         ctype = ContentType.objects.get_for_model(Post)
-        return Comment.objects.filter(content_type=ctype)[:NUM_FEEDITEMS]
+        return Comment.objects.filter(content_type=ctype)[:settings.NUM_FEEDITEMS]
 
     def item_pubdate(self, obj):
         return obj.submit_date

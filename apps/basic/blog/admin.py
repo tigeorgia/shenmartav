@@ -4,7 +4,7 @@ from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 from django.db import models
 
-from basic.blog.models import *
+from apps.basic.blog.models import *
 from tinymce.widgets import TinyMCE
 
 

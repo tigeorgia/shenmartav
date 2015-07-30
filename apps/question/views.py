@@ -22,12 +22,9 @@ try:
 except ImportError:
     from cms.utils import set_language_changer
 
-try:
-    from settings import QUESTION_SMS_EMAIL
-except ImportError:
-    QUESTION_SMS_EMAIL = 'root@localhost'
+from django.conf import settings
 
-from representative.models import Representative
+from apps.representative.models import Representative
 
 from .models import Question
 from .forms import QuestionForm
@@ -293,7 +290,7 @@ def receive (request, mobile, representative, question):
     """
     try:
         question = Question(representative_id=representative,
-            name=_('SMS'), email=QUESTION_SMS_EMAIL, mobile=mobile, question=question,
+            name=_('SMS'), email=settings.QUESTION_SMS_EMAIL, mobile=mobile, question=question,
         )
         question.save()
     except (ValueError, IntegrityError):

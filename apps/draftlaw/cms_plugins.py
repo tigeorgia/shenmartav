@@ -13,7 +13,7 @@ from django.utils.translation import get_language, ugettext_lazy as _
 
 from .models import DraftLaw, DraftLawPluginConf
 from .views import Items
-from basic.blog.models import Post
+from apps.basic.blog.models import Post
 
 
 

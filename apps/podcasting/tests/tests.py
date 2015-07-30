@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 
 from milkman.dairy import milkman
 
-from podcasting.models import Show, Episode, Enclosure
+from apps.podcasting.models import Show, Episode, Enclosure
 
 
 class PodcastTests(TestCase):

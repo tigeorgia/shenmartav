@@ -10,8 +10,8 @@ __docformat__ = 'epytext en'
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from representative.models import Attendance, Representative
-from votingrecord.models import VotingRecordResult
+from apps.representative.models import Attendance, Representative
+from apps.votingrecord.models import VotingRecordResult
 
 
 

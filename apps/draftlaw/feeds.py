@@ -12,7 +12,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
-from settings import NUM_FEEDITEMS
+from django.conf import settings
 from .models import DraftLaw
 
 
@@ -26,7 +26,7 @@ class FeedList (Feed):
         return reverse('draftlaw_list')
 
     def items (self):
-        return DraftLaw.objects.all().order_by('-bureau_date')[:NUM_FEEDITEMS]
+        return DraftLaw.objects.all().order_by('-bureau_date')[:settings.NUM_FEEDITEMS]
 
     def item_pubdate (self, obj):
         return datetime.datetime.combine(obj.bureau_date, datetime.time())

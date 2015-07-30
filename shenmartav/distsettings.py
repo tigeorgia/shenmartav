@@ -13,8 +13,7 @@ USE_I18N = True
 USE_L10N = True
 
 import os, sys
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
-sys.path.insert(0, os.path.join(PROJECT_PATH, 'apps'))
+PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
 
 MEDIA_ROOT = os.path.join(PROJECT_PATH, '..', 'media')
 MEDIA_URL = '/media/'
@@ -52,7 +51,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'apps.basic.middleware.middleware.MaintenanceMiddleware',
-    'forcedefaultlanguage.middleware.ForceDefaultLanguageMiddleware',
+    'apps.forcedefaultlanguage.middleware.ForceDefaultLanguageMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -99,7 +98,7 @@ INSTALLED_APPS = (
     'imagekit', # Kind of ugly to have two thumbnail libs, cleanup later
     'rosetta',
     'tinymce',
-    'podcasting',
+    'apps.podcasting',
     'licenses',
     'captcha',
 
@@ -118,29 +117,29 @@ INSTALLED_APPS = (
     #'cms.plugins.twitter',
 
     # mysociety.org
-    'popit',
+    'apps.popit',
     #'mapit',
 
     # blog
-    'basic.inlines',
-    'basic.blog',
+    'apps.basic.inlines',
+    'apps.basic.blog',
     'tagging',
     'markdown',
 
     # in-house
-    'api',
-    'basic.tools',
-    'representative',
-    'votingrecord',
-    'incomedeclaration',
-    'draftlaw',
-    'question',
-    'contact',
-    'smsregister',
-    'smsalert',
+    'apps.api',
+    'apps.basic.tools',
+    'apps.representative',
+    'apps.votingrecord',
+    'apps.incomedeclaration',
+    'apps.draftlaw',
+    'apps.question',
+    'apps.contact',
+    'apps.smsregister',
+    'apps.smsalert',
 
     #custom
-    'util',
+    'apps.util',
 )
 
 

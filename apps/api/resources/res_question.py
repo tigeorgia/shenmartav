@@ -5,7 +5,7 @@ Resources question
 """
 __docformat__ = 'epytext en'
 
-from question.models import Question
+from apps.question.models import Question
 from .common import CommonModelResource
 
 

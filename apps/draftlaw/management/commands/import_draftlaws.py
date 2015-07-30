@@ -80,7 +80,7 @@ class Command (BaseCommand):
         @param draftlaw: a draftlaw
         @type draftlaw: draftlaw.DraftLaw
         """
-        from draftlaw.models import DraftLawDiscussion
+        from apps.draftlaw.models import DraftLawDiscussion
         col_start = 11
         col_end = 16
         for i in xrange(col_start, col_end + 1):
@@ -192,7 +192,7 @@ class Command (BaseCommand):
         @return: a draftlaw
         @rtype: draftlaw.DraftLaw
         """
-        from draftlaw.models import DraftLaw
+        from apps.draftlaw.models import DraftLaw
         bill_number = self._get_bill_number(row)
 
         title = row[3].strip().decode('utf-8')
@@ -246,7 +246,7 @@ class Command (BaseCommand):
         @return: a draftlaw child
         @rtype: draftlaw.DraftLawChild
         """
-        from draftlaw.models import DraftLawChild
+        from apps.draftlaw.models import DraftLawChild
         if not parent:
             return False
 
@@ -289,7 +289,7 @@ class Command (BaseCommand):
         @return: if data could be added
         @rtype: bool
         """
-        from draftlaw.models import DraftLaw, DraftLawChild
+        from apps.draftlaw.models import DraftLaw, DraftLawChild
         bill_number = self._get_bill_number(row)
         self.stdout.write('%s | Adding georgian to english ... ' % bill_number)
         try:

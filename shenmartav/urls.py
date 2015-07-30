@@ -13,7 +13,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # popit
-    url(r'^popit/', include('popit.urls')),
+    url(r'^popit/', include('apps.popit.urls')),
     # mapit
     #url(r'^mapit/', include('mapit.urls')),
 
@@ -34,18 +34,18 @@ urlpatterns = patterns('',
     url(r'^feeds/blog/$', BlogPostsFeed(), name='feed_blogposts'),
 
     # API
-    url(r'^api/', include('api.urls'), name='api'),
+    url(r'^api/', include('apps.api.urls'), name='api'),
 
     # SMS Alert
-    url(r'^smsalert/', include('smsalert.urls'), name='smsalert'),
+    url(r'^smsalert/', include('apps.smsalert.urls'), name='smsalert'),
 
     # TinyMCE
     url(r'^tinymce/', include('tinymce.urls')),
 
     # Podcasting
     # Comment out URLs for CMSified apps
-    #url(r"^podcasts/", include("podcasting.urls")),
-    url(r"^feeds/podcasts/", include("podcasting.urls_feeds")),
+    #url(r"^podcasts/", include("apps.podcasting.urls")),
+    url(r"^feeds/podcasts/", include("apps.podcasting.urls_feeds")),
 
     # Captcha for SMS registration
     url(r'^captcha/', include('captcha.urls')),
@@ -67,10 +67,10 @@ if settings.DEBUG:
 
 if 'test' in sys.argv:
     urlpatterns = patterns('',
-        url(r'test/representative/', include('representative.urls')),
-        url(r'test/incomedeclaration/', include('incomedeclaration.urls')),
-        url(r'test/votingrecord/', include('votingrecord.urls')),
-        url(r'test/draftlaw/', include('draftlaw.urls')),
-        url(r'test/question/', include('question.urls')),
-        url(r'test/contact/', include('contact.urls')),
+        url(r'test/representative/', include('apps.representative.urls')),
+        url(r'test/incomedeclaration/', include('apps.incomedeclaration.urls')),
+        url(r'test/votingrecord/', include('apps.votingrecord.urls')),
+        url(r'test/draftlaw/', include('apps.draftlaw.urls')),
+        url(r'test/question/', include('apps.question.urls')),
+        url(r'test/contact/', include('apps.contact.urls')),
     ) + urlpatterns

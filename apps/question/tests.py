@@ -8,8 +8,8 @@ from django.core import mail
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from question.models import Question
-from question.views import notify_question_change, Items
+from apps.question.models import Question
+from apps.question.views import notify_question_change, Items
 
 
 class QuestionTest (TestCase):

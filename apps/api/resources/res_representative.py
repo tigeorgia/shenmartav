@@ -7,8 +7,8 @@ __docformat__ = 'epytext en'
 
 from tastypie import fields
 
-from representative.models import Representative, AdditionalInformation
-from popit.api import PositionResource, PersonNameResource
+from apps.representative.models import Representative, AdditionalInformation
+from apps.popit.api import PositionResource, PersonNameResource
 from .common import CommonModelResource
 
 

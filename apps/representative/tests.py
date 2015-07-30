@@ -11,9 +11,9 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from representative.models import Attendance, Representative, RandomRepresentative, NAME_MINLEN
-from representative.views import UnitParliament, Detail
-from question.models import Question
+from apps.representative.models import Attendance, Representative, RandomRepresentative, NAME_MINLEN
+from apps.representative.views import UnitParliament, Detail
+from apps.question.models import Question
 
 
 class RepresentativeTest (TestCase):

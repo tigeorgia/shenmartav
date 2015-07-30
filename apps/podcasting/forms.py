@@ -13,9 +13,9 @@ try:
 except ImportError:
     imagekit = None
 
-from podcasting.utils.twitter import can_tweet
-from podcasting.utils.widgets import CustomAdminThumbnailWidget
-from podcasting.models import Enclosure, Episode, Show
+from apps.podcasting.utils.twitter import can_tweet
+from apps.podcasting.utils.widgets import CustomAdminThumbnailWidget
+from apps.podcasting.models import Enclosure, Episode, Show
 
 
 class BaseShowForm(forms.ModelForm):

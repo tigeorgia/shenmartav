@@ -7,8 +7,8 @@ __docformat__ = 'epytext en'
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from draftlaw.models import DraftLaw
-from representative.models import Representative
+from apps.draftlaw.models import DraftLaw
+from apps.representative.models import Representative
 
 
 

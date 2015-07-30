@@ -13,8 +13,8 @@ from django.db import models
 from django.utils.translation import get_language, ugettext_lazy as _
 
 from glt import slughifi
-from votingrecord.models import VotingRecord
-from representative.models import Representative
+from apps.votingrecord.models import VotingRecord
+from apps.representative.models import Representative
 
 
 

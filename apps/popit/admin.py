@@ -5,7 +5,7 @@ from django.forms import TextInput, ModelForm
 #from sorl.thumbnail.admin import AdminImageMixin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-from popit import models
+from apps.popit import models
 
 def create_admin_link_for(obj, link_text):
     return u'<a href="%s">%s</a>' % ( obj.get_admin_url(), link_text )

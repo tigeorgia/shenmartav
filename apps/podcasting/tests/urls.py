@@ -3,5 +3,5 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns("",
-    url(r"^podcasts/", include("podcasting.urls")),
+    url(r"^podcasts/", include("apps.podcasting.urls")),
     )

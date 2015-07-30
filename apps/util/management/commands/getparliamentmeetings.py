@@ -5,7 +5,7 @@ import requests, BeautifulSoup, urllib3, os
 from django.core.management.base import BaseCommand, CommandError
 from django.core.mail import send_mail
 from apps.util.models import Announcement
-from settings import DEFAULT_FROM_EMAIL, PARLIAMENT_TEAM_EMAIL_ADDRESSES
+from django.conf import settings
 
 class Command(BaseCommand):
 
@@ -64,6 +64,6 @@ class Command(BaseCommand):
 
             email_body = email_body + "(This e-mail has been generated and sent automatically. Don't reply to it. If you have any questions, please go see the IT team)."
 
-            send_mail('myparliament.ge - new annoucements', email_body, DEFAULT_FROM_EMAIL, PARLIAMENT_TEAM_EMAIL_ADDRESSES, fail_silently=False)
+            send_mail('myparliament.ge - new annoucements', email_body, settings.DEFAULT_FROM_EMAIL, settings.PARLIAMENT_TEAM_EMAIL_ADDRESSES, fail_silently=False)
 
         print "Done."

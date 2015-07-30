@@ -10,7 +10,7 @@ from tastypie.resources import ModelResource
 from tastypie.throttle import CacheThrottle
 from tastypie import fields
 
-from popit import models
+from apps.popit import models
 
 class CommonResource(ModelResource):
     class Meta:

@@ -6,7 +6,7 @@ from django.db.models import permalink
 from django.contrib.auth.models import User
 from django.conf import settings
 
-from basic.blog.managers import PublicManager
+from apps.basic.blog.managers import PublicManager
 
 import datetime
 import tagging

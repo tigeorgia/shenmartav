@@ -8,7 +8,7 @@ from django.utils.feedgenerator import rfc2822_date, Rss201rev2Feed, Atom1Feed
 from django.shortcuts import get_object_or_404
 from django.contrib.syndication.views import Feed
 
-from podcasting.models import Enclosure, Show
+from apps.podcasting.models import Enclosure, Show
 
 
 class ITunesElements(object):

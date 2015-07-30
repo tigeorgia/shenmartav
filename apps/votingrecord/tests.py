@@ -7,8 +7,8 @@ __docformat__ = 'epytext en'
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from votingrecord.models import VotingRecord, VotingRecordResult
-from representative.models import Representative
+from apps.votingrecord.models import VotingRecord, VotingRecordResult
+from apps.representative.models import Representative
 
 
 class VotingRecordTest (TestCase):

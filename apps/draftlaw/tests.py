@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.utils.translation import activate
 
-from draftlaw.models import DraftLaw
+from apps.draftlaw.models import DraftLaw
 
 
 class DraftLawTest (TestCase):

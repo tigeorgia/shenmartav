@@ -8,7 +8,7 @@
 from django.conf.urls.defaults import patterns, url, include
 
 from tastypie.api import Api
-from popit.api import PersonResource, OrganisationResource, PositionResource
+from apps.popit.api import PersonResource, OrganisationResource, PositionResource
 
 v1_api = Api(api_name='v1')
 v1_api.register(PersonResource())

@@ -4,7 +4,7 @@ from haystack.indexes import SearchIndex, CharField
 from haystack import site
 
 from .models import Representative
-from popit.models import Organisation, Position
+from apps.popit.models import Organisation, Position
 
 
 

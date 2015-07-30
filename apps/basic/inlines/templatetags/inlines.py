@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django import template
-from basic.inlines.parser import inlines
-from basic.inlines.models import InlineType
+from apps.basic.inlines.parser import inlines
+from apps.basic.inlines.models import InlineType
 import re
 
 register = template.Library()

@@ -12,7 +12,7 @@ from django.conf import settings
 from django_date_extensions.fields import ApproximateDateField
 from markitup.fields import MarkupField
 
-from popit.models import ModelBase, date_help_text, Person, Organisation, DataKey, Data
+from apps.popit.models import ModelBase, date_help_text, Person, Organisation, DataKey, Data
 
 class PositionCategory(ModelBase):
     #category_choices = (
