@@ -1,9 +1,9 @@
 =========================
-README for shenmartav CMS
+READ ME for shenmartav CMS
 =========================
 Hello and welcome to the shenmartav CMS!
 
-The CMS is built on the Django Admin (https://docs.djangoproject.com/en/dev/ref/contrib/admin/) and DjangoCMS (https://www.django-cms.org/) . You can access it via the URI /admin, e.g.
+The CMS is built on the Django Admin (https://docs.djangoproject.com/en/dev/ref/contrib/admin/) and DjangoCMS (https://www.django-cms.org/) . You can access it via the URL /admin, e.g.
 
 http://shenmartav.ge/en/admin/
 
@@ -33,7 +33,7 @@ Categories or Blogroll are not used and the comment feature has been somewhat di
 
 Draft Laws
 ==========
-The draft laws can be browsed and edited, but usually that won't be necesssary. It might actually be overwritten by a subsequent import.
+The draft laws can be browsed and edited, but usually that won't be necessary. It might actually be overwritten by a subsequent import.
 
 http://shenmartav.ge/en/admin/draftlaw/draftlaw/
 
