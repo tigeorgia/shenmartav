@@ -111,7 +111,7 @@ These alert can be added here for them to be displayed on the front page.
 
 http://shenmartav.ge/en/admin/smsalert/smsalert/
 
-Originally, this was intended to actually send out an alert through a SMS gateway. But currently that part is defunct as there are problems with short codes and the connections to Georgia's mobile network operators.
+Originally, this was intended to actually send out an alert through an SMS gateway. But currently that part is defunctional as there are problems with short codes and the connections to Georgia's mobile network operators.
 
 
 
