@@ -1,4 +1,4 @@
-=====================
+Shenmartav - An amazing project
 README for shenmartav
 =====================
 Hello and welcome to the shenmartav code!
