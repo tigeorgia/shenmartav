@@ -1,7 +1,7 @@
 =====================
-README for shenmartav
+READ ME For Shenmartav
 =====================
-Hello and welcome to the shenmartav code!
+Hello and welcome to the shenmartav code! here you can learn and enjoy the codes.
 
 This is a first attempt at writing the documentation how to set it all up. Please bear with me, as there will be some rough edges until the system has been installed from scratch on various platforms.
 
