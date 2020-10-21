@@ -3,7 +3,7 @@ README for shenmartav
 =====================
 Hello and welcome to the shenmartav code!
 
-This is a first attempt at writing the documentation how to set it all up. Please bear with me, as there will be some rough edges until the system has been installed from scratch on various platforms.
+This is a first effort to compose the documentation how to set everything up. It would be ideal if you hold on for me, as there will be some unpleasant edges until the framework has been introduced without any preparation on different stages.
 
 Cheers,
  Sebastian Henschel <sebastiantransparency@gmail.com>
